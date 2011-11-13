@@ -1,0 +1,10 @@
+The Winamp Remote Control
+
+Consists of a plugin that is compatible with the winamp 2.5.x API, along with a client, allowing multiple users to share a centralised Winamp server.
+
+Built using c++ Builder 5 onwards and uses MS-RPC for the communication mechanismm.
+
+A linux client was created which worked fine.
+
+The final blow was the Windows XP Service Pack which locked down security for unauthenticated RPC endpoints.
+ 
