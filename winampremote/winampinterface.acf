@@ -1,6 +1,0 @@
-[
-  implicit_handle(handle_t winamp_IfHandle)
-]
-interface winamp
-{
-}
