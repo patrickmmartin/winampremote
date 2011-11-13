@@ -1,8 +1,15 @@
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// rpcthreadDLL.cpp
+//
+// unit for thread opening the RPC service and processing the requests
+//
+
 //---------------------------------------------------------------------------
 #include <vcl.h>
+#pragma hdrstop
 #include <malloc.h>
 #include <stdio.h>
-#pragma hdrstop
 
 #include "rpcthreadDLL.h"
 #pragma package(smart_init)
@@ -13,7 +20,8 @@
 //RPC errors
 #include "RPCErrors.h"
 
-#include "ServerDLLF.h"
+const AnsiString LoginString = "login";
+const AnsiString LogoutString = "logout";
 
 TRTLCriticalSection fCriticalSection ;
 
@@ -27,37 +35,32 @@ TRTLCriticalSection fCriticalSection ;
 void WAMessageProc(
     /* [string][out][in] */ unsigned char __RPC_FAR *pszString)
 {
-
-   try
-   {            // test for C++ exceptions
-      try
-      {         // test for C-based structured exceptions
-
-
+  try
+  {            // test for C++ exceptions
+    try
+    {         // test for C-based structured exceptions
       // functions to be protected in here
       MainIdent((char *) pszString);
-
-      MainStatus(waExecuting);
       AnsiString str = (char *) pszString;
       str += " sent hello";
       MainMessage(str.c_str());
       MainStatus(waListening);
-
-      }
-      __except(1)
-      {
+    }
+   __except(1)
+    {
       /* specify actions to take for this structured exception */
       throw(Exception("structured exception generated in WAMessageProc()"));
-      }
-   }
-   catch ( Exception &E )
-   {
-   // handler for any C++ exception
-   OutputDebugString(E.Message.c_str());
-   if (frmMain->requestlog[EXCEPTIONS]){
-     MainMessage(strdup(E.Message.c_str()));
-     }
-   }
+    }
+  }
+  catch ( Exception &E )
+  {
+    // handler for any C++ exception
+    OutputDebugString(E.Message.c_str());
+    if (frmMain->requestlog[EXCEPTIONS])
+    {
+      MainMessage(strdup(E.Message.c_str()));
+    }
+  }
 }
 
 
@@ -67,17 +70,13 @@ void WAExecuteMessage(
 {
 char * commandStr;
 
-   try
-   {            // test for C++ exceptions
-      try
-      {         // test for C-based structured exceptions
-
-      // functions to be protected in here
-      MainStatus(waExecuting);
+  try
+  {            // test for C++ exceptions
+    try
+    {         // test for C-based structured exceptions
       MainIdent((char *) pszString);
-
-      if (frmMain->requestlog[COMMAND_INTEGER]){
-
+      if (frmMain->requestlog[COMMAND_INTEGER])
+      {
         AnsiString str = (char *) pszString;
         str += " sent  - command : ";
 
@@ -88,27 +87,23 @@ char * commandStr;
           str += command;
 
         MainMessage( str.c_str());
-        }
-      //execute command
+      }
       ExecuteMessage(command);
       MainStatus(waListening);
-
-      }
-      __except(1)
-      {
-      /* specify actions to take for this structured exception */
+    }
+    __except(1)
+    {
       throw(Exception(AnsiString("structured exception generated in WAExecuteMessage() : " + AnsiString(RPCError(RpcExceptionCode())))));
-      }
-   }
-   catch ( Exception &E )
-   {
-   // handler for any C++ exception
-   OutputDebugString(E.Message.c_str());
-   if (frmMain->requestlog[EXCEPTIONS]){
-     MainMessage(strdup(E.Message.c_str()));
-     }
-   }
-
+    }
+  }
+  catch ( Exception &E )
+  {
+    OutputDebugString(E.Message.c_str());
+    if (frmMain->requestlog[EXCEPTIONS])
+    {
+      MainMessage(strdup(E.Message.c_str()));
+    }
+  }
 }
 
 
@@ -120,17 +115,13 @@ void WAExecuteMessageString(
 
 char * commandStr;
 
-   try
-   {            // test for C++ exceptions
-      try
-      {         // test for C-based structured exceptions
-
-
-      // functions to be protected in here
-      MainStatus(waExecuting);
+  try
+  {            // test for C++ exceptions
+    try
+    {         // test for C-based structured exceptions
       MainIdent((char *) pszString);
-
-      if (frmMain->requestlog[COMMAND_STRING]){
+      if (frmMain->requestlog[COMMAND_STRING])
+      {
 
         AnsiString str = (char *) pszString;
         str += " sent  - command : ";
@@ -141,31 +132,28 @@ char * commandStr;
         else
           str += command;
 
-        str += " - parameter : ";
-        str += (char *) pszParam;
-        MainMessage( str.c_str());
+          str += " - parameter : ";
+          str += (char *) pszParam;
+          MainMessage( str.c_str());
       }
 
       ExecuteStringMessage( (char *) pszParam, command);
       MainStatus(waListening);
-
-      }
-      __except(1)
-      {
-      /* specify actions to take for this structured exception */
+    }
+    __except(1)
+    {
       throw(Exception(AnsiString("structured exception generated in WAMessageString() : " + AnsiString(RPCError(RpcExceptionCode())))));
-      }
-   }
-   catch ( Exception &E )
-   {
-   // handler for any C++ exception
-   OutputDebugString(E.Message.c_str());
-   if (frmMain->requestlog[EXCEPTIONS]){
-     MainMessage(strdup(E.Message.c_str()));
-     }
-   }
-
-
+    }
+  }
+  catch ( Exception &E )
+  {
+    // handler for any C++ exception
+    OutputDebugString(E.Message.c_str());
+    if (frmMain->requestlog[EXCEPTIONS])
+    {
+      MainMessage(strdup(E.Message.c_str()));
+    }
+  }
 }
 
 int WAIntegerResult(
@@ -176,21 +164,15 @@ int WAIntegerResult(
 
 char * commandStr;
 int result;
-   try
-   {            // test for C++ exceptions
-      try
-      {         // test for C-based structured exceptions
-
-
-      // functions to be protected in here
-      MainStatus(waExecuting);
+  try
+  {            // test for C++ exceptions
+    try
+    {         // test for C-based structured exceptions
       MainIdent((char *) pszString);
-
-      if (frmMain->requestlog[QUERY_INTEGER]){
-
+      if (frmMain->requestlog[QUERY_INTEGER])
+      {
         AnsiString str = (char *) pszString;
         str += " sent  - command : ";
-
         commandStr = WinampCommandDesc(command);
         if (commandStr)
           str += commandStr;
@@ -206,21 +188,19 @@ int result;
       MainStatus(waListening);
       return result;
 
-      }
-      __except(1)
-      {
-      /* specify actions to take for this structured exception */
-      throw(Exception(AnsiString("structured exception generated in WAIntegerResult() : " + AnsiString(RPCError(RpcExceptionCode())))));
-      }
-   }
-   catch ( Exception &E )
-   {
-   // handler for any C++ exception
-   OutputDebugString(E.Message.c_str());
-   if (frmMain->requestlog[EXCEPTIONS]){
-     MainMessage(strdup(E.Message.c_str()));
-     }
-   }
+    }
+    __except(1)
+    {
+      throw (Exception(AnsiString("structured exception generated in WAIntegerResult() : " + AnsiString(RPCError(RpcExceptionCode())))));
+    }
+  }
+  catch ( Exception &E )
+  {
+    OutputDebugString(E.Message.c_str());
+    if (frmMain->requestlog[EXCEPTIONS]){
+      MainMessage(strdup(E.Message.c_str()));
+    }
+  }
 
  return 0;
 }
@@ -235,21 +215,19 @@ int WAStringResult(
   AnsiString str;
 
   EnterCriticalSection(&fCriticalSection);
-
-  try{
-
-
+  try
+  {
      try
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
+          MainIdent((char *) pszString);
+          MainStatus(waListening);
 
-        // functions to be protected in here
+          retval = GetAmpStr(command, data);
 
-        MainStatus(waExecuting);
-        MainIdent((char *) pszString);
-
-          if (frmMain->requestlog[QUERY_STRING]){
+          if (frmMain->requestlog[QUERY_STRING])
+          {
             str = (char *) pszString;
             str += " sent  - command : ";
 
@@ -263,46 +241,41 @@ int WAStringResult(
             str += data;
 
             MainMessage( str.c_str());
-          }  
 
-          retval = GetAmpStr(command, data);
+            str = retval;
+            str += " returned";
 
-          str = retval;
-          str += " returned";
-
-          if (frmMain->requestlog[QUERY_STRING]){
             MainMessage (str.c_str());
           }
 
-         /* return status*/
-         MainStatus(waListening);
 
-          if (retval){
+          if (retval)
+          {
             strcpy((char *) pszString, retval);
             delete retval;
-            }
+          }
           else
             sprintf((char *) pszString,  "command %d data %d (null)", command, data);
         }
 
         __except(1)
         {
-        /* specify actions to take for this structured exception */
-        throw(Exception(AnsiString("structured exception generated in WAStringResult() : " + AnsiString(RPCError(RpcExceptionCode())))));
+          throw(Exception(AnsiString("structured exception generated in WAStringResult() : " + AnsiString(RPCError(RpcExceptionCode())))));
         }
      }
      catch ( Exception &E )
      {
-     // handler for any C++ exception
-     OutputDebugString(E.Message.c_str());
-     if (frmMain->requestlog[EXCEPTIONS]){
-       MainMessage(strdup(E.Message.c_str()));
-       }
-     }
-   }
-   __finally{
-  LeaveCriticalSection(&fCriticalSection);
-   }
+       OutputDebugString(E.Message.c_str());
+        if (frmMain->requestlog[EXCEPTIONS])
+        {
+          MainMessage(strdup(E.Message.c_str()));
+        }
+      }
+    }
+   __finally
+  {
+   LeaveCriticalSection(&fCriticalSection);
+  }
   return 0;
 
 }
@@ -315,19 +288,23 @@ RPC_STATUS status;
 
   MainMessage("rpc thread asked to stop");
   status = RpcMgmtStopServerListening(NULL);
-  if (status == RPC_S_OK){
+  if (status == RPC_S_OK)
+  {
     status = RpcServerUnregisterIf(NULL, NULL, FALSE);
-    if (status == RPC_S_OK){
+    if (status == RPC_S_OK)
+    {
       MainMessage("interface unregistered");
       MainStatus(waServerStopped);
-        }
-      else{
-        MainMessage("error unregistering interface");
-        }
-      }
-  else{
-    MainMessage("error stopping server");
     }
+    else
+    {
+      MainMessage("error unregistering interface");
+    }
+  }
+  else
+  {
+    MainMessage("error stopping server");
+  }
   MainMessage(RPCError(status));
 
 }
@@ -345,10 +322,7 @@ AnsiString str;
 RPC_STATUS status;
 int retval;
 
-    //---- Place thread code here ----
-
     InitializeCriticalSection(&fCriticalSection);
-
     MainStatus(waServerStarting);
 
     str = (AnsiString("winamp version : ") + GetWinampVersion());
@@ -356,7 +330,8 @@ int retval;
 
     //test for the buggy versions
     retval = GetAmpInt(IPC_GETVERSION,  0);
-    switch (retval){
+    switch (retval)
+    {
     // specific cases...
       case 0:
         MainMessage("winamp services not available");
@@ -372,9 +347,11 @@ int retval;
 
     // should check status codes here for previously registered interfaces
     status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_ip_tcp", 20, (unsigned char *) Endpoint.c_str(), NULL);
-    if (status == RPC_S_OK){
+    if (status == RPC_S_OK)
+    {
       status = RpcServerRegisterIf(winamp_v1_0_s_ifspec, NULL, NULL);
-      if (status == RPC_S_OK){
+      if (status == RPC_S_OK)
+      {
         MainMessage(strdup( ( AnsiString("RPC server thread initialised OK on endpoint ") + Endpoint).c_str() ) );
         MainStatus(waServerStarted);
         MainStatus(waListening);
@@ -394,34 +371,37 @@ int retval;
     MainStatus(waInitialiseFailed);
   }
 
-    DeleteCriticalSection(&fCriticalSection);
+  DeleteCriticalSection(&fCriticalSection);
 
 }
 
 void __fastcall MainMessage(char * msgString)
 {
-// do something with the passed string
-  PostMessage(frmMain->Handle, WM_THREAD_MESSAGE, 0, (long) strdup(msgString));
+  PostMessage(mainhwnd, WM_THREAD_MESSAGE, 0, (long) strdup(msgString));
 }
+
 //---------------------------------------------------------------------------
 
 void __fastcall MainStatus(WAExecutionStatus Status)
 {
-// do something with the passed string
-  PostMessage(frmMain->Handle, WM_THREAD_STATUS, 0, Status);
+  PostMessage(mainhwnd, WM_THREAD_STATUS, 0, Status);
 }
+
+//---------------------------------------------------------------------------
 
 void __fastcall MainIdent(char * msgString)
 {
-// do something with the passed string
-  PostMessage(frmMain->Handle, WM_THREAD_IDENT, 0, (long) strdup(msgString));
+  PostMessage(mainhwnd, WM_THREAD_IDENT, 0, (long) strdup(msgString));
 }
 
+//---------------------------------------------------------------------------
 
 void __RPC_FAR * __RPC_USER midl_user_allocate(size_t len)
 {
     return(malloc(len));
 }
+
+//---------------------------------------------------------------------------
 
 void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
 {

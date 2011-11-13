@@ -1,10 +1,17 @@
-//---------------------------------------------------------------------------
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// SettingsF.cpp
+//
+// form displaying and allowing editing of volume and EQ
+//
+
 #include <vcl.h>
 #pragma hdrstop
 
 #include "SettingsF.h"
 #include "MainF.h"
 #include "waint.h"
+#include "RPCFuncsU.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -114,4 +121,18 @@ void __fastcall TfrmSettings::BarsChange(TObject *Sender)
 
 
 
+
+void __fastcall TfrmSettings::FormStartDock(TObject *Sender,
+      TDragDockObject *&DragObject)
+{
+  frmMain->StartDock(Sender, DragObject);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmSettings::FormEndDock(TObject *Sender, TObject *Target,
+      int X, int Y)
+{
+  frmMain->EndDock(Sender, Target, X, Y);
+}
+//---------------------------------------------------------------------------
 

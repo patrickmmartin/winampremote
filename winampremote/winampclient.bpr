@@ -1,51 +1,52 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<!-- C++Builder XML Project -->
-<PROJECT>
-  <MACROS>
-    <VERSION value="BCB.05.03"/>
-    <PROJECT value="winampclient.exe"/>
-    <OBJFILES value="winampclient.obj ClientF.obj"/>
-    <RESFILES value="winampclient.res"/>
-    <IDLFILES value=""/>
-    <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) ClientF.dfm"/>
-    <LIBFILES value=""/>
-    <LIBRARIES value="vcl50.lib"/>
-    <SPARELIBS value="vcl50.lib"/>
-    <PACKAGES value="vclx50.bpi vcl50.bpi bcbsmp50.bpi dclocx50.bpi qrpt50.bpi vcldb50.bpi 
-      vclbde50.bpi"/>
-    <PATHCPP value=".;"/>
-    <PATHPAS value=".;"/>
-    <PATHRC value=".;"/>
-    <PATHASM value=".;"/>
-    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
-    <RELEASELIBPATH value="$(BCB)\lib\release"/>
-    <LINKER value="ilink32"/>
-    <USERDEFINES value=""/>
-    <SYSDEFINES value="NO_STRICT"/>
-    <MAINSOURCE value="winampclient.cpp"/>
-    <INCLUDEPATH value="..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib"/>
-    <WARNINGS value="-w-par -w-8027 -w-8026"/>
-    <WARNOPTSTR value=""/>
-  </MACROS>
-  <OPTIONS>
-    <CFLAG1 value="-O2 -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl35.csm -Hc -Vx -Ve -X- -a8 -b- 
-      -k- -vi -c -tW -Tkh30000 -tWM"/>
-    <CFLAG2 value=""/>
-    <CFLAG3 value=""/>
-    <PFLAGS value="-$YD -$L- -$D- -v -M -JPHNE"/>
-    <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn"/>
-    <IFLAGS value=""/>
-  </OPTIONS>
-  <LINKER>
-    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
-    <ALLRES value="$(RESFILES)"/>
-    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
-  </LINKER>
-  <IDEOPTIONS>
+# ---------------------------------------------------------------------------
+!if !$d(BCB)
+BCB = $(MAKEDIR)\..
+!endif
+
+# ---------------------------------------------------------------------------
+# IDE SECTION
+# ---------------------------------------------------------------------------
+# The following section of the project makefile is managed by the BCB IDE.
+# It is recommended to use the IDE to change any of the values in this
+# section.
+# ---------------------------------------------------------------------------
+
+VERSION = BCB.03
+# ---------------------------------------------------------------------------
+PROJECT = winampclient.exe
+OBJFILES = winampclient.obj ClientF.obj
+RESFILES = winampclient.res
+DEFFILE =
+RESDEPEN = $(RESFILES) ClientF.dfm
+LIBFILES =
+LIBRARIES = VCL35.lib
+SPARELIBS = VCL35.lib
+PACKAGES = VCLX35.bpi VCL35.bpi bcbsmp35.bpi dclocx35.bpi QRPT35.bpi VCLDB35.bpi
+# ---------------------------------------------------------------------------
+PATHCPP = .;
+PATHASM = .;
+PATHPAS = .;
+PATHRC = .;
+DEBUGLIBPATH = $(BCB)\lib\debug
+RELEASELIBPATH = $(BCB)\lib\release
+# ---------------------------------------------------------------------------
+CFLAG1 = -O2 -Hc -w -Ve -k- -vi -c -b- -w-par -w-inl -Vx -tW
+CFLAG2 = -I..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl -H=$(BCB)\lib\vcl35.csm
+CFLAG3 = -Tkh30000
+PFLAGS = -U..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
+  -I..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl -$L- -$D- -v -JPHN -M
+RFLAGS = -i..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl
+AFLAGS = /i..\rpcwinamp0.5 /i$(BCB)\include /i$(BCB)\include\vcl /mx /w2 /zd /d_RTLDLL \
+  /dUSEPACKAGES
+LFLAGS = -L..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) -aa -Tpe -x -Gn
+IFLAGS =
+# ---------------------------------------------------------------------------
+ALLOBJ = c0w32.obj sysinit.obj $(OBJFILES)
+ALLRES = $(RESFILES)
+ALLLIB = $(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib
+# ---------------------------------------------------------------------------
+!ifdef IDEOPTIONS
+
 [Version Info]
 IncludeVerInfo=1
 AutoIncBuild=0
@@ -66,7 +67,7 @@ CompanyName=patrick martin
 FileDescription=
 FileVersion=1.0.0.0
 InternalName=
-LegalCopyright=Â©patrick martin 2000
+LegalCopyright=©patrick martin 2000
 LegalTrademarks=
 OriginalFilename=
 ProductName=
@@ -91,18 +92,80 @@ DebugSourceDirs=$(BCB)\source\vcl
 [Parameters]
 RunParams=
 HostApplication=
-RemoteHost=
-RemotePath=
-RemoteDebug=0
 
-[Compiler]
-ShowInfoMsgs=0
-LinkDebugVcl=0
-LinkCGLIB=0
+!endif
 
-[Language]
-ActiveLang=
-ProjectLang=
-RootDir=
-  </IDEOPTIONS>
-</PROJECT>
+# ---------------------------------------------------------------------------
+# MAKE SECTION
+# ---------------------------------------------------------------------------
+# This section of the project file is not used by the BCB IDE.  It is for
+# the benefit of building from the command-line using the MAKE utility.
+# ---------------------------------------------------------------------------
+
+.autodepend
+# ---------------------------------------------------------------------------
+!if !$d(BCC32)
+BCC32 = bcc32
+!endif
+
+!if !$d(DCC32)
+DCC32 = dcc32
+!endif
+
+!if !$d(TASM32)
+TASM32 = tasm32
+!endif
+
+!if !$d(LINKER)
+LINKER = ilink32
+!endif
+
+!if !$d(BRCC32)
+BRCC32 = brcc32
+!endif
+# ---------------------------------------------------------------------------
+!if $d(PATHCPP)
+.PATH.CPP = $(PATHCPP)
+.PATH.C   = $(PATHCPP)
+!endif
+
+!if $d(PATHPAS)
+.PATH.PAS = $(PATHPAS)
+!endif
+
+!if $d(PATHASM)
+.PATH.ASM = $(PATHASM)
+!endif
+
+!if $d(PATHRC)
+.PATH.RC  = $(PATHRC)
+!endif
+# ---------------------------------------------------------------------------
+$(PROJECT): $(OBJFILES) $(RESDEPEN) $(DEFFILE)
+    $(BCB)\BIN\$(LINKER) @&&!
+    $(LFLAGS) +
+    $(ALLOBJ), +
+    $(PROJECT),, +
+    $(ALLLIB), +
+    $(DEFFILE), +
+    $(ALLRES)
+!
+# ---------------------------------------------------------------------------
+.pas.hpp:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.pas.obj:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.cpp.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(CFLAG2) $(CFLAG3) -n$(@D) {$< }
+
+.c.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(CFLAG2) $(CFLAG3) -n$(@D) {$< }
+
+.asm.obj:
+    $(BCB)\BIN\$(TASM32) $(AFLAGS) $<, $@
+
+.rc.res:
+    $(BCB)\BIN\$(BRCC32) $(RFLAGS) -fo$@ $<
+# ---------------------------------------------------------------------------

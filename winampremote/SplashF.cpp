@@ -1,3 +1,10 @@
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// SplashF.cpp
+//
+// splash form
+//
+
 //---------------------------------------------------------------------------
 #include <vcl.h>
 #pragma hdrstop
@@ -13,4 +20,5 @@ __fastcall TfrmSplash::TfrmSplash(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
+
 

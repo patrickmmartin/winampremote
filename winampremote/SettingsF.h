@@ -7,8 +7,8 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ComCtrls.hpp>
-#include <ToolWin.hpp>
 #include <ExtCtrls.hpp>
+#include <ToolWin.hpp>
 //---------------------------------------------------------------------------
 class TfrmSettings : public TForm
 {
@@ -47,8 +47,12 @@ __published:	// IDE-managed Components
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall FormDestroy(TObject *Sender);
         void __fastcall BarsChange(TObject *Sender);
+        void __fastcall FormStartDock(TObject *Sender,
+          TDragDockObject *&DragObject);
+        void __fastcall FormEndDock(TObject *Sender, TObject *Target,
+          int X, int Y);
 private:	// User declarations
-  TList * Bars;
+    TList * Bars;
 public:		// User declarations
     __fastcall TfrmSettings(TComponent* Owner);
    bool EQUpdateNeeded;

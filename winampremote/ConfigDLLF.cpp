@@ -1,4 +1,10 @@
-//---------------------------------------------------------------------------
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// ConfigDLLF.cpp
+//
+// form for configuring dll
+//
+
 #include <vcl.h>
 #pragma hdrstop
 
@@ -12,9 +18,6 @@
 #pragma resource "*.dfm"
 
 TConfigForm *ConfigForm;
-
-
-
 //---------------------------------------------------------------------------
 __fastcall TConfigForm::TConfigForm(TComponent* Owner)
     : TForm(Owner)
@@ -24,25 +27,34 @@ __fastcall TConfigForm::TConfigForm(TComponent* Owner)
 
 void __fastcall TConfigForm::btnAboutClick(TObject *Sender)
 {
-    frmAbout = new TfrmAbout(NULL);
-    frmAbout->Caption = "About winamp remote control server";
-    OutText->Clear();
-    OutText->Add("winamp");
-    OutText->Add("remote");
-    OutText->Add("control");
-    OutText->Add("RPC");
-    OutText->Add("server");
+  frmAbout = new TfrmAbout(NULL);
+
+  try
+  {
+    frmAbout->Caption = "About winamp remote control client";
+    OutText->Text = "winamp\n\rremote\n\rcontrol\n\rRPC\n\rserver";
     frmAbout->ShowModal();
+  }
+  __finally
+  {
+    delete frmAbout;
+  }
+
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TConfigForm::chkVisibleClick(TObject *Sender)
 {
   frmMain->Visible = chkVisible->Checked;
-  ebEndPoint->Text = frmMain->EndPoint;
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TConfigForm::FormCreate(TObject *Sender)
+{
+  chkVisible->Checked = frmMain->Visible;
+  ebEndPoint->Text = frmMain->EndPoint;
+}
+//---------------------------------------------------------------------------
 
 void __fastcall TConfigForm::btnChangeEndpointClick(TObject *Sender)
 {
@@ -50,67 +62,63 @@ void __fastcall TConfigForm::btnChangeEndpointClick(TObject *Sender)
 
 //watch for infringing upon RFC 1060 (Assigned Numbers) ports
 
-int port;
 
-  try
-  {
-    port = ebEndPoint->Text.ToInt();
-    if ((port < 0) || (port > 65535))
-    {
-      throw EConvertError(AnsiString().sprintf("port %d specified is out of range", port).c_str());
-    }
-  }
-  catch (EConvertError &E)
-  {
-    MessageBox(this->Handle, E.Message.c_str(), "Endpoint port invalid", MB_OK | MB_ICONERROR);
-    throw EAbort("abort operation");
-  }
+  unsigned short port = (unsigned short ) ebEndPoint->Text.ToInt();
   bool usedport = false;
   int i;
 
-  for (i = 0  ; i < RFC1060portscount ; i++){
-    if (RFC1060ports[i].port == port){
+  for (i = 0  ; i < RFC1060portscount ; i++)
+  {
+    if (RFC1060ports[i].port == port)
+    {
       usedport = true;
       break;
-      }
     }
+  }
 
   if (!usedport ||
-        Application->MessageBox((AnsiString().sprintf(
-                               "The port chosen:\n"
-                               "%d [%s] - %s\n"
-                               "is a well known port number.\n"
+        MessageBox(this->Handle,
+                   (AnsiString("The port chosen: ") + port + " (" + RFC1060ports[i].service + "), is a well known port number.\n"
                                "This choice of port could lead to serious problems if it is already in use on the server.\n"
-                               "Proceed with this choice?"
-                               , port, RFC1060ports[i].service, RFC1060ports[i].description)
-                               ).c_str(),
+                               "Proceed with this choice?").c_str(),
                                "Alert - Well-known port number chosen!",
-                               MB_OKCANCEL | MB_DEFBUTTON2 | MB_ICONWARNING) == IDOK){
+                               MB_ICONASTERISK | MB_OKCANCEL | MB_DEFBUTTON2) == IDOK){
 
 
     frmMain->Show();
     frmMain->Refresh();
-    frmMain->pgMain->ActivePage = frmMain->tbsMessages;
     frmMain->StopThread(this);
+
     // need to wait, apparently not easy to determine how
+
     Sleep(2000);
-    //create new
-    frmMain->EndPoint = port;
-    frmMain->CreateThread(this);
+
+  //create new
+
+    frmMain->sbrMain->Panels->Items[2]->Text = "endpoint: " + ebEndPoint->Text;
+
+    frmMain->CreateThread(port);
+
     Application->ProcessMessages();
     frmMain->Refresh();
-    this->SetFocus();
+    Sleep(2000);
     frmMain->Visible = chkVisible->Checked;
+    this->BringToFront();
     }
-  ebEndPoint->Text = frmMain->EndPoint;
+  else
+  {
+    ebEndPoint->Text = frmMain->sbrMain->Panels->Items[2]->Text;
+  }
+  btnChangeEndpoint->Enabled = false;
 
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TConfigForm::FormShow(TObject *Sender)
+void __fastcall TConfigForm::ebEndPointChange(TObject *Sender)
 {
-  chkVisible->Checked = frmMain->Visible;
-  ebEndPoint->Text = frmMain->EndPoint;
+  int PortNum = ebEndPoint->Text.ToIntDef(-1);
+  btnChangeEndpoint->Enabled = ( ( PortNum > -1) && ( PortNum < 65536) && ( PortNum != frmMain->EndPoint));
+
 }
 //---------------------------------------------------------------------------
 

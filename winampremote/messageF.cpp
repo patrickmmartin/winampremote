@@ -1,4 +1,10 @@
-//---------------------------------------------------------------------------
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// messageF.cpp
+//
+// simple message form
+//
+
 #include <vcl.h>
 #pragma hdrstop
 

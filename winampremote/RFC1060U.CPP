@@ -1,4 +1,10 @@
-//---------------------------------------------------------------------------
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// RFC1060.cpp
+//
+// list of assigned port (RFC1060) 
+//
+
 #pragma hdrstop
 
 #include "RFC1060U.h"
@@ -1536,93 +1542,6 @@
   };
 
 
-
-
-/*
-  porttype RFC1060ports[] =
-  {
-    {"echo", 7},
-    {"discard" , 9 },
-    {"systat" , 11 },
-    {"daytime" , 13 },
-    {"netstat" , 15 },
-    {"qotd" , 17 },
-    {"chargen" , 19 },
-    {"ftp-data" , 20 },
-    {"ftp" , 21 },
-    {"telnet" , 23 },
-    {"smtp" , 25 },
-    {"time" , 37 },
-    {"name" , 42 },
-    {"whois" , 43 },
-    {"domain" , 53 },
-    {"nameserver" , 53 },
-    {"mtp" , 57 },
-    {"rje" , 77 },
-    {"finger" , 79 },
-    {"http" , 80 },
-    {"link" , 87 },
-    {"supdup" , 95 },
-    {"hostnames" , 101 },
-    {"iso-tsap" , 102 },
-    {"dictionary" , 103 },
-    {"x400" , 103 },
-    {"x400-snd" , 104 },
-    {"csnet-ns" , 105 },
-    {"pop" , 109 },
-    {"pop2" , 109 },
-    {"pop3" , 110 },
-    {"portmap" , 111 },
-    {"sunrpc" , 111 },
-    {"auth" , 113 },
-    {"sftp" , 115 },
-    {"path" , 117 },
-    {"uucp-path" , 117 },
-    {"nntp" , 119 },
-    {"nbsession" , 139 },
-    {"NeWS" , 144 },
-    {"tcprepo" , 158 },
-    {"print-srv" , 170 },
-    {"vmnet" , 175 },
-    {"vmnet0" , 400 },
-    {"exec" , 512 },
-    {"login" , 513 },
-    {"shell" , 514 },
-    {"printer" , 515 },
-    {"efs" , 520 },
-    {"tempo" , 526 },
-    {"courier" , 530 },
-    {"conference" , 531 },
-    {"netnews" , 532 },
-    {"uucp" , 540 },
-    {"klogin" , 543 },
-    {"kshell" , 544 },
-    {"remotefs" , 556 },
-    {"garcon" , 600 },
-    {"maitrd" , 601 },
-    {"busboy" , 602 },
-    {"kerberos" , 750 },
-    {"kerberos_master" , 751 },
-    {"krb_prop" , 754 },
-    {"erlogin" , 888 },
-    {"kpop" , 1109 },
-    {"ingreslock" , 1524 },
-    {"knetd" , 2053 },
-    {"eklogin" , 2105 },
-    {"rmt" , 5555 },
-    {"mtb" , 5556 },
-    {"man" , 9535 },
-    {"w" , 9536 },
-    {"mantst" , 9537 },
-    {"bnews" , 10000 },
-    {"queue" , 10001 },
-    {"poker" , 10002 },
-    {"gateway" , 10003 },
-    {"remp" , 10004 },
-    {"qmaster" , 10012 },
-
-  };
-  */
 
 
 

@@ -1,11 +1,18 @@
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// gen_plugin.cpp
+//
+// winamp general plugin declarations
+//
+
 //---------------------------------------------------------------------------
-#include <vcl.h>
-#include <registry.hpp>
+//#include <vcl.h>
 #pragma hdrstop
+#include <registry.hpp>
 
 #include "gen_plugin.h"
 #include "ServerDLLF.h"
-#include "ConfigDLLF.h"
+#include "ConfigF.h"
 #include "waint.h"
 
 //---------------------------------------------------------------------------
@@ -48,56 +55,76 @@ extern "C" winampGeneralPurposePlugin *  __declspec(dllexport)  __stdcall  winam
 	return &plugin;
 }
 
-void config(){
+//==========================================================
+
+void config(void)
+{
 
   OutputDebugString("gen_RPCinterface.dll config");
   TConfigForm *frmConfig = new TConfigForm(NULL);
-  try{
+  try
+  {
     frmConfig->ShowModal();
-    }
-    __finally{
-      delete frmConfig;
-    }
- }
-
-void quit(){
-  OutputDebugString("gen_RPCinterface.dll quit");
-    if (frmMain != NULL){
-      try{
-        frmMain->Close();
-        delete frmMain;
-        }
-      catch ( ... ){
-        //
-        }
-      frmMain = NULL;
-    }
   }
+  __finally
+  {
+    delete frmConfig;
+  }
+}
 
-int init(){
+//==========================================================
+
+void quit(void)
+{
+  OutputDebugString("gen_RPCinterface.dll quit");
+  if (frmMain != NULL)
+  {
+    try
+    {
+      frmMain->Close();
+      delete frmMain;
+    }
+    catch ( ... )
+    {
+        //
+    }
+    frmMain = NULL;
+  }
+}
+
+//==========================================================
+
+int init()
+{
 TRegistry * reg;
 AnsiString str;
   OutputDebugString("gen_RPCinterface.dll init");
-  if (frmMain == NULL){
-  try{
-    hwnd_winamp = plugin.hwndParent;
-    frmMain = new TfrmMain(NULL);
-    try{
+  if (frmMain == NULL)
+  {
+    try
+    {
+      hwnd_winamp = plugin.hwndParent;
+      Application->Handle = hwnd_winamp;
+      frmMain = new TfrmMain(Application);
+      try
+      {
+        // set parent handle
         reg = new TRegistry();
         reg->OpenKey("software\\PMMSoft\\Winamp controller\\server settings", true);
         str = reg->ReadString("Visible");
         if (str.LowerCase() == "true")
           frmMain->Show();
       }
-  __finally {
-    delete reg;
+      __finally
+      {
+        delete reg;
+      }
     }
-
-    }
-  catch (...){
-    delete frmMain;
-    frmMain = NULL;
+    catch (...)
+    {
+      delete frmMain;
+      frmMain = NULL;
     }
   }
   return 0;
-  }
+}

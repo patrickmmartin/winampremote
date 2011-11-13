@@ -178,17 +178,20 @@ If all else fails, drop me a line, maybe it's my fault, or I can help.</LI>
 <LI>Properly versioned RPC interface (backwards and forwards compatibilty with all these new extensions guaranteed)</LI>
 <LI>Greater set of protocols, for performance boost / ease of use on non tcpip (or just plain odd) net configurations.</LI>
 <LI>Drag and dock with full view of windows - see below</LI>
-<LI>Skinnable client (maybe winamp / real audio compatible)</LI>
+<LI>Skinnable client (maybe winamp 2 {3?}/ real / kjofol compatible skin format)</LI>
 <LI>Client "SDK"<BR>
 - which may just be the IDL file - for the propellerheads out there<BR>
 - or a full template project in your choice of tool (as long as it's BCB4)
-Anyone wishing to port to VC can be my guest.
+Anyone wishing to port to VC or rewrite in ANSI c++ - get in touch.
 </LI>
 <LI>Server: allow some "administrative functions" ie playlist tyranny to be applied to the client machines</LI>
+<LI>Server: implement lightweight HTTP server for web administration</LI>
+
+<LI>Client: produce portable ANSI c++ client for OSs capable of handling the RPC calls</LI>
 </UL>
 
 <UL>Moon shooting (no idea if facility does or can ever exist)
-<LI>Client: Fix add directory function? - <EM>still open!</EM></LI>
+<LI>Client: Fix add directory function? - <EM>still open after 6 months!</EM></LI>
 <LI>Server: notify clients of winamp status asynchronously<BR>
 I do know how to do this, but I'm not sure if is solves more problems than it fixes...</LI>
 <LI>Server: I have been asked this - send back the audio / video too!<BR>
@@ -197,12 +200,16 @@ And isn't this what Shoutcast is for?</LI>
 
 </UL>
 
-<UL>Total and utter drooling insanity
-<LI> (moved here where it belongs) Server: execute the visualisation plugin remotely as well.<BR></LI>
+<UL>Evident Insanity
 <LI>Client: port to PalmOS</LI>
 <LI>And Windows CE</LI>
 <LI>And MAC</LI>
-<LI>Server: Port to above, along with Winamp</LI>
+
+</UL>
+
+<UL>Total and Utter Drooling insanity
+<LI>(moved here where it belongs) Server: execute the visualisation plugin remotely as well.<BR></LI>
+<LI>Server: Port to all OSs, along with Winamp, of course</LI>
 <LI>Produce prototype Bluetooth device using interface</LI>
 
 </UL>
@@ -224,6 +231,18 @@ and too few network configurations to be able to test this thoroughly<P>
 <DIV ID = "div8">
 <A HREF = "javascript:startArrange(7)">Application History:</A>
 <UL>
+
+
+<LI>14/10/00 fourteenth release - bug fixes and tidying up<BR>
+	</LI>
+        
+	<UL>Server enhancements:
+	<LI>Winamp 2.6x NT4 showstopper bug fixed in server plugin.</LI>
+	</UL>
+	<UL>Client enhancements:
+	<LI>When in tray with no visible windows, there is no taskbar icon.</LI>
+	</UL>
+
 
 <LI>30/08/00 thirteenth release - drag and <em>dock</em> fun! <BR>
 	</LI>

@@ -1,2 +1,3 @@
 REM CommandInterpreter: $(COMSPEC)
-MIDL -cpp_cmd CPP32.exe -cpp_opt "-P- -oCON "  winampinterface.idl
+MIDL /error stub_data -cpp_cmd CPP32.exe -cpp_opt "-P- -oCON "  winampinterface.idl
+pause

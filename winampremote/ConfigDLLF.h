@@ -12,7 +12,6 @@
 
 
 
-
 class TConfigForm : public TForm
 {
 __published:	// IDE-managed Components
@@ -24,12 +23,12 @@ __published:	// IDE-managed Components
     TButton *btnClose;
     TButton *btnChangeEndpoint;
         TMemo *Memo1;
-        TImage *imgLogo;
-        TBevel *Bevel1;
+        TImage *Image1;
     void __fastcall btnAboutClick(TObject *Sender);
     void __fastcall chkVisibleClick(TObject *Sender);
+    void __fastcall FormCreate(TObject *Sender);
     void __fastcall btnChangeEndpointClick(TObject *Sender);
-        void __fastcall FormShow(TObject *Sender);
+        void __fastcall ebEndPointChange(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TConfigForm(TComponent* Owner);

@@ -1,8 +1,13 @@
-//---------------------------------------------------------------------------
-#include <vcl.h>
-#include <winsock.h>
-#pragma hdrstop
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// IPAddressU.cpp
+//
+// gets IP Address(es)
+//
 
+#include <vcl.h>
+#pragma hdrstop
+#include <winsock.h>
 #include "IPAddressU.h"
 
 //---------------------------------------------------------------------------

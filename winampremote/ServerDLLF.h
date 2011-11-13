@@ -12,14 +12,11 @@
 #include <ExtCtrls.hpp>
 #include <CheckLst.hpp>
 #include <ImgList.hpp>
-
-#include "gen_plugin.h"         //config()
-#include "waint.h"            //FAIL_TIMEOUT
-#include "rpcthreadDLL.h"       //TRPCServerThread
-
+#include <ToolWin.hpp>
 
 //---------------------------------------------------------------------------
 
+enum WAExecutionStatus {waServerStarting, waServerStarted, waListening, waExecuting, waServerStopped, waInitialiseFailed};
 
 const int WM_THREAD_MESSAGE = (WM_APP + 2000);
 const int WM_THREAD_STATUS  = (WM_APP + 2001);
@@ -40,27 +37,28 @@ __published:	// IDE-managed Components
     TTimer *timerMain;
         TPageControl *pgMain;
         TTabSheet *tbsMessages;
-        TLabel *lblMessages;
         TListBox *lstMessages;
         TTabSheet *tbsClients;
         TTabSheet *tbsConfig;
-        TLabel *lblItems;
         TCheckListBox *chkListEvents;
-        TLabel *lblClients;
         TPanel *pnlMain;
         TListView *lvUsers;
         TBevel *Bevel1;
-        TButton *btnConfig;
+        TToolBar *tbConfig;
+        TToolButton *btnConfig;
+        TToolButton *btnAbout;
+        TToolButton *ToolButton2;
     void __fastcall FormCreate(TObject *Sender);
-
+    
     void __fastcall FormKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift);
     void __fastcall chkListEventsClickCheck(TObject *Sender);
-
+    
     void __fastcall FormShow(TObject *Sender);
     void __fastcall timerMainTimer(TObject *Sender);
         void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
         void __fastcall btnConfigClick(TObject *Sender);
+        void __fastcall btnAboutClick(TObject *Sender);
 protected:
   void __fastcall TfrmMain::ThreadMessage(TMessage &Message);
   void __fastcall TfrmMain::ThreadStatus(TMessage &Message);
@@ -72,17 +70,27 @@ BEGIN_MESSAGE_MAP
 END_MESSAGE_MAP(TControl)
 
 private:	// User declarations
+      unsigned short fEndPoint;
       void __fastcall AppException(TObject *Sender, Exception *E);
+      void __fastcall ExecutionStatus(WAExecutionStatus NewThreadState);
+      WAExecutionStatus fThreadState;
+protected:
+
+
 public:		// User declarations
-      TRPCServerThread * serverThread;
         __fastcall TfrmMain(TComponent* Owner);
-      int EndPoint;
+
+      __property unsigned short EndPoint = {read = fEndPoint};
+      __property WAExecutionStatus ThreadState = {read = fThreadState};
+
+      bool isExe;
       bool requestlog[5];
-      void __fastcall CreateThread(TObject *Sender);
+      void __fastcall CreateThread(unsigned short EndPoint);
       void __fastcall StopThread(TObject *Sender);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TfrmMain *frmMain;
+extern HWND mainhwnd;
 
 //---------------------------------------------------------------------------
 #endif

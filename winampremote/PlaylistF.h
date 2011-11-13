@@ -8,8 +8,6 @@
 #include <Forms.hpp>
 #include <Menus.hpp>
 #include <ComCtrls.hpp>
-#include <ToolWin.hpp>
-#include <ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TfrmPlaylist : public TForm
 {
@@ -24,14 +22,13 @@ __published:	// IDE-managed Components
     TMenuItem *mnuAddFiles;
         TMenuItem *Repeat1;
         TMenuItem *Shuffle1;
+        TMenuItem *mnuPlay;
     void __fastcall lstSongsRefresh(TObject *Sender);
     void __fastcall lstSongsDblClick(TObject *Sender);
 
     void __fastcall mnuSortClick(TObject *Sender);
 
     void __fastcall FormCreate(TObject *Sender);
-    void __fastcall lstSongsKeyDown(TObject *Sender, WORD &Key,
-          TShiftState Shift);
     void __fastcall lstSongsDrawItem(TWinControl *Control, int Index,
           TRect &Rect, TOwnerDrawState State);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
@@ -39,8 +36,22 @@ __published:	// IDE-managed Components
           int X, int Y, TDragState State, bool &Accept);
         void __fastcall lstSongsDragDrop(TObject *Sender, TObject *Source,
           int X, int Y);
+        void __fastcall FormStartDock(TObject *Sender,
+          TDragDockObject *&DragObject);
+        void __fastcall FormShow(TObject *Sender);
+        void __fastcall FormEndDock(TObject *Sender, TObject *Target,
+          int X, int Y);
+        void __fastcall lstSongsMouseMove(TObject *Sender,
+          TShiftState Shift, int X, int Y);
+        void __fastcall mnuPlayClick(TObject *Sender);
+        void __fastcall pmnuSongsPopup(TObject *Sender);
+        void __fastcall lstSongsKeyDown(TObject *Sender, WORD &Key,
+          TShiftState Shift);
 
 private:	// User declarations
+
+    int BelowIndex;
+
     void __fastcall DeleteSelected(void);
     void __fastcall DropFiles(TMessage& Msg);
     void __fastcall GetFilenames(int Start, int Stop, TStringList * StringList);

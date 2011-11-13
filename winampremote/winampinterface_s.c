@@ -2,11 +2,11 @@
 
 
 /* File created by MIDL compiler version 5.01.0164 */
-/* at Sun May 18 22:15:25 2008
+/* at Sun May 18 22:33:51 2008
  */
 /* Compiler settings for winampinterface.idl:
     Os (OptLev=s), W1, Zp8, env=Win32, ms_ext, c_ext
-    error checks: allocation ref bounds_check enum stub_data 
+    error checks: stub_data 
 */
 //@@MIDL_FILE_HEADING(  )
 
@@ -440,7 +440,7 @@ static const MIDL_STUB_DESC winamp_StubDesc =
     0,
     0,
     __MIDL_TypeFormatString.Format,
-    1, /* -error bounds_check flag */
+    0, /* -error bounds_check flag */
     0x10001, /* Ndr library version */
     0,
     0x50100a4, /* MIDL Version 5.1.164 */

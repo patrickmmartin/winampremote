@@ -16,8 +16,8 @@
 class TfrmAbout : public TForm
 {
 __published:	// IDE-managed Componentsvoid __fastcall FormShow(TObject *Sender);
-    TTimer *Timer1;
-    TPanel *TheControl;
+        TPanel *TheControl;
+        TTimer *tmrMain;
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall FormDestroy(TObject *Sender);
     void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button,
@@ -28,16 +28,12 @@ __published:	// IDE-managed Componentsvoid __fastcall FormShow(TObject *Sender);
           TShiftState Shift, int X, int Y);
     void __fastcall FormPaint(TObject *Sender);
     void __fastcall FormResize(TObject *Sender);
-    void __fastcall FormShow(TObject *Sender);
     void __fastcall FormKeyPress(TObject *Sender, char &Key);
     void __fastcall FormKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift);
     
     void __fastcall IdleHandler(TObject *Sender);
-        
-        void __fastcall FormActivate(TObject *Sender);
-        void __fastcall FormHide(TObject *Sender);
-        void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+        void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 
   void CreateFontList(void);

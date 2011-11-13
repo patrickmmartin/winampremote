@@ -1,6 +1,12 @@
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// gen_RPCInterface.cpp
+//
+// winamp RPC interface general plugin
+//
+
 //---------------------------------------------------------------------------
 #include <vcl.h>
-#include <stdio.h>
 #pragma hdrstop
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
@@ -13,6 +19,7 @@ USEUNIT("waint.cpp");
 USEFORM("ServerDLLF.cpp", frmMain);
 USEFORM("ConfigDLLF.cpp", ConfigForm);
 USEUNIT("winampinterface_s.c");
+
 USEUNIT("RFC1060U.cpp");
 //---------------------------------------------------------------------------
 HINSTANCE g_hinst;

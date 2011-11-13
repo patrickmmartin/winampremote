@@ -1,3 +1,10 @@
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// remote.cpp
+//
+// remote control client application using RPC interface 
+//
+
 //---------------------------------------------------------------------------
 #include <vcl.h>
 #pragma hdrstop
@@ -18,6 +25,7 @@ USEFORM("ServersF.cpp", frmServers);
 USEUNIT("RFC1060U.cpp");
 USEUNIT("IPAddressU.cpp");
 USEUNIT("ColourU.cpp");
+USEUNIT("RPCFuncsU.cpp");
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE hInstance, LPSTR, int)
 {

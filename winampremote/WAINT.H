@@ -3,6 +3,8 @@
 #define waintH
 //---------------------------------------------------------------------------
 
+#include <windows.h>
+
 enum WAPlaybackStatus {WA_NOT_PLAYING, WA_PLAYING, WA_UNUSED, WA_PAUSED};
 
 const int MAX_WINAMPVER_LEN = 80;

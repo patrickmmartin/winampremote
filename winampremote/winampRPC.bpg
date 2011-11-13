@@ -9,19 +9,24 @@ MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
 DCC = $(ROOT)\bin\dcc32.exe $**
 BRCC = $(ROOT)\bin\brcc32.exe $**
 #------------------------------------------------------------------------------
-PROJECTS = runmidl remote gen_RPCinterface.dll
+PROJECTS = runmidl remote gen_RPCinterface clientdll.dll conremote.exe
 #------------------------------------------------------------------------------
 default: $(PROJECTS)
 #------------------------------------------------------------------------------
 
-runmidl: runmidl.bat
-  call $**
-
 remote: remote.bpr
   $(MAKE)
 
-gen_RPCinterface.dll: gen_RPCinterface.bpr
-  $(ROOT)\bin\bpr2mak $**
-  $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
+gen_RPCinterface: gen_RPCinterface.bpr
+  $(MAKE)
+
+clientdll.dll: clientdll.bpr
+  $(MAKE)
+
+conremote.exe: conremote.bpr
+  $(MAKE)
+
+runmidl: runmidl.bat
+  call $**
 
 

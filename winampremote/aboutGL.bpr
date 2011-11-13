@@ -1,48 +1,56 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<!-- C++Builder XML Project -->
-<PROJECT>
-  <MACROS>
-    <VERSION value="BCB.05.03"/>
-    <PROJECT value="aboutGL.exe"/>
-    <OBJFILES value="obj\aboutGL.obj obj\AboutF.obj"/>
-    <RESFILES value="aboutGL.res"/>
-    <IDLFILES value=""/>
-    <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) AboutF.dfm"/>
-    <LIBFILES value=""/>
-    <LIBRARIES value="vcl50.lib"/>
-    <SPARELIBS value="vcl50.lib"/>
-    <PACKAGES value="vclx50.bpi vcl50.bpi vcldb50.bpi vclbde50.bpi vcldbx50.bpi bcbsmp50.bpi 
-      dclocx50.bpi qrpt50.bpi"/>
-    <PATHCPP value=".;"/>
-    <PATHPAS value=".;"/>
-    <PATHRC value=".;"/>
-    <PATHASM value=".;"/>
-    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
-    <RELEASELIBPATH value="$(BCB)\lib\release"/>
-    <LINKER value="ilink32"/>
-    <USERDEFINES value=""/>
-    <SYSDEFINES value="NO_STRICT"/>
-    <MAINSOURCE value="aboutGL.cpp"/>
-    <INCLUDEPATH value="..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib"/>
-    <WARNINGS value="-w-par -w-8027 -w-8026"/>
-    <WARNOPTSTR value=""/>
-  </MACROS>
-  <OPTIONS>
-    <CFLAG1 value="-O2 -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl50.csm -Hc -Vx -Ve -Tkh30000 
-      -X- -a8 -b- -k- -vi -c -tW -tWM"/>
-    <PFLAGS value="-N2obj -N0obj -$YD -$L- -$D- -v -M -JPHNE"/>
-    <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-Iobj -D&quot;&quot; -aa -Tpe -x -Gn"/>
-  </OPTIONS>
-  <LINKER>
-    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
-    <ALLRES value="$(RESFILES)"/>
-    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
-  </LINKER>
-  <IDEOPTIONS>
+# ---------------------------------------------------------------------------
+!if !$d(BCB)
+BCB = $(MAKEDIR)\..
+!endif
+
+# ---------------------------------------------------------------------------
+# IDE SECTION
+# ---------------------------------------------------------------------------
+# The following section of the project makefile is managed by the BCB IDE.
+# It is recommended to use the IDE to change any of the values in this
+# section.
+# ---------------------------------------------------------------------------
+
+VERSION = BCB.04.04
+# ---------------------------------------------------------------------------
+PROJECT = aboutGL.exe
+OBJFILES = aboutGL.obj AboutF.obj
+RESFILES = aboutGL.res
+DEFFILE =
+RESDEPEN = $(RESFILES) AboutF.dfm
+LIBFILES =
+LIBRARIES = vcl40.lib
+SPARELIBS = vcl40.lib
+PACKAGES = vclx40.bpi vcl40.bpi vcldb40.bpi vcldbx40.bpi bcbsmp40.bpi dclocx40.bpi \
+  qrpt40.bpi
+# ---------------------------------------------------------------------------
+PATHCPP = .;
+PATHASM = .;
+PATHPAS = .;
+PATHRC = .;
+DEBUGLIBPATH = $(BCB)\lib\debug
+RELEASELIBPATH = $(BCB)\lib\release
+SYSDEFINES = NO_STRICT
+USERDEFINES =
+# ---------------------------------------------------------------------------
+CFLAG1 = -I..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl -O2 -Hc \
+  -H=$(BCB)\lib\vcl40.csm -w -Ve -Tkh30000 -a8 -k- -vi \
+  -D$(SYSDEFINES);$(USERDEFINES) -c -b- -w-par -w-inl -Vx -tW -tWM
+CFLAG2 =
+CFLAG3 =
+PFLAGS = -U..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
+  -I..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl -$YD -$L- -$D- -v -M -JPHNE
+RFLAGS = -i..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl
+AFLAGS = /i..\rpcwinamp0.5 /i$(BCB)\include /i$(BCB)\include\vcl /mx /w2 /zd /d_RTLDLL
+LFLAGS = -L..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) -aa -Tpe -x -Gn
+IFLAGS =
+# ---------------------------------------------------------------------------
+ALLOBJ = c0w32.obj sysinit.obj $(OBJFILES)
+ALLRES = $(RESFILES)
+ALLLIB = $(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib
+# ---------------------------------------------------------------------------
+!ifdef IDEOPTIONS
+
 [Version Info]
 IncludeVerInfo=1
 AutoIncBuild=0
@@ -71,14 +79,12 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=2
-Item0=..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl
-Item1=$(BCB)\include;$(BCB)\include\vcl
+Count=1
+Item0=$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=2
-Item0=..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib
-Item1=$(BCB)\lib\obj;$(BCB)\lib
+Count=1
+Item0=$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1
@@ -88,10 +94,6 @@ Item0=$(BCB)\source\vcl
 Count=2
 Item0=_RTLDLL
 Item1=_RTLDLL;USEPACKAGES
-
-[HistoryLists\hlIntOutputDir]
-Count=1
-Item0=obj
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
@@ -104,13 +106,82 @@ RemotePath=
 RemoteDebug=0
 
 [Compiler]
+InMemoryExe=0
 ShowInfoMsgs=0
-LinkDebugVcl=0
-LinkCGLIB=0
 
-[Language]
-ActiveLang=
-ProjectLang=
-RootDir=
-  </IDEOPTIONS>
-</PROJECT>
+!endif
+
+# ---------------------------------------------------------------------------
+# MAKE SECTION
+# ---------------------------------------------------------------------------
+# This section of the project file is not used by the BCB IDE.  It is for
+# the benefit of building from the command-line using the MAKE utility.
+# ---------------------------------------------------------------------------
+
+.autodepend
+# ---------------------------------------------------------------------------
+!if !$d(BCC32)
+BCC32 = bcc32
+!endif
+
+!if !$d(DCC32)
+DCC32 = dcc32
+!endif
+
+!if !$d(TASM32)
+TASM32 = tasm32
+!endif
+
+!if !$d(LINKER)
+LINKER = ilink32
+!endif
+
+!if !$d(BRCC32)
+BRCC32 = brcc32
+!endif
+# ---------------------------------------------------------------------------
+!if $d(PATHCPP)
+.PATH.CPP = $(PATHCPP)
+.PATH.C   = $(PATHCPP)
+!endif
+
+!if $d(PATHPAS)
+.PATH.PAS = $(PATHPAS)
+!endif
+
+!if $d(PATHASM)
+.PATH.ASM = $(PATHASM)
+!endif
+
+!if $d(PATHRC)
+.PATH.RC  = $(PATHRC)
+!endif
+# ---------------------------------------------------------------------------
+$(PROJECT): $(OBJFILES) $(RESDEPEN) $(DEFFILE)
+    $(BCB)\BIN\$(LINKER) @&&!
+    $(LFLAGS) +
+    $(ALLOBJ), +
+    $(PROJECT),, +
+    $(ALLLIB), +
+    $(DEFFILE), +
+    $(ALLRES)
+!
+# ---------------------------------------------------------------------------
+.pas.hpp:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.pas.obj:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.cpp.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(CFLAG2) $(CFLAG3) -n$(@D) {$< }
+
+.c.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(CFLAG2) $(CFLAG3) -n$(@D) {$< }
+
+.asm.obj:
+    $(BCB)\BIN\$(TASM32) $(AFLAGS) $<, $@
+
+.rc.res:
+    $(BCB)\BIN\$(BRCC32) $(RFLAGS) -fo$@ $<
+# ---------------------------------------------------------------------------

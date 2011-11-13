@@ -1,8 +1,13 @@
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// waint.cpp
+//
+// winamp manifest of IPC declarations and interface functions
+//
+
 //---------------------------------------------------------------------------
-#include <vcl.h>
-#include <windows>
-#include <stdio.h>
 #pragma hdrstop
+#include <stdio.h>
 #include "waint.h"
 
 //---------------------------------------------------------------------------
@@ -12,10 +17,11 @@ HWND hwnd_winamp;
 
 char winampver[MAX_WINAMPVER_LEN];
 
-void GethWnd_WinAmp(){
+void GethWnd_WinAmp()
+{
 char * windowname = "Winamp v1.x";
  hwnd_winamp = FindWindow(windowname, NULL);
-  }
+}
 
 void ExecuteMessage(int Command){
 #ifdef HWND_UPDATE
@@ -67,20 +73,15 @@ int retval;
 }
 
 
-AnsiString StandardVersion(int retval)
+char * StandardVersion(int retval)
 {
 // formats the version according to (semi) standard numeric scheme
-  AnsiString str;
-  str.sprintf("winamp %x", retval);
-  // insert the dot
-  str.Insert(".", 9);
-  // lose the spurious?  0
-  if ((str.Length() > 11 ) && (str.SubString(11, 1) == "0"))
-  {
-    str.Delete(11, 1);
-  }
-  sprintf(winampver, str.c_str());
-  return str;
+
+  if (((retval >> 4) & 0xf) != 0)
+    sprintf(winampver, "winamp %x.%x%x%x", retval >> 12, (retval >> 8) & 0xf , (retval >> 4) & 0xf , retval & 0xf);
+  else
+    sprintf(winampver, "winamp %x.%x%x", retval >> 12, (retval >> 8) & 0xf , retval & 0xf);
+  return winampver;
 }
 
 
@@ -117,7 +118,7 @@ char * WinampVersion(int retval){
 
   default :
    if (retval > 0x2604){
-     sprintf(winampver, StandardVersion(retval).c_str());
+      StandardVersion(retval);
       }
     else{
       StandardVersion(retval);

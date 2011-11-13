@@ -1,5 +1,11 @@
-//---------------------------------------------------------------------------
-#include <vcl.h>
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// RPCErrors.cpp
+//
+// RPC Errors
+//
+
+#include <rpc.h>
 #pragma hdrstop
 
 #include "RPCErrors.h"

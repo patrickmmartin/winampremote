@@ -1,30 +1,19 @@
-/*
-** Vertex Array Torus
-*/
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// AboutF.cpp
+//
+// simple OpenGL about box - displays the contents of OutText in the main panel
+//
+
 //---------------------------------------------------------------------------
 #include <vcl.h>
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include <assert.h>
-
-/* this turns off the default gl headers*/
-/*
-#define __GL_H__
-
-#include <SGI/gl.h>
-#include <SGI/glu.h>
-*/
+#pragma hdrstop
 
 #include <GL/gl.h>
 #include <GL/glu.h>
-
-#include <windows.h>
 #include <math.h>
-
 #include "AboutF.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -34,19 +23,9 @@ TStringList *OutText;
 
 //application stuff
 
-#if defined(GL_SGI_cull_vertex)
-PFNGLCULLPARAMETERFVSGIPROC CullParameterfv;
-#endif
-
-#if defined(GL_SGI_compiled_vertex_array)
-PFNGLLOCKARRAYSSGIPROC LockArrays;
-PFNGLUNLOCKARRAYSSGIPROC UnlockArrays;
-#endif
-
 #if !defined(M_PI)
 #define M_PI 3.14159265F
 #endif
-
 
 HDC hDC;
 HGLRC hGLRC;
@@ -192,7 +171,6 @@ void TfrmAbout::CreateDisplayLists(void){
     glEnd();
   glEndList();
 
-
   // the cube
   glNewList(SPHERE, GL_COMPILE);
   glEndList();
@@ -200,7 +178,6 @@ void TfrmAbout::CreateDisplayLists(void){
   // the cube
   glNewList(TORUS, GL_COMPILE);
   glEndList();
-
 
   }
 
@@ -211,7 +188,6 @@ void TfrmAbout::drawText(void){
  double xoffset = 0;
  double yoffset;
  int textIndex;
-
 
   yoffset = glyphMetrics[0].gmfBlackBoxY;
 
@@ -229,7 +205,6 @@ void TfrmAbout::drawText(void){
       glCallLists(strlen(OutText->Strings[textIndex].c_str()), GL_UNSIGNED_BYTE, OutText->Strings[textIndex].c_str());
       glListBase(0);
       glTranslatef(xoffset / 2, yoffset / 2, -textExtrusion / 2);
-
 
   };
 
@@ -501,32 +476,7 @@ void TfrmAbout::setProjection(void)
   glViewport(0, 0, TheControl->ClientWidth, TheControl->ClientHeight);
 
 
-/*
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    if (perspectiveProj) {
-	glFrustum(-0.5F*aspect, 0.5F*aspect, -0.5F, 0.5F, 1.0F, 3.0F);
-
-#if defined(GL_SGI_cull_vertex)
-	if (CullParameterfv) {
-	    GLfloat eye[4] = { 0.0F, 0.0F, 0.0F, 1.0F };
-
-	    CullParameterfv(GL_CULL_VERTEX_EYE_POSITION_SGI, eye);
-	}
-#endif
-    } else {
-	glOrtho(-1.0F*aspect, 1.0F*aspect, -1.0F, 1.0F, 1.0F, 3.0F);
-
-#if defined(GL_SGI_cull_vertex)
-	if (CullParameterfv) {
-	    GLfloat eye[4] = { 0.0F, 0.0F, 1.0F, 0.0F };
-
-	    CullParameterfv(GL_CULL_VERTEX_EYE_POSITION_SGI, eye);
-	}
-#endif
-    }
-    */
-    glMatrixMode(GL_MODELVIEW);
+  glMatrixMode(GL_MODELVIEW);
 }
 
 void TfrmAbout::setMaterial(void)
@@ -717,15 +667,9 @@ or GL_DONT_CARE to indicate no preference.
 
 void TfrmAbout::redraw(void)
 {
-char buf[128];
   lastdraw = nowdraw;
   nowdraw = GetTickCount();
-
   doRedraw();
-
-  if ((nowdraw - lastdraw) != 0){
-    sprintf(buf, "frame rate %d",  1000 / ( nowdraw - lastdraw));
-  }
 }
 
 //=================================================================
@@ -926,12 +870,12 @@ void __fastcall TfrmAbout::WMPaletteChanged(TMessage& Msg)
 void __fastcall TfrmAbout::WMQueryNewPalette(TMessage& Msg)
 {
 
-	if (hPalette != NULL) {
-	    UnrealizeObject(hPalette);
-	    SelectPalette(hDC, hPalette, FALSE);
-	    RealizePalette(hDC);
-	    redraw();
-        }
+  if (hPalette != NULL) {
+      UnrealizeObject(hPalette);
+      SelectPalette(hDC, hPalette, FALSE);
+      RealizePalette(hDC);
+      redraw();
+  }
 
 }
 
@@ -961,11 +905,12 @@ void __fastcall TfrmAbout::FormCreate(TObject *Sender)
 
 void __fastcall TfrmAbout::FormDestroy(TObject *Sender)
 {
-	if (hGLRC) {
-	    wglMakeCurrent(NULL, NULL);
-	    wglDeleteContext(hGLRC);
-	}
-	ReleaseDC(TheControl->Handle, hDC);
+  if (hGLRC) {
+      wglMakeCurrent(NULL, NULL);
+      wglDeleteContext(hGLRC);
+  }
+  ReleaseDC(TheControl->Handle, hDC);
+  delete OutText;
 //
 }
 //---------------------------------------------------------------------------
@@ -1004,89 +949,84 @@ void __fastcall TfrmAbout::FormMouseUp(TObject *Sender,
 
 void __fastcall TfrmAbout::FormPaint(TObject *Sender)
 {
-	if (hGLRC) {
-	    PAINTSTRUCT ps;
-	    BeginPaint(TheControl->Handle, &ps);
-	    redraw();
-	    EndPaint(TheControl->Handle, &ps);
-        }
+  if (hGLRC) {
+      PAINTSTRUCT ps;
+      BeginPaint(TheControl->Handle, &ps);
+      redraw();
+      EndPaint(TheControl->Handle, &ps);
+  }
 //
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TfrmAbout::FormResize(TObject *Sender)
 {
-	if (hGLRC) {
-	    resize();
-        }
+  if (hGLRC) {
+      resize();
+  }
 //
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::FormShow(TObject *Sender)
-{
-  Timer1->Enabled = true;
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TfrmAbout::FormKeyPress(TObject *Sender, char &Key)
 {
-	switch (Key) {
-	case VK_ESCAPE:
-	    Close();
-	    return;
-	case VK_SPACE:
-	    objectIndex = (objectIndex + 1) % 4;
-	    return;
-	case 'a':
-	    useVertexArray = !useVertexArray;
-	    return;
-	case 'c':
-	    useFaceCull = !useFaceCull;
-	    return;
-	case 'f':
-	    useFog = !useFog;
-	    return;
-	case 'h':
-	    halfObject = !halfObject;
-	    return;
-	case 'l':
-	    useLighting = !useLighting;
-	    return;
-	case 'o':
-	    perspectiveProj = !perspectiveProj;
-	    resize();
-	    return;
-	case 'p':
-	    drawOutlines = !drawOutlines;
-	    return;
-	case 'v':
-	    useVertexCull = !useVertexCull;
-	    return;
-	case 'i':
-	    yOffset += Y_OFFSET_STEP;
-	    return;
-	case 'j':
-	    xOffset -= X_OFFSET_STEP;
-	    return;
-	case 'k':
-	    xOffset += X_OFFSET_STEP;
-	    return;
-	case 'm':
-	    yOffset -= Y_OFFSET_STEP;
-	    return;
-	case 'r':
-	    textureReplace = !textureReplace;
-	    return;
-	case 't':
-	    textureEnabled = !textureEnabled;
-	    return;
-	case 'x':
-	    useVertexLocking = !useVertexLocking;
-	    return;
-	default:
-	    break;
-        }
+  switch (Key) {
+  case VK_ESCAPE:
+      Close();
+      return;
+  case VK_SPACE:
+      objectIndex = (objectIndex + 1) % 4;
+      return;
+  case 'a':
+      useVertexArray = !useVertexArray;
+      return;
+  case 'c':
+      useFaceCull = !useFaceCull;
+      return;
+  case 'f':
+      useFog = !useFog;
+      return;
+  case 'h':
+      halfObject = !halfObject;
+      return;
+  case 'l':
+      useLighting = !useLighting;
+      return;
+  case 'o':
+      perspectiveProj = !perspectiveProj;
+      resize();
+      return;
+  case 'p':
+      drawOutlines = !drawOutlines;
+      return;
+  case 'v':
+      useVertexCull = !useVertexCull;
+      return;
+  case 'i':
+      yOffset += Y_OFFSET_STEP;
+      return;
+  case 'j':
+      xOffset -= X_OFFSET_STEP;
+      return;
+  case 'k':
+      xOffset += X_OFFSET_STEP;
+      return;
+  case 'm':
+      yOffset -= Y_OFFSET_STEP;
+      return;
+  case 'r':
+      textureReplace = !textureReplace;
+      return;
+  case 't':
+      textureEnabled = !textureEnabled;
+      return;
+  case 'x':
+      useVertexLocking = !useVertexLocking;
+      return;
+  default:
+      break;
+  }
 
 
 }
@@ -1095,26 +1035,26 @@ void __fastcall TfrmAbout::FormKeyPress(TObject *Sender, char &Key)
 void __fastcall TfrmAbout::FormKeyDown(TObject *Sender, WORD &Key,
       TShiftState Shift)
 {
-	switch (Key) {
-	case VK_DOWN:
-        if (objectNumMajor > 1)
-          --objectNumMajor;
-	    break;
-	case VK_UP:
-	    ++objectNumMajor;
-	    break;
-	case VK_LEFT:
-        if (objectNumMinor > 1)
-          --objectNumMinor;
-	    break;
-	case VK_RIGHT:
-          ++objectNumMinor;
-	    break;
-	default:
-	    break;
-	}
-	if (hGLRC) redraw();
-	return;
+  switch (Key) {
+  case VK_DOWN:
+  if (objectNumMajor > 1)
+    --objectNumMajor;
+      break;
+  case VK_UP:
+      ++objectNumMajor;
+      break;
+  case VK_LEFT:
+  if (objectNumMinor > 1)
+    --objectNumMinor;
+      break;
+  case VK_RIGHT:
+    ++objectNumMinor;
+      break;
+  default:
+      break;
+  }
+  if (hGLRC) redraw();
+  return;
 }
 //---------------------------------------------------------------------------
 
@@ -1127,26 +1067,9 @@ void __fastcall TfrmAbout::IdleHandler(TObject *Sender)
 
 
 
-void __fastcall TfrmAbout::FormActivate(TObject *Sender)
+void __fastcall TfrmAbout::FormShow(TObject *Sender)
 {
-/*
-  this->Width++;
-  this->Width--;
- */
-}
-//---------------------------------------------------------------------------
-
-
-
-void __fastcall TfrmAbout::FormHide(TObject *Sender)
-{
-  Timer1->Enabled = false;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TfrmAbout::FormClose(TObject *Sender, TCloseAction &Action)
-{
-  Action = caFree;
+  tmrMain->Enabled = true;        
 }
 //---------------------------------------------------------------------------
 

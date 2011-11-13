@@ -1,15 +1,26 @@
-//---------------------------------------------------------------------------
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// ServersF.cpp
+//
+// form displaying local machines and allowing testing
+//
+
 #include <vcl.h>
-#include <time.h>
 #pragma hdrstop
+#include <time.h>
 
 #include "ServersF.h"
 #include "messageF.h"
 #include "MainF.h"
-#include "waint.h"
 #include "RFC1060U.h"
 #include "IPAddressU.h"
+#include "RPCFuncsU.h"
+
+// winamp IPC declarations
+#include "waint.h"
+
 //---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TfrmServers *frmServers;
@@ -193,9 +204,6 @@ void __fastcall TfrmServers::btnLocateClick(TObject *Sender)
     Screen->Cursor = crDefault;
     pbServers->Position = 0;
   }
-
-
-
 }
 //---------------------------------------------------------------------------
 
@@ -321,7 +329,7 @@ void __fastcall TfrmServers::StartTest(TObject *Sender)
        frmMain->ebAddress->Text = lvServers->Items->Item[i]->Caption;
 
        lvServers->Selected = lvServers->Items->Item[i];
-       Bind();
+       frmMain->DoBind();
        try
        {
           try
@@ -364,8 +372,6 @@ void __fastcall TfrmServers::StartTest(TObject *Sender)
     Screen->Cursor = crDefault;
     pbServers->Position = 0;
   }
-
-
 
 }
 //---------------------------------------------------------------------------

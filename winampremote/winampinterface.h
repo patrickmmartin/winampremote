@@ -2,11 +2,11 @@
 
 
 /* File created by MIDL compiler version 5.01.0164 */
-/* at Sun May 18 22:15:25 2008
+/* at Sun May 18 22:33:51 2008
  */
 /* Compiler settings for winampinterface.idl:
     Os (OptLev=s), W1, Zp8, env=Win32, ms_ext, c_ext
-    error checks: allocation ref bounds_check enum stub_data 
+    error checks: stub_data 
 */
 //@@MIDL_FILE_HEADING(  )
 

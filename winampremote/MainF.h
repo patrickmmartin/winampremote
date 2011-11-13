@@ -17,22 +17,10 @@
 #include <ImgList.hpp>
 #include <ActnList.hpp>
 #include <ExtCtrls.hpp>
-#define MYWM_NOTIFY         (WM_APP+100)
-#define IDC_MYICON                     1006
 
 
-#include "waint.h"
-
-
-//class ERPCException;
-class ERPCException : public Sysutils::Exception
-{
-public:
-	 __fastcall ERPCException(const System::AnsiString Msg) : Sysutils::Exception(Msg
-		) { }
-};
-
-
+const int TRAY_NOTIFY = WM_APP+100;
+const int IDC_TRAYICON = 1006;
 
 //---------------------------------------------------------------------------
 class TfrmMain : public TForm
@@ -151,34 +139,13 @@ __published:
         TMenuItem *N501;
         TMenuItem *N502;
         TAction *ShowMain;
-        TPageControl *pgSettings;
-        TTabSheet *tbsConfig;
-        TLabel *lblEndpoint;
-        TLabel *lblAddress;
-        TLabel *lblTimer;
-        TEdit *ebEndPoint;
-        TEdit *ebAddress;
-        TListBox *lstTimer;
-        TTabSheet *tbsPreferences;
-        TCheckBox *chkAutoHide;
-        TCheckBox *chkAutoRestore;
-        TTabSheet *tbsMain;
-        TLabel *lblVersion;
-        TImage *icoState;
         TImage *icoTrayIcon;
-        TLabel *lblUpdate;
-        TRadioButton *rbSongChange;
-        TRadioButton *rbPlaylistChange;
-        TLabel *lblMessage;
         TMenuItem *mnuMore;
         TMenuItem *UpMore1;
         TMenuItem *DownMore1;
-        TLabel *lblStartupActions;
-        TBevel *Bevel1;
         TImageList *imlCommandsHot;
         TImageList *imlCommandsCool;
         TImageList *imlTrayIcons;
-        TButton *btnLocate;
         TAction *LocateServers;
         TMenuItem *LocateServers1;
         TMenuItem *N3;
@@ -187,11 +154,38 @@ __published:
         TMenuItem *N6;
         TMenuItem *N7;
         TAction *RefreshEQ;
-        TBevel *bvl1;
-        TBevel *bvl2;
-        TBevel *bvl3;
         TAction *Autoload;
-    void __fastcall btnHideClick(TObject *Sender);
+        TPageControl *pgSettings;
+        TTabSheet *tbsMain;
+        TPanel *pnlWinampBottom;
+        TPanel *pnlIcon;
+        TLabel *lblVersion;
+        TPanel *Panel1;
+        TBevel *Bevel3;
+        TTabSheet *tbsConfig;
+        TLabel *lblEndpoint;
+        TLabel *lblAddress;
+        TLabel *lblTimer;
+        TBevel *bvl2;
+        TEdit *ebEndPoint;
+        TEdit *ebAddress;
+        TListBox *lstTimer;
+        TButton *btnLocate;
+        TTabSheet *tbsPreferences;
+        TLabel *lblUpdate;
+        TLabel *lblStartupActions;
+        TBevel *bvl3;
+        TCheckBox *chkAutoHide;
+        TCheckBox *chkAutoRestore;
+        TRadioButton *rbSongChange;
+        TRadioButton *rbPlaylistChange;
+        TLabel *lblMessage;
+        TBevel *Bevel1;
+        TImage *icoState;
+        TBevel *Bevel2;
+        TPanel *pnlMiddle;
+        TPanel *pnlCommands;
+    void __fastcall HideMain(TObject *Sender);
     void __fastcall EditKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
     void __fastcall mnuPauseClick(TObject *Sender);
     void __fastcall mnuShutDownClick(TObject *Sender);
@@ -237,16 +231,22 @@ __published:
     void __fastcall DelayTimer(TObject *Sender);
     void __fastcall RefreshEQExecute(TObject *Sender);
     void __fastcall AutoloadExecute(TObject *Sender);
-
-
+        void __fastcall FormDockOver(TObject *Sender,
+          TDragDockObject *Source, int X, int Y, TDragState State,
+          bool &Accept);
+        void __fastcall StartDock(TObject *Sender,
+          TDragDockObject *&DragObject);
+        void __fastcall pgSettingsDockDrop(TObject *Sender,
+          TDragDockObject *Source, int X, int Y);
+        void __fastcall EndDock(TObject *Sender, TObject *Target, int X,
+          int Y);
 
 private:        // private user declarations
     int Delay;
-    WAPlaybackStatus WAStatus;
     int WinampVerNo;
     LRESULT __fastcall IconDrawItem(LPDRAWITEMSTRUCT lpdi);
     void __fastcall DrawItem(TMessage& Msg);
-    void __fastcall MyNotify(TMessage& Msg);
+    void __fastcall TrayNotify(TMessage& Msg);
     bool __fastcall TrayMessage(DWORD dwMessage);
     HANDLE __fastcall IconHandle(void);
     void __fastcall ToggleState(void);
@@ -260,38 +260,25 @@ private:        // private user declarations
     bool DoubleClickedR;
     void __fastcall AppException(TObject *Sender, Exception *E);
 
+
 public:         // public user declarations
     virtual __fastcall TfrmMain(TComponent* Owner);
+    void _fastcall DoBind(void);
 BEGIN_MESSAGE_MAP
-MESSAGE_HANDLER(WM_DRAWITEM,TMessage,DrawItem)
-MESSAGE_HANDLER(MYWM_NOTIFY,TMessage,MyNotify)
+MESSAGE_HANDLER(WM_DRAWITEM, TMessage, DrawItem)
+MESSAGE_HANDLER(TRAY_NOTIFY, TMessage, TrayNotify)
 END_MESSAGE_MAP(TForm)
 };
 //---------------------------------------------------------------------------
 extern TfrmMain *frmMain;
 
-
-// this is extern to allow the RPC functions to be simple methods
 extern char IdentChars[65];
 
-// see above for below
 void SetIdent(void);
-
-/* this binds to the interface before the RPC call*/
-void Bind(void);
-void UnBind(void);
-
-void SendString(char * pszString);
-void ExecuteMessage(char * pszString, int command);
-void ExecuteStringMessage(char * pszString, char * pszParam, int command);
-int StringResult(char * pszString, int command, int data);
-int IntegerResult(char * pszString, int command, int data);
-void Shutdown(void);
 
 void MessageForm(AnsiString MessageStr);
 
-void  __RPC_FAR * __RPC_USER midl_user_allocate(size_t len);
-void __RPC_USER midl_user_free(void __RPC_FAR * ptr);
 
 //---------------------------------------------------------------------------
 #endif
+

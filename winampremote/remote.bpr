@@ -7,7 +7,8 @@
     <OBJFILES value="obj\remote.obj obj\messageF.obj obj\waint.obj obj\AboutF.obj 
       obj\RPCErrors.obj obj\PlaylistF.obj obj\SettingsF.obj obj\MainF.obj 
       obj\CommandF.obj obj\SplashF.obj obj\winampinterface_c.obj 
-      obj\ServersF.obj obj\RFC1060U.obj obj\IPAddressU.obj obj\ColourU.obj"/>
+      obj\ServersF.obj obj\RFC1060U.obj obj\IPAddressU.obj obj\ColourU.obj 
+      obj\RPCFuncsU.obj"/>
     <RESFILES value="remote.res"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
@@ -25,7 +26,7 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="ilink32"/>
-    <USERDEFINES value=""/>
+    <USERDEFINES value="WIN32_LEAN_AND_MEAN"/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="remote.cpp"/>
     <INCLUDEPATH value="&quot;..\..\..\..\Program Files\Borland\CBuilder4\Projects&quot;;&quot;..\..\..\..\program files\borland\cbuilder3\projects&quot;;..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl"/>
@@ -34,12 +35,12 @@
     <WARNOPTSTR value=""/>
   </MACROS>
   <OPTIONS>
-    <CFLAG1 value="-O2 -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl50.csm -Hc -Vx -Ve -xp 
-      -Tkh30000 -fp -X- -a8 -b- -k- -vi -c -tW -tWM"/>
-    <PFLAGS value="-N2obj -N0obj -$Y- -$L- -$D- -v -M -JPHNE"/>
+    <CFLAG1 value="-Od -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl50.csm -Hc -Vx -Ve -xp 
+      -Tkh30000 -fp -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-N2obj -N0obj -$Y+ -$W -$O- -v -M -JPHNE"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zn"/>
-    <LFLAGS value="-Iobj -D&quot;&quot; -aa -Tpe -x"/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="-Iobj -D&quot;&quot; -aa -Tpe -x -v"/>
   </OPTIONS>
   <LINKER>
     <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
@@ -52,8 +53,8 @@ IncludeVerInfo=1
 AutoIncBuild=1
 MajorVer=1
 MinorVer=3
-Release=5
-Build=207
+Release=6
+Build=264
 Debug=0
 PreRelease=0
 Special=0
@@ -65,15 +66,15 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=pmmsoft
 FileDescription=winamp RPC inteface client
-FileVersion=1.3.5.207
+FileVersion=1.3.6.264
 InternalName=remote
 LegalCopyright=©patrick martin 2000
 LegalTrademarks=
-OriginalFilename=
+OriginalFilename=remote.exe
 ProductName=winamp remote control suite
-ProductVersion=1.3.5
+ProductVersion=1.3.6
 Comments=winamp remote control client - communicates with server to control winamp
-Expected Versions=winamp : up to 2.64 -  plugin : versions up to 1.3.5
+Expected Versions=winamp : up to 2.65 -  plugin : versions up to 1.3.6
 
 [HistoryLists\hlIncludePath]
 Count=5

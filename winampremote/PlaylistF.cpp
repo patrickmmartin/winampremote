@@ -1,12 +1,18 @@
-//---------------------------------------------------------------------------
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// PlayListF.cpp
+//
+// form displaying and allowing editing of playlist
+//
+
 #include <vcl.h>
-#include <shellapi.hpp>
 #pragma hdrstop
 
 #include "PlaylistF.h"
 #include "waint.h"
 #include "MainF.h"
 #include "SplashF.h"
+#include "RPCFuncsU.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -29,8 +35,10 @@ void __fastcall TfrmPlaylist::lstSongsRefresh(TObject *Sender)
   char title[RET_STR_SIZE];
   char saveident[RET_STR_SIZE];
 
-  try{
-    try{
+  try
+  {
+    try
+    {
       Screen->Cursor = crHourGlass;
       frmMain->sbMain->Panels->Items[0]->Text = "querying server";
       frmMain->sbMain->Refresh();
@@ -43,17 +51,23 @@ void __fastcall TfrmPlaylist::lstSongsRefresh(TObject *Sender)
       strcpy(saveident, IdentChars);
 
       lstSongs->Items->Clear();
-      for (int i = 0 ; i < lastlength ; i++){
+      for (int i = 0 ; i < lastlength ; i++)
+      {
         strcpy(title, saveident);
         StringResult(title, IPC_GETPLAYLISTTITLE, i);
         lstSongs->Items->Add((AnsiString(i + 1) + ". " + title));
 
       // pretty stuff
-        if (frmSplash->Visible){
-            frmSplash->lblMessage->Caption = "getting playlist " + AnsiString(100 * i / lastlength) + "%";
+        if (frmSplash->Visible)
+        {
+          AnsiString Msg = "getting playlist " + AnsiString(100 * i / lastlength) + "%";
+          if (Msg != frmSplash->lblMessage->Caption)
+          {
+            frmSplash->lblMessage->Caption = Msg;
             frmSplash->lblMessage->Refresh();
           }
         }
+      }
 
       /* keep the forms up to date*/
       if (!frmSplash->Visible){
@@ -89,15 +103,20 @@ void __fastcall TfrmPlaylist::lstSongsDblClick(TObject *Sender)
 void __fastcall TfrmPlaylist::mnuSortClick(TObject *Sender)
 {
 // these *STILL* don't bleeding work!
-  if (Sender == mnuSort){
+  if (Sender == mnuSort)
+  {
     IntegerResult(IdentChars, IDC_SORT_FILETITLE, 0);
-    }
-  if (Sender == mnuSortFile){
+  }
+  if (Sender == mnuSortFile)
+  {
     IntegerResult(IdentChars, IDC_SORT_FILENAME, 0);
-    }
-  if (Sender == mnuSortFileEntire){
+  }
+  if (Sender == mnuSortFileEntire)
+  {
     IntegerResult(IdentChars, IDC_SORT_ENTIREFILENAME, 0);
-    }
+  }
+
+  lstSongsRefresh(this);
 }
 //---------------------------------------------------------------------------
 
@@ -106,8 +125,6 @@ void __fastcall TfrmPlaylist::FormCreate(TObject *Sender)
 
   lstSongs->ItemHeight = this->Canvas->TextHeight('W');
   lstSongsRefresh(this);
-  /*appears this has to be here ?*/
-  DragAcceptFiles(lstSongs->Handle, true);
 
 }
 //---------------------------------------------------------------------------
@@ -129,7 +146,8 @@ char saveident[RET_STR_SIZE];
     // cache this
   strcpy(saveident, IdentChars);
 
-    for (i = 0 ; i < lstSongs->Items->Count; i++){
+    for (i = 0 ; i < lstSongs->Items->Count; i++)
+    {
       if (!lstSongs->Selected[i]){
         strcpy(filename, saveident);
         StringResult(filename, IPC_GETPLAYLISTFILE, i);
@@ -161,15 +179,6 @@ char saveident[RET_STR_SIZE];
 
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmPlaylist::lstSongsKeyDown(TObject *Sender, WORD &Key,
-      TShiftState Shift)
-{
-  switch (Key){
-  case VK_DELETE: DeleteSelected(); break;
-    }
-
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control,
       int Index, TRect &Rect, TOwnerDrawState State)
@@ -183,7 +192,6 @@ void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control,
     pCanvas->Font->Color = clRed;
   }
   pCanvas->TextOut(Rect.Left + Offset, Rect.Top, ((TListBox *)Control)->Items->Strings[Index]);
-
   pCanvas->Font->Color = clWindowText;
 
 }
@@ -211,7 +219,8 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
   else
     GetFilenames(0, lstSongs->Items->Count, Files);
 
-  try{
+  try
+  {
     len = DragQueryFile((void *) hDrop, 0xFFFFFFFF, NULL, 0);
     for (i = 0 ; i < len ; i++){
       if (DragQueryFile((void *) hDrop, i, CFileName, MAX_PATH) > 0){
@@ -314,7 +323,7 @@ char saveident[RET_STR_SIZE];
     strcpy(filename, saveident);
     StringResult(filename, IPC_GETPLAYLISTFILE, i);
     StringList->AddObject(filename, (TObject*) (i == currentpos));
-    } // for
+  } // for
 
 }
 
@@ -396,4 +405,89 @@ int NewPos;
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
+      TDragDockObject *&DragObject)
+{
+  frmMain->StartDock(Sender, DragObject);
+        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmPlaylist::FormShow(TObject *Sender)
+{
+  DragAcceptFiles(lstSongs->Handle, true);
+  
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmPlaylist::FormEndDock(TObject *Sender, TObject *Target,
+      int X, int Y)
+{
+  frmMain->EndDock(Sender, Target, X, Y);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmPlaylist::lstSongsMouseMove(TObject *Sender,
+      TShiftState Shift, int X, int Y)
+{
+
+  int Index = lstSongs->ItemAtPos(TPoint(X, Y), true);
+
+  if (Index > -1)
+  {
+    lstSongs->Hint = lstSongs->Items->Strings[Index];
+  }
+  else
+  {
+    lstSongs->Hint = "Playlist view -drag files to the desired location";
+  }
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmPlaylist::mnuPlayClick(TObject *Sender)
+{
+
+  if (BelowIndex > -1)
+  {
+    lstSongs->ItemIndex = BelowIndex;
+    lstSongsDblClick(this);
+  }
+
+
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmPlaylist::pmnuSongsPopup(TObject *Sender)
+{
+
+  BelowIndex = lstSongs->ItemAtPos(lstSongs->ScreenToClient(Mouse->CursorPos), true);
+  mnuPlay->Enabled = (BelowIndex > -1);
+  if (BelowIndex > -1)
+    mnuPlay->Caption = lstSongs->Items->Strings[BelowIndex];
+  else
+    mnuPlay->Caption = "Play";
+
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmPlaylist::lstSongsKeyDown(TObject *Sender, WORD &Key,
+      TShiftState Shift)
+{
+
+  switch (Key)
+  {
+    case VK_DELETE:
+      DeleteSelected(); break;
+    case 13 :
+      lstSongsDblClick(this);
+  }
+
+}
+//---------------------------------------------------------------------------
 

@@ -6,9 +6,9 @@
 
 struct porttype
   {
-    char service[21]  ;
+    char * service  ;
     short port ;
-    char description[100]  ;
+    char * description  ;
   };
 
 extern porttype RFC1060ports[];

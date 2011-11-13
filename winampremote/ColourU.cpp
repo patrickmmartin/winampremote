@@ -1,12 +1,15 @@
-//---------------------------------------------------------------------------
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// ColourU.cpp
+//
+// colours unit
+//
+//
+
 #include <vcl.h>
-#include <math.h> // from M_PI
-
 #pragma hdrstop
-
+#include <math.h> // from M_PI
 #include "ColourU.h"
-
-
 
 const int BASE_RANGE = 500;
 const double offset = 0.15;

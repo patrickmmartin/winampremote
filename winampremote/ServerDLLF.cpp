@@ -1,15 +1,28 @@
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// ServerDLLF.cpp
+//
+// form showing server status
+//
+
 //---------------------------------------------------------------------------
 #include <vcl.h>
-#include <registry.hpp>
 #pragma hdrstop
+#include <registry.hpp>
 
 #include "ServerDLLF.h"
+#include "rpcthreadDLL.h"
+#include "waint.h"
+#include "gen_plugin.h"
+#include "AboutF.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TfrmMain *frmMain;
 
+HWND mainhwnd;
+TRPCServerThread *serverThread;
 
 //---------------------------------------------------------------------------
 void __fastcall TfrmMain::ThreadMessage(TMessage &Message)
@@ -27,18 +40,89 @@ void __fastcall TfrmMain::ThreadMessage(TMessage &Message)
 
 
 //---------------------------------------------------------------------------
+void __fastcall TfrmMain::ExecutionStatus(WAExecutionStatus NewThreadState)
+{
+
+  fThreadState = NewThreadState;
+
+  if (ThreadState == waExecuting)
+  {
+    if (sbrMain->Panels->Items[0]->Text != "working")
+    {
+      sbrMain->Panels->Items[0]->Text = "working";
+      sbrMain->Invalidate();
+    }
+  }
+
+
+}
+
+//---------------------------------------------------------------------------
 void __fastcall TfrmMain::ThreadStatus(TMessage &Message)
 {
 
-  switch ((WAExecutionStatus) Message.LParam)
+  ExecutionStatus ((WAExecutionStatus) Message.LParam);
+
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::ThreadIdent(TMessage &Message)
+{
+//do something here
+
+  int i;
+  int pos = -1;
+  char * Ident = (char *) Message.LParam;
+  TListItem  *ListItem;
+
+  ExecutionStatus(waExecuting);
+
+  for (i = 0 ; i < lvUsers->Items->Count ; i++)
+  {
+    ListItem = lvUsers->Items->Item[i];
+    if (ListItem->Caption == Ident)
+    {
+      ListItem->Data = (void *) GetTickCount();
+      if ((ListItem->ImageIndex == 0) || (ListItem->ImageIndex == imlUsers->Count - 1))
+      {
+        ListItem->ImageIndex = 1;
+      }
+      pos = i;
+      break;
+    }
+  } // for
+
+  if (pos == -1)
+  {
+  //need new
+    ListItem = lvUsers->Items->Add();
+    ListItem->ImageIndex = 1;
+    ListItem->Caption = Ident;
+    ListItem->Data = (void *) GetTickCount();
+    }
+
+  delete ((char *) Message.LParam);
+
+}
+
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmMain::timerMainTimer(TObject *Sender)
+{
+
+  switch (fThreadState)
   {
     case waListening:
       sbrMain->Panels->Items[0]->Text = "listening...";
       break;
 
+    /*
     case waExecuting:
       sbrMain->Panels->Items[0]->Text = "working";
       break;
+    */
 
     case waServerStopped:
       sbrMain->Panels->Items[0]->Text = "stopped";
@@ -59,51 +143,15 @@ void __fastcall TfrmMain::ThreadStatus(TMessage &Message)
       sbrMain->Panels->Items[0]->Text = "unknown";
     }
 
-  sbrMain->Refresh();  
-}
 
-//---------------------------------------------------------------------------
-
-void __fastcall TfrmMain::ThreadIdent(TMessage &Message)
-{
-//do something here
-
-  int i;
-  int pos = -1;
-  char * Ident = (char *) Message.LParam;
-  TListItem  *ListItem;
-
-  for (i = 0 ; i < lvUsers->Items->Count ; i++){
-    ListItem = lvUsers->Items->Item[i];
-    if (ListItem->Caption == Ident){
-      ListItem->Data = (void *) GetTickCount();
-      if ((ListItem->ImageIndex == 0) || (ListItem->ImageIndex == imlUsers->Count - 1)){
-        ListItem->ImageIndex = 1;
-        }
-      pos = i;
-      }
-
-    } // for
-
-  if (pos == -1){
-  //need new
-    ListItem = lvUsers->Items->Add();
-    ListItem->ImageIndex = 1;
-    ListItem->Caption = Ident;
-    ListItem->Data = (void *) GetTickCount();
-    }
-  delete ((char *) Message.LParam);
-
-}
-
-void __fastcall TfrmMain::timerMainTimer(TObject *Sender)
-{
+  sbrMain->Invalidate();
 
   int i;
   TListItem  *ListItem;
   int NowTickCount = GetTickCount();
 
-  for (i = lvUsers->Items->Count - 1; i >= 0 ; i--){
+  for (i = lvUsers->Items->Count - 1; i >= 0 ; i--)
+  {
     ListItem = lvUsers->Items->Item[i];
 
     //check for timed out clients
@@ -111,29 +159,28 @@ void __fastcall TfrmMain::timerMainTimer(TObject *Sender)
       // looks like it's timing out
       ListItem->ImageIndex = 0;
       }
-    else{
-      if (ListItem->ImageIndex == 0){
+    else
+    {
+      if (ListItem->ImageIndex == 0)
+      {
         ListItem->ImageIndex = 1;
         }
       }
 
-   if ((ListItem->ImageIndex > 0) && (ListItem->ImageIndex < imlUsers->Count - 1)){
+   if ((ListItem->ImageIndex > 0) && (ListItem->ImageIndex < imlUsers->Count - 1))
+   {
      ListItem->ImageIndex = ListItem->ImageIndex + 1;
-     }
+   }
 
-
-
-    if ((NowTickCount - (int ) ListItem->Data) > (2000 * FAIL_TIMEOUT)){
+    if ((NowTickCount - (int ) ListItem->Data) > (2000 * FAIL_TIMEOUT))
+    {
       // looks like it's timing out
       lvUsers->Items->Delete(i);
       }
 
     } // for
 
-
 }
-//---------------------------------------------------------------------------
-
 
 //---------------------------------------------------------------------------
 
@@ -148,34 +195,49 @@ void __fastcall TfrmMain::FormCreate(TObject *Sender)
 const BufferSize = 32;		//Buffer max size
 char Computername[BufferSize];     // pointer to system information string
 DWORD cchBuff;       // size of computer or user name
+bool success;
 TRegistry * reg;
 
 
-  try{
-      reg = new TRegistry();
-      reg->OpenKey("software\\PMMSoft\\Winamp controller\\server settings", true);
-      EndPoint = reg->ReadString("EndPoint").ToIntDef(PortDefault);
-    }
-  __finally {
+  try
+  {
+    reg = new TRegistry();
+    reg->OpenKey("software\\PMMSoft\\Winamp controller\\server settings", true);
+    AnsiString EndPoint = reg->ReadString("EndPoint");
+    fEndPoint = (unsigned short) EndPoint.ToIntDef(8000);
+    success = true;
+  }
+  __finally
+  {
     delete reg;
-    }
+  }
 
   /*
   Get the computer name. */
-  cchBuff = BufferSize;
-  if (GetComputerName(Computername, &cchBuff))
-    {
-      sbrMain->Panels->Items[1]->Text = AnsiString("name: ") + Computername;
-    }
-    else
-    {
-      sbrMain->Panels->Items[1]->Text = AnsiString("could not obtain name");
+  cchBuff = 32;
+  if (success)
+  {
+    success = success && GetComputerName(Computername, &cchBuff);
     }
 
+  if (success)
+  {
+      sbrMain->Panels->Items[1]->Text = AnsiString("name: ") + Computername;
+      sbrMain->Panels->Items[2]->Text = AnsiString("endpoint: ") + fEndPoint;
+
+      mainhwnd = this->Handle;
+
+
+        }
+  else
+  {
+    this->lstMessages->Items->Add("computer name not obtained");
+    this->lstMessages->Items->Add("rpc service not starting");
+  }
 
   Application->OnException = AppException;
 
-  CreateThread(this);
+  CreateThread(fEndPoint);
 
   pgMain->ActivePage =  tbsMessages;
 
@@ -225,11 +287,12 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
     
 }
 //---------------------------------------------------------------------------
-void __fastcall TfrmMain::CreateThread(TObject *Sender)
+void __fastcall TfrmMain::CreateThread(unsigned short EndPoint)
 {
+  // should
+  this->fEndPoint = EndPoint;
   serverThread =  new TRPCServerThread(true);
-  sbrMain->Panels->Items[2]->Text = AnsiString("endpoint: ") + EndPoint;
-  serverThread->Endpoint = EndPoint;
+  serverThread->Endpoint = fEndPoint;
   serverThread->Resume();
 }
 
@@ -248,7 +311,7 @@ TRegistry * reg;
       reg = new TRegistry();
       reg->OpenKey("software\\PMMSoft\\Winamp controller\\server settings", true);
 
-      reg->WriteString("EndPoint", EndPoint);
+      reg->WriteString("EndPoint", fEndPoint);
 
       reg->WriteString("Visible", Visible?"true":"false");
     }
@@ -264,4 +327,27 @@ void __fastcall TfrmMain::btnConfigClick(TObject *Sender)
   config();
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::btnAboutClick(TObject *Sender)
+{
+  frmAbout = new TfrmAbout(Application);
+
+  try
+  {
+    frmAbout->Caption = "About winamp remote control server plugin";
+    OutText->Clear();
+    OutText->Add("winamp");
+    OutText->Add("remote");
+    OutText->Add("control");
+    OutText->Add("RPC");
+    OutText->Add("server");
+    frmAbout->ShowModal();
+  }
+  __finally
+  {
+    delete frmAbout;
+  }
+}
+//---------------------------------------------------------------------------
+
 

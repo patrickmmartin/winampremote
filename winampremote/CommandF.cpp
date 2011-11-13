@@ -1,4 +1,10 @@
-//---------------------------------------------------------------------------
+// winamp remote control suite ©Patrick Michael Martin 2000
+//
+// CommandF.cpp
+//
+// floating toolbar form for the remote 
+//
+
 #include <vcl.h>
 #pragma hdrstop
 
@@ -44,7 +50,21 @@ void __fastcall TfrmCommands::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
   frmMain->ViewToolBar->Execute();
+}
+//---------------------------------------------------------------------------
 
+void __fastcall TfrmCommands::FormStartDock(TObject *Sender,
+      TDragDockObject *&DragObject)
+{
+  frmMain->StartDock(Sender, DragObject);
+        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmCommands::FormEndDock(TObject *Sender, TObject *Target,
+      int X, int Y)
+{
+  frmMain->EndDock(Sender, Target, X, Y);
 }
 //---------------------------------------------------------------------------
 

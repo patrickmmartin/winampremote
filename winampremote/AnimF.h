@@ -8,7 +8,6 @@
 #include <Forms.hpp>
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
-#include <ImgList.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
