@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="gen_RPCinterface.dll"/>
+    <OBJFILES value="obj\gen_RPCinterface.obj obj\AboutF.obj obj\gen_plugin.obj 
+      obj\RPCErrors.obj obj\rpcthreadDLL.obj obj\waint.obj obj\ServerDLLF.obj 
+      obj\ConfigDLLF.obj obj\winampinterface_s.obj obj\RFC1060U.obj"/>
+    <RESFILES value="gen_RPCinterface.res"/>
+    <IDLFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) AboutF.dfm ServerDLLF.dfm ConfigDLLF.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="vclx50.lib vcl50.lib"/>
+    <SPARELIBS value="vcl50.lib vclx50.lib"/>
+    <PACKAGES value="vclx50.bpi vcl50.bpi vcldb50.bpi vclbde50.bpi vcldbx50.bpi bcbsmp50.bpi 
+      dclocx50.bpi qrpt50.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="gen_RPCinterface.cpp"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-WD -O2 -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl50.csm -Hc -Vx -Ve -xp 
+      -Tkh30000 -fp -X- -a8 -b- -k- -vi -c -tWM"/>
+    <PFLAGS value="-N2obj -N0obj -$Y- -$L- -$D- -v -M -JPHNE"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zn"/>
+    <LFLAGS value="-Iobj -D&quot;&quot; -aa -Tpd -x -Gn"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0d32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=1
+MajorVer=1
+MinorVer=3
+Release=5
+Build=142
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=1
+Locale=2057
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=pmmSoft
+FileDescription=winamp RPC interface plugin
+FileVersion=1.3.5.142
+InternalName=
+LegalCopyright=©patrick martin 2000
+LegalTrademarks=
+OriginalFilename=
+ProductName=winamp remote control suite
+ProductVersion=1.3.5
+Comments=winamp plugin exporting winamp's  IPC methods via RPC
+Expected Versions=winamp : up to 2.64 - client : up to 1.3.5
+
+[HistoryLists\hlIncludePath]
+Count=8
+Item0=$(BCB)\include;$(BCB)\include\vcl
+Item1=..\winamp05;..\..\..\..\Program Files\Borland\CBuilder4\Examples\Controls\Tray;..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\include;$(BCB)\include\vcl
+Item2=..\..\..\..\Program Files\Borland\CBuilder4\Examples\Controls\Tray;..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\include;$(BCB)\include\vcl
+Item3=..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\include;$(BCB)\include\vcl
+Item4=..\..\..\Cbuilder4\RPC\winamp05;..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\include;$(BCB)\include\vcl
+Item5=..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\include;$(BCB)\include\vcl
+Item6=..\rpcwin~1.5;$(BCB)\include;$(BCB)\include\vcl
+Item7=..\..\..\program files\borland\cbuilder3\projects;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=8
+Item0=$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\winamp05;$(BCB)\Projects\Lib;..\..\..\..\Program Files\Borland\CBuilder4\Examples\Controls\Tray;..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\lib\obj;$(BCB)\lib
+Item2=$(BCB)\Projects\Lib;..\..\..\..\Program Files\Borland\CBuilder4\Examples\Controls\Tray;..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\lib\obj;$(BCB)\lib
+Item3=..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\lib\obj;$(BCB)\lib
+Item4=..\..\..\Cbuilder4\RPC\winamp05;..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\lib\obj;$(BCB)\lib
+Item5=..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;$(BCB)\lib\obj;$(BCB)\lib
+Item6=..\rpcwin~1.5;$(BCB)\lib\obj;$(BCB)\lib
+Item7=..\..\..\program files\borland\cbuilder3\projects;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=3
+Item0=_RTLDLL
+Item1=_RTLDLL;USEPACKAGES
+Item2=USEPACKAGES
+
+[HistoryLists\hlIntOutputDir]
+Count=1
+Item0=obj
+
+[HistoryLists\hlHostApplication]
+Count=1
+Item0=C:\Program Files\Netscape\Communicator\Winamp\Winamp.exe
+
+[HistoryLists\hlFinalOutputDir]
+Count=9
+Item0=..\..\..\..\Program Files\Netscape\Communicator\Winamp\PluginsItem1=..\..\..\..\Program Files\Netscape\Communicator\Winamp\PluginsItem1=C:\Program Files\Netscape\Communicator\Winamp\Plugins
+Item1=
+Item2=
+Item3=..\..\..\..\Program Files\Netscape\Communicator\Winamp\PluginsItem1=C:\Program Files\Netscape\Communicator\Winamp\Plugins
+Item4=
+Item5=..\..\..\..\Program Files\Netscape\Communicator\Winamp\PluginsItem1=C:\Program Files\Netscape\Communicator\Winamp\Plugins
+Item6=
+Item7=..\..\..\..\Program Files\Netscape\Communicator\Winamp\PluginsItem1=C:\Program Files\Netscape\Communicator\Winamp\Plugins
+Item8=
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=C:\Program Files\Netscape\Communicator\Winamp\Winamp.exe
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>
