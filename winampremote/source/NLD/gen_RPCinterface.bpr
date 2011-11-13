@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="..\..\wimampremote1.3.7\gen_RPCinterface.NLD"/>
+    <OBJFILES value="gen_RPCinterface.obj"/>
+    <RESFILES value="AboutF.dfm ConfigDLLF.dfm DetailsF.dfm ServerDLLF.dfm 
+      gen_RPCinterface_DRC.res gen_RPCinterface.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="Vcl50.lib"/>
+    <SPARELIBS value="Vcl50.lib"/>
+    <PACKAGES value=""/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="tlink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="gen_RPCinterface.cpp"/>
+    <INCLUDEPATH value="$(BCB)\include"/>
+    <LIBPATH value="$(BCB)\lib"/>
+    <WARNINGS value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-WD -O2 -H=$(BCB)\lib\vcl50.csm -Hc -w -Vx -Ve -x- -RT- -X -a8 -b- -k- -vi 
+      -c -w-par -w-8026 -w-8027 -tW -tWM"/>
+    <PFLAGS value="-$Y- -$L- -$I- -$D- -$C- -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zn"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpd -x -Gn"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="$(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES)"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=1
+MajorVer=1
+MinorVer=3
+Release=8
+Build=225
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=1
+Locale=1043
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.3.8.225
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[Debugging]
+DebugSourceDirs=
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=1
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

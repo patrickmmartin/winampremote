@@ -1,0 +1,61 @@
+/*
+winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2002
+
+Copyright (C) 2000,2001,2002  Patrick M. Martin
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+Patrick M. Martin may be reached by email at patrickmmartin@freenet.co.uk.
+*/
+
+[
+  uuid (DBA14E47-F2F4-11D3-9CCE-90A8EF7AA961),
+  version(1.0)
+]
+
+interface winamp
+{
+
+  const short RET_STR_SIZE = 260;  /* MAX_PATH */
+
+  /* simple probing function to announce presence */
+  void WAMessageProc([in, string] char *pszString);
+  /* execute winamp command */
+  void WAExecuteMessage([in,  string] char *pszString, [in] long int command);
+  /* execute winamp command with string parameter */
+  void WAExecuteMessageString([in, string] char *pszString, [in, string] char *pszParam, [in] long int command);
+  /* execute winamp function and return long integer result */
+  long int WAIntegerResult([in, string] char *pszString, [in] long int command, [in] long int data);
+  /* execute winamp function and return string result */
+  long int WAStringResult([in, out, string] char *pszString, [in] long int command, [in] long int data);
+  /* Shutdown function */
+  void WAShutdown(void);
+
+  void WASendList([in, string] char *pszString,
+                  [size_is(BufferLength), in ] byte Buffer[],
+                  [in] unsigned long BufferLength,
+                  [in] long int command);
+
+  typedef struct {
+                  unsigned long BufferLength;
+                  [unique, size_is(BufferLength)] byte *Buffer;
+                  } BUFFER;
+
+  void WAGetList([in, string] char *pszString,
+                 [out] BUFFER *pBuffer,
+                 [in] long int command);
+
+}
+
