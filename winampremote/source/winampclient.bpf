@@ -1,0 +1,10 @@
+USEUNIT("winampclient.cpp");
+USEDEF("rpcfuncs.def");
+USEUNIT("RPCFuncsU.cpp");
+USEUNIT("waint.cpp");
+USERES("winampclient.res");
+USEOBJ("..\obj\winampinterface_c.obj");
+//---------------------------------------------------------------------------
+This file is used by the project manager only and should be treated like the project file
+
+DllEntryPoint

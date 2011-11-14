@@ -1,0 +1,27 @@
+LIBRARY     CLIENTDLL.DLL
+
+EXPORTS
+  ClientFree
+
+  Bind
+  UnBind
+
+  SendString
+  ExecuteMessage
+  ExecuteStringMessage
+  StringResult
+  IntegerResult
+  Shutdown
+
+  SetStringList
+  GetStringList
+
+  SafeSendString
+  SafeExecuteMessage
+  SafeExecuteStringMessage
+  SafeStringResult
+  SafeIntegerResult
+
+  SafeSetStringList
+  SafeGetStringList
+

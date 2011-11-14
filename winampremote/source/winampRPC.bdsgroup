@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">Default.Personality</Option>
+      <Option Name="ProjectType"></Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{98137314-9B29-4B28-B98C-C516AEEF31C2}</Option>
+    </Option>
+  </PersonalityInfo>
+  <Default.Personality>
+    
+    <Projects>
+      <Projects Name="paslib.lib">paslib.bdsproj</Projects>
+      <Projects Name="REMOTE.exe">REMOTE.bdsproj</Projects>
+      <Projects Name="gen_RPCinterface.dll">gen_RPCinterface.bdsproj</Projects>
+      <Projects Name="winampclient.dll">winampclient.bdsproj</Projects>
+      <Projects Name="conremote.exe">conremote.bdsproj</Projects>
+      <Projects Name="Targets">paslib.lib REMOTE.exe gen_RPCinterface.dll winampclient.dll conremote.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>
