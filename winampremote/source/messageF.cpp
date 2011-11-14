@@ -44,13 +44,13 @@ __fastcall TfrmMessage::TfrmMessage(TComponent* Owner)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMessage::FormShow(TObject *Sender)
+void __fastcall TfrmMessage::FormShow(TObject *)
 {
-  Timer1->Enabled = true;
+  tmrAnimate->Enabled = true;
   StartCount = GetTickCount();
 }
 //---------------------------------------------------------------------------
-void __fastcall TfrmMessage::Timer1Timer(TObject *Sender)
+void __fastcall TfrmMessage::tmrAnimateTimer(TObject *)
 {
 //
 
@@ -58,12 +58,12 @@ void __fastcall TfrmMessage::Timer1Timer(TObject *Sender)
   memTitle->Font->Color = RainbowColour(TicksCount);
   if (TicksCount > 3000)
   {
-    Timer1->Enabled = false;
+    tmrAnimate->Enabled = false;
     Close();
   }
 }
 //---------------------------------------------------------------------------
-void __fastcall TfrmMessage::FormActivate(TObject *Sender)
+void __fastcall TfrmMessage::FormActivate(TObject *)
 {
 //
 }

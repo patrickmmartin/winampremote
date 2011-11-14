@@ -43,19 +43,27 @@ interface winamp
   /* Shutdown function */
   void WAShutdown(void);
 
-  void WASendList([in, string] char *pszString,
-                  [size_is(BufferLength), in ] byte Buffer[],
-                  [in] unsigned long BufferLength,
-                  [in] long int command);
+  void WASetStringList([in, string] char *pszString,
+                        [size_is(BufferLength), in ] byte Buffer[],
+                        [in] unsigned long BufferLength,
+                        [in] long int command);
 
   typedef struct {
                   unsigned long BufferLength;
                   [unique, size_is(BufferLength)] byte *Buffer;
                   } BUFFER;
 
-  void WAGetList([in, string] char *pszString,
-                 [out] BUFFER *pBuffer,
-                 [in] long int command);
+  void WAGetStringList([in, string] char *pszString,
+                       [out] BUFFER *pBuffer,
+                       [in] long int command);
+
+
+  void WAGetStringDataList([in, string] char *pszString,
+                       [out] BUFFER *pBuffer,
+                       [in] long int stringcommand,
+                       [in] long datacommand,
+                       [in] long datadata);
+
 
 }
 

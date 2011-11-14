@@ -136,10 +136,10 @@ object frmMessage: TfrmMessage
       TabOrder = 1
     end
   end
-  object Timer1: TTimer
+  object tmrAnimate: TTimer
     Enabled = False
     Interval = 20
-    OnTimer = Timer1Timer
+    OnTimer = tmrAnimateTimer
     Left = 56
     Top = 65520
   end

@@ -1,11 +1,10 @@
 object frmServers: TfrmServers
-  Left = 285
-  Top = 214
+  Left = 283
+  Top = 207
+  Width = 726
+  Height = 477
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
   Caption = 'Locate Server'
-  ClientHeight = 284
-  ClientWidth = 440
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -45,16 +44,25 @@ object frmServers: TfrmServers
   object pnlPages: TPanel
     Left = 0
     Top = 41
-    Width = 440
-    Height = 202
+    Width = 718
+    Height = 340
     Align = alClient
     BevelInner = bvLowered
     BevelOuter = bvNone
     TabOrder = 0
+    object spltMessages: TSplitter
+      Left = 1
+      Top = 316
+      Width = 716
+      Height = 7
+      Cursor = crVSplit
+      Align = alBottom
+      OnCanResize = spltMessagesCanResize
+    end
     object pbServers: TProgressBar
       Left = 1
-      Top = 185
-      Width = 438
+      Top = 323
+      Width = 716
       Height = 16
       Align = alBottom
       BorderWidth = 1
@@ -64,77 +72,60 @@ object frmServers: TfrmServers
       Step = 1
       TabOrder = 0
     end
-    object pgcServers: TPageControl
+    object lvServers: TListView
       Left = 1
       Top = 1
-      Width = 438
-      Height = 184
-      ActivePage = tbsServers
+      Width = 716
+      Height = 150
+      Hint = 'list of servers'
       Align = alClient
-      Images = frmMain.imlActions
+      Columns = <
+        item
+          AutoSize = True
+          Caption = 'Server Name'
+        end
+        item
+          AutoSize = True
+          Caption = 'Comment'
+        end
+        item
+          AutoSize = True
+          Caption = 'Winamp version'
+        end>
+      ColumnClick = False
+      Constraints.MinHeight = 96
+      HideSelection = False
+      LargeImages = imlServers
+      ReadOnly = True
+      RowSelect = True
+      SmallImages = imlServers
       TabOrder = 1
-      TabWidth = 100
-      object tbsServers: TTabSheet
-        Caption = 'Servers'
-        object lvServers: TListView
-          Left = 0
-          Top = 0
-          Width = 430
-          Height = 155
-          Hint = 'list of servers'
-          Align = alClient
-          Columns = <
-            item
-              AutoSize = True
-              Caption = 'Server Name'
-            end
-            item
-              AutoSize = True
-              Caption = 'Comment'
-            end
-            item
-              AutoSize = True
-              Caption = 'Winamp version'
-            end>
-          ColumnClick = False
-          HideSelection = False
-          LargeImages = imlServers
-          ReadOnly = True
-          RowSelect = True
-          SmallImages = imlServers
-          TabOrder = 0
-          ViewStyle = vsReport
-          OnClick = lvServersClick
-        end
-      end
-      object tbsMessages: TTabSheet
-        Caption = 'Messages'
-        ImageIndex = 5
-        object lvMessages: TListView
-          Left = 0
-          Top = 0
-          Width = 430
-          Height = 155
-          Align = alClient
-          Columns = <
-            item
-              AutoSize = True
-            end>
-          LargeImages = imlEvents
-          ReadOnly = True
-          RowSelect = True
-          ShowColumnHeaders = False
-          SmallImages = imlEvents
-          TabOrder = 0
-          ViewStyle = vsReport
-        end
-      end
+      ViewStyle = vsReport
+      OnClick = lvServersClick
+    end
+    object lvMessages: TListView
+      Left = 1
+      Top = 151
+      Width = 716
+      Height = 165
+      Align = alBottom
+      Columns = <
+        item
+          AutoSize = True
+        end>
+      LargeImages = imlEvents
+      ReadOnly = True
+      RowSelect = True
+      ShowColumnHeaders = False
+      SmallImages = imlEvents
+      TabOrder = 2
+      ViewStyle = vsReport
     end
   end
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 440
+    Width = 718
     Height = 41
     Align = alTop
     BevelInner = bvLowered
@@ -162,15 +153,16 @@ object frmServers: TfrmServers
   end
   object pnlButtons: TPanel
     Left = 0
-    Top = 243
-    Width = 440
-    Height = 41
+    Top = 381
+    Width = 718
+    Height = 62
     Align = alBottom
     BevelOuter = bvNone
+    Constraints.MinWidth = 400
     TabOrder = 2
     object btnCancel: TButton
-      Left = 361
-      Top = 8
+      Left = 639
+      Top = 13
       Width = 75
       Height = 25
       Hint = 'cancel'
@@ -181,8 +173,8 @@ object frmServers: TfrmServers
       TabOrder = 4
     end
     object btnOK: TButton
-      Left = 273
-      Top = 8
+      Left = 551
+      Top = 13
       Width = 75
       Height = 25
       Hint = 'select server'
@@ -193,8 +185,8 @@ object frmServers: TfrmServers
       OnClick = btnOKClick
     end
     object btnTest: TButton
-      Left = 97
-      Top = 8
+      Left = 375
+      Top = 13
       Width = 75
       Height = 25
       Hint = 'test the server list'
@@ -205,8 +197,8 @@ object frmServers: TfrmServers
       OnClick = StartTest
     end
     object btnLocate: TButton
-      Left = 9
-      Top = 8
+      Left = 287
+      Top = 13
       Width = 75
       Height = 25
       Hint = 'locate local machines'
@@ -216,8 +208,8 @@ object frmServers: TfrmServers
       OnClick = btnLocateClick
     end
     object btnGetIp: TButton
-      Left = 185
-      Top = 8
+      Left = 463
+      Top = 13
       Width = 75
       Height = 25
       Hint = 'Get ip addresses and aliases'
@@ -226,6 +218,14 @@ object frmServers: TfrmServers
       Enabled = False
       TabOrder = 2
       OnClick = GetServerIp
+    end
+    object StatusBar1: TStatusBar
+      Left = 0
+      Top = 43
+      Width = 718
+      Height = 19
+      Panels = <>
+      SimplePanel = False
     end
   end
   object imlServers: TImageList

@@ -713,7 +713,7 @@ void TfrmAbout::ptov(int x, int y, int width, int height, float v[3])
     v[2] *= a;
 }
 
-void TfrmAbout::startMotion(DWORD time, int button, int x, int y)
+void TfrmAbout::startMotion(DWORD /* time */, int button, int x, int y)
 {
     if (button == 1) {
 	mode = MoveObject;
@@ -727,7 +727,7 @@ void TfrmAbout::startMotion(DWORD time, int button, int x, int y)
     ptov(x, y, TheControl->ClientWidth, TheControl->ClientHeight, lastPos);
 }
 
-void TfrmAbout::stopMotion(DWORD time, int button, int x, int y)
+void TfrmAbout::stopMotion(DWORD /* time */, int button, int x, int y)
 {
     if (button == 1 && mode == MoveObject) {
 	trackingMotion = FALSE;
@@ -741,7 +741,7 @@ void TfrmAbout::stopMotion(DWORD time, int button, int x, int y)
     }
 }
 
-void TfrmAbout::trackMotion(DWORD time, int x, int y)
+void TfrmAbout::trackMotion(DWORD /* time */, int x, int y)
 {
     if (trackingMotion) {
 	float curPos[3], dx, dy, dz;
@@ -885,7 +885,7 @@ void __fastcall TfrmAbout::WMPaletteChanged(TMessage& Msg)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::WMQueryNewPalette(TMessage& Msg)
+void __fastcall TfrmAbout::WMQueryNewPalette(TMessage& /* Msg */)
 {
 
   if (hPalette != NULL) {
@@ -898,7 +898,7 @@ void __fastcall TfrmAbout::WMQueryNewPalette(TMessage& Msg)
 }
 
 
-void __fastcall TfrmAbout::FormCreate(TObject *Sender)
+void __fastcall TfrmAbout::FormCreate(TObject *)
 {
     startup = GetTickCount();
     OutText = new TStringList();
@@ -921,7 +921,7 @@ void __fastcall TfrmAbout::FormCreate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::FormDestroy(TObject *Sender)
+void __fastcall TfrmAbout::FormDestroy(TObject *)
 {
   if (hGLRC) {
       wglMakeCurrent(NULL, NULL);
@@ -933,8 +933,7 @@ void __fastcall TfrmAbout::FormDestroy(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::FormMouseDown(TObject *Sender,
-      TMouseButton Button, TShiftState Shift, int X, int Y)
+void __fastcall TfrmAbout::FormMouseDown(TObject *, TMouseButton , TShiftState , int X, int Y)
 {
 	if (hGLRC) {
 	    SetCapture(TheControl->Handle);
@@ -944,8 +943,7 @@ void __fastcall TfrmAbout::FormMouseDown(TObject *Sender,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::FormMouseMove(TObject *Sender,
-      TShiftState Shift, int X, int Y)
+void __fastcall TfrmAbout::FormMouseMove(TObject *, TShiftState , int X, int Y)
 {
 	if (hGLRC) {
 	    trackMotion(0, X, Y);
@@ -954,8 +952,7 @@ void __fastcall TfrmAbout::FormMouseMove(TObject *Sender,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::FormMouseUp(TObject *Sender,
-      TMouseButton Button, TShiftState Shift, int X, int Y)
+void __fastcall TfrmAbout::FormMouseUp(TObject *, TMouseButton , TShiftState , int X, int Y)
 {
 	if (hGLRC) {
 	    ReleaseCapture();
@@ -965,7 +962,7 @@ void __fastcall TfrmAbout::FormMouseUp(TObject *Sender,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::FormPaint(TObject *Sender)
+void __fastcall TfrmAbout::FormPaint(TObject *)
 {
   if (hGLRC) {
       PAINTSTRUCT ps;
@@ -977,7 +974,7 @@ void __fastcall TfrmAbout::FormPaint(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::FormResize(TObject *Sender)
+void __fastcall TfrmAbout::FormResize(TObject *)
 {
   if (hGLRC) {
       resize();
@@ -987,7 +984,7 @@ void __fastcall TfrmAbout::FormResize(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TfrmAbout::FormKeyPress(TObject *Sender, char &Key)
+void __fastcall TfrmAbout::FormKeyPress(TObject *, char &Key)
 {
   switch (Key) {
   case VK_ESCAPE:
@@ -1050,8 +1047,7 @@ void __fastcall TfrmAbout::FormKeyPress(TObject *Sender, char &Key)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::FormKeyDown(TObject *Sender, WORD &Key,
-      TShiftState Shift)
+void __fastcall TfrmAbout::FormKeyDown(TObject *, WORD &Key, TShiftState )
 {
   switch (Key) {
   case VK_DOWN:
@@ -1076,7 +1072,7 @@ void __fastcall TfrmAbout::FormKeyDown(TObject *Sender, WORD &Key,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAbout::IdleHandler(TObject *Sender)
+void __fastcall TfrmAbout::IdleHandler(TObject *)
 {
   redraw();
 }
@@ -1085,7 +1081,7 @@ void __fastcall TfrmAbout::IdleHandler(TObject *Sender)
 
 
 
-void __fastcall TfrmAbout::FormShow(TObject *Sender)
+void __fastcall TfrmAbout::FormShow(TObject *)
 {
   tmrMain->Enabled = true;
 

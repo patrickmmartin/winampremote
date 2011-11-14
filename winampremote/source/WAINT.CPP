@@ -75,7 +75,9 @@ char * GetAmpStr(int Command, int Data)
 #ifdef HWND_UPDATE
   GethWnd_WinAmp();
 #endif
- return (char *) SendMessage(hwnd_winamp, WM_WA_IPC, Data, Command);
+
+  /*return (char *) */ SendMessage(hwnd_winamp, WM_WA_IPC, Data, Command);
+  return (char *) SendMessage(hwnd_winamp, WM_WA_IPC, Data, Command);
 }
 
 

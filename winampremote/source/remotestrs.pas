@@ -47,8 +47,8 @@ resourcestring
   sUnhandledException = 'There was an unhandled exception'#13#10'Type: ';
   sCurrentTrack = 'current track';
   sUnknown = '<unknown>';
-  sDelaying = 'delaying"';
-  sDelayingForFmt = 'delaying for %d more s';
+  sDelaying = 'delaying for edit...';
+  sDelayingForFmt = 'delaying for %d more s...';
   sRestarting = 'restarting';
 
   sDetailsCaptionFmt = '%s details';
@@ -72,6 +72,7 @@ resourcestring
   sCallFailed = 'Call Failed: ';
   sNotFound = 'not found';
   sTest = 'Test';
+  sServerUntested = 'not tested';
 
   sPortOutOfRangeFmt = 'port %d specified is out of range';
   sEndpointInvalid = 'Endpoint port invalid';

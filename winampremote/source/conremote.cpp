@@ -39,37 +39,34 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 // winampinterface.h
 //
 //
+// required for USEUNIT macro to work
+#include"condefs.h"
+
+//
+#include "stddef.h"
 
 #include <iostream.h>
 #include "windows.h"
 
-// force the RPC functions unit to use a non-VCL exception
-#define NO_VCL_EXCEPTION
+#include "winampinterface.h"
 
-// get the nice wrappers in the RPC functions unit
-#include "RPCFuncsU.cpp"
+#ifndef WAINT_NO_VCL
+  #include <vcl.h>
+#endif
 
-// RPC error descriptions
-#include "RPCErrors.cpp"
-// force the waint unit to unit non-VCL, non localised
-#define WAINT_NO_VCL
-// winamp interface declarations
-#include "waint.cpp"
-// the auto-generated RPC stubs actually used
-#include "winampinterface_c.c"
+// to force the RPC functions unit to use a non-VCL exception #define NO_VCL_EXCEPTION
+#include "RPCFuncsU.h"
 
+// to force the waint unit to unit non-VCL, non localised, #define WAINT_NO_VCL
+#include "waint.h"
 
 //---------------------------------------------------------------------------
-// NB - the version info .res was created by the BCB IDE,
-// but the USERES has to be removed later
-//USERES("conremote.res");
+USERES("conremote.res");
+USEUNIT("waint.cpp");
+USEUNIT("RPCFuncsU.cpp");
+USEOBJ("bin\winampinterface_c.obj");
 //---------------------------------------------------------------------------
-#pragma resource "conremote.res"
-// I'm still looking for the equivalent for username length
-// however there are good reasons for imagining it is the same value
-
-//---------------------------------------------------------------------------
-char IdentBuf [2 * MAX_COMPUTERNAME_LENGTH + 1];
+char IdentBuf [2 * MAX_COMPUTERNAME_LENGTH + 2];
 
 void GetIdent(void)
 {
@@ -160,12 +157,14 @@ void winampGetList(void)
 
 
 
+
+
 int main(int argc , char* argv[] )
 {
+
+
 char inkey;
 bool loop = true;
-
-
 char * address;
 char * port;
 
@@ -191,7 +190,7 @@ char * port;
   {
     GetIdent();
 
-    Bind( (unsigned char *) address, (unsigned char *) port);
+    Bind(address, port);
 
     cout << endl;
     cout << "\t\t****************************************" << endl;
@@ -283,7 +282,6 @@ char * port;
   {
     perror("Unhandled error ");
   }
-
 
 
 }

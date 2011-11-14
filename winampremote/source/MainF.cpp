@@ -24,7 +24,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #pragma hdrstop
 
 #include <registry.hpp>
-#include "shellapi.h"
+#include <shellapi.h>
 
 // forms...
 
@@ -38,13 +38,17 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "ServersF.h"
 
 // RPC functions
+#include "winampinterface.h"
 #include "RPCFuncsU.h"
 #include "DetailsF.h"
 #include "remotestrs.hpp"
-#include "reinit.hpp"
+//#include "reinit.hpp"
+#include "SplashF.h"
 
+#include <math.h>
+#include "waintstrs.hpp"
 
-
+/* TODO -opatrick -cactions : may need concatenation of available actions in a specific order */
 
 //---------------------------------------------------------------------------
 #pragma resource "*.dfm"
@@ -69,7 +73,7 @@ void __fastcall TfrmMain::TrayNotify(TMessage& Msg)
 
     case WM_RBUTTONUP:
       if (DoubleClickedR)
-        ShowMain(this);
+        ShowMainForm->Execute();
       else  
         if (GetCursorPos(&MousePos))
         {
@@ -90,18 +94,18 @@ void __fastcall TfrmMain::TrayNotify(TMessage& Msg)
 
     case WM_LBUTTONUP:
       if (!DoubleClickedL)
-        mnuPauseClick(this);
+        Pause->Execute();
     break;
 
     case WM_LBUTTONDBLCLK:
     // as pause will have updated WAstatus for us
       if (WAStatus == WA_NOT_PLAYING)
       {
-        mnuPlayClick(this);
+        Play->Execute();
       }
       if (WAStatus == WA_PAUSED)
       {
-        mnuStopClick(this);
+        Stop->Execute();
       }
       DoubleClickedL = true;
     break;
@@ -178,8 +182,8 @@ HANDLE __fastcall TfrmMain::IconHandle(void)
     fIconIndex = 6;
   }
 
-  frmMain->imlCommandsHot->GetIcon( fIconIndex, icoState->Picture->Icon);
-  frmMain->imlTrayIcons->GetIcon( fIconIndex, icoTrayIcon->Picture->Icon);
+  imlCommandsHot->GetIcon( fIconIndex, icoState->Picture->Icon);
+  imlTrayIcons->GetIcon( fIconIndex, icoTrayIcon->Picture->Icon);
 
   Application->Icon->Handle = icoState->Picture->Icon->Handle;
 
@@ -207,14 +211,16 @@ PSTR __fastcall TfrmMain::TipText(void)
   if ((AnsiString(str) + state).Length() > 64)
     str = str.SubString(1, 60 - state.Length()) + "..." + state;
   else
-    str  = str + state;  
+    str  = str + state;
   strncpy(TipChars, str.c_str(), sizeof(TipChars));
 
   return TipChars;
 
 }
+
+
 //---------------------------------------------------------------------------
-void __fastcall TfrmMain::HideMain(TObject *Sender)
+void __fastcall TfrmMain::HideMain(TObject *)
 {
 
   TrayMessage(NIM_ADD);
@@ -248,11 +254,12 @@ void __fastcall TfrmMain::HideMain(TObject *Sender)
 
   DrawAnimatedRects(Handle, IDANI_CAPTION, &FromRect, &ToRect);
 
-
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::ShowMain(TObject *Sender)
+void __fastcall TfrmMain::ShowMainFormExecute(TObject *)
 {
 
   ShowWindow(Application->Handle, SW_SHOW);
@@ -279,23 +286,48 @@ void __fastcall TfrmMain::ShowMain(TObject *Sender)
   Application->Restore();
   
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuPauseClick(TObject *Sender)
+void __fastcall TfrmMain::PauseExecute(TObject *)
 {
   if (WAStatus == IntegerResult(IdentChars, IPC_ISPLAYING, 0))
     ExecuteMessage(IdentChars, WINAMP_PAUSE);
     UpdateIcon();
 }
+
+
 //---------------------------------------------------------------------------
-void __fastcall TfrmMain::mnuShutDownClick(TObject *Sender)
+void __fastcall TfrmMain::ExitExecute(TObject *)
 {
   Close();
 }
 
+const AnsiString sRegKey = "software\\PMMSoft\\Winamp controller\\client settings";
+const AnsiString sCommandsDocked = "Commands Docked";
+const AnsiString sCommandsLeft = "Commands Left";
+const AnsiString sCommandsTop = "Commands Top";
+const AnsiString sCommandsVisible = "Commands Visible";
+const AnsiString sVolumeDocked = "Volume Docked";
+const AnsiString sVolumeLeft = "Volume Left";
+const AnsiString sVolumeTop = "Volume Top";
+const AnsiString sVolumeVisible = "Volume Visible";
+const AnsiString sPlaylistDocked = "Playlist Docked";
+const AnsiString sPlaylistLeft = "Playlist Left";
+const AnsiString sPlaylistTop = "Playlist Top";
+const AnsiString sPlaylistWidth = "Playlist Width";
+const AnsiString sPlaylistHeight = "Playlist Height";
+const AnsiString sPlaylistVisible = "Playlist Visible";
+const AnsiString sTesting = "Testing";
+const AnsiString sLanguage = "Language";
+const AnsiString sTrue = "true";
+const AnsiString sFalse = "false";
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::FormShow(TObject *Sender)
+void __fastcall TfrmMain::FormShow(TObject *)
 {
 
 
@@ -320,20 +352,20 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
     int FormLeft, FormTop, FormWidth, FormHeight;
     try
     {
-      reg->OpenKey("software\\PMMSoft\\Winamp controller\\client settings", true);
+      reg->OpenKey(sRegKey, true);
 
       if (chkAutoRestore->Checked)
       {
 
-         if (reg->ReadString("Commands Docked").LowerCase() == "true")
+         if (reg->ReadString(sCommandsDocked).LowerCase() == sTrue)
          {
            frmCommands->ManualDock(pnlCommands, NULL, alTop);
            EndDock(frmCommands, NULL, 0,0);
          }
 
          FormRect = TRect(0, 0, frmCommands->Width, frmCommands->Height);
-         FormLeft = reg->ReadString("Commands Left").ToIntDef(-1);
-         FormTop = reg->ReadString("Commands Top").ToIntDef(-1);
+         FormLeft = reg->ReadString(sCommandsLeft).ToIntDef(-1);
+         FormTop = reg->ReadString(sCommandsTop).ToIntDef(-1);
 
          if ((FormLeft > 0) && (FormTop > 0))
          {
@@ -341,11 +373,11 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
            frmCommands->BoundsRect = FormRect;
          }
 
-         if (reg->ReadString("Commands Visible").LowerCase() == "true")
+         if (reg->ReadString(sCommandsVisible).LowerCase() == sTrue)
            ViewToolBarExecute(this);
 
 
-         if (reg->ReadString("Volume Docked").LowerCase() == "true")
+         if (reg->ReadString(sVolumeDocked).LowerCase() == sTrue)
          {
            frmSettings->ManualDock(pgSettings, NULL, alClient);
            EndDock(frmSettings, NULL, 0,0);
@@ -353,8 +385,8 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
 
 
          FormRect = TRect(0, 0, frmSettings->Width, frmSettings->Height);
-         FormLeft = reg->ReadString("Volume Left").ToIntDef(-1);
-         FormTop = reg->ReadString("Volume Top").ToIntDef(-1);
+         FormLeft = reg->ReadString(sVolumeLeft).ToIntDef(-1);
+         FormTop = reg->ReadString(sVolumeTop).ToIntDef(-1);
 
          if ((FormLeft > 0) && (FormTop > 0))
          {
@@ -362,20 +394,20 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
            frmSettings->BoundsRect = FormRect;
          }
 
-         if (reg->ReadString("Volume Visible").LowerCase() == "true")
+         if (reg->ReadString(sVolumeVisible).LowerCase() == sTrue)
            ViewVolumeExecute(this);
 
 
-         if (reg->ReadString("Playlist Docked").LowerCase() == "true")
+         if (reg->ReadString(sPlaylistDocked).LowerCase() == sTrue)
          {
            frmPlaylist->ManualDock(pgSettings, NULL, alClient);
            EndDock(frmPlaylist, NULL, 0,0);
          }
 
-         FormLeft = reg->ReadString("Playlist Left").ToIntDef(-1);
-         FormTop = reg->ReadString("Playlist Top").ToIntDef(-1);
-         FormWidth = reg->ReadString("Playlist Width").ToIntDef(180);
-         FormHeight = reg->ReadString("Playlist Height").ToIntDef(240);
+         FormLeft = reg->ReadString(sPlaylistLeft).ToIntDef(-1);
+         FormTop = reg->ReadString(sPlaylistTop).ToIntDef(-1);
+         FormWidth = reg->ReadString(sPlaylistWidth).ToIntDef(180);
+         FormHeight = reg->ReadString(sPlaylistHeight).ToIntDef(240);
          FormRect = TRect(0, 0, FormWidth, FormHeight);
 
          if ((FormLeft > 0) && (FormTop > 0))
@@ -384,14 +416,14 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
            frmPlaylist->BoundsRect = FormRect;
          }
 
-         if (reg->ReadString("Playlist Visible").LowerCase() == "true")
+         if (reg->ReadString(sPlaylistVisible).LowerCase() == sTrue)
            ViewPlaylistExecute(this);
 
 
        }
-       if (reg->OpenKey("Testing", false))
+       if (reg->OpenKey(sTesting, false))
        {
-         if (reg->ReadString("Language").LowerCase() == "true")
+         if (reg->ReadString(sLanguage).LowerCase() == sTrue)
          {
            mnuLanguage->Visible = false;
          }
@@ -416,50 +448,76 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
 
 }
 
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuSayHelloClick(TObject *Sender)
+void __fastcall TfrmMain::mnuSayHelloClick(TObject *)
 {
   SendString(IdentChars);
 }
 
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::btnCloseClick(TObject *Sender)
+void __fastcall TfrmMain::btnCloseClick(TObject *)
 {
   Close();
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuPlayClick(TObject *Sender)
+void __fastcall TfrmMain::PlayExecute(TObject *)
 {
   ExecuteMessage(IdentChars, WINAMP_PLAYENTRY);
 }
+
+
 //---------------------------------------------------------------------------
 
-
-void __fastcall TfrmMain::mnuNextClick(TObject *Sender)
+void __fastcall TfrmMain::NextExecute(TObject *)
 {
+  SongChanging->Execute();
   ExecuteMessage(IdentChars, WINAMP_NEXT);
+  SongChanged->Execute();
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuPreviousClick(TObject *Sender)
+void __fastcall TfrmMain::NextFadeExecute(TObject *)
 {
-  ExecuteMessage(IdentChars, WINAMP_PREVIOUS);
+  StopFade->Execute();
+  Next->Execute();
+  Play->Execute();
+
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::FormHide(TObject *Sender)
+void __fastcall TfrmMain::PreviousExecute(TObject *)
+{
+  SongChanging->Execute();
+  ExecuteMessage(IdentChars, WINAMP_PREVIOUS);
+  SongChanged->Execute();
+}
+
+
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::FormHide(TObject *)
 {
   mnuShow->Visible = true;
   frmPlaylist->DragKind = dkDrag;
   frmCommands->DragKind = dkDrag;
   frmSettings->DragKind = dkDrag;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuAboutClick(TObject *Sender)
+void __fastcall TfrmMain::AboutExecute(TObject *)
 {
   if (!frmAbout)
   {
@@ -482,70 +540,96 @@ void __fastcall TfrmMain::mnuAboutClick(TObject *Sender)
     frmAbout->BringToFront();
   }
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuStopClick(TObject *Sender)
+void __fastcall TfrmMain::StopExecute(TObject *)
 {
   ExecuteMessage(IdentChars, WINAMP_STOP);
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuForward5Click(TObject *Sender)
+void __fastcall TfrmMain::Forward5Execute(TObject *)
 {
   ExecuteMessage(IdentChars, WINAMP_FORWARD5S);
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuBack5Click(TObject *Sender)
+void __fastcall TfrmMain::Back5Execute(TObject *)
 {
   ExecuteMessage(IdentChars, WINAMP_BACK5S);
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuVolumeUpClick(TObject *Sender)
+void __fastcall TfrmMain::VolumeUpExecute(TObject *)
 {
   frmSettings->tbVolume->Position++;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuVolumeDownClick(TObject *Sender)
+void __fastcall TfrmMain::VolumeDownExecute(TObject *)
 {
   frmSettings->tbVolume->Position--;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuVolumeUpMoreClick(TObject *Sender)
+void __fastcall TfrmMain::VolumeUpMoreExecute(TObject *)
 {
   frmSettings->tbVolume->Position+=10;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuVolumeDownMoreClick(TObject *Sender)
+void __fastcall TfrmMain::VolumeDownMoreExecute(TObject *)
 {
   frmSettings->tbVolume->Position-=10;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuPlaylistStartClick(TObject *Sender)
+void __fastcall TfrmMain::PlaylistStartExecute(TObject *)
 {
+  SongChanging->Execute();
   ExecuteMessage(IdentChars, WINAMP_STARTOFPLAYLIST);
+  SongChanged->Execute();
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuPlaylistEndClick(TObject *Sender)
+void __fastcall TfrmMain::PlaylistEndExecute(TObject *)
 {
+  SongChanging->Execute();
   ExecuteMessage(IdentChars, WINAMP_ENDOFPLAYLIST);
+  SongChanged->Execute();
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuDeletePlayListClick(TObject *Sender)
+void __fastcall TfrmMain::DeletePlayListExecute(TObject *)
 {
   IntegerResult(IdentChars, IPC_DELETE, 0);
-  frmPlaylist->SongsRefresh(this);
+  PlaylistRefresh->Execute();
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuAddFileToPlayListClick(TObject *Sender)
+void __fastcall TfrmMain::AddFileToPlayListExecute(TObject *Sender)
 {
 AnsiString str;
 AnsiString commandstr;
@@ -570,8 +654,8 @@ AnsiString commandstr;
 
       Files->Assign(OpenDialog1->Files);
 
-      frmPlaylist->AddFiles(Files);
-      frmPlaylist->SongsRefresh(this);
+      DoAddFiles(Files);
+      PlaylistRefresh->Execute();
     }
     __finally
     {
@@ -579,6 +663,8 @@ AnsiString commandstr;
     }
   } // if
 }
+
+
 //---------------------------------------------------------------------------
 
 void MessageForm(AnsiString MessageStr)
@@ -591,27 +677,33 @@ void MessageForm(AnsiString MessageStr)
   frmMessage->Update();
 }
 
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuStopFadeClick(TObject *Sender)
+void __fastcall TfrmMain::StopFadeExecute(TObject *)
 {
   ExecuteMessage(IdentChars, WINAMP_STOPFADE);
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuStopCurrentClick(TObject *Sender)
+void __fastcall TfrmMain::StopAfterCurrentExecute(TObject *)
 {
   ExecuteMessage(IdentChars, WINAMP_STOPAFTERCURRENT);
 }
+
+
 //---------------------------------------------------------------------------
-void __fastcall TfrmMain::DisplayHint(TObject *Sender)
+void __fastcall TfrmMain::DisplayHint(TObject *)
 {
   sbMain->Panels->Items[1]->Text = GetShortHint(Application->Hint);
 }
 
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::FormCreate(TObject *Sender)
+void __fastcall TfrmMain::FormCreate(TObject *)
 {
 
 
@@ -644,8 +736,8 @@ void __fastcall TfrmMain::FormCreate(TObject *Sender)
 
   fIconIndex = 6;
 
-  frmMain->imlCommandsHot->GetIcon( fIconIndex , icoState->Picture->Icon);
-  frmMain->imlTrayIcons->GetIcon( fIconIndex , icoTrayIcon->Picture->Icon);
+  imlCommandsHot->GetIcon( fIconIndex , icoState->Picture->Icon);
+  imlTrayIcons->GetIcon( fIconIndex , icoTrayIcon->Picture->Icon);
 
   Application->Icon->Handle = icoState->Picture->Icon->Handle;
   Application->OnHint = DisplayHint;
@@ -672,15 +764,19 @@ void __fastcall TfrmMain::FormCreate(TObject *Sender)
        chkAutoRestore->Checked = false;
        }
 
-     if (reg->ReadString("Playlist Update").LowerCase() == "every song"){
+     if (reg->ReadString("Playlist Update").LowerCase() == "every song")
        rbSongChange->Checked = true;
-       }
+     else
+       rbPlaylistChange->Checked = true;
 
      if ((reg->ReadString("Visible").LowerCase() == "false") && (chkAutoHide->Checked)){
        doHide = true;
        }
 
-    this->lstTimer->ItemIndex = reg->ReadString("Poll Interval").ToIntDef(1);
+    lstTimer->ItemIndex = reg->ReadString("Poll Interval").ToIntDef(1);
+    if (lstTimer->ItemIndex < 0)
+      lstTimer->ItemIndex = 1;
+
 
   }
   __finally
@@ -695,10 +791,10 @@ void __fastcall TfrmMain::FormCreate(TObject *Sender)
 
 }
 
+
 //---------------------------------------------------------------------------
 
-
-void __fastcall TfrmMain::AppException(TObject *Sender, Exception *E)
+void __fastcall TfrmMain::AppException(TObject *, Exception *E)
 {
   AnsiString RPCHint = Remotestrs_sRPCFailed;
 
@@ -720,7 +816,7 @@ void TfrmMain::UpdateIcon(void)
   int index, length;
   AnsiString saveStr;
 
-  Cardinal UpdateTime = 1000 * (lstTimer->ItemIndex + 1);
+  Cardinal UpdateTime = 1000 * lstTimer->Items->Strings[lstTimer->ItemIndex].ToIntDef(1);
 
   try
   {
@@ -737,7 +833,6 @@ void TfrmMain::UpdateIcon(void)
 
     if ((frmSettings) && (frmSettings->EQUpdateNeeded))
       frmSettings->UpdateBars();
-
 
     if ( timerMain->Interval != UpdateTime)
     {
@@ -787,34 +882,35 @@ void TfrmMain::UpdateIcon(void)
         {
           if ((rbPlaylistChange->Checked) || (index >= length))
           {
-            if (length != frmPlaylist->lastlength)
+            if (length != LastLength)
             {
-              frmPlaylist->SongsRefresh(this);
+              PlaylistRefresh->Execute();
             }
           }
 
           if (rbSongChange->Checked)
           {
-            if ((index != frmPlaylist->lastindex) || (length != frmPlaylist->lastlength))
+            if ((index != LastIndex) || (length != LastLength))
             {
-              frmPlaylist->SongsRefresh(this);
-              frmPlaylist->SongIndexUpdate(this);
+              PlaylistRefresh->Execute();
+              PlaylistRefreshCurrent->Execute();
             }
           }
           else
-          if (frmPlaylist->lastindex != index)
+          if (LastIndex != index)
           {
-            frmPlaylist->currentpos = index;
-            frmPlaylist->SongIndexUpdate(this);
+            CurrentIndex = index;
+            /* TODO : replace with action */
+            PlaylistRefreshCurrent->Execute();
           }
 
           // set last "OK" list index
-          frmPlaylist->lastindex = index;
-          frmPlaylist->lastlength = length;
+          LastIndex = index;
+          LastLength = length;
           if (timerMain->OnTimer != MainTimer)
             timerMain->OnTimer = MainTimer;
 
-          frmPlaylist->StatsUpdate();
+          PlaylistRefreshStats->Execute();
 
         }
 
@@ -826,8 +922,8 @@ void TfrmMain::UpdateIcon(void)
     doHide = false;
     if (frmPlaylist)
     {
-      frmPlaylist->lastindex = -1;
-      frmPlaylist->lastlength = -1;
+      LastIndex = -1;
+      LastLength = -1;
     }  
 
     WAStatus = WA_UNUSED;
@@ -842,10 +938,12 @@ void TfrmMain::UpdateIcon(void)
 
   // in all events, update status
   TrayMessage(NIM_MODIFY);
-  }
+}
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::MainTimer(TObject *Sender)
+void __fastcall TfrmMain::MainTimer(TObject *)
 {
   UpdateIcon();
   if (doHide)
@@ -854,22 +952,28 @@ void __fastcall TfrmMain::MainTimer(TObject *Sender)
     HideMain(this);
   }
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuSetVolume0Click(TObject *Sender)
+void __fastcall TfrmMain::SetVolume0Execute(TObject *)
 {
   frmSettings->tbVolume->Position = 0;
 
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuSetVolume100Click(TObject *Sender)
+void __fastcall TfrmMain::SetVolume100Execute(TObject *)
 {
   frmSettings->tbVolume->Position = 255;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuShuffleClick(TObject *Sender)
+void __fastcall TfrmMain::ShuffleExecute(TObject *)
 {
   // shuffle / repeat status only works in very recent versions,
   // so always do for older
@@ -877,9 +981,11 @@ void __fastcall TfrmMain::mnuShuffleClick(TObject *Sender)
     ExecuteMessage(IdentChars, WINAMP_FILE_SHUFFLE);
   UpdateIcon();
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuRepeatClick(TObject *Sender)
+void __fastcall TfrmMain::RepeatExecute(TObject *)
 {
   // shuffle / repeat status only works in very recent versions,
   // so always do for older
@@ -887,23 +993,29 @@ void __fastcall TfrmMain::mnuRepeatClick(TObject *Sender)
     ExecuteMessage(IdentChars, WINAMP_FILE_REPEAT);
   UpdateIcon();
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::mnuPlayFromStartClick(TObject *Sender)
+void __fastcall TfrmMain::PlayFromStartExecute(TObject *)
 {
+  SongChanging->Execute();
   IntegerResult(IdentChars, IPC_STARTPLAY, 0);
+  SongChanged->Execute();
 }
 
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::FormClose(TObject *Sender, TCloseAction &Action)
+void __fastcall TfrmMain::FormClose(TObject *, TCloseAction &)
 {
   TrayMessage(NIM_DELETE);
 }
 
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::FormCloseQuery(TObject *Sender, bool &CanClose)
+void __fastcall TfrmMain::FormCloseQuery(TObject *, bool &)
 {
   TRegistry * reg;
 
@@ -917,12 +1029,12 @@ void __fastcall TfrmMain::FormCloseQuery(TObject *Sender, bool &CanClose)
     if (this->ebAddress->Text != "")
       reg->WriteString("Address", ebAddress->Text);
 
-    reg->WriteString("Visible", Visible?"true":"false");
+    reg->WriteString("Visible", Visible?sTrue:sFalse);
 
     reg->WriteString("Poll Interval", AnsiString(lstTimer->ItemIndex));
 
-    reg->WriteString("AutoHide", chkAutoHide->Checked?"true":"false");
-    reg->WriteString("AutoRestore", chkAutoRestore->Checked?"true":"false");
+    reg->WriteString("AutoHide", chkAutoHide->Checked?sTrue:sFalse);
+    reg->WriteString("AutoRestore", chkAutoRestore->Checked?sTrue:sFalse);
 
      if  (rbSongChange->Checked)
      {
@@ -937,20 +1049,20 @@ void __fastcall TfrmMain::FormCloseQuery(TObject *Sender, bool &CanClose)
     if (chkAutoRestore->Checked){
       reg->WriteString("Commands Left", AnsiString(frmCommands->Left));
       reg->WriteString("Commands Top", AnsiString(frmCommands->Top));
-      reg->WriteString("Commands Visible", frmCommands->Visible?"true":"false");
-      reg->WriteString("Commands Docked", frmCommands->HostDockSite?"true":"false");
+      reg->WriteString("Commands Visible", frmCommands->Visible?sTrue:sFalse);
+      reg->WriteString("Commands Docked", frmCommands->HostDockSite?sTrue:sFalse);
 
       reg->WriteString("Playlist Left", AnsiString(frmPlaylist->Left));
       reg->WriteString("Playlist Top", AnsiString(frmPlaylist->Top));
       reg->WriteString("Playlist Width", AnsiString(frmPlaylist->Width));
       reg->WriteString("Playlist Height", AnsiString(frmPlaylist->Height));
-      reg->WriteString("Playlist Visible", frmPlaylist->Visible?"true":"false");
-      reg->WriteString("Playlist Docked", frmPlaylist->HostDockSite?"true":"false");
+      reg->WriteString("Playlist Visible", frmPlaylist->Visible?sTrue:sFalse);
+      reg->WriteString("Playlist Docked", frmPlaylist->HostDockSite?sTrue:sFalse);
 
       reg->WriteString("Volume Left", AnsiString(frmSettings->Left));
       reg->WriteString("Volume Top", AnsiString(frmSettings->Top));
-      reg->WriteString("Volume Visible", frmSettings->Visible?"true":"false");
-      reg->WriteString("Volume Docked", frmSettings->HostDockSite?"true":"false");
+      reg->WriteString("Volume Visible", frmSettings->Visible?sTrue:sFalse);
+      reg->WriteString("Volume Docked", frmSettings->HostDockSite?sTrue:sFalse);
       }
     }
   __finally
@@ -958,31 +1070,38 @@ void __fastcall TfrmMain::FormCloseQuery(TObject *Sender, bool &CanClose)
     delete reg;
   }
 }
+
+
 //---------------------------------------------------------------------------
 
-
-void __fastcall TfrmMain::lstTimerClick(TObject *Sender)
+void __fastcall TfrmMain::lstTimerClick(TObject *)
 {
   timerMain->Interval = 1000 * (lstTimer->ItemIndex + 1);
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::HalfExecute(TObject *Sender)
+void __fastcall TfrmMain::HalfExecute(TObject *)
 {
   frmSettings->tbVolume->Position = 128;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::ViewToolBarExecute(TObject *Sender)
+void __fastcall TfrmMain::ViewToolBarExecute(TObject *)
 {
   // need to undock
   frmCommands->Visible = !frmCommands->Visible;
   AnimateForm(frmCommands, ViewToolBar->Checked);
   ViewToolBar->Checked = frmCommands->Visible;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::ViewPlaylistExecute(TObject *Sender)
+void __fastcall TfrmMain::ViewPlaylistExecute(TObject *)
 {
   frmPlaylist->Visible = !frmPlaylist->Visible;
   AnimateForm(frmPlaylist, ViewPlaylist->Checked);
@@ -990,16 +1109,19 @@ void __fastcall TfrmMain::ViewPlaylistExecute(TObject *Sender)
 
 
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::ViewVolumeExecute(TObject *Sender)
+void __fastcall TfrmMain::ViewVolumeExecute(TObject *)
 {
   frmSettings->Visible = !frmSettings->Visible;
   AnimateForm(frmSettings, ViewVolume->Checked);
   ViewVolume->Checked = frmSettings->Visible;
 }
-//---------------------------------------------------------------------------
 
+
+//---------------------------------------------------------------------------
 
 void __fastcall TfrmMain::SetIdent(void)
 {
@@ -1026,16 +1148,18 @@ AnsiString str;
   strncpy(IdentChars, str.c_str(), sizeof(IdentChars));
 }
 
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::FormDestroy(TObject *Sender)
+void __fastcall TfrmMain::FormDestroy(TObject *)
 {
   UnBind();
 }
 
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::AddressChange(TObject *Sender)
+void __fastcall TfrmMain::AddressChange(TObject *)
 {
   UnBind();
   DoBind();
@@ -1052,9 +1176,11 @@ void __fastcall TfrmMain::AddressChange(TObject *Sender)
    sbMain->Panels->Items[1]->Text = Remotestrs_sDelaying;
    }
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::LocateServersExecute(TObject *Sender)
+void __fastcall TfrmMain::LocateServersExecute(TObject *)
 {
   AnsiString EndPoint = ebEndPoint->Text;
   AnsiString Address = ebAddress->Text;
@@ -1087,9 +1213,11 @@ void __fastcall TfrmMain::LocateServersExecute(TObject *Sender)
     timerMain->Enabled = true;
   }
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::DelayTimer(TObject *Sender)
+void __fastcall TfrmMain::DelayTimer(TObject *)
 {
   if (--Delay > 0)
   {
@@ -1104,9 +1232,11 @@ void __fastcall TfrmMain::DelayTimer(TObject *Sender)
   }
 
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::RefreshEQExecute(TObject *Sender)
+void __fastcall TfrmMain::RefreshEQExecute(TObject *)
 {
    frmSettings->UpdateBars();
 }
@@ -1115,31 +1245,31 @@ void __fastcall TfrmMain::RefreshEQExecute(TObject *Sender)
 
 void _fastcall TfrmMain::DoBind(void)
 {
-  Bind((unsigned char *) ebAddress->Text.c_str(),
-       (unsigned char *) ebEndPoint->Text.c_str());
+  Bind(ebAddress->Text.c_str(), ebEndPoint->Text.c_str());
 }
+
 
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::AutoloadExecute(TObject *Sender)
+void __fastcall TfrmMain::AutoloadExecute(TObject *)
 {
   Autoload->Checked = !Autoload->Checked;
   IntegerResult(IdentChars, IPC_GETEQDATA, 11);
   IntegerResult(IdentChars, IPC_SETEQDATA, Autoload->Checked );
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::FormDockOver(TObject *Sender,
-      TDragDockObject *Source, int X, int Y, TDragState State,
-      bool &Accept)
+void __fastcall TfrmMain::FormDockOver(TObject *, TDragDockObject *, int , int , TDragState , bool &Accept)
 {
   Accept = true;
 }
+
+
 //---------------------------------------------------------------------------
 
-
-void __fastcall TfrmMain::StartDock(TObject *Sender,
-      TDragDockObject *&DragObject)
+void __fastcall TfrmMain::StartDock(TObject *Sender, TDragDockObject *&)
 {
   // set up dock targets manually
   // note DragObject is not used
@@ -1152,20 +1282,21 @@ void __fastcall TfrmMain::StartDock(TObject *Sender,
     pnlCommands->DockSite = true;
 
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::pgSettingsDockDrop(TObject *Sender,
-      TDragDockObject *Source, int X, int Y)
+void __fastcall TfrmMain::pgSettingsDockDrop(TObject *, TDragDockObject *Source, int , int )
 {
   int ImageIndex = 0;
 // set the imageindex for the dropped form
   if (Source->Control == frmSettings)
   {
-    ImageIndex = 4;
+    ImageIndex = 9;
   }
   else if (Source->Control == frmPlaylist)
   {
-    ImageIndex = 5;
+    ImageIndex = 10;
   }
 
   // set image index
@@ -1174,17 +1305,20 @@ void __fastcall TfrmMain::pgSettingsDockDrop(TObject *Sender,
   // and have a shortcut
   pgSettings->Pages[PageIndex]->Caption = "&" + pgSettings->Pages[PageIndex]->Caption;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::EndDock(TObject *Sender, TObject *Target, int X,
-      int Y)
+void __fastcall TfrmMain::EndDock(TObject *, TObject *, int , int )
 {
   pgSettings->DockSite = true;
   pnlCommands->DockSite = true;
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::DetailsExecute(TObject *Sender)
+void __fastcall TfrmMain::DetailsExecute(TObject *)
 {
   TfrmDetails *DetailsForm = new TfrmDetails(NULL);
   try
@@ -1196,10 +1330,11 @@ void __fastcall TfrmMain::DetailsExecute(TObject *Sender)
     delete DetailsForm;
   }
 }
+
+
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::sbMainDrawPanel(TStatusBar *StatusBar,
-      TStatusPanel *Panel, const TRect &Rect)
+void __fastcall TfrmMain::sbMainDrawPanel(TStatusBar *StatusBar, TStatusPanel *, const TRect &Rect)
 {
   imlTrayIcons->Draw(StatusBar->Canvas, Rect.Left + 3, Rect.Top + 3, fIconIndex, true);
 }
@@ -1231,79 +1366,419 @@ void __fastcall TfrmMain::AnimateForm(TForm * Form, bool FormVisible)
 
 
 
-
-void __fastcall TfrmMain::SetLanguageExecute(TObject *Sender)
-{
-
-  // save some state for the child forms
-  bool CommandsVisible, PlaylistVisible, SettingsVisible,
-          CommandsDocked, PlaylistDocked, SettingsDocked;
-
-  CommandsVisible = frmCommands->Visible;
-  CommandsDocked = frmCommands->HostDockSite;
-  PlaylistVisible = frmPlaylist->Visible;
-  PlaylistDocked = frmPlaylist->HostDockSite;
-  SettingsVisible = frmSettings->Visible;
-  SettingsDocked = frmSettings->HostDockSite;
-
-
-  if (LoadNewResourceModule(((TComponent*)Sender)->Tag) != 0)
-  {
-
-    // reinitialise the application resources
-    // hide the lot
-    frmCommands->Hide();
-    frmPlaylist->Hide();
-    frmSettings->Hide();
-    // undock the lot
-    if (CommandsDocked)
-      frmCommands->ManualFloat(frmCommands->BoundsRect);
-
-
-    ReinitializeForms();
-
-    // now some of the docked forms may
-    // look a little odd after reinitialising
-    // and need their state reset
-
-    // for instance, the commands bar sprouts a non-client area
-    // the playlist will have the list cleared, and needs refreshing
-
-    frmCommands->Visible = CommandsVisible;
-    frmPlaylist->Visible = PlaylistVisible;
-    frmSettings->Visible = SettingsVisible;
-
-    if (CommandsDocked)
-    {
-      // DragObject is not used
-      StartDock(frmCommands, NULL);
-      frmCommands->ManualDock(pnlCommands, NULL, alTop);
-      EndDock(frmCommands, NULL, 0,0);
-    }
-
-
-    SetLanguageMenu(Sender);
-
-  }
-
-}
-
-//---------------------------------------------------------------------------
-
 void __fastcall TfrmMain::SetLanguageMenu(TObject *Sender)
 {
-    mnuEnglishUS ->Checked = mnuEnglishUS == Sender;
-    mnuEnglishUK ->Checked = mnuEnglishUK == Sender;
+    mnuEnglishUS->Checked = mnuEnglishUS == Sender;
+    mnuEnglishUK->Checked = mnuEnglishUK == Sender;
     mnuGerman->Checked  = mnuGerman == Sender;
     mnuFrench->Checked  = mnuFrench == Sender;
     mnuDutch->Checked  = mnuDutch == Sender;
 
 }
 
+
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::PreviousFadeExecute(TObject *)
+{
+  StopFade->Execute();
+  Previous->Execute();
+  Play->Execute();
+
+}
+
+
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::SongChangingExecute(TObject *)
+{
+  // if special actions required, this action can do them
+  if (chkFadeOld->Checked)
+    StopFade->Execute();
+
+}
+
+
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::SongChangedExecute(TObject *)
+{
+  // if special actions required, this action can do them
+}
+
+
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::NewSongExecute(TObject *)
+{
+  // gets the index from the playlist form
+  SongChanging->Execute();
+  IntegerResult(IdentChars, IPC_SETPLAYLISTPOS, frmPlaylist->lstSongs->ItemIndex);
+  Play->Execute();
+  SongChanged->Execute();
+
+}
+
+
+//---------------------------------------------------------------------------
+
+/*
+void __fastcall TfrmMain::CountTimesExecute(TObject *)
+{
+  try
+  {
+    try
+    {
+      int i, Index, SongS, PlayListS;
+      TStringList * StringList;
+
+      Screen->Cursor = crHourGlass;
+      Querying = true;
+      IconHandle();
+      sbMain->Update();
+      TrayMessage(NIM_MODIFY);
+
+      Index = IntegerResult(IdentChars, IPC_GETLISTPOS, 0);
+
+      void * buf = NULL;
+      int bufsize = 0;
+
+      StringList = new TStringList;
+      try
+      {
+        GetStringDataList(IdentChars, &buf, bufsize, IPC_GETPLAYLISTTITLE, IPC_GETOUTPUTTIME, 1);
+
+        if (buf)
+        {
+          StringList->Text = (char *) buf;
+          delete buf;
+        }
+
+        PlayListS = 0;
+        for (i = 0 ; i < StringList->Count - 2 ; i += 2)
+        {
+          SongS = StringList->Strings[i + 1].ToIntDef(0);
+          PlayListS += SongS;
+        }
+
+      }
+      __finally
+      {
+        delete StringList;
+      }
+
+
+      AnsiString TimeFmt = "%02d:%02d:%02d";
+      Word Hour, Minute, Second, MSec;
+
+      TDateTime PlayListTime = (float) PlayListS / (SecsPerDay);
+      DecodeTime(PlayListTime, Hour, Minute, Second, MSec);
+      Hour +=  24 * floor(PlayListTime);
+
+      frmPlaylist->sbPlaylist->Panels->Items[5]->Text =
+                                        AnsiString().sprintf(TimeFmt.c_str(), Hour, Minute, Second);
+
+
+      // reset the currently playing song
+      IntegerResult(IdentChars, IPC_SETPLAYLISTPOS, Index);
+
+    }
+    catch( ERPCException &E)
+    {
+      //
+    }
+
+  }
+  __finally
+  {
+    Screen->Cursor = crDefault;
+
+    Querying = false;
+    IconHandle();
+    sbMain->Update();
+
+    TrayMessage(NIM_MODIFY);
+
+  }
+
+}
+*/
+
+
+
+
+void __fastcall TfrmMain::alMainExecute(TBasicAction *Action, bool &)
+{
+  OutputDebugString(Action->Name.c_str());
+}
+
+
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
+{
+
+  if ((frmSplash) && (frmSplash->Visible))
+  {
+    frmSplash->lblMessage->Caption = Remotestrs_sGettingPlaylist;
+    frmSplash->Update();
+  }
+
+  frmPlaylist->lstSongs->Items->BeginUpdate();
+  try
+  {
+    try
+    {
+
+      Screen->Cursor = crHourGlass;
+      Querying = true;
+      IconHandle();
+      sbMain->Update();
+      TrayMessage(NIM_MODIFY);
+
+
+      LastLength = IntegerResult(IdentChars, IPC_GETLISTLENGTH, 0);
+      LastIndex = CurrentIndex;
+      CurrentIndex = IntegerResult(IdentChars, IPC_GETLISTPOS, 0);
+
+      frmPlaylist->lstSongs->Items->Clear();
+
+      void * buf = NULL;
+      int bufsize = 0;
+      TStringList * SongList = new TStringList;
+      try
+      {
+
+        //GetStringDataList(IdentChars, &buf, bufsize, IPC_GETPLAYLISTTITLE, IPC_GETOUTPUTTIME, 1);
+        // char * pszString, void ** Buffer, int& Size, int Command
+        GetStringList(IdentChars, &buf, bufsize, IPC_GETPLAYLISTTITLE);
+
+
+
+        SongList->Clear();
+        if (bufsize)
+          SongList->Text = (char *) buf;
+
+        //run through, removing the data items in-place
+        /*
+        for (int i = 0 ; i < SongList->Count ; i++)
+        {
+          int SongTime = SongList->Strings[i + 1].ToIntDef(-1);
+          SongList->Delete(i + 1);
+          SongList->Objects[i] = (TObject *) SongTime;
+        }
+        */
+
+        // after fixing up the returned StringList
+        frmPlaylist->lstSongs->Items->Assign(SongList);
+
+      }
+      __finally
+      {
+        delete SongList;
+      }
+
+      if (buf)
+        delete buf;
+
+    }
+    catch( ERPCException &E)
+    {
+      frmPlaylist->lstSongs->Items->Text = AnsiString().sprintf(Remotestrs_sListUnobtainable.c_str(), E.Message.c_str());
+    }
+
+  }
+  __finally
+  {
+    Screen->Cursor = crDefault;
+
+    Querying = false;
+    IconHandle();
+    sbMain->Update();
+
+    TrayMessage(NIM_MODIFY);
+
+    frmPlaylist->lstSongs->Items->EndUpdate();
+    if ((frmSplash) && (frmSplash->Visible))
+    {
+      frmSplash->lblMessage->Caption = Remotestrs_sGettingPlaylist;
+      frmSplash->Update();
+    }
+  }
+
+}
+
+
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::PlaylistRefreshCurrentExecute(TObject *)
+{
+
+  /*
+  char title[sizeof(IdentChars)];
+  // needed to ensure we can see the currently playing track
+
+  strcpy(title, IdentChars);
+  int SongS = IntegerResult(title, IPC_GETOUTPUTTIME, 1);
+  strcpy(title, IdentChars);
+  // update the current title, at least
+  StringResult(title, IPC_GETPLAYLISTTITLE, CurrentIndex);
+
+  if ((frmPlaylist->lstSongs->Items->Count - 1) > CurrentIndex)
+  {
+    bool Selected = frmPlaylist->lstSongs->Selected[CurrentIndex];
+    frmPlaylist->lstSongs->Items->Strings[CurrentIndex] = (title);
+    frmPlaylist->lstSongs->Items->Objects[CurrentIndex] = (TObject * ) SongS;
+    frmPlaylist->lstSongs->Selected[CurrentIndex] = Selected;
+  }
+
+  // much neater...
+  frmPlaylist->lstSongs->TopIndex = CurrentIndex - 2;
+  frmPlaylist->lstSongs->Update();
+  */
+
+}
+
+
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::PlaylistRefreshStatsExecute(TObject *)
+{
+
+  int SongS = IntegerResult(frmMain->IdentChars, IPC_GETOUTPUTTIME, 1);
+
+  if ((SongS) && (!frmPlaylist->Dragging))
+  {
+    int PosMS = IntegerResult (frmMain->IdentChars, IPC_GETOUTPUTTIME, 0);
+    frmPlaylist->pbSongPos->Position = (frmPlaylist->pbSongPos->Max * PosMS) / (SongS * 1000);
+  }
+
+  if (frmPlaylist->lstSongs->Items->Count > 1)
+    frmPlaylist->pbListPos->Position = (frmPlaylist->pbListPos->Max * CurrentIndex) /
+                                       (frmPlaylist->lstSongs->Items->Count - 1);
+  else
+    frmPlaylist->pbListPos->Position = 0;
+
+  // time
+  frmPlaylist->sbPlaylist->Panels->Items[1]->Text = TimeToStr(Time());
+  // current song length
+  frmPlaylist->sbPlaylist->Panels->Items[3]->Text = TimeToStr((float) SongS / SecsPerDay);
+
+}
 //---------------------------------------------------------------------------
 
 
+void __fastcall TfrmMain::DoAddFiles(TStrings * Files)
+{
+  Screen->Cursor = crHourGlass;
+  try
+  {
+    SetStringList(frmMain->IdentChars, Files->Text.c_str(), Files->Text.Length() + 1, IPC_PLAYFILE);
+  }
+  __finally
+  {
+    Screen->Cursor = crDefault;
+  }
+}
+
+void __fastcall TfrmMain::DoDeleteSelected(void)
+{
+  int i;
+  Screen->Cursor = crAppStart;
+  TStringList * StringList = new TStringList;
+  try
+  {
+  /* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
+
+    void * buf = NULL;
+    int bufsize = 0;
+
+    GetStringList(IdentChars, &buf, bufsize, IPC_GETPLAYLISTFILE);
+
+    if (bufsize)
+      StringList->Text = (char *) buf;
+
+    if (buf)
+      delete buf;
+
+    for (i = frmPlaylist->lstSongs->Items->Count - 1 ; i >= 0 ; i--)
+    {
+      if (frmPlaylist->lstSongs->Selected[i])
+      {
+        StringList->Delete(i);
+         if (i < CurrentIndex)
+            CurrentIndex--;
+      }
+    } // for
+
+    // delete current
+    IntegerResult(IdentChars, IPC_DELETE, 0);
+
+    // add remaining
+    DoAddFiles(StringList);
+    // reset position
+
+    IntegerResult(IdentChars, IPC_SETPLAYLISTPOS, CurrentIndex);
+
+    PlaylistRefresh->Execute();
+  }
+  __finally
+  {
+    delete StringList;
+    Screen->Cursor = crDefault;
+  }
+
+}
 
 
+void __fastcall TfrmMain::GetFilenames(int Start, int Stop, TStringList * Files)
+{
+
+int i;
+
+char filename[RET_STR_SIZE];
+char saveident[RET_STR_SIZE];
+
+  // cache this
+  strcpy(saveident, IdentChars);
+
+  for (i = Start ; i < Stop; i++)
+  {
+    strcpy(filename, saveident);
+    StringResult(filename, IPC_GETPLAYLISTFILE, i);
+    Files->Add(filename);
+  } // for
+
+}
 
 
+void __fastcall TfrmMain::DropFiles(TStringList *, int DropIndex)
+{
+  TStringList * Files = new TStringList;
+  int NewPos;
+
+
+  // get the top of the list
+  if (DropIndex > -1)
+    GetFilenames(0, DropIndex, Files);
+  else
+    GetFilenames(0, frmPlaylist->lstSongs->Items->Count, Files);
+
+
+  // get the rest of the list;
+  if (DropIndex > -1)
+    GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count, Files);
+
+  // delete
+  IntegerResult(frmMain->IdentChars, IPC_DELETE, 0);
+
+  DoAddFiles(Files);
+  // reset position here
+
+  // AAAACK - used to be a "magic object"
+  NewPos = Files->IndexOfObject((TObject *) true);
+  IntegerResult(IdentChars, IPC_SETPLAYLISTPOS, NewPos);
+
+  PlaylistRefresh->Execute();
+  
+}

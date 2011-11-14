@@ -38,8 +38,10 @@ __fastcall TfrmDetails::TfrmDetails(TComponent* Owner)
         : TForm(Owner)
 {
 }
+
+
 //---------------------------------------------------------------------------
-void __fastcall TfrmDetails::FormCreate(TObject *Sender)
+void __fastcall TfrmDetails::FormCreate(TObject *)
 {
 
   Icon->Handle = Application->Icon->Handle;

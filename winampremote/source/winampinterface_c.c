@@ -2,7 +2,7 @@
 
 
 /* File created by MIDL compiler version 5.01.0164 */
-/* at Mon May 19 20:34:02 2008
+/* at Sat May 17 20:55:06 2008
  */
 /* Compiler settings for winampinterface.idl:
     Os (OptLev=s), W1, Zp8, env=Win32
@@ -19,7 +19,7 @@
 #include "winampinterface.h"
 
 #define TYPE_FORMAT_STRING_SIZE   51                                
-#define PROC_FORMAT_STRING_SIZE   75                                
+#define PROC_FORMAT_STRING_SIZE   91                                
 
 typedef struct _MIDL_TYPE_FORMAT_STRING
     {
@@ -382,7 +382,7 @@ void WAShutdown( void)
 }
 
 
-void WASendList( 
+void WASetStringList( 
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in][size_is] */ byte __RPC_FAR Buffer[  ],
     /* [in] */ unsigned long BufferLength,
@@ -448,7 +448,7 @@ void WASendList(
 }
 
 
-void WAGetList( 
+void WAGetStringList( 
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [out] */ BUFFER __RPC_FAR *pBuffer,
     /* [in] */ long command)
@@ -490,6 +490,71 @@ void WAGetList(
         
         if ( (_RpcMessage.DataRepresentation & 0X0000FFFFUL) != NDR_LOCAL_DATA_REPRESENTATION )
             NdrConvert( (PMIDL_STUB_MESSAGE) &_StubMsg, (PFORMAT_STRING) &__MIDL_ProcFormatString.Format[62] );
+        
+        NdrSimpleStructUnmarshall( (PMIDL_STUB_MESSAGE) &_StubMsg,
+                                   (unsigned char __RPC_FAR * __RPC_FAR *)&pBuffer,
+                                   (PFORMAT_STRING) &__MIDL_TypeFormatString.Format[30],
+                                   (unsigned char)0 );
+        
+        }
+    RpcFinally
+        {
+        NdrFreeBuffer( (PMIDL_STUB_MESSAGE) &_StubMsg );
+        
+        }
+    RpcEndFinally
+    
+}
+
+
+void WAGetStringDataList( 
+    /* [string][in] */ unsigned char __RPC_FAR *pszString,
+    /* [out] */ BUFFER __RPC_FAR *pBuffer,
+    /* [in] */ long stringcommand,
+    /* [in] */ long datacommand,
+    /* [in] */ long datadata)
+{
+
+    RPC_BINDING_HANDLE _Handle	=	0;
+    
+    RPC_MESSAGE _RpcMessage;
+    
+    MIDL_STUB_MESSAGE _StubMsg;
+    
+    RpcTryFinally
+        {
+        NdrClientInitializeNew(
+                          ( PRPC_MESSAGE  )&_RpcMessage,
+                          ( PMIDL_STUB_MESSAGE  )&_StubMsg,
+                          ( PMIDL_STUB_DESC  )&winamp_StubDesc,
+                          8);
+        
+        
+        _Handle = winamp_IfHandle;
+        
+        
+        _StubMsg.BufferLength = 12U + 11U + 7U + 7U;
+        NdrConformantStringBufferSize( (PMIDL_STUB_MESSAGE) &_StubMsg,
+                                       (unsigned char __RPC_FAR *)pszString,
+                                       (PFORMAT_STRING) &__MIDL_TypeFormatString.Format[4] );
+        
+        NdrGetBuffer( (PMIDL_STUB_MESSAGE) &_StubMsg, _StubMsg.BufferLength, _Handle );
+        
+        NdrConformantStringMarshall( (PMIDL_STUB_MESSAGE)& _StubMsg,
+                                     (unsigned char __RPC_FAR *)pszString,
+                                     (PFORMAT_STRING) &__MIDL_TypeFormatString.Format[4] );
+        
+        _StubMsg.Buffer = (unsigned char __RPC_FAR *)(((long)_StubMsg.Buffer + 3) & ~ 0x3);
+        *(( long __RPC_FAR * )_StubMsg.Buffer)++ = stringcommand;
+        
+        *(( long __RPC_FAR * )_StubMsg.Buffer)++ = datacommand;
+        
+        *(( long __RPC_FAR * )_StubMsg.Buffer)++ = datadata;
+        
+        NdrSendReceive( (PMIDL_STUB_MESSAGE) &_StubMsg, (unsigned char __RPC_FAR *) _StubMsg.Buffer );
+        
+        if ( (_RpcMessage.DataRepresentation & 0X0000FFFFUL) != NDR_LOCAL_DATA_REPRESENTATION )
+            NdrConvert( (PMIDL_STUB_MESSAGE) &_StubMsg, (PFORMAT_STRING) &__MIDL_ProcFormatString.Format[74] );
         
         NdrSimpleStructUnmarshall( (PMIDL_STUB_MESSAGE) &_StubMsg,
                                    (unsigned char __RPC_FAR * __RPC_FAR *)&pBuffer,
@@ -671,6 +736,30 @@ static const MIDL_PROC_FORMAT_STRING __MIDL_ProcFormatString =
 /* 70 */	0x4e,		/* FC_IN_PARAM_BASETYPE */
 			0x8,		/* FC_LONG */
 /* 72 */	0x5b,		/* FC_END */
+			0x5c,		/* FC_PAD */
+/* 74 */	
+			0x4d,		/* FC_IN_PARAM */
+#ifndef _ALPHA_
+			0x1,		/* x86, MIPS & PPC Stack size = 1 */
+#else
+			0x2,		/* Alpha Stack size = 2 */
+#endif
+/* 76 */	NdrFcShort( 0x2 ),	/* Type Offset=2 */
+/* 78 */	
+			0x51,		/* FC_OUT_PARAM */
+#ifndef _ALPHA_
+			0x1,		/* x86, MIPS & PPC Stack size = 1 */
+#else
+			0x2,		/* Alpha Stack size = 2 */
+#endif
+/* 80 */	NdrFcShort( 0x10 ),	/* Type Offset=16 */
+/* 82 */	0x4e,		/* FC_IN_PARAM_BASETYPE */
+			0x8,		/* FC_LONG */
+/* 84 */	0x4e,		/* FC_IN_PARAM_BASETYPE */
+			0x8,		/* FC_LONG */
+/* 86 */	0x4e,		/* FC_IN_PARAM_BASETYPE */
+			0x8,		/* FC_LONG */
+/* 88 */	0x5b,		/* FC_END */
 			0x5c,		/* FC_PAD */
 
 			0x0

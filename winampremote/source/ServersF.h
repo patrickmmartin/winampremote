@@ -20,11 +20,6 @@ __published:	// IDE-managed Components
         TImageList *imlEvents;
         TPanel *pnlPages;
         TProgressBar *pbServers;
-        TPageControl *pgcServers;
-        TTabSheet *tbsServers;
-        TListView *lvServers;
-        TTabSheet *tbsMessages;
-        TListView *lvMessages;
         TPanel *pnlTop;
         TLabel *lblEndPoint;
         TEdit *ebEndPoint;
@@ -34,22 +29,24 @@ __published:	// IDE-managed Components
         TButton *btnTest;
         TButton *btnLocate;
         TButton *btnGetIp;
+        TStatusBar *StatusBar1;
+        TListView *lvServers;
+        TSplitter *spltMessages;
+        TListView *lvMessages;
         void __fastcall btnLocateClick(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
-        void __fastcall lstMessagesMeasureItem(TWinControl *Control,
-          int Index, int &Height);
-        void __fastcall lstMessagesDrawItem(TWinControl *Control,
-          int Index, TRect &Rect, TOwnerDrawState State);
         void __fastcall lvServersClick(TObject *Sender);
         void __fastcall StartTest(TObject *Sender);
         void __fastcall StopTest(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall btnOKClick(TObject *Sender);
         void __fastcall GetServerIp(TObject *Sender);
+        void __fastcall spltMessagesCanResize(TObject *Sender,
+          int &NewSize, bool &Accept);
 private:	// User declarations
 
 void __fastcall NetErrorHandler(DWORD dwErrorCode, AnsiString Function);
-void __fastcall DisplayStruct(LPNETRESOURCE NetResource);
+void __fastcall HandleResource(NETRESOURCE NetResource);
 BOOL __fastcall EnumerateFunc(LPNETRESOURCE lpnr);
 void __fastcall AddServer(char * RemoteName, char * Comment);
 void __fastcall AddMessage(AnsiString Message, int Level);

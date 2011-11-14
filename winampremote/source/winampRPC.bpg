@@ -9,35 +9,32 @@ MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
 DCC = $(ROOT)\bin\dcc32.exe $**
 BRCC = $(ROOT)\bin\brcc32.exe $**
 #------------------------------------------------------------------------------
-PROJECTS = RUNMIDL.BAT remote.exe remote.DEU remote.NLD gen_RPCinterface \
-  conremote.exe clientdll.dll clientnetmsrpc.dll
+PROJECTS = clean.bat RUNMIDL.BAT paslib.lib gen_RPCinterface.dll remote.exe \
+  winampclient.dll conremote.exe
 #------------------------------------------------------------------------------
 default: $(PROJECTS)
 #------------------------------------------------------------------------------
 
-gen_RPCinterface: gen_RPCinterface.bpr
-  $(MAKE)
-
-clientdll.dll: clientdll.bpr
-  $(MAKE)
-
-conremote.exe: conremote.bpr
+gen_RPCinterface.dll: gen_RPCinterface.bpr
   $(MAKE)
 
 remote.exe: remote.bpr
   $(MAKE)
 
-remote.DEU: DEU\remote.bpr
+paslib.lib: paslib.bpr
+  $(ROOT)\bin\bpr2mak -t$(ROOT)\bin\deflib.bmk $**
+  $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
+
+conremote.exe: conremote.bpr
   $(ROOT)\bin\bpr2mak $**
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 
-remote.NLD: NLD\remote.bpr
+winampclient.dll: winampclient.bpr
   $(ROOT)\bin\bpr2mak $**
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 
-clientnetmsrpc.dll: clientnetmsrpc.bpr
-  $(ROOT)\bin\bpr2mak $**
-  $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
+clean.bat: clean.bat
+  call $**
 
 RUNMIDL.BAT: RUNMIDL.BAT
   call $**

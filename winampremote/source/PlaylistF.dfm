@@ -1,8 +1,8 @@
 object frmPlaylist: TfrmPlaylist
-  Left = 344
-  Top = 274
-  Width = 286
-  Height = 188
+  Left = 512
+  Top = 197
+  Width = 423
+  Height = 276
   BorderIcons = [biSystemMenu]
   Caption = 'Playlist'
   Color = clBtnFace
@@ -19,6 +19,7 @@ object frmPlaylist: TfrmPlaylist
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnEndDock = FormEndDock
+  OnResize = FormResize
   OnShow = FormShow
   OnStartDock = FormStartDock
   PixelsPerInch = 96
@@ -26,8 +27,8 @@ object frmPlaylist: TfrmPlaylist
   object lstSongs: TListBox
     Left = 0
     Top = 0
-    Width = 278
-    Height = 132
+    Width = 415
+    Height = 201
     Hint = 'Playlist view -drag files to the desired location'
     Align = alClient
     DragMode = dmAutomatic
@@ -47,8 +48,8 @@ object frmPlaylist: TfrmPlaylist
   end
   object pnlBottom: TPanel
     Left = 0
-    Top = 132
-    Width = 278
+    Top = 201
+    Width = 415
     Height = 28
     Align = alBottom
     AutoSize = True
@@ -59,7 +60,7 @@ object frmPlaylist: TfrmPlaylist
     object pbSongPos: TProgressBar
       Left = 0
       Top = 0
-      Width = 274
+      Width = 411
       Height = 12
       Hint = 'track position - click to move '
       Align = alBottom
@@ -75,7 +76,7 @@ object frmPlaylist: TfrmPlaylist
     object pbListPos: TProgressBar
       Left = 0
       Top = 12
-      Width = 274
+      Width = 411
       Height = 12
       Hint = 'songlist position'
       Align = alBottom
@@ -86,15 +87,37 @@ object frmPlaylist: TfrmPlaylist
       TabOrder = 1
     end
   end
+  object sbPlaylist: TStatusBar
+    Left = 0
+    Top = 229
+    Width = 415
+    Height = 19
+    Panels = <
+      item
+        Text = 'time'
+        Width = 50
+      end
+      item
+        Width = 60
+      end
+      item
+        Text = 'length'
+        Width = 50
+      end
+      item
+        Width = 60
+      end>
+    SimplePanel = False
+  end
   object pmnuSongs: TPopupMenu
     Images = frmMain.imlActions
     OnPopup = pmnuSongsPopup
-    Left = 80
-    Top = 72
+    Left = 136
+    Top = 65528
     object mnuRefresh: TMenuItem
       Caption = 'Refresh List'
       ImageIndex = 5
-      OnClick = SongsRefresh
+      OnClick = mnuRefreshClick
     end
     object mnuPlay: TMenuItem
       Caption = 'Play This Item'
@@ -116,17 +139,14 @@ object frmPlaylist: TfrmPlaylist
     object mnuSort: TMenuItem
       Caption = 'Sort by title'
       Visible = False
-      OnClick = mnuSortClick
     end
     object mnuSortFile: TMenuItem
       Caption = 'Sort by filename'
       Visible = False
-      OnClick = mnuSortClick
     end
     object mnuSortFileEntire: TMenuItem
       Caption = 'Sort by entire filename'
       Visible = False
-      OnClick = mnuSortClick
     end
   end
 end

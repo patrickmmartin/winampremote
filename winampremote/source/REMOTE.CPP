@@ -24,30 +24,28 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #pragma hdrstop
 #include "SplashF.h"
 
-USERES("remote.res");
 USEFORM("AboutF.cpp", frmAbout);
 USEFORM("SettingsF.cpp", frmSettings);
 USEFORM("CommandF.cpp", frmCommands);
-USEUNIT("winampinterface_c.c");
 USEFORM("ServersF.cpp", frmServers);
-USEUNIT("RFC1060U.cpp");
-USEUNIT("IPAddressU.cpp");
-USEUNIT("ColourU.cpp");
-USEUNIT("RPCFuncsU.cpp");
-USEUNIT("VersionInfoU.cpp");
 USEFORM("DetailsF.cpp", frmDetails);
-USEUNIT("waint.cpp");
 USEFORM("PlaylistF.cpp", frmPlaylist);
 USEFORM("SplashF.cpp", frmSplash);
 USEFORM("MainF.cpp", frmMain);
 USEFORM("messageF.cpp", frmMessage);
 USEUNIT("waintstrs.pas");
 USEUNIT("remotestrs.pas");
-USEUNIT("reinit.pas");
-USEIDL("winampinterface.idl");
-USE("winampinterface.acf", File);
+USEUNIT("winampinterface_c.c");
+USEUNIT("RPCFuncsU.cpp");
+USEUNIT("binding.c");
+USEUNIT("WAINT.CPP");
+USEUNIT("ColourU.cpp");
+USEUNIT("RFC1060U.CPP");
+USEUNIT("IPAddressU.cpp");
+USEUNIT("VersionInfoU.cpp");
 //---------------------------------------------------------------------------
 #include "remotestrs.hpp"
+#include "waintstrs.hpp"
 //---------------------------------------------------------------------------
 HINSTANCE g_hinst;
 

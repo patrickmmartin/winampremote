@@ -18,11 +18,6 @@ __published:	// IDE-managed Components
     TToolButton *tbtnPause;
     TToolButton *tbtnStop;
     TToolButton *tbtnNext;
-    void __fastcall tbtnPreviousClick(TObject *Sender);
-    void __fastcall tbtnPlayClick(TObject *Sender);
-    void __fastcall tbtnPauseClick(TObject *Sender);
-    void __fastcall tbtnStopClick(TObject *Sender);
-    void __fastcall tbtnNextClick(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall FormStartDock(TObject *Sender,
           TDragDockObject *&DragObject);

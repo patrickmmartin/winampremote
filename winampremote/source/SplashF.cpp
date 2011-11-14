@@ -35,10 +35,10 @@ __fastcall TfrmSplash::TfrmSplash(TComponent* Owner)
     : TForm(Owner)
 {
 }
+
 //---------------------------------------------------------------------------
 
-
-void __fastcall TfrmSplash::FormCreate(TObject *Sender)
+void __fastcall TfrmSplash::FormCreate(TObject *)
 {
   Caption = Remotestrs_sWinampRemoteLoading;
 }

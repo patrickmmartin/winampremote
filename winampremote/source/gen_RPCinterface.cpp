@@ -24,18 +24,16 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #pragma hdrstop
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-USERES("gen_RPCinterface.res");
 USEFORM("AboutF.cpp", frmAbout);
-USEUNIT("gen_plugin.cpp");
-USEUNIT("rpcthreadDLL.cpp");
-USEUNIT("waint.cpp");
 USEFORM("ServerDLLF.cpp", frmMain);
 USEFORM("ConfigDLLF.cpp", ConfigForm);
-USEUNIT("winampinterface_s.c");
-USEUNIT("RFC1060U.cpp");
-USEIDL("winampinterface.idl");
-USEUNIT("VersionInfoU.cpp");
 USEFORM("DetailsF.cpp", frmDetails);
+USEUNIT("gen_plugin.cpp");
+USEUNIT("VersionInfoU.cpp");
+USEUNIT("rpcthreadDLL.cpp");
+USEUNIT("WAINT.CPP");
+USEUNIT("RFC1060U.CPP");
+USEUNIT("winampinterface_s.c");
 USEUNIT("waintstrs.pas");
 USEUNIT("remotestrs.pas");
 //---------------------------------------------------------------------------
@@ -48,6 +46,7 @@ int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void*)
 
   switch(reason){
     case DLL_PROCESS_ATTACH :
+      DisableThreadLibraryCalls(hinst);
     break;
 
     case DLL_THREAD_ATTACH :

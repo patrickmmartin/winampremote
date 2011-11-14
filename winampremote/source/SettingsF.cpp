@@ -55,26 +55,25 @@ void __fastcall TfrmSettings::tbBalanceEnter(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmSettings::tbVolumeChange(TObject *Sender)
+void __fastcall TfrmSettings::tbVolumeChange(TObject *)
 {
   IntegerResult(frmMain->IdentChars, IPC_SETVOLUME, tbVolume->Position);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmSettings::tbBalanceChange(TObject *Sender)
+void __fastcall TfrmSettings::tbBalanceChange(TObject *)
 {
   IntegerResult(frmMain->IdentChars, IPC_SETPANNING, tbBalance->Position);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmSettings::FormClose(TObject *Sender,
-      TCloseAction &Action)
+void __fastcall TfrmSettings::FormClose(TObject *, TCloseAction &)
 {
   frmMain->ViewVolume->Execute();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmSettings::FormCreate(TObject *Sender)
+void __fastcall TfrmSettings::FormCreate(TObject *)
 {
 
   Bars = new TList;
@@ -96,7 +95,7 @@ void __fastcall TfrmSettings::FormCreate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmSettings::FormDestroy(TObject *Sender)
+void __fastcall TfrmSettings::FormDestroy(TObject *)
 {
   delete Bars;
 }

@@ -4,49 +4,48 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\conremote.exe"/>
-    <OBJFILES value="..\obj\conremote.obj"/>
+    <OBJFILES value="..\obj\conremote.obj ..\obj\RPCFuncsU.obj ..\obj\WAINT.obj 
+      ..\obj\winampinterface_c.obj ..\obj\waintstrs.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
     <LIBFILES value=""/>
-    <LIBRARIES value="Vcl50.lib"/>
-    <SPARELIBS value="Vcl50.lib"/>
-    <PACKAGES value="vcl50.bpi vclx50.bpi bcbsmp50.bpi dclocx50.bpi CPORTLIBCB4.bpi traypkg.bpi 
-      qrpt50.bpi vcldb50.bpi vclbde50.bpi ibsmp50.bpi vcldbx50.bpi nmfast50.bpi 
-      DCLUSR50.bpi ZipBuild.bpi"/>
-    <PATHCPP value=".;"/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value="vcl50.lib vclx50.lib"/>
+    <PACKAGES value="vclx50.bpi vcl50.bpi"/>
+    <PATHCPP value=".;..\obj"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="ilink32"/>
-    <USERDEFINES value=""/>
-    <SYSDEFINES value="_NO_VCL;_VIS_NOLIB"/>
-    <MAINSOURCE value="conremote.cpp"/>
-    <INCLUDEPATH value="$(BCB)\include"/>
-    <LIBPATH value="$(BCB)\lib"/>
-    <WARNINGS value=""/>
+    <USERDEFINES value="WIN32_LEAN_AND_MEAN;_DEBUG"/>
+    <SYSDEFINES value="NO_STRICT;_RTLDLL;USEPACKAGES"/>
+    <MAINSOURCE value="conremote.bpf"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\obj"/>
+    <WARNINGS value="-wuse -w-par -w-8027 -w-8026"/>
     <WARNOPTSTR value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-src_suffix cpp -boa"/>
-    <CFLAG1 value="-Od -w -Tkh30000 -X- -r- -a8 -b -k -y -v -vi- -c -tWM -tWC"/>
-    <PFLAGS value="-N2..\obj -N0..\obj -$YD -$W -$O- -v -JPHN -M"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -xp -Tkh30000 -fp -X- -r- -a8 -b- 
+      -k -y -v -vi- -tWC -tWM -c"/>
+    <PFLAGS value="-N2..\obj -N0..\obj -$Y+ -$W -$U -$O- -v -M -JPHNE"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-I..\obj -D&quot;&quot; -ap -Tpe -x -Gn -v"/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="-I..\obj -D&quot;&quot; -ap -Tpe -GD -x -v"/>
   </OPTIONS>
   <LINKER>
-    <ALLOBJ value="c0x32.obj $(OBJFILES)"/>
+    <ALLOBJ value="c0x32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
     <ALLRES value="$(RESFILES)"/>
-    <ALLLIB value="$(LIBFILES) import32.lib cw32mt.lib"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
   </LINKER>
   <IDEOPTIONS>
 [Version Info]
 IncludeVerInfo=1
-AutoIncBuild=0
+AutoIncBuild=1
 MajorVer=1
 MinorVer=0
 Release=0
@@ -72,28 +71,54 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=1
-Item0=$(BCB)\include
+Count=7
+Item0=$(BCB)\include;$(BCB)\include\vcl
+Item1=..\..\..\..\Program Files\Borland\CBuilder4\Source\Vcl;..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl
+Item2=..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl
+Item3=..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\Cbuilder4\RPC\winamp05;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl
+Item4=..\..\..\Cbuilder4\RPC\winamp05;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl
+Item5=..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl
+Item6=..\rpcwinamp0.5;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
+Count=9
+Item0=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\obj
+Item1=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item2=$(BCB)\Projects\Lib;C:\Program Files\Borland\CBuilder4\Source\Vcl\;C:\Program Files\Borland\CBuilder4\Projects\;C:\program files\borland\cbuilder3\projects\;..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib
+Item3=$(BCB)\Projects\Lib;..\..\..\..\Program Files\Borland\CBuilder4\Source\Vcl;..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib
+Item4=..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib
+Item5=..\..\..\..\Program Files\Borland\CBuilder4\Projects;..\..\..\Cbuilder4\RPC\winamp05;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib
+Item6=..\..\..\Cbuilder4\RPC\winamp05;..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib
+Item7=..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib
+Item8=..\rpcwinamp0.5;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
 Count=1
-Item0=$(BCB)\lib
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=4
+Item0=WIN32_LEAN_AND_MEAN;_DEBUG
+Item1=WIN32_LEAN_AND_MEAN
+Item2=USEPACKAGES
+Item3=_RTLDLL;USEPACKAGES
 
 [HistoryLists\hlIntOutputDir]
 Count=3
 Item0=..\obj
-Item1=bin
-Item2=.\bin
+Item1=obj
+Item2=bin
 
 [HistoryLists\hlFinalOutputDir]
-Count=1
-Item0=..\bin
+Count=2
+Item0=..\bin\
+Item1=..\bin
 
 [Debugging]
-DebugSourceDirs=
+DebugSourceDirs=$(BCB)\source\vcl
 
 [Parameters]
-RunParams=8000
+RunParams=
 HostApplication=
 RemoteHost=
 RemotePath=
@@ -101,7 +126,7 @@ RemoteDebug=0
 
 [Compiler]
 ShowInfoMsgs=0
-LinkDebugVcl=1
+LinkDebugVcl=0
 LinkCGLIB=0
 
 [Language]

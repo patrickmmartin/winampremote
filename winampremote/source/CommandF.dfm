@@ -1,6 +1,6 @@
 object frmCommands: TfrmCommands
-  Left = 450
-  Top = 311
+  Left = 482
+  Top = 218
   Hint = 'Play Commands'
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -39,42 +39,27 @@ object frmCommands: TfrmCommands
     object tbtnPrevious: TToolButton
       Left = 0
       Top = 0
-      Hint = 'Previous Track'
-      Caption = '&Previous'
-      ImageIndex = 0
-      OnClick = tbtnPreviousClick
+      Action = frmMain.Previous
     end
     object tbtnPlay: TToolButton
       Left = 43
       Top = 0
-      Hint = 'Play Selected'
-      Caption = 'play'
-      ImageIndex = 1
-      OnClick = tbtnPlayClick
+      Action = frmMain.Play
     end
     object tbtnPause: TToolButton
       Left = 86
       Top = 0
-      Hint = 'Pause Playing'
-      Caption = 'pause'
-      ImageIndex = 2
-      OnClick = tbtnPauseClick
+      Action = frmMain.Pause
     end
     object tbtnStop: TToolButton
       Left = 129
       Top = 0
-      Hint = 'Stop Playing'
-      Caption = 'stop'
-      ImageIndex = 3
-      OnClick = tbtnStopClick
+      Action = frmMain.Stop
     end
     object tbtnNext: TToolButton
       Left = 172
       Top = 0
-      Hint = 'Next in Playlist'
-      Caption = 'next'
-      ImageIndex = 4
-      OnClick = tbtnNextClick
+      Action = frmMain.Next
     end
   end
 end

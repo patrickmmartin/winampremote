@@ -111,6 +111,8 @@ extern PACKAGE System::ResourceString _sNotFound;
 #define Remotestrs_sNotFound System::LoadResourceString(&Remotestrs::_sNotFound)
 extern PACKAGE System::ResourceString _sTest;
 #define Remotestrs_sTest System::LoadResourceString(&Remotestrs::_sTest)
+extern PACKAGE System::ResourceString _sServerUntested;
+#define Remotestrs_sServerUntested System::LoadResourceString(&Remotestrs::_sServerUntested)
 extern PACKAGE System::ResourceString _sPortOutOfRangeFmt;
 #define Remotestrs_sPortOutOfRangeFmt System::LoadResourceString(&Remotestrs::_sPortOutOfRangeFmt)
 extern PACKAGE System::ResourceString _sEndpointInvalid;

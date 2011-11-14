@@ -261,10 +261,11 @@ long int WAStringResult(
           if (retval)
           {
             strcpy((char *) pszString, retval);
-            delete retval;
           }
           else
-            sprintf((char *) pszString,  "command %d data %d (null)", command, data);
+          {
+            sprintf((char *) pszString,  "command %d data %d returned null", command, data);
+          }  
         }
 
         __except(1)
@@ -319,9 +320,9 @@ RPC_STATUS status;
 }
 
 
-// new functions
+// new functions, acting on entire list at once for "atomicity"
 
-void WASendList(
+void WASetStringList(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in][size_is] */ byte __RPC_FAR Buffer[  ],
     /* [in] */ unsigned long BufferLength,
@@ -344,7 +345,7 @@ void WASendList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-              ExecuteStringMessage(StringList->Strings[i].c_str(), IPC_PLAYFILE);
+              ExecuteStringMessage(StringList->Strings[i].c_str(), command);
             }
 
 
@@ -379,7 +380,7 @@ void WASendList(
 }
 
 
-void WAGetList( 
+void WAGetStringList(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [out] */ BUFFER __RPC_FAR *pBuffer,
     long command)
@@ -402,20 +403,11 @@ void WAGetList(
             {
               // get all items in list
 
-
-              int i = 0;
               ListLength = GetAmpInt(IPC_GETLISTLENGTH, 0);
-              while (i < ListLength)
-              {
-                StringList->Add(GetAmpStr(command, i));
-                i++;
-              }
-              /*
-              for (int i = 0 ; i < GetAmpInt(IPC_GETLISTLENGTH, 0); i++ )
+              for (int i = 0 ; i < ListLength ; i++)
               {
                 StringList->Add(GetAmpStr(command, i));
               }
-              */
 
               char * Buffer = StringList->GetText();
               if (Buffer)
@@ -431,7 +423,7 @@ void WAGetList(
           }
           catch(...)
           {
-            throw(Exception(AnsiString("exception generated in WAGetList() : " + SysErrorMessage(GetLastError()))));
+            throw(Exception(AnsiString("exception generated in WAGetStringList() : " + SysErrorMessage(GetLastError()))));
           }
 
           MainStatus(waListening);
@@ -439,7 +431,7 @@ void WAGetList(
 
         __except(1)
         {
-          throw(Exception(AnsiString("structured exception generated in WAGetList() : " + SysErrorMessage(RpcExceptionCode()))));
+          throw(Exception(AnsiString("structured exception generated in WAGetStringList() : " + SysErrorMessage(RpcExceptionCode()))));
         }
      }
      catch ( Exception &E )
@@ -457,6 +449,95 @@ void WAGetList(
   }
 
 }
+
+
+
+void WAGetStringDataList(
+    /* [string][in] */ unsigned char __RPC_FAR *pszString,
+    /* [out] */ BUFFER __RPC_FAR *pBuffer,
+    long stringcommand, long intcommand, long intdata)
+{
+
+  int ListLength;
+  EnterCriticalSection(&fCriticalSection);
+  try
+  {
+     try
+     {            // test for C++ exceptions
+        try
+        {         // test for C-based structured exceptions
+          MainIdent((char *) pszString);
+
+          TStringList * StringList = new TStringList;
+          try
+          {
+            try
+            {
+              // get all items in list
+
+              int i, Index;
+              Index = GetAmpInt(IPC_GETLISTPOS, 0);
+              ListLength = GetAmpInt(IPC_GETLISTLENGTH, 0);
+              for (i = 0 ; i < ListLength ; i++)
+              {
+                GetAmpInt(IPC_SETPLAYLISTPOS, i);
+                // get the string property
+                StringList->Add(GetAmpStr(stringcommand, i));
+                // add in the integer property for this index
+
+                // set the index
+                GetAmpInt(IPC_SETPLAYLISTPOS, i);
+
+                StringList->Add(GetAmpInt(intcommand, intdata));
+              }
+
+              // reset the currently playing song
+              GetAmpInt(IPC_SETPLAYLISTPOS, Index);
+
+
+              char * Buffer = StringList->GetText();
+              if (Buffer)
+              {
+                pBuffer->BufferLength = StringList->Text.Length() + 1;
+                pBuffer->Buffer = (unsigned char *) Buffer;
+              }
+            }
+            __finally
+            {
+              delete StringList;
+            }
+          }
+          catch(...)
+          {
+            throw(Exception(AnsiString("exception generated in WAGetStringDataList() : " + SysErrorMessage(GetLastError()))));
+          }
+
+          MainStatus(waListening);
+        }
+
+        __except(1)
+        {
+          throw(Exception(AnsiString("structured exception generated in WAGetStringDataList() : " + SysErrorMessage(RpcExceptionCode()))));
+        }
+     }
+     catch ( Exception &E )
+     {
+       OutputDebugString(E.Message.c_str());
+        if (frmMain->requestlog[EXCEPTIONS])
+        {
+          MainMessage(strdup(E.Message.c_str()));
+        }
+      }
+    }
+   __finally
+  {
+   LeaveCriticalSection(&fCriticalSection);
+  }
+
+}
+
+
+
 
 //---------------------------------------------------------------------------
 __fastcall TRPCServerThread::TRPCServerThread(bool CreateSuspended)

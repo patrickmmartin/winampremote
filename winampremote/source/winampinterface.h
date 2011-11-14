@@ -2,7 +2,7 @@
 
 
 /* File created by MIDL compiler version 5.01.0164 */
-/* at Mon May 19 20:34:02 2008
+/* at Sat May 17 20:55:06 2008
  */
 /* Compiler settings for winampinterface.idl:
     Os (OptLev=s), W1, Zp8, env=Win32
@@ -63,22 +63,29 @@ long WAStringResult(
 
 void WAShutdown( void);
 
-void WASendList( 
+void WASetStringList( 
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in][size_is] */ byte __RPC_FAR Buffer[  ],
     /* [in] */ unsigned long BufferLength,
     /* [in] */ long command);
 
-typedef /* [public][public] */ struct  __MIDL_winamp_0001
+typedef /* [public][public][public] */ struct  __MIDL_winamp_0001
     {
     unsigned long BufferLength;
     /* [size_is][unique] */ byte __RPC_FAR *Buffer;
     }	BUFFER;
 
-void WAGetList( 
+void WAGetStringList( 
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [out] */ BUFFER __RPC_FAR *pBuffer,
     /* [in] */ long command);
+
+void WAGetStringDataList( 
+    /* [string][in] */ unsigned char __RPC_FAR *pszString,
+    /* [out] */ BUFFER __RPC_FAR *pBuffer,
+    /* [in] */ long stringcommand,
+    /* [in] */ long datacommand,
+    /* [in] */ long datadata);
 
 
 extern handle_t winamp_IfHandle;

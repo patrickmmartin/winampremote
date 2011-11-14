@@ -23,6 +23,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include <vcl.h>
 #pragma hdrstop
 #include <time.h>
+#include <stdlib.h>  // max
 
 #include "ServersF.h"
 #include "messageF.h"
@@ -50,15 +51,17 @@ __fastcall TfrmServers::TfrmServers(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::DisplayStruct(LPNETRESOURCE NetResource)
+void __fastcall TfrmServers::HandleResource(NETRESOURCE NetResource)
 {
 
-  if (NetResource->dwDisplayType == RESOURCEDISPLAYTYPE_SERVER)
+  if (NetResource.dwDisplayType == RESOURCEDISPLAYTYPE_SERVER)
   {
-    AnsiString RemoteName = NetResource->lpRemoteName;
+    AnsiString RemoteName = NetResource.lpRemoteName;
     // strip out the UNC prefix
     RemoteName.Delete(1, 2);
-    AddServer(RemoteName.c_str(), NetResource->lpComment);
+    AddServer(RemoteName.c_str(), NetResource.lpComment);
+    AddMessage(AnsiString().sprintf("\tFound node %s",
+                                  RemoteName.c_str()), 0);
   }
 }
 
@@ -168,20 +171,24 @@ BOOL __fastcall TfrmServers::EnumerateFunc(LPNETRESOURCE lpnr)
             ResourcesToEnumerate += cEntries;
             for(i = 0; i < cEntries; i++)
             {
-              DisplayStruct(&lpnrLocal[i]);
-             if ( (RESOURCEUSAGE_CONTAINER == (lpnrLocal[i].dwUsage & RESOURCEUSAGE_CONTAINER))
-                    && !(lpnrLocal[i].dwDisplayType == RESOURCEDISPLAYTYPE_SERVER) )
-            {
+               HandleResource(lpnrLocal[i]);
+               // recurse if it is a container of interest
+               // would like a way to avoid Terminal Services and Web Client...
+               if ( (RESOURCEUSAGE_CONTAINER == (lpnrLocal[i].dwUsage & RESOURCEUSAGE_CONTAINER))
+                      && !(lpnrLocal[i].dwDisplayType == RESOURCEDISPLAYTYPE_SERVER) )
+               {
 
-              AnsiString ObjectName;
+                AnsiString ObjectName;
 
-              if (lpnrLocal[i].lpRemoteName)
-                ObjectName = lpnrLocal[i].lpRemoteName;
-              else
-                ObjectName = lpnrLocal[i].lpProvider;
+                if (lpnrLocal[i].lpRemoteName)
+                  ObjectName = lpnrLocal[i].lpRemoteName;
+                else
+                  ObjectName = lpnrLocal[i].lpProvider;
 
-              AddMessage(AnsiString().sprintf(Remotestrs_sEnumeratingContainer.c_str(), ObjectName),  1);
-              EnumerateFunc(&lpnrLocal[i]);
+                AddMessage(AnsiString().sprintf(Remotestrs_sEnumeratingContainer.c_str(),
+                                                ObjectName.c_str()),
+                                                1);
+                EnumerateFunc(&lpnrLocal[i]);
             }
           }
         }
@@ -207,15 +214,13 @@ BOOL __fastcall TfrmServers::EnumerateFunc(LPNETRESOURCE lpnr)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::btnLocateClick(TObject *Sender)
+void __fastcall TfrmServers::btnLocateClick(TObject *)
 {
 
-//?    TCHAR           szComputerName[MAX_COMPUTERNAME_LENGTH+1];
-  char szComputerName[MAX_COMPUTERNAME_LENGTH+1];
+  char szComputerName[MAX_COMPUTERNAME_LENGTH+1] = {0};
   DWORD dwSize;
 
   Screen->Cursor = crHourGlass;
-//  pgcServers->ActivePage = tbsMessages;
 
   btnLocate->Enabled = false;
 
@@ -227,12 +232,10 @@ void __fastcall TfrmServers::btnLocateClick(TObject *Sender)
     EnumerateFunc(NULL);
     pbServers->Position = 100;
     dwSize = sizeof(szComputerName);
-    ZeroMemory(szComputerName, dwSize);
     Win32Check(GetComputerName(szComputerName, &dwSize));
-    AnsiString ComputerName = AnsiString(szComputerName);
+    AnsiString ComputerName = szComputerName;
     AddServer(ComputerName.c_str(), Remotestrs_sLocalMachine.c_str());
     btnTest->Enabled = true;
-//    pgcServers->ActivePage = tbsServers;
   }
   __finally
   {
@@ -264,7 +267,7 @@ void __fastcall TfrmServers::AddServer(char * RemoteName, char * Comment)
    ListItem->Caption = RemoteName;
    ListItem->SubItems->Clear();
    ListItem->SubItems->Add(Comment);
-   ListItem->SubItems->Add(Remotestrs_sServerUnknown);
+   ListItem->SubItems->Add(Remotestrs_sServerUntested);
    ListItem->ImageIndex = 0;
 
    // in the event of duplicate names, I imagine there will be big trouble
@@ -273,7 +276,7 @@ void __fastcall TfrmServers::AddServer(char * RemoteName, char * Comment)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::FormCreate(TObject *Sender)
+void __fastcall TfrmServers::FormCreate(TObject *)
 {
   lvServers->Items->Clear();
   imgInformation->Picture->Icon->Handle = LoadIcon(NULL, IDI_ASTERISK);
@@ -284,54 +287,19 @@ void __fastcall TfrmServers::FormCreate(TObject *Sender)
   imlEvents->AddIcon(imgWarning->Picture->Icon);
   imlEvents->AddIcon(imgError->Picture->Icon);
 
-  pgcServers->ActivePage = tbsServers;
-
 }
+
+
 //---------------------------------------------------------------------------
-void __fastcall TfrmServers::lstMessagesMeasureItem(TWinControl *Control,
-      int Index, int &Height)
-{
-  TListBox * ListBox =  dynamic_cast<TListBox *>(Control);
-
-  Height = imlEvents->Height + 2;
-  if (Control)
-    Height = max(Height, ListBox->Canvas->TextHeight("W") + 2);
-
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TfrmServers::lstMessagesDrawItem(TWinControl *Control,
-      int Index, TRect &Rect, TOwnerDrawState State)
-{
-
-  int Offset = 2;
-
-  // note that we draw on the listbox�s canvas, not on the form
-  TListBox * ListBox = dynamic_cast<TListBox *> (Control);
-  if (ListBox)
-  {
-    ListBox->Canvas->FillRect(Rect); // clear the rectangle
-
-    if (ListBox->Items->Objects[Index])
-      imlEvents->Draw(ListBox->Canvas, Rect.Left + Offset, Rect.Top, ((int) ListBox->Items->Objects[Index]) - 1 ,true);
-
-    Offset += imlEvents->Width + 4;   // add four pixels between bitmap and text
-    // display the text
-    ListBox->Canvas->TextOut(Rect.Left + Offset, Rect.Top, ((TListBox *)Control)->Items->Strings[Index]);
-  }
-  // can't do much else!
-
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TfrmServers::lvServersClick(TObject *Sender)
+void __fastcall TfrmServers::lvServersClick(TObject *)
 {
   btnOK->Enabled =(lvServers->Selected != NULL );
   btnGetIp->Enabled =(lvServers->Selected != NULL );
 }
-//---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::StartTest(TObject *Sender)
+
+//---------------------------------------------------------------------------
+void __fastcall TfrmServers::StartTest(TObject *)
 {
 
   bool AbortTest = false;
@@ -355,51 +323,49 @@ void __fastcall TfrmServers::StartTest(TObject *Sender)
 
   try
   {
-//    pgcServers->ActivePage = tbsMessages;
     pbServers->Position = 0;
     pbServers->Max = lvServers->Items->Count;
 
     for ( int i = 0 ; i < lvServers->Items->Count ; i++)
     {
-       frmMain->ebEndPoint->Text = ebEndPoint->Text;
-       frmMain->ebAddress->Text = lvServers->Items->Item[i]->Caption;
+         frmMain->ebEndPoint->Text = ebEndPoint->Text;
+         frmMain->ebAddress->Text = lvServers->Items->Item[i]->Caption;
 
-       lvServers->Selected = lvServers->Items->Item[i];
-       frmMain->DoBind();
-       try
-       {
-          try
-          {
-            // issue warning
-            AddMessage(AnsiString().sprintf(Remotestrs_sAttemptingToContact.c_str(), lvServers->Items->Item[i]->Caption.c_str()),   1);
-            AddMessage(Remotestrs_sMayTakeTime,   2);
-            start = clock();
-            retval = IntegerResult(frmMain->IdentChars, IPC_GETVERSION,  0);
-            end = clock();
-            pbServers->StepIt();
-            AddMessage(AnsiString().sprintf(Remotestrs_sResponseReceivedFmt.c_str(), (end - start) / CLK_TCK), 1);
-            lvServers->Items->Item[i]->ImageIndex = 2;
-            lvServers->Items->Item[i]->SubItems->Strings[1] = WinampVersion(retval);
-            if (AbortTest)
-              break;
-          }
-          catch( ERPCException &E)
-          {
-            pbServers->StepIt();
-            AddMessage(AnsiString(Remotestrs_sCallFailed + E.Message),   3);
-            lvServers->Items->Item[i]->ImageIndex = 1;
-            lvServers->Items->Item[i]->SubItems->Strings[1] = Remotestrs_sNotFound;
-          }
-       }
-       __finally
-       {
-         UnBind();
-       }
+         lvServers->Selected = lvServers->Items->Item[i];
+         frmMain->DoBind();
+         try
+         {
+            try
+            {
+              // issue warning
+              AddMessage(AnsiString().sprintf(Remotestrs_sAttemptingToContact.c_str(), lvServers->Items->Item[i]->Caption.c_str()),   1);
+              AddMessage(Remotestrs_sMayTakeTime,   2);
+              start = clock();
+              retval = IntegerResult(frmMain->IdentChars, IPC_GETVERSION,  0);
+              end = clock();
+              pbServers->StepIt();
+              AddMessage(AnsiString().sprintf(Remotestrs_sResponseReceivedFmt.c_str(), (end - start) / CLK_TCK), 1);
+              lvServers->Items->Item[i]->ImageIndex = 2;
+              lvServers->Items->Item[i]->SubItems->Strings[1] = WinampVersion(retval);
+              if (AbortTest)
+                break;
+            }
+            catch( ERPCException &E)
+            {
+              pbServers->StepIt();
+              AddMessage(AnsiString(Remotestrs_sCallFailed + E.Message),   3);
+              lvServers->Items->Item[i]->ImageIndex = 1;
+              lvServers->Items->Item[i]->SubItems->Strings[1] = Remotestrs_sNotFound;
+            }
+         }
+         __finally
+         {
+           UnBind();
+         }
     }
     lvServers->Selected = NULL;
 
     StopTest(this);
-//    pgcServers->ActivePage = tbsServers;
 
   }
   __finally
@@ -409,9 +375,10 @@ void __fastcall TfrmServers::StartTest(TObject *Sender)
   }
 
 }
-//---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::StopTest(TObject *Sender)
+
+//---------------------------------------------------------------------------
+void __fastcall TfrmServers::StopTest(TObject *)
 {
 
   btnLocate->Enabled = true;
@@ -436,8 +403,8 @@ void __fastcall TfrmServers::AddMessage(AnsiString Message, int Level)
 
 }
 
-void __fastcall TfrmServers::FormClose(TObject *Sender,
-      TCloseAction &Action)
+
+void __fastcall TfrmServers::FormClose(TObject *, TCloseAction &)
 {
   if (ModalResult == mrOk)
   {
@@ -446,8 +413,9 @@ void __fastcall TfrmServers::FormClose(TObject *Sender,
       Address = lvServers->Selected->Caption;
   }
 }
-//---------------------------------------------------------------------------
 
+
+//---------------------------------------------------------------------------
 void __fastcall TfrmServers::CheckPort(void)
 {
 int port;
@@ -480,15 +448,18 @@ int port;
                                 port , RFC1060ports[i].service)).c_str(),
                                 Remotestrs_sAlertWellKnownPort.c_str(),
                                 MB_ICONEXCLAMATION + MB_OKCANCEL + MB_DEFBUTTON2) != IDOK)  throw EAbort("user cancellled bogus port");
-  }
-void __fastcall TfrmServers::btnOKClick(TObject *Sender)
+}
+
+
+void __fastcall TfrmServers::btnOKClick(TObject *)
 {
   CheckPort();
   ModalResult = mrOk;
 }
-//---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::GetServerIp(TObject *Sender)
+
+//---------------------------------------------------------------------------
+void __fastcall TfrmServers::GetServerIp(TObject *)
 {
 
   TStringList * Addresses = new TStringList;
@@ -542,7 +513,6 @@ void __fastcall TfrmServers::GetServerIp(TObject *Sender)
         AddMessage(Remotestrs_sGetIPAddressFailed + E.Message, 3);
       }
 
-    pgcServers->ActivePage = tbsMessages;
     }
   }
   __finally
@@ -553,4 +523,12 @@ void __fastcall TfrmServers::GetServerIp(TObject *Sender)
   }
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TfrmServers::spltMessagesCanResize(TObject *Sender,
+      int &NewSize, bool &Accept)
+{
+  Accept = (NewSize > 30);        
+}
+//---------------------------------------------------------------------------
+
 

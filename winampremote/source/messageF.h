@@ -12,13 +12,13 @@
 class TfrmMessage : public TForm
 {
 __published:	// IDE-managed Components
-    TTimer *Timer1;
+        TTimer *tmrAnimate;
         TPanel *pnlMain;
         TImage *imgIcon;
         TMemo *memMessage;
         TMemo *memTitle;
     void __fastcall FormShow(TObject *Sender);
-    void __fastcall Timer1Timer(TObject *Sender);
+    void __fastcall tmrAnimateTimer(TObject *Sender);
         void __fastcall FormActivate(TObject *Sender);
 private:	// User declarations
   int StartCount;

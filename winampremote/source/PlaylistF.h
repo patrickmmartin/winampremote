@@ -29,10 +29,8 @@ __published:	// IDE-managed Components
         TPanel *pnlBottom;
         TProgressBar *pbSongPos;
         TProgressBar *pbListPos;
-    void __fastcall SongsRefresh(TObject *Sender);
+        TStatusBar *sbPlaylist;
     void __fastcall lstSongsDblClick(TObject *Sender);
-
-    void __fastcall mnuSortClick(TObject *Sender);
 
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall lstSongsDrawItem(TWinControl *Control, int Index,
@@ -60,6 +58,8 @@ __published:	// IDE-managed Components
         void __fastcall pbSongPosMouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
         void __fastcall FormDestroy(TObject *Sender);
+        void __fastcall mnuRefreshClick(TObject *Sender);
+        void __fastcall FormResize(TObject *Sender);
 
 private:	// User declarations
 
@@ -69,16 +69,18 @@ private:	// User declarations
 
     void __fastcall DeleteSelected(void);
     void __fastcall DropFiles(TMessage& Msg);
-    void __fastcall GetFilenames(int Start, int Stop, TStringList * StringList);
 
-public:     // User declarations
-    int currentpos;
-    int lastindex;
-    int lastlength;
-    __fastcall TfrmPlaylist(TComponent* Owner);
+private:     // User declarations
+
+    int _currentpos;
+    int _lastindex;
+    int _lastlength;
+
     void __fastcall SongIndexUpdate(TObject *Sender);
-    void __fastcall AddFiles(TStringList * Files);
-    void __fastcall StatsUpdate(void);
+public:
+    __fastcall TfrmPlaylist(TComponent* Owner);
+    bool __property Dragging = {read = fDragging};
+
 BEGIN_MESSAGE_MAP
 MESSAGE_HANDLER(WM_DROPFILES,TMessage,DropFiles)
 END_MESSAGE_MAP(TForm)

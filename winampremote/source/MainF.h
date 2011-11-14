@@ -204,37 +204,49 @@ __published:
         TMenuItem *mnuDutch;
         TAction *PlaylistRefresh;
         TAction *SetLanguage;
+        TAction *NextFade;
+        TMenuItem *mnuNextwithFade;
+        TMenuItem *NextwithFade2;
+        TAction *PreviousFade;
+        TMenuItem *mnuPreviouswithFade;
+        TAction *SongChanging;
+        TAction *SongChanged;
+        TAction *NewSong;
+        TCheckBox *chkFadeOld;
+        TLabel *lblSongChange;
+        TAction *PlaylistRefreshCurrent;
+        TAction *PlaylistRefreshStats;
     void __fastcall HideMain(TObject *Sender);
-    void __fastcall mnuPauseClick(TObject *Sender);
-    void __fastcall mnuShutDownClick(TObject *Sender);
+    void __fastcall PauseExecute(TObject *Sender);
+    void __fastcall ExitExecute(TObject *Sender);
     void __fastcall FormShow(TObject *Sender);
     void __fastcall btnCloseClick(TObject *Sender);
-    void __fastcall mnuPlayClick(TObject *Sender);
-    void __fastcall mnuNextClick(TObject *Sender);
-    void __fastcall mnuPreviousClick(TObject *Sender);
+    void __fastcall PlayExecute(TObject *Sender);
+    void __fastcall NextExecute(TObject *Sender);
+    void __fastcall PreviousExecute(TObject *Sender);
     void __fastcall FormHide(TObject *Sender);
-    void __fastcall mnuAboutClick(TObject *Sender);
-    void __fastcall mnuStopClick(TObject *Sender);
-    void __fastcall mnuForward5Click(TObject *Sender);
-    void __fastcall mnuBack5Click(TObject *Sender);
-    void __fastcall mnuVolumeUpClick(TObject *Sender);
-    void __fastcall mnuVolumeDownClick(TObject *Sender);
-    void __fastcall mnuVolumeUpMoreClick(TObject *Sender);
-    void __fastcall mnuVolumeDownMoreClick(TObject *Sender);
-    void __fastcall mnuPlaylistStartClick(TObject *Sender);
-    void __fastcall mnuPlaylistEndClick(TObject *Sender);
-    void __fastcall mnuDeletePlayListClick(TObject *Sender);
-    void __fastcall mnuAddFileToPlayListClick(TObject *Sender);
-    void __fastcall mnuStopFadeClick(TObject *Sender);
-    void __fastcall mnuStopCurrentClick(TObject *Sender);
+    void __fastcall AboutExecute(TObject *Sender);
+    void __fastcall StopExecute(TObject *Sender);
+    void __fastcall Forward5Execute(TObject *Sender);
+    void __fastcall Back5Execute(TObject *Sender);
+    void __fastcall VolumeUpExecute(TObject *Sender);
+    void __fastcall VolumeDownExecute(TObject *Sender);
+    void __fastcall VolumeUpMoreExecute(TObject *Sender);
+    void __fastcall VolumeDownMoreExecute(TObject *Sender);
+    void __fastcall PlaylistStartExecute(TObject *Sender);
+    void __fastcall PlaylistEndExecute(TObject *Sender);
+    void __fastcall DeletePlayListExecute(TObject *Sender);
+    void __fastcall AddFileToPlayListExecute(TObject *Sender);
+    void __fastcall StopFadeExecute(TObject *Sender);
+    void __fastcall StopAfterCurrentExecute(TObject *Sender);
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall mnuSayHelloClick(TObject *Sender);
     void __fastcall MainTimer(TObject *Sender);
-    void __fastcall mnuSetVolume0Click(TObject *Sender);
-    void __fastcall mnuSetVolume100Click(TObject *Sender);
-    void __fastcall mnuShuffleClick(TObject *Sender);
-    void __fastcall mnuRepeatClick(TObject *Sender);
-    void __fastcall mnuPlayFromStartClick(TObject *Sender);
+    void __fastcall SetVolume0Execute(TObject *Sender);
+    void __fastcall SetVolume100Execute(TObject *Sender);
+    void __fastcall ShuffleExecute(TObject *Sender);
+    void __fastcall RepeatExecute(TObject *Sender);
+    void __fastcall PlayFromStartExecute(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
     void __fastcall lstTimerClick(TObject *Sender);
@@ -242,7 +254,7 @@ __published:
     void __fastcall ViewToolBarExecute(TObject *Sender);
     void __fastcall ViewPlaylistExecute(TObject *Sender);
     void __fastcall ViewVolumeExecute(TObject *Sender);
-    void __fastcall ShowMain(TObject *Sender);
+    void __fastcall ShowMainFormExecute(TObject *Sender);
     void __fastcall FormDestroy(TObject *Sender);
     void __fastcall AddressChange(TObject *Sender);
     void __fastcall LocateServersExecute(TObject *Sender);
@@ -261,7 +273,15 @@ __published:
         void __fastcall DetailsExecute(TObject *Sender);
         void __fastcall sbMainDrawPanel(TStatusBar *StatusBar,
           TStatusPanel *Panel, const TRect &Rect);
-        void __fastcall SetLanguageExecute(TObject *Sender);
+        void __fastcall NextFadeExecute(TObject *Sender);
+        void __fastcall PreviousFadeExecute(TObject *Sender);
+        void __fastcall SongChangingExecute(TObject *Sender);
+        void __fastcall SongChangedExecute(TObject *Sender);
+        void __fastcall NewSongExecute(TObject *Sender);
+        void __fastcall alMainExecute(TBasicAction *Action, bool &Handled);
+        void __fastcall PlaylistRefreshExecute(TObject *Sender);
+        void __fastcall PlaylistRefreshCurrentExecute(TObject *Sender);
+        void __fastcall PlaylistRefreshStatsExecute(TObject *Sender);
 
 private:        // private user declarations
     int Delay;
@@ -284,12 +304,19 @@ private:        // private user declarations
     void __fastcall AnimateForm(TForm * Form, bool FormVisible);
 
 public:         // public user declarations
+    int CurrentIndex;
+    int LastIndex;
+    int LastLength;
     bool Querying;
     char IdentChars[65];
     virtual __fastcall TfrmMain(TComponent* Owner);
     void _fastcall DoBind(void);
     HANDLE __fastcall IconHandle(void);
     bool __fastcall TrayMessage(DWORD dwMessage);
+    void __fastcall DoAddFiles(TStrings * Files);
+    void  __fastcall DoDeleteSelected(void);
+    void __fastcall GetFilenames(int Start, int Stop, TStringList * Files);
+    void __fastcall DropFiles(TStringList * DropFiles, int DropIndex);
 
 BEGIN_MESSAGE_MAP
 MESSAGE_HANDLER(TRAY_NOTIFY, TMessage, TrayNotify)
