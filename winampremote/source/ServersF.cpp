@@ -1,5 +1,5 @@
 /*
-winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2002
+winamp remote control suite ï¿½Patrick Michael Martin 2000, 2001, 2002
 
 Copyright (C) 2000,2001,2002  Patrick M. Martin
 
@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-Patrick M. Martin may be reached by email at patrickmmartin@freenet.co.uk.
+Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 */
 
 #include <vcl.h>
@@ -306,7 +306,7 @@ void __fastcall TfrmServers::lstMessagesDrawItem(TWinControl *Control,
 
   int Offset = 2;
 
-  // note that we draw on the listbox’s canvas, not on the form
+  // note that we draw on the listboxï¿½s canvas, not on the form
   TListBox * ListBox = dynamic_cast<TListBox *> (Control);
   if (ListBox)
   {
