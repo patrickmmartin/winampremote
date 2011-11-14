@@ -4,7 +4,23 @@ Consists of a plugin that is compatible with the winamp 2.5.x API, along with a 
 
 Built using c++ Builder 5 onwards and uses MS-RPC for the communication mechanismm.
 
-A linux client was created which worked fine.
+A linux client was created which worked fine, linked against the DCE-RPC runtime.
 
-The final blow was the Windows XP Service Pack which locked down security for unauthenticated RPC endpoints.
+This project was active for a couple of years around 2000-2002 and produced a number of revisions that were externally released.
+
+These code releases and the other related assets have been poured into git.
+
+The project appears to have be quite popular for a while.
+It targets the Winamp 2.5x API (beyond a certain level), and did not work completely with the Winamp 3 + legacy plugins adapter.
+ 
+Some features of note were
+ * network remote control clients
+ * ability to minimize to the tray as a clickable icon
+ * pause / stop / play
+ * playlist import / management with our friends drag and drop
+ * automated discovery of servers on the network
+ * and much, much, more ...
+ 
+  The final blow was the Windows XP Service Pack which locked down security for unauthenticated RPC endpoints.
+
  
