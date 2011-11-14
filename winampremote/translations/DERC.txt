@@ -1,0 +1,511 @@
+#pragma code_page(1252)
+
+#define Sysconst_SShortDayNameMon 65280
+#define Sysconst_SShortDayNameTue 65281
+#define Sysconst_SShortDayNameWed 65282
+#define Sysconst_SShortDayNameThu 65283
+#define Sysconst_SShortDayNameFri 65284
+#define Sysconst_SShortDayNameSat 65285
+#define Sysconst_SLongDayNameSun 65286
+#define Sysconst_SLongDayNameMon 65287
+#define Sysconst_SLongDayNameTue 65288
+#define Sysconst_SLongDayNameWed 65289
+#define Sysconst_SLongDayNameThu 65290
+#define Sysconst_SLongDayNameFri 65291
+#define Sysconst_SLongDayNameSat 65292
+#define Sysconst_SShortMonthNameOct 65296
+#define Sysconst_SShortMonthNameNov 65297
+#define Sysconst_SShortMonthNameDec 65298
+#define Sysconst_SLongMonthNameJan 65299
+#define Sysconst_SLongMonthNameFeb 65300
+#define Sysconst_SLongMonthNameMar 65301
+#define Sysconst_SLongMonthNameApr 65302
+#define Sysconst_SLongMonthNameMay 65303
+#define Sysconst_SLongMonthNameJun 65304
+#define Sysconst_SLongMonthNameJul 65305
+#define Sysconst_SLongMonthNameAug 65306
+#define Sysconst_SLongMonthNameSep 65307
+#define Sysconst_SLongMonthNameOct 65308
+#define Sysconst_SLongMonthNameNov 65309
+#define Sysconst_SLongMonthNameDec 65310
+#define Sysconst_SShortDayNameSun 65311
+#define Sysconst_SIntfCastError 65312
+#define Sysconst_SSafecallException 65313
+#define Sysconst_SAssertError 65314
+#define Sysconst_SAbstractError 65315
+#define Sysconst_SModuleAccessViolation 65316
+#define Sysconst_SWin32Error 65317
+#define Sysconst_SUnkWin32Error 65318
+#define Sysconst_SShortMonthNameJan 65319
+#define Sysconst_SShortMonthNameFeb 65320
+#define Sysconst_SShortMonthNameMar 65321
+#define Sysconst_SShortMonthNameApr 65322
+#define Sysconst_SShortMonthNameMay 65323
+#define Sysconst_SShortMonthNameJun 65324
+#define Sysconst_SShortMonthNameJul 65325
+#define Sysconst_SShortMonthNameAug 65326
+#define Sysconst_SShortMonthNameSep 65327
+#define Sysconst_SControlC 65328
+#define Sysconst_SPrivilege 65329
+#define Sysconst_SException 65330
+#define Sysconst_SExceptTitle 65331
+#define Sysconst_SInvalidFormat 65332
+#define Sysconst_SArgumentMissing 65333
+#define Sysconst_SInvalidVarCast 65334
+#define Sysconst_SInvalidVarOp 65335
+#define Sysconst_SDispatchError 65336
+#define Sysconst_SReadAccess 65337
+#define Sysconst_SWriteAccess 65338
+#define Sysconst_SVarArrayCreate 65339
+#define Sysconst_SVarNotArray 65340
+#define Sysconst_SVarArrayBounds 65341
+#define Sysconst_SExternalException 65342
+#define Sysconst_SAssertionFailed 65343
+#define Sysconst_STooManyOpenFiles 65344
+#define Sysconst_SAccessDenied 65345
+#define Sysconst_SEndOfFile 65346
+#define Sysconst_SDiskFull 65347
+#define Sysconst_SInvalidInput 65348
+#define Sysconst_SDivByZero 65349
+#define Sysconst_SRangeError 65350
+#define Sysconst_SIntOverflow 65351
+#define Sysconst_SInvalidOp 65352
+#define Sysconst_SZeroDivide 65353
+#define Sysconst_SOverflow 65354
+#define Sysconst_SUnderflow 65355
+#define Sysconst_SInvalidPointer 65356
+#define Sysconst_SInvalidCast 65357
+#define Sysconst_SAccessViolation 65358
+#define Sysconst_SStackOverflow 65359
+#define Consts_SDuplicateItem 65360
+#define Comstrs_sTabFailClear 65361
+#define Comstrs_sTabFailDelete 65362
+#define Comstrs_sTabFailRetrieve 65363
+#define Comstrs_sTabFailGetObject 65364
+#define Comstrs_sTabFailSet 65365
+#define Comstrs_sTabFailSetObject 65366
+#define Comstrs_sTabMustBeMultiLine 65367
+#define Comstrs_sInsertError 65368
+#define Comstrs_sInvalidOwner 65369
+#define Comstrs_sPageIndexError 65370
+#define Sysconst_SInvalidInteger 65371
+#define Sysconst_SOutOfMemory 65372
+#define Sysconst_SInOutError 65373
+#define Sysconst_SFileNotFound 65374
+#define Sysconst_SInvalidFilename 65375
+#define Consts_SmkcShift 65376
+#define Consts_SmkcCtrl 65377
+#define Consts_SmkcAlt 65378
+#define Consts_SOutOfRange 65379
+#define Consts_SInsertLineError 65380
+#define Consts_SIconToClipboard 65381
+#define Consts_SInvalidMemoSize 65382
+#define Consts_SBitsIndexError 65383
+#define Consts_SInvalidRegType 65384
+#define Consts_SRegSetDataFailed 65385
+#define Consts_SRegGetDataFailed 65386
+#define Consts_SDuplicateMenus 65387
+#define Consts_SDockedCtlNeedsName 65388
+#define Consts_SDockTreeRemoveError 65389
+#define Consts_SDockZoneNotFound 65390
+#define Consts_SDockZoneHasNoCtl 65391
+#define Consts_SMsgDlgYesToAll 65392
+#define Consts_SmkcBkSp 65393
+#define Consts_SmkcTab 65394
+#define Consts_SmkcEsc 65395
+#define Consts_SmkcEnter 65396
+#define Consts_SmkcSpace 65397
+#define Consts_SmkcPgUp 65398
+#define Consts_SmkcPgDn 65399
+#define Consts_SmkcEnd 65400
+#define Consts_SmkcHome 65401
+#define Consts_SmkcLeft 65402
+#define Consts_SmkcUp 65403
+#define Consts_SmkcRight 65404
+#define Consts_SmkcDown 65405
+#define Consts_SmkcIns 65406
+#define Consts_SmkcDel 65407
+#define Consts_SVBitmaps 65408
+#define Consts_SInvalidProperty 65409
+#define Consts_SMsgDlgWarning 65410
+#define Consts_SMsgDlgError 65411
+#define Consts_SMsgDlgInformation 65412
+#define Consts_SMsgDlgConfirm 65413
+#define Consts_SMsgDlgYes 65414
+#define Consts_SMsgDlgNo 65415
+#define Consts_SMsgDlgOK 65416
+#define Consts_SMsgDlgCancel 65417
+#define Consts_SMsgDlgHelp 65418
+#define Consts_SMsgDlgAbort 65419
+#define Consts_SMsgDlgRetry 65420
+#define Consts_SMsgDlgIgnore 65421
+#define Consts_SMsgDlgAll 65422
+#define Consts_SMsgDlgNoToAll 65423
+#define Consts_SParentRequired 65424
+#define Consts_SMDIChildNotVisible 65425
+#define Consts_SVisibleChanged 65426
+#define Consts_SCannotShowModal 65427
+#define Consts_SPropertyOutOfRange 65428
+#define Consts_SMenuIndexError 65429
+#define Consts_SMenuReinserted 65430
+#define Consts_SMenuNotFound 65431
+#define Consts_SNoTimers 65432
+#define Consts_SGroupIndexTooLow 65433
+#define Consts_SNoMDIForm 65434
+#define Consts_SControlParentSetToSelf 65435
+#define Consts_SCannotDragForm 65436
+#define Consts_SVMetafiles 65437
+#define Consts_SVEnhMetafiles 65438
+#define Consts_SVIcons 65439
+#define Consts_SAncestorNotFound 65440
+#define Consts_SInvalidBitmap 65441
+#define Consts_SInvalidIcon 65442
+#define Consts_SInvalidMetafile 65443
+#define Consts_SChangeIconSize 65444
+#define Consts_SUnknownClipboardFormat 65445
+#define Consts_SOutOfResources 65446
+#define Consts_SNoCanvasHandle 65447
+#define Consts_SInvalidImageSize 65448
+#define Consts_SInvalidImageList 65449
+#define Consts_SImageIndexError 65450
+#define Consts_SImageReadFail 65451
+#define Consts_SImageWriteFail 65452
+#define Consts_SWindowDCError 65453
+#define Consts_SWindowClass 65454
+#define Consts_SCannotFocus 65455
+#define Consts_SResNotFound 65456
+#define Consts_SListIndexError 65457
+#define Consts_SListCapacityError 65458
+#define Consts_SListCountError 65459
+#define Consts_SSortedListError 65460
+#define Consts_SDuplicateString 65461
+#define Consts_SInvalidTabPosition 65462
+#define Consts_SInvalidTabStyle 65463
+#define Consts_SDuplicateName 65464
+#define Consts_SInvalidName 65465
+#define Consts_SDuplicateClass 65466
+#define Consts_SInvalidPropertyValue 65467
+#define Consts_SInvalidPropertyPath 65468
+#define Consts_SUnknownProperty 65469
+#define Consts_SReadOnlyProperty 65470
+#define Consts_SPropertyException 65471
+#define Remotestrs_sAddressesNotRetrieved 65472
+#define Remotestrs_sIPAddress 65473
+#define Remotestrs_sAliasesRetrieved 65474
+#define Remotestrs_sAliasesNotRetrieved 65475
+#define Remotestrs_sIPAlias 65476
+#define Remotestrs_sGetIPAddressFailed 65477
+#define Remotestrs_sWinampRemoteLoading 65478
+#define Consts_SAssignError 65479
+#define Consts_SFCreateError 65480
+#define Consts_SFOpenError 65481
+#define Consts_SReadError 65482
+#define Consts_SWriteError 65483
+#define Consts_SMemoryStreamError 65484
+#define Consts_SCantWriteResourceStreamError 65485
+#define Consts_SClassNotFound 65486
+#define Consts_SInvalidImage 65487
+#define Remotestrs_sEnumeratingContainer 65488
+#define Remotestrs_sLocalMachine 65489
+#define Remotestrs_sServerUnknown 65490
+#define Remotestrs_sAttemptingToContact 65491
+#define Remotestrs_sMayTakeTime 65492
+#define Remotestrs_sResponseReceivedFmt 65493
+#define Remotestrs_sCallFailed 65494
+#define Remotestrs_sNotFound 65495
+#define Remotestrs_sTest 65496
+#define Remotestrs_sPortOutOfRangeFmt 65497
+#define Remotestrs_sEndpointInvalid 65498
+#define Remotestrs_sWellKnownPortFmt 65499
+#define Remotestrs_sAlertWellKnownPort 65500
+#define Remotestrs_sIPLookup 65501
+#define Remotestrs_sAuthoritativeName 65502
+#define Remotestrs_sAddressesRetrieved 65503
+#define Remotestrs_sUnhandledException 65504
+#define Remotestrs_sCurrentTrack 65505
+#define Remotestrs_sUnknown 65506
+#define Remotestrs_sDelaying 65507
+#define Remotestrs_sDelayingForFmt 65508
+#define Remotestrs_sRestarting 65509
+#define Remotestrs_sDetailsCaptionFmt 65510
+#define Remotestrs_sGettingPlaylist 65511
+#define Remotestrs_sListUnobtainable 65512
+#define Remotestrs_sPlaylistHint 65513
+#define Remotestrs_sPlay 65514
+#define Remotestrs_sStop 65515
+#define Remotestrs_sWNetGetLastErrorFailedFmt 65516
+#define Remotestrs_sWNetFailedFmt 65517
+#define Remotestrs_sFailed 65518
+#define Remotestrs_sStartEnumerateNetwork 65519
+#define Remotestrs_sTestString 65520
+#define Remotestrs_sWinampRemoteClient 65521
+#define Remotestrs_sInitialisingApplication 65522
+#define Remotestrs_sCreatingMainForm 65523
+#define Remotestrs_sReadyToRun 65524
+#define Remotestrs_sClosing 65525
+#define Remotestrs_sPause 65526
+#define Remotestrs_sUnPause 65527
+#define Remotestrs_sPlaying 65528
+#define Remotestrs_sStopped 65529
+#define Remotestrs_sPaused 65530
+#define Remotestrs_sAboutWinampRemoteControl 65531
+#define Remotestrs_sWinampRemoteControl 65532
+#define Remotestrs_sPlayListFiles 65533
+#define Remotestrs_sAllFiles 65534
+#define Remotestrs_sRPCFailed 65535
+STRINGTABLE
+BEGIN
+  Sysconst_SShortDayNameMon "Mo"
+  Sysconst_SShortDayNameTue "Di"
+  Sysconst_SShortDayNameWed "Mi"
+  Sysconst_SShortDayNameThu "Do"
+  Sysconst_SShortDayNameFri "Fr"
+  Sysconst_SShortDayNameSat "Sa"
+  Sysconst_SLongDayNameSun "Sonntag"
+  Sysconst_SLongDayNameMon "Montag"
+  Sysconst_SLongDayNameTue "Dienstag"
+  Sysconst_SLongDayNameWed "Mittwoch"
+  Sysconst_SLongDayNameThu "Donnerstag"
+  Sysconst_SLongDayNameFri "Freitag"
+  Sysconst_SLongDayNameSat "Samstag"
+  Sysconst_SShortMonthNameOct "Okt"
+  Sysconst_SShortMonthNameNov "Nov"
+  Sysconst_SShortMonthNameDec "Dez"
+  Sysconst_SLongMonthNameJan "Januar"
+  Sysconst_SLongMonthNameFeb "Februar"
+  Sysconst_SLongMonthNameMar "März"
+  Sysconst_SLongMonthNameApr "April"
+  Sysconst_SLongMonthNameMay "Mai"
+  Sysconst_SLongMonthNameJun "Juni"
+  Sysconst_SLongMonthNameJul "Juli"
+  Sysconst_SLongMonthNameAug "August"
+  Sysconst_SLongMonthNameSep "September"
+  Sysconst_SLongMonthNameOct "Oktober"
+  Sysconst_SLongMonthNameNov "November"
+  Sysconst_SLongMonthNameDec "Dezember"
+  Sysconst_SShortDayNameSun "So"
+  Sysconst_SIntfCastError "Eingabe nicht unterstützt"
+  Sysconst_SSafecallException "Ausnahme beim Aufruf der SafeCall Methode"
+  Sysconst_SAssertError "%s (%s, Zeile %d)"
+  Sysconst_SAbstractError "Abstrakter Fehler"
+  Sysconst_SModuleAccessViolation "Zugriffsverletzung bei Adresse %p im Modul '%s'. %s von Adresse %p"
+  Sysconst_SWin32Error "Win32 Fehler.  Code: %d.\n%s"
+  Sysconst_SUnkWin32Error "Eine Win32 API Funktion schlug fehl"
+  Sysconst_SShortMonthNameJan "Jan"
+  Sysconst_SShortMonthNameFeb "Feb"
+  Sysconst_SShortMonthNameMar "Mär"
+  Sysconst_SShortMonthNameApr "Apr"
+  Sysconst_SShortMonthNameMay "Mai"
+  Sysconst_SShortMonthNameJun "Jun"
+  Sysconst_SShortMonthNameJul "Jul"
+  Sysconst_SShortMonthNameAug "Aug"
+  Sysconst_SShortMonthNameSep "Sep"
+  Sysconst_SControlC "STRG-C gedrückt"
+  Sysconst_SPrivilege "Priviligierte Anweisung"
+  Sysconst_SException "Ausnahme %s im Modul %s bei %p.\n%s%s"
+  Sysconst_SExceptTitle "Anwendungsfehler"
+  Sysconst_SInvalidFormat "Das Format '%s' ist in diesem Zusammenhang ungültig"
+  Sysconst_SArgumentMissing "Es gibt keine Anweisung für das Format '%s'"
+  Sysconst_SInvalidVarCast "Ungültige Umsetzung des Typs Variant"
+  Sysconst_SInvalidVarOp "Ungültiger Variant Zugriff"
+  Sysconst_SDispatchError "Variant Zugriffe werden nicht unterstützt"
+  Sysconst_SReadAccess "Lesen"
+  Sysconst_SWriteAccess "Schreiben"
+  Sysconst_SVarArrayCreate "Fehler beim Erstellen eines Arrays vom Typ Variant"
+  Sysconst_SVarNotArray "Variant ist kein Array"
+  Sysconst_SVarArrayBounds "Der Index des Array liegt ausserhalb des gültigen Bereichs"
+  Sysconst_SExternalException "Externe Ausnahme %x"
+  Sysconst_SAssertionFailed "Fehler"
+  Sysconst_STooManyOpenFiles "Zu viele Dateien geöffnet"
+  Sysconst_SAccessDenied "Zugriff auf die Datei fehlgeschlagen"
+  Sysconst_SEndOfFile "Lesefehler bei Dateiende"
+  Sysconst_SDiskFull "Festplatte voll"
+  Sysconst_SInvalidInput "Ungültige numerische Eingabe"
+  Sysconst_SDivByZero "Division durch null"
+  Sysconst_SRangeError "Bereichsprüfung fehlgeschlagen"
+  Sysconst_SIntOverflow "Integer überlauf"
+  Sysconst_SInvalidOp "Ungültiger Vorgang"
+  Sysconst_SZeroDivide "Division durch null"
+  Sysconst_SOverflow "FP Überlauf"
+  Sysconst_SUnderflow "FP Unterlauf"
+  Sysconst_SInvalidPointer "Ungültiger Zeiger-Vorgang"
+  Sysconst_SInvalidCast "Ungültiger Klassen-Typecast"
+  Sysconst_SAccessViolation "Zugriffsverletzung an Adresse %p. %s von Adresse %p"
+  Sysconst_SStackOverflow "Speicherüberlauf"
+  Consts_SDuplicateItem "Liste erlaubt keine Duplikate ($0%x)"
+  Comstrs_sTabFailClear "Tab-Element konnte nicht entfernt werden"
+  Comstrs_sTabFailDelete "Konnte Cursor bei Index %d nicht löschen"
+  Comstrs_sTabFailRetrieve "Konnte Cursor bei Index %d nicht lesen"
+  Comstrs_sTabFailGetObject "Konnte Cursor bei Index %d nicht abfragen"
+  Comstrs_sTabFailSet "Konnte Cursor \"%s\" bei Index %d nicht setzen"
+  Comstrs_sTabFailSetObject "Konnte kein Objekt setzen bei Index %d"
+  Comstrs_sTabMustBeMultiLine "Multiline muss aktiv sein"
+  Comstrs_sInsertError "Konnte kein Element einfügen"
+  Comstrs_sInvalidOwner "Ungültiger Besitzer"
+  Comstrs_sPageIndexError "%d ist kein gültiger Wert für den PageIndex. Gültig: 0 - %d"
+  Sysconst_SInvalidInteger "'%s' ist kein Integer-Wert."
+  Sysconst_SOutOfMemory "Speicherunterlauf"
+  Sysconst_SInOutError "E/A Fehler %d"
+  Sysconst_SFileNotFound "Datei nicht gefunden"
+  Sysconst_SInvalidFilename "Ungültiger Dateiname"
+  Consts_SmkcShift "Shift+"
+  Consts_SmkcCtrl "Strg+"
+  Consts_SmkcAlt "Alt+"
+  Consts_SOutOfRange "Wert muss zwischen %d und %d liegen"
+  Consts_SInsertLineError "Kann Zeile nicht einfügen"
+  Consts_SIconToClipboard "Zwischenablage unterstützt keine Icons"
+  Consts_SInvalidMemoSize "Text übersteigt Kapazität"
+  Consts_SBitsIndexError "Bits index ausserhalb des gültigen Bereichs"
+  Consts_SInvalidRegType "Ungültiger Typ für '%s'"
+  Consts_SRegSetDataFailed "Schreiben der Daten für '%s' fehlgeschlagen"
+  Consts_SRegGetDataFailed "Lesen der Daten für '%s' fehlgeschlagen"
+  Consts_SDuplicateMenus "Menü '%s' wird bereits von einem anderen Formular verwendet"
+  Consts_SDockedCtlNeedsName "Angeschlossenen Elemente benötigen einen Namen"
+  Consts_SDockTreeRemoveError "Element konnte nicht abgekoppelt werden"
+  Consts_SDockZoneNotFound " - Anschluss nicht gefunden"
+  Consts_SDockZoneHasNoCtl " - Anschluss hat kein Element"
+  Consts_SMsgDlgYesToAll "Ja zu &Allem"
+  Consts_SmkcBkSp "BkSp"
+  Consts_SmkcTab "Tab"
+  Consts_SmkcEsc "Esc"
+  Consts_SmkcEnter "Enter"
+  Consts_SmkcSpace "Leertaste"
+  Consts_SmkcPgUp "BildNachUnten"
+  Consts_SmkcPgDn "BildNachOben"
+  Consts_SmkcEnd "Ende"
+  Consts_SmkcHome "Pos1"
+  Consts_SmkcLeft "Links"
+  Consts_SmkcUp "Oben"
+  Consts_SmkcRight "Rechts"
+  Consts_SmkcDown "Unten"
+  Consts_SmkcIns "Einfg"
+  Consts_SmkcDel "Entf"
+  Consts_SVBitmaps "Bitmaps"
+  Consts_SInvalidProperty "Ungültiger Wert"
+  Consts_SMsgDlgWarning "Warnung"
+  Consts_SMsgDlgError "Fehler"
+  Consts_SMsgDlgInformation "Information"
+  Consts_SMsgDlgConfirm "Bestätigen"
+  Consts_SMsgDlgYes "&Ja"
+  Consts_SMsgDlgNo "&Nein"
+  Consts_SMsgDlgOK "OK"
+  Consts_SMsgDlgCancel "Abbrechen"
+  Consts_SMsgDlgHelp "&Hilfe"
+  Consts_SMsgDlgAbort "&Abbrechen"
+  Consts_SMsgDlgRetry "&Wiederholen"
+  Consts_SMsgDlgIgnore "&Ignorieren"
+  Consts_SMsgDlgAll "&Alle"
+  Consts_SMsgDlgNoToAll "Nein zu allem"
+  Consts_SParentRequired "Element '%s' hat kein parent window"
+  Consts_SMDIChildNotVisible "Kann MDI Child nicht verstecken"
+  Consts_SVisibleChanged "Kann Sichtbarkeit nicht ändern"
+  Consts_SCannotShowModal "Kann den Modus nicht anpassen"
+  Consts_SPropertyOutOfRange "%s Wert ist ausserhalb des gültigen Bereichs"
+  Consts_SMenuIndexError "Menü Index ist ausserhalb des gültigen Bereichs"
+  Consts_SMenuReinserted "Menü wurde doppelt erzeugt"
+  Consts_SMenuNotFound "Untermenü hat kein Parent"
+  Consts_SNoTimers "Nicht genug Timer verfügbar"
+  Consts_SGroupIndexTooLow "Gruppenindex kann nicht kleiner als der vorhergehende sein"
+  Consts_SNoMDIForm "Kann Maske nicht darstellen"
+  Consts_SControlParentSetToSelf "Eine Element kann nicht sein eigenes Parent sein"
+  Consts_SCannotDragForm "Kann das Formular nicht entfernen"
+  Consts_SVMetafiles "Metafiles"
+  Consts_SVEnhMetafiles "Erweiterte Metafiles"
+  Consts_SVIcons "Icons"
+  Consts_SAncestorNotFound "Vorgänger von '%s' nicht gefunden"
+  Consts_SInvalidBitmap "Bitmapgrafik ist ungültig"
+  Consts_SInvalidIcon "Icon ist ungültig"
+  Consts_SInvalidMetafile "Metafile ist ungültig"
+  Consts_SChangeIconSize "Die Größe eines Icons kann nicht verändert werden"
+  Consts_SUnknownClipboardFormat "Dieses Format der Zwischenablage wird nicht unterstützt"
+  Consts_SOutOfResources "Die System-Ressourcen sind erschöpft"
+  Consts_SNoCanvasHandle "Canvas erlaubt keine Zeichnung"
+  Consts_SInvalidImageSize "Ungültige Bildgröße"
+  Consts_SInvalidImageList "Ungültige ImageList"
+  Consts_SImageIndexError "Ungültiger ImageList Index"
+  Consts_SImageReadFail "Das Lesen der ImageList vom Stream schlug fehl"
+  Consts_SImageWriteFail "Das Schreiben der ImageList an den Stream schlug fehl"
+  Consts_SWindowDCError "Kann das Fenster nicht erstellen"
+  Consts_SWindowClass "Kann die Klasse nicht erstellen"
+  Consts_SCannotFocus "Kann unsichtbare Fenster nicht fokusieren"
+  Consts_SResNotFound "Resource %s nicht gefunden"
+  Consts_SListIndexError "Index der Liste ausserhalb des gültigen Bereichs (%d)"
+  Consts_SListCapacityError "Kapazität der Liste ausserhalb des gültigen Bereichs  (%d)"
+  Consts_SListCountError "Zähler der Liste ausserhalb des gültigen Bereichs  (%d)"
+  Consts_SSortedListError "Operation bei sortierten String-Listen nicht möglich"
+  Consts_SDuplicateString "String-Liste erlaubt keine Duplikate"
+  Consts_SInvalidTabPosition "Inkompatible Cursor-Position"
+  Consts_SInvalidTabStyle "Inkompatibler Cursor-Typ"
+  Consts_SDuplicateName "Die Komponente %s besteht bereits"
+  Consts_SInvalidName "''%s'' ist kein gültiger Komponentenname"
+  Consts_SDuplicateClass "Die Klasse %s besteht bereits"
+  Consts_SInvalidPropertyValue "Ungültige Eigenschaft WERT"
+  Consts_SInvalidPropertyPath "Ungültige Eigenschaft PFAD"
+  Consts_SUnknownProperty "Eigenschaft existiert nicht"
+  Consts_SReadOnlyProperty "Eigenschaft darf nicht geschrieben werden"
+  Consts_SPropertyException "Fehler beim Lesen %s%s%s: %s"
+  Remotestrs_sAddressesNotRetrieved "Adressen wurden abgefragt"
+  Remotestrs_sIPAddress "IP-Adresse: "
+  Remotestrs_sAliasesRetrieved "Aliase wurden abgefragt"
+  Remotestrs_sAliasesNotRetrieved "Aliase wurden nicht abgefragt"
+  Remotestrs_sIPAlias "IP-Alias: "
+  Remotestrs_sGetIPAddressFailed "Abfragen der IP-Adresse schlug fehl: "
+  Remotestrs_sWinampRemoteLoading "winamp remote control client started"
+  Consts_SAssignError "Kann %s nicht mit %s verknüpfen"
+  Consts_SFCreateError "Konnte die Datei %s nicht erstellen"
+  Consts_SFOpenError "Konnte die Datei %s nicht öffnen"
+  Consts_SReadError "Stream-Lesefehler"
+  Consts_SWriteError "Stream-Schreibfehler"
+  Consts_SMemoryStreamError "Kein Speicher verfügbar"
+  Consts_SCantWriteResourceStreamError "Kann den Stream nicht schreiben"
+  Consts_SClassNotFound "Klasse %s nicht gefunden"
+  Consts_SInvalidImage "Ungültiges Stream Format"
+  Remotestrs_sEnumeratingContainer "Container %s."
+  Remotestrs_sLocalMachine "Lokaler Rechner"
+  Remotestrs_sServerUnknown "Unbekannt"
+  Remotestrs_sAttemptingToContact "Versuche %s zu erreichen."
+  Remotestrs_sMayTakeTime "Dieser Vorgang kann viel Zeit in Anspruch nehmen."
+  Remotestrs_sResponseReceivedFmt "Anwort empfangen. Dauer %.3f s."
+  Remotestrs_sCallFailed "Aufruf fehlgeschlagen: "
+  Remotestrs_sNotFound "nicht gefunden"
+  Remotestrs_sTest "Test"
+  Remotestrs_sPortOutOfRangeFmt "Port %d liegt ausserhalb des gültigen Bereichs"
+  Remotestrs_sEndpointInvalid "Port der Gegenstelle ungültig"
+  Remotestrs_sWellKnownPortFmt "Der gewählte Port: %d %S + ist ein well-known Dienst.\r\nFortfahren?"
+  Remotestrs_sAlertWellKnownPort "Warnung - Es wurde ein well-known Port gewählt!"
+  Remotestrs_sIPLookup "Ergebnis des IP-Lookups von "
+  Remotestrs_sAuthoritativeName "Authoritativer Name: "
+  Remotestrs_sAddressesRetrieved "Addressen wurden abgefragt"
+  Remotestrs_sUnhandledException "Nicht abfangbarer Fehler\r\nTyp:"
+  Remotestrs_sCurrentTrack "aktueller Song"
+  Remotestrs_sUnknown "<unbekannt>"
+  Remotestrs_sDelaying "Verzögern\""
+  Remotestrs_sDelayingForFmt "verzögere für weitere %d s"
+  Remotestrs_sRestarting "Starte erneut"
+  Remotestrs_sDetailsCaptionFmt "%s Details"
+  Remotestrs_sGettingPlaylist "empfange Playlist..."
+  Remotestrs_sListUnobtainable "<Ungültige Liste: %s >"
+  Remotestrs_sPlaylistHint "Playlist"
+  Remotestrs_sPlay "Wiedergabe"
+  Remotestrs_sStop "Stop"
+  Remotestrs_sWNetGetLastErrorFailedFmt "WNetGetLastError schlug fehl; Fehler %ld."
+  Remotestrs_sWNetFailedFmt "%s schlug mit Code %ld fehl; %s.\""
+  Remotestrs_sFailed " schlug fehl "
+  Remotestrs_sStartEnumerateNetwork "Starte das Netzwerk..."
+  Remotestrs_sTestString "Test String"
+  Remotestrs_sWinampRemoteClient "Winamp Remote Client"
+  Remotestrs_sInitialisingApplication "Initialisiere die Anwendung"
+  Remotestrs_sCreatingMainForm "Erstelle die Hauptanwendung"
+  Remotestrs_sReadyToRun "Startklar"
+  Remotestrs_sClosing "schliesst"
+  Remotestrs_sPause "&Pause"
+  Remotestrs_sUnPause "Un&Pause"
+  Remotestrs_sPlaying " [wiedergabe]"
+  Remotestrs_sStopped " [angehalten]"
+  Remotestrs_sPaused " [pause]"
+  Remotestrs_sAboutWinampRemoteControl "Über winamp remote control client"
+  Remotestrs_sWinampRemoteControl "winamp\r\nremote\r\ncontrol\r\nclient"
+  Remotestrs_sPlayListFiles "Playlist Dateien (*.m3u,*.pls)|*.m3u,*.pls"
+  Remotestrs_sAllFiles "Alle Dateien|*.*"
+  Remotestrs_sRPCFailed "Ein RPC Aufruf schlug fehl\r\n\r\n(tip) läuft ein Server auf dieser Gegenseite?\r\n"
+END

@@ -1,0 +1,158 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (Win95; I) [Netscape]">
+   <meta name="KEYWORDS" content="winamp,RPC,remote control,freeware,win95,win98,winNT,LAN,audio,mp3">
+   <title>The Winamp Remote Control Suite's home page</title>
+<style>
+
+BODY  {background-color : #c0c0c0 ; font-family : sans-serif ; font-size : 10pt}
+A {font-family : sans-serif ; font-size : 12pt ; text-decoration : none}
+A:link {color: #0000ff}
+A:active {color: #ff0000}
+A:visited {color: #ff00ff}
+A:hover {color: #ff0000}
+
+H1, H2, H3, H4 {font-family : sans-serif}
+H1 {font-size : 18pt}
+H2 {font-size : 14pt}
+H3 {font-size : 12pt}
+H4 {font-size : 10pt}
+P {font-family : sans-serif ; font-size : 10pt}
+UL {font-size : 12pt}
+LI {font-size : 10pt}
+
+DIV {position : absolute}
+
+</style>
+<style>
+.lightshade { top:+2; left:+2; color:#808080; }
+.shade { top:+4; left:+4; color:#404040; }
+.fill { top:0; left:0; color:blue; }
+</style>
+</head>
+<body>
+
+<div ID = "title">
+<div class="shade">
+<h1>
+Winamp Remote Control Home Page</h1>
+</div>
+
+<div class="lightshade">
+<h1>
+Winamp Remote Control Home Page</h1>
+</div>
+
+<div class="fill">
+<h1>
+Winamp Remote Control Home Page</h1>
+</div>
+</div>
+<!-- spacing -->
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+What is the winamp remote control?</h2>
+The short answer: a client-server "suite" for controlling a single winamp
+instance from multiple client machines over the network.
+<p><a href="readme.html">The program documentation</a> should answer most questions.
+<p><a href="license.html">The program license</a> details the stringent terms of use ;-).
+<p>Latest version as of 22:48 12/05/2002 : V1.3.8 another API upgrade</p>
+
+<H2>Latest News</H2>
+Now VB and Delphi example projects for using a simple client dll to access the server. The clientdll dll (imagination breakdown) is supplied, of course, and available for use, though see the license for terms.<BR>
+<A HREF = "../downloads/dremote.zip">Download the Delphi project it here</A><BR>
+<A HREF = "../downloads/vbremote.zip">Download the VB project here</A><BR>
+<BR>
+However - the simple client project is now a reality!
+Maybe you can compile it, and have some fun with it.<BR>
+<A HREF = "../downloads/conremote.zip">Download the console mode project here</A><BR>
+The skinnned remote is in beta - have peek at the work in progress. <BR>
+Please be aware it is mostly non-functional, this is an idea of the look I'm aiming for.<BR>
+<A HREF = "../downloads/betaremote.zip">Download the new beta remote here</A>
+
+
+<H2>Latest enhancements:</H2>
+<UL>
+<LI>Release of the source under the GPL</LI>
+<LI>Enhancement to server API in 1.3.8!<BR>
+Due to changes to network interface to support the FreeDCE project I cannot warrant the new binaries are backwards compatible at all. However, as a result for these changes, there is the prospect of linux client applications and all that brings with it.
+</LI>
+<LI>Changed packages<BR>
+Now there are separate packages for the client and the plugin and the source. These are smaller and should work out of the box for anyone having the MSI installer. If not, the MSI installer can be obtained from Microsoft.
+</LI>
+</UL>
+
+<h2>Downloads</h2>
+<p><a href="../downloads/WARCClient.zip">Download the client package</a><br>
+xxxKb <br>
+
+<p><a href="../downloads/WARCPlugin.zip">Download the Plugin package</a><br>
+xxxKb <br>
+
+<p><a href="../downloads/WARCSource.zip">Download the full Source package</a><br>
+xxxKb <br>
+
+<P>Some very much older systems will need the OpenGL libraries. If you don't have these, this leads to a message like "the library could not be found".<BR>
+<a href="../downloads/OpenGL.zip">Download a basic OpenGL package here</a><br>
+xxxKb <br>
+</P>
+
+<P>For your convenience, here is a quick and dirty test for whether your machine OS is delivered with the required OpenGL libraries.<br>
+<A HREF ="javascript:checkOSVer()"> Click here to check Windows version</A></P>
+Alternatively, if you can check your OS version, I believe you want Windows 95OSR2 upwards, or Windows NT4 upwards.
+<SCRIPT>
+
+
+function checkOSVer(){
+
+  if (navigator.appName == 'Microsoft Internet Explorer'){
+    if ((navigator.userAgent.indexOf('Windows 98') > -1) ||
+       (navigator.userAgent.indexOf('Windows NT') > -1)){
+      alert('you are using IE,\nand have a windows version that definitely supports the program.\nYou can download the lite install');
+      }
+    else{
+      alert('you are using IE,\nand I can\'t say you definitely have a windows version that supports the program.\nYou should download the full install');
+      }
+    }
+  else if (navigator.appName == 'Netscape'){
+    if ((navigator.userAgent.indexOf('Win98') > -1) ||
+       (navigator.userAgent.indexOf('WinNT') > -1)){
+      alert ('you are using Netscape (there are some left!),\nand have a windows version that definitely supports the program');
+      } 
+    else{
+      alert ('you are using Netscape,\nand I can\'t say you definitely have a windows version that supports the program.\nYou should download the full install');
+      }
+    }
+  else{
+    if ((navigator.userAgent.indexOf('Win98') > -1) ||
+       (navigator.userAgent.indexOf('WinNT') > -1) ||
+       (navigator.userAgent.indexOf('Windows 98') > -1) ||
+       (navigator.userAgent.indexOf('Windows NT') > -1)){
+      alert ('I can\'t identify your browser, but it looks like you may have the right windows version.\nYou should download the full install');
+      }
+    else{
+      alert ('I can\'t identify your browser, and I can\'t identify your OS.\nHelp!\n\nYou should download the full install.');
+      } 
+    }
+
+   
+  }
+
+
+</SCRIPT>
+
+
+<P>Thanks to all who've got in touch with their kind words of encouragement. And to the (small! honest!) number who have experienced problems, I hope they resolved themselves.<BR>
+I can be reached via this link: <A HREF = "mailto:patrickmmartin@gmail.com?subject=winamp remote control">patrickmmartin@gmail.com</A>.</P>
+
+
+<P>
+
+
+<H4>Page last updated 13 May 2002</H4>
+
+</body>
+</html>
