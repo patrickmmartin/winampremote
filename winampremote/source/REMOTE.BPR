@@ -51,11 +51,11 @@
   <IDEOPTIONS>
 [Version Info]
 IncludeVerInfo=1
-AutoIncBuild=1
+AutoIncBuild=0
 MajorVer=1
 MinorVer=3
 Release=8
-Build=321
+Build=323
 Debug=0
 PreRelease=0
 Special=0
@@ -67,7 +67,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=pmmsoft
 FileDescription=winamp RPC inteface client
-FileVersion=1.3.8.321
+FileVersion=1.3.8.323
 InternalName=remote
 LegalCopyright=©patrick martin 2000-2002
 LegalTrademarks=
@@ -119,8 +119,8 @@ Item3=.\bin
 
 [HistoryLists\hlFinalOutputDir]
 Count=2
-Item0=..\bin
-Item1=..\bin\
+Item0=..\bin\
+Item1=..\bin
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl

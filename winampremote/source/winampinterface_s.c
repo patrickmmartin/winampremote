@@ -2,7 +2,7 @@
 
 
 /* File created by MIDL compiler version 5.01.0164 */
-/* at Sat May 17 20:55:06 2008
+/* at Thu Nov 17 22:11:20 2011
  */
 /* Compiler settings for winampinterface.idl:
     Os (OptLev=s), W1, Zp8, env=Win32
