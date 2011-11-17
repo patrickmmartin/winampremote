@@ -1,0 +1,9 @@
+
+/winampremote/bin
+/winampremote/obj
+/winampremote/source/conremote.~bpr
+/winampremote/source/gen_RPCinterface.~bpr
+/winampremote/source/paslib.lib
+/winampremote/source/remote.~bpr
+/winampremote/source/waintstrs.hpp
+/winampremote/source/winampclient.~bpr
