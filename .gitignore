@@ -15,3 +15,6 @@
 /winampremote/source/remote.mak
 /winampremote/source/winampclient.mak
 /winampremote/source/winampRPC.~bpg
+/winampremote/source/winampserver.tds
+/winampremote/source/winampserver.res
+/winampremote/source/winampserver.~bpr

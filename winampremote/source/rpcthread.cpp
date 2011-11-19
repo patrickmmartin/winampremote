@@ -134,6 +134,115 @@ int WAStringResult(
 
 }
 
+// new functions
+
+void WASendList( 
+    /* [string][in] */ unsigned char __RPC_FAR *pszString,
+    /* [in][size_is] */ byte __RPC_FAR Buffer[  ],
+    /* [in] */ unsigned long BufferLength,
+    int command)
+{
+
+  {
+     try
+     {            // test for C++ exceptions
+        try
+        {         // test for C-based structured exceptions
+         MainStatus("executing request");
+
+          TStringList * StringList = new TStringList;
+          try
+          {
+            StringList->Text = (char *) Buffer;
+
+            for (int i = 0 ; i < StringList->Count ; i++)
+            {
+                  ExecuteStringMessage( (char *) StringList->Strings[i].c_str(), command);
+            }
+
+            
+          }
+          __finally
+          {
+            delete StringList;
+          }
+
+          MainStatus("listening...");
+        }
+
+        __except(1)
+        {
+          throw(Exception(AnsiString("structured exception generated in WASetList() : " + SysErrorMessage(RpcExceptionCode()))));
+        }
+     }
+     catch ( Exception &E )
+     {
+       OutputDebugString(E.Message.c_str());
+      }
+    }
+
+}
+
+
+void WAGetList( 
+    /* [string][in] */ unsigned char __RPC_FAR *pszString,
+    /* [out] */ BUFFER __RPC_FAR *pBuffer,
+    int command)
+{
+
+  {
+     try
+     {            // test for C++ exceptions
+        try
+        {         // test for C-based structured exceptions
+         MainStatus("executing request");
+
+          TStringList * StringList = new TStringList;
+          try
+          {
+            try
+            {
+              // get all items in list
+
+              for (int i = 0 ; i < GetAmpInt(IPC_GETLISTLENGTH, 0); i++ )
+              {
+                StringList->Add(AnsiString("string #") + i);
+              }
+
+              char * Buffer = StringList->GetText();
+              if (Buffer)
+              {
+                pBuffer->BufferLength = StringList->Text.Length() + 1;
+                pBuffer->Buffer = (unsigned char *) Buffer;
+              }
+            }
+            __finally
+            {
+              delete StringList;
+            }
+          }
+          catch(...)
+          {
+            throw(Exception(AnsiString("exception generated in WAGetList() : " + SysErrorMessage(GetLastError()))));
+          }
+
+          MainStatus("listening...");
+        }
+
+        __except(1)
+        {
+          throw(Exception(AnsiString("structured exception generated in WAGetList() : " + SysErrorMessage(RpcExceptionCode()))));
+        }
+     }
+     catch ( Exception &E )
+     {
+       OutputDebugString(E.Message.c_str());
+      }
+    }
+
+}
+
+
 
 void WAShutdown(void)
 {
@@ -167,7 +276,12 @@ RPC_STATUS status;
     MainMessage(str.c_str());
 
     // should check status codes here for previously registered interfaces
-    status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_ip_tcp", 20, (unsigned char *) "8000", NULL);
+
+//    status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_ip_tcp", 20, (unsigned char *) "33000", NULL);
+    status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_np", 20, (unsigned char *) "\\pipe\\rpcexample", NULL);
+
+
+
     if (status == RPC_S_OK){
       status = RpcServerRegisterIf(winamp_v1_0_s_ifspec, NULL, NULL);
       if (status == RPC_S_OK){
