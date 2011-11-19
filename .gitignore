@@ -10,3 +10,8 @@
 /winampremote/source/winampinterface.h
 /winampremote/source/winampinterface_c.c
 /winampremote/source/winampinterface_s.c
+/winampremote/source/conremote.mak
+/winampremote/source/gen_RPCinterface.mak
+/winampremote/source/remote.mak
+/winampremote/source/winampclient.mak
+/winampremote/source/winampRPC.~bpg
