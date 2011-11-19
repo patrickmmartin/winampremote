@@ -1,3 +1,4 @@
+
 .silent
 default: clean configure all
 
@@ -10,16 +11,19 @@ configure:
 	bpr2mak -q winampclient.bpr 
 	bpr2mak -q gen_RPCinterface.bpr 
 
-conremote.exe:
+midl: 
+	runmidl.bat
+
+conremote.exe: midl
 	make -f conremote.mak
 
-remote.exe:
+remote.exe: midl
 	make -f remote.mak
 
-winampclient.dll:
+winampclient.dll: midl
 	make -f winampclient.mak
 
-gen_RPCinterface.dll:
+gen_RPCinterface.dll: midl
 	make -f gen_RPCinterface.mak
 
 
