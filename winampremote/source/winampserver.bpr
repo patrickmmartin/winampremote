@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="winampserver.exe"/>
+    <OBJFILES value="..\obj\winampserver.obj ..\obj\waint.obj ..\obj\ConfigF.obj 
+      ..\obj\AboutF.obj ..\obj\rpcthread.obj ..\obj\RPCErrors.obj 
+      ..\obj\ServerF.obj"/>
+    <RESFILES value="winampserver.res"/>
+    <IDLFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) ConfigF.dfm AboutF.dfm ServerF.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="vclx50.lib vcl50.lib"/>
+    <SPARELIBS value="vcl50.lib vclx50.lib"/>
+    <PACKAGES value="vclx50.bpi vcl50.bpi bcbsmp50.bpi dclocx50.bpi qrpt50.bpi vcldb50.bpi 
+      vclbde50.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="winampserver.cpp"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-O2 -H=c:\PROGRA~1\BORLAND\CBUILD~1\lib\vcl35.csm -Hc -Vx -Ve -Tkh30000 
+      -X- -a8 -b- -k- -vi -c -tW -tWM"/>
+    <CFLAG2 value=""/>
+    <CFLAG3 value=""/>
+    <PFLAGS value="-N2..\obj -N0..\obj -$YD -$L- -$D- -v -M -JPHNE"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-I..\obj -D&quot;&quot; -aa -Tpe -x -Gn"/>
+    <IFLAGS value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=2057
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=patrick matrin
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=winampserver
+LegalCopyright=©patrick martin 2000
+LegalTrademarks=
+OriginalFilename=winampserver.exe
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=3
+Item0=$(BCB)\include;$(BCB)\include\vcl
+Item1=..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;..\rpcinterface;..\rpcint~1;$(BCB)\include;$(BCB)\include\vcl
+Item2=..\rpcwin~1.5;..\rpcinterface;..\rpcint~1;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=3
+Item0=$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\..\..\..\program files\borland\cbuilder3\projects;..\rpcwin~1.5;..\rpcinterface;..\rpcint~1;$(BCB)\lib\obj;$(BCB)\lib
+Item2=..\rpcwin~1.5;..\rpcinterface;..\rpcint~1;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=USEPACKAGES
+
+[HistoryLists\hlIntOutputDir]
+Count=1
+Item0=..\obj
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

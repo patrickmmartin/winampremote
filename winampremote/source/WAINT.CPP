@@ -108,11 +108,7 @@ char * WinampVersion(int retval){
   switch (retval){
   //special cases
   case  0x00 :
-    #ifndef WAINT_NO_VCL
-    strcpy(winampver, Waintstrs_sWinampUnavailable.c_str());
-    #else
     strcpy(winampver, "Winamp unavailable");
-    #endif
     break;
   case  0x1551 :
     strcpy(winampver, "winamp 1.55");
