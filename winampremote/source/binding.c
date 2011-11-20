@@ -25,7 +25,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 extern void * winamp_IfHandle;
 
 // hard-coded for tcpip
-static unsigned char * pszProtocolSequence = (unsigned char *) "ncacn_ip_tcp";
+//static unsigned char * pszProtocolSequence = (unsigned char *) "ncacn_ip_tcp";
+static unsigned char * pszProtocolSequence = (unsigned char *) "ncacn_np";
 // global string binding information
 static unsigned char * StringBinding = 0;
 

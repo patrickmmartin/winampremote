@@ -34,14 +34,14 @@ void WAMessageProc(
   AnsiString str = (char *) pszString;
   str += " sent hello";
   MainMessage(str.c_str());
-  pszString = (unsigned char *) "welcome from the winamp RPC server";
+  MainStatus("welcome from the winamp RPC server");
   MainStatus("listening...");
 }
 
 
-void WAExecuteMessage(
+void WAExecuteMessage( 
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
-    /* [in] */ int command)
+    /* [in] */ long command)
 {
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
@@ -57,10 +57,10 @@ void WAExecuteMessage(
 }
 
 
-void WAExecuteMessageString(
+void WAExecuteMessageString( 
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [string][in] */ unsigned char __RPC_FAR *pszParam,
-    /* [in] */ int command)
+    /* [in] */ long command)
 {
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
@@ -77,10 +77,10 @@ void WAExecuteMessageString(
 
 }
 
-int WAIntegerResult(
+long WAIntegerResult( 
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
-    int command,
-    int data)
+    /* [in] */ long command,
+    /* [in] */ long data)
 {
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
@@ -97,10 +97,10 @@ int WAIntegerResult(
 
 }
 
-int WAStringResult(
-    /* [size_is][string][out][in] */ unsigned char __RPC_FAR *pszString,
-    int command,
-    int data)
+long WAStringResult( 
+    /* [string][out][in] */ unsigned char __RPC_FAR *pszString,
+    /* [in] */ long command,
+    /* [in] */ long data)
 {
   char * retval;
   MainStatus("executing request");
@@ -136,11 +136,11 @@ int WAStringResult(
 
 // new functions
 
-void WASendList( 
+void WASetStringList( 
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in][size_is] */ byte __RPC_FAR Buffer[  ],
     /* [in] */ unsigned long BufferLength,
-    int command)
+    /* [in] */ long command)
 {
 
   {
@@ -184,10 +184,10 @@ void WASendList(
 }
 
 
-void WAGetList( 
+void WAGetStringList( 
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [out] */ BUFFER __RPC_FAR *pBuffer,
-    int command)
+    /* [in] */ long command)
 {
 
   {
@@ -243,6 +243,66 @@ void WAGetList(
 }
 
 
+void WAGetStringDataList( 
+    /* [string][in] */ unsigned char __RPC_FAR *pszString,
+    /* [out] */ BUFFER __RPC_FAR *pBuffer,
+    /* [in] */ long stringcommand,
+    /* [in] */ long datacommand,
+    /* [in] */ long datadata)
+{
+
+  {
+     try
+     {            // test for C++ exceptions
+        try
+        {         // test for C-based structured exceptions
+         MainStatus("executing request");
+
+          TStringList * StringList = new TStringList;
+          try
+          {
+            try
+            {
+              // get all items in list
+
+              for (int i = 0 ; i < GetAmpInt(IPC_GETLISTLENGTH, 0); i++ )
+              {
+                StringList->Add(AnsiString("string #") + i);
+              }
+
+              char * Buffer = StringList->GetText();
+              if (Buffer)
+              {
+                pBuffer->BufferLength = StringList->Text.Length() + 1;
+                pBuffer->Buffer = (unsigned char *) Buffer;
+              }
+            }
+            __finally
+            {
+              delete StringList;
+            }
+          }
+          catch(...)
+          {
+            throw(Exception(AnsiString("exception generated in WAGetList() : " + SysErrorMessage(GetLastError()))));
+          }
+
+          MainStatus("listening...");
+        }
+
+        __except(1)
+        {
+          throw(Exception(AnsiString("structured exception generated in WAGetList() : " + SysErrorMessage(RpcExceptionCode()))));
+        }
+     }
+     catch ( Exception &E )
+     {
+       OutputDebugString(E.Message.c_str());
+      }
+    }
+
+}
+
 
 void WAShutdown(void)
 {
@@ -278,7 +338,7 @@ RPC_STATUS status;
     // should check status codes here for previously registered interfaces
 
 //    status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_ip_tcp", 20, (unsigned char *) "33000", NULL);
-    status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_np", 20, (unsigned char *) "\\pipe\\rpcexample", NULL);
+    status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_np", 20, (unsigned char *) "\\pipe\\winampremote", NULL);
 
 
 

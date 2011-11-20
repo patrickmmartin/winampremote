@@ -10,6 +10,7 @@ configure:
 	bpr2mak -q remote.bpr 
 	bpr2mak -q winampclient.bpr 
 	bpr2mak -q gen_RPCinterface.bpr 
+	bpr2mak -q winampserver.bpr 
 
 midl: 
 	runmidl.bat
@@ -26,8 +27,11 @@ winampclient.dll: midl
 gen_RPCinterface.dll: midl
 	make -f gen_RPCinterface.mak
 
+winampserver.exe: midl
+	make -f winampserver.mak
 
-targets: conremote.exe remote.exe winampclient.dll gen_RPCinterface.dll
+
+targets: conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
 
 all: configure targets
 

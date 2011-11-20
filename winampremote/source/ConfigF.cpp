@@ -43,7 +43,7 @@ void __fastcall TConfigForm::btnAboutClick(TObject *Sender)
 
 void __fastcall TConfigForm::FormCreate(TObject *Sender)
 {
-  ebEndPoint->Text = 8000;    
+  ebEndPoint->Text = "\\pipe\\winampremote";
 }
 //---------------------------------------------------------------------------
 

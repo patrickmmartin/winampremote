@@ -524,8 +524,7 @@ void __fastcall TfrmServers::GetServerIp(TObject *)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::spltMessagesCanResize(TObject *Sender,
-      int &NewSize, bool &Accept)
+void __fastcall TfrmServers::spltMessagesCanResize(TObject * , int &NewSize, bool &Accept)
 {
   Accept = (NewSize > 30);        
 }

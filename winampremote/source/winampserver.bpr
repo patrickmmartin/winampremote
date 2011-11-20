@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.05.03"/>
-    <PROJECT value="winampserver.exe"/>
+    <PROJECT value="..\bin\winampserver.exe"/>
     <OBJFILES value="..\obj\winampserver.obj ..\obj\waint.obj ..\obj\ConfigF.obj 
       ..\obj\AboutF.obj ..\obj\rpcthread.obj ..\obj\RPCErrors.obj 
       ..\obj\ServerF.obj"/>
@@ -32,8 +32,8 @@
     <WARNOPTSTR value=""/>
   </MACROS>
   <OPTIONS>
-    <CFLAG1 value="-O2 -H=c:\PROGRA~1\BORLAND\CBUILD~1\lib\vcl35.csm -Hc -Vx -Ve -Tkh30000 
-      -X- -a8 -b- -k- -vi -c -tW -tWM"/>
+    <CFLAG1 value="-O2 -H=c:\CBuilder5\Lib\BCB5.csm -Hc -Vx -Ve -Tkh30000 -X- -a8 -b- -k- -vi 
+      -c -tW -tWM"/>
     <CFLAG2 value=""/>
     <CFLAG3 value=""/>
     <PFLAGS value="-N2..\obj -N0..\obj -$YD -$L- -$D- -v -M -JPHNE"/>
@@ -98,6 +98,10 @@ Item0=USEPACKAGES
 [HistoryLists\hlIntOutputDir]
 Count=1
 Item0=..\obj
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=..\bin
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl

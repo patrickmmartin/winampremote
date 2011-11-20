@@ -80,7 +80,7 @@ object frmMain: TfrmMain
     Width = 392
     Height = 146
     Hint = 'pages of information and configuration'
-    ActivePage = tbsMain
+    ActivePage = tbsConfig
     Align = alClient
     DockSite = True
     HotTrack = True
@@ -262,12 +262,12 @@ object frmMain: TfrmMain
       object ebEndPoint: TEdit
         Left = 112
         Top = 12
-        Width = 49
+        Width = 145
         Height = 21
         Hint = 'the server'#39's endpoint'
         AutoSize = False
         TabOrder = 0
-        Text = '8000'
+        Text = '\\pipe\winampremote'
         OnChange = AddressChange
       end
       object ebAddress: TEdit

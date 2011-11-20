@@ -60,7 +60,7 @@ bool success;
 
   if (success){
       sbrMain->Panels->Items[1]->Text = Computername;
-      sbrMain->Panels->Items[2]->Text = 8000;
+      sbrMain->Panels->Items[2]->Text = "\\pipe\\winampremote";
 
       mainhwnd = this->Handle;
 
