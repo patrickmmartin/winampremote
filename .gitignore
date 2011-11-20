@@ -18,3 +18,17 @@
 /winampremote/source/winampserver.tds
 /winampremote/source/winampserver.res
 /winampremote/source/winampserver.~bpr
+/winampremote/source/ConfigF.~cpp
+/winampremote/source/ConfigF.~dfm
+/winampremote/source/ConfigF.~h
+/winampremote/source/MainF.~cpp
+/winampremote/source/MainF.~dfm
+/winampremote/source/RPCFuncsU.~cpp
+/winampremote/source/ServerF.~cpp
+/winampremote/source/ServerF.~dfm
+/winampremote/source/ServersF.~cpp
+/winampremote/source/ServersF.~dfm
+/winampremote/source/ServersF.~h
+/winampremote/source/binding.~c
+/winampremote/source/rpcthread.~cpp
+/winampremote/source/winampserver.mak
