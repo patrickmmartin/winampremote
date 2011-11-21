@@ -24,4 +24,9 @@ Some features of note were
  
   The final blow was the Windows XP Service Pack which locked down security for unauthenticated RPC endpoints.
 
- 
+ The game plan is to restore a working version for now, with my version of c++Builder5.
+ Given it's been so long since the old version worked, backwards compatbility is not going to be an issue.
+ After that: there was a linux client and there could be some more X platform code in there without too much effort
+ - it's not, fundamentally a big project.
+ Getting the right options to MIDL to prevent disaster - that's another story.
+
