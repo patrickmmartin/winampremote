@@ -32,3 +32,5 @@
 /winampremote/source/binding.~c
 /winampremote/source/rpcthread.~cpp
 /winampremote/source/winampserver.mak
+/winampremote/source/conremote.~bpf
+/winampremote/source/remote.~cpp
