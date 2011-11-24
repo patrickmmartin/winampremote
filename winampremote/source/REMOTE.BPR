@@ -4,12 +4,11 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\remote.exe"/>
-    <OBJFILES value="..\obj\waintstrs.obj ..\obj\remotestrs.obj ..\obj\remote.obj 
-      ..\obj\AboutF.obj ..\obj\SettingsF.obj ..\obj\CommandF.obj 
-      ..\obj\ServersF.obj ..\obj\DetailsF.obj ..\obj\PlaylistF.obj 
-      ..\obj\SplashF.obj ..\obj\MainF.obj ..\obj\messageF.obj 
-      ..\obj\winampinterface_c.obj ..\obj\RPCFuncsU.obj ..\obj\binding.obj 
-      ..\obj\WAINT.obj ..\obj\ColourU.obj ..\obj\RFC1060U.obj 
+    <OBJFILES value="..\obj\remote.obj ..\obj\AboutF.obj ..\obj\SettingsF.obj 
+      ..\obj\CommandF.obj ..\obj\ServersF.obj ..\obj\DetailsF.obj 
+      ..\obj\PlaylistF.obj ..\obj\SplashF.obj ..\obj\MainF.obj 
+      ..\obj\messageF.obj ..\obj\winampinterface_c.obj ..\obj\RPCFuncsU.obj 
+      ..\obj\binding.obj ..\obj\WAINT.obj ..\obj\ColourU.obj ..\obj\RFC1060U.obj 
       ..\obj\IPAddressU.obj ..\obj\VersionInfoU.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>

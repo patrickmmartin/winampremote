@@ -33,8 +33,6 @@ USEFORM("PlaylistF.cpp", frmPlaylist);
 USEFORM("SplashF.cpp", frmSplash);
 USEFORM("MainF.cpp", frmMain);
 USEFORM("messageF.cpp", frmMessage);
-USEUNIT("waintstrs.pas");
-USEUNIT("remotestrs.pas");
 USEUNIT("winampinterface_c.c");
 USEUNIT("RPCFuncsU.cpp");
 USEUNIT("binding.c");

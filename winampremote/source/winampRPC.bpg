@@ -9,8 +9,8 @@ MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
 DCC = $(ROOT)\bin\dcc32.exe $**
 BRCC = $(ROOT)\bin\brcc32.exe $**
 #------------------------------------------------------------------------------
-PROJECTS = paslib.lib remote.exe gen_RPCinterface.dll winampclient.dll \
-  conremote.exe winampserver.exe
+PROJECTS = remote.exe gen_RPCinterface.dll winampclient.dll conremote.exe \
+  winampserver.exe
 #------------------------------------------------------------------------------
 default: $(PROJECTS)
 #------------------------------------------------------------------------------
@@ -20,10 +20,6 @@ gen_RPCinterface.dll: gen_RPCinterface.bpr
 
 remote.exe: remote.bpr
   $(MAKE)
-
-paslib.lib: paslib.bpr
-  $(ROOT)\bin\bpr2mak -t$(ROOT)\bin\deflib.bmk $**
-  $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 
 conremote.exe: conremote.bpr
   $(ROOT)\bin\bpr2mak $**
