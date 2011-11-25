@@ -4,13 +4,16 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\remote.exe"/>
-    <OBJFILES value="..\obj\remotestrs.obj ..\obj\remote.obj ..\obj\AboutF.obj 
-      ..\obj\SettingsF.obj ..\obj\CommandF.obj ..\obj\ServersF.obj 
-      ..\obj\DetailsF.obj ..\obj\PlaylistF.obj ..\obj\SplashF.obj 
-      ..\obj\MainF.obj ..\obj\messageF.obj ..\obj\winampinterface_c.obj 
-      ..\obj\RPCFuncsU.obj ..\obj\binding.obj ..\obj\WAINT.obj 
-      ..\obj\ColourU.obj ..\obj\RFC1060U.obj ..\obj\IPAddressU.obj 
-      ..\obj\VersionInfoU.obj"/>
+    <OBJFILES value="..\obj\remote\remotestrs.obj ..\obj\remote\remote.obj 
+      ..\obj\remote\AboutF.obj ..\obj\remote\SettingsF.obj 
+      ..\obj\remote\CommandF.obj ..\obj\remote\ServersF.obj 
+      ..\obj\remote\DetailsF.obj ..\obj\remote\PlaylistF.obj 
+      ..\obj\remote\SplashF.obj ..\obj\remote\MainF.obj 
+      ..\obj\remote\messageF.obj ..\obj\remote\winampinterface_c.obj 
+      ..\obj\remote\RPCFuncsU.obj ..\obj\remote\binding.obj 
+      ..\obj\remote\WAINT.obj ..\obj\remote\ColourU.obj 
+      ..\obj\remote\RFC1060U.obj ..\obj\remote\IPAddressU.obj 
+      ..\obj\remote\VersionInfoU.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
@@ -38,10 +41,10 @@
   <OPTIONS>
     <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -w -Vx -Ve -xp -Tkh30000 -fp -X- -r- -a8 
       -4 -b -k -y -v -vi- -c -tW -tWM"/>
-    <PFLAGS value="-N2..\obj -N0..\obj -$Y+ -$W -$U -$O- -v -M -JPHNE"/>
+    <PFLAGS value="-N2..\obj\remote -N0..\obj\remote -$Y+ -$W -$U -$O- -v -M -JPHNE"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zi"/>
-    <LFLAGS value="-I..\obj -D&quot;&quot; -aa -Tpe -GD -x -v"/>
+    <LFLAGS value="-I..\obj\remote -D&quot;&quot; -aa -Tpe -GD -x -v"/>
   </OPTIONS>
   <LINKER>
     <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
@@ -50,7 +53,7 @@
   </LINKER>
   <IDEOPTIONS>
 [Version Info]
-IncludeVerInfo=1
+IncludeVerInfo=0
 AutoIncBuild=0
 MajorVer=1
 MinorVer=3
@@ -111,11 +114,12 @@ Item2=USEPACKAGES
 Item3=_RTLDLL;USEPACKAGES
 
 [HistoryLists\hlIntOutputDir]
-Count=4
-Item0=..\obj
-Item1=obj
-Item2=bin
-Item3=.\bin
+Count=5
+Item0=..\obj\remote
+Item1=..\obj
+Item2=obj
+Item3=bin
+Item4=.\bin
 
 [HistoryLists\hlFinalOutputDir]
 Count=2

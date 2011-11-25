@@ -1,4 +1,4 @@
 REM CommandInterpreter: $(COMSPEC)
 mkdir ..\obj
 mkdir ..\bin
-del /F /Q ..\obj\*.*
+del /F /Q /S ..\obj\*.*

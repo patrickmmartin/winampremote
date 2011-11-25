@@ -1,7 +1,7 @@
 USEUNIT("conremote.cpp");
 USEUNIT("RPCFuncsU.cpp");
 USEUNIT("WAINT.CPP");
-USEOBJ("..\obj\winampinterface_c.obj");
+USEUNIT("winampinterface_c.c");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 

@@ -41,7 +41,7 @@ USEUNIT("ColourU.cpp");
 USEUNIT("RFC1060U.CPP");
 USEUNIT("IPAddressU.cpp");
 USEUNIT("VersionInfoU.cpp");
-USEUNIT(remotestrs.pas");
+USEUNIT("remotestrs.pas");
 //---------------------------------------------------------------------------
 #include "remotestrs.hpp"
 #include "waintstrs.hpp"
