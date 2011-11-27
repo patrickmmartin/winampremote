@@ -4,8 +4,8 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\conremote.exe"/>
-    <OBJFILES value="..\obj\conremote.obj ..\obj\RPCFuncsU.obj ..\obj\WAINT.obj 
-      ..\obj\winampinterface_c.obj"/>
+    <OBJFILES value="..\obj\conremote\conremote.obj ..\obj\conremote\RPCFuncsU.obj 
+      ..\obj\conremote\WAINT.obj ..\obj\conremote\winampinterface_c.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
@@ -32,10 +32,10 @@
   <OPTIONS>
     <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -xp -Tkh30000 -fp -X- -r- -a8 -b- 
       -k -y -v -vi- -tWC -tWM -c"/>
-    <PFLAGS value="-N2..\obj -N0..\obj -$Y+ -$W -$U -$O- -v -M -JPHNE"/>
+    <PFLAGS value="-N2..\obj\conremote -N0..\obj\conremote -$Y+ -$W -$U -$O- -v -M -JPHNE"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zi"/>
-    <LFLAGS value="-I..\obj -D&quot;&quot; -ap -Tpe -GD -x -v"/>
+    <LFLAGS value="-I..\obj\conremote -D&quot;&quot; -ap -Tpe -GD -x -v"/>
   </OPTIONS>
   <LINKER>
     <ALLOBJ value="c0x32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
@@ -44,12 +44,12 @@
   </LINKER>
   <IDEOPTIONS>
 [Version Info]
-IncludeVerInfo=1
+IncludeVerInfo=0
 AutoIncBuild=0
 MajorVer=1
 MinorVer=0
 Release=0
-Build=1
+Build=2
 Debug=0
 PreRelease=0
 Special=0
@@ -61,7 +61,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=
 FileDescription=Executable (Console)
-FileVersion=1.0.0.1
+FileVersion=1.0.0.2
 InternalName=
 LegalCopyright=
 LegalTrademarks=
@@ -104,10 +104,11 @@ Item2=USEPACKAGES
 Item3=_RTLDLL;USEPACKAGES
 
 [HistoryLists\hlIntOutputDir]
-Count=3
-Item0=..\obj
-Item1=obj
-Item2=bin
+Count=4
+Item0=..\obj\conremote
+Item1=..\obj
+Item2=obj
+Item3=bin
 
 [HistoryLists\hlFinalOutputDir]
 Count=2
