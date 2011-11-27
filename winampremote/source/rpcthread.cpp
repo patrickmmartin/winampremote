@@ -30,23 +30,27 @@
 void WAMessageProc(
     /* [string][out][in] */ unsigned char __RPC_FAR *pszString)
 {
+  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent hello";
+  /* TODO : factor out this MainStatus reporting into an interface */
   MainMessage(str.c_str());
   MainStatus("welcome from the winamp RPC server");
   MainStatus("listening...");
 }
 
 
-void WAExecuteMessage( 
+void WAExecuteMessage(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in] */ long command)
 {
+  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
   str += command;
+  /* TODO : factor out this MainStatus reporting into an interface */
   MainMessage( str.c_str());
 
   // identify command?
@@ -57,17 +61,19 @@ void WAExecuteMessage(
 }
 
 
-void WAExecuteMessageString( 
+void WAExecuteMessageString(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [string][in] */ unsigned char __RPC_FAR *pszParam,
     /* [in] */ long command)
 {
+  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
   str += command;
   str += " - parameter : ";
   str += (char *) pszParam;
+  /* TODO : factor out this MainMessage reporting into an interface */
   MainMessage( str.c_str());
 
 //  delete pszString;
@@ -77,17 +83,19 @@ void WAExecuteMessageString(
 
 }
 
-long WAIntegerResult( 
+long WAIntegerResult(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in] */ long command,
     /* [in] */ long data)
 {
+  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
   str += command;
   str += " - data : ";
   str += data;
+  /* TODO : factor out this MainMessage reporting into an interface */
   MainMessage( str.c_str());
 
   // identify command?
@@ -97,12 +105,13 @@ long WAIntegerResult(
 
 }
 
-long WAStringResult( 
+long WAStringResult(
     /* [string][out][in] */ unsigned char __RPC_FAR *pszString,
     /* [in] */ long command,
     /* [in] */ long data)
 {
   char * retval;
+  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
@@ -110,6 +119,7 @@ long WAStringResult(
   str += " - data : ";
   str += data;
 
+  /* TODO : factor out this MainMessage reporting into an interface */
   MainMessage( str.c_str());
 
   retval = "cannot obtain strings out of process";
@@ -148,6 +158,7 @@ void WASetStringList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
+          /* TODO : factor out this MainStatus reporting into an interface */
          MainStatus("executing request");
 
           TStringList * StringList = new TStringList;
@@ -184,7 +195,7 @@ void WASetStringList(
 }
 
 
-void WAGetStringList( 
+void WAGetStringList(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [out] */ BUFFER __RPC_FAR *pBuffer,
     /* [in] */ long command)
@@ -195,6 +206,7 @@ void WAGetStringList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
+          /* TODO : factor out this MainStatus reporting into an interface */
          MainStatus("executing request");
 
           TStringList * StringList = new TStringList;
@@ -256,6 +268,7 @@ void WAGetStringDataList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
+          /* TODO : factor out this MainStatus reporting into an interface */
          MainStatus("executing request");
 
           TStringList * StringList = new TStringList;
@@ -308,7 +321,9 @@ void WAShutdown(void)
 {
     RpcMgmtStopServerListening(NULL);
     RpcServerUnregisterIf(NULL, NULL, FALSE);
+  /* TODO : factor out this MainStatus reporting into an interface */
     MainStatus("not listening");
+  /* TODO : factor out this MainMessage reporting into an interface */
     MainMessage("asked to close");
     PostMessage(mainhwnd, WM_CLOSE, 0, 0);
 }
@@ -328,11 +343,13 @@ AnsiString str;
 RPC_STATUS status;
 
     //---- Place thread code here ----
+          /* TODO : factor out this MainStatus reporting into an interface */
     MainStatus("initialising...");
 
     str = "winamp version : ";
     str += GetWinampVersion();
 
+  /* TODO : factor out this MainMessage reporting into an interface */
     MainMessage(str.c_str());
 
     // should check status codes here for previously registered interfaces
@@ -371,6 +388,8 @@ RPC_STATUS status;
 void __fastcall MainMessage(char * msgString)
 {
 // do something with the passed string
+/* TODO : remove reliance upon this global handle */
+/* TODO : memory leak for invalid handle - rectify design flaw */
   PostMessage(mainhwnd, WM_THREAD_MESSAGE, 0, (long) strdup(msgString));
 }
 //---------------------------------------------------------------------------
@@ -378,10 +397,13 @@ void __fastcall MainMessage(char * msgString)
 void __fastcall MainStatus(char * msgString)
 {
 // do something with the passed string
+/* TODO : remove reliance upon this global handle */
+/* TODO : memory leak for invalid handle - rectify design flaw */
   PostMessage(mainhwnd, WM_THREAD_STATUS, 0, (long) strdup(msgString));
 }
 
 
+/* required user alloc / free function pair */
 void __RPC_FAR * __RPC_USER midl_user_allocate(size_t len)
 {
     return(malloc(len));
