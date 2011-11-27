@@ -36,6 +36,9 @@
 /winampremote/source/remote.~cpp
 /winampremote/source/winampclient.~bpf
 /winampremote/source/testclient.mak
+/winampremote/source/testclient.~bpf
+/winampremote/source/testclient.~bpr
 /winampremote/source/testserver.mak
-/winampremote/source/conremote.~cpp
-/winampremote/source/testclient.~cpp
+/winampremote/source/testserver.~bpf
+/winampremote/source/testserver.~bpr
+/winampremote/source/testserver.~cpp
