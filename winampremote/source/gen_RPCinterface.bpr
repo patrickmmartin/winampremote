@@ -4,11 +4,16 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\gen_RPCinterface.dll"/>
-    <OBJFILES value="..\obj\waintstrs.obj ..\obj\remotestrs.obj ..\obj\gen_RPCinterface.obj 
-      ..\obj\AboutF.obj ..\obj\ServerDLLF.obj ..\obj\ConfigDLLF.obj 
-      ..\obj\DetailsF.obj ..\obj\gen_plugin.obj ..\obj\VersionInfoU.obj 
-      ..\obj\rpcthreadDLL.obj ..\obj\WAINT.obj ..\obj\RFC1060U.obj 
-      ..\obj\winampinterface_s.obj"/>
+    <OBJFILES value="..\obj\gen_RPCinterface\waintstrs.obj 
+      ..\obj\gen_RPCinterface\remotestrs.obj 
+      ..\obj\gen_RPCinterface\gen_RPCinterface.obj 
+      ..\obj\gen_RPCinterface\AboutF.obj ..\obj\gen_RPCinterface\ServerDLLF.obj 
+      ..\obj\gen_RPCinterface\ConfigDLLF.obj 
+      ..\obj\gen_RPCinterface\DetailsF.obj ..\obj\gen_RPCinterface\gen_plugin.obj 
+      ..\obj\gen_RPCinterface\VersionInfoU.obj 
+      ..\obj\gen_RPCinterface\rpcthreadDLL.obj ..\obj\gen_RPCinterface\WAINT.obj 
+      ..\obj\gen_RPCinterface\RFC1060U.obj 
+      ..\obj\gen_RPCinterface\winampinterface_s.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
@@ -35,11 +40,12 @@
   <OPTIONS>
     <CFLAG1 value="-WD -Od -H=$(BCB)\lib\vcl50.csm -Vx -Ve -xp -Tkh30000 -fp -X- -r- -a8 -4 
       -b- -k -y -v -vi- -c -tWM"/>
-    <PFLAGS value="-N2..\obj -N0..\obj -$Y+ -$W -$U -$R -$Q -$O- -v -M -JPHNE"/>
+    <PFLAGS value="-N2..\obj\gen_RPCinterface -N0..\obj\gen_RPCinterface -$Y+ -$W -$U -$R -$Q 
+      -$O- -v -M -JPHNE"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zi"/>
-    <LFLAGS value="-I..\obj -D&quot;&quot; -GC&quot;winamp general plugin for RPC interface&quot; -aa -Tpd -x -Gn 
-      -v"/>
+    <LFLAGS value="-I..\obj\gen_RPCinterface -D&quot;&quot; 
+      -GC&quot;winamp general plugin for RPC interface&quot; -aa -Tpd -x -Gn -v"/>
   </OPTIONS>
   <LINKER>
     <ALLOBJ value="c0d32.obj sysinit.obj $(OBJFILES)"/>
@@ -53,7 +59,7 @@ AutoIncBuild=0
 MajorVer=1
 MinorVer=3
 Release=8
-Build=259
+Build=258
 Debug=0
 PreRelease=0
 Special=0
@@ -65,7 +71,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=1.3.8.259
+FileVersion=1.3.8.258
 InternalName=
 LegalCopyright=
 LegalTrademarks=
@@ -113,11 +119,12 @@ Item3=_RTLDLL;USEPACKAGES
 Item4=USEPACKAGES
 
 [HistoryLists\hlIntOutputDir]
-Count=4
-Item0=..\obj
-Item1=obj
-Item2=bin
-Item3=.\bin
+Count=5
+Item0=..\obj\gen_RPCinterface
+Item1=..\obj
+Item2=obj
+Item3=bin
+Item4=.\bin
 
 [HistoryLists\hlHostApplication]
 Count=1

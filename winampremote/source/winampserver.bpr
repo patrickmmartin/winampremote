@@ -4,9 +4,10 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\winampserver.exe"/>
-    <OBJFILES value="..\obj\winampserver.obj ..\obj\waint.obj ..\obj\ConfigF.obj 
-      ..\obj\AboutF.obj ..\obj\rpcthread.obj ..\obj\RPCErrors.obj 
-      ..\obj\ServerF.obj"/>
+    <OBJFILES value="..\obj\winampserver\winampserver.obj ..\obj\winampserver\waint.obj 
+      ..\obj\winampserver\ConfigF.obj ..\obj\winampserver\AboutF.obj 
+      ..\obj\winampserver\rpcthread.obj ..\obj\winampserver\RPCErrors.obj 
+      ..\obj\winampserver\ServerF.obj"/>
     <RESFILES value="winampserver.res"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
@@ -36,10 +37,10 @@
       -c -tW -tWM"/>
     <CFLAG2 value=""/>
     <CFLAG3 value=""/>
-    <PFLAGS value="-N2..\obj -N0..\obj -$YD -$L- -$D- -v -M -JPHNE"/>
+    <PFLAGS value="-N2..\obj\winampserver -N0..\obj\winampserver -$YD -$L- -$D- -v -M -JPHNE"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-I..\obj -D&quot;&quot; -aa -Tpe -x -Gn"/>
+    <LFLAGS value="-I..\obj\winampserver -D&quot;&quot; -aa -Tpe -x -Gn"/>
     <IFLAGS value=""/>
   </OPTIONS>
   <LINKER>
@@ -96,12 +97,14 @@ Count=1
 Item0=USEPACKAGES
 
 [HistoryLists\hlIntOutputDir]
-Count=1
-Item0=..\obj
+Count=2
+Item0=..\obj\winampserver
+Item1=..\obj
 
 [HistoryLists\hlFinalOutputDir]
-Count=1
-Item0=..\bin
+Count=2
+Item0=..\bin\
+Item1=..\bin
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
