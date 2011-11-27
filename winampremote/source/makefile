@@ -69,7 +69,7 @@ targets: testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe
 all: configure targets
 
 clean:
-	del /F /Q /S ..\obj\*.* > nul
-	del /F /Q /S ..\bin\*.* > nul
+	if exist ..\obj del /F /Q /S ..\obj\*.* > nul
+	if exist ..\bin del /F /Q /S ..\bin\*.* > nul
 
 
