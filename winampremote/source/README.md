@@ -1,1 +1,1 @@
-Source directory for the winamp remote projects.
+# Source directory for the winamp remote projects.

@@ -1,0 +1,1 @@
+# translations of UI strings
