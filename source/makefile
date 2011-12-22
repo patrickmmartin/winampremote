@@ -29,38 +29,38 @@ obj: obj-base obj-remote  obj-gen_RPCinterface obj-conremote obj-winampclient ob
 
 
 configure:
-	echo creating command line build files
-	bpr2mak -q testserver.bpr
-	bpr2mak -q testclient.bpr
-	bpr2mak -q conremote.bpr
-	bpr2mak -q remote.bpr 
-	bpr2mak -q winampclient.bpr 
-	bpr2mak -q gen_RPCinterface.bpr 
-	bpr2mak -q winampserver.bpr 
+	# empty task
 	
 
 midl: 
 	runmidl.bat
 
 testserver.exe: bin obj-testserver midl
+	bpr2mak -q testserver.bpr > nul
 	make -f testserver.mak
 
 testclient.exe: bin obj-testclient midl
+	bpr2mak -q testclient.bpr > nul
 	make -f testclient.mak
 
 conremote.exe: bin obj-conremote midl
+	bpr2mak -q conremote.bpr > nul
 	make -f conremote.mak
 
 remote.exe: bin obj-remote midl
+	bpr2mak -q remote.bpr > nul
 	make -f remote.mak
 
 winampclient.dll: bin obj-winampclient midl
+	bpr2mak -q winampclient.bpr > nul
 	make -f winampclient.mak
 
 gen_RPCinterface.dll: bin obj-gen_RPCinterface midl
+	bpr2mak -q gen_RPCinterface.bpr > nul
 	make -f gen_RPCinterface.mak
 
 winampserver.exe: bin obj-winampserver midl
+	bpr2mak -q winampserver.bpr > nul
 	make -f winampserver.mak
 
 
@@ -71,5 +71,27 @@ all: configure targets
 clean:
 	if exist ..\obj del /F /Q /S ..\obj\*.* > nul
 	if exist ..\bin del /F /Q /S ..\bin\*.* > nul
+
+
+pre-tests: 
+	@echo running tests ...
+
+post-tests: 
+	@echo completed tests
+
+tests: pre-tests test-builds post-tests
+	
+	
+
+test-builds:
+	@echo ensuring independent builds ...
+	make clean testserver.exe > nul
+	make clean testclient.exe > nul
+	make clean conremote.exe > nul
+	make clean remote.exe > nul
+	make clean winampclient.dll > nul
+	make clean gen_RPCinterface.dll > nul
+	make clean winampserver.exe > nul
+	@echo independent builds completed
 
 
