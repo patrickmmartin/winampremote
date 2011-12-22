@@ -33,3 +33,5 @@
 /source/winampserver.mak
 /source/winampserver.tds
 /source/winampserver.~bpr
+/bin
+/obj
