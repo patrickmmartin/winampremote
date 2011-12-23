@@ -9,7 +9,7 @@ default: clean all
 	echo ========== build for $@ ======
 	if not exist ..\bin mkdir ..\bin
 	if not exist ..\obj mkdir ..\obj
-	if not exist ..\obj\$($&) mkdir ..\obj\$($&)
+	if not exist ..\obj\$& mkdir ..\obj\$&
 	bpr2mak -q $&.bpr
 	make -f $&.mak
 
@@ -17,7 +17,7 @@ default: clean all
 	echo ========== build for $@ ======
 	if not exist ..\bin mkdir ..\bin
 	if not exist ..\obj mkdir ..\obj
-	if not exist ..\obj\$($&) mkdir ..\obj\$($&)
+	if not exist ..\obj\$& mkdir ..\obj\$&
 	bpr2mak -q $&.bpr
 	make -f $&.mak
 	
