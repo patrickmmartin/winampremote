@@ -60,7 +60,11 @@ help:
 	@echo clean - cleans all targets
 	@echo tests - performs some tests on targets
 	@echo midl - compiles the IDL files
+	@echo docs - generates the doxygen output
 	@echo default - clean all
+	
+docs:
+	doxygen
 	
 pre-tests: 
 	echo ========== running tests ======
