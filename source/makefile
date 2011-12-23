@@ -1,90 +1,77 @@
 
 .silent
-default: clean configure all
+default: clean all
 
-#could do with an implicit rule for .mak
-
-bin: 
+# this is a hack for not getting a ".bpr.exe" rule working correctly
+# to override the default .cpp.exe rule
+# currently relying upon convention of a main cpp file for the project to work
+.cpp.exe: 
+	echo ========== build for $@ ======
 	if not exist ..\bin mkdir ..\bin
-
-obj-base:
 	if not exist ..\obj mkdir ..\obj
-obj-testserver: obj-base
-	if not exist ..\obj\remote mkdir ..\obj\testserver
-obj-testclient: obj-base
-	if not exist ..\obj\remote mkdir ..\obj\testclient
-obj-remote: obj-base
-	if not exist ..\obj\remote mkdir ..\obj\remote
-obj-gen_RPCinterface: obj-base
-	if not exist ..\obj\gen_RPCinterface mkdir ..\obj\gen_RPCinterface
-obj-conremote: obj-base
-	if not exist ..\obj\conremote mkdir ..\obj\conremote
-obj-winampclient: obj-base
-	if not exist ..\obj\winampclient mkdir ..\obj\winampclient
-obj-winampserver: obj-base
-	if not exist ..\obj\winampserver mkdir ..\obj\winampserver
+	if not exist ..\obj\$($&) mkdir ..\obj\$($&)
+	bpr2mak -q $&.bpr
+	make -f $&.mak
 
-obj: obj-base obj-remote  obj-gen_RPCinterface obj-conremote obj-winampclient obj-winampserver
-
-
-
-configure:
-	# empty task
+.cpp.dll: 
+	echo ========== build for $@ ======
+	if not exist ..\bin mkdir ..\bin
+	if not exist ..\obj mkdir ..\obj
+	if not exist ..\obj\$($&) mkdir ..\obj\$($&)
+	bpr2mak -q $&.bpr
+	make -f $&.mak
 	
-
-midl: 
+midl:
+	# this is invoked by the IDE also, hence why it's a script
+	echo ========== running MIDL compiler ======
 	runmidl.bat
+	
+winampinterface_c.c: midl
 
-testserver.exe: bin obj-testserver midl
-	bpr2mak -q testserver.bpr > nul
-	make -f testserver.mak
+winampinterface_s.c: midl
 
-testclient.exe: bin obj-testclient midl
-	bpr2mak -q testclient.bpr > nul
-	make -f testclient.mak
+testserver.exe: winampinterface_s.c
 
-conremote.exe: bin obj-conremote midl
-	bpr2mak -q conremote.bpr > nul
-	make -f conremote.mak
+testclient.exe:  winampinterface_c.c
 
-remote.exe: bin obj-remote midl
-	bpr2mak -q remote.bpr > nul
-	make -f remote.mak
+conremote.exe: winampinterface_c.c
 
-winampclient.dll: bin obj-winampclient midl
-	bpr2mak -q winampclient.bpr > nul
-	make -f winampclient.mak
+remote.exe: winampinterface_c.c
 
-gen_RPCinterface.dll: bin obj-gen_RPCinterface midl
-	bpr2mak -q gen_RPCinterface.bpr > nul
-	make -f gen_RPCinterface.mak
+winampclient.dll: winampinterface_c.c
 
-winampserver.exe: bin obj-winampserver midl
-	bpr2mak -q winampserver.bpr > nul
-	make -f winampserver.mak
+gen_RPCinterface.dll: winampinterface_s.c
 
+winampserver.exe: winampinterface_s.c
 
-targets: testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
+TARGETS= testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
 
-all: configure targets
+all: $(TARGETS)
 
 clean:
+	echo ========== cleaning object files ======
 	if exist ..\obj del /F /Q /S ..\obj\*.* > nul
 	if exist ..\bin del /F /Q /S ..\bin\*.* > nul
 
-
+help:
+	@echo targets built by this makefile: $(TARGETS)
+	@echo.
+	@echo all - builds all targets
+	@echo clean - cleans all targets
+	@echo tests - performs some tests on targets
+	@echo midl - compiles the IDL files
+	@echo default - clean all
+	
 pre-tests: 
-	@echo running tests ...
+	echo ========== running tests ======
 
 post-tests: 
-	@echo completed tests
+	echo ========== completed tests ======
 
 tests: pre-tests test-builds post-tests
-	
-	
-
+		
 test-builds:
-	@echo ensuring independent builds ...
+	echo ========== ensuring independent builds ======
 	make clean testserver.exe > nul
 	make clean testclient.exe > nul
 	make clean conremote.exe > nul
@@ -95,3 +82,5 @@ test-builds:
 	@echo independent builds completed
 
 
+
+	
