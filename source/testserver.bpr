@@ -4,8 +4,9 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\testserver.exe"/>
-    <OBJFILES value="..\obj\testserver\testserver.obj ..\obj\testserver\RPCErrors.obj 
-      ..\obj\testserver\rpcthread.obj ..\obj\testserver\waint.obj"/>
+    <OBJFILES value="..\obj\testserver\waintstrs.obj ..\obj\testserver\testserver.obj 
+      ..\obj\testserver\RPCErrors.obj ..\obj\testserver\rpcthread.obj 
+      ..\obj\testserver\waint.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
