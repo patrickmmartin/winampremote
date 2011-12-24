@@ -21,18 +21,18 @@ default: clean all
 	bpr2mak -q $&.bpr
 	make -a -f $&.mak
 	
-midl:
+winampinterface.idl:
 	# this is invoked by the IDE also, hence why it's a script
 	echo ========== running MIDL compiler ======
 	runmidl.bat
 	
-winampinterface_c.c: midl
+winampinterface_c.c: winampinterface.idl
 
-winampinterface_s.c: midl
+winampinterface_s.c: winampinterface.idl
 
 bin\testserver.exe: winampinterface_s.c
 
-bin\testclient.exe:  winampinterface_c.c
+bin\testclient.exe: winampinterface_c.c
 
 bin\conremote.exe: winampinterface_c.c
 
