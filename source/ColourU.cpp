@@ -1,5 +1,5 @@
 /*
-winamp remote control suite Copyright (C) 2000,2001,2002  Patrick M. Martin
+winamp remote control suite Copyright ©2000-2011  Patrick M. Martin
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
