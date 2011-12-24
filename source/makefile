@@ -4,14 +4,14 @@ default: clean all
 
 # this is a hack for not getting a ".bpr.exe" rule working correctly
 # to override the default .cpp.exe rule
-# currently relying upon convention of a main cpp file for the project to work
+# currently relying upon BCB convention of a main cpp file named for the project listing project files
 .cpp.exe: 
 	echo ========== build for $@ ======
 	if not exist ..\bin mkdir ..\bin
 	if not exist ..\obj mkdir ..\obj
 	if not exist ..\obj\$& mkdir ..\obj\$&
 	bpr2mak -q $&.bpr
-	make -f $&.mak
+	make -a -f $&.mak
 
 .cpp.dll: 
 	echo ========== build for $@ ======
@@ -19,7 +19,7 @@ default: clean all
 	if not exist ..\obj mkdir ..\obj
 	if not exist ..\obj\$& mkdir ..\obj\$&
 	bpr2mak -q $&.bpr
-	make -f $&.mak
+	make -a -f $&.mak
 	
 midl:
 	# this is invoked by the IDE also, hence why it's a script
@@ -30,19 +30,19 @@ winampinterface_c.c: midl
 
 winampinterface_s.c: midl
 
-testserver.exe: winampinterface_s.c
+bin\testserver.exe: winampinterface_s.c
 
-testclient.exe:  winampinterface_c.c
+bin\testclient.exe:  winampinterface_c.c
 
-conremote.exe: winampinterface_c.c
+bin\conremote.exe: winampinterface_c.c
 
-remote.exe: winampinterface_c.c
+bin\remote.exe: winampinterface_c.c
 
-winampclient.dll: winampinterface_c.c
+bin\winampclient.dll: winampinterface_c.c
 
-gen_RPCinterface.dll: winampinterface_s.c
+bin\gen_RPCinterface.dll: winampinterface_s.c
 
-winampserver.exe: winampinterface_s.c
+bin\winampserver.exe: winampinterface_s.c
 
 TARGETS= testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
 
@@ -64,7 +64,18 @@ help:
 	@echo default - clean all
 	
 docs:
+	echo ========== building doxygen output ======
 	doxygen
+	
+	
+WINAMP_PLUGINS_DEFAULT=$(PROGRAMFILES)\Winamp\Plugins
+!ifdef PROGRAMFILES(x86)
+WINAMP_PLUGINS_DEFAULT=$(PROGRAMFILES(x86))\Winamp\Plugins
+!endif
+	
+install:
+	echo ========== copying plugin dll to $(WINAMP_PLUGINS_DEFAULT) ======
+	copy ..\bin\gen_RPCinterface.dll "$(WINAMP_PLUGINS_DEFAULT)"
 	
 pre-tests: 
 	echo ========== running tests ======
