@@ -33,9 +33,9 @@ USEUNIT("VersionInfoU.cpp");
 USEUNIT("rpcthreadDLL.cpp");
 USEUNIT("WAINT.CPP");
 USEUNIT("RFC1060U.CPP");
-USEUNIT("winampinterface_s.c");
 USEUNIT("waintstrs.pas");
 USEUNIT("remotestrs.pas");
+USELIB("..\lib\winampinterface.lib");
 //---------------------------------------------------------------------------
 HINSTANCE g_hinst;
 //---------------------------------------------------------------------------

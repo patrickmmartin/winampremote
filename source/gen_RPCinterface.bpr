@@ -12,13 +12,12 @@
       ..\obj\gen_RPCinterface\DetailsF.obj ..\obj\gen_RPCinterface\gen_plugin.obj 
       ..\obj\gen_RPCinterface\VersionInfoU.obj 
       ..\obj\gen_RPCinterface\rpcthreadDLL.obj ..\obj\gen_RPCinterface\WAINT.obj 
-      ..\obj\gen_RPCinterface\RFC1060U.obj 
-      ..\obj\gen_RPCinterface\winampinterface_s.obj"/>
+      ..\obj\gen_RPCinterface\RFC1060U.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) AboutF.dfm ServerDLLF.dfm ConfigDLLF.dfm DetailsF.dfm"/>
-    <LIBFILES value=""/>
+    <LIBFILES value="..\lib\winampinterface.lib"/>
     <LIBRARIES value="vclx50.lib vcl50.lib"/>
     <SPARELIBS value="vcl50.lib vclx50.lib"/>
     <PACKAGES value="vclx50.bpi vcl50.bpi"/>
@@ -161,12 +160,4 @@ ActiveLang=
 ProjectLang=0x00000809
 RootDir=D:\home\Patrick\Code\CBuilder5\RPC\winampremote1.3.8\
   </IDEOPTIONS>
-
-  <FILES>
-    <FILE type="override" value="winampinterface_s.c" translator="Auto">
-      <CFLAG1 value="-Tkh30000"/>
-      <WARNINGS value="-w-pch"/>
-      <WARNOPTSTR value="-w-pch -w-par -w-8027 -w-8026"/>
-    </FILE>
-  </FILES>
 </PROJECT>

@@ -8,7 +8,7 @@ USEFORM("AboutF.cpp", frmAbout);
 USEUNIT("rpcthread.cpp");
 USEUNIT("RPCErrors.cpp");
 USEFORM("ServerF.cpp", frmMain);
-USEUNIT("winampinterface_s.c");
+USELIB("..\lib\winampinterface.lib");
 //---------------------------------------------------------------------------
 #include "ServerF.h"
 //---------------------------------------------------------------------------

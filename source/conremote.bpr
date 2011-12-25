@@ -5,13 +5,12 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\conremote.exe"/>
     <OBJFILES value="..\obj\conremote\conremote.obj ..\obj\conremote\RPCFuncsU.obj 
-      ..\obj\conremote\WAINT.obj ..\obj\conremote\ConsoleWinampClient.obj 
-      ..\obj\conremote\winampinterface_c.obj"/>
+      ..\obj\conremote\WAINT.obj ..\obj\conremote\ConsoleWinampClient.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value=""/>
+    <LIBFILES value="..\lib\winampinterface.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value="vcl50.lib vclx50.lib"/>
     <PACKAGES value="vclx50.bpi vcl50.bpi"/>
@@ -136,12 +135,4 @@ ActiveLang=
 ProjectLang=
 RootDir=
   </IDEOPTIONS>
-
-  <FILES>
-    <FILE type="override" value="winampinterface_c.c" translator="Auto">
-      <CFLAG1 value="-Tkh30000"/>
-      <WARNINGS value="-w-use -w-pch -w-aus"/>
-      <WARNOPTSTR value="-w-pch -w-par -w-8027 -w-8026 -w-aus"/>
-    </FILE>
-  </FILES>
 </PROJECT>

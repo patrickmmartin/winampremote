@@ -9,17 +9,16 @@
       ..\obj\remote\CommandF.obj ..\obj\remote\ServersF.obj 
       ..\obj\remote\DetailsF.obj ..\obj\remote\PlaylistF.obj 
       ..\obj\remote\SplashF.obj ..\obj\remote\MainF.obj 
-      ..\obj\remote\messageF.obj ..\obj\remote\winampinterface_c.obj 
-      ..\obj\remote\RPCFuncsU.obj ..\obj\remote\binding.obj 
-      ..\obj\remote\WAINT.obj ..\obj\remote\ColourU.obj 
-      ..\obj\remote\RFC1060U.obj ..\obj\remote\IPAddressU.obj 
-      ..\obj\remote\VersionInfoU.obj"/>
+      ..\obj\remote\messageF.obj ..\obj\remote\RPCFuncsU.obj 
+      ..\obj\remote\binding.obj ..\obj\remote\WAINT.obj 
+      ..\obj\remote\ColourU.obj ..\obj\remote\RFC1060U.obj 
+      ..\obj\remote\IPAddressU.obj ..\obj\remote\VersionInfoU.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) AboutF.dfm SettingsF.dfm CommandF.dfm ServersF.dfm 
       DetailsF.dfm PlaylistF.dfm SplashF.dfm MainF.dfm messageF.dfm"/>
-    <LIBFILES value=""/>
+    <LIBFILES value="..\lib\winampinterface.lib"/>
     <LIBRARIES value="vclx50.lib vcl50.lib"/>
     <SPARELIBS value="vcl50.lib vclx50.lib"/>
     <PACKAGES value="vclx50.bpi vcl50.bpi"/>
@@ -149,14 +148,9 @@ RootDir=D:\home\Patrick\Code\CBuilder5\RPC\winampremote1.3.8\
 
   <FILES>
     <FILE type="override" value="binding.c" translator="Auto">
-      <CFLAG1 value="-Tkh30000"/>
-      <WARNINGS value="-w-use -w-pch"/>
-      <WARNOPTSTR value="-w- "/>
-    </FILE>
-    <FILE type="override" value="winampinterface_c.c" translator="Auto">
-      <CFLAG1 value="-Tkh30000"/>
-      <WARNINGS value="-w-use -w-pch"/>
-      <WARNOPTSTR value="-w- "/>
+      <CFLAG1 value=" -Tkh30000"/>
+      <WARNINGS value=" -w-use -w-pch"/>
+      <WARNOPTSTR value=" -w-"/>
     </FILE>
   </FILES>
 </PROJECT>

@@ -9,8 +9,8 @@ MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
 DCC = $(ROOT)\bin\dcc32.exe $**
 BRCC = $(ROOT)\bin\brcc32.exe $**
 #------------------------------------------------------------------------------
-PROJECTS = testserver.exe testclient.exe remote.exe gen_RPCinterface.dll \
-  conremote.exe winampserver.exe winampclient.dll
+PROJECTS = winampinterface.lib testserver.exe testclient.exe remote.exe \
+  gen_RPCinterface.dll conremote.exe winampserver.exe winampclient.dll
 #------------------------------------------------------------------------------
 default: $(PROJECTS)
 #------------------------------------------------------------------------------
@@ -45,6 +45,10 @@ testclient.exe: testclient.bpr
 
 testserver.exe: testserver.bpr
   $(ROOT)\bin\bpr2mak $**
+  $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
+
+winampinterface.lib: winampinterface.bpr
+  $(ROOT)\bin\bpr2mak -t$(ROOT)\bin\deflib.bmk $**
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 
 

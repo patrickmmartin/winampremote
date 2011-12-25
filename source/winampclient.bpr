@@ -5,12 +5,12 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\winampclient.dll"/>
     <OBJFILES value="..\obj\winampclient\winampclient.obj ..\obj\winampclient\RPCFuncsU.obj 
-      ..\obj\winampclient\waint.obj ..\obj\winampclient\winampinterface_c.obj"/>
+      ..\obj\winampclient\waint.obj"/>
     <RESFILES value="winampclient.res"/>
     <IDLFILES value=""/>
     <DEFFILE value="rpcfuncs.def"/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value=""/>
+    <LIBFILES value="..\lib\winampinterface.lib"/>
     <LIBRARIES value="vclx50.lib vcl50.lib"/>
     <SPARELIBS value="vcl50.lib vclx50.lib"/>
     <PACKAGES value="vclx50.bpi vcl50.bpi"/>
@@ -133,12 +133,4 @@ ActiveLang=
 ProjectLang=
 RootDir=
   </IDEOPTIONS>
-
-  <FILES>
-    <FILE type="override" value="winampinterface_c.c" translator="Auto">
-      <CFLAG1 value="-Tkh30000"/>
-      <WARNINGS value="-w-use -w-pch"/>
-      <WARNOPTSTR value="-w-pch -w-par -w-8027 -w-8026"/>
-    </FILE>
-  </FILES>
 </PROJECT>

@@ -1,4 +1,7 @@
 
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
 .silent
 default: clean all
 
@@ -21,30 +24,32 @@ default: clean all
 	bpr2mak -q $&.bpr
 	make -a -f $&.mak
 	
-winampinterface.idl:
-	# this is invoked by the IDE also, hence why it's a script
+winampinterface.idl: 
 	echo ========== running MIDL compiler ======
+	# this is invoked by the IDE also, hence why it's a script
 	runmidl.bat
 	
-winampinterface_c.c: winampinterface.idl
+winampinterface.lib: winampinterface.idl
+	# build lib
+	echo ========== build for $@ ======
+	bpr2mak -q -t$(ROOT)\bin\deflib.bmk $&.bpr
+	make -B -a -$(MAKEFLAGS) -f $&.mak
 
-winampinterface_s.c: winampinterface.idl
+testserver.exe: winampinterface.lib
 
-bin\testserver.exe: winampinterface_s.c
+testclient.exe: winampinterface.lib
 
-bin\testclient.exe: winampinterface_c.c
+conremote.exe: winampinterface.lib
 
-bin\conremote.exe: winampinterface_c.c
+remote.exe: winampinterface.lib
 
-bin\remote.exe: winampinterface_c.c
+winampclient.dll: winampinterface.lib
 
-bin\winampclient.dll: winampinterface_c.c
+gen_RPCinterface.dll: winampinterface.lib
 
-bin\gen_RPCinterface.dll: winampinterface_s.c
+winampserver.exe: winampinterface.lib
 
-bin\winampserver.exe: winampinterface_s.c
-
-TARGETS= testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
+TARGETS= winampinterface.lib testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
 
 all: $(TARGETS)
 
@@ -52,6 +57,7 @@ clean:
 	echo ========== cleaning object files ======
 	if exist ..\obj del /F /Q /S ..\obj\*.* > nul
 	if exist ..\bin del /F /Q /S ..\bin\*.* > nul
+	if exist ..\lib del /F /Q /S ..\lib\*.* > nul
 
 help:
 	@echo targets built by this makefile: $(TARGETS)

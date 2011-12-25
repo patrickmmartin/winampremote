@@ -3,46 +3,39 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.05.03"/>
-    <PROJECT value="..\bin\testserver.exe"/>
-    <OBJFILES value="..\obj\testserver\waintstrs.obj ..\obj\testserver\testserver.obj 
-      ..\obj\testserver\RPCErrors.obj ..\obj\testserver\rpcthread.obj 
-      ..\obj\testserver\waint.obj"/>
+    <PROJECT value="..\lib\winampinterface.lib"/>
+    <OBJFILES value="..\obj\winampinterface\winampinterface_c.obj 
+      ..\obj\winampinterface\winampinterface_s.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value="..\lib\winampinterface.lib"/>
+    <LIBFILES value=""/>
     <LIBRARIES value=""/>
-    <SPARELIBS value="Vcl50.lib"/>
-    <PACKAGES value="Vcl50.bpi Vclx50.bpi bcbsmp50.bpi Qrpt50.bpi Vcldb50.bpi Vclbde50.bpi 
-      ibsmp50.bpi vcldbx50.bpi TeeUI50.bpi TeeDB50.bpi Tee50.bpi TeeQR50.bpi 
-      VCLIB50.bpi bcbie50.bpi vclie50.bpi Inetdb50.bpi Inet50.bpi NMFast50.bpi 
-      dclocx50.bpi bcb2kaxserver50.bpi"/>
+    <PACKAGES value=""/>
     <PATHCPP value=".;"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>
-    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
-    <RELEASELIBPATH value="$(BCB)\lib\release"/>
-    <LINKER value="tlink32"/>
+    <LINKER value="TLib"/>
     <USERDEFINES value="_DEBUG"/>
-    <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
-    <MAINSOURCE value="testserver.bpf"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT"/>
+    <MAINSOURCE value="winampinterface.bpf"/>
     <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
     <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
-    <WARNINGS value="-w-par"/>
+    <WARNINGS value="-w-pch -w-par"/>
+    <LISTFILE value=""/>
   </MACROS>
   <OPTIONS>
-    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -tWC 
-      -tWM -c"/>
-    <PFLAGS value="-N2..\obj\testserver -N0..\obj\testserver -$YD -$W -$O- -v -JPHNE -M"/>
-    <RFLAGS value=""/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
+      -tW -tWM"/>
+    <PFLAGS value="-N2..\obj\winampinterface -N0..\obj\winampinterface -$YD -$W -$O- -v 
+      -JPHNE -M"/>
     <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-I..\obj\testserver -D&quot;&quot; -ap -Tpe -x -Gn -v"/>
+    <LFLAGS value=""/>
   </OPTIONS>
   <LINKER>
-    <ALLOBJ value="c0x32.obj $(PACKAGES) $(OBJFILES)"/>
-    <ALLRES value="$(RESFILES)"/>
-    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cw32mti.lib"/>
+    <ALLOBJ value="$(OBJFILES)"/>
+    <ALLLIB value=""/>
   </LINKER>
   <IDEOPTIONS>
 [Version Info]
@@ -90,11 +83,16 @@ Item0=_DEBUG
 
 [HistoryLists\hlIntOutputDir]
 Count=1
-Item0=..\obj\testserver
+Item0=..\obj\winampinterface
 
 [HistoryLists\hlFinalOutputDir]
 Count=1
-Item0=..\bin
+Item0=..\lib
+
+[HistoryLists\hIBPIOutputDir]
+Count=2
+Item0=C:\Users\Patrick\Documents\code\winampremote\lib\
+Item1=..\lib
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl

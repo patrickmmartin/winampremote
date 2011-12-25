@@ -33,7 +33,6 @@ USEFORM("PlaylistF.cpp", frmPlaylist);
 USEFORM("SplashF.cpp", frmSplash);
 USEFORM("MainF.cpp", frmMain);
 USEFORM("messageF.cpp", frmMessage);
-USEUNIT("winampinterface_c.c");
 USEUNIT("RPCFuncsU.cpp");
 USEUNIT("binding.c");
 USEUNIT("WAINT.CPP");
@@ -42,6 +41,7 @@ USEUNIT("RFC1060U.CPP");
 USEUNIT("IPAddressU.cpp");
 USEUNIT("VersionInfoU.cpp");
 USEUNIT("remotestrs.pas");
+USELIB("..\lib\winampinterface.lib");
 //---------------------------------------------------------------------------
 #include "remotestrs.hpp"
 #include "waintstrs.hpp"
