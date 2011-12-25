@@ -36,3 +36,8 @@
 /bin
 /obj
 /doc
+/source/ConsoleWinampClient.~h
+/source/IWinamp.~h
+/source/WAINT.~CPP
+/source/WAINT.~h
+/source/winampinterface_c.~c
