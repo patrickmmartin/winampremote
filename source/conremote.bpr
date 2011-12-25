@@ -5,7 +5,8 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\conremote.exe"/>
     <OBJFILES value="..\obj\conremote\conremote.obj ..\obj\conremote\RPCFuncsU.obj 
-      ..\obj\conremote\WAINT.obj ..\obj\conremote\winampinterface_c.obj"/>
+      ..\obj\conremote\WAINT.obj ..\obj\conremote\ConsoleWinampClient.obj 
+      ..\obj\conremote\winampinterface_c.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
@@ -24,8 +25,8 @@
     <USERDEFINES value="WIN32_LEAN_AND_MEAN;_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="conremote.bpf"/>
-    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\obj"/>
+    <INCLUDEPATH value="C:\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="C:\CBuilder5\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\obj"/>
     <WARNINGS value="-wuse -w-par -w-8027 -w-8026"/>
     <WARNOPTSTR value=""/>
   </MACROS>
