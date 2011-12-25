@@ -3,6 +3,7 @@ USEUNIT("RPCErrors.cpp");
 USEUNIT("rpcthread.cpp");
 USEUNIT("waint.cpp");
 USEUNIT("waintstrs.pas");
+USEUNIT("winampinterface_s.c");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 

@@ -6,7 +6,7 @@
     <PROJECT value="..\bin\testserver.exe"/>
     <OBJFILES value="..\obj\testserver\waintstrs.obj ..\obj\testserver\testserver.obj 
       ..\obj\testserver\RPCErrors.obj ..\obj\testserver\rpcthread.obj 
-      ..\obj\testserver\waint.obj"/>
+      ..\obj\testserver\waint.obj ..\obj\testserver\winampinterface_s.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
@@ -111,4 +111,11 @@ ShowInfoMsgs=0
 LinkDebugVcl=0
 LinkCGLIB=0
   </IDEOPTIONS>
+
+  <FILES>
+    <FILE type="override" value="winampinterface_s.c" translator="Auto">
+      <WARNINGS value="-w-pch"/>
+      <WARNOPTSTR value="-w-pch -w-par"/>
+    </FILE>
+  </FILES>
 </PROJECT>

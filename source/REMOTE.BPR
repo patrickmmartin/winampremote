@@ -146,4 +146,17 @@ ActiveLang=
 ProjectLang=0x00000809
 RootDir=D:\home\Patrick\Code\CBuilder5\RPC\winampremote1.3.8\
   </IDEOPTIONS>
+
+  <FILES>
+    <FILE type="override" value="binding.c" translator="Auto">
+      <CFLAG1 value="-Tkh30000"/>
+      <WARNINGS value="-w-use -w-pch"/>
+      <WARNOPTSTR value="-w- "/>
+    </FILE>
+    <FILE type="override" value="winampinterface_c.c" translator="Auto">
+      <CFLAG1 value="-Tkh30000"/>
+      <WARNINGS value="-w-use -w-pch"/>
+      <WARNOPTSTR value="-w- "/>
+    </FILE>
+  </FILES>
 </PROJECT>

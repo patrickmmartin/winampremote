@@ -131,4 +131,12 @@ ShowInfoMsgs=0
 LinkDebugVcl=0
 LinkCGLIB=0
   </IDEOPTIONS>
+
+  <FILES>
+    <FILE type="override" value="winampinterface_c.c" translator="Auto">
+      <CFLAG1 value="-Tkh30000"/>
+      <WARNINGS value="-w-use -w-pch"/>
+      <WARNOPTSTR value="-w-pch -w-par -w-8027 -w-8026"/>
+    </FILE>
+  </FILES>
 </PROJECT>

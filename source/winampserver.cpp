@@ -8,6 +8,7 @@ USEFORM("AboutF.cpp", frmAbout);
 USEUNIT("rpcthread.cpp");
 USEUNIT("RPCErrors.cpp");
 USEFORM("ServerF.cpp", frmMain);
+USEUNIT("winampinterface_s.c");
 //---------------------------------------------------------------------------
 #include "ServerF.h"
 //---------------------------------------------------------------------------
@@ -18,7 +19,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
         Application->Initialize();
         Application->Title = "winamp remote server";
         Application->CreateForm(__classid(TfrmMain), &frmMain);
-        Application->Run();
+                 Application->Run();
     }
     catch (Exception &exception)
     {

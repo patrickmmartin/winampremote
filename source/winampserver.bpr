@@ -7,7 +7,7 @@
     <OBJFILES value="..\obj\winampserver\winampserver.obj ..\obj\winampserver\waint.obj 
       ..\obj\winampserver\ConfigF.obj ..\obj\winampserver\AboutF.obj 
       ..\obj\winampserver\rpcthread.obj ..\obj\winampserver\RPCErrors.obj 
-      ..\obj\winampserver\ServerF.obj"/>
+      ..\obj\winampserver\ServerF.obj ..\obj\winampserver\winampinterface_s.obj"/>
     <RESFILES value="winampserver.res"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
@@ -126,4 +126,12 @@ ActiveLang=
 ProjectLang=
 RootDir=
   </IDEOPTIONS>
+
+  <FILES>
+    <FILE type="override" value="winampinterface_s.c" translator="Auto">
+      <CFLAG1 value="-O2 -Tkh30000"/>
+      <WARNINGS value="-w-aus"/>
+      <WARNOPTSTR value="-w-par -w-8027 -w-8026 -w-aus"/>
+    </FILE>
+  </FILES>
 </PROJECT>
