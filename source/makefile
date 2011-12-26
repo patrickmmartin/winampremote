@@ -1,4 +1,3 @@
-
 ROOT = $(MAKEDIR)\..
 BRCC = $(ROOT)\bin\brcc32.exe 
 
@@ -22,7 +21,7 @@ clean:
 	bpr2mak -q $&.bpr
 	make -a -f $&.mak
 
-# this override of the default implicit rule is a similar hack for not getting a ".bpr.dll" rule working correctly
+# this copy of the .exe rule is a similar hack for not getting a ".bpr.dll" rule working correctly
 # currently relying upon BCB convention of a main cpp file named for the project listing project files
 .cpp.dll: 
 	echo ========== build for $@ ======
