@@ -1,5 +1,5 @@
 /*
-winamp remote control suite ï¿½Patrick Michael Martin 2000, 2001, 2002
+winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2002
 
 Copyright (C) 2000,2001,2002  Patrick M. Martin
 
@@ -20,25 +20,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 */
 
-//
-// conremote.cpp
-// example minimal straight console mode program
-// uses same units as somewhat large window program
-// note absence of:
-// make file
-
-// uses
-//
-// RPCFuncsU.cpp         - wrappers for RPC stubs
-// RPCFuncsU.h
-// RPCErrors.cpp         - helper functions for RPC errors
-// RPCErrors.h
-// waint.cpp             - helper functions for winamp interface
-// waint.h
-// winampinterface_c.c   - interface stubs generated from IDL file
-// winampinterface.h
-//
-//
 // required for USEUNIT macro to work
 #include"condefs.h"
 
@@ -61,10 +42,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "waint.h"
 
 //---------------------------------------------------------------------------
-USERES("conremote.res");
 USEUNIT("waint.cpp");
 USEUNIT("RPCFuncsU.cpp");
-USEOBJ("bin\winampinterface_c.obj");
 //---------------------------------------------------------------------------
 char IdentBuf [2 * MAX_COMPUTERNAME_LENGTH + 2];
 

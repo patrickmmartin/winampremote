@@ -68,6 +68,7 @@ all: $(TARGETS)
 help:
 	@echo targets built by this makefile: $(TARGETS)
 	@echo.
+	@echo help - shows this output
 	@echo all - builds all targets
 	@echo clean - cleans all targets
 	@echo tests - performs some tests on targets

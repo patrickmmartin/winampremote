@@ -3,6 +3,7 @@ USEUNIT("RPCFuncsU.cpp");
 USEUNIT("WAINT.CPP");
 USEUNIT("ConsoleWinampClient.cpp");
 USELIB("..\lib\winampinterface.lib");
+USERES("conremote.res");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 
