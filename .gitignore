@@ -42,3 +42,6 @@
 /source/WAINT.~h
 /source/winampinterface_c.~c
 /lib
+/source/winampinterface.mak
+/source/winampinterface.~bpf
+/source/winampinterface.~bpr
