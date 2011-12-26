@@ -4,7 +4,7 @@
 
 Consists of a plugin that is compatible with the winamp 2.5.x API, along with a client, allowing multiple users to share a centralised Winamp server.
 
-Built using c++ Builder 5 onwards and uses MS-RPC for the communication mechanismm.
+Built using c++ Builder 5 onwards and uses MS-RPC (over tcp) for the communication mechanismm.
 
 A linux client was created which worked fine, linked against the DCE-RPC runtime.
 
@@ -34,9 +34,16 @@ Some features of note were
 
 ## Plan
 
- The game plan is to restore a working version for now, with my version of c++Builder5.
+ This is the archtypal pet project: for now I'll be happy to revisit some old friends from 12 years ago.
+ The game plans are:
+### short term 
+* Produce a complete version that works on current Windows releases.
  Given it's been so long since the old version worked, backwards compatbility is not going to be an issue.
- After that: there was a linux client and there could be some more X platform code in there without too much effort
- - it's not, fundamentally a big project.
- Getting the right options to MIDL to prevent disaster - that's another story.
+
+* Bring the build process / tests / coding  up to date
+
+### medium term
+* There was a linux client once for the tcp transport - reactivating this would be an interesting exercise                                                      
+
+* As a parallel vein, creating a more transportable UI, such as in QT or HTML5 would be equally interesting 
 
