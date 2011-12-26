@@ -1,0 +1,25 @@
+VS_VERSION_INFO VERSIONINFO
+#include "vs_ffi.rcinc"
+#include "build_ffi.rcinc"
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+ FILEFLAGS 0x0L
+ FILEOS VOS__WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+         BLOCK "040904E4"
+         BEGIN
+              #include "appkeys.rcinc"
+              #include "buildkeys.rcinc"
+              VALUE "OriginalFilename", "Template.exe\0"
+              VALUE "InternalName", "Template\0"
+         END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+         VALUE "Translation", 0x0409, 1252
+    END
+END
+

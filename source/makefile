@@ -1,7 +1,7 @@
 
-!ifndef ROOT
 ROOT = $(MAKEDIR)\..
-!endif
+BRCC = $(ROOT)\bin\brcc32.exe 
+
 .silent
 default: clean all
 
@@ -9,7 +9,7 @@ clean:
 	echo ========== cleaning object files ======
 	-for %D in (bin obj lib) do @DEL /F /Q /S ..\%D\*.*
 
-# this is a hack for not getting a ".bpr.exe" rule working correctly
+# this override of the default implicit rule is a hack for not getting a ".bpr.exe" rule working correctly
 # to override the default .cpp.exe rule
 # currently relying upon BCB convention of a main cpp file named for the project listing project files
 .cpp.exe: 
@@ -17,14 +17,20 @@ clean:
 	if not exist ..\bin mkdir ..\bin
 	if not exist ..\obj mkdir ..\obj
 	if not exist ..\obj\$& mkdir ..\obj\$&
+	buildkeys $@
+	$(BRCC) $&.rcscript
 	bpr2mak -q $&.bpr
 	make -a -f $&.mak
 
+# this override of the default implicit rule is a similar hack for not getting a ".bpr.dll" rule working correctly
+# currently relying upon BCB convention of a main cpp file named for the project listing project files
 .cpp.dll: 
 	echo ========== build for $@ ======
 	if not exist ..\bin mkdir ..\bin
 	if not exist ..\obj mkdir ..\obj
 	if not exist ..\obj\$& mkdir ..\obj\$&
+	buildkeys $@
+	$(BRCC) $&.rcscript
 	bpr2mak -q $&.bpr
 	make -a -f $&.mak
 	
