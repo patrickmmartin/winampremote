@@ -5,6 +5,10 @@ ROOT = $(MAKEDIR)\..
 .silent
 default: clean all
 
+clean:
+	echo ========== cleaning object files ======
+	-for %D in (bin obj lib) do @DEL /F /Q /S ..\%D\*.*
+
 # this is a hack for not getting a ".bpr.exe" rule working correctly
 # to override the default .cpp.exe rule
 # currently relying upon BCB convention of a main cpp file named for the project listing project files
@@ -32,6 +36,9 @@ winampinterface.idl:
 winampinterface.lib: winampinterface.idl
 	# build lib
 	echo ========== build for $@ ======
+	if not exist ..\obj mkdir ..\obj
+	if not exist ..\lib mkdir ..\lib
+	if not exist ..\obj\$& mkdir ..\obj\$&
 	bpr2mak -q -t$(ROOT)\bin\deflib.bmk $&.bpr
 	make -B -a -$(MAKEFLAGS) -f $&.mak
 
@@ -52,12 +59,6 @@ winampserver.exe: winampinterface.lib
 TARGETS= winampinterface.lib testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
 
 all: $(TARGETS)
-
-clean:
-	echo ========== cleaning object files ======
-	if exist ..\obj del /F /Q /S ..\obj\*.* > nul
-	if exist ..\bin del /F /Q /S ..\bin\*.* > nul
-	if exist ..\lib del /F /Q /S ..\lib\*.* > nul
 
 help:
 	@echo targets built by this makefile: $(TARGETS)

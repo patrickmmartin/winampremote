@@ -1,4 +1,2 @@
 REM CommandInterpreter: $(COMSPEC)
-mkdir ..\obj
-mkdir ..\bin
-del /F /Q /S ..\obj\*.*
+for %%D in (bin obj lib) do ( del /F /Q /S ..\%%D\*.* )
