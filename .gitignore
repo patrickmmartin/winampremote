@@ -42,6 +42,9 @@
 /source/WAINT.~h
 /source/winampinterface_c.~c
 /lib
+/source/winampinterface.mak
+/source/winampinterface.~bpf
+/source/winampinterface.~bpr
 /source/buildkeys.rcinc
 /source/build_ffi.rcinc
 /source/conremote.res
