@@ -72,3 +72,15 @@
 /source/testclient.RES
 /source/remote.res
 /source/gen_RPCinterface.res
+
+/source/conremote.RES
+/source/gen_RPCinterface.RES
+/source/remote.RES
+/source/testserver.RES
+/source/winampclient.RES
+/source/winampserver.RES
+/source/DetailsF.~dfm
+/source/PlaylistF.~dfm
+/source/REMOTESTRS.~H
+/source/SplashF.~dfm
+/source/waintstrs.~h
