@@ -34,7 +34,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 // winamp IPC declarations
 #include "waint.h"
-#include "remotestrs.hpp"
+#include "remotestrs.h"
 
 //---------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ void __fastcall TfrmServers::NetErrorHandler(DWORD dwErrorCode, AnsiString Funct
     if (dwErrorCode != ERROR_EXTENDED_ERROR)
     {
         // warning
-        AddMessage(Function + Remotestrs_sFailed, 2);
+        AddMessage(Function + sFailed, 2);
         MessageStr = SysErrorMessage(dwErrorCode) + ".";
         MessageSeverity = 0;
     }
@@ -93,12 +93,12 @@ void __fastcall TfrmServers::NetErrorHandler(DWORD dwErrorCode, AnsiString Funct
         if(dwWNetResult != NO_ERROR)
         {
            // error
-          MessageStr = AnsiString().sprintf(Remotestrs_sWNetGetLastErrorFailedFmt.c_str(), dwWNetResult);
+          MessageStr = AnsiString().sprintf(sWNetGetLastErrorFailedFmt.c_str(), dwWNetResult);
         }
       // warning
 
       MessageSeverity = 3;
-      MessageStr = AnsiString().sprintf(Remotestrs_sWNetFailedFmt.c_str(), szProvider, dwLastError, szDescription);
+      MessageStr = AnsiString().sprintf(sWNetFailedFmt.c_str(), szProvider, dwLastError, szDescription);
     }
 
   int Index = MessageStr.Pos("\r\n");
@@ -132,7 +132,7 @@ BOOL __fastcall TfrmServers::EnumerateFunc(LPNETRESOURCE lpnr)
      ResourcesEnumerated = 0;
      // the whole net
      ResourcesToEnumerate = 1;
-     AddMessage(Remotestrs_sStartEnumerateNetwork,  1);
+     AddMessage(sStartEnumerateNetwork,  1);
    }
 
    // update
@@ -185,7 +185,7 @@ BOOL __fastcall TfrmServers::EnumerateFunc(LPNETRESOURCE lpnr)
                 else
                   ObjectName = lpnrLocal[i].lpProvider;
 
-                AddMessage(AnsiString().sprintf(Remotestrs_sEnumeratingContainer.c_str(),
+                AddMessage(AnsiString().sprintf(sEnumeratingContainer.c_str(),
                                                 ObjectName.c_str()),
                                                 1);
                 EnumerateFunc(&lpnrLocal[i]);
@@ -234,7 +234,7 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
     dwSize = sizeof(szComputerName);
     Win32Check(GetComputerName(szComputerName, &dwSize));
     AnsiString ComputerName = szComputerName;
-    AddServer(ComputerName.c_str(), Remotestrs_sLocalMachine.c_str());
+    AddServer(ComputerName.c_str(), sLocalMachine.c_str());
     btnTest->Enabled = true;
   }
   __finally
@@ -267,7 +267,7 @@ void __fastcall TfrmServers::AddServer(char * RemoteName, char * Comment)
    ListItem->Caption = RemoteName;
    ListItem->SubItems->Clear();
    ListItem->SubItems->Add(Comment);
-   ListItem->SubItems->Add(Remotestrs_sServerUntested);
+   ListItem->SubItems->Add(sServerUntested);
    ListItem->ImageIndex = 0;
 
    // in the event of duplicate names, I imagine there will be big trouble
@@ -313,7 +313,7 @@ void __fastcall TfrmServers::StartTest(TObject *)
   btnGetIp->Enabled = false;
   btnCancel->Enabled = false;
 
-  btnTest->Caption = Remotestrs_sStop;
+  btnTest->Caption = sStop;
   btnTest->OnClick = StopTest;
 
   Screen->Cursor = crHourGlass;
@@ -338,13 +338,13 @@ void __fastcall TfrmServers::StartTest(TObject *)
             try
             {
               // issue warning
-              AddMessage(AnsiString().sprintf(Remotestrs_sAttemptingToContact.c_str(), lvServers->Items->Item[i]->Caption.c_str()),   1);
-              AddMessage(Remotestrs_sMayTakeTime,   2);
+              AddMessage(AnsiString().sprintf(sAttemptingToContact.c_str(), lvServers->Items->Item[i]->Caption.c_str()),   1);
+              AddMessage(sMayTakeTime,   2);
               start = clock();
               retval = IntegerResult(frmMain->IdentChars, IPC_GETVERSION,  0);
               end = clock();
               pbServers->StepIt();
-              AddMessage(AnsiString().sprintf(Remotestrs_sResponseReceivedFmt.c_str(), (end - start) / CLK_TCK), 1);
+              AddMessage(AnsiString().sprintf(sResponseReceivedFmt.c_str(), (end - start) / CLK_TCK), 1);
               lvServers->Items->Item[i]->ImageIndex = 2;
               lvServers->Items->Item[i]->SubItems->Strings[1] = WinampVersion(retval);
               if (AbortTest)
@@ -353,9 +353,9 @@ void __fastcall TfrmServers::StartTest(TObject *)
             catch( ERPCException &E)
             {
               pbServers->StepIt();
-              AddMessage(AnsiString(Remotestrs_sCallFailed + E.Message),   3);
+              AddMessage(AnsiString(sCallFailed + E.Message),   3);
               lvServers->Items->Item[i]->ImageIndex = 1;
-              lvServers->Items->Item[i]->SubItems->Strings[1] = Remotestrs_sNotFound;
+              lvServers->Items->Item[i]->SubItems->Strings[1] = sNotFound;
             }
          }
          __finally
@@ -387,7 +387,7 @@ void __fastcall TfrmServers::StopTest(TObject *)
   btnCancel->Enabled = true;
   AbortTest = true;
   btnTest->OnClick = StartTest;
-  btnTest->Caption = Remotestrs_sTest;
+  btnTest->Caption = sTest;
 
 }
 //---------------------------------------------------------------------------
@@ -425,12 +425,12 @@ int port;
     port = ebEndPoint->Text.ToInt();
     if ((port < 0) || (port > 65535))
     {
-      throw EConvertError(AnsiString().sprintf(Remotestrs_sPortOutOfRangeFmt.c_str(), port).c_str());
+      throw EConvertError(AnsiString().sprintf(sPortOutOfRangeFmt.c_str(), port).c_str());
     }
   }
   catch (EConvertError &E)
   {
-    MessageBox(this->Handle, E.Message.c_str(), Remotestrs_sEndpointInvalid.c_str(), MB_OK | MB_ICONERROR);
+    MessageBox(this->Handle, E.Message.c_str(), sEndpointInvalid.c_str(), MB_OK | MB_ICONERROR);
     throw EAbort("abort operation");
   }
   bool usedport = false;
@@ -444,9 +444,9 @@ int port;
     }
 
   if (usedport &&
-        Application->MessageBox((AnsiString().sprintf(Remotestrs_sWellKnownPortFmt.c_str(),
+        Application->MessageBox((AnsiString().sprintf(sWellKnownPortFmt.c_str(),
                                 port , RFC1060ports[i].service)).c_str(),
-                                Remotestrs_sAlertWellKnownPort.c_str(),
+                                sAlertWellKnownPort.c_str(),
                                 MB_ICONEXCLAMATION + MB_OKCANCEL + MB_DEFBUTTON2) != IDOK)  throw EAbort("user cancellled bogus port");
 }
 
@@ -477,40 +477,40 @@ void __fastcall TfrmServers::GetServerIp(TObject *)
       {
         GetIPAddress(lvServers->Selected->Caption.c_str(), HostName, Addresses, Aliases);
 
-        AddMessage(Remotestrs_sIPLookup + lvServers->Selected->Caption, 1);
-        AddMessage(Remotestrs_sAuthoritativeName + HostName, 1);
+        AddMessage(sIPLookup + lvServers->Selected->Caption, 1);
+        AddMessage(sAuthoritativeName + HostName, 1);
 
         if (Addresses->Count > 0 )
         {
-          AddMessage(Remotestrs_sAddressesRetrieved, 1);
+          AddMessage(sAddressesRetrieved, 1);
           for (int i = 0; i < Addresses->Count  ; i ++)
           {
-            AddMessage(Remotestrs_sIPAddress + Addresses->Strings[i], 1);
+            AddMessage(sIPAddress + Addresses->Strings[i], 1);
           }
         }
         else
         {
-          AddMessage(Remotestrs_sAddressesNotRetrieved, 2);
+          AddMessage(sAddressesNotRetrieved, 2);
         }
 
 
         if (Aliases->Count > 0 )
         {
-           AddMessage(Remotestrs_sAliasesRetrieved, 1);
+           AddMessage(sAliasesRetrieved, 1);
           for (int i = 0; i < Aliases->Count  ; i ++)
           {
-            AddMessage(AnsiString(Remotestrs_sIPAlias) + Aliases->Strings[i], 1);
+            AddMessage(AnsiString(sIPAlias) + Aliases->Strings[i], 1);
           }
         }
         else
         {
-          AddMessage(Remotestrs_sAliasesNotRetrieved, 2);
+          AddMessage(sAliasesNotRetrieved, 2);
         }
 
       }
       catch (EIPException &E)
       {
-        AddMessage(Remotestrs_sGetIPAddressFailed + E.Message, 3);
+        AddMessage(sGetIPAddressFailed + E.Message, 3);
       }
 
     }

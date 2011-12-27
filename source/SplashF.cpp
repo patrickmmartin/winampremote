@@ -24,7 +24,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #pragma hdrstop
 
 #include "SplashF.h"
-#include "remotestrs.hpp"
+#include "remotestrs.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -40,7 +40,7 @@ __fastcall TfrmSplash::TfrmSplash(TComponent* Owner)
 
 void __fastcall TfrmSplash::FormCreate(TObject *)
 {
-  Caption = Remotestrs_sWinampRemoteLoading;
+  Caption = sWinampRemoteLoading;
 }
 //---------------------------------------------------------------------------
 

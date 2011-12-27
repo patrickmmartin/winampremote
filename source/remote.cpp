@@ -40,11 +40,12 @@ USEUNIT("ColourU.cpp");
 USEUNIT("RFC1060U.CPP");
 USEUNIT("IPAddressU.cpp");
 USEUNIT("VersionInfoU.cpp");
-USEUNIT("remotestrs.pas");
 USELIB("..\lib\winampinterface.lib");
+USEUNIT("remotestrs.cpp");
+USE("remotestrs.h", File);
 //---------------------------------------------------------------------------
-#include "remotestrs.hpp"
-#include "waintstrs.hpp"
+#include "remotestrs.h"
+#include "waintstrs.h"
 //---------------------------------------------------------------------------
 HINSTANCE g_hinst;
 
@@ -53,27 +54,27 @@ WINAPI WinMain(HINSTANCE, HINSTANCE hInstance, LPSTR, int)
   g_hinst = hInstance;
     try
     {
-    Application->Title = Remotestrs_sWinampRemoteClient;
+    Application->Title = sWinampRemoteClient;
     frmSplash = new TfrmSplash(Application);
     try{
         frmSplash->Show();
         frmSplash->Update();
-        frmSplash->lblMessage->Caption = Remotestrs_sInitialisingApplication;
+        frmSplash->lblMessage->Caption = sInitialisingApplication;
         frmSplash->lblMessage->Update();
         Application->Initialize();
-        frmSplash->lblMessage->Caption = Remotestrs_sCreatingMainForm;
+        frmSplash->lblMessage->Caption = sCreatingMainForm;
         frmSplash->lblMessage->Update();
         Application->CreateForm(__classid(TfrmMain), &frmMain);
                  Application->CreateForm(__classid(TfrmPlaylist), &frmPlaylist);
                  Application->CreateForm(__classid(TfrmCommands), &frmCommands);
                  Application->CreateForm(__classid(TfrmSettings), &frmSettings);
-                 frmSplash->lblMessage->Caption = Remotestrs_sReadyToRun;
+                 frmSplash->lblMessage->Caption = sReadyToRun;
         frmSplash->lblMessage->Update();
         delete frmSplash;
         frmSplash = NULL;
         Application->Run();
         frmSplash = new TfrmSplash(Application);
-        frmSplash->lblMessage->Caption = Remotestrs_sClosing;
+        frmSplash->lblMessage->Caption = sClosing;
         frmSplash->lblMessage->Update();
         Sleep(200);
         }

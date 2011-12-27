@@ -1,5 +1,5 @@
 /*
-winamp remote control suite ï¿½Patrick Michael Martin 2000, 2001, 2002
+winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2002
 
 Copyright (C) 2000,2001,2002  Patrick M. Martin
 
@@ -25,7 +25,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "DetailsF.h"
 #include "VersionInfoU.h"
-#include "remotestrs.hpp"
+#include "remotestrs.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -53,7 +54,7 @@ void __fastcall TfrmDetails::FormCreate(TObject *)
   GetModuleFileName(g_hinst, FileName, MAX_PATH);
 
 
-  Caption = AnsiString().sprintf( Remotestrs_sDetailsCaptionFmt.c_str(), LowerCase(ExtractFileName(FileName)).c_str());
+  Caption = AnsiString().sprintf( "%s details", LowerCase(ExtractFileName(FileName)).c_str());
 
   VI = new TModuleVersionInfo(FileName);
   try

@@ -4,9 +4,8 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\testserver.exe"/>
-    <OBJFILES value="..\obj\testserver\waintstrs.obj ..\obj\testserver\testserver.obj 
-      ..\obj\testserver\RPCErrors.obj ..\obj\testserver\rpcthread.obj 
-      ..\obj\testserver\waint.obj"/>
+    <OBJFILES value="..\obj\testserver\testserver.obj ..\obj\testserver\RPCErrors.obj 
+      ..\obj\testserver\rpcthread.obj ..\obj\testserver\waint.obj"/>
     <RESFILES value="testserver.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
@@ -27,8 +26,8 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="testserver.bpf"/>
-    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="C:\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="C:\CBuilder5\Projects;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
   </MACROS>
   <OPTIONS>

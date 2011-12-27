@@ -4,9 +4,7 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\gen_RPCinterface.dll"/>
-    <OBJFILES value="..\obj\gen_RPCinterface\waintstrs.obj 
-      ..\obj\gen_RPCinterface\remotestrs.obj 
-      ..\obj\gen_RPCinterface\gen_RPCinterface.obj 
+    <OBJFILES value="..\obj\gen_RPCinterface\gen_RPCinterface.obj 
       ..\obj\gen_RPCinterface\AboutF.obj ..\obj\gen_RPCinterface\ServerDLLF.obj 
       ..\obj\gen_RPCinterface\ConfigDLLF.obj 
       ..\obj\gen_RPCinterface\DetailsF.obj ..\obj\gen_RPCinterface\gen_plugin.obj 

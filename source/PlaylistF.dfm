@@ -27,8 +27,8 @@ object frmPlaylist: TfrmPlaylist
   object lstSongs: TListBox
     Left = 0
     Top = 0
-    Width = 415
-    Height = 201
+    Width = 407
+    Height = 191
     Hint = 'Playlist view -drag files to the desired location'
     Align = alClient
     DragMode = dmAutomatic
@@ -48,8 +48,8 @@ object frmPlaylist: TfrmPlaylist
   end
   object pnlBottom: TPanel
     Left = 0
-    Top = 201
-    Width = 415
+    Top = 191
+    Width = 407
     Height = 28
     Align = alBottom
     AutoSize = True
@@ -60,7 +60,7 @@ object frmPlaylist: TfrmPlaylist
     object pbSongPos: TProgressBar
       Left = 0
       Top = 0
-      Width = 411
+      Width = 403
       Height = 12
       Hint = 'track position - click to move '
       Align = alBottom
@@ -76,7 +76,7 @@ object frmPlaylist: TfrmPlaylist
     object pbListPos: TProgressBar
       Left = 0
       Top = 12
-      Width = 411
+      Width = 403
       Height = 12
       Hint = 'songlist position'
       Align = alBottom
@@ -89,8 +89,8 @@ object frmPlaylist: TfrmPlaylist
   end
   object sbPlaylist: TStatusBar
     Left = 0
-    Top = 229
-    Width = 415
+    Top = 219
+    Width = 407
     Height = 19
     Panels = <
       item

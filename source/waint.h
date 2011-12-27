@@ -129,7 +129,7 @@ char * GetWinampVersion(void);
 char * WinampVersion(int retval);
 
 /* strings identifying the commands */
-char * WinampCommandDesc(int Command);
+const char * WinampCommandDesc(int Command);
 
 
 #endif

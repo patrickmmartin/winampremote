@@ -19,8 +19,8 @@ object frmDetails: TfrmDetails
   object lvDetails: TListView
     Left = 0
     Top = 25
-    Width = 404
-    Height = 187
+    Width = 396
+    Height = 177
     Align = alClient
     Columns = <
       item
@@ -38,7 +38,7 @@ object frmDetails: TfrmDetails
   object pnlCaption: TPanel
     Left = 0
     Top = 0
-    Width = 404
+    Width = 396
     Height = 25
     Align = alTop
     Alignment = taLeftJustify

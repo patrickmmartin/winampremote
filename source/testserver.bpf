@@ -2,7 +2,6 @@ USEUNIT("testserver.cpp");
 USEUNIT("RPCErrors.cpp");
 USEUNIT("rpcthread.cpp");
 USEUNIT("waint.cpp");
-USEUNIT("waintstrs.pas");
 USELIB("..\lib\winampinterface.lib");
 USERES("testserver.res");
 //---------------------------------------------------------------------------

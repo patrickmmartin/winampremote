@@ -77,7 +77,7 @@ void WAExecuteMessage(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in] */ long command)
 {
-char * commandStr;
+const char * commandStr;
 
   try
   {            // test for C++ exceptions
@@ -122,7 +122,7 @@ void WAExecuteMessageString(
     /* [in] */ long command)
 {
 
-char * commandStr;
+const char * commandStr;
 
   try
   {            // test for C++ exceptions
@@ -171,7 +171,7 @@ long int WAIntegerResult(
     long data)
 {
 
-char * commandStr;
+const char * commandStr;
 int result;
   try
   {            // test for C++ exceptions
@@ -220,7 +220,7 @@ long int WAStringResult(
     long data)
 {
   char * retval;
-  char * commandStr;
+  const char * commandStr;
   AnsiString str;
 
   EnterCriticalSection(&fCriticalSection);

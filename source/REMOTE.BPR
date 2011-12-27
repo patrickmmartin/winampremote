@@ -4,15 +4,15 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\remote.exe"/>
-    <OBJFILES value="..\obj\remote\remotestrs.obj ..\obj\remote\remote.obj 
-      ..\obj\remote\AboutF.obj ..\obj\remote\SettingsF.obj 
-      ..\obj\remote\CommandF.obj ..\obj\remote\ServersF.obj 
-      ..\obj\remote\DetailsF.obj ..\obj\remote\PlaylistF.obj 
-      ..\obj\remote\SplashF.obj ..\obj\remote\MainF.obj 
-      ..\obj\remote\messageF.obj ..\obj\remote\RPCFuncsU.obj 
-      ..\obj\remote\binding.obj ..\obj\remote\WAINT.obj 
-      ..\obj\remote\ColourU.obj ..\obj\remote\RFC1060U.obj 
-      ..\obj\remote\IPAddressU.obj ..\obj\remote\VersionInfoU.obj"/>
+    <OBJFILES value="..\obj\remote\remote.obj ..\obj\remote\AboutF.obj 
+      ..\obj\remote\SettingsF.obj ..\obj\remote\CommandF.obj 
+      ..\obj\remote\ServersF.obj ..\obj\remote\DetailsF.obj 
+      ..\obj\remote\PlaylistF.obj ..\obj\remote\SplashF.obj 
+      ..\obj\remote\MainF.obj ..\obj\remote\messageF.obj 
+      ..\obj\remote\RPCFuncsU.obj ..\obj\remote\binding.obj 
+      ..\obj\remote\WAINT.obj ..\obj\remote\ColourU.obj 
+      ..\obj\remote\RFC1060U.obj ..\obj\remote\IPAddressU.obj 
+      ..\obj\remote\VersionInfoU.obj ..\obj\remote\remotestrs.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
@@ -32,8 +32,8 @@
     <USERDEFINES value="WIN32_LEAN_AND_MEAN;_DEBUG"/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="remote.cpp"/>
-    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\obj"/>
+    <INCLUDEPATH value="C:\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="C:\CBuilder5\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\obj"/>
     <WARNINGS value="-wuse -w-par -w-8027 -w-8026"/>
     <WARNOPTSTR value=""/>
   </MACROS>

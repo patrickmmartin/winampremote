@@ -29,7 +29,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "SplashF.h"
 #include "RPCFuncsU.h"
 #include "shellapi.h"
-#include "remotestrs.hpp"
+#include "remotestrs.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -317,7 +317,7 @@ void __fastcall TfrmPlaylist::lstSongsMouseMove(TObject *, TShiftState , int X, 
   }
   else
   {
-    lstSongs->Hint = Remotestrs_sPlaylistHint;
+    lstSongs->Hint = sPlaylistHint;
   }
 
 }
@@ -347,7 +347,7 @@ void __fastcall TfrmPlaylist::pmnuSongsPopup(TObject *)
   if (BelowIndex > -1)
     mnuPlay->Caption = lstSongs->Items->Strings[BelowIndex];
   else
-    mnuPlay->Caption = Remotestrs_sPlay;
+    mnuPlay->Caption = sPlay;
 
 
 }

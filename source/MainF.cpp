@@ -41,12 +41,12 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "winampinterface.h"
 #include "RPCFuncsU.h"
 #include "DetailsF.h"
-#include "remotestrs.hpp"
+#include "remotestrs.h"
 //#include "reinit.hpp"
 #include "SplashF.h"
 
 #include <math.h>
-#include "waintstrs.hpp"
+#include "waintstrs.h"
 
 /* TODO -opatrick -cactions : may need concatenation of available actions in a specific order */
 
@@ -158,17 +158,17 @@ HANDLE __fastcall TfrmMain::IconHandle(void)
     {
       case WA_NOT_PLAYING:
 
-        mnuPause->Caption = Remotestrs_sPause;
-        Pause1->Caption = Remotestrs_sPause;
+        mnuPause->Caption = sPause;
+        Pause1->Caption = sPause;
         fIconIndex = 3;
         break;
       case WA_PLAYING:
-        Pause->Caption = Remotestrs_sPause;
+        Pause->Caption = sPause;
         Pause->Checked = false;
         fIconIndex = 1;
         break;
       case WA_PAUSED:
-        Pause->Caption = Remotestrs_sUnPause;
+        Pause->Caption = sUnPause;
         Pause->Checked = true;
         fIconIndex = 2;
         break;
@@ -198,13 +198,13 @@ PSTR __fastcall TfrmMain::TipText(void)
 
   switch (WAStatus){
   case WA_PLAYING:
-    state = Remotestrs_sPlaying;
+    state = sPlaying;
     break;
   case WA_NOT_PLAYING:
-    state = Remotestrs_sStopped;
+    state = sStopped;
     break;
   case WA_PAUSED:
-    state = Remotestrs_sPaused;
+    state = sPaused;
     break;
   }
 
@@ -524,8 +524,8 @@ void __fastcall TfrmMain::AboutExecute(TObject *)
     frmAbout = new TfrmAbout(this);
     try
     {
-      frmAbout->Caption = Remotestrs_sAboutWinampRemoteControl;
-      OutText->Text= Remotestrs_sWinampRemoteControl;
+      frmAbout->Caption = sAboutWinampRemoteControl;
+      OutText->Text= sWinampRemoteControl;
       frmAbout->ShowModal();
     }
     __finally
@@ -637,10 +637,10 @@ AnsiString commandstr;
   OpenDialog1->FileName = "";
 
   if (Sender == mnuAddPlayList){
-    OpenDialog1->Filter = Remotestrs_sPlayListFiles;
+    OpenDialog1->Filter = sPlayListFiles;
     }
   else{
-    OpenDialog1->Filter = Remotestrs_sAllFiles;
+    OpenDialog1->Filter = sAllFiles;
     }
 
   if (OpenDialog1->Execute())
@@ -796,14 +796,14 @@ void __fastcall TfrmMain::FormCreate(TObject *)
 
 void __fastcall TfrmMain::AppException(TObject *, Exception *E)
 {
-  AnsiString RPCHint = Remotestrs_sRPCFailed;
+  AnsiString RPCHint = sRPCFailed;
 
   if (dynamic_cast <ERPCException*> (E)){
     MessageForm((AnsiString(RPCHint) + "\nMessage: " + E->Message));
     }
   else
   {
-    MessageForm((AnsiString(Remotestrs_sUnhandledException) + E->ClassName()+ ":\n" + E->Message));
+    MessageForm((AnsiString(sUnhandledException) + E->ClassName()+ ":\n" + E->Message));
   }
 }
 
@@ -868,7 +868,7 @@ void TfrmMain::UpdateIcon(void)
          }
          else
          {
-           lblMessage->Hint = Remotestrs_sCurrentTrack;
+           lblMessage->Hint = sCurrentTrack;
            lblMessage->ParentShowHint = true;
            lblMessage->ShowHint = false;
          }
@@ -1135,7 +1135,7 @@ AnsiString str;
   if (GetUserName(buf, &maxlen))
     str = buf;
   else
-    str = Remotestrs_sUnknown;
+    str = sUnknown;
 
   maxlen = 31;
   str += '@';
@@ -1143,7 +1143,7 @@ AnsiString str;
   if (GetComputerName(buf, &maxlen))
     str += buf;
   else
-    str += Remotestrs_sUnknown;
+    str += sUnknown;
 
   strncpy(IdentChars, str.c_str(), sizeof(IdentChars));
 }
@@ -1173,7 +1173,7 @@ void __fastcall TfrmMain::AddressChange(TObject *)
     Delay = 11;
     timerMain->Enabled = true;
     timerMain->OnTimer(this);
-   sbMain->Panels->Items[1]->Text = Remotestrs_sDelaying;
+   sbMain->Panels->Items[1]->Text = sDelaying;
    }
 }
 
@@ -1221,11 +1221,11 @@ void __fastcall TfrmMain::DelayTimer(TObject *)
 {
   if (--Delay > 0)
   {
-    sbMain->Panels->Items[1]->Text = AnsiString().sprintf(Remotestrs_sDelayingForFmt.c_str(), Delay);
+    sbMain->Panels->Items[1]->Text = AnsiString().sprintf(sDelayingForFmt.c_str(), Delay);
   }
   else
   {
-    sbMain->Panels->Items[1]->Text = Remotestrs_sRestarting;
+    sbMain->Panels->Items[1]->Text = sRestarting;
     timerMain->Enabled = false;
     timerMain->OnTimer = MainTimer;
     timerMain->Enabled = true;
@@ -1520,7 +1520,7 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
 
   if ((frmSplash) && (frmSplash->Visible))
   {
-    frmSplash->lblMessage->Caption = Remotestrs_sGettingPlaylist;
+    frmSplash->lblMessage->Caption = sGettingPlaylist;
     frmSplash->Update();
   }
 
@@ -1584,7 +1584,7 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
     }
     catch( ERPCException &E)
     {
-      frmPlaylist->lstSongs->Items->Text = AnsiString().sprintf(Remotestrs_sListUnobtainable.c_str(), E.Message.c_str());
+      frmPlaylist->lstSongs->Items->Text = AnsiString().sprintf(sListUnobtainable.c_str(), E.Message.c_str());
     }
 
   }
@@ -1601,7 +1601,7 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
     frmPlaylist->lstSongs->Items->EndUpdate();
     if ((frmSplash) && (frmSplash->Visible))
     {
-      frmSplash->lblMessage->Caption = Remotestrs_sGettingPlaylist;
+      frmSplash->lblMessage->Caption = sGettingPlaylist;
       frmSplash->Update();
     }
   }
