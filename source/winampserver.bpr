@@ -7,7 +7,7 @@
     <OBJFILES value="..\obj\winampserver\winampserver.obj ..\obj\winampserver\waint.obj 
       ..\obj\winampserver\ConfigF.obj ..\obj\winampserver\AboutF.obj 
       ..\obj\winampserver\rpcthread.obj ..\obj\winampserver\RPCErrors.obj 
-      ..\obj\winampserver\ServerF.obj"/>
+      ..\obj\winampserver\ServerF.obj ..\obj\winampserver\ConsoleCallObserver.obj"/>
     <RESFILES value="winampserver.res"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>

@@ -20,6 +20,8 @@
 //RPC errors
 # include "RPCErrors.h"
 
+#include "ConsoleCallObserver.h"
+
 /* note that the use of const for in only strings
  seems to break the ability to match the function signature, and leads to linker errors*/
 
@@ -327,6 +329,8 @@ void WAShutdown(void)
     PostMessage(mainhwnd, WM_CLOSE, 0, 0);
 }
 
+ ConsoleCallObserver cco;
+ ICallObserver& TRPCServerThread::CallObserver = cco;
 
 //---------------------------------------------------------------------------
 __fastcall TRPCServerThread::TRPCServerThread(bool CreateSuspended)
@@ -386,19 +390,14 @@ RPC_STATUS status;
 
 void __fastcall MainMessage(char * msgString)
 {
-// do something with the passed string
-/* TODO : remove reliance upon this global handle */
-/* TODO : memory leak for invalid handle - rectify design flaw */
-  PostMessage(mainhwnd, WM_THREAD_MESSAGE, 0, (long) strdup(msgString));
+  TRPCServerThread::CallObserver.notifyMessage(msgString);
 }
+
 //---------------------------------------------------------------------------
 
 void __fastcall MainStatus(char * msgString)
 {
-// do something with the passed string
-/* TODO : remove reliance upon this global handle */
-/* TODO : memory leak for invalid handle - rectify design flaw */
-  PostMessage(mainhwnd, WM_THREAD_STATUS, 0, (long) strdup(msgString));
+  TRPCServerThread::CallObserver.notifyStatus(msgString);
 }
 
 

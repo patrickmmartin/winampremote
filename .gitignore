@@ -84,3 +84,5 @@
 /source/REMOTESTRS.~H
 /source/SplashF.~dfm
 /source/waintstrs.~h
+/source/ConsoleCallObserver.~h
+/source/ICallObserver.~h

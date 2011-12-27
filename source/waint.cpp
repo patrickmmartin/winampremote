@@ -232,7 +232,7 @@ const char * WinampCommandDesc(int Command){
    case WINAMP_PREVSONG : return sWINAMP_PREVSONG.c_str();
 
    default:
-    return NULL;
+      return "";
     }
 
   }

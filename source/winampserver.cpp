@@ -9,6 +9,7 @@ USEUNIT("rpcthread.cpp");
 USEUNIT("RPCErrors.cpp");
 USEFORM("ServerF.cpp", frmMain);
 USELIB("..\lib\winampinterface.lib");
+USEUNIT("ConsoleCallObserver.cpp");
 //---------------------------------------------------------------------------
 #include "ServerF.h"
 //---------------------------------------------------------------------------

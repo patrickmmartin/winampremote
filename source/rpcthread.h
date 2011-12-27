@@ -4,6 +4,9 @@
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 //---------------------------------------------------------------------------
+
+ #include "ICallObserver.h"
+
 class TRPCServerThread : public TThread
 {
 private:
@@ -11,6 +14,8 @@ protected:
     void __fastcall Execute();
 public:
     __fastcall TRPCServerThread(bool CreateSuspended);
+    static ICallObserver& CallObserver;
+
 };
 
 
@@ -28,12 +33,12 @@ void WAExecuteMessageString(
     /* [string][in] */ unsigned char __RPC_FAR *pszParam,
     /* [in] */ int command);
 
-int WAIntegerResult(
+long WAIntegerResult(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     int command,
     int data);
 
-int WAStringResult(
+long WAStringResult(
     /* [size_is][string][out][in] */ unsigned char __RPC_FAR *pszString,
     int command,
     int data);

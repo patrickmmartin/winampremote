@@ -165,7 +165,7 @@ const char * commandStr;
   }
 }
 
-long int WAIntegerResult(
+long WAIntegerResult(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     long command,
     long data)
