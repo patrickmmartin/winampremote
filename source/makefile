@@ -33,12 +33,12 @@ clean:
 	bpr2mak -q $&.bpr
 	make -a -f $&.mak
 	
-winampinterface.idl: 
+midl: 
 	echo ========== running MIDL compiler ======
 	# this is invoked by the IDE also, hence why it's a script
 	runmidl.bat
 	
-winampinterface.lib: winampinterface.idl
+winampinterface.lib: midl
 	# build lib
 	echo ========== build for $@ ======
 	if not exist ..\obj mkdir ..\obj
