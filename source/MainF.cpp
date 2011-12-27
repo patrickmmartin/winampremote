@@ -46,7 +46,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "SplashF.h"
 
 #include <math.h>
-#include "waintstrs.h"
 
 /* TODO -opatrick -cactions : may need concatenation of available actions in a specific order */
 

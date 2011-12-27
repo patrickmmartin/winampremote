@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+
 #include <vcl.h>
 #include <malloc.h>
 #include <stdio.h>
@@ -22,20 +22,15 @@
 
 #include "ConsoleCallObserver.h"
 
-/* note that the use of const for in only strings
- seems to break the ability to match the function signature, and leads to linker errors*/
-
 /* __RPC_FAR is literally nothing, but is left in for consistency
 - none of the MIDL generated code should need direct modification*/
 
 void WAMessageProc(
     /* [string][out][in] */ unsigned char __RPC_FAR *pszString)
 {
-  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent hello";
-  /* TODO : factor out this MainStatus reporting into an interface */
   MainMessage(str.c_str());
   MainStatus("welcome from the winamp RPC server");
   MainStatus("listening...");
@@ -46,12 +41,10 @@ void WAExecuteMessage(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in] */ long command)
 {
-  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
-  str += command;
-  /* TODO : factor out this MainStatus reporting into an interface */
+  str += WinampCommandDesc(command);
   MainMessage( str.c_str());
 
   // identify command?
@@ -67,17 +60,13 @@ void WAExecuteMessageString(
     /* [string][in] */ unsigned char __RPC_FAR *pszParam,
     /* [in] */ long command)
 {
-  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
-  str += command;
+  str += WinampCommandDesc(command);
   str += " - parameter : ";
   str += (char *) pszParam;
-  /* TODO : factor out this MainMessage reporting into an interface */
   MainMessage( str.c_str());
-
-//  delete pszString;
 
   ExecuteStringMessage( (char *) pszParam, command);
   MainStatus("listening...");
@@ -89,20 +78,19 @@ long WAIntegerResult(
     /* [in] */ long command,
     /* [in] */ long data)
 {
-  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
-  str += command;
+  str += WinampCommandDesc(command);
   str += " - data : ";
   str += data;
-  /* TODO : factor out this MainMessage reporting into an interface */
+
   MainMessage( str.c_str());
 
-  // identify command?
   //execute command
+  int ret = GetAmpInt(command, data);
   MainStatus("listening...");
-  return GetAmpInt(command, data);
+  return ret;
 
 }
 
@@ -112,15 +100,13 @@ long WAStringResult(
     /* [in] */ long data)
 {
   char * retval;
-  /* TODO : factor out this MainStatus reporting into an interface */
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
-  str += command;
+  str += WinampCommandDesc(command);
   str += " - data : ";
   str += data;
 
-  /* TODO : factor out this MainMessage reporting into an interface */
   MainMessage( str.c_str());
 
   retval = "cannot obtain strings out of process";
@@ -129,8 +115,6 @@ long WAStringResult(
   str += " returned";
 
   MainMessage (str.c_str());
-
-  // identify command?
 
   //execute command
   if (retval)
@@ -147,7 +131,7 @@ long WAStringResult(
 
 // new functions
 
-void WASetStringList( 
+void WASetStringList(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in][size_is] */ byte __RPC_FAR Buffer[  ],
     /* [in] */ unsigned long BufferLength,
@@ -159,7 +143,6 @@ void WASetStringList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-          /* TODO : factor out this MainStatus reporting into an interface */
          MainStatus("executing request");
 
           TStringList * StringList = new TStringList;
@@ -172,7 +155,7 @@ void WASetStringList(
                   ExecuteStringMessage( (char *) StringList->Strings[i].c_str(), command);
             }
 
-            
+
           }
           __finally
           {
@@ -207,7 +190,6 @@ void WAGetStringList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-          /* TODO : factor out this MainStatus reporting into an interface */
          MainStatus("executing request");
 
           TStringList * StringList = new TStringList;
@@ -256,7 +238,7 @@ void WAGetStringList(
 }
 
 
-void WAGetStringDataList( 
+void WAGetStringDataList(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [out] */ BUFFER __RPC_FAR *pBuffer,
     /* [in] */ long stringcommand,
@@ -269,7 +251,6 @@ void WAGetStringDataList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-          /* TODO : factor out this MainStatus reporting into an interface */
          MainStatus("executing request");
 
           TStringList * StringList = new TStringList;
@@ -322,45 +303,36 @@ void WAShutdown(void)
 {
     RpcMgmtStopServerListening(NULL);
     RpcServerUnregisterIf(NULL, NULL, FALSE);
-  /* TODO : factor out this MainStatus reporting into an interface */
     MainStatus("not listening");
-  /* TODO : factor out this MainMessage reporting into an interface */
     MainMessage("asked to close");
-    PostMessage(mainhwnd, WM_CLOSE, 0, 0);
 }
 
- ConsoleCallObserver cco;
- ICallObserver& TRPCServerThread::CallObserver = cco;
 
-//---------------------------------------------------------------------------
 __fastcall TRPCServerThread::TRPCServerThread(bool CreateSuspended)
     : TThread(CreateSuspended)
 {
 }
-//---------------------------------------------------------------------------
+
 void __fastcall TRPCServerThread::Execute()
 {
 
-AnsiString str;
+    AnsiString str;
+    RPC_STATUS status;
+    unsigned char * protocol_seq_np = "ncacn_np";
+//    unsigned char * protocol_seq_ip_tcp = "ncacn_ip_tcp";
 
-RPC_STATUS status;
-
-    //---- Place thread code here ----
-          /* TODO : factor out this MainStatus reporting into an interface */
     MainStatus("initialising...");
 
     str = "winamp version : ";
     str += GetWinampVersion();
 
-  /* TODO : factor out this MainMessage reporting into an interface */
     MainMessage(str.c_str());
 
     // should check status codes here for previously registered interfaces
-
-//    status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_ip_tcp", 20, (unsigned char *) "33000", NULL);
-    status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_np", 20, (unsigned char *) "\\pipe\\winampremote", NULL);
-
-
+    // need a property of the appropriate type for the endpoint
+    status = RpcServerUseProtseqEp(protocol_seq_np,
+                                   20,
+                                   (unsigned char *) "\\pipe\\winampremote", NULL);
 
     if (status == RPC_S_OK){
       status = RpcServerRegisterIf(winamp_v1_0_s_ifspec, NULL, NULL);
@@ -393,8 +365,6 @@ void __fastcall MainMessage(char * msgString)
   TRPCServerThread::CallObserver.notifyMessage(msgString);
 }
 
-//---------------------------------------------------------------------------
-
 void __fastcall MainStatus(char * msgString)
 {
   TRPCServerThread::CallObserver.notifyStatus(msgString);
@@ -412,4 +382,7 @@ void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
     free(ptr);
 }
 
-//---------------------------------------------------------------------------
+ConsoleCallObserver cco;
+ICallObserver& TRPCServerThread::CallObserver = cco;
+
+

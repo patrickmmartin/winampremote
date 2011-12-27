@@ -45,7 +45,6 @@ USEUNIT("remotestrs.cpp");
 USE("remotestrs.h", File);
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
-#include "waintstrs.h"
 //---------------------------------------------------------------------------
 HINSTANCE g_hinst;
 
