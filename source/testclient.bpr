@@ -5,7 +5,7 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\testclient.exe"/>
     <OBJFILES value="..\obj\testclient\testclient.obj ..\obj\testclient\RPCFuncsU.obj 
-      ..\obj\testclient\WAINT.obj"/>
+      ..\obj\testclient\WAINT.obj ..\obj\testclient\ConsoleWinampClient.obj"/>
     <RESFILES value="testclient.res"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>

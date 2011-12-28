@@ -86,3 +86,4 @@
 /source/waintstrs.~h
 /source/ConsoleCallObserver.~h
 /source/ICallObserver.~h
+/source/DefaultCallObserver.~h

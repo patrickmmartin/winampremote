@@ -27,68 +27,6 @@ void GetIdent(void)
 
 
 
-
-void playList(void)
-{
-
-  char title[MAX_PATH];
-
-  int lastlength = IntegerResult(IdentBuf, IPC_GETLISTLENGTH, 0);
-  int currentpos = IntegerResult(IdentBuf, IPC_GETLISTPOS, 0);
-
-  cout << endl << "current playlist" << endl << "********" << endl;
-  for (int i = 0 ; i < lastlength ; i++)
-  {
-    strcpy (title, IdentBuf );
-    StringResult(title, IPC_GETPLAYLISTTITLE, i);
-    cout << title;
-    if (i == currentpos)
-      cout << " <current>";
-    cout << endl;
-  }
-  cout <<  "********" << endl;
-
-}
-
-
-WAPlaybackStatus winampStatus(void)
-{
-  WAPlaybackStatus status = (WAPlaybackStatus) IntegerResult(IdentBuf, IPC_ISPLAYING, 0);
-  switch (status)
-  {
-    case WA_NOT_PLAYING:  cout << "winamp stopped" << endl; break;
-    case WA_PLAYING:  cout << "winamp playing" << endl; break;
-    case WA_PAUSED:  cout << "winamp paused" << endl; break;
-  }
-  return status;
-}
-
-void winampNext(void)
-{
-  ExecuteMessage(IdentBuf, WINAMP_NEXT);
-}
-
-void winampPrevious(void)
-{
-  ExecuteMessage(IdentBuf, WINAMP_PREVIOUS);
-}
-
-void winampPlay(void)
-{
-  ExecuteMessage(IdentBuf, WINAMP_PLAYENTRY);
-}
-
-void winampStop(void)
-{
-  ExecuteMessage(IdentBuf, WINAMP_STOP);
-}
-
-void winampPause(void)
-{
-  ExecuteMessage(IdentBuf, WINAMP_PAUSE);
-}
-
-
 void winampSendList(void)
 {
 //  SendList();
@@ -108,33 +46,41 @@ ConsoleWinampClient::ConsoleWinampClient()
 };
 
 void ConsoleWinampClient::nextSong(void){
-    ::winampNext();
+  ExecuteMessage(IdentBuf, WINAMP_NEXT);
 };
 
 void ConsoleWinampClient::previousSong(void){
-    ::winampPrevious();
+  ExecuteMessage(IdentBuf, WINAMP_PREVIOUS);
 };
 
 void ConsoleWinampClient::playSong(void){
-    ::winampPlay();
+  ExecuteMessage(IdentBuf, WINAMP_PLAYENTRY);
 };
 
 void ConsoleWinampClient::stopSong(void){
-    ::winampStop();
+  ExecuteMessage(IdentBuf, WINAMP_STOP);
 };
 
 void ConsoleWinampClient::pause(void){
-    ::winampPause();
+  ExecuteMessage(IdentBuf, WINAMP_PAUSE);
 };
 
 WAPlaybackStatus ConsoleWinampClient::getPlaybackStatus(void){
-    return ::winampStatus();
+    return (WAPlaybackStatus) IntegerResult(IdentBuf, IPC_ISPLAYING, 0);
 };
 
 vector<string>* ConsoleWinampClient::getPlayList(void){
-    ::playList();
-    // TODO - port code into here
-    return new vector<string>;
+  vector<string> * result = new vector<string>();
+  char buffer[MAX_PATH];
+
+  int lastlength = IntegerResult(IdentBuf, IPC_GETLISTLENGTH, 0);
+
+  for (int i = 0 ; i < lastlength ; i++)
+  {
+    strcpy (buffer, IdentBuf );
+    StringResult(buffer, IPC_GETPLAYLISTTITLE, i);
+    result->push_back(buffer);
+  }
 
 };
 
