@@ -21,6 +21,7 @@ It targets the Winamp API introduced in 2.5x API and implemented in 5.x.
 ## Features
 
 Some features of note were
+
  * network remote control clients
  * ability to minimize to the tray as a clickable icon
  * pause / stop / play
@@ -31,16 +32,19 @@ Some features of note were
 
 ## Security
  The final blow was the Windows XP Service Pack which locked down security for unauthenticated RPC endpoints.
+ The original choice of transport was unauthenticated RPC over tcpip; something like named pipes transport allows
+ basic authentication to be applied, and hence it seems (so far: touch wood) to work without requirements on current
+ Windows revisions.
 
 ## Plan
 
  This is the archtypal pet project: for now I'll be happy to revisit some old friends from 12 years ago.
  The game plans are:
 ### short term 
+* Bring the build process / tests / coding  up to date
 * Produce a complete version that works on current Windows releases.
  Given it's been so long since the old version worked, backwards compatbility is not going to be an issue.
 
-* Bring the build process / tests / coding  up to date
 
 ### medium term
 * There was a linux client once for the tcp transport - reactivating this would be an interesting exercise                                                      
