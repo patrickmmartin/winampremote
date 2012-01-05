@@ -418,7 +418,11 @@ void __fastcall TfrmServers::FormClose(TObject *, TCloseAction &)
 //---------------------------------------------------------------------------
 void __fastcall TfrmServers::CheckPort(void)
 {
-int port;
+
+// assumes the endpoint is an int, which needs amending
+
+/*
+  int port;
 
   try
   {
@@ -448,6 +452,7 @@ int port;
                                 port , RFC1060ports[i].service)).c_str(),
                                 sAlertWellKnownPort.c_str(),
                                 MB_ICONEXCLAMATION + MB_OKCANCEL + MB_DEFBUTTON2) != IDOK)  throw EAbort("user cancellled bogus port");
+*/
 }
 
 

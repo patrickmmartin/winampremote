@@ -145,7 +145,7 @@ object frmServers: TfrmServers
     object ebEndPoint: TEdit
       Left = 160
       Top = 10
-      Width = 57
+      Width = 281
       Height = 21
       Hint = 'Enter tcpip endpoint to test here'
       TabOrder = 0
@@ -161,7 +161,7 @@ object frmServers: TfrmServers
     Constraints.MinWidth = 400
     TabOrder = 2
     object btnCancel: TButton
-      Left = 639
+      Left = 623
       Top = 13
       Width = 75
       Height = 25
@@ -173,7 +173,7 @@ object frmServers: TfrmServers
       TabOrder = 4
     end
     object btnOK: TButton
-      Left = 551
+      Left = 535
       Top = 13
       Width = 75
       Height = 25
@@ -185,7 +185,7 @@ object frmServers: TfrmServers
       OnClick = btnOKClick
     end
     object btnTest: TButton
-      Left = 375
+      Left = 359
       Top = 13
       Width = 75
       Height = 25
@@ -197,7 +197,7 @@ object frmServers: TfrmServers
       OnClick = StartTest
     end
     object btnLocate: TButton
-      Left = 287
+      Left = 271
       Top = 13
       Width = 75
       Height = 25
@@ -208,7 +208,7 @@ object frmServers: TfrmServers
       OnClick = btnLocateClick
     end
     object btnGetIp: TButton
-      Left = 463
+      Left = 447
       Top = 13
       Width = 75
       Height = 25
