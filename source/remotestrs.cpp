@@ -15,7 +15,7 @@
   const AnsiString sPaused = " [paused]";
 
   const AnsiString sAboutWinampRemoteControl = "About winamp remote control client"; 
-  const AnsiString sWinampRemoteControl = "winamp/r/nremote/r/ncontrol/r/nclient"; 
+  const AnsiString sWinampRemoteControl = "winamp\r\nremote\r\ncontrol\r\nclient"; 
 
   const AnsiString sPlayListFiles = "Playlist Files(*.m3u,*.pls)|*.m3u,*.pls";
   const AnsiString sAllFiles = "All files|*.*";
