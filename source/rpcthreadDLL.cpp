@@ -1,5 +1,5 @@
 /*
-winamp remote control suite ï¿½Patrick Michael Martin 2000, 2001, 2002
+winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2002
 
 Copyright (C) 2000,2001,2002  Patrick M. Martin
 
@@ -553,6 +553,9 @@ AnsiString str;
 RPC_STATUS status;
 int retval;
 
+    unsigned char * protocol_seq_np = "ncacn_np";
+//    unsigned char * protocol_seq_ip_tcp = "ncacn_ip_tcp";
+
     InitializeCriticalSection(&fCriticalSection);
     MainStatus(waServerStarting);
 
@@ -577,7 +580,9 @@ int retval;
 
 
     // should check status codes here for previously registered interfaces
-    status = RpcServerUseProtseqEp( (unsigned char *) "ncacn_ip_tcp", 20, (unsigned char *) Endpoint.c_str(), NULL);
+    status = RpcServerUseProtseqEp(protocol_seq_np,
+                                   20,
+                                   (unsigned char *) "\\pipe\\winampremote", NULL);
     if (status == RPC_S_OK)
     {
       status = RpcServerRegisterIf(winamp_v1_0_s_ifspec, NULL, NULL);
