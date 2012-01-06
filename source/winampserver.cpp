@@ -1,7 +1,6 @@
 //---------------------------------------------------------------------------
 #include <vcl.h>
 #pragma hdrstop
-USERES("winampserver.res");
 USEUNIT("waint.cpp");
 USEFORM("ConfigF.cpp", ConfigForm);
 USEFORM("AboutF.cpp", frmAbout);
@@ -10,6 +9,7 @@ USEUNIT("RPCErrors.cpp");
 USEFORM("ServerF.cpp", frmMain);
 USELIB("..\lib\winampinterface.lib");
 USEUNIT("ConsoleCallObserver.cpp");
+USERC("winampremote.rc");
 //---------------------------------------------------------------------------
 #include "ServerF.h"
 //---------------------------------------------------------------------------

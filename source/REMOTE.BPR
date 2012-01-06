@@ -13,7 +13,7 @@
       ..\obj\remote\WAINT.obj ..\obj\remote\ColourU.obj 
       ..\obj\remote\RFC1060U.obj ..\obj\remote\IPAddressU.obj 
       ..\obj\remote\VersionInfoU.obj ..\obj\remote\remotestrs.obj"/>
-    <RESFILES value=""/>
+    <RESFILES value="..\obj\remote\winampremote.res"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) AboutF.dfm SettingsF.dfm CommandF.dfm ServersF.dfm 

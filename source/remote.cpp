@@ -43,6 +43,7 @@ USEUNIT("VersionInfoU.cpp");
 USELIB("..\lib\winampinterface.lib");
 USEUNIT("remotestrs.cpp");
 USE("remotestrs.h", File);
+USERC("winampremote.rc");
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 //---------------------------------------------------------------------------

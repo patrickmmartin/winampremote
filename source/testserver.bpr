@@ -7,7 +7,7 @@
     <OBJFILES value="..\obj\testserver\testserver.obj ..\obj\testserver\RPCErrors.obj 
       ..\obj\testserver\rpcthread.obj ..\obj\testserver\waint.obj 
       ..\obj\testserver\ConsoleCallObserver.obj"/>
-    <RESFILES value="testserver.res"/>
+    <RESFILES value="testserver.res ..\obj\testserver\winampremote.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
     <LIBFILES value="..\lib\winampinterface.lib"/>
