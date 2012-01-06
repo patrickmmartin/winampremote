@@ -9,7 +9,7 @@ object frmMain: TfrmMain
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Arial'
   Font.Style = []
   Icon.Data = {
     0000010001002020100000000000E80200001600000028000000200000004000
@@ -41,7 +41,7 @@ object frmMain: TfrmMain
   OldCreateOrder = True
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object memMessages: TMemo
     Left = 0
     Top = 0

@@ -144,7 +144,7 @@ object frmMain: TfrmMain
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
-            Font.Name = 'MS Sans Serif'
+            Font.Name = 'Arial'
             Font.Style = []
             ParentFont = False
             ShowAccelChar = False

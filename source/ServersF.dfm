@@ -9,14 +9,14 @@ object frmServers: TfrmServers
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Arial'
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object imgWarning: TImage
     Left = 264
     Top = 200
@@ -146,7 +146,7 @@ object frmServers: TfrmServers
       Left = 160
       Top = 10
       Width = 281
-      Height = 21
+      Height = 22
       Hint = 'Enter tcpip endpoint to test here'
       TabOrder = 0
     end

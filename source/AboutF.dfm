@@ -8,7 +8,7 @@ object frmAbout: TfrmAbout
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Arial'
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = True
@@ -23,12 +23,12 @@ object frmAbout: TfrmAbout
   OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object TheControl: TPanel
     Left = 0
     Top = 0
-    Width = 475
-    Height = 317
+    Width = 467
+    Height = 307
     Hint = 'drag the mouse over me!'
     Align = alClient
     BevelOuter = bvNone

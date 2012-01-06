@@ -10,7 +10,7 @@ object ConfigForm: TConfigForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Arial'
   Font.Style = []
   Icon.Data = {
     0000010001002020100000000000E80200001600000028000000200000004000
@@ -40,7 +40,7 @@ object ConfigForm: TConfigForm
   OldCreateOrder = True
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object lblEndPoint: TLabel
     Left = 64
     Top = 8
@@ -97,7 +97,7 @@ object ConfigForm: TConfigForm
     Left = 64
     Top = 32
     Width = 145
-    Height = 21
+    Height = 22
     ReadOnly = True
     TabOrder = 1
   end
