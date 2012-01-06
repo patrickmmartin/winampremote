@@ -1,5 +1,5 @@
 /*
-winamp remote control suite ï¿½Patrick Michael Martin 2000, 2001, 2002
+winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2002
 
 Copyright (C) 2000,2001,2002  Patrick M. Martin
 
@@ -218,7 +218,7 @@ TRegistry * reg;
     reg = new TRegistry();
     reg->OpenKey("software\\PMMSoft\\Winamp controller\\server settings", true);
     AnsiString EndPoint = reg->ReadString("EndPoint");
-    fEndPoint = (unsigned short) EndPoint.ToIntDef(8000);
+    // issue #3
     success = true;
   }
   __finally
@@ -237,8 +237,7 @@ TRegistry * reg;
   if (success)
   {
       sbrMain->Panels->Items[1]->Text = AnsiString("name: ") + Computername;
-      sbrMain->Panels->Items[2]->Text = AnsiString("endpoint: ") + fEndPoint;
-
+      // TODO: this global should be factored out
       mainhwnd = this->Handle;
 
 
@@ -251,7 +250,7 @@ TRegistry * reg;
 
   Application->OnException = AppException;
 
-  CreateThread(fEndPoint);
+  CreateThread();
 
   pgMain->ActivePage =  tbsMessages;
 
@@ -301,18 +300,20 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
     
 }
 //---------------------------------------------------------------------------
-void __fastcall TfrmMain::CreateThread(unsigned short EndPoint)
+void __fastcall TfrmMain::CreateThread()
 {
   // should
-  this->fEndPoint = EndPoint;
   serverThread =  new TRPCServerThread(true);
-  serverThread->Endpoint = fEndPoint;
+  // should set the server thread Endpoint property
   serverThread->Resume();
 }
 
 void __fastcall TfrmMain::StopThread(TObject *Sender)
 {
   WAShutdown();
+  serverThread->WaitFor();
+  FreeAndNil(serverThread);
+  
 }
 
 
@@ -325,7 +326,8 @@ TRegistry * reg;
       reg = new TRegistry();
       reg->OpenKey("software\\PMMSoft\\Winamp controller\\server settings", true);
 
-      reg->WriteString("EndPoint", fEndPoint);
+      // should implement end point edits
+      // reg->WriteString("EndPoint", "");
 
       reg->WriteString("Visible", Visible?"true":"false");
     }

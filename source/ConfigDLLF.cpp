@@ -70,7 +70,6 @@ void __fastcall TConfigForm::chkVisibleClick(TObject *Sender)
 void __fastcall TConfigForm::FormCreate(TObject *Sender)
 {
   chkVisible->Checked = frmMain->Visible;
-  ebEndPoint->Text = frmMain->EndPoint;
 }
 //---------------------------------------------------------------------------
 
@@ -107,14 +106,13 @@ void __fastcall TConfigForm::btnChangeEndpointClick(TObject *Sender)
     frmMain->Refresh();
     frmMain->StopThread(this);
 
-    // need to wait, not easy to determine what for
+    // need to wait,
+    // TODO: why?
     Sleep(2000);
 
   //create new
 
-    frmMain->sbrMain->Panels->Items[2]->Text = "endpoint: " + ebEndPoint->Text;
-
-    frmMain->CreateThread(port);
+    frmMain->CreateThread();
 
     Application->ProcessMessages();
     frmMain->Refresh();
@@ -131,13 +129,6 @@ void __fastcall TConfigForm::btnChangeEndpointClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TConfigForm::ebEndPointChange(TObject *Sender)
-{
-  int PortNum = ebEndPoint->Text.ToIntDef(-1);
-  btnChangeEndpoint->Enabled = ( ( PortNum > -1) && ( PortNum < 65536) && ( PortNum != frmMain->EndPoint));
-
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TConfigForm::DetailsClick(TObject *Sender)
 {

@@ -96,6 +96,7 @@ object ConfigForm: TConfigForm
     Caption = '&EndPoint'
     FocusControl = ebEndPoint
     Layout = tlCenter
+    Visible = False
   end
   object pnlIcon: TPanel
     Left = 6
@@ -195,10 +196,10 @@ object ConfigForm: TConfigForm
   object ebEndPoint: TEdit
     Left = 90
     Top = 83
-    Width = 70
+    Width = 127
     Height = 22
     TabOrder = 2
-    OnChange = ebEndPointChange
+    Visible = False
   end
   object btnAbout: TButton
     Left = 146
@@ -217,6 +218,7 @@ object ConfigForm: TConfigForm
     Caption = 'Change'
     Enabled = False
     TabOrder = 4
+    Visible = False
     OnClick = btnChangeEndpointClick
   end
   object memInfo: TMemo
@@ -226,8 +228,8 @@ object ConfigForm: TConfigForm
     Height = 49
     Lines.Strings = (
       'winamp RPC remote control'
-      '© patrick m martin 2000'
-      'http://www.freenetpages.co.uk/hp/patrickmmartin/')
+      '© patrick m martin 2000-2012'
+      'https://github.com/patrickmmartin/winampremote/')
     ParentColor = True
     ReadOnly = True
     TabOrder = 5

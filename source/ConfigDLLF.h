@@ -28,7 +28,6 @@ __published:	// IDE-managed Components
     void __fastcall chkVisibleClick(TObject *Sender);
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall btnChangeEndpointClick(TObject *Sender);
-        void __fastcall ebEndPointChange(TObject *Sender);
         void __fastcall DetailsClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations

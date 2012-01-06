@@ -70,7 +70,6 @@ BEGIN_MESSAGE_MAP
 END_MESSAGE_MAP(TControl)
 
 private:	// User declarations
-      unsigned short fEndPoint;
       void __fastcall AppException(TObject *Sender, Exception *E);
       void __fastcall ExecutionStatus(WAExecutionStatus NewThreadState);
       WAExecutionStatus fThreadState;
@@ -80,12 +79,11 @@ protected:
 public:		// User declarations
         __fastcall TfrmMain(TComponent* Owner);
 
-      __property unsigned short EndPoint = {read = fEndPoint};
       __property WAExecutionStatus ThreadState = {read = fThreadState};
 
       bool isExe;
       bool requestlog[5];
-      void __fastcall CreateThread(unsigned short EndPoint);
+      void __fastcall CreateThread();
       void __fastcall StopThread(TObject *Sender);
 };
 //---------------------------------------------------------------------------
