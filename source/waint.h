@@ -10,8 +10,6 @@ enum WAPlaybackStatus {WA_NOT_PLAYING, WA_PLAYING, WA_UNUSED, WA_PAUSED};
 const int MAX_WINAMPVER_LEN = 80;
 const int FAIL_TIMEOUT = 15; // seconds
 
-const int PortDefault = 33000; // default port to use
-
 extern HWND hwnd_winamp;
 
 const int WM_WA_IPC = WM_USER;

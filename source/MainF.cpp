@@ -751,7 +751,7 @@ void __fastcall TfrmMain::FormCreate(TObject *)
     this->ebAddress->Text = reg->ReadString("Address");
 
     if (this->ebEndPoint->Text == "")
-      this->ebEndPoint->Text = AnsiString(PortDefault);
+      this->ebEndPoint->Text = AnsiString("\\pipe\\winampremote");
     if (this->ebAddress->Text == "")
       this->ebAddress->Text = "localhost";
 

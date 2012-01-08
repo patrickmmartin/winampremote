@@ -9,10 +9,12 @@ clean:
 	-for %D in (bin obj lib) do @DEL /F /Q /S ..\%D\*.* 1>nul
 	
 clean-client-reg:
+	@echo delete the client registry settings...
 	reg import WARC-client-del.reg
 	
 clean-server-reg:	
-	reg import WARC-server-del.reg
+	@echo delete the server registry settings...
+	reg import WARC-server-del.reg 1>nul
 		
 # this override of the default implicit rule is a hack for not getting a ".bpr.exe" rule working correctly
 # to override the default .cpp.exe rule
