@@ -87,3 +87,13 @@
 /source/ConsoleCallObserver.~h
 /source/ICallObserver.~h
 /source/DefaultCallObserver.~h
+/.cproject
+/.project
+/source/AboutF.~dfm
+/source/ConfigDLLF.~dfm
+/source/ConfigDLLF.~h
+/source/IWinampInternal.~h
+/source/MainF.~h
+/source/ServerDLLF.~dfm
+/source/ServerDLLF.~h
+/source/winampremote.~rc
