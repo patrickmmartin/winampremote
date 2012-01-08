@@ -6,8 +6,14 @@ default: clean all
 
 clean:
 	echo ========== cleaning object files ======
-	-for %D in (bin obj lib) do @DEL /F /Q /S ..\%D\*.*
-
+	-for %D in (bin obj lib) do @DEL /F /Q /S ..\%D\*.* 1>nul
+	
+clean-client-reg:
+	reg import WARC-client-del.reg
+	
+clean-server-reg:	
+	reg import WARC-server-del.reg
+		
 # this override of the default implicit rule is a hack for not getting a ".bpr.exe" rule working correctly
 # to override the default .cpp.exe rule
 # currently relying upon BCB convention of a main cpp file named for the project listing project files
