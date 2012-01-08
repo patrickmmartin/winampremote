@@ -74,6 +74,7 @@ help:
 	@echo tests - performs some tests on targets
 	@echo midl - compiles the IDL files
 	@echo docs - generates the doxygen output
+	@echo install - installs the plugin to the default location for the OS
 	@echo default - clean all
 	
 docs:
