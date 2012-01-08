@@ -1,5 +1,5 @@
 /*
-winamp remote control suite ï¿½Patrick Michael Martin 2000, 2001, 2002
+winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2002
 
 Copyright (C) 2000,2001,2002  Patrick M. Martin
 
@@ -356,7 +356,7 @@ void __fastcall TfrmMain::FormShow(TObject *)
       if (chkAutoRestore->Checked)
       {
 
-         if (reg->ReadString(sCommandsDocked).LowerCase() == sTrue)
+         if (reg->ReadString(sCommandsDocked).LowerCase() != sFalse)
          {
            frmCommands->ManualDock(pnlCommands, NULL, alTop);
            EndDock(frmCommands, NULL, 0,0);
@@ -372,11 +372,11 @@ void __fastcall TfrmMain::FormShow(TObject *)
            frmCommands->BoundsRect = FormRect;
          }
 
-         if (reg->ReadString(sCommandsVisible).LowerCase() == sTrue)
+         if (reg->ReadString(sCommandsVisible).LowerCase() != sFalse)
            ViewToolBarExecute(this);
 
 
-         if (reg->ReadString(sVolumeDocked).LowerCase() == sTrue)
+         if (reg->ReadString(sVolumeDocked).LowerCase() != sFalse)
          {
            frmSettings->ManualDock(pgSettings, NULL, alClient);
            EndDock(frmSettings, NULL, 0,0);
@@ -393,11 +393,11 @@ void __fastcall TfrmMain::FormShow(TObject *)
            frmSettings->BoundsRect = FormRect;
          }
 
-         if (reg->ReadString(sVolumeVisible).LowerCase() == sTrue)
+         if (reg->ReadString(sVolumeVisible).LowerCase() != sFalse)
            ViewVolumeExecute(this);
 
 
-         if (reg->ReadString(sPlaylistDocked).LowerCase() == sTrue)
+         if (reg->ReadString(sPlaylistDocked).LowerCase() != sFalse)
          {
            frmPlaylist->ManualDock(pgSettings, NULL, alClient);
            EndDock(frmPlaylist, NULL, 0,0);
@@ -415,17 +415,10 @@ void __fastcall TfrmMain::FormShow(TObject *)
            frmPlaylist->BoundsRect = FormRect;
          }
 
-         if (reg->ReadString(sPlaylistVisible).LowerCase() == sTrue)
+         if (reg->ReadString(sPlaylistVisible).LowerCase() != sFalse)
            ViewPlaylistExecute(this);
 
 
-       }
-       if (reg->OpenKey(sTesting, false))
-       {
-         if (reg->ReadString(sLanguage).LowerCase() == sTrue)
-         {
-           mnuLanguage->Visible = false;
-         }
        }
 
     }
@@ -705,40 +698,8 @@ void __fastcall TfrmMain::DisplayHint(TObject *)
 void __fastcall TfrmMain::FormCreate(TObject *)
 {
 
-
-  /* set up language IDs */
-  mnuEnglishUS->Tag = ENGLISHUS;
-  mnuEnglishUK->Tag = ENGLISHUK;
-  mnuFrench->Tag = FRENCH;
-  mnuGerman->Tag = GERMAN;
-  mnuDutch->Tag = DUTCH;
-
-  /* set language */
-
-  switch (SysLocale.DefaultLCID)
-  {
-    case ENGLISHUS: SetLanguageMenu(mnuEnglishUS);
-      break;
-    case ENGLISHUK: SetLanguageMenu(mnuEnglishUK);
-      break;
-    case FRENCH: SetLanguageMenu(mnuFrench);
-      break;
-    case GERMAN: SetLanguageMenu(mnuGerman);
-      break;
-    case DUTCH: SetLanguageMenu(mnuDutch);
-      break;
-  }
-
   Application->OnException = AppException;
 
-  /* set up the nice 256 colours icon now*/
-
-  fIconIndex = 6;
-
-  imlCommandsHot->GetIcon( fIconIndex , icoState->Picture->Icon);
-  imlTrayIcons->GetIcon( fIconIndex , icoTrayIcon->Picture->Icon);
-
-  Application->Icon->Handle = icoState->Picture->Icon->Handle;
   Application->OnHint = DisplayHint;
   WAStatus = WA_UNUSED;
 
@@ -755,20 +716,16 @@ void __fastcall TfrmMain::FormCreate(TObject *)
     if (this->ebAddress->Text == "")
       this->ebAddress->Text = "localhost";
 
-     if (reg->ReadString("AutoHide").LowerCase() == "false"){
-       chkAutoHide->Checked = false;
-       }
+     chkAutoHide->Checked =  !(reg->ReadString("AutoHide").LowerCase() == sFalse);
 
-     if (reg->ReadString("AutoRestore").LowerCase() == "false"){
-       chkAutoRestore->Checked = false;
-       }
+     chkAutoRestore->Checked = !(reg->ReadString("AutoRestore").LowerCase() == sFalse);
 
      if (reg->ReadString("Playlist Update").LowerCase() == "every song")
        rbSongChange->Checked = true;
      else
        rbPlaylistChange->Checked = true;
 
-     if ((reg->ReadString("Visible").LowerCase() == "false") && (chkAutoHide->Checked)){
+     if ((reg->ReadString("Visible").LowerCase() == sFalse) && (chkAutoHide->Checked)){
        doHide = true;
        }
 
