@@ -81,7 +81,7 @@ vector<string>* ConsoleWinampClient::getPlayList(void){
     StringResult(buffer, IPC_GETPLAYLISTTITLE, i);
     result->push_back(buffer);
   }
-
+  return result;
 };
 
 int ConsoleWinampClient::winampVersion(void){

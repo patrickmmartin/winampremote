@@ -32,8 +32,21 @@ void __fastcall GetIPAddress(char * HostName, AnsiString &ResolvedName, TStringL
 {
 
   // must NOT attempt to modify this
-  const hostent * hent;
-  hent = gethostbyname(HostName);
+  const hostent * hent = NULL;
+  WSADATA wsaData;
+  WORD wVersionRequested;
+  int err;
+
+  /* Use the MAKEWORD(lowbyte, highbyte) macro declared in Windef.h */
+  wVersionRequested = MAKEWORD(2, 2);
+
+  err = WSAStartup(wVersionRequested, &wsaData);
+  if (err == 0)
+  {
+    hent = gethostbyname(HostName);
+    WSACleanup();
+  }
+
   if (hent)
   {
     in_addr addr;
