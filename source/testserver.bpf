@@ -3,7 +3,6 @@ USEUNIT("RPCErrors.cpp");
 USEUNIT("rpcthread.cpp");
 USEUNIT("waint.cpp");
 USELIB("..\lib\winampinterface.lib");
-USERES("testserver.res");
 USEUNIT("ConsoleCallObserver.cpp");
 USERC("winampremote.rc");
 //---------------------------------------------------------------------------
