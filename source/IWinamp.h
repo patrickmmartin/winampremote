@@ -8,29 +8,46 @@
 
 // abstract interface defining the operations Winamp supports
 
-class IWinamp {
+namespace WinampRemote {
 
-  public:
+  namespace Client {
 
-    virtual ~IWinamp() {}
+  class IWinamp {
 
-    virtual void nextSong(void) = 0;
+    public:
 
-    virtual void previousSong(void) = 0;
+      // virtual destructor
+      virtual ~IWinamp() {}
 
-    virtual void playSong(void) = 0;
+      // TODO: perhaps all the command functions should return the status -
+      // best implemented in the plugin
 
-    virtual void stopSong(void) = 0;
+      // move to next song
+      virtual void nextSong(void) = 0;
 
-    virtual void pause(void) = 0;
+      // move to prior song
+      virtual void previousSong(void) = 0;
 
-    virtual WAPlaybackStatus getPlaybackStatus(void) = 0;
+      // play the current item in playlist
+      virtual void playSong(void) = 0;
 
-    virtual vector<string>* getPlayList(void) = 0;
+      // stop playing
+      virtual void stopSong(void) = 0;
 
-    virtual int winampVersion(void) =0;
+      // pause playing
+      virtual void pause(void) = 0;
 
+      // query playback status
+      virtual WAPlaybackStatus getPlaybackStatus(void) = 0;
 
-};
+      // return the playlist
+      virtual vector<string>* getPlayList(void) = 0;
 
+      // return the hosting winamp version
+      virtual int winampVersion(void) =0;
+
+  };
+
+  }  // end of namespace
+}  // end of namespace
 #endif // end of IWINAMP_

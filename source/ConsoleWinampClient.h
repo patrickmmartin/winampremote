@@ -5,30 +5,35 @@
 
 // concrete implementation of IWinamp
 
-class ConsoleWinampClient : public IWinamp  {
+namespace WinampRemote {
+    namespace Client {
 
-  public:
+    class ConsoleWinampClient : public IWinamp  {
 
-    ConsoleWinampClient();
+      public:
 
-    virtual ~ConsoleWinampClient() {}
+        ConsoleWinampClient();
 
-    virtual void nextSong(void);
+        virtual ~ConsoleWinampClient() {}
 
-    virtual void previousSong(void);
+        virtual void nextSong(void);
 
-    virtual void playSong(void);
+        virtual void previousSong(void);
 
-    virtual void stopSong(void);
+        virtual void playSong(void);
 
-    virtual void pause(void);
+        virtual void stopSong(void);
 
-    virtual WAPlaybackStatus getPlaybackStatus(void);
+        virtual void pause(void);
 
-    virtual vector<string>* getPlayList(void);
+        virtual WAPlaybackStatus getPlaybackStatus(void);
 
-    virtual int winampVersion(void);
+        virtual vector<string>* getPlayList(void);
 
-};
+        virtual int winampVersion(void);
 
-#endif // CONSOLEWINAMPCLIENT_H 
+    };
+  } // end of namespace
+} // end of namespace
+
+#endif // CONSOLEWINAMPCLIENT_H

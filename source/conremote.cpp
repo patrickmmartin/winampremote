@@ -60,7 +60,7 @@ char * port;
 
     Bind(address, port);
 
-    ConsoleWinampClient * cwc = new ConsoleWinampClient();
+    WinampRemote::Client::ConsoleWinampClient * cwc = new WinampRemote::Client::ConsoleWinampClient();
 
     cout << endl;
     cout << "\t\t****************************************" << endl;

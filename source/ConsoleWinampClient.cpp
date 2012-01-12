@@ -39,54 +39,60 @@ void winampGetList(void)
 }
 
 
+namespace WinampRemote {
+    namespace Client {
 
-ConsoleWinampClient::ConsoleWinampClient()
-{
-    GetIdent();
-};
 
-void ConsoleWinampClient::nextSong(void){
-  ExecuteMessage(IdentBuf, WINAMP_NEXT);
-};
 
-void ConsoleWinampClient::previousSong(void){
-  ExecuteMessage(IdentBuf, WINAMP_PREVIOUS);
-};
+    ConsoleWinampClient::ConsoleWinampClient()
+    {
+        GetIdent();
+    };
 
-void ConsoleWinampClient::playSong(void){
-  ExecuteMessage(IdentBuf, WINAMP_PLAYENTRY);
-};
+    void ConsoleWinampClient::nextSong(void){
+      ExecuteMessage(IdentBuf, WINAMP_NEXT);
+    };
 
-void ConsoleWinampClient::stopSong(void){
-  ExecuteMessage(IdentBuf, WINAMP_STOP);
-};
+    void ConsoleWinampClient::previousSong(void){
+      ExecuteMessage(IdentBuf, WINAMP_PREVIOUS);
+    };
 
-void ConsoleWinampClient::pause(void){
-  ExecuteMessage(IdentBuf, WINAMP_PAUSE);
-};
+    void ConsoleWinampClient::playSong(void){
+      ExecuteMessage(IdentBuf, WINAMP_PLAYENTRY);
+    };
 
-WAPlaybackStatus ConsoleWinampClient::getPlaybackStatus(void){
-    return (WAPlaybackStatus) IntegerResult(IdentBuf, IPC_ISPLAYING, 0);
-};
+    void ConsoleWinampClient::stopSong(void){
+      ExecuteMessage(IdentBuf, WINAMP_STOP);
+    };
 
-vector<string>* ConsoleWinampClient::getPlayList(void){
-  vector<string> * result = new vector<string>();
-  char buffer[MAX_PATH];
+    void ConsoleWinampClient::pause(void){
+      ExecuteMessage(IdentBuf, WINAMP_PAUSE);
+    };
 
-  int lastlength = IntegerResult(IdentBuf, IPC_GETLISTLENGTH, 0);
+    WAPlaybackStatus ConsoleWinampClient::getPlaybackStatus(void){
+        return (WAPlaybackStatus) IntegerResult(IdentBuf, IPC_ISPLAYING, 0);
+    };
 
-  for (int i = 0 ; i < lastlength ; i++)
-  {
-    strcpy (buffer, IdentBuf );
-    StringResult(buffer, IPC_GETPLAYLISTTITLE, i);
-    result->push_back(buffer);
-  }
-  return result;
-};
+    vector<string>* ConsoleWinampClient::getPlayList(void){
+      vector<string> * result = new vector<string>();
+      char buffer[MAX_PATH];
 
-int ConsoleWinampClient::winampVersion(void){
-    return IntegerResult(IdentBuf, IPC_GETVERSION,  0);
-};
+      int lastlength = IntegerResult(IdentBuf, IPC_GETLISTLENGTH, 0);
+
+      for (int i = 0 ; i < lastlength ; i++)
+      {
+        strcpy (buffer, IdentBuf );
+        StringResult(buffer, IPC_GETPLAYLISTTITLE, i);
+        result->push_back(buffer);
+      }
+      return result;
+    };
+
+    int ConsoleWinampClient::winampVersion(void){
+        return IntegerResult(IdentBuf, IPC_GETVERSION,  0);
+    };
+  } // end of namespace
+} // end of namespace
 
 
 

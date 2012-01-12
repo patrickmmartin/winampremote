@@ -47,13 +47,10 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "ConsoleWinampClient.h"
 
-
 int main(int argc , char* argv[] )
 {
 
 
-char inkey;
-bool loop = true;
 char * address;
 char * port;
 
@@ -80,77 +77,24 @@ char * port;
 
     Bind(address, port);
 
-    ConsoleWinampClient * cwc = new ConsoleWinampClient();
+    WinampRemote::Client::ConsoleWinampClient * cwc = new WinampRemote::Client::ConsoleWinampClient();
 
-    cout << endl;
-    cout << "\t\t****************************************" << endl;
-    cout << "\t\t*   console mode winamp remote client  *" << endl;
-    cout << "\t\t*       (C) patrick m martin 2000        *" << endl;
-    cout << "\t\t****************************************" << endl << endl;
-    cout << "\t\ttalking on " << address << ":" << port  << endl << "\t\tserver: " ;
-
-    cout << "\t\t" << WinampVersion(cwc->winampVersion()) << endl;
-
-    cout << "\t\tcommands: " << endl;
-    cout << "\t\tp, s, h, <, >: play, stop, (un)pause, back, forward" << endl;
-    cout << "\t\tw, l, x: status, playlist, exit" << endl << endl;
-
+    cout << "playback status " << cwc->getPlaybackStatus() << endl;
     cwc->getPlaybackStatus();
+    std::auto_ptr< vector<string> > playList (cwc->getPlayList() );
+    if (playList.get())
+      cout << "playlist size " << playList->size() << std::endl;
 
-    while (loop)
-    {
-      cout << endl << "command?";
-      cin >> inkey;
-
-      switch (inkey)
-      {
-
-        case 'l':
-          cwc->getPlayList();
-          break;
-
-        case '>':
-          cwc->nextSong();
-          break;
-
-        case '<':
-          cwc->previousSong();
-          break;
-
-        case 'w':
-          cwc->pause();
-          break;
-
-        case 'p':
-          cwc->playSong();
-          cwc->getPlaybackStatus();
-          break;
-
-        case 's':
-          cwc->stopSong();
-          cwc->getPlaybackStatus();
-          break;
-
-        case 'h':
-          cwc->pause();
-          cwc->getPlaybackStatus();
-          break;
-
-        case 'x':
-          cout << "bye...";
-          loop = false;
-          break;
-
-        case 't':
-          /* nothing yet */
-          break;
-
-
-        default:
-          cout << inkey << " not understood\r\n" ;
-
-      }
-    }
+    cout << "next song" << std::endl;
+    cwc->nextSong();
+    cout << "previous song"  << std::endl;
+    cwc->previousSong();
+    cout << "pause"  << std::endl;
+    cwc->pause();
+    cout << "play" << std::endl;
+    cwc->playSong();
+    cout << "stop" << std::endl;
+    cwc->stopSong();
 
     UnBind();
     return 0;
@@ -164,7 +108,7 @@ char * port;
   }
 
   catch (...)
-  // all the rest, and provide some explanation, hopefully
+  // TODO: all the rest, and provide some explanation, ideally
   {
     perror("Unhandled error ");
   }
