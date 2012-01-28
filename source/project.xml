@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="C++ Source File">
+<includepath>C:\CBuilder5\Include</includepath>
+<includepath>C:\CBuilder5\Include\Sys</includepath>
+<includepath>C:\CBuilder5\Include\Vcl</includepath>
+<includepath>C:\CBuilder5\Include\Rw</includepath>
+
+</language>
+<language name="rc">
+<includepath>C:\CBuilder5\Include</includepath>
+<includepath>C:\CBuilder5\Include\Vcl</includepath>
+<includepath>C:\CBuilder5\Include\Sys</includepath>
+
+</language>
+<language name="res,obj">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="C++ Source File">
+<macro>
+<name>__published</name><value>public</value>
+</macro>
+
+</language>
+<language name="rc">
+
+</language>
+<language name="res,obj">
+
+</language>
+</section>
+</cdtprojectproperties>
