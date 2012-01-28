@@ -10,7 +10,7 @@ class IWinampInternal {
 
     virtual ~IWinampInternal() {}
 
-    void ExecuteMessage(Command);
+    void ExecuteMessage(int Command);
     void ExecuteStringMessage(char * CommandString, int Command);
     int GetAmpInt(int Command, int Data);
     char * GetAmpStr(int Command, int Data);

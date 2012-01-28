@@ -24,5 +24,7 @@ int main(int argc, char* argv[])
   serverThread->WaitFor();
   std::cout << "thread exited: testserver exiting" << std::endl;
 
+  return 0;
+
 }
 

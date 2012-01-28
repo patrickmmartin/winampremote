@@ -276,13 +276,13 @@ extern "C"
     RpcTryExcept
     {
       WAMessageProc( (unsigned char *) pszString);
-      return ERROR_SUCCESS;
     }
     RpcExcept(1)
     {
         return RpcExceptionCode();
     }
     RpcEndExcept
+    return ERROR_SUCCESS;
   }
 
   int __stdcall SafeExecuteMessage(char * pszString, int command)
@@ -290,13 +290,13 @@ extern "C"
     RpcTryExcept
     {
       WAExecuteMessage( (unsigned char *) pszString, command);
-      return ERROR_SUCCESS;
     }
     RpcExcept(1)
     {
         return RpcExceptionCode();
     }
     RpcEndExcept
+    return ERROR_SUCCESS;
   }
 
   int __stdcall SafeExecuteStringMessage(char * pszString, char * pszParam, int command)
@@ -304,13 +304,13 @@ extern "C"
     RpcTryExcept
     {
       WAExecuteMessageString((unsigned char *) pszString, (unsigned char *) pszParam, command);
-      return ERROR_SUCCESS;
     }
     RpcExcept(1)
     {
         return RpcExceptionCode();
     }
     RpcEndExcept
+    return ERROR_SUCCESS;
   }
 
   int __stdcall SafeStringResult(char * pszString, int command, int data, int * Result)
@@ -318,13 +318,13 @@ extern "C"
     RpcTryExcept
     {
       *Result = WAStringResult((unsigned char *) pszString, command, data);
-      return ERROR_SUCCESS;
     }
     RpcExcept(1)
     {
         return RpcExceptionCode();
     }
     RpcEndExcept
+    return ERROR_SUCCESS;
   }
 
   int __stdcall SafeIntegerResult(char * pszString, int command, int data, int * Result)
@@ -332,13 +332,13 @@ extern "C"
     RpcTryExcept
     {
       *Result = WAIntegerResult((unsigned char *) pszString, command, data);
-      return ERROR_SUCCESS;
     }
     RpcExcept(1)
     {
         return RpcExceptionCode();
     }
     RpcEndExcept
+    return ERROR_SUCCESS;
   }
 
   int __stdcall SafeSetStringList(char * pszString, void * Buffer, int Size, int Command)
@@ -347,13 +347,13 @@ extern "C"
     RpcTryExcept
     {
         WASetStringList( (unsigned char *) pszString, (unsigned char *) Buffer, Size, Command);
-        return ERROR_SUCCESS;
     }
     RpcExcept(1)
     {
         return RpcExceptionCode();
     }
     RpcEndExcept
+    return ERROR_SUCCESS;
 
   }
 
@@ -371,7 +371,6 @@ extern "C"
 
       *Buffer = (void *) InBuffer.Buffer;
       Size = InBuffer.BufferLength;
-      return ERROR_SUCCESS;
 
     }
     RpcExcept(1)
@@ -379,6 +378,7 @@ extern "C"
          return RpcExceptionCode();
     }
     RpcEndExcept
+    return ERROR_SUCCESS;
 
   }
 

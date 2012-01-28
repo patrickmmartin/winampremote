@@ -773,8 +773,8 @@ void TfrmAbout::setupPalette(HDC hDC)
     int paletteSize;
 
     DescribePixelFormat(hDC, pixelFormat, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
-    if (!(pfd.dwFlags & PFD_NEED_PALETTE ||
-	  pfd.iPixelType == PFD_TYPE_COLORINDEX))
+    if (!((pfd.dwFlags & PFD_NEED_PALETTE) ||
+    	  (pfd.iPixelType == PFD_TYPE_COLORINDEX)))
     {
 	return;
     }

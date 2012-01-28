@@ -49,7 +49,7 @@ char * port;
       address = argv[2];
       break;
 
-    default:
+    default: // no break
       address = "127.0.0.1";
       port = "\\pipe\\winampremote";
   }
@@ -148,6 +148,8 @@ char * port;
   {
     perror("Unhandled error ");
   }
+
+  return 0;
 
 
 }

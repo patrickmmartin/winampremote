@@ -20,9 +20,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 */
 
-// required for USEUNIT macro to work
-#include"condefs.h"
-
 //
 #include "stddef.h"
 
@@ -105,14 +102,16 @@ char * port;
   {
     UnBind();
     cout << endl << "RPC failure : " <<E.Message.c_str();
+    return -1;
   }
 
   catch (...)
   // TODO: all the rest, and provide some explanation, ideally
   {
     perror("Unhandled error ");
+    return errno;
   }
 
-
+  return 0;
 }
 

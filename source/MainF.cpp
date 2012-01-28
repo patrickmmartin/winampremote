@@ -171,7 +171,7 @@ HANDLE __fastcall TfrmMain::IconHandle(void)
         Pause->Checked = true;
         fIconIndex = 2;
         break;
-      default:
+      default: // no break
         fIconIndex = 5;
     }
   }
