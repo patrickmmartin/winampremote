@@ -25,8 +25,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include <vcl.h>
 #pragma hdrstop
 
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include <GL\gl.h>
+#include <GL\glu.h>
 #include <math.h>
 #include "AboutF.h"
 

@@ -15,7 +15,7 @@
 
 class TfrmAbout : public TForm
 {
-__published:	// IDE-managed Componentsvoid __fastcall FormShow(TObject *Sender);
+__published:	// IDE-managed Components
         TPanel *TheControl;
         TTimer *tmrMain;
     void __fastcall FormCreate(TObject *Sender);

@@ -2,7 +2,7 @@
 #ifndef REMOTESTRS_H
 #define REMOTESTRS_H
 
-#include <vcl>
+#include <vcl.h>
 
 #pragma hdrstop
 

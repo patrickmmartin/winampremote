@@ -12,7 +12,8 @@
       ..\obj\remote\RPCFuncsU.obj ..\obj\remote\binding.obj 
       ..\obj\remote\WAINT.obj ..\obj\remote\ColourU.obj 
       ..\obj\remote\RFC1060U.obj ..\obj\remote\IPAddressU.obj 
-      ..\obj\remote\VersionInfoU.obj ..\obj\remote\remotestrs.obj"/>
+      ..\obj\remote\VersionInfoU.obj ..\obj\remote\remotestrs.obj 
+      ..\obj\remote\ServerEnumerator.obj"/>
     <RESFILES value="..\obj\remote\winampremote.res"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>

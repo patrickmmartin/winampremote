@@ -44,6 +44,7 @@ USELIB("..\lib\winampinterface.lib");
 USEUNIT("remotestrs.cpp");
 USE("remotestrs.h", File);
 USERC("winampremote.rc");
+USEUNIT("ServerEnumerator.cpp");
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 //---------------------------------------------------------------------------
