@@ -18,179 +18,171 @@ ServerEnumerator::~ServerEnumerator() {
 	// TODO Auto-generated destructor stub
 }
 
-void ServerEnumerator::AddMessage(const AnsiString& Message, const int Level)
-{
+void ServerEnumerator::enumerateServers() {
+	// begin enumeration
+	enumerateFunc(NULL);
+}
+
+void ServerEnumerator::addMessage(const AnsiString& message, const int level) {
 	// TODO need to implement passing through message
 
 }
 
-
-void ServerEnumerator::AddServer(const AnsiString& RemoteName, const AnsiString& Comment)
-{
+void ServerEnumerator::addServer(const AnsiString& remoteName,
+		const AnsiString& comment) {
 	// TODO need to implement passing through message
 }
 
-
-void ServerEnumerator::UpdateProgress(const float complete)
-{
-        // TODO need to implement passing through completeness
+void ServerEnumerator::updateProgress(const float complete) {
+	// TODO need to implement passing through completeness
 }
 
-void ServerEnumerator::HandleResource(const NETRESOURCE& NetResource)
-{
+void ServerEnumerator::handleResource(const NETRESOURCE& resource) {
 
-  if (NetResource.dwDisplayType == RESOURCEDISPLAYTYPE_SERVER)
-  {
-    AnsiString RemoteName = NetResource.lpRemoteName;
-    // strip out the UNC prefix
-    RemoteName.Delete(1, 2);
-    AddServer(RemoteName.c_str(), NetResource.lpComment);
-    AddMessage(AnsiString().sprintf("\tFound node %s", RemoteName.c_str()), 0);
-  }
+	if (resource.dwDisplayType == RESOURCEDISPLAYTYPE_SERVER)
+	{
+		AnsiString remoteName = resource.lpRemoteName;
+		// strip out the UNC prefix
+		remoteName.Delete(1, 2);
+		addServer(remoteName.c_str(), resource.lpComment);
+		addMessage(AnsiString().sprintf("\tFound node %s", remoteName.c_str()),
+				0);
+	}
 }
 
+void ServerEnumerator::netErrorHandler(const DWORD dwErrorCode,
+		const AnsiString& errorFunction) {
+	DWORD dwWNetResult, dwLastError;
+	char szDescription[256];
+	char szProvider[256];
+	AnsiString MessageStr;
+	int MessageSeverity;
 
-void ServerEnumerator::NetErrorHandler(const DWORD dwErrorCode, const AnsiString& Function)
-{
-    DWORD dwWNetResult, dwLastError;
-    char szDescription[256];
-    char szProvider[256];
-    AnsiString MessageStr;
-    int MessageSeverity;
+	// The following code performs standard error-handling.
 
-    // The following code performs standard error-handling.
+	if (dwErrorCode != ERROR_EXTENDED_ERROR)
+	{
+		// warning
+		addMessage(errorFunction, 2);
+		MessageStr = SysErrorMessage(dwErrorCode) + ".";
+		MessageSeverity = 0;
+	} else {
+		dwWNetResult = WNetGetLastError(&dwLastError, (LPSTR) szDescription,
+				sizeof(szDescription), (LPSTR) szProvider, sizeof(szProvider));
 
-    if (dwErrorCode != ERROR_EXTENDED_ERROR)
-    {
-        // warning
-        AddMessage(Function, 2);
-        MessageStr = SysErrorMessage(dwErrorCode) + ".";
-        MessageSeverity = 0;
-    }
-    else
-    {
-        dwWNetResult = WNetGetLastError(&dwLastError,
-            (LPSTR) szDescription,  sizeof(szDescription),
-            (LPSTR) szProvider,   sizeof(szProvider));
+		if (dwWNetResult != NO_ERROR)
+		{
+			// error
+			MessageStr = AnsiString().sprintf(
+					sWNetGetLastErrorFailedFmt.c_str(), dwWNetResult);
+		}
+		// warning
 
-        if(dwWNetResult != NO_ERROR)
-        {
-           // error
-          MessageStr = AnsiString().sprintf(sWNetGetLastErrorFailedFmt.c_str(), dwWNetResult);
-        }
-      // warning
+		MessageSeverity = 3;
+		MessageStr = AnsiString().sprintf(sWNetFailedFmt.c_str(), szProvider,
+				dwLastError, szDescription);
+	}
 
-      MessageSeverity = 3;
-      MessageStr = AnsiString().sprintf(sWNetFailedFmt.c_str(), szProvider, dwLastError, szDescription);
-    }
+	int Index = MessageStr.Pos("\r\n");
+	while (Index > 0) {
+		MessageStr.Delete(Index, 2);
+		MessageStr.Insert(" ", Index);
+		Index = MessageStr.Pos("\r\n");
+	}
 
-  int Index = MessageStr.Pos("\r\n");
-  while (Index > 0)
-  {
-    MessageStr.Delete(Index, 2);
-    MessageStr.Insert(" ", Index);
-    Index = MessageStr.Pos("\r\n");
-  }
-
-  AddMessage(MessageStr, MessageSeverity);
+	addMessage(MessageStr, MessageSeverity);
 
 }
 
+BOOL ServerEnumerator::enumerateFunc(const LPNETRESOURCE lpnr) {
+	DWORD dwResult, dwResultEnum;
+	HANDLE hEnum;
+	DWORD cbBuffer = 16384; // 16K is a good size
+	DWORD cEntries = 0xFFFFFFFF; // enumerate all possible entries
+	LPNETRESOURCE lpnrLocal; // pointer to enumerated structures
+	DWORD i;
 
-BOOL ServerEnumerator::EnumerateFunc(const LPNETRESOURCE lpnr)
-{
-    DWORD dwResult, dwResultEnum;
-    HANDLE hEnum;
-    DWORD cbBuffer = 16384;      // 16K is a good size
-    DWORD cEntries = 0xFFFFFFFF; // enumerate all possible entries
-    LPNETRESOURCE lpnrLocal;     // pointer to enumerated structures
-    DWORD i;
+	// first time case
+	if (lpnr == NULL)
+	{
+		// so far
+		resourcesProcessed_ = 0;
+		// the whole net
+		resourceTotal_ = 1;
 
-   // first time
-   if (lpnr == NULL)
-   {
-     // so far
-     ResourcesEnumerated = 0;
-     // the whole net
-     ResourcesToEnumerate = 1;
-     // TODO: why is the Eclipse CDT iffy about this?
-     AddMessage(sStartEnumerateNetwork, 1);
-   }
+		addMessage(sStartEnumerateNetwork, 1);
+	}
 
-   // update
-   UpdateProgress( ((float) ResourcesEnumerated / (float) ResourcesToEnumerate) );
+	// update
+	updateProgress(((float) resourcesProcessed_ / (float) resourceTotal_));
 
-   ResourcesEnumerated++;
+	resourcesProcessed_++;
 
-    dwResult = WNetOpenEnum(RESOURCE_GLOBALNET,
-        RESOURCETYPE_ANY,
+	dwResult = WNetOpenEnum(RESOURCE_GLOBALNET, RESOURCETYPE_ANY,
 
-        0,                 // enumerate all resources
-        lpnr,              // NULL first time this function is called
-        &hEnum);           // handle to resource
+	0, // enumerate all resources
+			lpnr, // NULL first time this function is called
+			&hEnum); // handle to resource
 
-    if ( (dwResult != NO_ERROR )) {
+	if ((dwResult != NO_ERROR )) {
 
-        // An application-defined error handler is demonstrated in the
-        // section titled "Retrieving Network Errors."
+		// An application-defined error handler is demonstrated in the
+		// section titled "Retrieving Network Errors."
 
-        NetErrorHandler(dwResult, (LPSTR)"WNetOpenEnum");
-        return FALSE;
-    }
+		netErrorHandler(dwResult, (LPSTR) "WNetOpenEnum");
+		return FALSE;
+	}
 
-    do {
+	do {
 
-        // Allocate memory for NETRESOURCE structures.
+		// Allocate memory for NETRESOURCE structures.
 
-        lpnrLocal = (LPNETRESOURCE) GlobalAlloc(GPTR, cbBuffer);
+		lpnrLocal = (LPNETRESOURCE) GlobalAlloc(GPTR, cbBuffer);
 
-        dwResultEnum = WNetEnumResource(hEnum, // resource handle
-            &cEntries,               // defined locally as 0xFFFFFFFF
-            lpnrLocal,               // LPNETRESOURCE
-            &cbBuffer);              // buffer size
+		dwResultEnum = WNetEnumResource(hEnum, // resource handle
+				&cEntries, // defined locally as 0xFFFFFFFF
+				lpnrLocal, // LPNETRESOURCE
+				&cbBuffer); // buffer size
 
-        if (dwResultEnum == NO_ERROR) {
-            ResourcesToEnumerate += cEntries;
-            for(i = 0; i < cEntries; i++)
-            {
-               HandleResource(lpnrLocal[i]);
-               // recurse if it is a container of interest
-               // would like a way to avoid Terminal Services and Web Client...
-               if ( (RESOURCEUSAGE_CONTAINER == (lpnrLocal[i].dwUsage & RESOURCEUSAGE_CONTAINER))
-                      && !(lpnrLocal[i].dwDisplayType == RESOURCEDISPLAYTYPE_SERVER) )
-               {
+		if (dwResultEnum == NO_ERROR) {
+			resourceTotal_ += cEntries;
+			for (i = 0; i < cEntries; i++) {
+				handleResource(lpnrLocal[i]);
+				// recurse if it is a container of interest
+				// would like a way to avoid Terminal Services and Web Client...
+				if ((RESOURCEUSAGE_CONTAINER
+						== (lpnrLocal[i].dwUsage & RESOURCEUSAGE_CONTAINER))
+						&& !(lpnrLocal[i].dwDisplayType
+								== RESOURCEDISPLAYTYPE_SERVER)) {
 
-                AnsiString ObjectName;
+					AnsiString ObjectName;
 
-                if (lpnrLocal[i].lpRemoteName)
-                  ObjectName = lpnrLocal[i].lpRemoteName;
-                else
-                  ObjectName = lpnrLocal[i].lpProvider;
+					if (lpnrLocal[i].lpRemoteName)
+						ObjectName = lpnrLocal[i].lpRemoteName;
+					else
+						ObjectName = lpnrLocal[i].lpProvider;
 
-                AddMessage(AnsiString().sprintf(sEnumeratingContainer.c_str(),
-                                                ObjectName.c_str()),
-                                                1);
-                EnumerateFunc(&lpnrLocal[i]);
-            }
-          }
-        }
-        else if (dwResultEnum != ERROR_NO_MORE_ITEMS) {
-            NetErrorHandler(dwResultEnum, (LPSTR)"WNetEnumResource");
-            break;
-        }
-      GlobalFree((HGLOBAL) lpnrLocal);
-    }
-    while(dwResultEnum != ERROR_NO_MORE_ITEMS);
+					addMessage(
+							AnsiString().sprintf(sEnumeratingContainer.c_str(),
+									ObjectName.c_str()), 1);
+					enumerateFunc(&lpnrLocal[i]);
+				}
+			}
+		} else if (dwResultEnum != ERROR_NO_MORE_ITEMS) {
+			netErrorHandler(dwResultEnum, (LPSTR) "WNetEnumResource");
+			break;
+		}
+		GlobalFree((HGLOBAL) lpnrLocal);
+	} while (dwResultEnum != ERROR_NO_MORE_ITEMS);
 
+	dwResult = WNetCloseEnum(hEnum);
 
-    dwResult = WNetCloseEnum(hEnum);
+	if (dwResult != NO_ERROR) {
+		netErrorHandler(dwResult, (LPSTR) "WNetCloseEnum");
 
-    if(dwResult != NO_ERROR) {
-        NetErrorHandler(dwResult, (LPSTR)"WNetCloseEnum");
+		return FALSE;
+	}
 
-        return FALSE;
-    }
-
-    return TRUE;
+	return TRUE;
 }
 

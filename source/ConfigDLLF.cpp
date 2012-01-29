@@ -106,8 +106,9 @@ void __fastcall TConfigForm::btnChangeEndpointClick(TObject *Sender)
     frmMain->Refresh();
     frmMain->StopThread(this);
 
-    // need to wait,
-    // TODO: why?
+    // TODO: why - StopThread is waiting synchronously on the thread - is RPC shutdown asynchronous too?
+
+    // need to wait, magic constant here
     Sleep(2000);
 
   //create new

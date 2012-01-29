@@ -11,9 +11,9 @@
 #include <windows.h>
 #include <vcl.h>
 
-
 /**
- * class to wrap up the enumerating Windows local net neighbourhood resources
+ * class to wrap up the task of enumerating Windows local net neighbourhood resources
+ * and extracting the machine nodes from the results.
  */
 class ServerEnumerator {
 public:
@@ -27,49 +27,50 @@ public:
 	virtual ~ServerEnumerator();
 
 	/**
-	 * enumerates the servers on the network neighbourhood
+	 * enumerates the servers on the network neighbourhood.
+	 * Events will be emitted when candidates or information is found.
 	 */
 	void enumerateServers();
 
 private:
 
-        int ResourcesEnumerated;
-        int ResourcesToEnumerate;
+	int resourcesProcessed_;
+	int resourceTotal_;
 	/**
 	 * Handles the error condition for the given net resource.
-	 * @param dwErrorCode
-	 * @param Function
+	 * @param dwErrorCode returned error code
+	 * @param errorFunction the function in error
 	 */
-	void NetErrorHandler(const DWORD dwErrorCode, const AnsiString& Function);
+	void netErrorHandler(const DWORD dwErrorCode, const AnsiString& errorFunction);
 	/**
 	 * Handles display of the passed net resource.
-	 * @param NetResource
+	 * @param NetResource the net resource
 	 */
-	void HandleResource(const NETRESOURCE& NetResource);
+	void handleResource(const NETRESOURCE& resource);
 	/**
 	 * Enumerate function for the net resources.
-	 * @param lpnr
+	 * @param resourcePtr the net resource
 	 * @return
 	 */
-	BOOL EnumerateFunc(const LPNETRESOURCE lpnr);
+	BOOL enumerateFunc(const LPNETRESOURCE resourcePtr);
 	/**
 	 * Adds a server to the current node.
 	 * @param RemoteName
 	 * @param Comment
 	 */
-	void AddServer(const AnsiString& RemoteName, const AnsiString& Comment);
+	void addServer(const AnsiString& remoteName, const AnsiString& comment);
 	/**
-	 * Adds a progress message.
+	 * Emits a progress message.
 	 * @param Message
 	 * @param Level
 	 */
-	void AddMessage(const AnsiString& Message, const int Level);
+	void addMessage(const AnsiString& message, const int Level);
 
 	/**
 	 * Updates the known enumeration progress so far.
 	 * @param complete
 	 */
-	void UpdateProgress(const float complete);
+	void updateProgress(const float complete);
 
 };
 
