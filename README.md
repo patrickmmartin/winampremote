@@ -47,7 +47,9 @@ Some features of note were
 
 
 ### medium term
-* There was a linux client once for the tcp transport - reactivating this would be an interesting exercise                                                      
+* There was a linux client once for the _tcpip_ transport:  http://sourceforge.net/projects/wacontrol/ 
+ * reactivating this would be an interesting exercise
+ * working with named pipes endpoints is the bonus points exercise
 
 * As a parallel vein, creating a more transportable UI, such as in QT or HTML5 would be equally interesting 
 
