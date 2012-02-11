@@ -38,7 +38,7 @@ void ServerEnumerator::addMessage(const AnsiString& message, const int level) {
 }
 
 void ServerEnumerator::addServer(const AnsiString& remoteName, const AnsiString& comment) {
-  debugOutput("Server", remoteName + "-" + comment);
+  debugOutput("Server", remoteName + " \"" + comment + " \"");
 }
 
 void ServerEnumerator::updateProgress(const float complete) {

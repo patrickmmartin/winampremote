@@ -1,2 +1,5 @@
 
 *.~cpp
+/unittests.mak
+/unittests.RES
+/unittests.rcscript
