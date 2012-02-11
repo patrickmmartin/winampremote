@@ -3,3 +3,5 @@
 /unittests.mak
 /unittests.RES
 /unittests.rcscript
+
+*.~bpf

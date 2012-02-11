@@ -33,7 +33,7 @@ conremote.exe: conremote.bpr
   $(ROOT)\bin\bpr2mak $**
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 
-testclient.exe: ..\testclient.bpr
+testclient.exe: testclient.bpr
   $(ROOT)\bin\bpr2mak $**
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 

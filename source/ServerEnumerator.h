@@ -15,6 +15,12 @@
  * class to wrap up the task of enumerating Windows local net neighbourhood resources
  * and extracting the machine nodes from the results.
  */
+
+      typedef void __fastcall (__closure *TSEServerEvent)(const AnsiString& remoteName, const AnsiString& comment);
+      typedef void __fastcall (__closure *TSEMessageEvent)(const AnsiString& message, const int Level);
+      typedef void __fastcall (__closure *TSEProgressEvent)(const float complete);
+
+
 class ServerEnumerator {
 public:
 	/**
@@ -26,6 +32,21 @@ public:
 	 */
 	virtual ~ServerEnumerator();
 
+        /**
+         * notification for a server encountered
+         */
+	__property TSEServerEvent OnServer = {read = FServerEvent, write = FServerEvent};
+
+	/**
+	 * notification for a message event
+	 */
+        __property TSEMessageEvent OnMessage = {read = FMessageEvent, write = FMessageEvent};
+
+        /**
+         * notification for a progress event
+         */
+        __property TSEProgressEvent OnProgress = {read = FProgressEvent, write = FProgressEvent};
+
 	/**
 	 * enumerates the servers on the network neighbourhood.
 	 * Events will be emitted when candidates or information is found.
@@ -36,10 +57,16 @@ private:
 
 	int resourcesProcessed_;
 	int resourceTotal_;
+
+        TSEServerEvent FServerEvent;
+        TSEMessageEvent FMessageEvent;
+        TSEProgressEvent FProgressEvent;
+
 	/**
 	 * Lightweight debugging: outputs some debug info of an operations and a message.
 	 * @param operation
 	 * @param message
+	 *
 	 */
     void debugOutput(const AnsiString & operation, const AnsiString & message);
 	/**

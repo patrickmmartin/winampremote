@@ -31,6 +31,8 @@
 								</option>
 								<option id="org.eclipse.cdt.msvc.cl.option.macros.532606968" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__published=public"/>
+									<listOptionValue builtIn="false" value="__closure"/>
+									<listOptionValue builtIn="false" value="__property"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.cl.inputType.1584538669" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
 							</tool>

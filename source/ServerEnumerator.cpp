@@ -10,17 +10,20 @@
 #include "remotestrs.h"
 
 #include <iostream.h>
+#include <sysutils.hpp>
 
 using std::cout;
 using std::endl;
 
-ServerEnumerator::ServerEnumerator() {
-	// TODO Auto-generated stub
+ServerEnumerator::ServerEnumerator() : FMessageEvent(NULL),
+                                       FProgressEvent(NULL),
+                                       FServerEvent(NULL) {
+	// nothing explicit here
 
 }
 
 ServerEnumerator::~ServerEnumerator() {
-	// TODO Auto-generated stub
+	// nothing explicit here
 }
 
 void ServerEnumerator::enumerateServers() {
@@ -30,19 +33,26 @@ void ServerEnumerator::enumerateServers() {
 
 void ServerEnumerator::debugOutput(const AnsiString & operation, const AnsiString & message)
 {
-    cout << AnsiString().sprintf("%s: [%s]", operation, message).c_str() << endl;;
+
+    OutputDebugString(AnsiString().sprintf("%s: [%s]", operation.c_str(), message.c_str()).c_str());
 }
 
 void ServerEnumerator::addMessage(const AnsiString& message, const int level) {
     debugOutput("Message", message);
+    if (FMessageEvent != NULL)
+        FMessageEvent(message, level);
 }
 
 void ServerEnumerator::addServer(const AnsiString& remoteName, const AnsiString& comment) {
   debugOutput("Server", remoteName + " \"" + comment + " \"");
+  if (FServerEvent != NULL)
+      FServerEvent(remoteName, comment);
 }
 
 void ServerEnumerator::updateProgress(const float complete) {
   debugOutput("Progress", AnsiString().sprintf("%.0f", complete * 100));
+  if (FProgressEvent != NULL)
+      FProgressEvent(complete);
 }
 
 void ServerEnumerator::handleResource(const NETRESOURCE& resource) {
