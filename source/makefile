@@ -14,7 +14,7 @@ clean-client-reg:
 	
 clean-server-reg:	
 	@echo delete the server registry settings...
-	reg import WARC-server-del.reg 1>nul
+	reg import WARC-server-del.reg
 		
 # this override of the default implicit rule is a hack for not getting a ".bpr.exe" rule working correctly
 # to override the default .cpp.exe rule
