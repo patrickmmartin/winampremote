@@ -37,6 +37,12 @@ private:
 	int resourcesProcessed_;
 	int resourceTotal_;
 	/**
+	 * Lightweight debugging: outputs some debug info of an operations and a message.
+	 * @param operation
+	 * @param message
+	 */
+    void debugOutput(const AnsiString & operation, const AnsiString & message);
+	/**
 	 * Handles the error condition for the given net resource.
 	 * @param dwErrorCode returned error code
 	 * @param errorFunction the function in error

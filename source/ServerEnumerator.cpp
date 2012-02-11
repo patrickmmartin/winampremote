@@ -9,13 +9,18 @@
 #include <vcl.h>
 #include "remotestrs.h"
 
+#include <iostream.h>
+
+using std::cout;
+using std::endl;
+
 ServerEnumerator::ServerEnumerator() {
-	// TODO Auto-generated constructor stub
+	// TODO Auto-generated stub
 
 }
 
 ServerEnumerator::~ServerEnumerator() {
-	// TODO Auto-generated destructor stub
+	// TODO Auto-generated stub
 }
 
 void ServerEnumerator::enumerateServers() {
@@ -23,18 +28,21 @@ void ServerEnumerator::enumerateServers() {
 	enumerateFunc(NULL);
 }
 
-void ServerEnumerator::addMessage(const AnsiString& message, const int level) {
-	// TODO need to implement passing through message
-
+void ServerEnumerator::debugOutput(const AnsiString & operation, const AnsiString & message)
+{
+    cout << AnsiString().sprintf("%s: [%s]", operation, message).c_str() << endl;;
 }
 
-void ServerEnumerator::addServer(const AnsiString& remoteName,
-		const AnsiString& comment) {
-	// TODO need to implement passing through message
+void ServerEnumerator::addMessage(const AnsiString& message, const int level) {
+    debugOutput("Message", message);
+}
+
+void ServerEnumerator::addServer(const AnsiString& remoteName, const AnsiString& comment) {
+  debugOutput("Server", remoteName + "-" + comment);
 }
 
 void ServerEnumerator::updateProgress(const float complete) {
-	// TODO need to implement passing through completeness
+  debugOutput("Progress", AnsiString().sprintf("%.0f", complete * 100));
 }
 
 void ServerEnumerator::handleResource(const NETRESOURCE& resource) {
@@ -42,16 +50,14 @@ void ServerEnumerator::handleResource(const NETRESOURCE& resource) {
 	if (resource.dwDisplayType == RESOURCEDISPLAYTYPE_SERVER)
 	{
 		AnsiString remoteName = resource.lpRemoteName;
-		// strip out the UNC prefix
+		// TODO strip out the UNC prefix more intelligently
 		remoteName.Delete(1, 2);
-		addServer(remoteName.c_str(), resource.lpComment);
-		addMessage(AnsiString().sprintf("\tFound node %s", remoteName.c_str()),
-				0);
+		addServer(remoteName, resource.lpComment);
+		addMessage(AnsiString().sprintf("\tFound node %s", remoteName.c_str()), 0);
 	}
 }
 
-void ServerEnumerator::netErrorHandler(const DWORD dwErrorCode,
-		const AnsiString& errorFunction) {
+void ServerEnumerator::netErrorHandler(const DWORD dwErrorCode, const AnsiString& errorFunction) {
 	DWORD dwWNetResult, dwLastError;
 	char szDescription[256];
 	char szProvider[256];
@@ -83,12 +89,8 @@ void ServerEnumerator::netErrorHandler(const DWORD dwErrorCode,
 				dwLastError, szDescription);
 	}
 
-	int Index = MessageStr.Pos("\r\n");
-	while (Index > 0) {
-		MessageStr.Delete(Index, 2);
-		MessageStr.Insert(" ", Index);
-		Index = MessageStr.Pos("\r\n");
-	}
+	// there are new lines
+	StringReplace(MessageStr, "\r\n", " ", TReplaceFlags() << rfReplaceAll);
 
 	addMessage(MessageStr, MessageSeverity);
 
@@ -129,7 +131,7 @@ BOOL ServerEnumerator::enumerateFunc(const LPNETRESOURCE lpnr) {
 		// An application-defined error handler is demonstrated in the
 		// section titled "Retrieving Network Errors."
 
-		netErrorHandler(dwResult, (LPSTR) "WNetOpenEnum");
+		netErrorHandler(dwResult, "WNetOpenEnum");
 		return FALSE;
 	}
 
@@ -169,7 +171,7 @@ BOOL ServerEnumerator::enumerateFunc(const LPNETRESOURCE lpnr) {
 				}
 			}
 		} else if (dwResultEnum != ERROR_NO_MORE_ITEMS) {
-			netErrorHandler(dwResultEnum, (LPSTR) "WNetEnumResource");
+			netErrorHandler(dwResultEnum, "WNetEnumResource");
 			break;
 		}
 		GlobalFree((HGLOBAL) lpnrLocal);
@@ -178,7 +180,7 @@ BOOL ServerEnumerator::enumerateFunc(const LPNETRESOURCE lpnr) {
 	dwResult = WNetCloseEnum(hEnum);
 
 	if (dwResult != NO_ERROR) {
-		netErrorHandler(dwResult, (LPSTR) "WNetCloseEnum");
+		netErrorHandler(dwResult, "WNetCloseEnum");
 
 		return FALSE;
 	}

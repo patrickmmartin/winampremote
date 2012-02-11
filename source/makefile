@@ -55,6 +55,8 @@ winampinterface.lib: midl
 	bpr2mak -q -t$(ROOT)\bin\deflib.bmk $&.bpr
 	make -B -a -$(MAKEFLAGS) -f $&.mak
 
+unittests.exe:
+
 testserver.exe: winampinterface.lib
 
 testclient.exe: winampinterface.lib
@@ -69,7 +71,7 @@ gen_RPCinterface.dll: winampinterface.lib
 
 winampserver.exe: winampinterface.lib
 
-TARGETS= winampinterface.lib testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
+TARGETS= winampinterface.lib unittests.exe testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
 
 all: $(TARGETS)
 
@@ -105,7 +107,7 @@ pre-tests:
 post-tests: 
 	echo ========== completed tests ======
 
-tests: pre-tests test-builds post-tests
+tests: unittests.exe pre-tests unit-tests post-tests
 		
 test-builds:
 	echo ========== ensuring independent builds ======
@@ -117,6 +119,9 @@ test-builds:
 	make clean gen_RPCinterface.dll > nul
 	make clean winampserver.exe > nul
 	@echo independent builds completed
+	
+unit-tests:
+	..\bin\unittests	
 
 
 

@@ -67,7 +67,7 @@ void __fastcall TfrmPlaylist::lstSongsDblClick(TObject *)
 void __fastcall TfrmPlaylist::FormCreate(TObject *)
 {
 
-  lstSongs->ItemHeight = this->GetCanvas()->TextHeight('W');
+  lstSongs->ItemHeight = Canvas->TextHeight('W');
   SongList = new TStringList;
   frmMain->PlaylistRefresh->Execute();
 
