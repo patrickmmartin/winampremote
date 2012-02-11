@@ -10,7 +10,6 @@
 #include "remotestrs.h"
 
 #include <iostream.h>
-#include <sysutils.hpp>
 
 using std::cout;
 using std::endl;
