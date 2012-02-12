@@ -45,6 +45,7 @@ USEUNIT("remotestrs.cpp");
 USE("remotestrs.h", File);
 USERC("winampremote.rc");
 USEUNIT("ServerEnumerator.cpp");
+USEUNIT("ServerTester.cpp");
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 //---------------------------------------------------------------------------

@@ -5,7 +5,8 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\unittests.exe"/>
     <OBJFILES value="..\obj\unittests\unittests.obj ..\obj\unittests\ServerEnumerator.obj 
-      ..\obj\unittests\NetworkSuite.obj ..\obj\unittests\remotestrs.obj"/>
+      ..\obj\unittests\NetworkSuite.obj ..\obj\unittests\remotestrs.obj 
+      ..\obj\unittests\ServerTester.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>

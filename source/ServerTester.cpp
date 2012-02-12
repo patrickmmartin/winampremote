@@ -7,7 +7,7 @@
 
 #include "ServerTester.h"
 
-ServerTester::ServerTester() : FMessageEvent(NULL)
+ServerTester::ServerTester() : FServerEvent(NULL)
 {
   // constructor
 
@@ -20,5 +20,5 @@ ServerTester::~ServerTester()
 
 void ServerTester::testServers()
 {
-  // TODO
+  // TODO : need list of candidate nodes
 }

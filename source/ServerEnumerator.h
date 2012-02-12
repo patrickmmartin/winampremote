@@ -8,8 +8,10 @@
 #ifndef SERVERENUMERATOR_H_
 #define SERVERENUMERATOR_H_
 
-#include <windows.h>
 #include <vcl.h>
+#pragma hdrstop
+
+#include <windows.h>
 
 /**
  * class to wrap up the task of enumerating Windows local net neighbourhood resources

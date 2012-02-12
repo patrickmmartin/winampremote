@@ -26,25 +26,21 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include <time.h>
 #include <stdlib.h>  // max
 
-#include "ServersF.h"
-#include "messageF.h"
-#include "MainF.h"
-#include "RFC1060U.h"
-#include "IPAddressU.h"
-#include "RPCFuncsU.h"
+#include "ServersF.h"    // servers
+#include "messageF.h"    // message form
+#include "MainF.h"       // TODO because of liberating DoBind from frmMain
+#include "RFC1060U.h"    // ports
+#include "IPAddressU.h"  // IP utility
+#include "RPCFuncsU.h"   // RPC functions
 
 // winamp IPC declarations
 #include "waint.h"
 #include "remotestrs.h"
 
-#include "ServerEnumerator.h"
-
-
+#include "ServerEnumerator.h" // class to enumerate servers
 
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-
-
 
 TfrmServers *frmServers;
 
@@ -131,6 +127,7 @@ void __fastcall TfrmServers::DoProgress(const float progress)
 void __fastcall TfrmServers::FormCreate(TObject *)
 {
   lvServers->Items->Clear();
+  // sets up the standard icons from Windows
   imgInformation->Picture->Icon->Handle = LoadIcon(NULL, IDI_ASTERISK);
   imgWarning->Picture->Icon->Handle = LoadIcon(NULL, IDI_EXCLAMATION);
   imgError->Picture->Icon->Handle = LoadIcon(NULL, IDI_HAND);
@@ -142,7 +139,6 @@ void __fastcall TfrmServers::FormCreate(TObject *)
 }
 
 
-
 void __fastcall TfrmServers::lvServersClick(TObject *)
 {
   btnOK->Enabled =(lvServers->Selected != NULL );
@@ -150,12 +146,12 @@ void __fastcall TfrmServers::lvServersClick(TObject *)
 }
 
 
-
 void __fastcall TfrmServers::StartTest(TObject *)
 {
 
   bool AbortTest = false;
 
+  // validate the selected port
   CheckPort();
   // now this is OK
 
