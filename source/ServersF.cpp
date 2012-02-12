@@ -22,6 +22,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include <vcl.h>
 #pragma hdrstop
+
 #include <time.h>
 #include <stdlib.h>  // max
 
@@ -36,7 +37,9 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "waint.h"
 #include "remotestrs.h"
 
-//---------------------------------------------------------------------------
+#include "ServerEnumerator.h"
+
+
 
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -44,175 +47,12 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 
 TfrmServers *frmServers;
-//---------------------------------------------------------------------------
+
 __fastcall TfrmServers::TfrmServers(TComponent* Owner)
         : TForm(Owner)
 {
 }
-//---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::HandleResource(NETRESOURCE NetResource)
-{
-
-  if (NetResource.dwDisplayType == RESOURCEDISPLAYTYPE_SERVER)
-  {
-    AnsiString RemoteName = NetResource.lpRemoteName;
-    // strip out the UNC prefix
-    RemoteName.Delete(1, 2);
-    AddServer(RemoteName.c_str(), NetResource.lpComment);
-    AddMessage(AnsiString().sprintf("\tFound node %s",
-                                  RemoteName.c_str()), 0);
-  }
-}
-
-//---------------------------------------------------------------------------
-
-void __fastcall TfrmServers::NetErrorHandler(DWORD dwErrorCode, AnsiString Function)
-{
-    DWORD dwWNetResult, dwLastError;
-    char szDescription[256];
-    char szProvider[256];
-    AnsiString MessageStr;
-    int MessageSeverity;
-
-    // The following code performs standard error-handling.
-
-    if (dwErrorCode != ERROR_EXTENDED_ERROR)
-    {
-        // warning
-        AddMessage(Function + sFailed, 2);
-        MessageStr = SysErrorMessage(dwErrorCode) + ".";
-        MessageSeverity = 0;
-    }
-    else
-    {
-        dwWNetResult = WNetGetLastError(&dwLastError,
-            (LPSTR) szDescription,  sizeof(szDescription),
-            (LPSTR) szProvider,   sizeof(szProvider));
-
-        if(dwWNetResult != NO_ERROR)
-        {
-           // error
-          MessageStr = AnsiString().sprintf(sWNetGetLastErrorFailedFmt.c_str(), dwWNetResult);
-        }
-      // warning
-
-      MessageSeverity = 3;
-      MessageStr = AnsiString().sprintf(sWNetFailedFmt.c_str(), szProvider, dwLastError, szDescription);
-    }
-
-  int Index = MessageStr.Pos("\r\n");
-  while (Index > 0)
-  {
-    MessageStr.Delete(Index, 2);
-    MessageStr.Insert(" ", Index);
-    Index = MessageStr.Pos("\r\n");
-  }
-
-  AddMessage(MessageStr, MessageSeverity);
-
-}
-
-//---------------------------------------------------------------------------
-
-
-BOOL __fastcall TfrmServers::EnumerateFunc(LPNETRESOURCE lpnr)
-{
-    DWORD dwResult, dwResultEnum;
-    HANDLE hEnum;
-    DWORD cbBuffer = 16384;      // 16K is a good size
-    DWORD cEntries = 0xFFFFFFFF; // enumerate all possible entries
-    LPNETRESOURCE lpnrLocal;     // pointer to enumerated structures
-    DWORD i;
-
-   // first time
-   if (lpnr == NULL)
-   {
-     // so far
-     ResourcesEnumerated = 0;
-     // the whole net
-     ResourcesToEnumerate = 1;
-     AddMessage(sStartEnumerateNetwork,  1);
-   }
-
-   // update
-   pbServers->Position = pbServers->Max *  ((float) ResourcesEnumerated / (float) ResourcesToEnumerate);
-
-   ResourcesEnumerated++;
-
-    dwResult = WNetOpenEnum(RESOURCE_GLOBALNET,
-        RESOURCETYPE_ANY,
-
-        0,                 // enumerate all resources
-        lpnr,              // NULL first time this function is called
-        &hEnum);           // handle to resource
-
-    if ( (dwResult != NO_ERROR )) {
-
-        // An application-defined error handler is demonstrated in the
-        // section titled "Retrieving Network Errors."
-
-        NetErrorHandler(dwResult, (LPSTR)"WNetOpenEnum");
-        return FALSE;
-    }
-
-    do {
-
-        // Allocate memory for NETRESOURCE structures.
-
-        lpnrLocal = (LPNETRESOURCE) GlobalAlloc(GPTR, cbBuffer);
-
-        dwResultEnum = WNetEnumResource(hEnum, // resource handle
-            &cEntries,               // defined locally as 0xFFFFFFFF
-            lpnrLocal,               // LPNETRESOURCE
-            &cbBuffer);              // buffer size
-
-        if (dwResultEnum == NO_ERROR) {
-            ResourcesToEnumerate += cEntries;
-            for(i = 0; i < cEntries; i++)
-            {
-               HandleResource(lpnrLocal[i]);
-               // recurse if it is a container of interest
-               // would like a way to avoid Terminal Services and Web Client...
-               if ( (RESOURCEUSAGE_CONTAINER == (lpnrLocal[i].dwUsage & RESOURCEUSAGE_CONTAINER))
-                      && !(lpnrLocal[i].dwDisplayType == RESOURCEDISPLAYTYPE_SERVER) )
-               {
-
-                AnsiString ObjectName;
-
-                if (lpnrLocal[i].lpRemoteName)
-                  ObjectName = lpnrLocal[i].lpRemoteName;
-                else
-                  ObjectName = lpnrLocal[i].lpProvider;
-
-                AddMessage(AnsiString().sprintf(sEnumeratingContainer.c_str(),
-                                                ObjectName.c_str()),
-                                                1);
-                EnumerateFunc(&lpnrLocal[i]);
-            }
-          }
-        }
-        else if (dwResultEnum != ERROR_NO_MORE_ITEMS) {
-            NetErrorHandler(dwResultEnum, (LPSTR)"WNetEnumResource");
-            break;
-        }
-      GlobalFree((HGLOBAL) lpnrLocal);
-    }
-    while(dwResultEnum != ERROR_NO_MORE_ITEMS);
-
-
-    dwResult = WNetCloseEnum(hEnum);
-
-    if(dwResult != NO_ERROR) {
-        NetErrorHandler(dwResult, (LPSTR)"WNetCloseEnum");
-
-        return FALSE;
-    }
-
-    return TRUE;
-}
-
-//---------------------------------------------------------------------------
 
 void __fastcall TfrmServers::btnLocateClick(TObject *)
 {
@@ -229,12 +69,20 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
     pbServers->Position = 0;
     pbServers->Max = 100;
     lvMessages->Items->Clear();
-    EnumerateFunc(NULL);
+
+    ServerEnumerator se;
+    se.OnMessage = DoMessage;
+    se.OnServer = DoServer;
+    se.OnProgress = DoProgress;
+    se.enumerateServers();
+
     pbServers->Position = 100;
+
+    // TODO sweep out the API-isms
     dwSize = sizeof(szComputerName);
     Win32Check(GetComputerName(szComputerName, &dwSize));
     AnsiString ComputerName = szComputerName;
-    AddServer(ComputerName.c_str(), sLocalMachine.c_str());
+    DoServer(ComputerName.c_str(), sLocalMachine.c_str());
     btnTest->Enabled = true;
   }
   __finally
@@ -244,9 +92,9 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
     pbServers->Position = 0;
   }
 }
-//---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::AddServer(char * RemoteName, char * Comment)
+
+void __fastcall TfrmServers::DoServer(const AnsiString& RemoteName, const AnsiString& Comment)
 {
   bool found = false;
   TListItem * ListItem;
@@ -274,7 +122,12 @@ void __fastcall TfrmServers::AddServer(char * RemoteName, char * Comment)
 
 }
 
-//---------------------------------------------------------------------------
+
+void __fastcall TfrmServers::DoProgress(const float progress)
+{
+    // update the progress
+}
+
 
 void __fastcall TfrmServers::FormCreate(TObject *)
 {
@@ -290,7 +143,7 @@ void __fastcall TfrmServers::FormCreate(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmServers::lvServersClick(TObject *)
 {
   btnOK->Enabled =(lvServers->Selected != NULL );
@@ -298,7 +151,7 @@ void __fastcall TfrmServers::lvServersClick(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmServers::StartTest(TObject *)
 {
 
@@ -338,13 +191,13 @@ void __fastcall TfrmServers::StartTest(TObject *)
             try
             {
               // issue warning
-              AddMessage(AnsiString().sprintf(sAttemptingToContact.c_str(), lvServers->Items->Item[i]->Caption.c_str()),   1);
-              AddMessage(sMayTakeTime,   2);
+              DoMessage(AnsiString().sprintf(sAttemptingToContact.c_str(), lvServers->Items->Item[i]->Caption.c_str()),   1);
+              DoMessage(sMayTakeTime,   2);
               start = clock();
               retval = IntegerResult(frmMain->IdentChars, IPC_GETVERSION,  0);
               end = clock();
               pbServers->StepIt();
-              AddMessage(AnsiString().sprintf(sResponseReceivedFmt.c_str(), (end - start) / CLK_TCK), 1);
+              DoMessage(AnsiString().sprintf(sResponseReceivedFmt.c_str(), (end - start) / CLK_TCK), 1);
               lvServers->Items->Item[i]->ImageIndex = 2;
               lvServers->Items->Item[i]->SubItems->Strings[1] = WinampVersion(retval);
               if (AbortTest)
@@ -353,7 +206,7 @@ void __fastcall TfrmServers::StartTest(TObject *)
             catch( ERPCException &E)
             {
               pbServers->StepIt();
-              AddMessage(AnsiString(sCallFailed + E.Message),   3);
+              DoMessage(AnsiString(sCallFailed + E.Message),   3);
               lvServers->Items->Item[i]->ImageIndex = 1;
               lvServers->Items->Item[i]->SubItems->Strings[1] = sNotFound;
             }
@@ -377,7 +230,7 @@ void __fastcall TfrmServers::StartTest(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmServers::StopTest(TObject *)
 {
 
@@ -390,9 +243,9 @@ void __fastcall TfrmServers::StopTest(TObject *)
   btnTest->Caption = sTest;
 
 }
-//---------------------------------------------------------------------------
 
-void __fastcall TfrmServers::AddMessage(AnsiString Message, int Level)
+
+void __fastcall TfrmServers::DoMessage(const AnsiString& Message, const int Level)
 {
 
   TListItem * ListItem =  lvMessages->Items->Add();
@@ -415,7 +268,7 @@ void __fastcall TfrmServers::FormClose(TObject *, TCloseAction &)
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmServers::CheckPort(void)
 {
 
@@ -463,7 +316,7 @@ void __fastcall TfrmServers::btnOKClick(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmServers::GetServerIp(TObject *)
 {
 
@@ -482,40 +335,40 @@ void __fastcall TfrmServers::GetServerIp(TObject *)
       {
         GetIPAddress(lvServers->Selected->Caption.c_str(), HostName, Addresses, Aliases);
 
-        AddMessage(sIPLookup + lvServers->Selected->Caption, 1);
-        AddMessage(sAuthoritativeName + HostName, 1);
+        DoMessage(sIPLookup + lvServers->Selected->Caption, 1);
+        DoMessage(sAuthoritativeName + HostName, 1);
 
         if (Addresses->Count > 0 )
         {
-          AddMessage(sAddressesRetrieved, 1);
+          DoMessage(sAddressesRetrieved, 1);
           for (int i = 0; i < Addresses->Count  ; i ++)
           {
-            AddMessage(sIPAddress + Addresses->Strings[i], 1);
+            DoMessage(sIPAddress + Addresses->Strings[i], 1);
           }
         }
         else
         {
-          AddMessage(sAddressesNotRetrieved, 2);
+          DoMessage(sAddressesNotRetrieved, 2);
         }
 
 
         if (Aliases->Count > 0 )
         {
-           AddMessage(sAliasesRetrieved, 1);
+           DoMessage(sAliasesRetrieved, 1);
           for (int i = 0; i < Aliases->Count  ; i ++)
           {
-            AddMessage(AnsiString(sIPAlias) + Aliases->Strings[i], 1);
+            DoMessage(AnsiString(sIPAlias) + Aliases->Strings[i], 1);
           }
         }
         else
         {
-          AddMessage(sAliasesNotRetrieved, 2);
+          DoMessage(sAliasesNotRetrieved, 2);
         }
 
       }
       catch (EIPException &E)
       {
-        AddMessage(sGetIPAddressFailed + E.Message, 3);
+        DoMessage(sGetIPAddressFailed + E.Message, 3);
       }
 
     }
@@ -527,12 +380,12 @@ void __fastcall TfrmServers::GetServerIp(TObject *)
      delete Addresses;
   }
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmServers::spltMessagesCanResize(TObject * , int &NewSize, bool &Accept)
 {
   Accept = (NewSize > 30);        
 }
-//---------------------------------------------------------------------------
+
 
 

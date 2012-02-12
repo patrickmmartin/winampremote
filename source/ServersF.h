@@ -45,14 +45,10 @@ __published:	// IDE-managed Components
           int &NewSize, bool &Accept);
 private:	// User declarations
 
-void __fastcall NetErrorHandler(DWORD dwErrorCode, AnsiString Function);
-void __fastcall HandleResource(NETRESOURCE NetResource);
-BOOL __fastcall EnumerateFunc(LPNETRESOURCE lpnr);
-void __fastcall AddServer(char * RemoteName, char * Comment);
-void __fastcall AddMessage(AnsiString Message, int Level);
+void __fastcall DoServer(const AnsiString& RemoteName, const AnsiString& Comment);
+void __fastcall DoMessage(const AnsiString& Message, const int Level);
+void __fastcall DoProgress(const float complete);
 bool AbortTest;
-int ResourcesEnumerated;
-int ResourcesToEnumerate;
 void __fastcall CheckPort(void);
 
 

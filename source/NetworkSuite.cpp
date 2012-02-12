@@ -44,9 +44,9 @@ void NetworkSuite::run()
 {
 
   ServerEnumerator se;
-  se.OnMessage = &DoMessage;
-  se.OnServer = &DoServer;
-  se.OnProgress = &DoProgress;
+  se.OnMessage = DoMessage;
+  se.OnServer = DoServer;
+  se.OnProgress = DoProgress;
   se.enumerateServers();
 
 }
