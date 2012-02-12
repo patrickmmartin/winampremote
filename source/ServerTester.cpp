@@ -7,7 +7,7 @@
 
 #include "ServerTester.h"
 
-ServerTester::ServerTester : FMessageEvent(NULL)()
+ServerTester::ServerTester() : FMessageEvent(NULL)
 {
   // constructor
 
