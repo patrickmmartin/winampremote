@@ -5,11 +5,13 @@
  *      Author: Patrick
  */
 
-#include "ServerEnumerator.h"
 #include <vcl.h>
-#include "remotestrs.h"
+#pragma hdrstop
 
 #include <iostream.h>
+
+#include "ServerEnumerator.h"
+#include "remotestrs.h"
 
 using std::cout;
 using std::endl;
