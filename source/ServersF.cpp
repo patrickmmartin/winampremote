@@ -122,10 +122,9 @@ void __fastcall TfrmServers::DoServer(const AnsiString& RemoteName, const AnsiSt
 
 }
 
-
 void __fastcall TfrmServers::DoProgress(const float progress)
 {
-    // update the progress
+    pbServers->Position = progress * pbServers->Max;
 }
 
 
