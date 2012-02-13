@@ -18,8 +18,22 @@
  * and extracting the machine nodes from the results.
  */
 
+      /**
+       * Closure for the server discovery event.
+       * @param remoteName
+       * @param comment
+       */
       typedef void __fastcall (__closure *TSEServerEvent)(const AnsiString& remoteName, const AnsiString& comment);
+      /**
+       * Closure for a general message event.
+       * @param message
+       * @param Level
+       */
       typedef void __fastcall (__closure *TSEMessageEvent)(const AnsiString& message, const int Level);
+      /**
+       * Closure for the progress event.
+       * @param complete
+       */
       typedef void __fastcall (__closure *TSEProgressEvent)(const float complete);
 
 

@@ -11,12 +11,38 @@
 #include <vcl.h>
 #pragma hdrstop
 
+#include <vector.h>
+
 /**
  * class to wrap up the task of testing servers for a running Winamp server.
  */
 
-      typedef void __fastcall (__closure *TSTServerEvent)(const AnsiString& remoteName, const AnsiString& result);
+    // TODO  a typedef for the remoteNoode name moniker?
+      /**
+       * Closure for the client supplied bind procedure, required for each test node.
+       * @param node
+       * @param endpoint
+       */
+      typedef void __fastcall (__closure *TBindEvent)(const AnsiString& node,
+                                                      const AnsiString& endpoint);
 
+      /**
+       * Closure for the Server test event.
+       * @param remoteName
+       * @param data
+       * @param level
+       */
+      typedef void __fastcall (__closure *TSTServerMessageEvent)(const AnsiString& remoteName,
+                                                                 const AnsiString& data,
+                                                                 const int level);
+
+      /**
+       * Closure for when the server result is determined.
+       * @param remoteName
+       * @param success
+       */
+      typedef void __fastcall (__closure *TSTServerResultEvent)(const AnsiString& remoteName,
+                                                                const bool success);
 
 
 class ServerTester {
@@ -31,15 +57,41 @@ public:
         virtual ~ServerTester();
 
         /**
-         * notification for a server test result
+         * closure for the bind event prior to testing
          */
-        __property TSTServerEvent OnTest = {read = FServerEvent, write = FServerEvent};
+        __property TBindEvent OnBind = {read = FBindProc, write = FBindProc};
 
-        void testServers();
+        /**
+         * notification closure for a server test result
+         */
+        __property TSTServerMessageEvent OnTest = {read = FServerMessageEvent, write = FServerMessageEvent};
+
+        /**
+         * notification closure for a server test result
+         */
+        __property TSTServerResultEvent OnResult = {read = FServerResultEvent, write = FServerResultEvent};
+
+
+
+
+
+
+        /**
+         * Function to accept list of servers to be tested.
+         * @param servers
+         */
+        void testServers(const vector<string>& servers, const AnsiString& endpoint);
 
 private:
 
-        TSTServerEvent FServerEvent;
+        TSTServerMessageEvent FServerMessageEvent;
+        TSTServerResultEvent FServerResultEvent;
+        TBindEvent FBindProc;
+
+
+        void DoMessage(const AnsiString& remoteName, const AnsiString& data, const int level);
+        void DoResult(const AnsiString& remoteName, const bool success);
+        void DoBind(const AnsiString& node, const AnsiString& endpoint);
 
 };
 

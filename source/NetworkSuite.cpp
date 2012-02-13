@@ -8,6 +8,7 @@
 #include "NetworkSuite.h"
 
 #include "ServerEnumerator.h"
+#include "ServerTester.h"
 
 #include <iostream.h>
 

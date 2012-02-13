@@ -5,3 +5,4 @@
 /unittests.rcscript
 
 *.~bpf
+*.~h
