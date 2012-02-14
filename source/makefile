@@ -55,7 +55,7 @@ winampinterface.lib: midl
 	bpr2mak -q -t$(ROOT)\bin\deflib.bmk $&.bpr
 	make -B -a -$(MAKEFLAGS) -f $&.mak
 
-unittests.exe:
+unittests.exe: winampinterface.lib
 
 testserver.exe: winampinterface.lib
 
@@ -120,8 +120,10 @@ test-builds:
 	make clean winampserver.exe > nul
 	@echo independent builds completed
 	
-unit-tests:
-	..\bin\unittests	
+unit-tests: testserver.exe
+	start "mock server"  ..\bin\testserver	
+	..\bin\unittests
+	-taskkill /IM testserver.exe	
 
 
 

@@ -45,9 +45,9 @@ __published:	// IDE-managed Components
           int &NewSize, bool &Accept);
 private:	// User declarations
 
-void __fastcall DoServer(const AnsiString& RemoteName, const AnsiString& Comment);
-void __fastcall DoMessage(const AnsiString& Message, const int Level);
-void __fastcall DoProgress(const float complete);
+void DoServer(const AnsiString& RemoteName, const AnsiString& Comment);
+void DoMessage(const AnsiString& Message, const int Level);
+void DoProgress(const float complete);
 bool AbortTest;
 void __fastcall CheckPort(void);
 

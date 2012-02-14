@@ -23,18 +23,18 @@
        * @param remoteName
        * @param comment
        */
-      typedef void __fastcall (__closure *TSEServerEvent)(const AnsiString& remoteName, const AnsiString& comment);
+      typedef void (__closure *TSEServerEvent)(const AnsiString& remoteName, const AnsiString& comment);
       /**
        * Closure for a general message event.
        * @param message
        * @param Level
        */
-      typedef void __fastcall (__closure *TSEMessageEvent)(const AnsiString& message, const int Level);
+      typedef void (__closure *TSEMessageEvent)(const AnsiString& message, const int Level);
       /**
        * Closure for the progress event.
        * @param complete
        */
-      typedef void __fastcall (__closure *TSEProgressEvent)(const float complete);
+      typedef void (__closure *TSEProgressEvent)(const float complete);
 
 
 class ServerEnumerator {

@@ -90,7 +90,7 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
 }
 
 
-void __fastcall TfrmServers::DoServer(const AnsiString& RemoteName, const AnsiString& Comment)
+void TfrmServers::DoServer(const AnsiString& RemoteName, const AnsiString& Comment)
 {
   bool found = false;
   TListItem * ListItem;
@@ -118,7 +118,7 @@ void __fastcall TfrmServers::DoServer(const AnsiString& RemoteName, const AnsiSt
 
 }
 
-void __fastcall TfrmServers::DoProgress(const float progress)
+void TfrmServers::DoProgress(const float progress)
 {
     pbServers->Position = progress * pbServers->Max;
 }
@@ -240,7 +240,7 @@ void __fastcall TfrmServers::StopTest(TObject *)
 }
 
 
-void __fastcall TfrmServers::DoMessage(const AnsiString& Message, const int Level)
+void TfrmServers::DoMessage(const AnsiString& Message, const int Level)
 {
 
   TListItem * ListItem =  lvMessages->Items->Add();

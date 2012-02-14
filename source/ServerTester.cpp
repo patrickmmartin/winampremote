@@ -70,7 +70,7 @@ void ServerTester::testServers(vector<AnsiString>& servers, const AnsiString& en
           }
           catch( ERPCException &E)
           {
-            DoMessage(remote, AnsiString("failed") + E.Message, 3);
+            DoMessage(remote, AnsiString("failed: " ) + E.Message, 3);
             // TODO fire server event
             DoResult(remote, false);
           }

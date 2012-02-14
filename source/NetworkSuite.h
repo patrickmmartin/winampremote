@@ -9,6 +9,10 @@
 #define NETWORKSUITE_H_
 
 #include <vcl.h>
+#pragma hdrstop
+
+#include <vector.h>
+
 
 class NetworkSuite
 {
@@ -19,14 +23,53 @@ public:
   void run();
 private:
 
-  void __fastcall DoNetworkServer(const AnsiString& remoteName, const AnsiString& comment);
-  void __fastcall DoNetworkMessage(const AnsiString& message, const int level);
-  void __fastcall DoNetworkProgress(const float complete);
+  vector<AnsiString> _servers;
 
-  void __fastcall DoTestEvent(const AnsiString& remoteName,
+  char * levelString(const int level);
+
+
+  /**
+   * test method for network enumeration
+   */
+  void testEnumeration();
+
+  /**
+   * test method for server testing
+   */
+  void testServerTest();
+
+  /**
+   * handler for server found event
+   * @param remoteName
+   * @param comment
+   */
+  void doNetworkServer(const AnsiString& remoteName, const AnsiString& comment);
+  /**
+   * handler for network message
+   * @param message
+   * @param level
+   */
+  void doNetworkMessage(const AnsiString& message, const int level);
+  /**
+   *  handler for network progress
+   * @param complete
+   */
+  void doNetworkProgress(const float complete);
+  /**
+   * handler for server test concluded event
+   * @param remoteName
+   * @param data
+   * @param level
+   */
+  void doTestEvent(const AnsiString& remoteName,
                                             const AnsiString& data,
                                             const int level);
-  void __fastcall DoTestResult(const AnsiString& remoteName,
+  /**
+   * handler for test result event
+   * @param remoteName
+   * @param success
+   */
+  void doTestResult(const AnsiString& remoteName,
                                              const bool success);
 
 };

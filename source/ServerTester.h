@@ -24,7 +24,7 @@
        * @param data
        * @param level
        */
-      typedef void __fastcall (__closure *TSTServerMessageEvent)(const AnsiString& remoteName,
+      typedef void (__closure *TSTServerMessageEvent)(const AnsiString& remoteName,
                                                                  const AnsiString& data,
                                                                  const int level);
 
@@ -33,7 +33,7 @@
        * @param remoteName
        * @param success
        */
-      typedef void __fastcall (__closure *TSTServerResultEvent)(const AnsiString& remoteName,
+      typedef void (__closure *TSTServerResultEvent)(const AnsiString& remoteName,
                                                                 const bool success);
 
 
