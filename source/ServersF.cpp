@@ -38,6 +38,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "remotestrs.h"
 
 #include "ServerEnumerator.h" // class to enumerate servers
+#include "ServerTester.h" // class to test servers
 
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -165,55 +166,14 @@ void __fastcall TfrmServers::StartTest(TObject *)
   btnTest->OnClick = StopTest;
 
   Screen->Cursor = crHourGlass;
-  int retval;
-
-  clock_t start, end;
 
   try
   {
-    pbServers->Position = 0;
-    pbServers->Max = lvServers->Items->Count;
 
-    for ( int i = 0 ; i < lvServers->Items->Count ; i++)
-    {
-         frmMain->ebEndPoint->Text = ebEndPoint->Text;
-         frmMain->ebAddress->Text = lvServers->Items->Item[i]->Caption;
-
-         lvServers->Selected = lvServers->Items->Item[i];
-         frmMain->DoBind();
-         try
-         {
-            try
-            {
-              // issue warning
-              DoMessage(AnsiString().sprintf(sAttemptingToContact.c_str(), lvServers->Items->Item[i]->Caption.c_str()),   1);
-              DoMessage(sMayTakeTime,   2);
-              start = clock();
-              retval = IntegerResult(frmMain->IdentChars, IPC_GETVERSION,  0);
-              end = clock();
-              pbServers->StepIt();
-              DoMessage(AnsiString().sprintf(sResponseReceivedFmt.c_str(), (end - start) / CLK_TCK), 1);
-              lvServers->Items->Item[i]->ImageIndex = 2;
-              lvServers->Items->Item[i]->SubItems->Strings[1] = WinampVersion(retval);
-              if (AbortTest)
-                break;
-            }
-            catch( ERPCException &E)
-            {
-              pbServers->StepIt();
-              DoMessage(AnsiString(sCallFailed + E.Message),   3);
-              lvServers->Items->Item[i]->ImageIndex = 1;
-              lvServers->Items->Item[i]->SubItems->Strings[1] = sNotFound;
-            }
-         }
-         __finally
-         {
-           UnBind();
-         }
-    }
-    lvServers->Selected = NULL;
-
-    StopTest(this);
+      ServerTester st;
+//      st.OnResult = doTestResult;
+//      st.OnTest = doTestEvent;
+      st.testServers(_servers, ebEndPoint->Text);
 
   }
   __finally

@@ -9,7 +9,9 @@
 #include "RPCFuncsU.h"
 #include "waint.h"
 
-ServerTester::ServerTester() : FServerMessageEvent(NULL), FServerResultEvent(NULL)
+ServerTester::ServerTester() : _serverMessageEvent(NULL),
+                               _serverResultEvent(NULL),
+                               _endPoint("\\pipe\\winampremote")
 {
   // constructor
 
@@ -24,17 +26,17 @@ void ServerTester::DoMessage(const AnsiString& remoteName,
                              const AnsiString& data,
                             const int level)
 {
-  if (FServerMessageEvent)
-    FServerMessageEvent(remoteName, data, level);
+  if (_serverMessageEvent)
+    _serverMessageEvent(remoteName, data, level);
 }
 
 void ServerTester::DoResult(const AnsiString& remoteName, const bool success)
 {
-  if (FServerResultEvent)
-    FServerResultEvent(remoteName, success);
+  if (_serverResultEvent)
+    _serverResultEvent(remoteName, success, _abort);
 }
 
-void ServerTester::testServers(vector<AnsiString>& servers, const AnsiString& endpoint)
+void ServerTester::testServers(vector<AnsiString>& servers)
 {
 
   // TODO should validate that the various mandatory callbacks are set..
@@ -45,13 +47,13 @@ void ServerTester::testServers(vector<AnsiString>& servers, const AnsiString& en
   clock_t start, end;
 
       for (vector<AnsiString>::iterator i = servers.begin();
-                                 i != servers.end();
-                                 ++i)
+           !_abort && (i != servers.end());
+           ++i)
         {
           AnsiString remote = *i;
 
           // static method from RPCFuncs
-          Bind(remote.c_str(), endpoint.c_str());
+          Bind(remote.c_str(), _endPoint.c_str());
           try
           {
             DoMessage(remote, "beginning", 1);

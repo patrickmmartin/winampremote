@@ -24,6 +24,9 @@ public:
 private:
 
   vector<AnsiString> _servers;
+  bool _abort_test;
+  void testServerInvalid();
+  void testServerTestAbort();
 
   char * levelString(const int level);
 
@@ -62,15 +65,17 @@ private:
    * @param level
    */
   void doTestEvent(const AnsiString& remoteName,
-                                            const AnsiString& data,
-                                            const int level);
+                   const AnsiString& data,
+                   const int level);
   /**
    * handler for test result event
    * @param remoteName
    * @param success
+   * @param abort
    */
   void doTestResult(const AnsiString& remoteName,
-                                             const bool success);
+                    const bool success,
+                    bool& abort);
 
 };
 

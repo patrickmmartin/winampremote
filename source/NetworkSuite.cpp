@@ -16,7 +16,8 @@ using std::cout;
 using std::endl;
 using std::boolalpha;
 
-NetworkSuite::NetworkSuite()
+NetworkSuite::NetworkSuite() :  _servers(), _abort_test(false)
+
 {
   // TODO Auto-generated stub
 }
@@ -65,11 +66,13 @@ void NetworkSuite::doTestEvent(const AnsiString& remoteName,
 }
 
 void NetworkSuite::doTestResult(const AnsiString& remoteName,
-                                           const bool success)
+                                           const bool success,
+                                           bool& abort)
 {
   cout << "Test Result: " << remoteName.c_str() << " result " << boolalpha << success << endl;
+  if (_abort_test)
+    abort = true;
 }
-
 
 void NetworkSuite::testEnumeration()
 {
@@ -85,8 +88,31 @@ void NetworkSuite::testServerTest()
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
-    // TODO: locate this endpoint constant appropriately
-    st.testServers(_servers, "\\pipe\\winampremote");
+    st.testServers(_servers);
+}
+
+void NetworkSuite::testServerTestAbort()
+{
+    bool prior_abort_test = _abort_test;
+    _abort_test = true;
+    ServerTester st;
+    st.OnResult = doTestResult;
+    st.OnTest = doTestEvent;
+    vector<AnsiString> servers;
+    servers.push_back("localhost");
+    servers.push_back("localhost");
+    st.testServers(servers);
+    _abort_test = prior_abort_test;
+}
+
+void NetworkSuite::testServerInvalid()
+{
+    ServerTester st;
+    st.OnResult = doTestResult;
+    st.OnTest = doTestEvent;
+    vector<AnsiString> servers;
+    servers.push_back("__invalid__");
+    st.testServers(servers);
 }
 
 void NetworkSuite::run()
@@ -95,5 +121,11 @@ void NetworkSuite::run()
     testEnumeration();
     // TODO: dependency upon prior test
     testServerTest();
+    // test abort
+    testServerTestAbort();
+    // test invalid
+    testServerInvalid();
+
+
 
 }
