@@ -3,6 +3,9 @@ USEUNIT("ServerEnumerator.cpp");
 USEUNIT("NetworkSuite.cpp");
 USEUNIT("remotestrs.cpp");
 USEUNIT("ServerTester.cpp");
+USEUNIT("RPCFuncsU.cpp");
+USELIB("..\lib\winampinterface.lib");
+USEUNIT("waint.cpp");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 

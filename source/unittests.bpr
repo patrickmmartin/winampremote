@@ -6,11 +6,12 @@
     <PROJECT value="..\bin\unittests.exe"/>
     <OBJFILES value="..\obj\unittests\unittests.obj ..\obj\unittests\ServerEnumerator.obj 
       ..\obj\unittests\NetworkSuite.obj ..\obj\unittests\remotestrs.obj 
-      ..\obj\unittests\ServerTester.obj"/>
+      ..\obj\unittests\ServerTester.obj ..\obj\unittests\RPCFuncsU.obj 
+      ..\obj\unittests\waint.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value=""/>
+    <LIBFILES value="..\lib\winampinterface.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value="Vcl50.lib"/>
     <PACKAGES value="Vcl50.bpi Vclx50.bpi bcbsmp50.bpi Qrpt50.bpi Vcldb50.bpi Vclbde50.bpi 

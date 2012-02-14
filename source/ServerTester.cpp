@@ -9,7 +9,7 @@
 #include "RPCFuncsU.h"
 #include "waint.h"
 
-ServerTester::ServerTester() : FServerMessageEvent(NULL), FServerResultEvent(NULL), FBindProc(NULL)
+ServerTester::ServerTester() : FServerMessageEvent(NULL), FServerResultEvent(NULL)
 {
   // constructor
 
@@ -34,13 +34,7 @@ void ServerTester::DoResult(const AnsiString& remoteName, const bool success)
     FServerResultEvent(remoteName, success);
 }
 
-void ServerTester::DoBind(const AnsiString& node, const AnsiString& endpoint)
-{
-  if (FBindProc)
-    FBindProc(node, endpoint);
-}
-
-void ServerTester::testServers(const vector<string>& servers, const AnsiString& endpoint)
+void ServerTester::testServers(vector<AnsiString>& servers, const AnsiString& endpoint)
 {
 
   // TODO should validate that the various mandatory callbacks are set..
@@ -50,20 +44,23 @@ void ServerTester::testServers(const vector<string>& servers, const AnsiString& 
 
   clock_t start, end;
 
+      for (vector<AnsiString>::iterator i = servers.begin();
+                                 i != servers.end();
+                                 ++i)
+        {
+          AnsiString remote = *i;
 
-    for ( int i = 0 ; i < 5 ; i++)
-    {
-        AnsiString remote = "localhost";
-
-          DoBind(remote, endpoint);
+          // static method from RPCFuncs
+          Bind(remote.c_str(), endpoint.c_str());
           try
           {
             DoMessage(remote, "beginning", 1);
             DoMessage(remote, "may take some time", 2);
             start = clock();
+            // static method from RPCFuncs
             retval = IntegerResult("probe from", IPC_GETVERSION, 0);
             end = clock();
-            DoMessage(remote, AnsiString().sprintf("response after *.2f", (end - start) / CLK_TCK), 1);
+            DoMessage(remote, AnsiString().sprintf("response after %.2fs ", (end - start) / CLK_TCK), 1);
             DoResult(remote, true);
             DoMessage(remote, WinampVersion(retval), 1);
 
