@@ -9,6 +9,8 @@
 #include <ComCtrls.hpp>
 #include <ImgList.hpp>
 #include <ExtCtrls.hpp>
+
+#include <vector.h>
 //---------------------------------------------------------------------------
 class TfrmServers : public TForm
 {
@@ -45,9 +47,20 @@ __published:	// IDE-managed Components
           int &NewSize, bool &Accept);
 private:	// User declarations
 
-void DoServer(const AnsiString& RemoteName, const AnsiString& Comment);
-void DoMessage(const AnsiString& Message, const int Level);
-void DoProgress(const float complete);
+void doNetworkServer(const AnsiString& RemoteName, const AnsiString& Comment);
+void doNetworkMessage(const AnsiString& Message, const int Level);
+void doNetworkProgress(const float complete);
+
+void doTestEvent(const AnsiString& remoteName,
+                 const AnsiString& data,
+                 const int level);
+void doTestResult(const AnsiString& remoteName,
+                  const bool success,
+                  bool& abort);
+
+TListItem* findServerItem(const AnsiString& RemoteName);
+void TfrmServers::getServers(vector<AnsiString>& servers);
+
 bool AbortTest;
 void __fastcall CheckPort(void);
 

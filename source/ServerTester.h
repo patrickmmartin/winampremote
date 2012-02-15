@@ -73,8 +73,8 @@ public:
 
 private:
 
-        bool  _abort;
         AnsiString _endPoint;
+        bool _abort;
         TSTServerMessageEvent _serverMessageEvent;
         TSTServerResultEvent _serverResultEvent;
 

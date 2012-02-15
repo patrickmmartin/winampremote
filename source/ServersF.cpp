@@ -68,9 +68,9 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
     lvMessages->Items->Clear();
 
     ServerEnumerator se;
-    se.OnMessage = DoMessage;
-    se.OnServer = DoServer;
-    se.OnProgress = DoProgress;
+    se.OnMessage = doNetworkMessage;
+    se.OnServer = doNetworkServer;
+    se.OnProgress = doNetworkProgress;
     se.enumerateServers();
 
     pbServers->Position = 100;
@@ -79,7 +79,7 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
     dwSize = sizeof(szComputerName);
     Win32Check(GetComputerName(szComputerName, &dwSize));
     AnsiString ComputerName = szComputerName;
-    DoServer(ComputerName.c_str(), sLocalMachine.c_str());
+    doNetworkServer(ComputerName.c_str(), sLocalMachine.c_str());
     btnTest->Enabled = true;
   }
   __finally
@@ -91,35 +91,41 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
 }
 
 
-void TfrmServers::DoServer(const AnsiString& RemoteName, const AnsiString& Comment)
+void TfrmServers::getServers(vector<AnsiString>& servers)
 {
-  bool found = false;
-  TListItem * ListItem;
-  for ( int i = 0; (i < lvServers->Items->Count) && (!found) ; i ++)
-  {
-    ListItem = lvServers->Items->Item[i];
-    if (ListItem->Caption == RemoteName)
+  for (int i = 0; (i < lvServers->Items->Count) ; i++)
     {
-      found = true;
+      servers.push_back(lvServers->Items->Item[i]->Caption);
     }
+}
+
+
+TListItem* TfrmServers::findServerItem(const AnsiString& RemoteName)
+{
+  TListItem * ListItem;
+  for (int i = 0; (i < lvServers->Items->Count) ; i++)
+  {
+      ListItem = lvServers->Items->Item[i];
+      if (ListItem->Caption == RemoteName)
+          return ListItem;
   }
 
-  if (!found)
-   {
-     ListItem = lvServers->Items->Add();
-   }
+      return lvServers->Items->Add();
+}
 
-   ListItem->Caption = RemoteName;
-   ListItem->SubItems->Clear();
-   ListItem->SubItems->Add(Comment);
-   ListItem->SubItems->Add(sServerUntested);
-   ListItem->ImageIndex = 0;
+void TfrmServers::doNetworkServer(const AnsiString& RemoteName, const AnsiString& Comment)
+{
+  TListItem * ListItem = findServerItem(RemoteName);
 
-   // in the event of duplicate names, I imagine there will be big trouble
+  ListItem->Caption = RemoteName;
+  ListItem->SubItems->Clear();
+  ListItem->SubItems->Add(Comment);
+  ListItem->SubItems->Add(sServerUntested);
+  ListItem->ImageIndex = 0;
 
 }
 
-void TfrmServers::DoProgress(const float progress)
+void TfrmServers::doNetworkProgress(const float progress)
 {
     pbServers->Position = progress * pbServers->Max;
 }
@@ -147,10 +153,36 @@ void __fastcall TfrmServers::lvServersClick(TObject *)
 }
 
 
+
+void TfrmServers::doTestEvent(const AnsiString& remoteName,
+                                          const AnsiString& data,
+                                          const int level)
+{
+
+  TListItem * ListItem = findServerItem(remoteName);
+
+  ListItem->SubItems->Strings[1] = data;
+  ListItem->ImageIndex = level;
+}
+
+void TfrmServers::doTestResult(const AnsiString& remoteName,
+                                           const bool success,
+                                           bool& abort)
+{
+  TListItem * ListItem = findServerItem(remoteName);
+
+  ListItem->ImageIndex = (success)?0:3;
+  Application->ProcessMessages();
+  abort = AbortTest;
+}
+
+
+
+
 void __fastcall TfrmServers::StartTest(TObject *)
 {
 
-  bool AbortTest = false;
+  AbortTest = false;
 
   // validate the selected port
   CheckPort();
@@ -171,15 +203,24 @@ void __fastcall TfrmServers::StartTest(TObject *)
   {
 
       ServerTester st;
-//      st.OnResult = doTestResult;
-//      st.OnTest = doTestEvent;
-      st.testServers(_servers, ebEndPoint->Text);
+      st.OnResult = doTestResult;
+      st.OnTest = doTestEvent;
+      st.endPoint = ebEndPoint->Text;
+      vector<AnsiString> servers;
+      getServers(servers);
+      st.testServers(servers);
 
   }
   __finally
   {
     Screen->Cursor = crDefault;
     pbServers->Position = 0;
+    btnLocate->Enabled = true;
+    btnOK->Enabled = false;
+    btnGetIp->Enabled = false;
+    btnCancel->Enabled = true;
+    btnTest->OnClick = StartTest;
+    btnTest->Caption = sTest;
   }
 
 }
@@ -189,18 +230,12 @@ void __fastcall TfrmServers::StartTest(TObject *)
 void __fastcall TfrmServers::StopTest(TObject *)
 {
 
-  btnLocate->Enabled = true;
-  btnOK->Enabled = false;
-  btnGetIp->Enabled = false;
-  btnCancel->Enabled = true;
   AbortTest = true;
-  btnTest->OnClick = StartTest;
-  btnTest->Caption = sTest;
 
 }
 
 
-void TfrmServers::DoMessage(const AnsiString& Message, const int Level)
+void TfrmServers::doNetworkMessage(const AnsiString& Message, const int Level)
 {
 
   TListItem * ListItem =  lvMessages->Items->Add();
@@ -290,40 +325,40 @@ void __fastcall TfrmServers::GetServerIp(TObject *)
       {
         GetIPAddress(lvServers->Selected->Caption.c_str(), HostName, Addresses, Aliases);
 
-        DoMessage(sIPLookup + lvServers->Selected->Caption, 1);
-        DoMessage(sAuthoritativeName + HostName, 1);
+        doNetworkMessage(sIPLookup + lvServers->Selected->Caption, 1);
+        doNetworkMessage(sAuthoritativeName + HostName, 1);
 
         if (Addresses->Count > 0 )
         {
-          DoMessage(sAddressesRetrieved, 1);
+          doNetworkMessage(sAddressesRetrieved, 1);
           for (int i = 0; i < Addresses->Count  ; i ++)
           {
-            DoMessage(sIPAddress + Addresses->Strings[i], 1);
+            doNetworkMessage(sIPAddress + Addresses->Strings[i], 1);
           }
         }
         else
         {
-          DoMessage(sAddressesNotRetrieved, 2);
+          doNetworkMessage(sAddressesNotRetrieved, 2);
         }
 
 
         if (Aliases->Count > 0 )
         {
-           DoMessage(sAliasesRetrieved, 1);
+           doNetworkMessage(sAliasesRetrieved, 1);
           for (int i = 0; i < Aliases->Count  ; i ++)
           {
-            DoMessage(AnsiString(sIPAlias) + Aliases->Strings[i], 1);
+            doNetworkMessage(AnsiString(sIPAlias) + Aliases->Strings[i], 1);
           }
         }
         else
         {
-          DoMessage(sAliasesNotRetrieved, 2);
+          doNetworkMessage(sAliasesNotRetrieved, 2);
         }
 
       }
       catch (EIPException &E)
       {
-        DoMessage(sGetIPAddressFailed + E.Message, 3);
+        doNetworkMessage(sGetIPAddressFailed + E.Message, 3);
       }
 
     }

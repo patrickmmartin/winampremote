@@ -11,7 +11,8 @@
 
 ServerTester::ServerTester() : _serverMessageEvent(NULL),
                                _serverResultEvent(NULL),
-                               _endPoint("\\pipe\\winampremote")
+                               _endPoint("\\pipe\\winampremote"),
+                               _abort(false)
 {
   // constructor
 
@@ -39,9 +40,6 @@ void ServerTester::DoResult(const AnsiString& remoteName, const bool success)
 void ServerTester::testServers(vector<AnsiString>& servers)
 {
 
-  // TODO should validate that the various mandatory callbacks are set..
-  bool AbortTest = false;
-
   int retval;
 
   clock_t start, end;
@@ -65,10 +63,6 @@ void ServerTester::testServers(vector<AnsiString>& servers)
             DoMessage(remote, AnsiString().sprintf("response after %.2fs ", (end - start) / CLK_TCK), 1);
             DoResult(remote, true);
             DoMessage(remote, WinampVersion(retval), 1);
-
-            // TODO: someone needs to be processing the message queue, or we use a different thread....
-            if (AbortTest)
-              break;
           }
           catch( ERPCException &E)
           {
