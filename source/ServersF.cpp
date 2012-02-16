@@ -1,5 +1,5 @@
 /*
-winamp remote control suite ï¿½Patrick Michael Martin 2000, 2001, 2002
+winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2002
 
 Copyright (C) 2000,2001,2002  Patrick M. Martin
 
@@ -28,7 +28,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "ServersF.h"    // servers
 #include "messageF.h"    // message form
-#include "MainF.h"       // TODO because of liberating DoBind from frmMain
 #include "RFC1060U.h"    // ports
 #include "IPAddressU.h"  // IP utility
 #include "RPCFuncsU.h"   // RPC functions
@@ -50,12 +49,32 @@ __fastcall TfrmServers::TfrmServers(TComponent* Owner)
 {
 }
 
+void __fastcall TfrmServers::FormCreate(TObject *)
+{
+  lvServers->Items->Clear();
+  // sets up the standard icons from Windows
+  imgInformation->Picture->Icon->Handle = LoadIcon(NULL, IDI_ASTERISK);
+  imgWarning->Picture->Icon->Handle = LoadIcon(NULL, IDI_EXCLAMATION);
+  imgError->Picture->Icon->Handle = LoadIcon(NULL, IDI_HAND);
+
+  imlEvents->AddIcon(imgInformation->Picture->Icon);
+  imlEvents->AddIcon(imgWarning->Picture->Icon);
+  imlEvents->AddIcon(imgError->Picture->Icon);
+
+}
+
+void __fastcall TfrmServers::FormClose(TObject *, TCloseAction &)
+{
+  if (ModalResult == mrOk)
+  {
+    EndPoint = ebEndPoint->Text;
+    if (lvServers->Selected)
+      Address = lvServers->Selected->Caption;
+  }
+}
 
 void __fastcall TfrmServers::btnLocateClick(TObject *)
 {
-
-  char szComputerName[MAX_COMPUTERNAME_LENGTH+1] = {0};
-  DWORD dwSize;
 
   Screen->Cursor = crHourGlass;
 
@@ -73,13 +92,11 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
     se.OnProgress = doNetworkProgress;
     se.enumerateServers();
 
+    addLocal();
+
     pbServers->Position = 100;
 
-    // TODO sweep out the API-isms
-    dwSize = sizeof(szComputerName);
-    Win32Check(GetComputerName(szComputerName, &dwSize));
-    AnsiString ComputerName = szComputerName;
-    doNetworkServer(ComputerName.c_str(), sLocalMachine.c_str());
+
     btnTest->Enabled = true;
   }
   __finally
@@ -91,92 +108,12 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
 }
 
 
-void TfrmServers::getServers(vector<AnsiString>& servers)
-{
-  for (int i = 0; (i < lvServers->Items->Count) ; i++)
-    {
-      servers.push_back(lvServers->Items->Item[i]->Caption);
-    }
-}
-
-
-TListItem* TfrmServers::findServerItem(const AnsiString& RemoteName)
-{
-  TListItem * ListItem;
-  for (int i = 0; (i < lvServers->Items->Count) ; i++)
-  {
-      ListItem = lvServers->Items->Item[i];
-      if (ListItem->Caption == RemoteName)
-          return ListItem;
-  }
-
-      return lvServers->Items->Add();
-}
-
-void TfrmServers::doNetworkServer(const AnsiString& RemoteName, const AnsiString& Comment)
-{
-  TListItem * ListItem = findServerItem(RemoteName);
-
-  ListItem->Caption = RemoteName;
-  ListItem->SubItems->Clear();
-  ListItem->SubItems->Add(Comment);
-  ListItem->SubItems->Add(sServerUntested);
-  ListItem->ImageIndex = 0;
-
-}
-
-void TfrmServers::doNetworkProgress(const float progress)
-{
-    pbServers->Position = progress * pbServers->Max;
-}
-
-
-void __fastcall TfrmServers::FormCreate(TObject *)
-{
-  lvServers->Items->Clear();
-  // sets up the standard icons from Windows
-  imgInformation->Picture->Icon->Handle = LoadIcon(NULL, IDI_ASTERISK);
-  imgWarning->Picture->Icon->Handle = LoadIcon(NULL, IDI_EXCLAMATION);
-  imgError->Picture->Icon->Handle = LoadIcon(NULL, IDI_HAND);
-
-  imlEvents->AddIcon(imgInformation->Picture->Icon);
-  imlEvents->AddIcon(imgWarning->Picture->Icon);
-  imlEvents->AddIcon(imgError->Picture->Icon);
-
-}
-
 
 void __fastcall TfrmServers::lvServersClick(TObject *)
 {
   btnOK->Enabled =(lvServers->Selected != NULL );
   btnGetIp->Enabled =(lvServers->Selected != NULL );
 }
-
-
-
-void TfrmServers::doTestEvent(const AnsiString& remoteName,
-                                          const AnsiString& data,
-                                          const int level)
-{
-
-  TListItem * ListItem = findServerItem(remoteName);
-
-  ListItem->SubItems->Strings[1] = data;
-  ListItem->ImageIndex = level;
-}
-
-void TfrmServers::doTestResult(const AnsiString& remoteName,
-                                           const bool success,
-                                           bool& abort)
-{
-  TListItem * ListItem = findServerItem(remoteName);
-
-  ListItem->ImageIndex = (success)?0:3;
-  Application->ProcessMessages();
-  abort = AbortTest;
-}
-
-
 
 
 void __fastcall TfrmServers::StartTest(TObject *)
@@ -235,30 +172,6 @@ void __fastcall TfrmServers::StopTest(TObject *)
 }
 
 
-void TfrmServers::doNetworkMessage(const AnsiString& Message, const int Level)
-{
-
-  TListItem * ListItem =  lvMessages->Items->Add();
-  ListItem->Caption = Message;
-  ListItem->ImageIndex = Level - 1;
-  lvMessages->Selected = ListItem;
-  lvMessages->Update();
-
-}
-
-
-void __fastcall TfrmServers::FormClose(TObject *, TCloseAction &)
-{
-  if (ModalResult == mrOk)
-  {
-    EndPoint = ebEndPoint->Text;
-    if (lvServers->Selected)
-      Address = lvServers->Selected->Caption;
-  }
-}
-
-
-
 void __fastcall TfrmServers::CheckPort(void)
 {
 
@@ -304,8 +217,6 @@ void __fastcall TfrmServers::btnOKClick(TObject *)
   CheckPort();
   ModalResult = mrOk;
 }
-
-
 
 void __fastcall TfrmServers::GetServerIp(TObject *)
 {
@@ -378,4 +289,91 @@ void __fastcall TfrmServers::spltMessagesCanResize(TObject * , int &NewSize, boo
 }
 
 
+void  TfrmServers::addLocal()
+{
+  char szComputerName[MAX_COMPUTERNAME_LENGTH+1] = {0};
+  DWORD dwSize;
+
+  dwSize = sizeof(szComputerName);
+  Win32Check(GetComputerName(szComputerName, &dwSize));
+  AnsiString ComputerName = szComputerName;
+  doNetworkServer(ComputerName.c_str(), sLocalMachine.c_str());
+
+}
+
+void TfrmServers::doNetworkServer(const AnsiString& RemoteName, const AnsiString& Comment)
+{
+  TListItem * ListItem = findServerItem(RemoteName);
+
+  ListItem->Caption = RemoteName;
+  ListItem->SubItems->Clear();
+  ListItem->SubItems->Add(Comment);
+  ListItem->SubItems->Add(sServerUntested);
+  ListItem->ImageIndex = 0;
+
+}
+
+void TfrmServers::doNetworkMessage(const AnsiString& Message, const int Level)
+{
+    addProcessMessage(Message, Level);
+}
+
+void TfrmServers::doNetworkProgress(const float progress)
+{
+    pbServers->Position = progress * pbServers->Max;
+}
+
+
+void TfrmServers::doTestEvent(const AnsiString& remoteName,
+                                          const AnsiString& data,
+                                          const int level)
+{
+    addProcessMessage(remoteName + ":" + data, level);
+}
+
+void TfrmServers::doTestResult(const AnsiString& remoteName,
+                                           const bool success,
+                                           bool& abort)
+{
+    TListItem * ListItem = findServerItem(remoteName);
+    ListItem->ImageIndex = (success)?2:1;
+    Application->ProcessMessages();
+    abort = AbortTest;
+}
+
+void TfrmServers::addProcessMessage(const AnsiString & Message, const int Level)
+{
+    TListItem *ListItem = lvMessages->Items->Add();
+    ListItem->Caption = Message;
+    ListItem->ImageIndex = Level - 1;
+    lvMessages->Selected = ListItem;
+    lvMessages->Update();
+}
+
+TListItem* TfrmServers::findServerItem(const AnsiString& RemoteName)
+{
+  TListItem * ListItem;
+  for (int i = 0; (i < lvServers->Items->Count) ; i++)
+  {
+      ListItem = lvServers->Items->Item[i];
+      if (ListItem->Caption == RemoteName)
+          return ListItem;
+  }
+
+      return lvServers->Items->Add();
+}
+
+void TfrmServers::getServers(vector<AnsiString>& servers)
+{
+  if (lvServers->Selected)
+    {
+      servers.push_back(lvServers->Selected->Caption);
+      return;
+    }
+
+  for (int i = 0; (i < lvServers->Items->Count); i++)
+    {
+    servers.push_back(lvServers->Items->Item[i]->Caption);
+  }
+}
 

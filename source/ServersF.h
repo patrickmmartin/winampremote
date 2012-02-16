@@ -1,7 +1,7 @@
-//---------------------------------------------------------------------------
+
 #ifndef ServersFH
 #define ServersFH
-//---------------------------------------------------------------------------
+
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
@@ -11,30 +11,30 @@
 #include <ExtCtrls.hpp>
 
 #include <vector.h>
-//---------------------------------------------------------------------------
+
 class TfrmServers : public TForm
 {
 __published:	// IDE-managed Components
-        TImageList *imlServers;
-        TImage *imgWarning;
-        TImage *imgError;
-        TImage *imgInformation;
-        TImageList *imlEvents;
-        TPanel *pnlPages;
-        TProgressBar *pbServers;
-        TPanel *pnlTop;
-        TLabel *lblEndPoint;
-        TEdit *ebEndPoint;
-        TPanel *pnlButtons;
-        TButton *btnCancel;
-        TButton *btnOK;
-        TButton *btnTest;
-        TButton *btnLocate;
-        TButton *btnGetIp;
-        TStatusBar *StatusBar1;
-        TListView *lvServers;
-        TSplitter *spltMessages;
-        TListView *lvMessages;
+    TImageList *imlServers;
+    TImage *imgWarning;
+    TImage *imgError;
+    TImage *imgInformation;
+    TImageList *imlEvents;
+    TPanel *pnlPages;
+    TProgressBar *pbServers;
+    TPanel *pnlTop;
+    TLabel *lblEndPoint;
+    TEdit *ebEndPoint;
+    TPanel *pnlButtons;
+    TButton *btnCancel;
+    TButton *btnOK;
+    TButton *btnTest;
+    TButton *btnLocate;
+    TButton *btnGetIp;
+    TStatusBar *StatusBar1;
+    TListView *lvServers;
+    TSplitter *spltMessages;
+    TListView *lvMessages;
         void __fastcall btnLocateClick(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall lvServersClick(TObject *Sender);
@@ -47,6 +47,7 @@ __published:	// IDE-managed Components
           int &NewSize, bool &Accept);
 private:	// User declarations
 
+void addLocal();
 void doNetworkServer(const AnsiString& RemoteName, const AnsiString& Comment);
 void doNetworkMessage(const AnsiString& Message, const int Level);
 void doNetworkProgress(const float complete);
@@ -57,6 +58,8 @@ void doTestEvent(const AnsiString& remoteName,
 void doTestResult(const AnsiString& remoteName,
                   const bool success,
                   bool& abort);
+
+void addProcessMessage(const AnsiString & Message, const int Level);
 
 TListItem* findServerItem(const AnsiString& RemoteName);
 void TfrmServers::getServers(vector<AnsiString>& servers);
@@ -70,7 +73,7 @@ public:		// User declarations
         AnsiString EndPoint;
         AnsiString Address;
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TfrmServers *frmServers;
-//---------------------------------------------------------------------------
+
 #endif
