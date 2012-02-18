@@ -2,11 +2,13 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 	<Fragment>
 		<DirectoryRef Id="TARGETDIR">
-			<Directory Id="INSTALLDIR" Name="WinampRemote">
-				<Component Id="WinampRemoteFiles" Guid="2C966ED7-C597-4897-B3D4-0CB50FAE7917" DiskId="1">										
-					<!-- UI Client executables -->
-					<File Source="..\bin\Remote.exe" Id="Remote" />								
-				</Component>
+            <Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLDIR" Name="WinampRemote">
+					<Component Id="WinampRemoteFiles" Guid="2C966ED7-C597-4897-B3D4-0CB50FAE7917" DiskId="1">
+						<!-- UI Client executables -->
+						<File Source="..\bin\Remote.exe" Id="Remote" />
+					</Component>
+				</Directory>
 			</Directory>
 			
 			<Directory Id="ProgramMenuFolder" Name="PMenu">
