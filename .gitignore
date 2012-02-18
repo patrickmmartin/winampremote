@@ -100,3 +100,5 @@
 /source/waint.~h
 /.metadata
 /source/unittests.~bpr
+/setup/obj
+/setup/bin

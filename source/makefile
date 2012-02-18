@@ -4,7 +4,7 @@ BRCC = $(ROOT)\bin\brcc32.exe
 .silent
 default: clean all
 
-clean:
+clean: clean-setup
 	echo ========== cleaning object files ======
 	-for %D in (bin obj lib) do @DEL /F /Q /S ..\%D\*.* 1>nul
 	
@@ -71,6 +71,13 @@ gen_RPCinterface.dll: winampinterface.lib
 
 winampserver.exe: winampinterface.lib
 
+clean-setup:
+	build-setup  Clean
+
+setup: remote.exe
+	build-setup Build
+	copy /Y ..\setup\bin\Debug\WinampRemote.msi ..\bin
+
 TARGETS= winampinterface.lib unittests.exe testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
 
 all: $(TARGETS)
@@ -84,6 +91,7 @@ help:
 	@echo tests - performs some tests on targets
 	@echo midl - compiles the IDL files
 	@echo docs - generates the doxygen output
+	@echo setup - builds the installer
 	@echo install - installs the plugin to the default location for the OS
 	@echo default - clean all
 	

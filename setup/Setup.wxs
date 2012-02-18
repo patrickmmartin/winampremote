@@ -1,0 +1,63 @@
+﻿<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <?include BuildParams.wxi ?>	
+		
+	<Product Id="4236B14F-D457-42E5-9289-074A2F4FD2C7"
+        Name="Winamp Remote Control"
+        Manufacturer="Patrick Martin"        
+		Language="1033"
+		Version="$(var.BuildVersion)"
+		UpgradeCode="01BB3751-D1FC-43D6-9BDD-DEA516568CF1">
+	    <Package Keywords="Winamp, Remote Control,UI,MSI,Database"
+		         Comments="Standalone Installation"
+		         Compressed="yes"
+	             Description="Winamp Remote Control installer package"
+	             InstallerVersion="200"
+	             Languages="1033"
+	             Manufacturer="Patrick Martin"
+	             Platform="x86" />
+		<!--
+			Source media for the installation. 
+ 			Specifies multiple cab files to be embedded in the installer's .msi. 
+		-->
+		<Media Id="1" Cabinet="application.cab" EmbedCab="yes" CompressionLevel="$(var.CompressionLevel)"/>
+		
+		<!-- Installation directory and files are defined in Files.wxs -->
+		<Directory Id="TARGETDIR" Name="SourceDir"/>
+		
+	   <Feature Id="Complete"
+		         Title="Winamp Remote Control Package"
+		         Description="The Standalone package for the Winamp Remote Control System"
+		     	Level="1">
+      <ComponentRef Id="WinampRemoteFiles" />
+      <ComponentRef Id="ProgramMenuDirComponent" />
+    </Feature>
+		
+		<Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
+		<UIRef Id="WixUI_InstallDir"/>
+	
+	  	<WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
+	  	<WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
+	
+	  <Property Id="ALLUSERS">1</Property>
+		
+				
+		<!-- TODO find the winamp install location -->
+				
+		<Property Id="WINAMPDIR">
+	        <RegistrySearch Id="WINAMPDIR"
+	                        Root="HKLM"			                
+	                        Key="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Winamp"
+	                        Name="UninstallString"
+							Type="raw" />
+		</Property>	
+				
+    <CustomAction Id="SetCmdPath" Property="CMDPATH" Value="[SystemFolder]cmd.exe" />	
+		
+	<InstallExecuteSequence>
+      <Custom Action="SaveTargetDir" Before="InstallValidate">Not Installed</Custom>		
+    </InstallExecuteSequence> 
+		
+	</Product>
+</Wix>

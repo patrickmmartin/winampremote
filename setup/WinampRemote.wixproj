@@ -1,0 +1,42 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{045997E5-C450-450A-B723-3D952D6238C3}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Package</OutputType>
+    <RootNamespace>StandAlone</RootNamespace>
+    <OutputName>WinampRemote</OutputName>
+    <DefineSolutionProperties>false</DefineSolutionProperties>
+    <WixToolPath Condition=" '$(WixToolPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.0</WixToolPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(WixToolPath)\wix.targets</WixTargetsPath>
+    <WixTasksPath Condition=" '$(WixTasksPath)' == '' ">$(WixToolPath)\WixTasks.dll</WixTasksPath>
+    <CabinetCachePath>$(Temp)\WixCC\$(OutputName)</CabinetCachePath>
+    <CabinetCreationThreadCount>-1</CabinetCreationThreadCount>
+    <ReuseCabinetCache>True</ReuseCabinetCache>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+  <Import Project="$(WixToolPath)\wix.targets" />
+  <ItemGroup>
+    <Compile Include="Files.wxs" />
+    <Compile Include="InstallProperties.wxs" />
+    <Compile Include="Setup.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="..\..\..\..\..\..\Program Files\Windows Installer XML v3\bin\WixUIExtension.dll" />
+    <WixExtension Include="..\..\..\..\..\..\Program Files\Windows Installer XML v3\bin\WixUtilExtension.dll" />
+  </ItemGroup>
+</Project>

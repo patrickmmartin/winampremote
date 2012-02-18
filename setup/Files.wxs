@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+	<Fragment>
+		<DirectoryRef Id="TARGETDIR">
+			<Directory Id="INSTALLDIR" Name="WinampRemote">
+				<Component Id="WinampRemoteFiles" Guid="2C966ED7-C597-4897-B3D4-0CB50FAE7917" DiskId="1">
+					
+		            <RemoveFolder Id="RemoveInstallFolder" On="uninstall" />
+		            <RemoveFile Id="RemoveGeneratedFiles" Name="*.*" On="uninstall" />
+						
+					<!-- UI Client executables -->
+					<File Source="..\bin\Remote.exe" Id="Remote" />
+		                
+	              </Component>
+				</Directory>
+		
+	      <Directory Id="ProgramMenuFolder" Name="PMenu">
+	        <Directory Id="ProgramMenuDir" Name="Winamp Remote Control">
+	          <Component Id="ProgramMenuDirComponent" Guid="CD0B16D4-5095-4B4C-B4F0-E2E1B76E6283">
+	            <RegistryKey Root="HKCU" Key="Software\WinampRemote\Uninstall\ClientShortcut">
+	              <RegistryValue Value="keypath" Type="string" KeyPath="yes" />
+	            </RegistryKey>
+	          	
+	          <Shortcut Id="UIShortcut" Directory="ProgramMenuDir" Name="Winamp Remote" WorkingDirectory="INSTALLDIR"
+	          	        Description="Winamp Remote" Show="normal" Target="[INSTALLDIR]\Remote.exe">
+	            <Icon Id="Remote" SourceFile="..\bin\Remote.exe" />
+	          </Shortcut>
+								          	
+	            <RemoveFolder Id="RemoveProgramMenuDir" Directory="ProgramMenuDir" On="uninstall" />
+	          </Component>
+	        </Directory>
+	      </Directory>				
+		</DirectoryRef>
+	</Fragment>
+</Wix>

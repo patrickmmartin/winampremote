@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<UI>
+	      <Dialog Id="SetupTypeDlg" Width="370" Height="270" Title="[ProductName] [Setup]" NoMinimize="yes">
+	        <Control Id="TypicalLabel" Type="Text" X="105" Y="65" Width="100" Height="10" TabSkip="no">
+	          <Text>[DlgTitleFont]&amp;Typical</Text>
+	        </Control>
+	        <Control Id="TypicalButton" Type="PushButton" X="50" Y="65" Width="38" Height="38" ToolTip="Typical Installation" Default="yes" Icon="yes" FixedSize="yes" IconSize="32" Text="[InstallerIcon]">
+	          <Publish Property="InstallMode" Value="Typical"><![CDATA[1]]></Publish>
+	          <Publish Event="SetInstallLevel" Value="3"><![CDATA[1]]></Publish>
+	          <Publish Event="NewDialog" Value="VerifyReadyDlg"><![CDATA[1]]></Publish>
+	        </Control>
+	        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="[ButtonText_Back]">
+	          <Publish Event="NewDialog" Value="LicenseAgreementDlg"><![CDATA[ShowUserRegistrationDlg <> 1]]></Publish>
+	          <Publish Event="NewDialog" Value="UserRegistrationDlg"><![CDATA[ShowUserRegistrationDlg = 1]]></Publish>
+	        </Control>
+	        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Disabled="yes" Text="[ButtonText_Next]" />
+	        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="[ButtonText_Cancel]">
+	          <Publish Event="SpawnDialog" Value="CancelDlg"><![CDATA[1]]></Publish>
+	        </Control>
+	        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="374" Height="44" TabSkip="no" Text="[BannerBitmap]" />
+	        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="374" Height="0" />
+	        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="374" Height="0" />
+	        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes">
+	          <Text>Choose the setup type that best suits your needs</Text>
+	        </Control>
+	        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes">
+	          <Text>[DlgTitleFont]Choose Setup Type</Text>
+	        </Control>
+	        <Control Id="TypicalText" Type="Text" X="105" Y="78" Width="230" Height="20">
+	          <Text>Installs the most common program features. Recommended for most users.</Text>
+	        </Control>
+	      </Dialog>
+		</UI>
+	</Fragment>
+</Wix>

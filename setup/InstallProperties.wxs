@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+<?include BuildParams.wxi ?>			
+
+<Fragment>
+			
+	<CustomAction Id="SaveTargetDir"
+	              Property="ARPINSTALLLOCATION"
+	              Value="[INSTALLDIR]" />	
+	
+	<!-- generates a property, based upon the environment checking done in BuildParams.wxi -->
+	<Property Id="BuildVersion">$(var.BuildVersion)</Property>
+	
+</Fragment>
+
+  
+</Wix>

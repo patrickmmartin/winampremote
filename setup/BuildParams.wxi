@@ -1,0 +1,18 @@
+﻿<Include>
+
+<!-- allow people to disable -->
+<?define CompressionLevel=high ?>	
+	
+<?ifdef env.HIGHCOMPRESSION ?>
+	<?if $(env.HIGHCOMPRESSION) = "N" ?>
+	  <?define CompressionLevel=none ?>	
+	<?endif?>
+<?endif?>
+
+<?ifdef env.APPVER ?>
+  <?define BuildVersion=$(env.APPVER) ?>	
+<?else?>	
+  <?define BuildVersion=9.9.9.9 ?>	
+<?endif?>
+
+</Include>
