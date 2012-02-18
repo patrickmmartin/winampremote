@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 	<Fragment>
+		
+	<WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+		
 		<DirectoryRef Id="TARGETDIR">
             <Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLDIR" Name="WinampRemote">
@@ -27,6 +30,17 @@
 					</Component>
 				</Directory>
 			</Directory>
-		</DirectoryRef>	
+		
+		
+        <Directory Id="WINAMPDIR" Name="WinampDir">
+			<Directory Id="WinampPluginsFolder" Name="Plugins">
+				<Component Id="WinampRemotePlugin" Guid="BBCEAD6F-8E79-4713-97DC-3F5CE1418E98" DiskId="1">
+					<!-- Plugin dll -->
+					<File Source="..\bin\gen_RPCinterface.dll" Id="Plugin" />
+				</Component>
+			</Directory>
+		</Directory>
+		
+		</DirectoryRef>			
 	</Fragment>
 </Wix>

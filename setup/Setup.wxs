@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
   <?include BuildParams.wxi ?>	
-		
+			
 	<Product Id="4236B14F-D457-42E5-9289-074A2F4FD2C7"
         Name="Winamp Remote Control"
         Manufacturer="Patrick Martin"        
@@ -26,37 +26,55 @@
 		<!-- Installation directory and files are defined in Files.wxs -->
 		<Directory Id="TARGETDIR" Name="SourceDir"/>
 		
-	   <Feature Id="Complete"
-		         Title="Winamp Remote Control Package"
-		         Description="The Standalone package for the Winamp Remote Control System"
-		     	Level="1">
-      <ComponentRef Id="WinampRemoteFiles" />
-      <ComponentRef Id="ProgramMenuDirComponent" />
-    </Feature>
+	    <Feature Id="Client"
+		         Title="Winamp Remote Client"
+		         Description="The Client for the Winamp Remote Control"
+		     	Level="1"
+				ConfigurableDirectory="INSTALLDIR">
+	      <ComponentRef Id="WinampRemoteFiles" />
+	      <ComponentRef Id="ProgramMenuDirComponent" />
+        </Feature>
+
+	    <Feature Id="Plugin"
+		         Title="Winamp Remote Server Plugin"
+		         Description="The Client for the Winamp Remote Control"
+		     	Level="3"
+				ConfigurableDirectory="WINAMPDIR">
+		  <ComponentRef Id="WinampRemotePlugin" />
+        </Feature>
 		
 		<Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
-		<UIRef Id="WixUI_InstallDir"/>
+		<!-- reference and use the Wix stock dialogue sequence -->
+		<UIRef Id="WixUI_Mondo"/>
 	
 	  	<WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
 	  	<WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
 	
 	  <Property Id="ALLUSERS">1</Property>
 		
+	  <Property Id="WINAMPDIR">C:\Program Files (x86)\Winamp</Property>
 				
 		<!-- TODO find the winamp install location -->
 				
-		<Property Id="WINAMPDIR">
+<!--		<Property Id="WINAMPDIR">
 	        <RegistrySearch Id="WINAMPDIR"
 	                        Root="HKLM"			                
 	                        Key="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Winamp"
 	                        Name="UninstallString"
 							Type="raw" />
 		</Property>	
-				
-    <CustomAction Id="SetCmdPath" Property="CMDPATH" Value="[SystemFolder]cmd.exe" />	
+-->				
+	<UI>
+			<!-- excise the License Dialogue from the UI sequence -->		
+            <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="SetupTypeDlg">1</Publish>
+            <Publish Dialog="SetupTypeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
+	</UI>
 		
-	<InstallExecuteSequence>
-      <Custom Action="SaveTargetDir" Before="InstallValidate">Not Installed</Custom>		
+		
+	<CustomAction Id="SetCmdPath" Property="CMDPATH" Value="[SystemFolder]cmd.exe" />
+		
+	<InstallExecuteSequence>			
+	      <Custom Action="SaveTargetDir" Before="InstallValidate">Not Installed</Custom>		
     </InstallExecuteSequence> 
 		
 	</Product>
