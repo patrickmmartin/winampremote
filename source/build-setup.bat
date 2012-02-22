@@ -11,4 +11,9 @@ echo building installer for [%APPVER%]
 
 C:\Windows\Microsoft.NET\Framework\v2.0.50727\MSBuild /nologo ..\setup\WinampRemote.wixproj  /t:%1
 
+SET INSTALLER=WinampRemote-%APPVER%.msi
+
+echo copying installer to %INSTALLER%
+copy /Y ..\setup\bin\Debug\WinampRemote.msi ..\bin\%INSTALLER%
+
 @endlocal

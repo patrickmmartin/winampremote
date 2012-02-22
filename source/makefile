@@ -72,11 +72,10 @@ gen_RPCinterface.dll: winampinterface.lib
 winampserver.exe: winampinterface.lib
 
 clean-setup:
-	build-setup  Clean
+	build-setup Clean
 
 setup: remote.exe
 	build-setup Build
-	copy /Y ..\setup\bin\Debug\WinampRemote.msi ..\bin
 
 TARGETS= winampinterface.lib unittests.exe testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
 
