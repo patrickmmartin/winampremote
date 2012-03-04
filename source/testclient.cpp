@@ -112,6 +112,5 @@ char * port;
     return errno;
   }
 
-  return 0;
 }
 
