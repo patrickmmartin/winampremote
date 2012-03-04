@@ -1,0 +1,207 @@
+Winamp Application Programming Interface   
+ 
+ 
+How to communicate with Winamp from plug-ins and other applications. 
+Using the Command Line Interface 
+Using Windows Messages
+Determining the Winamp window 
+Using WM_COMMAND messages 
+Using WM_USER messages 
+Using WM_COPYDATA messages 
+Examples 
+Other Useful techniques 
+Conclusion 
+Using the command line interface to control Winamp
+
+The simplest, easiest, least powerful way of controlling Winamp is to execute winamp.exe yourself. By simply calling winamp.exe with various command line options, you do a number of things. For example:
+
+C:\path\to\winamp\winamp.exe /ADD C:\mp3\whatever.mp3
+(Adds C:\mp3\whatever.mp3 to the playlist of a running Winamp, if Winamp is running, otherwise it opens Winamp and plays it outright)
+
+C:\path\to\winamp\winamp.exe /NEW
+(Creates a new instance of Winamp, even if Winamp is already running)
+
+C:\path\to\winamp\winamp.exe C:\mp3\file.mp3
+(Plays the file C:\mp3\file.mp3, regardless of whether or not Winamp is open)
+
+C:\path\to\winamp\winamp.exe /CLASS="myclassname"
+(Opens Winamp with a different Window Class name "myclassname") 
+As you might notice, what you can actually do using the command line interface is pretty limited. It is really easy to get started with, though. You can also specify multiple files and or directories on the command line, such as: 
+C:\path\to\winamp\winamp.exe /NEW "C:\my mp3s\" "C:\bigplaylist.pls" "C:\download\new song.mp3" 
+Using Windows Messages to control Winamp
+
+Determining the Winamp window
+
+Winamp is a 32-bit Windows application. Having said that, we'll assume some basic knowledge of 32 bit Windows programming. Winamp can be controlled using the Windows Message system. Before you can send Winamp messages, you have to determine its Window Handle. There are two primary ways of doing that, one for external applications, and another for plug-ins.
+
+Plug-ins simply get passed a HWND to Winamp in their respective structures. The variable is usually named hwndWinamp or hwndParent.
+
+External applications can find the Winamp window using the following pieces of code:
+
+C/C++: 
+HWND hwndWinamp = FindWindow("Winamp v1.x",NULL); 
+VBasic:  
+
+Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
+Dim hwndWinamp as long
+hwndWinamp = FindWindow("Winamp v1.x",vbNullString) 
+Delphi Pascal:  
+
+var hwndWinamp : THandle;
+hwndWinamp := FindWindow('Winamp v1.x', nil); 
+Note that this code uses the FindWindow() function to find a window of any title whose class name is "Winamp v1.x". All versions of Winamp 1.x and 2.x have the class "Winamp v1.x", unless changed using the /CLASS= switch (see above). Note that if you want to run multiple Winamp's and easily tell the difference between them, you can use the /CLASS= switch.
+
+Message types Winamp understands
+
+Winamp responds to three messages in particular: WM_USER, WM_COMMAND, and WM_COPYDATA. WM_USER and WM_COPYDATA allow you to control some of the more advanced aspects of Winamp while WM_COMMAND lets you do simple things such as simulate the pause button being pressed.
+
+WM_COMMAND Messages
+
+  Previous track button 40044 
+  Next track button 40048 
+  Play button 40045 
+  Pause/Unpause button 40046 
+  Stop button 40047 
+  Stop after current track 40147 
+  Fadeout and stop 40157 
+  Fast-forward 5 seconds 40148 
+  Fast-rewind 5 seconds 40144 
+  Start of playlist 40154 
+  Go to end of playlist  40158 
+  Open file dialog 40029 
+  Open URL dialog 40155 
+  Open file info box 40188 
+  Set time display mode to elapsed 40037 
+  Set time display mode to remaining 40038 
+  Toggle preferences screen 40012 
+  Open visualization options 40190 
+  Open visualization plug-in options 40191 
+  Execute current visualization plug-in 40192 
+  Toggle about box 40041 
+  Toggle title Autoscrolling 40189 
+  Toggle always on top 40019 
+  Toggle Windowshade 40064 
+  Toggle Playlist Windowshade 40266 
+  Toggle doublesize mode 40165 
+  Toggle EQ 40036 
+  Toggle playlist editor 40040 
+  Toggle main window visible 40258 
+  Toggle minibrowser 40298 
+  Toggle easymove 40186 
+  Raise volume by 1% 40058 
+  Lower volume by 1% 40059 
+  Toggle repeat 40022 
+  Toggle shuffle 40023 
+  Open jump to time dialog 40193 
+  Open jump to file dialog 40194 
+  Open skin selector 40219 
+  Configure current visualization plug-in 40221 
+  Reload the current skin 40291 
+  Close Winamp 40001 
+  Moves back 10 tracks in playlist 40197 
+  Show the edit bookmarks 40320 
+  Adds current track as a bookmark 40321 
+  Play audio CD 40323 
+  Load a preset from EQ 40253 
+  Save a preset to EQF 40254 
+  Opens load presets dialog 40172 
+  Opens auto-load presets dialog 40173 
+  Load default preset 40174 
+  Opens save preset dialog 40175 
+  Opens auto-load save preset 40176 
+  Opens delete preset dialog 40178 
+  Opens delete an auto load preset dialog 40180 
+
+WM_USER Messages
+
+WM_USER messages are sent using SendMessage(). In C/C++, you can send these messages by calling:
+
+
+int ret=SendMessage(hwndWinamp,WM_USER, data, id); 
+data is used by many of the messages, but not all. For messages where the meaning of data is not defined, simply use 0.
+
+Here is a list of the currently supported ids that you can use from within Winamp plug-ins or from other applications (see plug-in only WM_USER messages, below, for more):
+
+   0 Retrieves the version of Winamp running. Version will be 0x20yx for 2.yx. This is a good way to determine if you did in fact find the right window, etc.  
+   100 Starts playback. A lot like hitting 'play' in Winamp, but not exactly the same 
+   101 Clears Winamp's internal playlist. 
+   102 Begins play of selected track. 
+   103 Makes Winamp change to the directory C:\\download 
+   104 Returns the status of playback. If 'ret' is 1, Winamp is playing. If 'ret' is 3, Winamp is paused. Otherwise, playback is stopped. 
+   105 If data is 0, returns the position in milliseconds of playback. If data is 1, returns current track length in seconds. Returns -1 if not playing or if an error occurs. 
+   106 Seeks within the current track. The offset is specified in 'data', in milliseconds. 
+   120 Writes out the current playlist to Winampdir\winamp.m3u, and returns the current position in the playlist.  
+   121 Sets the playlist position to the position specified in tracks in 'data'. 
+   122 Sets the volume to 'data', which can be between 0 (silent) and 255 (maximum). 
+   123 Sets the panning to 'data', which can be between 0 (all left) and 255 (all right). 
+   124 Returns length of the current playlist, in tracks. 
+   125 Returns the position in the current playlist, in tracks (requires Winamp 2.05+). 
+   126 Retrieves info about the current playing track. Returns samplerate (i.e. 44100) if 'data' is set to 0, bitrate if 'data' is set to 1, and number of channels if 'data' is set to 2. (requires Winamp 2.05+) 
+   127 Retrieves one element of equalizer data, based on what 'data' is set to.
+0-9  The 10 bands of EQ data. Will return 0-63 (+20db - -20db) 
+10  The preamp value. Will return 0-63 (+20db - -20db) 
+11  Enabled. Will return zero if disabled, nonzero if enabled. 
+ 
+   128 Autoload. Will return zero if disabled, nonzero if enabled. To set an element of equalizer data, simply query which item you wish to set using the message above (127), then call this message with data 
+   129 Adds the specified file to the Winamp bookmark list 
+   135 Restarts Winamp 
+
+Here is a list of the currently supported ids that you can only use from within Winamp plug-ins (since they depend on running in the same process as Winamp):
+
+   200 Sets the current skin. 'data' points to a string that describes what skin to load, which can either be a directory or a .zip file. If no directory name is specified, the default Winamp skin directory is assumed. 
+   201 Retrieves the current skin directory and/or name. 'ret' is a pointer to the Skin name (or NULL if error), and if 'data' is non-NULL, it must point to a string 260 bytes long, which will receive the pathname to where the skin bitmaps are stored (which can be either a skin directory, or a temporary directory when zipped skins are used) (Requires Winamp 2.04+). 
+   202 Selects and executes a visualization plug-in. 'data' points to a string which defines which plug-in to execute. The string can be in the following formats:
+vis_whatever.dll  Executes the default module in vis_whatever.dll in your plug-ins directory. 
+vis_whatever.dll,1  executes the second module in vis_whatever.dll 
+C:\path\vis_whatever.dll,1  executes the second module in vis_whatever.dll in another directory 
+ 
+   211 Retrieves (and returns a pointer in 'ret') a string that contains the filename of a playlist entry (indexed by 'data'). Returns NULL if error, or if 'data' is out of range. 
+   212 Retrieves (and returns a pointer in 'ret') a string that contains the title of a playlist entry (indexed by 'data'). Returns NULL if error, or if 'data' is out of range. 
+   241 Opens an new URL in the minibrowser. If the URL is NULL it will open the Minibrowser window 
+   242 Returns 1 if the internet connecton is available for Winamp 
+   243 Asks Winamp to update the information about the current title 
+   245 Sets the current playlist item 
+   246 Retrives the current Minibrowser URL into the buffer. 
+   247 Flushes the playlist cache buffer 
+   248 Blocks the Minibrowser from updates if value is set to 1 
+   249 Opens an new URL in the minibrowser (like 241) except that it will work even if 248 is set to 1  
+   250 Returns the status of the shuffle option (1 if set) 
+   251 Returns the status of the repeat option (1 if set) 
+   252 Sets the status of the suffle option (1 to turn it on) 
+   253 Sets the status of the repeat option (1 to turn it on) 
+
+WM_COPYDATA Messages
+
+WM_COPYDATA messages are sent using SendMessage() and a COPYDATASTRUCT structure. In C/C++, you can send these messages by using:
+
+
+COPYDATASTRUCT cds;
+cds.dwData = id;
+cds.lpData = (void*)data;
+cds.cbData = data_length;
+SendMessage(hwndWinamp,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cds);
+
+To get the directory where skin bitmaps are stored (useful for plug-ins to support their own skins):
+
+
+char skin_dir[260]; SendMessage(hwndWinamp,WM_USER,(LPARAM)skin_dir,201); 
+Other Useful Techniques
+
+There are a number of other things you can do to query/control Winamp. For example, this C/C++ code fragment will get the title of the current song playing in Winamp. A simple explanation is that it retrieves Winamp's window title, removes the trailing ' - Winamp'.
+
+
+char this_title[2048],*p;
+GetWindowText(hwndWinamp,this_title,sizeof(this_title));
+p = this_title+strlen(this_title)-8;
+while (p >= this_title)
+{
+
+if (!strnicmp(p,"- Winamp",8)) break;
+p--;
+
+}
+if (p >= this_title) p--;
+while (p >= this_title && *p == ' ') p--;
+*++p=0;
+
+ 
