@@ -32,6 +32,7 @@ object frmDetails: TfrmDetails
         Caption = 'value'
       end>
     ColumnClick = False
+    ShowColumnHeaders = False
     TabOrder = 0
     ViewStyle = vsReport
   end

@@ -14,7 +14,7 @@
       ..\obj\remote\RFC1060U.obj ..\obj\remote\IPAddressU.obj 
       ..\obj\remote\VersionInfoU.obj ..\obj\remote\remotestrs.obj 
       ..\obj\remote\ServerEnumerator.obj ..\obj\remote\ServerTester.obj"/>
-    <RESFILES value="..\obj\remote\winampremote.res"/>
+    <RESFILES value="..\obj\remote\winampremote.res ..\obj\remote\windowsthemes.res"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) AboutF.dfm SettingsF.dfm CommandF.dfm ServersF.dfm 

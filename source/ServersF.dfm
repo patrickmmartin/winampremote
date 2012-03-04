@@ -98,6 +98,7 @@ object frmServers: TfrmServers
       LargeImages = imlServers
       ReadOnly = True
       RowSelect = True
+      ShowColumnHeaders = False
       SmallImages = imlServers
       TabOrder = 1
       ViewStyle = vsReport

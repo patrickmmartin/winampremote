@@ -46,6 +46,7 @@ USE("remotestrs.h", File);
 USERC("winampremote.rc");
 USEUNIT("ServerEnumerator.cpp");
 USEUNIT("ServerTester.cpp");
+USERC("windowsthemes.rc");
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 //---------------------------------------------------------------------------
