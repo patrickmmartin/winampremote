@@ -308,11 +308,9 @@ const AnsiString sCommandsDocked = "Commands Docked";
 const AnsiString sCommandsLeft = "Commands Left";
 const AnsiString sCommandsTop = "Commands Top";
 const AnsiString sCommandsVisible = "Commands Visible";
-const AnsiString sVolumeDocked = "Volume Docked";
 const AnsiString sVolumeLeft = "Volume Left";
 const AnsiString sVolumeTop = "Volume Top";
 const AnsiString sVolumeVisible = "Volume Visible";
-const AnsiString sPlaylistDocked = "Playlist Docked";
 const AnsiString sPlaylistLeft = "Playlist Left";
 const AnsiString sPlaylistTop = "Playlist Top";
 const AnsiString sPlaylistWidth = "Playlist Width";
@@ -338,13 +336,6 @@ void __fastcall TfrmMain::FormShow(TObject *)
   frmPlaylist->ShowHint = false;
   frmSettings->ShowHint = false;
   frmCommands->ShowHint = false;
-
-  // set drag mode
-  /*
-  frmPlaylist->DragKind = dkDock;
-  frmCommands->DragKind = dkDock;
-  frmSettings->DragKind = dkDock;
-  */
 
   if (!timerMain->Enabled)
   {
@@ -377,14 +368,6 @@ void __fastcall TfrmMain::FormShow(TObject *)
          if (reg->ReadString(sCommandsVisible).LowerCase() != sFalse)
            ViewToolBarExecute(this);
 
-
-         if (reg->ReadString(sVolumeDocked).LowerCase() != sFalse)
-         {
-           frmSettings->ManualDock(pgSettings, NULL, alClient);
-           EndDock(frmSettings, NULL, 0,0);
-         }
-
-
          FormRect = TRect(0, 0, frmSettings->Width, frmSettings->Height);
          FormLeft = reg->ReadString(sVolumeLeft).ToIntDef(-1);
          FormTop = reg->ReadString(sVolumeTop).ToIntDef(-1);
@@ -397,13 +380,6 @@ void __fastcall TfrmMain::FormShow(TObject *)
 
          if (reg->ReadString(sVolumeVisible).LowerCase() != sFalse)
            ViewVolumeExecute(this);
-
-
-         if (reg->ReadString(sPlaylistDocked).LowerCase() != sFalse)
-         {
-           frmPlaylist->ManualDock(pgSettings, NULL, alClient);
-           EndDock(frmPlaylist, NULL, 0,0);
-         }
 
          FormLeft = reg->ReadString(sPlaylistLeft).ToIntDef(-1);
          FormTop = reg->ReadString(sPlaylistTop).ToIntDef(-1);
@@ -503,11 +479,6 @@ void __fastcall TfrmMain::PreviousExecute(TObject *)
 void __fastcall TfrmMain::FormHide(TObject *)
 {
   mnuShow->Visible = true;
-  /*
-  frmPlaylist->DragKind = dkDrag;
-  frmCommands->DragKind = dkDrag;
-  frmSettings->DragKind = dkDrag;
-  */
 }
 
 
@@ -1017,12 +988,10 @@ void __fastcall TfrmMain::FormCloseQuery(TObject *, bool &)
       reg->WriteString("Playlist Width", AnsiString(frmPlaylist->Width));
       reg->WriteString("Playlist Height", AnsiString(frmPlaylist->Height));
       reg->WriteString("Playlist Visible", frmPlaylist->Visible?sTrue:sFalse);
-      reg->WriteString("Playlist Docked", frmPlaylist->HostDockSite?sTrue:sFalse);
 
       reg->WriteString("Volume Left", AnsiString(frmSettings->Left));
       reg->WriteString("Volume Top", AnsiString(frmSettings->Top));
       reg->WriteString("Volume Visible", frmSettings->Visible?sTrue:sFalse);
-      reg->WriteString("Volume Docked", frmSettings->HostDockSite?sTrue:sFalse);
       }
     }
   __finally
@@ -1271,7 +1240,6 @@ void __fastcall TfrmMain::pgSettingsDockDrop(TObject *, TDragDockObject *Source,
 
 void __fastcall TfrmMain::EndDock(TObject *, TObject *, int , int )
 {
-  pgSettings->DockSite = true;
   pnlCommands->DockSite = true;
 }
 

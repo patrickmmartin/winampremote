@@ -83,7 +83,6 @@ object frmMain: TfrmMain
     Hint = 'pages of information and configuration'
     ActivePage = tbsMain
     Align = alClient
-    DockSite = True
     HotTrack = True
     Images = imlActions
     TabHeight = 22

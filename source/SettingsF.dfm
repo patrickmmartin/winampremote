@@ -8,7 +8,6 @@ object frmSettings: TfrmSettings
   ClientHeight = 120
   ClientWidth = 290
   Color = clBtnFace
-  DragKind = dkDock
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
