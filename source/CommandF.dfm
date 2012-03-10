@@ -8,8 +8,6 @@ object frmCommands: TfrmCommands
   ClientHeight = 38
   ClientWidth = 215
   Color = clBtnFace
-  DragKind = dkDock
-  DragMode = dmAutomatic
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -9

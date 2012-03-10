@@ -329,6 +329,8 @@ void TfrmServers::doTestEvent(const AnsiString& remoteName,
                                           const int level)
 {
     addProcessMessage(remoteName + ":" + data, level);
+    TListItem * ListItem = findServerItem(remoteName);
+    ListItem->SubItems->Strings[1] = data;
 }
 
 void TfrmServers::doTestResult(const AnsiString& remoteName,

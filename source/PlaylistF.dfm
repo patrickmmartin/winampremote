@@ -6,8 +6,6 @@ object frmPlaylist: TfrmPlaylist
   BorderIcons = [biSystemMenu]
   Caption = 'Playlist'
   Color = clBtnFace
-  DragKind = dkDock
-  DragMode = dmAutomatic
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

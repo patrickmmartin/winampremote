@@ -6,7 +6,7 @@ object frmMain: TfrmMain
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Winamp Remote Control'
-  ClientHeight = 172
+  ClientHeight = 136
   ClientWidth = 392
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -59,9 +59,9 @@ object frmMain: TfrmMain
   end
   object sbMain: TStatusBar
     Left = 0
-    Top = 146
+    Top = 135
     Width = 392
-    Height = 26
+    Height = 1
     Panels = <
       item
         Style = psOwnerDraw
@@ -72,15 +72,16 @@ object frmMain: TfrmMain
         Width = 50
       end>
     SimplePanel = False
+    Visible = False
     OnDrawPanel = sbMainDrawPanel
   end
   object pgSettings: TPageControl
     Left = 0
     Top = 0
     Width = 392
-    Height = 146
+    Height = 135
     Hint = 'pages of information and configuration'
-    ActivePage = tbsConfig
+    ActivePage = tbsMain
     Align = alClient
     DockSite = True
     HotTrack = True
@@ -97,7 +98,7 @@ object frmMain: TfrmMain
         Left = 0
         Top = 0
         Width = 384
-        Height = 114
+        Height = 103
         Align = alClient
         BevelOuter = bvLowered
         Caption = 'pnlWinampBottom'
@@ -106,7 +107,7 @@ object frmMain: TfrmMain
           Left = 1
           Top = 1
           Width = 382
-          Height = 66
+          Height = 55
           Align = alClient
           BevelOuter = bvNone
           Caption = 'pnlIcon'
@@ -115,7 +116,7 @@ object frmMain: TfrmMain
             Left = 48
             Top = 23
             Width = 286
-            Height = 43
+            Height = 32
             Hint = 'the winamp version on the server machine'
             Align = alClient
             Alignment = taCenter
@@ -155,24 +156,25 @@ object frmMain: TfrmMain
             Left = 0
             Top = 23
             Width = 48
-            Height = 43
+            Height = 32
             Hint = 'graphical view of winamp status'
             Align = alLeft
             Center = True
             Transparent = True
+            Visible = False
           end
           object Bevel2: TBevel
             Left = 334
             Top = 23
             Width = 48
-            Height = 43
+            Height = 32
             Align = alRight
             Shape = bsSpacer
           end
         end
         object Panel1: TPanel
           Left = 1
-          Top = 67
+          Top = 56
           Width = 382
           Height = 46
           Align = alBottom
@@ -226,7 +228,7 @@ object frmMain: TfrmMain
         Left = 0
         Top = 0
         Width = 384
-        Height = 114
+        Height = 103
         Align = alClient
       end
       object lblEndpoint: TLabel

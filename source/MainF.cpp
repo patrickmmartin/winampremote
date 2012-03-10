@@ -340,9 +340,11 @@ void __fastcall TfrmMain::FormShow(TObject *)
   frmCommands->ShowHint = false;
 
   // set drag mode
+  /*
   frmPlaylist->DragKind = dkDock;
   frmCommands->DragKind = dkDock;
   frmSettings->DragKind = dkDock;
+  */
 
   if (!timerMain->Enabled)
   {
@@ -501,9 +503,11 @@ void __fastcall TfrmMain::PreviousExecute(TObject *)
 void __fastcall TfrmMain::FormHide(TObject *)
 {
   mnuShow->Visible = true;
+  /*
   frmPlaylist->DragKind = dkDrag;
   frmCommands->DragKind = dkDrag;
   frmSettings->DragKind = dkDrag;
+  */
 }
 
 

@@ -9,7 +9,6 @@ object frmSettings: TfrmSettings
   ClientWidth = 290
   Color = clBtnFace
   DragKind = dkDock
-  DragMode = dmAutomatic
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -66,7 +65,7 @@ object frmSettings: TfrmSettings
       object lblVol: TLabel
         Left = 16
         Top = 19
-        Width = 16
+        Width = 15
         Height = 14
         Caption = '&Vol'
         FocusControl = tbVolume
