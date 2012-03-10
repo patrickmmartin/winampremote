@@ -31,7 +31,9 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "shellapi.h"
 #include "remotestrs.h"
 
-//---------------------------------------------------------------------------
+#include "GlassExtender.h"
+
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
@@ -40,12 +42,12 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 const int Offset = 4;
 
 TfrmPlaylist *frmPlaylist;
-//---------------------------------------------------------------------------
+
 __fastcall TfrmPlaylist::TfrmPlaylist(TComponent* Owner)
     : TForm(Owner)
 {
 }
-//---------------------------------------------------------------------------
+
 
 /* TODO : working? IDC_SORT_FILETITLE, IDC_SORT_FILENAME, IDC_SORT_ENTIREFILENAME */
 
@@ -59,7 +61,7 @@ void __fastcall TfrmPlaylist::lstSongsDblClick(TObject *)
 
 
 }
-//---------------------------------------------------------------------------
+
 
 
 
@@ -74,7 +76,7 @@ void __fastcall TfrmPlaylist::FormCreate(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmPlaylist::DeleteSelected(void)
 {
   frmMain->DoDeleteSelected();
@@ -82,7 +84,7 @@ void __fastcall TfrmPlaylist::DeleteSelected(void)
 }
 
 
-//---------------------------------------------------------------------------
+
  void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState )
 {
   TListBox * ListBox = (TListBox *) Control;
@@ -114,7 +116,7 @@ void __fastcall TfrmPlaylist::DeleteSelected(void)
     Canvas->Font->Color = clWindowText;
 
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
 {
@@ -150,7 +152,7 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 {
@@ -184,7 +186,7 @@ void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::FormClose(TObject *, TCloseAction &)
 {
@@ -192,7 +194,7 @@ void __fastcall TfrmPlaylist::FormClose(TObject *, TCloseAction &)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::lstSongsDragOver(TObject *, TObject *, int , int , TDragState , bool &Accept)
 {
@@ -201,7 +203,7 @@ void __fastcall TfrmPlaylist::lstSongsDragOver(TObject *, TObject *, int , int ,
 
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int Y)
 {
@@ -268,7 +270,7 @@ int NewPos;
     delete TopList;
   }
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
@@ -279,17 +281,20 @@ void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::FormShow(TObject *)
 {
   // need to re-assert this
   DragAcceptFiles(lstSongs->Handle, true);
+  // extend glass on Aero
+  new GlassExtender(this);
+
 
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::FormEndDock(TObject *Sender, TObject *Target,
       int X, int Y)
@@ -298,7 +303,7 @@ void __fastcall TfrmPlaylist::FormEndDock(TObject *Sender, TObject *Target,
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::lstSongsMouseMove(TObject *, TShiftState , int X, int Y)
 {
@@ -323,7 +328,7 @@ void __fastcall TfrmPlaylist::lstSongsMouseMove(TObject *, TShiftState , int X, 
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::mnuPlayClick(TObject *)
 {
@@ -337,7 +342,7 @@ void __fastcall TfrmPlaylist::mnuPlayClick(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::pmnuSongsPopup(TObject *)
 {
@@ -353,7 +358,7 @@ void __fastcall TfrmPlaylist::pmnuSongsPopup(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::lstSongsKeyDown(TObject *, WORD &Key, TShiftState )
 {
@@ -372,7 +377,7 @@ void __fastcall TfrmPlaylist::lstSongsKeyDown(TObject *, WORD &Key, TShiftState 
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::pbSongPosMouseUp(TObject *, TMouseButton , TShiftState , int , int )
 {
@@ -382,7 +387,7 @@ void __fastcall TfrmPlaylist::pbSongPosMouseUp(TObject *, TMouseButton , TShiftS
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::pbSongPosMouseMove(TObject *, TShiftState , int X, int Y)
 {
@@ -402,7 +407,7 @@ void __fastcall TfrmPlaylist::pbSongPosMouseMove(TObject *, TShiftState , int X,
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::pbSongPosMouseDown(TObject *, TMouseButton , TShiftState , int , int )
 {
@@ -410,7 +415,7 @@ void __fastcall TfrmPlaylist::pbSongPosMouseDown(TObject *, TMouseButton , TShif
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::FormDestroy(TObject *)
 {
@@ -418,18 +423,18 @@ void __fastcall TfrmPlaylist::FormDestroy(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmPlaylist::mnuRefreshClick(TObject *)
 {
   frmMain->PlaylistRefresh->Execute();
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmPlaylist::FormResize(TObject *)
 {
   Refresh();        
 }
-//---------------------------------------------------------------------------
+
 

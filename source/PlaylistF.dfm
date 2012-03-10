@@ -26,9 +26,11 @@ object frmPlaylist: TfrmPlaylist
     Left = 0
     Top = 0
     Width = 407
-    Height = 191
+    Height = 195
     Hint = 'Playlist view -drag files to the desired location'
     Align = alClient
+    BorderStyle = bsNone
+    Color = clNone
     DragMode = dmAutomatic
     ItemHeight = 13
     Items.Strings = (
@@ -46,23 +48,22 @@ object frmPlaylist: TfrmPlaylist
   end
   object pnlBottom: TPanel
     Left = 0
-    Top = 191
+    Top = 195
     Width = 407
-    Height = 28
+    Height = 24
     Align = alBottom
     AutoSize = True
     BevelOuter = bvNone
-    BorderStyle = bsSingle
     Caption = 'pnlBottom'
+    Color = clNone
     TabOrder = 1
     object pbSongPos: TProgressBar
       Left = 0
       Top = 0
-      Width = 403
+      Width = 407
       Height = 12
       Hint = 'track position - click to move '
       Align = alBottom
-      BorderWidth = 1
       Min = 0
       Max = 10000
       Smooth = True
@@ -74,11 +75,10 @@ object frmPlaylist: TfrmPlaylist
     object pbListPos: TProgressBar
       Left = 0
       Top = 12
-      Width = 403
+      Width = 407
       Height = 12
       Hint = 'songlist position'
       Align = alBottom
-      BorderWidth = 1
       Min = 0
       Max = 10000
       Smooth = True
@@ -90,6 +90,7 @@ object frmPlaylist: TfrmPlaylist
     Top = 219
     Width = 407
     Height = 19
+    Color = clNone
     Panels = <
       item
         Text = 'time'

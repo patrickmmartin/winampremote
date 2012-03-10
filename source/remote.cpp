@@ -47,6 +47,7 @@ USERC("winampremote.rc");
 USEUNIT("ServerEnumerator.cpp");
 USEUNIT("ServerTester.cpp");
 USERC("windowsthemes.rc");
+USEUNIT("GlassExtender.cpp");
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 //---------------------------------------------------------------------------
