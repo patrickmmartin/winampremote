@@ -1535,36 +1535,6 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::PlaylistRefreshCurrentExecute(TObject *)
-{
-
-  /*
-  char title[sizeof(IdentChars)];
-  // needed to ensure we can see the currently playing track
-
-  strcpy(title, IdentChars);
-  int SongS = IntegerResult(title, IPC_GETOUTPUTTIME, 1);
-  strcpy(title, IdentChars);
-  // update the current title, at least
-  StringResult(title, IPC_GETPLAYLISTTITLE, CurrentIndex);
-
-  if ((frmPlaylist->lstSongs->Items->Count - 1) > CurrentIndex)
-  {
-    bool Selected = frmPlaylist->lstSongs->Selected[CurrentIndex];
-    frmPlaylist->lstSongs->Items->Strings[CurrentIndex] = (title);
-    frmPlaylist->lstSongs->Items->Objects[CurrentIndex] = (TObject * ) SongS;
-    frmPlaylist->lstSongs->Selected[CurrentIndex] = Selected;
-  }
-
-  // much neater...
-  frmPlaylist->lstSongs->TopIndex = CurrentIndex - 2;
-  frmPlaylist->lstSongs->Update();
-  */
-
-}
-
-
-//---------------------------------------------------------------------------
 
 void __fastcall TfrmMain::PlaylistRefreshStatsExecute(TObject *)
 {

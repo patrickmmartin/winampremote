@@ -280,7 +280,6 @@ __published:
         void __fastcall NewSongExecute(TObject *Sender);
         void __fastcall alMainExecute(TBasicAction *Action, bool &Handled);
         void __fastcall PlaylistRefreshExecute(TObject *Sender);
-        void __fastcall PlaylistRefreshCurrentExecute(TObject *Sender);
         void __fastcall PlaylistRefreshStatsExecute(TObject *Sender);
 
 private:        // private user declarations
@@ -308,7 +307,7 @@ public:         // public user declarations
     int LastIndex;
     int LastLength;
     bool Querying;
-    char IdentChars[65];
+    char IdentChars[MAX_PATH];
     virtual __fastcall TfrmMain(TComponent* Owner);
     void _fastcall DoBind(void);
     HANDLE __fastcall IconHandle(void);

@@ -1027,7 +1027,6 @@ object frmMain: TfrmMain
       Category = 'Playlist'
       Caption = 'PlaylistRefresh'
       ImageIndex = 13
-      OnExecute = PlaylistRefreshCurrentExecute
     end
     object PlaylistRefreshStats: TAction
       Category = 'Playlist'
