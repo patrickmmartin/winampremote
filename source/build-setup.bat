@@ -13,7 +13,12 @@ C:\Windows\Microsoft.NET\Framework\v2.0.50727\MSBuild /nologo ..\setup\WinampRem
 
 SET INSTALLER=WinampRemote-%APPVER%.msi
 
-echo copying installer to %INSTALLER%
-copy /Y ..\setup\bin\Debug\WinampRemote.msi ..\bin\%INSTALLER%
+if "%1"=="Build" (
+	echo copying installer to %INSTALLER%
+	copy /Y ..\setup\bin\Debug\WinampRemote.msi ..\bin\%INSTALLER%
+) else (
+    del /Q ..\bin\%INSTALLER% 2>nul
+) 
+
 
 @endlocal
