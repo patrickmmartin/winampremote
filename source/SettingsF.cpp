@@ -27,6 +27,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "MainF.h"
 #include "waint.h"
 #include "RPCFuncsU.h"
+#include "GlassExtender.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -149,6 +150,19 @@ void __fastcall TfrmSettings::FormEndDock(TObject *Sender, TObject *Target,
       int X, int Y)
 {
   frmMain->EndDock(Sender, Target, X, Y);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmSettings::FormShow(TObject *Sender)
+{
+
+  // extend glass on Aero
+  GlassExtender * ge = new GlassExtender(this);
+  if (ge->isCompositionActive())
+  {
+        Color = clNone;
+  }
+
 }
 //---------------------------------------------------------------------------
 

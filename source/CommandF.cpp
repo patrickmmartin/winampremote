@@ -25,6 +25,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "CommandF.h"
 #include "MainF.h"
+#include "GlassExtender.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -40,6 +42,7 @@ __fastcall TfrmCommands::TfrmCommands(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TfrmCommands::FormClose(TObject *, TCloseAction &)
 {
+  // TODO: need to stop liberating functionality from the main form
   frmMain->ViewToolBar->Execute();
 }
 //---------------------------------------------------------------------------
@@ -56,6 +59,19 @@ void __fastcall TfrmCommands::FormEndDock(TObject *Sender, TObject *Target,
       int X, int Y)
 {
   frmMain->EndDock(Sender, Target, X, Y);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmCommands::FormShow(TObject *Sender)
+{
+  GlassExtender * ge = new GlassExtender(this);
+  if (ge->isCompositionActive())
+  {
+      this->Color = clNone;
+      tbCommands->EdgeInner = esNone;
+      tbCommands->EdgeOuter = esNone;
+      tbCommands->Transparent = true;
+  }
 }
 //---------------------------------------------------------------------------
 

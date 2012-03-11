@@ -23,6 +23,7 @@ __published:	// IDE-managed Components
           TDragDockObject *&DragObject);
         void __fastcall FormEndDock(TObject *Sender, TObject *Target,
           int X, int Y);
+        void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TfrmCommands(TComponent* Owner);

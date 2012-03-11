@@ -20,6 +20,7 @@ object frmSettings: TfrmSettings
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnEndDock = FormEndDock
+  OnShow = FormShow
   OnStartDock = FormStartDock
   PixelsPerInch = 96
   TextHeight = 14

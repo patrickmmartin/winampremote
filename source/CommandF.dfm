@@ -17,6 +17,7 @@ object frmCommands: TfrmCommands
   Position = poDefault
   OnClose = FormClose
   OnEndDock = FormEndDock
+  OnShow = FormShow
   OnStartDock = FormStartDock
   PixelsPerInch = 96
   TextHeight = 12
