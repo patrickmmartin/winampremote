@@ -10,7 +10,6 @@
 
 bool GlassExtender::glassWindow(TWinControl * winControl)
 {
-        OutputDebugString(winControl->Name.c_str());
 	const MARGINS margins = { -1 };
 	if (!(SUCCEEDED ( m_ExtendFrameProc(winControl->Handle, &margins ) )))
 		return false;
@@ -20,10 +19,11 @@ bool GlassExtender::glassWindow(TWinControl * winControl)
 		TWinControl * childWinControl = dynamic_cast<TWinControl *>(childControl);
 		if ( childWinControl )
 		{
-			glassWindow(childWinControl);
+		    glassWindow(childWinControl);
+		    return true;
 		}
 	}
-
+	return false;
 
 }
 
@@ -42,9 +42,29 @@ bool GlassExtender::extendIntoClientAll()
 	return false;
 }
 
+
+bool GlassExtender::isCompositionActive()
+{
+
+  if ( (NULL != m_dwmapi) &&
+       (NULL != m_DWMEnabledProc) )
+    {
+      BOOL enabled = FALSE;
+      if ( SUCCEEDED(m_DWMEnabledProc(&enabled)) &&
+          enabled)
+        return true;
+    }
+    return true;
+}
+
+
 __fastcall
 GlassExtender::GlassExtender(TForm * Owner) :
-		TComponent(Owner), m_ExtendFrameProc(NULL), m_dwmapi(NULL), m_Form(NULL)
+		TComponent(Owner),
+		m_ExtendFrameProc(NULL),
+		m_DWMEnabledProc(NULL),
+		m_dwmapi(NULL),
+		m_Form(NULL)
 {
 
 	if (Owner)

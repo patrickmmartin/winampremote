@@ -31,7 +31,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "shellapi.h"
 #include "remotestrs.h"
 
-#include "GlassExtender.h"
 
 
 #pragma package(smart_init)
@@ -288,7 +287,17 @@ void __fastcall TfrmPlaylist::FormShow(TObject *)
   // need to re-assert this
   DragAcceptFiles(lstSongs->Handle, true);
   // extend glass on Aero
-  new GlassExtender(this);
+  ge = new GlassExtender(this);
+  if (ge->isCompositionActive())
+  {
+      lstSongs->Color = clNone;
+      lstSongs->BorderStyle = bsNone;
+
+      pnlBottom->Color = clNone;
+      pnlBottom->BorderStyle = bsNone;
+
+      sbPlaylist->Color = clNone;
+  }
 
 
 }

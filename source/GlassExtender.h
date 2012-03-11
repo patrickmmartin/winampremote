@@ -37,18 +37,20 @@ private:
 		int cyBottomHeight;
 	} MARGINS, *PMARGINS;
 
+        typedef HRESULT (*DWMEnabledProc)(BOOL * enabled);
 	typedef HRESULT (*ExtendFrameProc)(HANDLE hWnd, const MARGINS *pMarInset);
 
 	HINST m_dwmapi;
 	ExtendFrameProc m_ExtendFrameProc;
+	DWMEnabledProc m_DWMEnabledProc;
 	TForm * m_Form;
 	bool glassWindow(TWinControl * winControl);
 	bool extendIntoClientAll();
 
 public:
-	__fastcall
-	virtual GlassExtender(TForm* AOwner);__fastcall
-	virtual ~GlassExtender(void);
+	__fastcall virtual GlassExtender(TForm* AOwner);
+        bool isCompositionActive();
+	__fastcall virtual ~GlassExtender(void);
 };
 
 #endif /* GLASSEXTENDER_H_ */

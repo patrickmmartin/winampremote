@@ -11,6 +11,8 @@
 #include <ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 
+#include "GlassExtender.h"
+
 
 class TfrmPlaylist : public TForm
 {
@@ -66,6 +68,7 @@ private:	// User declarations
     int BelowIndex;
     bool fDragging;
     TStringList *SongList;
+    GlassExtender * ge;
 
     void __fastcall DeleteSelected(void);
     void __fastcall DropFiles(TMessage& Msg);
