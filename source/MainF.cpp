@@ -328,10 +328,6 @@ void __fastcall TfrmMain::FormShow(TObject *)
 {
 
 
-  // set up commands form images
-  frmCommands->tbCommands->Images = imlCommandsCool;
-  frmCommands->tbCommands->HotImages = imlCommandsHot;
-
   // show hints on visible forms
   frmPlaylist->ShowHint = false;
   frmSettings->ShowHint = false;

@@ -157,11 +157,13 @@ void __fastcall TfrmSettings::FormShow(TObject *Sender)
 {
 
   // extend glass on Aero
+  /*
   GlassExtender * ge = new GlassExtender(this);
   if (ge->isCompositionActive())
   {
         Color = clNone;
   }
+  */
 
 }
 //---------------------------------------------------------------------------

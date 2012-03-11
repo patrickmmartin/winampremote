@@ -3,7 +3,7 @@ object frmSettings: TfrmSettings
   Top = 382
   Hint = 'Audio Settings Form'
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
+  BorderStyle = bsDialog
   Caption = 'Audio'
   ClientHeight = 120
   ClientWidth = 290

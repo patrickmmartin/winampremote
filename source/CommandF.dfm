@@ -1,9 +1,9 @@
 object frmCommands: TfrmCommands
-  Left = 482
-  Top = 218
+  Left = 625
+  Top = 289
   Hint = 'Play Commands'
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
+  BorderStyle = bsDialog
   Caption = 'Commands'
   ClientHeight = 38
   ClientWidth = 215
@@ -31,10 +31,13 @@ object frmCommands: TfrmCommands
     ButtonHeight = 38
     ButtonWidth = 43
     EdgeBorders = []
+    EdgeInner = esNone
+    EdgeOuter = esNone
     Flat = True
     HotImages = frmMain.imlCommandsHot
     Images = frmMain.imlCommandsCool
     TabOrder = 0
+    Transparent = True
     object tbtnPrevious: TToolButton
       Left = 0
       Top = 0
