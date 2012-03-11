@@ -54,7 +54,7 @@ bool GlassExtender::isCompositionActive()
           enabled)
         return true;
     }
-    return true;
+    return false;
 }
 
 
