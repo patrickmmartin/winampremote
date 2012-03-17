@@ -74,6 +74,16 @@ void NetworkSuite::doTestResult(const AnsiString& remoteName,
     abort = true;
 }
 
+void NetworkSuite::testLocalServer()
+{
+    _servers.clear();
+    _servers.push_back("localhost");
+    ServerTester st;
+    st.OnResult = doTestResult;
+    st.OnTest = doTestEvent;
+    st.testServers(_servers);
+}
+
 void NetworkSuite::testEnumeration()
 {
     ServerEnumerator se;
@@ -118,6 +128,9 @@ void NetworkSuite::testServerInvalid()
 void NetworkSuite::run()
 {
 
+    // test local server properties
+    testLocalServer();
+    // test network enumeration
     testEnumeration();
     // TODO: dependency upon prior test
     testServerTest();

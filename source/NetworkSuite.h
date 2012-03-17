@@ -32,6 +32,10 @@ private:
 
 
   /**
+   * test method for test local server
+   */
+  void testLocalServer();
+  /**
    * test method for network enumeration
    */
   void testEnumeration();
