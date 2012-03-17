@@ -28,8 +28,12 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "rpcthreadDLL.h"
 #pragma package(smart_init)
 
-// winamp interface
+// winamp interface definitions
 #include "waint.h"
+
+// RPC function definitions
+#include "RPCFuncsU.h"
+
 
 TRTLCriticalSection fCriticalSection ;
 
