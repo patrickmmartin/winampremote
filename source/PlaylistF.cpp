@@ -80,7 +80,7 @@ void __fastcall TfrmPlaylist::DeleteSelected(void)
 
 
 
- void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState )
+ void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control, int Index, const TRect &Rect, TOwnerDrawState )
 {
   TListBox * ListBox = (TListBox *) Control;
   AnsiString ItemText = ListBox->Items->Strings[Index];
@@ -96,6 +96,23 @@ void __fastcall TfrmPlaylist::DeleteSelected(void)
 
   if (Index == frmMain->CurrentIndex)
     Canvas->Font->Color = clWindowText;
+
+}
+
+ void __fastcall TfrmPlaylist::lstSongsDrawItemGlass(TWinControl *Control,
+                                                     int Index, const TRect &Rect,
+                                                     TOwnerDrawState )
+{
+  TListBox * ListBox = (TListBox *) Control;
+  AnsiString ItemText = ListBox->Items->Strings[Index];
+  TCanvas * Canvas = ListBox->Canvas;
+
+  if (Index == frmMain->CurrentIndex)
+    Canvas->Font->Color = clRed;
+  else
+    Canvas->Font->Color = clBlue;
+
+  Canvas->TextOut(Rect.Left + Offset, Rect.Top, ItemText);
 
 }
 
@@ -259,7 +276,7 @@ void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
       TDragDockObject *&DragObject)
 {
   frmMain->StartDock(Sender, DragObject);
-        
+
 }
 
 
@@ -280,6 +297,7 @@ void __fastcall TfrmPlaylist::FormShow(TObject *)
       pnlBottom->BorderStyle = bsNone;
 
       sbPlaylist->Color = clNone;
+      lstSongs->OnDrawItem = lstSongsDrawItemGlass;
   }
 
 
@@ -426,7 +444,7 @@ void __fastcall TfrmPlaylist::mnuRefreshClick(TObject *)
 
 void __fastcall TfrmPlaylist::FormResize(TObject *)
 {
-  Refresh();        
+  Refresh();
 }
 
 

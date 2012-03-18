@@ -38,7 +38,9 @@ __published:	// IDE-managed Components
 
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall lstSongsDrawItem(TWinControl *Control, int Index,
-          TRect &Rect, TOwnerDrawState State);
+          const TRect &Rect, TOwnerDrawState State);
+    void __fastcall lstSongsDrawItemGlass(TWinControl *Control, int Index,
+          const TRect &Rect, TOwnerDrawState State);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall lstSongsDragOver(TObject *Sender, TObject *Source,
           int X, int Y, TDragState State, bool &Accept);
