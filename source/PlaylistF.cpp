@@ -48,7 +48,7 @@ __fastcall TfrmPlaylist::TfrmPlaylist(TComponent* Owner)
 }
 
 
-/* TODO : working? IDC_SORT_FILETITLE, IDC_SORT_FILENAME, IDC_SORT_ENTIREFILENAME */
+/* TODO : are these sort types working? IDC_SORT_FILETITLE, IDC_SORT_FILENAME, IDC_SORT_ENTIREFILENAME */
 
 
 void __fastcall TfrmPlaylist::lstSongsDblClick(TObject *)
@@ -60,10 +60,6 @@ void __fastcall TfrmPlaylist::lstSongsDblClick(TObject *)
 
 
 }
-
-
-
-
 
 void __fastcall TfrmPlaylist::FormCreate(TObject *)
 {
@@ -97,19 +93,6 @@ void __fastcall TfrmPlaylist::DeleteSelected(void)
     Canvas->Font->Color = clRed;
 
   Canvas->TextOut(Rect.Left + Offset, Rect.Top, ItemText);
-
-  /*
-  // now for the song time, if it exists
-
-  int SongTime = (int) lstSongs->Items->Objects[Index];
-
-
-  if ( SongTime >= 0)
-  {
-    ItemText = IntToStr(SongTime);
-    Canvas->TextOut(Rect.Right - 2 * Canvas->TextExtent(ItemText).cx, Rect.Top, ItemText);
-  }
-  */
 
   if (Index == frmMain->CurrentIndex)
     Canvas->Font->Color = clWindowText;
