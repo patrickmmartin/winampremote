@@ -13,7 +13,9 @@
 
 #include "GlassExtender.h"
 
-
+/**
+  UI class to display the winamp playlist and respond similarly to UI actions. 
+*/
 class TfrmPlaylist : public TForm
 {
 __published:	// IDE-managed Components
@@ -85,6 +87,7 @@ public:
     bool __property Dragging = {read = fDragging};
 
 BEGIN_MESSAGE_MAP
+// handling file dropped into the playlist form 
 MESSAGE_HANDLER(WM_DROPFILES,TMessage,DropFiles)
 END_MESSAGE_MAP(TForm)
 
