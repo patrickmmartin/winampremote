@@ -119,6 +119,8 @@ const int WINAMP_PREVSONG = 40198;
 /* major interface functions */
 
 void GethWnd_WinAmp(void);
+void ExecuteMessage(int MessageToExecute);
+void ExecuteStringMessage(char * CommandString, int Command);
 int GetAmpInt(int Command, int Data);
 char * GetAmpStr(int Command, int Data);
 char * GetWinampVersion(void);
