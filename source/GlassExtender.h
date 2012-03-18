@@ -11,14 +11,12 @@
 #include <classes.hpp>
 #include <forms.hpp>
 #include <windows.h>
+#include <messages.hpp>
+#pragma hdrstop
 
-/*
- need to handle
 
- WM_DWMCOMPOSITIONCHANGED message*
+const int WM_DWMCOMPOSITIONCHANGED = 0x031E;
 
- in order to re-assert the glass extension
- */
 
 /**
  * Class to encapsulate handling extending Glass on Aero into the entire window frame
@@ -28,7 +26,6 @@ class GlassExtender: public Classes::TComponent
 
 private:
 
-	// TODO : check for the SDK packing values required?
 	typedef struct _MARGINS
 	{
 		int cxLeftWidth;
@@ -37,8 +34,8 @@ private:
 		int cyBottomHeight;
 	} MARGINS, *PMARGINS;
 
-        typedef HRESULT (*DWMEnabledProc)(BOOL * enabled);
-	typedef HRESULT (*ExtendFrameProc)(HANDLE hWnd, const MARGINS *pMarInset);
+    typedef HRESULT (__stdcall *DWMEnabledProc)(BOOL * enabled);
+	typedef HRESULT (__stdcall *ExtendFrameProc)(HANDLE hWnd, const MARGINS *pMarInset);
 
 	HINST m_dwmapi;
 	ExtendFrameProc m_ExtendFrameProc;
@@ -46,11 +43,27 @@ private:
 	TForm * m_Form;
 	bool glassWindow(TWinControl * winControl);
 	bool extendIntoClientAll();
+	void DWMCompositionChanged(TMessage& Msg);
 
 public:
+	/**
+	 * Constructor - can only be constructed on a TForm instance.
+	 * Loads dwmapi dynamically
+	 * @param AOwner
+	 */
 	__fastcall virtual GlassExtender(TForm* AOwner);
-        bool isCompositionActive();
+	/**
+	 * Destructor - unloads dwmapi
+	 */
 	__fastcall virtual ~GlassExtender(void);
+        bool isCompositionActive();
+
+//	BEGIN_MESSAGE_MAP
+//	// handling DWM composition changes
+//	MESSAGE_HANDLER(WM_DWMCOMPOSITIONCHANGED, TMessage, DWMCompositionChanged)
+//	END_MESSAGE_MAP(GlassExtender)
+
+
 };
 
 #endif /* GLASSEXTENDER_H_ */

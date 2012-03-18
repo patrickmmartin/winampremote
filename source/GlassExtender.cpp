@@ -8,6 +8,12 @@
 
 #include "GlassExtender.h"
 
+
+void GlassExtender::DWMCompositionChanged(TMessage& Msg)
+{
+	// TODO handle and notify the parent form m_Form
+}
+
 bool GlassExtender::glassWindow(TWinControl * winControl)
 {
 	const MARGINS margins = { -1 };
@@ -33,11 +39,7 @@ bool GlassExtender::extendIntoClientAll()
 	// Extend frame across entire window.
 	if (NULL != m_ExtendFrameProc)
 	{
-		if (glassWindow(m_Form))
-		{
-			// TODO hook message
-			// anything else?
-		}
+		return glassWindow(m_Form);
 	}
 	return false;
 }
@@ -50,9 +52,8 @@ bool GlassExtender::isCompositionActive()
        (NULL != m_DWMEnabledProc) )
     {
       BOOL enabled = FALSE;
-      if ( SUCCEEDED(m_DWMEnabledProc(&enabled)) &&
-          enabled)
-        return true;
+      if ( SUCCEEDED(m_DWMEnabledProc(&enabled)) )
+        return enabled;
     }
     return false;
 }
@@ -70,15 +71,16 @@ GlassExtender::GlassExtender(TForm * Owner) :
 	if (Owner)
 	{
 		m_Form = Owner;
-		// due to issues with FP mode conflicts
+		// used over the raw API call due to issues with FP mode conflicts
 		m_dwmapi = ::SafeLoadLibrary(AnsiString("dwmapi.dll"), SEM_NOOPENFILEERRORBOX);
 		if (NULL != m_dwmapi)
 		{
-			m_ExtendFrameProc = (ExtendFrameProc) ::GetProcAddress((HMODULE) m_dwmapi,
-																	"DwmExtendFrameIntoClientArea");
-			// TODO attach to form and hook window procedure
+			m_ExtendFrameProc = (ExtendFrameProc)
+                                ::GetProcAddress((HMODULE) m_dwmapi, "DwmExtendFrameIntoClientArea");
+			m_DWMEnabledProc = (DWMEnabledProc)
+                                ::GetProcAddress((HMODULE) m_dwmapi, "DwmIsCompositionEnabled"); 
 			extendIntoClientAll();
-			// TODO fixups for any Glass display issues
+			// fixups for any Glass display issues can only be done by UI classes
 		}
 	}
 
