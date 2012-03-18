@@ -62,7 +62,7 @@ void __fastcall TfrmCommands::FormEndDock(TObject *Sender, TObject *Target,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmCommands::FormShow(TObject *Sender)
+void __fastcall TfrmCommands::FormShow(TObject *)
 {
   GlassExtender * ge = new GlassExtender(this);
   if (ge->isCompositionActive())
