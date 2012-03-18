@@ -153,7 +153,7 @@ void __fastcall TfrmSettings::FormEndDock(TObject *Sender, TObject *Target,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmSettings::FormShow(TObject *Sender)
+void __fastcall TfrmSettings::FormShow(TObject *)
 {
 
   // extend glass on Aero
