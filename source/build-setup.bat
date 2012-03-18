@@ -7,17 +7,23 @@ FOR /F "eol=; delims=, tokens=1,2,3,4" %%i IN (version.txt) DO (
 SET APPVER=%%i.%%j.%%k.%%l
 )
 
-echo building installer for [%APPVER%]
-
-C:\Windows\Microsoft.NET\Framework\v2.0.50727\MSBuild /nologo ..\setup\WinampRemote.wixproj  /t:%1
-
 SET INSTALLER=WinampRemote-%APPVER%.msi
 
-if "%1"=="Build" (
-	echo copying installer to %INSTALLER%
-	copy /Y ..\setup\bin\Debug\WinampRemote.msi ..\bin\%INSTALLER%
+:: clean is a well-known name
+ 
+if "%1"=="Clean" (
+	echo cleaning installer for [%APPVER%]
+	C:\Windows\Microsoft.NET\Framework\v2.0.50727\MSBuild /nologo ..\setup\WinampRemote.wixproj  /t:%1
+	echo deleting msi file %INSTALLER%
+	del /Q ..\bin\%INSTALLER% 2>nul
+
+
 ) else (
-    del /Q ..\bin\%INSTALLER% 2>nul
+	echo building installer target %1 for [%APPVER%]
+	C:\Windows\Microsoft.NET\Framework\v2.0.50727\MSBuild /nologo ..\setup\WinampRemote.wixproj  /t:%1
+
+	echo copying installer to %INSTALLER%
+	if "%1"=="Build" copy /Y ..\setup\bin\Debug\WinampRemote.msi ..\bin\%INSTALLER%
 ) 
 
 
