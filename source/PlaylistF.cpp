@@ -20,6 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 */
 
+
 #include <vcl.h>
 #pragma hdrstop
 
@@ -30,7 +31,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "RPCFuncsU.h"
 #include "shellapi.h"
 #include "remotestrs.h"
-
 
 
 #pragma package(smart_init)
@@ -101,19 +101,13 @@ void __fastcall TfrmPlaylist::DeleteSelected(void)
 
  void __fastcall TfrmPlaylist::lstSongsDrawItemGlass(TWinControl *Control,
                                                      int Index, const TRect &Rect,
-                                                     TOwnerDrawState )
+                                                     TOwnerDrawState State)
 {
   TListBox * ListBox = (TListBox *) Control;
   AnsiString ItemText = ListBox->Items->Strings[Index];
   TCanvas * Canvas = ListBox->Canvas;
 
-  if (Index == frmMain->CurrentIndex)
-    Canvas->Font->Color = clRed;
-  else
-    Canvas->Font->Color = clBlue;
-
-  Canvas->TextOut(Rect.Left + Offset, Rect.Top, ItemText);
-
+  ge->drawGlowText(Canvas->Handle, ItemText, Rect, State, (Index == frmMain->CurrentIndex) );
 }
 
 
@@ -444,7 +438,8 @@ void __fastcall TfrmPlaylist::mnuRefreshClick(TObject *)
 
 void __fastcall TfrmPlaylist::FormResize(TObject *)
 {
-  Refresh();
+   // TODO: necessary to refresh upon resize?
+	Refresh();
 }
 
 
