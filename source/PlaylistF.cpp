@@ -79,13 +79,33 @@ void __fastcall TfrmPlaylist::DeleteSelected(void)
 }
 
 
+/*
 
- void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control, int Index, const TRect &Rect, TOwnerDrawState )
+odSelected, odGrayed, odDisabled, odChecked, odFocused, odDefault, odHotLight, odInactive,
+	odNoAccel, odNoFocusRect, odReserved1, odReserved2, odComboBoxEdit
+
+*/
+
+const char* States[odComboBoxEdit + 1] =
+{"odSelected",  "odGrayed",  "odDisabled",  "odChecked",  "odFocused",  "odDefault",  "odHotLight",  "odInactive",
+	"odNoAccel",  "odNoFocusRect",  "odReserved1",  "odReserved2",  "odComboBoxEdit"
+};
+
+ void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control, int Index, const TRect &Rect, TOwnerDrawState State)
 {
   TListBox * ListBox = (TListBox *) Control;
   AnsiString ItemText = ListBox->Items->Strings[Index];
   TCanvas * Canvas = ListBox->Canvas;
 
+  AnsiString setstr;
+
+  for (Windows__1 i = odSelected ; i < odComboBoxEdit ; i++)
+  {
+        if (State.Contains(i))
+                setstr += AnsiString(States[i]) + " ";
+  }
+
+  OutputDebugString(AnsiString().sprintf("drawing %i [%s]", Index, setstr.c_str()).c_str());
   Canvas->FillRect(Rect);
 
   if (Index == frmMain->CurrentIndex)
@@ -107,6 +127,15 @@ void __fastcall TfrmPlaylist::DeleteSelected(void)
   AnsiString ItemText = ListBox->Items->Strings[Index];
   TCanvas * Canvas = ListBox->Canvas;
 
+  AnsiString setstr;
+
+  for (Windows__1 i = odSelected ; i < odComboBoxEdit ; i++)
+  {
+        if (State.Contains(i))
+                setstr += AnsiString(States[i]) + " ";
+  }
+
+  OutputDebugString(AnsiString().sprintf("drawing %i [%s]", Index, setstr.c_str()).c_str());
   ge->drawGlowText(Canvas->Handle, ItemText, Rect, State, (Index == frmMain->CurrentIndex) );
 }
 
