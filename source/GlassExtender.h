@@ -112,7 +112,7 @@ public:
 	__fastcall virtual ~GlassExtender(void);
         bool isCompositionActive();
         bool drawGlowText(HDC dc, const AnsiString& item,const TRect &itemRect,
-                          TOwnerDrawState state, bool current);
+                          bool current);
 
 //	BEGIN_MESSAGE_MAP
 //	// handling DWM composition changes

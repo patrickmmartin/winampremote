@@ -58,7 +58,6 @@ void __fastcall TfrmPlaylist::lstSongsDblClick(TObject *)
   // this action will use the playlist itemindex, and do the pre and post actions
   frmMain->NewSong->Execute();
 
-
 }
 
 void __fastcall TfrmPlaylist::FormCreate(TObject *)
@@ -78,7 +77,7 @@ void __fastcall TfrmPlaylist::DeleteSelected(void)
 
 }
 
-
+// debug stuffs
 /*
 
 odSelected, odGrayed, odDisabled, odChecked, odFocused, odDefault, odHotLight, odInactive,
@@ -91,12 +90,8 @@ const char* States[odComboBoxEdit + 1] =
 	"odNoAccel",  "odNoFocusRect",  "odReserved1",  "odReserved2",  "odComboBoxEdit"
 };
 
- void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control, int Index, const TRect &Rect, TOwnerDrawState State)
+AnsiString itemState(TOwnerDrawState State)
 {
-  TListBox * ListBox = (TListBox *) Control;
-  AnsiString ItemText = ListBox->Items->Strings[Index];
-  TCanvas * Canvas = ListBox->Canvas;
-
   AnsiString setstr;
 
   for (Windows__1 i = odSelected ; i < odComboBoxEdit ; i++)
@@ -105,13 +100,22 @@ const char* States[odComboBoxEdit + 1] =
                 setstr += AnsiString(States[i]) + " ";
   }
 
-  OutputDebugString(AnsiString().sprintf("drawing %i [%s]", Index, setstr.c_str()).c_str());
-  Canvas->FillRect(Rect);
+  return setstr;
+}
+
+ void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control, int Index, const TRect &Rect, TOwnerDrawState State)
+{
+  TListBox * ListBox = (TListBox *) Control;
+  AnsiString ItemText = ListBox->Items->Strings[Index];
+  TCanvas * Canvas = ListBox->Canvas;
+
+  if (State.Contains(odFocused))
+        return;
 
   if (Index == frmMain->CurrentIndex)
-
     Canvas->Font->Color = clRed;
 
+  OutputDebugString(AnsiString().sprintf("drawing %i [%s]", Index, itemState(State).c_str()).c_str());
   Canvas->TextOut(Rect.Left + Offset, Rect.Top, ItemText);
 
   if (Index == frmMain->CurrentIndex)
@@ -127,6 +131,9 @@ const char* States[odComboBoxEdit + 1] =
   AnsiString ItemText = ListBox->Items->Strings[Index];
   TCanvas * Canvas = ListBox->Canvas;
 
+  if (State.Contains(odFocused))
+        return;
+
   AnsiString setstr;
 
   for (Windows__1 i = odSelected ; i < odComboBoxEdit ; i++)
@@ -135,8 +142,9 @@ const char* States[odComboBoxEdit + 1] =
                 setstr += AnsiString(States[i]) + " ";
   }
 
-  OutputDebugString(AnsiString().sprintf("drawing %i [%s]", Index, setstr.c_str()).c_str());
-  ge->drawGlowText(Canvas->Handle, ItemText, Rect, State, (Index == frmMain->CurrentIndex) );
+  OutputDebugString(AnsiString().sprintf("drawing %i [%s]", Index, itemState(State).c_str()).c_str());
+  Canvas->FillRect(Rect);
+  ge->drawGlowText(Canvas->Handle, ItemText, Rect, (Index == frmMain->CurrentIndex) );
 }
 
 
@@ -471,4 +479,10 @@ void __fastcall TfrmPlaylist::FormResize(TObject *)
 	Refresh();
 }
 
+
+void __fastcall TfrmPlaylist::lstSongsMeasureItem(TWinControl *, int , int &Height)
+{
+   Height = 17;        
+}
+//---------------------------------------------------------------------------
 

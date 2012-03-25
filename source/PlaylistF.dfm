@@ -30,18 +30,25 @@ object frmPlaylist: TfrmPlaylist
     Hint = 'Playlist view -drag files to the desired location'
     Align = alClient
     DragMode = dmAutomatic
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
     ItemHeight = 13
     Items.Strings = (
       '<songlist unobtained>')
     MultiSelect = True
+    ParentFont = False
     PopupMenu = pmnuSongs
-    Style = lbOwnerDrawFixed
+    Style = lbOwnerDrawVariable
     TabOrder = 0
     OnDblClick = lstSongsDblClick
     OnDragDrop = lstSongsDragDrop
     OnDragOver = lstSongsDragOver
     OnDrawItem = lstSongsDrawItem
     OnKeyDown = lstSongsKeyDown
+    OnMeasureItem = lstSongsMeasureItem
     OnMouseMove = lstSongsMouseMove
   end
   object pnlBottom: TPanel

@@ -66,6 +66,8 @@ __published:	// IDE-managed Components
         void __fastcall FormDestroy(TObject *Sender);
         void __fastcall mnuRefreshClick(TObject *Sender);
         void __fastcall FormResize(TObject *Sender);
+        void __fastcall lstSongsMeasureItem(TWinControl *Control,
+          int Index, int &Height);
 
 private:	// User declarations
 

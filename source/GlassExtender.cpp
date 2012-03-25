@@ -77,7 +77,7 @@ bool GlassExtender::isCompositionActive()
 #define LBPSI_SELECTEDNOTFOCUS 4
 
 bool GlassExtender::drawGlowText(HDC dc, const AnsiString& item,const TRect &itemRect,
-                                 TOwnerDrawState state, bool current)
+                                 bool current)
 {
 
   if (NULL == m_DrawThemeTextExProc)
@@ -101,7 +101,7 @@ bool GlassExtender::drawGlowText(HDC dc, const AnsiString& item,const TRect &ite
 
   if (current)
   {
-    dttOpts.crText = clRed;
+    dttOpts.crText = clWhite;
     dttOpts.dwFlags |= DTT_TEXTCOLOR;
   }
 
