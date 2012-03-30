@@ -101,7 +101,7 @@ const char * commandStr;
 
         MainMessage( str.c_str());
       }
-      ExecuteMessage(command);
+      LocalExecuteCommand(command);
       MainStatus(waListening);
     }
     __except(1)
@@ -150,7 +150,7 @@ const char * commandStr;
           MainMessage( str.c_str());
       }
 
-      ExecuteStringMessage( (char *) pszParam, command);
+      LocalExecuteStringCommand( (char *) pszParam, command);
       MainStatus(waListening);
     }
     __except(1)
@@ -197,7 +197,7 @@ int result;
         MainMessage( str.c_str());
       }
       //execute command
-      result = GetAmpInt(command, data);
+      result = LocalQueryInt(command, data);
       MainStatus(waListening);
       return result;
 
@@ -237,7 +237,7 @@ long int WAStringResult(
           MainIdent((char *) pszString);
           MainStatus(waListening);
 
-          retval = GetAmpStr(command, data);
+          retval = LocalQueryString(command, data);
 
           if (frmMain->requestlog[QUERY_STRING])
           {
@@ -349,7 +349,8 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-              ExecuteStringMessage(StringList->Strings[i].c_str(), command);
+//              LocalExecuteStringMessage(StringList->Strings[i].c_str(), command);
+              LocalExecuteStringCommand(StringList->Strings[i].c_str(), command);
             }
 
 
@@ -407,10 +408,10 @@ void WAGetStringList(
             {
               // get all items in list
 
-              ListLength = GetAmpInt(IPC_GETLISTLENGTH, 0);
+              ListLength = LocalQueryInt(IPC_GETLISTLENGTH, 0);
               for (int i = 0 ; i < ListLength ; i++)
               {
-                StringList->Add(GetAmpStr(command, i));
+                StringList->Add(LocalQueryString(command, i));
               }
 
               char * Buffer = StringList->GetText();
@@ -480,23 +481,23 @@ void WAGetStringDataList(
               // get all items in list
 
               int i, Index;
-              Index = GetAmpInt(IPC_GETLISTPOS, 0);
-              ListLength = GetAmpInt(IPC_GETLISTLENGTH, 0);
+              Index = LocalQueryInt(IPC_GETLISTPOS, 0);
+              ListLength = LocalQueryInt(IPC_GETLISTLENGTH, 0);
               for (i = 0 ; i < ListLength ; i++)
               {
-                GetAmpInt(IPC_SETPLAYLISTPOS, i);
+                LocalQueryInt(IPC_SETPLAYLISTPOS, i);
                 // get the string property
-                StringList->Add(GetAmpStr(stringcommand, i));
+                StringList->Add(LocalQueryString(stringcommand, i));
                 // add in the integer property for this index
 
                 // set the index
-                GetAmpInt(IPC_SETPLAYLISTPOS, i);
+                LocalQueryInt(IPC_SETPLAYLISTPOS, i);
 
-                StringList->Add(GetAmpInt(intcommand, intdata));
+                StringList->Add(LocalQueryInt(intcommand, intdata));
               }
 
               // reset the currently playing song
-              GetAmpInt(IPC_SETPLAYLISTPOS, Index);
+              LocalQueryInt(IPC_SETPLAYLISTPOS, Index);
 
 
               char * Buffer = StringList->GetText();
@@ -563,11 +564,11 @@ int retval;
     InitializeCriticalSection(&fCriticalSection);
     MainStatus(waServerStarting);
 
-    str = (AnsiString("winamp version : ") + GetWinampVersion());
+    str = (AnsiString("winamp version : ") + LocalGetWinampVersion());
     MainMessage(str.c_str());
 
     //test for the buggy versions
-    retval = GetAmpInt(IPC_GETVERSION,  0);
+    retval = LocalQueryInt(IPC_GETVERSION,  0);
     switch (retval)
     {
     // specific cases...

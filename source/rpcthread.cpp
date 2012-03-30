@@ -51,7 +51,7 @@ void WAExecuteMessage(
 
   // identify command?
   //execute command
-  ExecuteMessage(command);
+  LocalExecuteCommand(command);
   MainStatus("listening...");
 
 }
@@ -70,7 +70,7 @@ void WAExecuteMessageString(
   str += (char *) pszParam;
   MainMessage( str.c_str());
 
-  ExecuteStringMessage( (char *) pszParam, command);
+  LocalExecuteStringCommand( (char *) pszParam, command);
   MainStatus("listening...");
 
 }
@@ -90,7 +90,7 @@ long WAIntegerResult(
   MainMessage( str.c_str());
 
   //execute command
-  int ret = GetAmpInt(command, data);
+  int ret = LocalQueryInt(command, data);
   MainStatus("listening...");
   return ret;
 
@@ -154,7 +154,7 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-                  ExecuteStringMessage( (char *) StringList->Strings[i].c_str(), command);
+                  LocalExecuteStringCommand( (char *) StringList->Strings[i].c_str(), command);
             }
 
 
@@ -201,7 +201,7 @@ void WAGetStringList(
             {
               // get all items in list
 
-              for (int i = 0 ; i < GetAmpInt(IPC_GETLISTLENGTH, 0); i++ )
+              for (int i = 0 ; i < LocalQueryInt(IPC_GETLISTLENGTH, 0); i++ )
               {
                 StringList->Add(AnsiString("string #") + i);
               }
@@ -262,7 +262,7 @@ void WAGetStringDataList(
             {
               // get all items in list
 
-              for (int i = 0 ; i < GetAmpInt(IPC_GETLISTLENGTH, 0); i++ )
+              for (int i = 0 ; i < LocalQueryInt(IPC_GETLISTLENGTH, 0); i++ )
               {
                 StringList->Add(AnsiString("string #") + i);
               }
@@ -326,7 +326,7 @@ void __fastcall TRPCServerThread::Execute()
     MainStatus("initialising...");
 
     str = "winamp version : ";
-    str += GetWinampVersion();
+    str += LocalGetWinampVersion();
 
     MainMessage(str.c_str());
 

@@ -69,7 +69,7 @@ char * port;
     cout << "\t\t****************************************" << endl << endl;
     cout << "\t\ttalking on " << address << ":" << port  << endl << "\t\tserver: " ;
 
-    cout << "\t\t" << WinampVersion(cwc->winampVersion()) << endl;
+    cout << "\t\t" << WinampVersionString(cwc->winampVersion()) << endl;
 
     cout << "\t\tcommands: " << endl;
     cout << "\t\tp, s, h, <, >: play, stop, (un)pause, back, forward" << endl;

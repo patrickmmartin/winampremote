@@ -29,6 +29,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 HWND hwnd_winamp;
 
+const int MAX_WINAMPVER_LEN = 80;
+
 char winampver[MAX_WINAMPVER_LEN];
 
 void GethWnd_WinAmp()
@@ -37,7 +39,7 @@ char * windowname = "Winamp v1.x";
  hwnd_winamp = FindWindow(windowname, NULL);
 }
 
-void ExecuteMessage(int Command){
+void LocalExecuteCommand(int Command){
 #ifdef HWND_UPDATE
   GethWnd_WinAmp();
 #endif
@@ -45,7 +47,7 @@ void ExecuteMessage(int Command){
   }
 
 // 1.7+ send a command with a string parameter
-void ExecuteStringMessage(char * CommandString, int Command){
+void LocalExecuteStringCommand(char * CommandString, int Command){
   COPYDATASTRUCT cds;
 
 #ifdef HWND_UPDATE
@@ -58,7 +60,7 @@ void ExecuteStringMessage(char * CommandString, int Command){
   }
 
  // Send a message to Winamp and return an Integer
-int GetAmpInt(int Command, int Data)
+int LocalQueryInt(int Command, int Data)
 {
 #ifdef HWND_UPDATE
   GethWnd_WinAmp();
@@ -67,7 +69,7 @@ int GetAmpInt(int Command, int Data)
 }
 
 // Send a message to Winamp and return a String
-char * GetAmpStr(int Command, int Data)
+char * LocalQueryString(int Command, int Data)
 {
 #ifdef HWND_UPDATE
   GethWnd_WinAmp();
@@ -79,13 +81,13 @@ char * GetAmpStr(int Command, int Data)
 
 
 
-char * GetWinampVersion(void){
+char * LocalGetWinampVersion(void){
 int retval;
 #ifdef HWND_UPDATE
   GethWnd_WinAmp();
 #endif
-  retval = GetAmpInt(IPC_GETVERSION,  0);
-  return WinampVersion(retval);
+  retval = LocalQueryInt(IPC_GETVERSION,  0);
+  return WinampVersionString(retval);
 }
 
 
@@ -101,7 +103,7 @@ char * StandardVersion(int retval)
 }
 
 
-char * WinampVersion(int retval){
+char * WinampVersionString(int retval){
   switch (retval){
   //special cases
   case  0x00 :

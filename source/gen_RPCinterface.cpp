@@ -34,6 +34,7 @@ USEUNIT("rpcthreadDLL.cpp");
 USEUNIT("WAINT.CPP");
 USEUNIT("RFC1060U.CPP");
 USELIB("..\lib\winampinterface.lib");
+USEUNIT("GlassExtender.cpp");
 //---------------------------------------------------------------------------
 HINSTANCE g_hinst;
 //---------------------------------------------------------------------------

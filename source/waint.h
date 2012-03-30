@@ -7,8 +7,18 @@
 
 enum WAPlaybackStatus {WA_NOT_PLAYING, WA_PLAYING, WA_UNUSED, WA_PAUSED};
 
-const int MAX_WINAMPVER_LEN = 80;
-const int FAIL_TIMEOUT = 15; // seconds
+/* major interface functions */
+
+void GethWnd_WinAmp(void);
+void LocalExecuteCommand(int MessageToExecute);
+void LocalExecuteStringCommand(char * CommandString, int Command);
+int LocalQueryInt(int Command, int Data);
+char * LocalQueryString(int Command, int Data);
+char * LocalGetWinampVersion(void);
+char * WinampVersionString(int retval);
+
+/* strings identifying the commands */
+const char * WinampCommandDesc(int Command);
 
 extern HWND hwnd_winamp;
 
@@ -114,20 +124,5 @@ const int WINAMP_JUMPFILE = 40194;
 const int WINAMP_JUMP10FWD = 40195;
 const int WINAMP_JUMP10BACK = 40197;
 const int WINAMP_PREVSONG = 40198;
-
-
-/* major interface functions */
-
-void GethWnd_WinAmp(void);
-void ExecuteMessage(int MessageToExecute);
-void ExecuteStringMessage(char * CommandString, int Command);
-int GetAmpInt(int Command, int Data);
-char * GetAmpStr(int Command, int Data);
-char * GetWinampVersion(void);
-char * WinampVersion(int retval);
-
-/* strings identifying the commands */
-const char * WinampCommandDesc(int Command);
-
 
 #endif

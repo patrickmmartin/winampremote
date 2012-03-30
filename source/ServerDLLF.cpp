@@ -38,6 +38,9 @@ TfrmMain *frmMain;
 HWND mainhwnd;
 TRPCServerThread *serverThread;
 
+const int FAIL_TIMEOUT = 15; // seconds
+
+
 //---------------------------------------------------------------------------
 void __fastcall TfrmMain::ThreadMessage(TMessage &Message)
 

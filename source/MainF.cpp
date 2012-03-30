@@ -47,6 +47,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include <math.h>
 
+const int POLL_ERROR_FACTOR = 10; // seconds
+
 /* TODO -opatrick -cactions : may need concatenation of available actions in a specific order */
 
 //---------------------------------------------------------------------------
@@ -765,7 +767,7 @@ void TfrmMain::UpdateIcon(void)
     {
       timerMain->Interval = UpdateTime;
       WinampVerNo = IntegerResult(IdentChars, IPC_GETVERSION,  0);
-      lblVersion->Caption = WinampVersion(WinampVerNo);
+      lblVersion->Caption = WinampVersionString(WinampVerNo);
     }
 
     strcpy(title, IdentChars);
@@ -855,8 +857,8 @@ void TfrmMain::UpdateIcon(void)
 
     WAStatus = WA_UNUSED;
     lblMessage->Caption = E.Message;
-    lblVersion->Caption = WinampVersion(0);
-    timerMain->Interval = 1000 * FAIL_TIMEOUT;
+    lblVersion->Caption = WinampVersionString(0);
+    timerMain->Interval = 1000 * POLL_ERROR_FACTOR;
   }
 
   Querying = false;

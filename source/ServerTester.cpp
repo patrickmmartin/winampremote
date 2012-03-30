@@ -66,7 +66,7 @@ void ServerTester::testServers(vector<AnsiString>& servers)
             end = clock();
             DoMessage(remote, AnsiString().sprintf("response after %.2fs ", (end - start) / CLK_TCK), 1);
             DoResult(remote, true);
-            DoMessage(remote, WinampVersion(retval), 1);
+            DoMessage(remote, WinampVersionString(retval), 1);
           }
           catch( ERPCException &E)
           {
