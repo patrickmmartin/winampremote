@@ -64,7 +64,6 @@ void __fastcall TfrmPlaylist::FormCreate(TObject *)
 {
 
   lstSongs->ItemHeight = Canvas->TextHeight('W');
-  SongList = new TStringList;
   frmMain->PlaylistRefresh->Execute();
 
 }
@@ -112,6 +111,8 @@ AnsiString itemState(TOwnerDrawState State)
   if (State.Contains(odFocused))
         return;
 
+  AnsiString setstr = itemState(State);
+
   if (Index == frmMain->CurrentIndex)
     Canvas->Font->Color = clRed;
 
@@ -134,16 +135,12 @@ AnsiString itemState(TOwnerDrawState State)
   if (State.Contains(odFocused))
         return;
 
-  AnsiString setstr;
-
-  for (Windows__1 i = odSelected ; i < odComboBoxEdit ; i++)
-  {
-        if (State.Contains(i))
-                setstr += AnsiString(States[i]) + " ";
-  }
+  AnsiString setstr = itemState(State);
 
   OutputDebugString(AnsiString().sprintf("drawing %i [%s]", Index, itemState(State).c_str()).c_str());
-  Canvas->FillRect(Rect);
+  // paints now accumulate, so this is needed
+  if (!State.Contains(odSelected))
+	  Canvas->FillRect(Rect);
   ge->drawGlowText(Canvas->Handle, ItemText, Rect, (Index == frmMain->CurrentIndex) );
 }
 
@@ -454,15 +451,6 @@ void __fastcall TfrmPlaylist::pbSongPosMouseDown(TObject *, TMouseButton , TShif
 {
   fDragging = true;
 }
-
-
-
-
-void __fastcall TfrmPlaylist::FormDestroy(TObject *)
-{
-  delete SongList;
-}
-
 
 
 

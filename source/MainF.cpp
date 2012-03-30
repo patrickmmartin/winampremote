@@ -1483,17 +1483,6 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
         if (bufsize)
           SongList->Text = (char *) buf;
 
-        //run through, removing the data items in-place
-        /*
-        for (int i = 0 ; i < SongList->Count ; i++)
-        {
-          int SongTime = SongList->Strings[i + 1].ToIntDef(-1);
-          SongList->Delete(i + 1);
-          SongList->Objects[i] = (TObject *) SongTime;
-        }
-        */
-
-        // after fixing up the returned StringList
         frmPlaylist->lstSongs->Items->Assign(SongList);
 
       }

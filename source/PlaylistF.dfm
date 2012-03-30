@@ -15,7 +15,6 @@ object frmPlaylist: TfrmPlaylist
   Position = poDefault
   OnClose = FormClose
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnEndDock = FormEndDock
   OnResize = FormResize
   OnShow = FormShow
@@ -113,6 +112,7 @@ object frmPlaylist: TfrmPlaylist
         Width = 60
       end>
     SimplePanel = False
+    Visible = False
   end
   object pmnuSongs: TPopupMenu
     Images = frmMain.imlActions

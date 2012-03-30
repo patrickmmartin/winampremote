@@ -94,15 +94,17 @@ bool GlassExtender::drawGlowText(HDC dc, const AnsiString& item,const TRect &ite
   RECT R = Rect(itemRect.Left, itemRect.Top, itemRect.Right, itemRect.Bottom);
 
   dttOpts.dwSize = sizeof(DTTOPTS);
-  dttOpts.iGlowSize = 1;
-  dttOpts.dwFlags = DTT_GLOWSIZE | DTT_STATEID;
+  dttOpts.iGlowSize = 3;
+  dttOpts.dwFlags = /* DTT_GLOWSIZE |*/ DTT_STATEID;
+  dttOpts.crText = clGreen;
+  dttOpts.dwFlags |= DTT_TEXTCOLOR;
 
-  HANDLE hTheme = m_OpenThemeDataProc(0, L"LISTBOX");
+  HANDLE hTheme = m_OpenThemeDataProc(0, L"WINDOW");
 
   if (current)
   {
     dttOpts.crText = clWhite;
-    dttOpts.dwFlags |= DTT_TEXTCOLOR;
+    dttOpts.dwFlags |= DTT_TEXTCOLOR | DTT_GLOWSIZE ;
   }
 
   HRESULT ret = m_DrawThemeTextExProc(hTheme, dc, LBCP_ITEM, 0,
