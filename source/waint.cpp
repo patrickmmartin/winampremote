@@ -18,13 +18,21 @@
  Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
  */
 
-#pragma hdrstop
 #include <stdio.h>
+#pragma hdrstop
+
 #include "waint.h"
 
-
+/**
+ * handle of the winamp instance
+ */
 HWND hwnd_winamp = NULL;
-const int MAX_WINAMPVER_LEN = 80;
+
+/**
+ * Winamp user Message number
+ */
+const int WM_WA_IPC = WM_USER;
+
 
 HWND setWinampHwnd(HWND HWinamp)
 {
@@ -46,13 +54,13 @@ static void GethWnd_WinAmp()
 }
 */
 
-void LocalExecuteCommand(int Command)
+void LocalExecuteCommand(WinampCommand Command)
 {
 	PostMessage(hwnd_winamp, WM_COMMAND, Command, 0);
 }
 
 // 1.7+ send a command with a string parameter
-void LocalExecuteStringCommand(char * CommandString, int Command)
+void LocalExecuteStringCommand(char * CommandString, WinampCommand Command)
 {
 	COPYDATASTRUCT cds;
 
@@ -63,21 +71,22 @@ void LocalExecuteStringCommand(char * CommandString, int Command)
 }
 
 // Send a message to Winamp and return an Integer
-int LocalQueryInt(int Command, int Data)
+int LocalQueryInt(WinampCommand Command, int Data)
 {
 	return SendMessage(hwnd_winamp, WM_WA_IPC, Data, Command);
 }
 
 // Send a message to Winamp and return a String
-char * LocalQueryString(int Command, int Data)
+char * LocalQueryString(WinampCommand Command, int Data)
 {
 	return (char *) SendMessage(hwnd_winamp, WM_WA_IPC, Data, Command);
 }
 
+
 /**
  * static buffer for the winamp version
  */
-static char winampver[MAX_WINAMPVER_LEN];
+static char winampver[80];
 
 /**
  * Returns the formatted standard Winamp version
