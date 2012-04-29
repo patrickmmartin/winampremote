@@ -112,9 +112,7 @@ Item0=$(BCB)\source\vcl
 Count=5
 Item0=WIN32_LEAN_AND_MEAN;_DEBUG
 Item1=WIN32_LEAN_AND_MEAN
-Item2=_RTLDLL
-Item3=_RTLDLL;USEPACKAGES
-Item4=USEPACKAGES
+Item2=USEPACKAGES
 
 [HistoryLists\hlIntOutputDir]
 Count=5

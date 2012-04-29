@@ -7,24 +7,87 @@
 
 enum WAPlaybackStatus {WA_NOT_PLAYING, WA_PLAYING, WA_UNUSED, WA_PAUSED};
 
-/* major interface functions */
+/* major low level interface functions */
 
-void GethWnd_WinAmp(void);
+// TODO namespace for local utilities?
+
+
+/**
+ * Sets the target handle for the message based API
+ * can come from a FindWindow, for example or from the in-process value returned
+ * @param HWinamp
+ * @return prior value of the target handle
+ */
+HWND setWinampHwnd(HWND HWinamp);
+
+/**
+ *  Executes the Winamp API message on the current target handle
+ * @param MessageToExecute winamp command ID
+ * returns nothing
+ */
 void LocalExecuteCommand(int MessageToExecute);
+
+/**
+ * Executes the Winamp string based API command on the current target handle.
+ * @param CommandString - input parameter
+ * @param Command - the winamp API command
+ * returns nothing
+ */
 void LocalExecuteStringCommand(char * CommandString, int Command);
+
+/**
+ * Queries the Winamp API for an integer value.
+ * @param Command
+ * @param Data  - the winamp API command
+ * @return the result of the query
+ */
 int LocalQueryInt(int Command, int Data);
+
+
+/**
+ * Queries the Winamp API for a string value.
+ * @param Command
+ * @param Data  - the winamp API command
+ * @return in-process the pointer to the char data for the the result
+ */
 char * LocalQueryString(int Command, int Data);
-char * LocalGetWinampVersion(void);
-char * WinampVersionString(int retval);
+
+/**
+ * Utility function that returns the winamp version description string,
+ * according to the known formatting rules.
+ * Caters for new standard format Winamp versions and no version.
+ * @return the string for the Winamp version
+ */
+const char * LocalGetWinampVersion();
 
 /* strings identifying the commands */
+/**
+ * Utility function to name the Winamp commands.
+ * @param Command
+ * @return the Winamp API command description constant
+ */
 const char * WinampCommandDesc(int Command);
 
-extern HWND hwnd_winamp;
+/**
+ * Utility function to name the Winamp version from the version number.
+ * @param version
+ * @return the string for the Winamp version
+ */
+const char * WinampVersionString(int version);
 
+/**
+ * Winamp Message definitions
+ */
 const int WM_WA_IPC = WM_USER;
 
+/**
+ * obtain version
+ */
 const int IPC_GETVERSION = 0;
+
+/**
+ * Winamp basic operations
+ */
 const int IPC_PLAYFILE  = 100;
 const int IPC_DELETE  = 101;
 const int IPC_STARTPLAY = 102;
@@ -65,6 +128,9 @@ const int WINAMP_VOLUMEDOWN = 40059;
 const int WINAMP_FFWD5S = 40060;
 const int WINAMP_REW5S = 40061;
 
+/**
+ * Winamp button definitions
+ */
 const int WINAMP_BUTTON1 = 40044;
 const int WINAMP_BUTTON2 = 40045;
 const int WINAMP_BUTTON3 = 40046;
@@ -81,8 +147,7 @@ const int WINAMP_BUTTON3_CTRL = 40156;
 const int WINAMP_BUTTON4_CTRL = 40157;
 const int WINAMP_BUTTON5_CTRL = 40158;
 
-/* for convenience... */
-
+/** aliases for convenience... */
 
 const int WINAMP_PREVIOUS  = WINAMP_BUTTON1;
 const int WINAMP_PLAYENTRY  = WINAMP_BUTTON2;
@@ -102,6 +167,9 @@ const int WINAMP_OPENLOCATION = WINAMP_BUTTON2_CTRL;
 const int WINAMP_STOPAFTERCURRENT = WINAMP_BUTTON4_CTRL;
 const int WINAMP_ENDOFPLAYLIST = WINAMP_BUTTON5_CTRL;
 
+/**
+ * Winamp directives for the Playlist view
+ */
 const int IDC_SORT_FILENAME = 40166;
 const int IDC_SORT_FILETITLE = 40167;
 const int IDC_SORT_ENTIREFILENAME = 40168;
@@ -109,6 +177,10 @@ const int IDC_SELECTALL = 40169;
 const int IDC_SELECTNONE = 40170;
 const int IDC_SELECTINV = 40171;
 
+
+/**
+ * Winamp directives for the Equaliser view
+ */
 const int IDM_EQ_LOADPRE = 40172;
 const int IDM_EQ_LOADMP3 = 40173;
 const int IDM_EQ_LOADDEFAULT = 40174;
@@ -119,6 +191,9 @@ const int IDM_EQ_DELPRE = 40178;
 const int IDM_EQ_DELMP3 = 40180;
 
 
+/**
+ * More advanced navigation directives
+ */
 const int WINAMP_JUMP = 40193;
 const int WINAMP_JUMPFILE = 40194;
 const int WINAMP_JUMP10FWD = 40195;

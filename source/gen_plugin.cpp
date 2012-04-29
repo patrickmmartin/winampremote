@@ -27,11 +27,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "ServerDLLF.h"         // for main form
 #include "ConfigDLLF.h"         // for config form
 #include "waint.h"              // extern HWND variable
-
-//---------------------------------------------------------------------------
-
-#pragma package(smart_init)
-
 // buffer for the control structure
 
 char VerString[MAX_PATH + 1];
@@ -130,8 +125,9 @@ AnsiString str;
   {
     try
     {
-      hwnd_winamp = plugin.hwndParent;
-      Application->Handle = hwnd_winamp;
+      // pass on the provided parameters
+      setWinampHwnd(plugin.hwndParent);
+      Application->Handle = plugin.hwndParent;
       frmMain = new TfrmMain(Application);
       try
       {

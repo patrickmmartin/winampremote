@@ -271,7 +271,6 @@
           <HistoryLists_hlConditionals Name="Item0">WIN32_LEAN_AND_MEAN;_DEBUG</HistoryLists_hlConditionals>
           <HistoryLists_hlConditionals Name="Item1">WIN32_LEAN_AND_MEAN</HistoryLists_hlConditionals>
           <HistoryLists_hlConditionals Name="Item2">USEPACKAGES</HistoryLists_hlConditionals>
-          <HistoryLists_hlConditionals Name="Item3">_RTLDLL;USEPACKAGES</HistoryLists_hlConditionals>
         </HistoryLists_hlConditionals>
         <HistoryLists_hlIntOutputDir>
           <HistoryLists_hlIntOutputDir Name="Count">4</HistoryLists_hlIntOutputDir>

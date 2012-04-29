@@ -99,8 +99,6 @@
           <property category="win32.*.win32b.bcc32" name="option.n.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.noregistervars.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="NO_STRICT"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="_RTLDLL"/>
-          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="USEPACKAGES"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.tWC.enabled" value="1"/>
@@ -257,7 +255,7 @@
           <HistoryLists_hlConditionals Name="Item0">WIN32_LEAN_AND_MEAN;_DEBUG</HistoryLists_hlConditionals>
           <HistoryLists_hlConditionals Name="Item1">WIN32_LEAN_AND_MEAN</HistoryLists_hlConditionals>
           <HistoryLists_hlConditionals Name="Item2">USEPACKAGES</HistoryLists_hlConditionals>
-          <HistoryLists_hlConditionals Name="Item3">_RTLDLL;USEPACKAGES</HistoryLists_hlConditionals>
+
         </HistoryLists_hlConditionals>
         <HistoryLists_hlIntOutputDir>
           <HistoryLists_hlIntOutputDir Name="Count">3</HistoryLists_hlIntOutputDir>
