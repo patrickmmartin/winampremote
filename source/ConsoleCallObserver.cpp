@@ -4,6 +4,11 @@
 #include <iostream>
 
 
+namespace WinampRemote
+{
+namespace Remoting
+{
+
 void ConsoleCallObserver::notifyStatus(const char * status){
 
   // output to console
@@ -19,4 +24,5 @@ void ConsoleCallObserver::notifyMessage(const char * msg ){
 }
 
 
-
+} // end of namespace Remoting
+} // end of namespace WinampRemote

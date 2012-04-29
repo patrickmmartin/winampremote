@@ -6,6 +6,8 @@
 #include "windows.h"
 #include <sstream>
 
+using namespace WinampRemote::Remoting;
+
 class DefaultCallObserver : public ICallObserver  {
 
     public:

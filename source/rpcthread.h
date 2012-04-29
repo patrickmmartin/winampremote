@@ -7,6 +7,9 @@
 
  #include "ICallObserver.h"
 
+using namespace WinampRemote::Remoting;
+
+
 class TRPCServerThread : public TThread
 {
 private:

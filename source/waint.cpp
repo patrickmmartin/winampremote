@@ -36,15 +36,15 @@ HWND setWinampHwnd(HWND HWinamp)
 	return retval;
 }
 
-/**
+/*
  * Utility function to obtain the winamp handle when out of process
  * uses FindWindow, which is incredibly crufty, so let's not put this in a header.
- */
 static void GethWnd_WinAmp()
 {
 	char * windowname = "Winamp v1.x";
 	hwnd_winamp = FindWindow(windowname, NULL);
 }
+*/
 
 void LocalExecuteCommand(int Command)
 {

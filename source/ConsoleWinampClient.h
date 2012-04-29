@@ -3,37 +3,56 @@
 
 #include "IWinamp.h"
 
-// concrete implementation of IWinamp
+/**
+ * namespace for the WinampRemote project
+ */
+namespace WinampRemote
+{
 
-namespace WinampRemote {
-    namespace Client {
+/**
+ * namespace for the use of client classes
+ */
+namespace Client
+{
 
-    class ConsoleWinampClient : public IWinamp  {
+/**
+ * A concrete implementation of the a IWinamp client for console use
+ */
+class ConsoleWinampClient: public IWinamp
+{
 
-      public:
+public:
 
-        ConsoleWinampClient();
+	/**
+	 * no - params constructor
+	 */
+	ConsoleWinampClient();
 
-        virtual ~ConsoleWinampClient() {}
+	/**
+	 * destructor
+	 */
+	virtual ~ConsoleWinampClient()
+	{
+	}
 
-        virtual void nextSong(void);
+	virtual void nextSong(void);
 
-        virtual void previousSong(void);
+	virtual void previousSong(void);
 
-        virtual void playSong(void);
+	virtual void playSong(void);
 
-        virtual void stopSong(void);
+	virtual void stopSong(void);
 
-        virtual void pause(void);
+	virtual void pause(void);
 
-        virtual WAPlaybackStatus getPlaybackStatus(void);
+	virtual WAPlaybackStatus getPlaybackStatus(void);
 
-        virtual vector<string>* getPlayList(void);
+	virtual vector<string>* getPlayList(void);
 
-        virtual int winampVersion(void);
+	virtual int winampVersion(void);
 
-    };
-  } // end of namespace
-} // end of namespace
+};
+} // end of namespace Client
+} // end of namespace WinampRemote
 
 #endif // CONSOLEWINAMPCLIENT_H

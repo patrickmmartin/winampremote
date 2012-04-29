@@ -44,6 +44,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "ConsoleWinampClient.h"
 
+using namespace WinampRemote::Client;
+
 int main(int argc , char* argv[] )
 {
 
@@ -74,7 +76,7 @@ char * port;
 
     Bind(address, port);
 
-    WinampRemote::Client::ConsoleWinampClient * cwc = new WinampRemote::Client::ConsoleWinampClient();
+    ConsoleWinampClient * cwc = new ConsoleWinampClient();
 
     cout << "playback status " << cwc->getPlaybackStatus() << endl;
     cwc->getPlaybackStatus();
@@ -111,6 +113,6 @@ char * port;
     perror("Unhandled error ");
     return errno;
   }
-
+  return 0;
 }
 

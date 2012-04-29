@@ -5,6 +5,11 @@
 
 #include "ICallObserver.h"
 
+namespace WinampRemote
+{
+namespace Remoting
+{
+
 class ConsoleCallObserver : public ICallObserver  {
 
     public:
@@ -17,6 +22,8 @@ class ConsoleCallObserver : public ICallObserver  {
 
 };
 
+} // end of namespace Remoting
+} // end of namespace WinampRemote
+
 #endif // CONSOLECALLOBSERVER_H
 
- 

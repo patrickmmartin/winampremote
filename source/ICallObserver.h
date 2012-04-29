@@ -3,16 +3,43 @@
 #ifndef ICALLOBSERVER_H
 #define ICALLOBSERVER_H
 
+
+namespace WinampRemote
+{
+
+/**
+ * interface defining remoting operations
+ */
+namespace Remoting
+{
+
+/**
+ * interface for the call observation
+ */
 class ICallObserver {
 
   public:
 
-    virtual ~ICallObserver() {}
+    /**
+     * virtual destructor
+     */
+	virtual ~ICallObserver() {}
 
-    virtual void notifyStatus(const char * status) = 0;
+    /**
+     * status output
+     * @param status
+     */
+	virtual void notifyStatus(const char * status) = 0;
 
-    virtual void notifyMessage(const char * msg ) = 0;
+    /**
+     * message output
+     * @param msg
+     */
+	virtual void notifyMessage(const char * msg ) = 0;
 
 };
+
+} // end of namespace Remoting
+} // end of namespace WinampRemote
 
 #endif ICALLOBSERVER_H
