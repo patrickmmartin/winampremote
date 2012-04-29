@@ -77,6 +77,37 @@ public:
 };
 
 } // end of namespace Client
+
+/**
+ * interface defining the operations Winamp supports for clients
+ */
+namespace Server
+{
+
+/**
+ * interface defining the operations the winamp server component supports
+ */
+class IWinampServer
+{
+
+public:
+
+	// virtual destructor
+	virtual ~IWinampServer()
+	{
+	}
+
+	void ExecuteCommand(WinampCommand MessageToExecute);
+
+	void ExecuteStringCommand(char * CommandString, WinampCommand Command);
+
+	int QueryInt(WinampCommand Command, int Data);
+
+	string QueryString(WinampCommand Command, int Data);
+
+};
+
+} // end of namespace Server
 } // end of namespace WinampRemote
 
 #endif // end of IWINAMP_
