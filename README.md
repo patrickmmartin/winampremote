@@ -4,7 +4,7 @@
 
 Consists of a plugin that is compatible with the winamp 2.5.x API, along with a client, allowing multiple users to share a centralised Winamp server.
 
-Built using c++ Builder 5 onwards and uses MS-RPC (over tcp) for the communication mechanismm.
+Built using c++ Builder 5 onwards and uses MS-RPC (over tcp^H^H^H named pipes) for the communication mechanismm.
 
 A linux client was created which worked fine, linked against the DCE-RPC runtime.
 
