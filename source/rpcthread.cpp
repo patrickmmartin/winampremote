@@ -51,6 +51,7 @@ void WAExecuteMessage(
 
   // identify command?
   //execute command
+  // TODO direct to server implementation
   LocalExecuteCommand(command);
   MainStatus("listening...");
 
@@ -70,6 +71,7 @@ void WAExecuteMessageString(
   str += (char *) pszParam;
   MainMessage( str.c_str());
 
+  // TODO direct to server implementation
   LocalExecuteStringCommand( (char *) pszParam, command);
   MainStatus("listening...");
 
@@ -90,6 +92,7 @@ long WAIntegerResult(
   MainMessage( str.c_str());
 
   //execute command
+  // TODO direct to server implementation
   int ret = LocalQueryInt(command, data);
   MainStatus("listening...");
   return ret;
@@ -154,6 +157,7 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
+                // TODO direct to server implementation
                   LocalExecuteStringCommand( (char *) StringList->Strings[i].c_str(), command);
             }
 
@@ -201,6 +205,7 @@ void WAGetStringList(
             {
               // get all items in list
 
+                // TODO direct to server implementation
               for (int i = 0 ; i < LocalQueryInt(IPC_GETLISTLENGTH, 0); i++ )
               {
                 StringList->Add(AnsiString("string #") + i);
@@ -262,6 +267,7 @@ void WAGetStringDataList(
             {
               // get all items in list
 
+                // TODO direct to server implementation
               for (int i = 0 ; i < LocalQueryInt(IPC_GETLISTLENGTH, 0); i++ )
               {
                 StringList->Add(AnsiString("string #") + i);
@@ -326,6 +332,7 @@ void __fastcall TRPCServerThread::Execute()
     MainStatus("initialising...");
 
     str = "winamp version : ";
+    // TODO direct to server implementation
     str += LocalGetWinampVersion();
 
     MainMessage(str.c_str());

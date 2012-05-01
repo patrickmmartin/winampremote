@@ -18,6 +18,8 @@ namespace WinampRemote
 namespace Client
 {
 
+using namespace std;
+
 class IWinamp
 {
 
@@ -83,6 +85,8 @@ public:
  */
 namespace Server
 {
+
+using namespace std;
 
 /**
  * interface defining the operations the winamp server component supports

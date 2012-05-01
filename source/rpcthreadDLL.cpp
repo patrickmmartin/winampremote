@@ -56,6 +56,7 @@ void WAMessageProc(
       MainIdent((char *) pszString);
       AnsiString str = (char *) pszString;
       str += " sent hello";
+      // TODO direct to server implementation
       MainMessage(str.c_str());
       MainStatus(waListening);
     }
@@ -101,6 +102,7 @@ const char * commandStr;
 
         MainMessage( str.c_str());
       }
+      // TODO direct to server implementation
       LocalExecuteCommand(command);
       MainStatus(waListening);
     }
@@ -150,6 +152,7 @@ const char * commandStr;
           MainMessage( str.c_str());
       }
 
+      // TODO direct to server implementation
       LocalExecuteStringCommand( (char *) pszParam, command);
       MainStatus(waListening);
     }
@@ -197,6 +200,7 @@ int result;
         MainMessage( str.c_str());
       }
       //execute command
+      // TODO direct to server implementation
       result = LocalQueryInt(command, data);
       MainStatus(waListening);
       return result;
@@ -237,6 +241,7 @@ long int WAStringResult(
           MainIdent((char *) pszString);
           MainStatus(waListening);
 
+          // TODO direct to server implementation
           retval = LocalQueryString(command, data);
 
           if (frmMain->requestlog[QUERY_STRING])
@@ -300,6 +305,8 @@ void WAShutdown(void)
 
 RPC_STATUS status;
 
+  // TODO direct to server implementation, or perhaps the
+  // lifetime management is best done here?
   MainMessage("rpc thread asked to stop");
   status = RpcMgmtStopServerListening(NULL);
   if (status == RPC_S_OK)
@@ -349,7 +356,7 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-//              LocalExecuteStringMessage(StringList->Strings[i].c_str(), command);
+              // TODO direct to server implementation
               LocalExecuteStringCommand(StringList->Strings[i].c_str(), command);
             }
 
@@ -408,9 +415,11 @@ void WAGetStringList(
             {
               // get all items in list
 
+              // TODO direct to server implementation
               ListLength = LocalQueryInt(IPC_GETLISTLENGTH, 0);
               for (int i = 0 ; i < ListLength ; i++)
               {
+                // TODO direct to server implementation
                 StringList->Add(LocalQueryString(command, i));
               }
 
@@ -481,22 +490,29 @@ void WAGetStringDataList(
               // get all items in list
 
               int i, Index;
+              // TODO direct to server implementation
               Index = LocalQueryInt(IPC_GETLISTPOS, 0);
+              // TODO direct to server implementation
               ListLength = LocalQueryInt(IPC_GETLISTLENGTH, 0);
               for (i = 0 ; i < ListLength ; i++)
               {
+                // TODO direct to server implementation
                 LocalQueryInt(IPC_SETPLAYLISTPOS, i);
                 // get the string property
+                // TODO direct to server implementation
                 StringList->Add(LocalQueryString(stringcommand, i));
                 // add in the integer property for this index
 
                 // set the index
+                // TODO direct to server implementation
                 LocalQueryInt(IPC_SETPLAYLISTPOS, i);
 
+                // TODO direct to server implementation
                 StringList->Add(LocalQueryInt(intcommand, intdata));
               }
 
               // reset the currently playing song
+              // TODO direct to server implementation
               LocalQueryInt(IPC_SETPLAYLISTPOS, Index);
 
 
@@ -545,14 +561,14 @@ void WAGetStringDataList(
 
 
 //---------------------------------------------------------------------------
-__fastcall TRPCServerThread::TRPCServerThread(bool CreateSuspended)
+__fastcall TRPCServerDLLThread::TRPCServerDLLThread(bool CreateSuspended)
     : TThread(CreateSuspended)
 {
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TRPCServerThread::Execute()
+void __fastcall TRPCServerDLLThread::Execute()
 {
 AnsiString str;
 RPC_STATUS status;
@@ -568,6 +584,7 @@ int retval;
     MainMessage(str.c_str());
 
     //test for the buggy versions
+    // TODO direct to server implementation
     retval = LocalQueryInt(IPC_GETVERSION,  0);
     switch (retval)
     {
@@ -578,7 +595,7 @@ int retval;
         /* here we would have version- related messages*/
       default:
         if (retval < 0x2000){
-          MainMessage("*** winamp version is rather early : some facilities may not be able ***");
+          MainMessage("*** winamp version is rather early : some facilities may not be available ***");
           }
         break;
       }

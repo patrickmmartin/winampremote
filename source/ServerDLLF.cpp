@@ -36,7 +36,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 TfrmMain *frmMain;
 
 HWND mainhwnd;
-TRPCServerThread *serverThread;
+TRPCServerDLLThread *serverThread;
 
 const int FAIL_TIMEOUT = 15; // seconds
 
@@ -306,7 +306,7 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
 void __fastcall TfrmMain::CreateThread()
 {
   // should
-  serverThread =  new TRPCServerThread(true);
+  serverThread =  new TRPCServerDLLThread(true);
   // should set the server thread Endpoint property
   serverThread->Resume();
 }

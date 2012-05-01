@@ -10,6 +10,7 @@ USEFORM("ServerF.cpp", frmMain);
 USELIB("..\lib\winampinterface.lib");
 USEUNIT("ConsoleCallObserver.cpp");
 USERC("winampremote.rc");
+USEUNIT("WinampServerImpl.cpp");
 //---------------------------------------------------------------------------
 #include "ServerF.h"
 //---------------------------------------------------------------------------
