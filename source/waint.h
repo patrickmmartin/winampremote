@@ -149,7 +149,6 @@ enum WinampJumpOptions
 
 /* major low level interface functions */
 
-// TODO do we need a namespace for local server utilities?
 /**
  * Sets the target handle for the message based API
  * can come from a FindWindow, for example or from the in-process value returned
