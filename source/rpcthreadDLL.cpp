@@ -34,6 +34,14 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 // RPC function definitions
 #include "RPCFuncsU.h"
 
+// bring the Winamp interfaces
+#include "WinampServerImpl.h"
+
+// TODO remove this global
+extern HWND hwnd_winamp;
+
+WinampRemote::Server::WinampServer localWinamp(hwnd_winamp);
+
 
 TRTLCriticalSection fCriticalSection ;
 
@@ -56,7 +64,6 @@ void WAMessageProc(
       MainIdent((char *) pszString);
       AnsiString str = (char *) pszString;
       str += " sent hello";
-      // TODO direct to server implementation
       MainMessage(str.c_str());
       MainStatus(waListening);
     }
@@ -102,8 +109,7 @@ const char * commandStr;
 
         MainMessage( str.c_str());
       }
-      // TODO direct to server implementation
-      LocalExecuteCommand(command);
+      localWinamp.ExecuteCommand(command);
       MainStatus(waListening);
     }
     __except(1)
@@ -152,8 +158,7 @@ const char * commandStr;
           MainMessage( str.c_str());
       }
 
-      // TODO direct to server implementation
-      LocalExecuteStringCommand( (char *) pszParam, command);
+      localWinamp.ExecuteStringCommand( (char *) pszParam, command);
       MainStatus(waListening);
     }
     __except(1)
@@ -200,8 +205,7 @@ int result;
         MainMessage( str.c_str());
       }
       //execute command
-      // TODO direct to server implementation
-      result = LocalQueryInt(command, data);
+      result = localWinamp.QueryInt(command, data);
       MainStatus(waListening);
       return result;
 
@@ -227,7 +231,7 @@ long int WAStringResult(
     long command,
     long data)
 {
-  char * retval;
+  string retval;
   const char * commandStr;
   AnsiString str;
 
@@ -241,8 +245,7 @@ long int WAStringResult(
           MainIdent((char *) pszString);
           MainStatus(waListening);
 
-          // TODO direct to server implementation
-          retval = LocalQueryString(command, data);
+          retval = localWinamp.QueryString(command, data);
 
           if (frmMain->requestlog[QUERY_STRING])
           {
@@ -260,16 +263,16 @@ long int WAStringResult(
 
             MainMessage( str.c_str());
 
-            str = retval;
+            str = retval.c_str();
             str += " returned";
 
             MainMessage (str.c_str());
           }
 
 
-          if (retval)
+          if (!retval.empty())
           {
-            strcpy((char *) pszString, retval);
+            strcpy((char *) pszString, retval.c_str());
           }
           else
           {
@@ -305,8 +308,7 @@ void WAShutdown(void)
 
 RPC_STATUS status;
 
-  // TODO direct to server implementation, or perhaps the
-  // lifetime management is best done here?
+  // TODO consider who has responsibility for the lifetime management of the RPC thread?
   MainMessage("rpc thread asked to stop");
   status = RpcMgmtStopServerListening(NULL);
   if (status == RPC_S_OK)
@@ -356,8 +358,7 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-              // TODO direct to server implementation
-              LocalExecuteStringCommand(StringList->Strings[i].c_str(), command);
+            	localWinamp.ExecuteStringCommand(StringList->Strings[i].c_str(), command);
             }
 
 
@@ -415,12 +416,10 @@ void WAGetStringList(
             {
               // get all items in list
 
-              // TODO direct to server implementation
-              ListLength = LocalQueryInt(IPC_GETLISTLENGTH, 0);
+              ListLength = localWinamp.QueryInt(IPC_GETLISTLENGTH, 0);
               for (int i = 0 ; i < ListLength ; i++)
               {
-                // TODO direct to server implementation
-                StringList->Add(LocalQueryString(command, i));
+                StringList->Add(localWinamp.QueryString(command, i).c_str());
               }
 
               char * Buffer = StringList->GetText();
@@ -490,30 +489,23 @@ void WAGetStringDataList(
               // get all items in list
 
               int i, Index;
-              // TODO direct to server implementation
-              Index = LocalQueryInt(IPC_GETLISTPOS, 0);
-              // TODO direct to server implementation
-              ListLength = LocalQueryInt(IPC_GETLISTLENGTH, 0);
+              Index = localWinamp.QueryInt(IPC_GETLISTPOS, 0);
+              ListLength = localWinamp.QueryInt(IPC_GETLISTLENGTH, 0);
               for (i = 0 ; i < ListLength ; i++)
               {
-                // TODO direct to server implementation
-                LocalQueryInt(IPC_SETPLAYLISTPOS, i);
+            	  localWinamp.QueryInt(IPC_SETPLAYLISTPOS, i);
                 // get the string property
-                // TODO direct to server implementation
-                StringList->Add(LocalQueryString(stringcommand, i));
+                StringList->Add(localWinamp.QueryString(stringcommand, i).c_str());
                 // add in the integer property for this index
 
                 // set the index
-                // TODO direct to server implementation
-                LocalQueryInt(IPC_SETPLAYLISTPOS, i);
+                localWinamp.QueryInt(IPC_SETPLAYLISTPOS, i);
 
-                // TODO direct to server implementation
-                StringList->Add(LocalQueryInt(intcommand, intdata));
+                StringList->Add(localWinamp.QueryInt(intcommand, intdata));
               }
 
               // reset the currently playing song
-              // TODO direct to server implementation
-              LocalQueryInt(IPC_SETPLAYLISTPOS, Index);
+              localWinamp.QueryInt(IPC_SETPLAYLISTPOS, Index);
 
 
               char * Buffer = StringList->GetText();
@@ -584,8 +576,7 @@ int retval;
     MainMessage(str.c_str());
 
     //test for the buggy versions
-    // TODO direct to server implementation
-    retval = LocalQueryInt(IPC_GETVERSION,  0);
+    retval = localWinamp.QueryInt(IPC_GETVERSION,  0);
     switch (retval)
     {
     // specific cases...

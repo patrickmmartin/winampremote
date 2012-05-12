@@ -12,17 +12,21 @@ namespace WinampRemote
 namespace Server
 {
 
-WinampServer::WinampServer()
+WinampServer::WinampServer(HWND winamp_hwnd)
 {
-	// TODO Auto-generated constructor stub
-
+	// TODO at best a no-op right now, but allows the class to be inserted right now
+	setWinampHwnd(winamp_hwnd);
 }
 
 WinampServer::~WinampServer()
 {
-	// TODO Auto-generated destructor stub
+	// delete any owner resources if required
 }
 
+string WinampServer::WinampVersion()
+{
+    return WinampVersionString(QueryInt(IPC_GETVERSION, 0));
+}
 
 void WinampServer::ExecuteCommand(WinampCommand MessageToExecute)
 {

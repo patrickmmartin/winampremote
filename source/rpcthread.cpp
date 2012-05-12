@@ -23,6 +23,11 @@
 # include "RPCErrors.h"
 
 #include "ConsoleCallObserver.h"
+#include "WinampServerImpl.h"
+
+extern HWND hwnd_winamp;
+
+WinampRemote::Server::WinampServer localWinamp(hwnd_winamp);
 
 /* __RPC_FAR is literally nothing, but is left in for consistency
 - none of the MIDL generated code should need direct modification*/
@@ -51,8 +56,7 @@ void WAExecuteMessage(
 
   // identify command?
   //execute command
-  // TODO direct to server implementation
-  LocalExecuteCommand(command);
+  localWinamp.ExecuteCommand(command);
   MainStatus("listening...");
 
 }
@@ -71,8 +75,7 @@ void WAExecuteMessageString(
   str += (char *) pszParam;
   MainMessage( str.c_str());
 
-  // TODO direct to server implementation
-  LocalExecuteStringCommand( (char *) pszParam, command);
+  localWinamp.ExecuteStringCommand((char *) pszParam, command);
   MainStatus("listening...");
 
 }
@@ -92,8 +95,7 @@ long WAIntegerResult(
   MainMessage( str.c_str());
 
   //execute command
-  // TODO direct to server implementation
-  int ret = LocalQueryInt(command, data);
+  int ret = localWinamp.QueryInt(command, data);
   MainStatus("listening...");
   return ret;
 
@@ -157,8 +159,7 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-                // TODO direct to server implementation
-                  LocalExecuteStringCommand( (char *) StringList->Strings[i].c_str(), command);
+            	localWinamp.ExecuteStringCommand((char *) StringList->Strings[i].c_str(), command);
             }
 
 
@@ -205,8 +206,7 @@ void WAGetStringList(
             {
               // get all items in list
 
-                // TODO direct to server implementation
-              for (int i = 0 ; i < LocalQueryInt(IPC_GETLISTLENGTH, 0); i++ )
+              for (int i = 0 ; i < localWinamp.QueryInt(IPC_GETLISTLENGTH, 0); i++ )
               {
                 StringList->Add(AnsiString("string #") + i);
               }
@@ -267,8 +267,7 @@ void WAGetStringDataList(
             {
               // get all items in list
 
-                // TODO direct to server implementation
-              for (int i = 0 ; i < LocalQueryInt(IPC_GETLISTLENGTH, 0); i++ )
+              for (int i = 0 ; i < localWinamp.QueryInt(IPC_GETLISTLENGTH, 0); i++ )
               {
                 StringList->Add(AnsiString("string #") + i);
               }
@@ -332,8 +331,7 @@ void __fastcall TRPCServerThread::Execute()
     MainStatus("initialising...");
 
     str = "winamp version : ";
-    // TODO direct to server implementation
-    str += LocalGetWinampVersion();
+    str += localWinamp.WinampVersion().c_str();
 
     MainMessage(str.c_str());
 
@@ -391,6 +389,7 @@ void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
     free(ptr);
 }
 
+// TODO: use a setter to insert this object
 ConsoleCallObserver cco;
 ICallObserver& TRPCServerThread::CallObserver = cco;
 

@@ -11,7 +11,8 @@
       ..\obj\gen_RPCinterface\VersionInfoU.obj 
       ..\obj\gen_RPCinterface\rpcthreadDLL.obj ..\obj\gen_RPCinterface\WAINT.obj 
       ..\obj\gen_RPCinterface\RFC1060U.obj 
-      ..\obj\gen_RPCinterface\GlassExtender.obj"/>
+      ..\obj\gen_RPCinterface\GlassExtender.obj
+      ..\obj\gen_RPCinterface\WinampServerImpl.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>

@@ -18,9 +18,10 @@ namespace Server
 class WinampServer: public IWinampServer
 {
 public:
-	WinampServer();
+	WinampServer(HWND winamp_hwnd);
 	virtual ~WinampServer();
 
+	string WinampVersion();
 
 	void ExecuteCommand(WinampCommand MessageToExecute);
 

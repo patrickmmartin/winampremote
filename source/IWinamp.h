@@ -1,8 +1,8 @@
 #ifndef IWINAMP_H
 #define IWINAMP_H
 
-#include <vector>
-#include <string>
+#include <vector.h>
+#include <string.h>
 
 #include "waint.h"
 
@@ -100,6 +100,8 @@ public:
 	virtual ~IWinampServer()
 	{
 	}
+
+	string WinampVersion();
 
 	void ExecuteCommand(WinampCommand MessageToExecute);
 
