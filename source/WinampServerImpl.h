@@ -17,6 +17,9 @@ namespace Server
 
 class WinampServer: public IWinampServer
 {
+private:
+	HWND m_winamphwnd;
+
 public:
 	WinampServer(HWND winamp_hwnd);
 	virtual ~WinampServer();

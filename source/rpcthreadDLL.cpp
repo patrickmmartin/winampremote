@@ -108,7 +108,7 @@ const char * commandStr;
 
         MainMessage( str.c_str());
       }
-      localWinamp->ExecuteCommand(command);
+      localWinamp->ExecuteCommand(static_cast<WinampCommand>(command));
       MainStatus(waListening);
     }
     __except(1)
@@ -157,7 +157,7 @@ const char * commandStr;
           MainMessage( str.c_str());
       }
 
-      localWinamp->ExecuteStringCommand( (char *) pszParam, command);
+      localWinamp->ExecuteStringCommand( (char *) pszParam, static_cast<WinampCommand>(command));
       MainStatus(waListening);
     }
     __except(1)
@@ -204,7 +204,7 @@ int result;
         MainMessage( str.c_str());
       }
       //execute command
-      result = localWinamp->QueryInt(command, data);
+      result = localWinamp->QueryInt(static_cast<WinampCommand>(command), data);
       MainStatus(waListening);
       return result;
 
@@ -244,7 +244,7 @@ long int WAStringResult(
           MainIdent((char *) pszString);
           MainStatus(waListening);
 
-          retval = localWinamp->QueryString(command, data);
+          retval = localWinamp->QueryString(static_cast<WinampCommand>(command), data);
 
           if (frmMain->requestlog[QUERY_STRING])
           {
@@ -357,7 +357,7 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-            	localWinamp->ExecuteStringCommand(StringList->Strings[i].c_str(), command);
+            	localWinamp->ExecuteStringCommand(StringList->Strings[i].c_str(), static_cast<WinampCommand>(command));
             }
 
 
@@ -418,7 +418,7 @@ void WAGetStringList(
               ListLength = localWinamp->QueryInt(IPC_GETLISTLENGTH, 0);
               for (int i = 0 ; i < ListLength ; i++)
               {
-                StringList->Add(localWinamp->QueryString(command, i).c_str());
+                StringList->Add(localWinamp->QueryString(static_cast<WinampCommand>(command), i).c_str());
               }
 
               char * Buffer = StringList->GetText();
@@ -494,13 +494,13 @@ void WAGetStringDataList(
               {
             	  localWinamp->QueryInt(IPC_SETPLAYLISTPOS, i);
                 // get the string property
-                StringList->Add(localWinamp->QueryString(stringcommand, i).c_str());
+                StringList->Add(localWinamp->QueryString(static_cast<WinampCommand>(stringcommand), i).c_str());
                 // add in the integer property for this index
 
                 // set the index
                 localWinamp->QueryInt(IPC_SETPLAYLISTPOS, i);
 
-                StringList->Add(localWinamp->QueryInt(intcommand, intdata));
+                StringList->Add(localWinamp->QueryInt(static_cast<WinampCommand>(intcommand), intdata));
               }
 
               // reset the currently playing song
@@ -576,11 +576,11 @@ int retval;
     InitializeCriticalSection(&fCriticalSection);
     MainStatus(waServerStarting);
 
-    str = (AnsiString("winamp version : ") + LocalGetWinampVersion());
+    retval = localWinamp->QueryInt(IPC_GETVERSION,  0);
+    str = AnsiString("winamp version : ") + WinampVersionString(retval);
     MainMessage(str.c_str());
 
     //test for the buggy versions
-    retval = localWinamp->QueryInt(IPC_GETVERSION,  0);
     switch (retval)
     {
     // specific cases...

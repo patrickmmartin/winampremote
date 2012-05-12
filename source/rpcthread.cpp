@@ -25,9 +25,8 @@
 #include "ConsoleCallObserver.h"
 #include "WinampServerImpl.h"
 
-extern HWND winamp_hwnd;
-
-WinampRemote::Server::WinampServer localWinamp(winamp_hwnd);
+// this code is only used in the out of process test process
+WinampRemote::Server::WinampServer localWinamp(NULL);
 
 /* __RPC_FAR is literally nothing, but is left in for consistency
 - none of the MIDL generated code should need direct modification*/
@@ -51,12 +50,12 @@ void WAExecuteMessage(
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
-  str += WinampCommandDesc(command);
+  str += WinampCommandDesc(static_cast<WinampCommand>(command));
   MainMessage( str.c_str());
 
   // identify command?
   //execute command
-  localWinamp.ExecuteCommand(command);
+  localWinamp.ExecuteCommand(static_cast<WinampCommand>(command));
   MainStatus("listening...");
 
 }
@@ -70,12 +69,12 @@ void WAExecuteMessageString(
   MainStatus("executing request");
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
-  str += WinampCommandDesc(command);
+  str += WinampCommandDesc(static_cast<WinampCommand>(command));
   str += " - parameter : ";
   str += (char *) pszParam;
   MainMessage( str.c_str());
 
-  localWinamp.ExecuteStringCommand((char *) pszParam, command);
+  localWinamp.ExecuteStringCommand((char *) pszParam, static_cast<WinampCommand>(command));
   MainStatus("listening...");
 
 }
@@ -95,7 +94,7 @@ long WAIntegerResult(
   MainMessage( str.c_str());
 
   //execute command
-  int ret = localWinamp.QueryInt(command, data);
+  int ret = localWinamp.QueryInt(static_cast<WinampCommand>(command), data);
   MainStatus("listening...");
   return ret;
 
@@ -159,7 +158,7 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-            	localWinamp.ExecuteStringCommand((char *) StringList->Strings[i].c_str(), command);
+            	localWinamp.ExecuteStringCommand((char *) StringList->Strings[i].c_str(), static_cast<WinampCommand>(command));
             }
 
 

@@ -23,28 +23,11 @@
 
 #include "waint.h"
 
-// TODO factor out this global
-/**
- * handle of the winamp instance
- */
-HWND winamp_hwnd = NULL;
-
 /**
  * Winamp user Message number
  */
 const int WM_WA_IPC = WM_USER;
 
-
-// TODO factor out this global
-HWND setWinampHwnd(HWND HWinamp)
-{
-
-	/* TODO: should this be thread-safe?
-	 probably irrelevant except for external monitors of winamp */
-	HWND retval = winamp_hwnd;
-	winamp_hwnd = HWinamp;
-	return retval;
-}
 
 /*
  * Utility function to obtain the winamp handle when out of process
@@ -56,32 +39,32 @@ static void GethWnd_WinAmp()
 }
 */
 
-void LocalExecuteCommand(WinampCommand Command)
+void LocalExecuteCommand(HWND HWinamp, WinampCommand Command)
 {
-	PostMessage(winamp_hwnd, WM_COMMAND, Command, 0);
+	PostMessage(HWinamp, WM_COMMAND, Command, 0);
 }
 
 // 1.7+ send a command with a string parameter
-void LocalExecuteStringCommand(char * CommandString, WinampCommand Command)
+void LocalExecuteStringCommand(HWND HWinamp, char * CommandString, WinampCommand Command)
 {
 	COPYDATASTRUCT cds;
 
 	cds.dwData = Command;
 	cds.lpData = (void *) CommandString;
 	cds.cbData = strlen((char *) cds.lpData) + 1;
-	SendMessage(winamp_hwnd, WM_COPYDATA, (WPARAM) NULL, (LPARAM) &cds);
+	SendMessage(HWinamp, WM_COPYDATA, (WPARAM) NULL, (LPARAM) &cds);
 }
 
 // Send a message to Winamp and return an Integer
-int LocalQueryInt(WinampCommand Command, int Data)
+int LocalQueryInt(HWND HWinamp, WinampCommand Command, int Data)
 {
-	return SendMessage(winamp_hwnd, WM_WA_IPC, Data, Command);
+	return SendMessage(HWinamp, WM_WA_IPC, Data, Command);
 }
 
 // Send a message to Winamp and return a String
-char * LocalQueryString(WinampCommand Command, int Data)
+char * LocalQueryString(HWND HWinamp, WinampCommand Command, int Data)
 {
-	return (char *) SendMessage(winamp_hwnd, WM_WA_IPC, Data, Command);
+	return (char *) SendMessage(HWinamp, WM_WA_IPC, Data, Command);
 }
 
 
@@ -154,10 +137,10 @@ const char * WinampVersionString(int version)
 	return winampver;
 }
 
-const char * LocalGetWinampVersion()
+const char * LocalGetWinampVersion(HWND HWinamp)
 {
 	int retval;
-	retval = LocalQueryInt(IPC_GETVERSION, 0);
+	retval = LocalQueryInt(HWinamp, IPC_GETVERSION, 0);
 	return WinampVersionString(retval);
 }
 
