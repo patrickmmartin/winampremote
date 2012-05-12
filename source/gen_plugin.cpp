@@ -116,7 +116,7 @@ AnsiString str;
     try
     {
       // pass on the provided parameters
-      setWinampHwnd(plugin.hwndParent);
+	  // this gets better behaviour for VCL dlls
       Application->Handle = plugin.hwndParent;
       frmMain = new TfrmMain(Application);
       try

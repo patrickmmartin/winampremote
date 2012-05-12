@@ -37,10 +37,9 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 // bring the Winamp interfaces
 #include "WinampServerImpl.h"
 
-// TODO remove this global
-extern HWND winamp_hwnd;
+#include "gen_plugin.h"
 
-WinampRemote::Server::WinampServer localWinamp(winamp_hwnd);
+WinampRemote::Server::WinampServer * localWinamp = NULL;
 
 
 TRTLCriticalSection fCriticalSection ;
@@ -109,7 +108,7 @@ const char * commandStr;
 
         MainMessage( str.c_str());
       }
-      localWinamp.ExecuteCommand(command);
+      localWinamp->ExecuteCommand(command);
       MainStatus(waListening);
     }
     __except(1)
@@ -158,7 +157,7 @@ const char * commandStr;
           MainMessage( str.c_str());
       }
 
-      localWinamp.ExecuteStringCommand( (char *) pszParam, command);
+      localWinamp->ExecuteStringCommand( (char *) pszParam, command);
       MainStatus(waListening);
     }
     __except(1)
@@ -205,7 +204,7 @@ int result;
         MainMessage( str.c_str());
       }
       //execute command
-      result = localWinamp.QueryInt(command, data);
+      result = localWinamp->QueryInt(command, data);
       MainStatus(waListening);
       return result;
 
@@ -245,7 +244,7 @@ long int WAStringResult(
           MainIdent((char *) pszString);
           MainStatus(waListening);
 
-          retval = localWinamp.QueryString(command, data);
+          retval = localWinamp->QueryString(command, data);
 
           if (frmMain->requestlog[QUERY_STRING])
           {
@@ -358,7 +357,7 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-            	localWinamp.ExecuteStringCommand(StringList->Strings[i].c_str(), command);
+            	localWinamp->ExecuteStringCommand(StringList->Strings[i].c_str(), command);
             }
 
 
@@ -416,10 +415,10 @@ void WAGetStringList(
             {
               // get all items in list
 
-              ListLength = localWinamp.QueryInt(IPC_GETLISTLENGTH, 0);
+              ListLength = localWinamp->QueryInt(IPC_GETLISTLENGTH, 0);
               for (int i = 0 ; i < ListLength ; i++)
               {
-                StringList->Add(localWinamp.QueryString(command, i).c_str());
+                StringList->Add(localWinamp->QueryString(command, i).c_str());
               }
 
               char * Buffer = StringList->GetText();
@@ -489,23 +488,23 @@ void WAGetStringDataList(
               // get all items in list
 
               int i, Index;
-              Index = localWinamp.QueryInt(IPC_GETLISTPOS, 0);
-              ListLength = localWinamp.QueryInt(IPC_GETLISTLENGTH, 0);
+              Index = localWinamp->QueryInt(IPC_GETLISTPOS, 0);
+              ListLength = localWinamp->QueryInt(IPC_GETLISTLENGTH, 0);
               for (i = 0 ; i < ListLength ; i++)
               {
-            	  localWinamp.QueryInt(IPC_SETPLAYLISTPOS, i);
+            	  localWinamp->QueryInt(IPC_SETPLAYLISTPOS, i);
                 // get the string property
-                StringList->Add(localWinamp.QueryString(stringcommand, i).c_str());
+                StringList->Add(localWinamp->QueryString(stringcommand, i).c_str());
                 // add in the integer property for this index
 
                 // set the index
-                localWinamp.QueryInt(IPC_SETPLAYLISTPOS, i);
+                localWinamp->QueryInt(IPC_SETPLAYLISTPOS, i);
 
-                StringList->Add(localWinamp.QueryInt(intcommand, intdata));
+                StringList->Add(localWinamp->QueryInt(intcommand, intdata));
               }
 
               // reset the currently playing song
-              localWinamp.QueryInt(IPC_SETPLAYLISTPOS, Index);
+              localWinamp->QueryInt(IPC_SETPLAYLISTPOS, Index);
 
 
               char * Buffer = StringList->GetText();
@@ -566,6 +565,11 @@ AnsiString str;
 RPC_STATUS status;
 int retval;
 
+
+	// initialize with obtained handle
+	localWinamp = new WinampRemote::Server::WinampServer(plugin.hwndParent);
+
+
     unsigned char * protocol_seq_np = "ncacn_np";
 //    unsigned char * protocol_seq_ip_tcp = "ncacn_ip_tcp";
 
@@ -576,7 +580,7 @@ int retval;
     MainMessage(str.c_str());
 
     //test for the buggy versions
-    retval = localWinamp.QueryInt(IPC_GETVERSION,  0);
+    retval = localWinamp->QueryInt(IPC_GETVERSION,  0);
     switch (retval)
     {
     // specific cases...
@@ -621,6 +625,8 @@ int retval;
   }
 
   DeleteCriticalSection(&fCriticalSection);
+
+  delete localWinamp;
 
 }
 
