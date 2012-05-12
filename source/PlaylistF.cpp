@@ -54,7 +54,6 @@ __fastcall TfrmPlaylist::TfrmPlaylist(TComponent* Owner)
 void __fastcall TfrmPlaylist::lstSongsDblClick(TObject *)
 {
 
-  /* TODO -opatrick -cactions : need to kick off the pre- and post- change events cleanly */
   // this action will use the playlist itemindex, and do the pre and post actions
   frmMain->NewSong->Execute();
 
@@ -161,7 +160,7 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
 
   try
   {
-    /* TODO -opatrick -ccode review : document this! */
+    // this gets the dragged files list and passes them onto the form
     len = DragQueryFile((void *) hDrop, 0xFFFFFFFF, NULL, 0);
     for (i = 0 ; i < len ; i++){
       if (DragQueryFile((void *) hDrop, i, CFileName, MAX_PATH) > 0){

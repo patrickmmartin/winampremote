@@ -62,6 +62,7 @@ bool success;
       sbrMain->Panels->Items[1]->Text = Computername;
       sbrMain->Panels->Items[2]->Text = "\\pipe\\winampremote";
 
+      // TODO: this global handle should be factored out
       mainhwnd = this->Handle;
 
       serverThread =  new TRPCServerThread(false);

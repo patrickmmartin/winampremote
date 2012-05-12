@@ -17,7 +17,7 @@
  * class to wrap up the task of testing servers for a running Winamp server.
  */
 
-    // TODO  a typedef for the remoteNode name moniker?
+    // TODO a typedef for the remoteNode moniker?
       /**
        * Closure for the Server test event.
        * @param remoteName

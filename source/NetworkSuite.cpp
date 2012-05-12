@@ -19,12 +19,11 @@ using std::boolalpha;
 NetworkSuite::NetworkSuite() :  _servers(), _abort_test(false)
 
 {
-  // TODO Auto-generated stub
 }
 
 NetworkSuite::~NetworkSuite()
 {
-  // TODO Auto-generated stub
+  // clean up any owned resources
 }
 
 char * NetworkSuite::levelString(const int level)
@@ -132,7 +131,7 @@ void NetworkSuite::run()
     testLocalServer();
     // test network enumeration
     testEnumeration();
-    // TODO: dependency upon prior test
+    // TODO: this test has a dependency upon the prior test
     testServerTest();
     // test abort
     testServerTestAbort();

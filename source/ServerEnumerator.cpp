@@ -61,8 +61,8 @@ void ServerEnumerator::handleResource(const NETRESOURCE& resource) {
 	if (resource.dwDisplayType == RESOURCEDISPLAYTYPE_SERVER)
 	{
 		AnsiString remoteName = resource.lpRemoteName;
-		// TODO strip out the UNC prefix more intelligently
-		remoteName.Delete(1, 2);
+		if (1 == remoteName.Pos(AnsiString("\\\\")))
+			remoteName.Delete(1, 2);
 		addServer(remoteName, resource.lpComment);
 		addMessage(AnsiString().sprintf("\tFound node %s", remoteName.c_str()), 0);
 	}

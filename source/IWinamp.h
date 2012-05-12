@@ -30,8 +30,6 @@ public:
 	{
 	}
 
-	// TODO: perhaps all the command functions should return the status -
-	// best implemented in the plugin
 
 	/**
 	 * move to next song

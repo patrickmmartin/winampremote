@@ -632,6 +632,7 @@ int retval;
 
 void __fastcall MainMessage(char * msgString)
 {
+  // TODO: this global handle should be factored out
   PostMessage(mainhwnd, WM_THREAD_MESSAGE, 0, (long) strdup(msgString));
 }
 
@@ -639,6 +640,7 @@ void __fastcall MainMessage(char * msgString)
 
 void __fastcall MainStatus(WAExecutionStatus Status)
 {
+  // TODO: this global handle should be factored out
   PostMessage(mainhwnd, WM_THREAD_STATUS, 0, Status);
 }
 
@@ -646,6 +648,7 @@ void __fastcall MainStatus(WAExecutionStatus Status)
 
 void __fastcall MainIdent(char * msgString)
 {
+  // TODO: this global handle should be factored out
   PostMessage(mainhwnd, WM_THREAD_IDENT, 0, (long) strdup(msgString));
 }
 

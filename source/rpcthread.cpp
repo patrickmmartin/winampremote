@@ -388,7 +388,6 @@ void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
     free(ptr);
 }
 
-// TODO: use a setter to insert this object
 ConsoleCallObserver cco;
 ICallObserver& TRPCServerThread::CallObserver = cco;
 

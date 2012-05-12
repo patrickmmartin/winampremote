@@ -49,18 +49,16 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 const int POLL_ERROR_FACTOR = 10; // seconds
 
-/* TODO -opatrick -cactions : may need concatenation of available actions in a specific order */
 
-//---------------------------------------------------------------------------
 #pragma resource "*.dfm"
 TfrmMain *frmMain;
 
-//---------------------------------------------------------------------------
+
 __fastcall TfrmMain::TfrmMain(TComponent* Owner)
   : TForm(Owner)
 {
 }
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMain::TrayNotify(TMessage& Msg)
 {
   POINT MousePos;
@@ -119,7 +117,7 @@ void __fastcall TfrmMain::TrayNotify(TMessage& Msg)
   TForm::Dispatch(&Msg);
 
 }
-//---------------------------------------------------------------------------
+
 bool __fastcall TfrmMain::TrayMessage(DWORD dwMessage)
 {
    NOTIFYICONDATA tnd;
@@ -149,7 +147,7 @@ bool __fastcall TfrmMain::TrayMessage(DWORD dwMessage)
 
    return (Shell_NotifyIcon(dwMessage, &tnd));
 }
-//---------------------------------------------------------------------------
+
 HANDLE __fastcall TfrmMain::IconHandle(void)
 {
 
@@ -191,7 +189,7 @@ HANDLE __fastcall TfrmMain::IconHandle(void)
   return icoTrayIcon->Picture->Icon->Handle;
 
 }
-//---------------------------------------------------------------------------
+
 PSTR __fastcall TfrmMain::TipText(void)
 {
   AnsiString str = SongTitle;
@@ -220,7 +218,7 @@ PSTR __fastcall TfrmMain::TipText(void)
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMain::HideMain(TObject *)
 {
 
@@ -258,7 +256,7 @@ void __fastcall TfrmMain::HideMain(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::ShowMainFormExecute(TObject *)
 {
@@ -289,7 +287,7 @@ void __fastcall TfrmMain::ShowMainFormExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::PauseExecute(TObject *)
 {
@@ -299,7 +297,7 @@ void __fastcall TfrmMain::PauseExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMain::ExitExecute(TObject *)
 {
   Close();
@@ -324,7 +322,7 @@ const AnsiString sTrue = "true";
 const AnsiString sFalse = "false";
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::FormShow(TObject *)
 {
@@ -417,7 +415,7 @@ void __fastcall TfrmMain::FormShow(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::mnuSayHelloClick(TObject *)
 {
@@ -425,7 +423,7 @@ void __fastcall TfrmMain::mnuSayHelloClick(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::btnCloseClick(TObject *)
 {
@@ -433,7 +431,7 @@ void __fastcall TfrmMain::btnCloseClick(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::PlayExecute(TObject *)
 {
@@ -441,7 +439,7 @@ void __fastcall TfrmMain::PlayExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::NextExecute(TObject *)
 {
@@ -451,7 +449,7 @@ void __fastcall TfrmMain::NextExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::NextFadeExecute(TObject *)
 {
@@ -462,7 +460,7 @@ void __fastcall TfrmMain::NextFadeExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::PreviousExecute(TObject *)
 {
@@ -472,7 +470,7 @@ void __fastcall TfrmMain::PreviousExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::FormHide(TObject *)
 {
@@ -480,7 +478,7 @@ void __fastcall TfrmMain::FormHide(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::AboutExecute(TObject *)
 {
@@ -507,7 +505,7 @@ void __fastcall TfrmMain::AboutExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::StopExecute(TObject *)
 {
@@ -515,7 +513,7 @@ void __fastcall TfrmMain::StopExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::Forward5Execute(TObject *)
 {
@@ -523,7 +521,7 @@ void __fastcall TfrmMain::Forward5Execute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::Back5Execute(TObject *)
 {
@@ -531,7 +529,7 @@ void __fastcall TfrmMain::Back5Execute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::VolumeUpExecute(TObject *)
 {
@@ -539,7 +537,7 @@ void __fastcall TfrmMain::VolumeUpExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::VolumeDownExecute(TObject *)
 {
@@ -547,7 +545,7 @@ void __fastcall TfrmMain::VolumeDownExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::VolumeUpMoreExecute(TObject *)
 {
@@ -555,7 +553,7 @@ void __fastcall TfrmMain::VolumeUpMoreExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::VolumeDownMoreExecute(TObject *)
 {
@@ -563,7 +561,7 @@ void __fastcall TfrmMain::VolumeDownMoreExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::PlaylistStartExecute(TObject *)
 {
@@ -573,7 +571,7 @@ void __fastcall TfrmMain::PlaylistStartExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::PlaylistEndExecute(TObject *)
 {
@@ -583,7 +581,7 @@ void __fastcall TfrmMain::PlaylistEndExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::DeletePlayListExecute(TObject *)
 {
@@ -592,7 +590,7 @@ void __fastcall TfrmMain::DeletePlayListExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::AddFileToPlayListExecute(TObject *Sender)
 {
@@ -630,7 +628,7 @@ AnsiString commandstr;
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void MessageForm(AnsiString MessageStr)
 {
@@ -643,7 +641,7 @@ void MessageForm(AnsiString MessageStr)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::StopFadeExecute(TObject *)
 {
@@ -651,7 +649,7 @@ void __fastcall TfrmMain::StopFadeExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::StopAfterCurrentExecute(TObject *)
 {
@@ -659,14 +657,14 @@ void __fastcall TfrmMain::StopAfterCurrentExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMain::DisplayHint(TObject *)
 {
   sbMain->Panels->Items[1]->Text = GetShortHint(Application->Hint);
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::FormCreate(TObject *)
 {
@@ -721,7 +719,7 @@ void __fastcall TfrmMain::FormCreate(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::AppException(TObject *, Exception *E)
 {
@@ -736,7 +734,7 @@ void __fastcall TfrmMain::AppException(TObject *, Exception *E)
   }
 }
 
-//---------------------------------------------------------------------------
+
 
 
 void TfrmMain::UpdateIcon(void)
@@ -829,7 +827,6 @@ void TfrmMain::UpdateIcon(void)
           if (LastIndex != index)
           {
             CurrentIndex = index;
-            /* TODO : replace with action */
             PlaylistRefreshCurrent->Execute();
           }
 
@@ -870,7 +867,7 @@ void TfrmMain::UpdateIcon(void)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::MainTimer(TObject *)
 {
@@ -883,7 +880,7 @@ void __fastcall TfrmMain::MainTimer(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::SetVolume0Execute(TObject *)
 {
@@ -892,7 +889,7 @@ void __fastcall TfrmMain::SetVolume0Execute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::SetVolume100Execute(TObject *)
 {
@@ -900,7 +897,7 @@ void __fastcall TfrmMain::SetVolume100Execute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::ShuffleExecute(TObject *)
 {
@@ -912,7 +909,7 @@ void __fastcall TfrmMain::ShuffleExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::RepeatExecute(TObject *)
 {
@@ -924,7 +921,7 @@ void __fastcall TfrmMain::RepeatExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::PlayFromStartExecute(TObject *)
 {
@@ -934,7 +931,7 @@ void __fastcall TfrmMain::PlayFromStartExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::FormClose(TObject *, TCloseAction &)
 {
@@ -942,7 +939,7 @@ void __fastcall TfrmMain::FormClose(TObject *, TCloseAction &)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::FormCloseQuery(TObject *, bool &)
 {
@@ -999,7 +996,7 @@ void __fastcall TfrmMain::FormCloseQuery(TObject *, bool &)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::lstTimerClick(TObject *)
 {
@@ -1007,7 +1004,7 @@ void __fastcall TfrmMain::lstTimerClick(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::HalfExecute(TObject *)
 {
@@ -1015,7 +1012,7 @@ void __fastcall TfrmMain::HalfExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::ViewToolBarExecute(TObject *)
 {
@@ -1026,7 +1023,7 @@ void __fastcall TfrmMain::ViewToolBarExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::ViewPlaylistExecute(TObject *)
 {
@@ -1038,7 +1035,7 @@ void __fastcall TfrmMain::ViewPlaylistExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::ViewVolumeExecute(TObject *)
 {
@@ -1048,7 +1045,7 @@ void __fastcall TfrmMain::ViewVolumeExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::SetIdent(void)
 {
@@ -1076,7 +1073,7 @@ AnsiString str;
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::FormDestroy(TObject *)
 {
@@ -1084,7 +1081,7 @@ void __fastcall TfrmMain::FormDestroy(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::AddressChange(TObject *)
 {
@@ -1105,7 +1102,7 @@ void __fastcall TfrmMain::AddressChange(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::LocateServersExecute(TObject *)
 {
@@ -1142,7 +1139,7 @@ void __fastcall TfrmMain::LocateServersExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::DelayTimer(TObject *)
 {
@@ -1161,14 +1158,14 @@ void __fastcall TfrmMain::DelayTimer(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::RefreshEQExecute(TObject *)
 {
    frmSettings->UpdateBars();
 }
 
-//---------------------------------------------------------------------------
+
 
 void _fastcall TfrmMain::DoBind(void)
 {
@@ -1176,7 +1173,7 @@ void _fastcall TfrmMain::DoBind(void)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::AutoloadExecute(TObject *)
 {
@@ -1186,7 +1183,7 @@ void __fastcall TfrmMain::AutoloadExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::FormDockOver(TObject *, TDragDockObject *, int , int , TDragState , bool &Accept)
 {
@@ -1194,7 +1191,7 @@ void __fastcall TfrmMain::FormDockOver(TObject *, TDragDockObject *, int , int ,
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::StartDock(TObject *Sender, TDragDockObject *&)
 {
@@ -1211,7 +1208,7 @@ void __fastcall TfrmMain::StartDock(TObject *Sender, TDragDockObject *&)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::pgSettingsDockDrop(TObject *, TDragDockObject *Source, int , int )
 {
@@ -1234,7 +1231,7 @@ void __fastcall TfrmMain::pgSettingsDockDrop(TObject *, TDragDockObject *Source,
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::EndDock(TObject *, TObject *, int , int )
 {
@@ -1242,7 +1239,7 @@ void __fastcall TfrmMain::EndDock(TObject *, TObject *, int , int )
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::DetailsExecute(TObject *)
 {
@@ -1258,14 +1255,14 @@ void __fastcall TfrmMain::DetailsExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::sbMainDrawPanel(TStatusBar *StatusBar, TStatusPanel *, const TRect &Rect)
 {
   imlTrayIcons->Draw(StatusBar->Canvas, Rect.Left + 3, Rect.Top + 3, fIconIndex, true);
 }
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::AnimateForm(TForm * Form, bool FormVisible)
 {
@@ -1303,7 +1300,7 @@ void __fastcall TfrmMain::SetLanguageMenu(TObject *Sender)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::PreviousFadeExecute(TObject *)
 {
@@ -1314,7 +1311,7 @@ void __fastcall TfrmMain::PreviousFadeExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::SongChangingExecute(TObject *)
 {
@@ -1325,7 +1322,7 @@ void __fastcall TfrmMain::SongChangingExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::SongChangedExecute(TObject *)
 {
@@ -1333,7 +1330,7 @@ void __fastcall TfrmMain::SongChangedExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::NewSongExecute(TObject *)
 {
@@ -1346,7 +1343,7 @@ void __fastcall TfrmMain::NewSongExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 /*
 void __fastcall TfrmMain::CountTimesExecute(TObject *)
@@ -1439,7 +1436,7 @@ void __fastcall TfrmMain::alMainExecute(TBasicAction *Action, bool &)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
 {
@@ -1524,7 +1521,7 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
 }
 
 
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmMain::PlaylistRefreshStatsExecute(TObject *)
@@ -1550,7 +1547,7 @@ void __fastcall TfrmMain::PlaylistRefreshStatsExecute(TObject *)
   frmPlaylist->sbPlaylist->Panels->Items[3]->Text = TimeToStr((float) SongS / SecsPerDay);
 
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmMain::DoAddFiles(TStrings * Files)

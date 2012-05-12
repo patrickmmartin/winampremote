@@ -240,7 +240,7 @@ TRegistry * reg;
   if (success)
   {
       sbrMain->Panels->Items[1]->Text = AnsiString("name: ") + Computername;
-      // TODO: this global should be factored out
+      // TODO: this global handle should be factored out
       mainhwnd = this->Handle;
 
 

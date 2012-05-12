@@ -1,7 +1,7 @@
 // implementation of ICallObserver
 
 #include "ConsoleCallObserver.h"
-#include <iostream>
+#include <iostream.h>
 
 
 namespace WinampRemote

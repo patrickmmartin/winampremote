@@ -23,6 +23,9 @@ protected:
 public:
     __fastcall TRPCServerDLLThread(bool CreateSuspended);
     AnsiString Endpoint;
+    static ICallObserver& CallObserver;
+
+
 };
 
 
