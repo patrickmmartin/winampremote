@@ -51,11 +51,8 @@ USEUNIT("GlassExtender.cpp");
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 //---------------------------------------------------------------------------
-HINSTANCE g_hinst;
-
 WINAPI WinMain(HINSTANCE, HINSTANCE hInstance, LPSTR, int)
 {
-  g_hinst = hInstance;
     try
     {
     Application->Title = sWinampRemoteClient;

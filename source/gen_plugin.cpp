@@ -1,7 +1,7 @@
 /*
-winamp remote control suite ï¿½Patrick Michael Martin 2000, 2001, 2002
+winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2012
 
-Copyright (C) 2000,2001,2002  Patrick M. Martin
+Copyright (C) 2000,2001,2012  Patrick M. Martin
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -49,23 +49,13 @@ int init();
 
 
 
-/*
-extern "C" int __declspec(dllexport)  __stdcall MyFunction();
- int __stdcall MyFunction(){
-   return 0;
-   }
-*/   
-
-// bring in the global HMODULE / HINSTANCE - little messy  
-extern HINSTANCE g_hinst;
-
 extern "C" winampGeneralPurposePlugin *  __declspec(dllexport)  __stdcall winampGetGeneralPurposePlugin()
 {
 
   TModuleVersionInfo * VI;
   char FileName[MAX_PATH + 1];
 
-  GetModuleFileName(g_hinst, FileName, MAX_PATH);
+  GetModuleFileName(HInstance, FileName, MAX_PATH);
   VI = new TModuleVersionInfo(FileName);
 
   strncpy(VerString,

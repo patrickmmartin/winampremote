@@ -51,7 +51,7 @@ void __fastcall TfrmDetails::FormCreate(TObject *)
 
   const AnsiString ExtraKeys[] = {"Expected Versions", NULL};
 
-  GetModuleFileName(g_hinst, FileName, MAX_PATH);
+  GetModuleFileName(HInstance, FileName, MAX_PATH);
 
 
   Caption = AnsiString().sprintf( "%s details", LowerCase(ExtractFileName(FileName)).c_str());

@@ -36,12 +36,9 @@ USEUNIT("RFC1060U.CPP");
 USELIB("..\lib\winampinterface.lib");
 USEUNIT("GlassExtender.cpp");
 //---------------------------------------------------------------------------
-HINSTANCE g_hinst;
 //---------------------------------------------------------------------------
 int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void*)
 {
-
-  g_hinst = hinst;
 
   switch(reason){
     case DLL_PROCESS_ATTACH :

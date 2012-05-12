@@ -23,10 +23,11 @@
 
 #include "waint.h"
 
+// TODO factor out this global
 /**
  * handle of the winamp instance
  */
-HWND hwnd_winamp = NULL;
+HWND winamp_hwnd = NULL;
 
 /**
  * Winamp user Message number
@@ -34,13 +35,14 @@ HWND hwnd_winamp = NULL;
 const int WM_WA_IPC = WM_USER;
 
 
+// TODO factor out this global
 HWND setWinampHwnd(HWND HWinamp)
 {
 
 	/* TODO: should this be thread-safe?
 	 probably irrelevant except for external monitors of winamp */
-	HWND retval = hwnd_winamp;
-	hwnd_winamp = HWinamp;
+	HWND retval = winamp_hwnd;
+	winamp_hwnd = HWinamp;
 	return retval;
 }
 
@@ -56,7 +58,7 @@ static void GethWnd_WinAmp()
 
 void LocalExecuteCommand(WinampCommand Command)
 {
-	PostMessage(hwnd_winamp, WM_COMMAND, Command, 0);
+	PostMessage(winamp_hwnd, WM_COMMAND, Command, 0);
 }
 
 // 1.7+ send a command with a string parameter
@@ -67,19 +69,19 @@ void LocalExecuteStringCommand(char * CommandString, WinampCommand Command)
 	cds.dwData = Command;
 	cds.lpData = (void *) CommandString;
 	cds.cbData = strlen((char *) cds.lpData) + 1;
-	SendMessage(hwnd_winamp, WM_COPYDATA, (WPARAM) NULL, (LPARAM) &cds);
+	SendMessage(winamp_hwnd, WM_COPYDATA, (WPARAM) NULL, (LPARAM) &cds);
 }
 
 // Send a message to Winamp and return an Integer
 int LocalQueryInt(WinampCommand Command, int Data)
 {
-	return SendMessage(hwnd_winamp, WM_WA_IPC, Data, Command);
+	return SendMessage(winamp_hwnd, WM_WA_IPC, Data, Command);
 }
 
 // Send a message to Winamp and return a String
 char * LocalQueryString(WinampCommand Command, int Data)
 {
-	return (char *) SendMessage(hwnd_winamp, WM_WA_IPC, Data, Command);
+	return (char *) SendMessage(winamp_hwnd, WM_WA_IPC, Data, Command);
 }
 
 

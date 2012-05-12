@@ -10,8 +10,6 @@
 #include <ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 
-extern HINSTANCE g_hinst;
-
 class TfrmDetails : public TForm
 {
 __published:	// IDE-managed Components

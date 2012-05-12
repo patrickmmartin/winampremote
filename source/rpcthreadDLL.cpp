@@ -38,9 +38,9 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "WinampServerImpl.h"
 
 // TODO remove this global
-extern HWND hwnd_winamp;
+extern HWND winamp_hwnd;
 
-WinampRemote::Server::WinampServer localWinamp(hwnd_winamp);
+WinampRemote::Server::WinampServer localWinamp(winamp_hwnd);
 
 
 TRTLCriticalSection fCriticalSection ;

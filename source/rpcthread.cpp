@@ -25,9 +25,9 @@
 #include "ConsoleCallObserver.h"
 #include "WinampServerImpl.h"
 
-extern HWND hwnd_winamp;
+extern HWND winamp_hwnd;
 
-WinampRemote::Server::WinampServer localWinamp(hwnd_winamp);
+WinampRemote::Server::WinampServer localWinamp(winamp_hwnd);
 
 /* __RPC_FAR is literally nothing, but is left in for consistency
 - none of the MIDL generated code should need direct modification*/
