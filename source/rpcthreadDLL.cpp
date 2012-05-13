@@ -43,6 +43,11 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 WinampRemote::Server::WinampServer * localWinamp = NULL;
 
+// TODO:: keeps the Eclipse parser happy
+#ifndef strdup
+#define strdup(A) A
+#endif
+
 
 TRTLCriticalSection fCriticalSection ;
 
@@ -232,7 +237,7 @@ long int WAStringResult(
     long command,
     long data)
 {
-  string retval;
+  std::string retval;
   const char * commandStr;
   AnsiString str;
 
