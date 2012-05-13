@@ -39,7 +39,9 @@ typedef void (__closure *TCOInfoEvent)(const AnsiString& infoMessage);
 typedef void (__closure *TCOIdentEvent)(const AnsiString& identMessage);
 
 
-
+/**
+ * Class to pass on remoting code status events to VCL components
+ */
 class CallReflector: public ICallObserver  {
 
 	public:

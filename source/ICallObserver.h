@@ -14,7 +14,7 @@ namespace Remoting
 {
 
 /**
- * interface for the call observation
+ * interface for call event observation
  */
 class ICallObserver {
 
