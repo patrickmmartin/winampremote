@@ -9,7 +9,7 @@
 
 using namespace WinampRemote::Remoting;
 
-
+// TODO merge into the code in TRPCServerDLLThread
 class TRPCServerThread : public TThread
 {
 private:
