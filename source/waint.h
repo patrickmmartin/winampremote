@@ -159,6 +159,7 @@ HWND setWinampHwnd(HWND HWinamp);
 
 /**
  *  Executes the Winamp API message on the current target handle
+ * @param HWinamp window handle of the winamp instance
  * @param MessageToExecute winamp command ID
  * returns nothing
  */
@@ -166,6 +167,7 @@ void LocalExecuteCommand(HWND HWinamp, WinampCommand MessageToExecute);
 
 /**
  * Executes the Winamp string based API command on the current target handle.
+ * @param HWinamp window handle of the winamp instance
  * @param CommandString - input parameter
  * @param Command - the winamp API command
  * returns nothing
@@ -174,6 +176,7 @@ void LocalExecuteStringCommand(HWND HWinamp, char * CommandString, WinampCommand
 
 /**
  * Queries the Winamp API for an integer value.
+ * @param HWinamp window handle of the winamp instance
  * @param Command
  * @param Data  - the winamp API command
  * @return the result of the query
@@ -182,6 +185,7 @@ int LocalQueryInt(HWND HWinamp, WinampCommand Command, int Data);
 
 /**
  * Queries the Winamp API for a string value.
+ * @param HWinamp window handle of the winamp instance
  * @param Command
  * @param Data  - the winamp API command
  * @return in-process the pointer to the char data for the the result
@@ -192,6 +196,7 @@ char * LocalQueryString(HWND HWinamp, WinampCommand Command, int Data);
  * Utility function that returns the winamp version description string,
  * according to the known formatting rules.
  * Caters for new standard format Winamp versions and no version.
+ * @param HWinamp window handle of the winamp instance
  * @return the string for the Winamp version
  */
 const char * LocalGetWinampVersion(HWND HWinamp);

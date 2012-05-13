@@ -95,8 +95,11 @@ help:
 	@echo default - clean all
 	
 docs:
+	# ideally would discover from the Doxygen
+	echo ========== cleaning doxygen output ======
+	>nul del /S /Q ..\doc\*.* 
 	echo ========== building doxygen output ======
-	doxygen
+	>nul doxygen 
 	
 	
 WINAMP_PLUGINS_DEFAULT=$(PROGRAMFILES)\Winamp\Plugins

@@ -210,7 +210,7 @@ ALIASES                =
 # "class=itcl::class" will allow you to use the command class in the 
 # itcl::class meaning.
 
-TCL_SUBST              = 
+# unsupported  TCL_SUBST              = 
 
 # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C 
 # sources only. Doxygen will then generate output that is more tailored for C. 
@@ -257,7 +257,7 @@ EXTENSION_MAPPING      =
 # func(std::string) {}). This also makes the inheritance and collaboration 
 # diagrams that involve STL classes more complete and accurate.
 
-BUILTIN_STL_SUPPORT    = NO
+BUILTIN_STL_SUPPORT    = YES
 
 # If you use Microsoft's C++/CLI language, you should set this option to YES to 
 # enable parsing support.
@@ -308,7 +308,7 @@ INLINE_GROUPED_CLASSES = NO
 # structs, classes, and unions are shown on a separate page (for HTML and Man 
 # pages) or section (for LaTeX and RTF).
 
-INLINE_SIMPLE_STRUCTS  = NO
+# unsupported INLINE_SIMPLE_STRUCTS  = NO
 
 # When TYPEDEF_HIDES_STRUCT is enabled, a typedef of a struct, union, or enum 
 # is documented as struct, union, or enum with the name of the typedef. So 
@@ -345,7 +345,7 @@ SYMBOL_CACHE_SIZE      = 0
 # formula: 2^(16+LOOKUP_CACHE_SIZE). The valid range is 0..9, the default is 0, 
 # corresponding to a cache size of 2^16 = 65536 symbols.
 
-LOOKUP_CACHE_SIZE      = 0
+# unsupported LOOKUP_CACHE_SIZE      = 0
 
 #---------------------------------------------------------------------------
 # Build related configuration options
@@ -356,7 +356,7 @@ LOOKUP_CACHE_SIZE      = 0
 # Private class members and static file members will be hidden unless 
 # the EXTRACT_PRIVATE and EXTRACT_STATIC tags are set to YES
 
-EXTRACT_ALL            = NO
+EXTRACT_ALL            = YES
 
 # If the EXTRACT_PRIVATE tag is set to YES all private members of a class 
 # will be included in the documentation.
@@ -366,7 +366,7 @@ EXTRACT_PRIVATE        = NO
 # If the EXTRACT_STATIC tag is set to YES all static members of a file 
 # will be included in the documentation.
 
-EXTRACT_STATIC         = NO
+EXTRACT_STATIC         = YES
 
 # If the EXTRACT_LOCAL_CLASSES tag is set to YES classes (and structs) 
 # defined locally in source files will be included in the documentation. 
@@ -595,7 +595,7 @@ LAYOUT_FILE            =
 # of the bibliography can be controlled using LATEX_BIB_STYLE. To use this 
 # feature you need bibtex and perl available in the search path.
 
-CITE_BIB_FILES         = 
+# unsupported CITE_BIB_FILES         = 
 
 #---------------------------------------------------------------------------
 # configuration options related to warning and progress messages
@@ -812,7 +812,7 @@ FILTER_SOURCE_PATTERNS =
 # Note: To get rid of all source code in the generated output, make sure also 
 # VERBATIM_HEADERS is set to NO.
 
-SOURCE_BROWSER         = NO
+SOURCE_BROWSER         = YES
 
 # Setting the INLINE_SOURCES tag to YES will include the body 
 # of functions and classes directly in the documentation.
@@ -1217,7 +1217,7 @@ MATHJAX_RELPATH        = http://www.mathjax.org/mathjax
 # The MATHJAX_EXTENSIONS tag can be used to specify one or MathJax extension 
 # names that should be enabled during MathJax rendering.
 
-MATHJAX_EXTENSIONS     = 
+# unsupported MATHJAX_EXTENSIONS     = 
 
 # When the SEARCHENGINE tag is enabled doxygen will generate a search box 
 # for the HTML output. The underlying search engine uses javascript 
@@ -1336,7 +1336,7 @@ LATEX_SOURCE_CODE      = NO
 # bibliography, e.g. plainnat, or ieeetr. The default style is "plain". See 
 # http://en.wikipedia.org/wiki/BibTeX for more info.
 
-LATEX_BIB_STYLE        = plain
+# unsupported LATEX_BIB_STYLE        = plain
 
 #---------------------------------------------------------------------------
 # configuration options related to the RTF output
@@ -1709,7 +1709,7 @@ INCLUDED_BY_GRAPH      = YES
 # the time of a run. So in most cases it will be better to enable call graphs 
 # for selected functions only using the \callgraph command.
 
-CALL_GRAPH             = NO
+CALL_GRAPH             = YES
 
 # If the CALLER_GRAPH and HAVE_DOT tags are set to YES then 
 # doxygen will generate a caller dependency graph for every global function 
@@ -1717,7 +1717,7 @@ CALL_GRAPH             = NO
 # the time of a run. So in most cases it will be better to enable caller 
 # graphs for selected functions only using the \callergraph command.
 
-CALLER_GRAPH           = NO
+CALLER_GRAPH           = YES
 
 # If the GRAPHICAL_HIERARCHY and HAVE_DOT tags are set to YES then doxygen 
 # will generate a graphical hierarchy of all classes instead of a textual one.
@@ -1746,7 +1746,7 @@ DOT_IMAGE_FORMAT       = png
 # need to set HTML_FILE_EXTENSION to xhtml in order to make the SVG files 
 # visible. Older versions of IE do not have SVG support.
 
-INTERACTIVE_SVG        = NO
+# unsupported INTERACTIVE_SVG        = NO
 
 # The tag DOT_PATH can be used to specify the path where the dot tool can be 
 # found. If left blank, it is assumed the dot tool can be found in the path.
@@ -1791,7 +1791,7 @@ MAX_DOT_GRAPH_DEPTH    = 0
 # enabling this option may lead to badly anti-aliased labels on the edges of 
 # a graph (i.e. they become hard to read).
 
-DOT_TRANSPARENT        = NO
+DOT_TRANSPARENT        = YES
 
 # Set the DOT_MULTI_TARGETS tag to YES allow dot to generate multiple output 
 # files in one run (i.e. multiple -o and -T options on the command line). This 
