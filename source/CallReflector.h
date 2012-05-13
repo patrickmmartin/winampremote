@@ -7,6 +7,8 @@
 
 #include <vcl.h>
 
+#include "waint.h"
+
 #include "ICallObserver.h"
 
 #ifndef CALLREFLECTOR_H_

@@ -1,11 +1,11 @@
-//---------------------------------------------------------------------------
+
 #ifndef rpcthreadH
 #define rpcthreadH
-//---------------------------------------------------------------------------
-#include <Classes.hpp>
-//---------------------------------------------------------------------------
 
- #include "ICallObserver.h"
+#include <Classes.hpp>
+
+
+#include "ICallObserver.h"
 
 using namespace WinampRemote::Remoting;
 
@@ -26,5 +26,5 @@ void __fastcall MainMessage(char * msgString);
 void __fastcall MainStatus(char * msgString);
 
 
-//---------------------------------------------------------------------------
+
 #endif

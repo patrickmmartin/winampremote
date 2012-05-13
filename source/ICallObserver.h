@@ -25,7 +25,8 @@ class ICallObserver {
      */
 	virtual ~ICallObserver() {}
 
-    /**
+    // TODO parameter should be WAExecutionStatus NewThreadState
+	/**
      * status output
      * @param status
      */

@@ -39,6 +39,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "gen_plugin.h"
 
+#include "CallReflector.h"
+
 WinampRemote::Server::WinampServer * localWinamp = NULL;
 
 
@@ -551,13 +553,13 @@ void WAGetStringDataList(
 
 
 
-//---------------------------------------------------------------------------
+
 __fastcall TRPCServerDLLThread::TRPCServerDLLThread(bool CreateSuspended)
     : TThread(CreateSuspended)
 {
 }
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TRPCServerDLLThread::Execute()
 {
@@ -634,17 +636,20 @@ void __fastcall MainMessage(char * msgString)
 {
   // TODO: this global handle should be factored out
   PostMessage(mainhwnd, WM_THREAD_MESSAGE, 0, (long) strdup(msgString));
+  TRPCServerDLLThread::CallObserver.notifyMessage(msgString);
 }
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall MainStatus(WAExecutionStatus Status)
 {
   // TODO: this global handle should be factored out
   PostMessage(mainhwnd, WM_THREAD_STATUS, 0, Status);
+	// TODO use the correct type
+  TRPCServerDLLThread::CallObserver.notifyStatus("status");
 }
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall MainIdent(char * msgString)
 {
@@ -652,18 +657,21 @@ void __fastcall MainIdent(char * msgString)
   PostMessage(mainhwnd, WM_THREAD_IDENT, 0, (long) strdup(msgString));
 }
 
-//---------------------------------------------------------------------------
+
 
 void __RPC_FAR * __RPC_USER midl_user_allocate(size_t len)
 {
     return(malloc(len));
 }
 
-//---------------------------------------------------------------------------
+
 
 void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
 {
     free(ptr);
 }
 
-//---------------------------------------------------------------------------
+
+WinampRemote::Remoting::CallReflector cr;
+ICallObserver& TRPCServerDLLThread::CallObserver = cr;
+

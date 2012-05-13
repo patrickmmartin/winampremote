@@ -1,9 +1,9 @@
-//---------------------------------------------------------------------------
+
 #ifndef rpcthreadDLLH
 #define rpcthreadDLLH
-//---------------------------------------------------------------------------
+
 #include <Classes.hpp>
-//---------------------------------------------------------------------------
+
 
 
 // problem with definition of __try - this gets round out with not problems
@@ -14,7 +14,9 @@
 // bring the Winamp interfaces
 #include "WinampServerImpl.h"
 
+#include "ICallObserver.h"
 
+using namespace WinampRemote::Remoting;
 
 class TRPCServerDLLThread : public TThread
 {
@@ -37,5 +39,5 @@ extern TRPCServerDLLThread *serverThread;
   void __fastcall MainIdent(char * msgString);
 
 
-//---------------------------------------------------------------------------
+
 #endif

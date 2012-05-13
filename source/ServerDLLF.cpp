@@ -30,7 +30,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "gen_plugin.h"
 #include "AboutF.h"
 
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TfrmMain *frmMain;
@@ -41,7 +41,7 @@ TRPCServerDLLThread *serverThread;
 const int FAIL_TIMEOUT = 15; // seconds
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMain::ThreadMessage(TMessage &Message)
 
 {
@@ -56,7 +56,7 @@ void __fastcall TfrmMain::ThreadMessage(TMessage &Message)
 }
 
 
-//---------------------------------------------------------------------------
+//TODO: suitable recipient for status change
 void __fastcall TfrmMain::ExecutionStatus(WAExecutionStatus NewThreadState)
 {
 
@@ -74,7 +74,7 @@ void __fastcall TfrmMain::ExecutionStatus(WAExecutionStatus NewThreadState)
 
 }
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMain::ThreadStatus(TMessage &Message)
 {
 
@@ -82,7 +82,7 @@ void __fastcall TfrmMain::ThreadStatus(TMessage &Message)
 
 }
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::ThreadIdent(TMessage &Message)
 {
@@ -123,7 +123,7 @@ void __fastcall TfrmMain::ThreadIdent(TMessage &Message)
 
 }
 
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmMain::timerMainTimer(TObject *Sender)
@@ -199,14 +199,14 @@ void __fastcall TfrmMain::timerMainTimer(TObject *Sender)
 
 }
 
-//---------------------------------------------------------------------------
+
 
 
 __fastcall TfrmMain::TfrmMain(TComponent* Owner)
         : TForm(Owner)
 {
 }
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMain::FormCreate(TObject *Sender)
 {
 const BufferSize = 32;		//Buffer max size
@@ -260,7 +260,7 @@ TRegistry * reg;
 }
 
 
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmMain::AppException(TObject *Sender, Exception *E)
@@ -268,7 +268,7 @@ void __fastcall TfrmMain::AppException(TObject *Sender, Exception *E)
 {
   lstMessages->Items->Add(AnsiString("There was an unhandled exception Type: " + E->ClassName()+ " Message: " + E->Message));
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::FormKeyDown(TObject *Sender, WORD &Key,
       TShiftState Shift)
@@ -279,7 +279,7 @@ void __fastcall TfrmMain::FormKeyDown(TObject *Sender, WORD &Key,
   }
 
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmMain::chkListEventsClickCheck(TObject *Sender)
@@ -291,7 +291,7 @@ int i;
     }
 
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmMain::FormShow(TObject *Sender)
@@ -302,7 +302,7 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
   lvUsers->Items->Clear();
     
 }
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMain::CreateThread()
 {
   // should
@@ -339,13 +339,13 @@ TRegistry * reg;
   }
         
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::btnConfigClick(TObject *Sender)
 {
   config();
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMain::btnAboutClick(TObject *Sender)
 {
@@ -368,6 +368,6 @@ void __fastcall TfrmMain::btnAboutClick(TObject *Sender)
     frmAbout = NULL;
   }
 }
-//---------------------------------------------------------------------------
+
 
 
