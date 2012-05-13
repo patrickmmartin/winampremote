@@ -4,7 +4,7 @@
 
 #include "RPCFuncsU.h"
 #include "waint.h"
-#include "ConsoleWinampClient.h"
+#include "WinampClientBase.h"
 
 static char IdentBuf[2 * MAX_COMPUTERNAME_LENGTH + 2];
 
@@ -40,42 +40,42 @@ namespace WinampRemote
 namespace Client
 {
 
-ConsoleWinampClient::ConsoleWinampClient()
+WinampClientBase::WinampClientBase()
 {
 	GetIdent();
 }
 
-void ConsoleWinampClient::nextSong(void)
+void WinampClientBase::nextSong(void)
 {
 	ExecuteMessage(IdentBuf, WINAMP_NEXT);
 }
 
-void ConsoleWinampClient::previousSong(void)
+void WinampClientBase::previousSong(void)
 {
 	ExecuteMessage(IdentBuf, WINAMP_PREVIOUS);
 }
 
-void ConsoleWinampClient::playSong(void)
+void WinampClientBase::playSong(void)
 {
 	ExecuteMessage(IdentBuf, WINAMP_PLAYENTRY);
 }
 
-void ConsoleWinampClient::stopSong(void)
+void WinampClientBase::stopSong(void)
 {
 	ExecuteMessage(IdentBuf, WINAMP_STOP);
 }
 
-void ConsoleWinampClient::pause(void)
+void WinampClientBase::pause(void)
 {
 	ExecuteMessage(IdentBuf, WINAMP_PAUSE);
 }
 
-WAPlaybackStatus ConsoleWinampClient::getPlaybackStatus(void)
+WAPlaybackStatus WinampClientBase::getPlaybackStatus(void)
 {
 	return (WAPlaybackStatus) IntegerResult(IdentBuf, IPC_ISPLAYING, 0);
 }
 
-vector<string>* ConsoleWinampClient::getPlayList(void)
+vector<string>* WinampClientBase::getPlayList(void)
 {
 	vector<string> * result = new vector<string>();
 	char buffer[MAX_PATH];
@@ -91,7 +91,7 @@ vector<string>* ConsoleWinampClient::getPlayList(void)
 	return result;
 }
 
-int ConsoleWinampClient::winampVersion(void)
+int WinampClientBase::winampVersion(void)
 {
 	return IntegerResult(IdentBuf, IPC_GETVERSION, 0);
 }

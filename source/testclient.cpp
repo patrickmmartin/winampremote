@@ -42,7 +42,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "RPCFuncsU.h"
 
-#include "ConsoleWinampClient.h"
+#include "WinampClientBase.h"
 
 using namespace WinampRemote::Client;
 
@@ -76,7 +76,7 @@ char * port;
 
     Bind(address, port);
 
-    ConsoleWinampClient * cwc = new ConsoleWinampClient();
+    WinampClientBase * cwc = new WinampClientBase();
 
     cout << "playback status " << cwc->getPlaybackStatus() << endl;
     cwc->getPlaybackStatus();

@@ -1,5 +1,5 @@
-#ifndef CONSOLEWINAMPCLIENT_H
-#define CONSOLEWINAMPCLIENT_H
+#ifndef WINAMPCLIENTBASE_H
+#define WINAMPCLIENTBASE_H
 
 #include "IWinamp.h"
 
@@ -18,7 +18,7 @@ namespace Client
 /**
  * A concrete implementation of the a IWinamp client for console use
  */
-class ConsoleWinampClient: public IWinamp
+class WinampClientBase: public IWinamp
 {
 
 public:
@@ -26,12 +26,12 @@ public:
 	/**
 	 * no - params constructor
 	 */
-	ConsoleWinampClient();
+	WinampClientBase();
 
 	/**
 	 * destructor
 	 */
-	virtual ~ConsoleWinampClient()
+	virtual ~WinampClientBase()
 	{
 	}
 
@@ -55,4 +55,4 @@ public:
 } // end of namespace Client
 } // end of namespace WinampRemote
 
-#endif // CONSOLEWINAMPCLIENT_H
+#endif // WINAMPCLIENTBASE_H

@@ -25,7 +25,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "RPCFuncsU.h"
 
-#include "ConsoleWinampClient.h"
+#include "WinampClientBase.h"
 
 
 int main(int argc , char* argv[] )
@@ -60,7 +60,7 @@ char * port;
 
     Bind(address, port);
 
-    WinampRemote::Client::ConsoleWinampClient * cwc = new WinampRemote::Client::ConsoleWinampClient();
+    WinampRemote::Client::WinampClientBase * cwc = new WinampRemote::Client::WinampClientBase();
 
     cout << endl;
     cout << "\t\t****************************************" << endl;

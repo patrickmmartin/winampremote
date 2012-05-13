@@ -5,7 +5,7 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\conremote.exe"/>
     <OBJFILES value="..\obj\conremote\conremote.obj ..\obj\conremote\RPCFuncsU.obj 
-      ..\obj\conremote\WAINT.obj ..\obj\conremote\ConsoleWinampClient.obj"/>
+      ..\obj\conremote\WAINT.obj ..\obj\conremote\WinampClientBase.obj"/>
     <RESFILES value="..\obj\conremote\winampremote.res"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>

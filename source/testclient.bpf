@@ -2,7 +2,7 @@ USEUNIT("testclient.cpp");
 USEUNIT("RPCFuncsU.cpp");
 USEUNIT("WAINT.CPP");
 USELIB("..\lib\winampinterface.lib");
-USEUNIT("ConsoleWinampClient.cpp");
+USEUNIT("WinampClientBase.cpp");
 USERC("winampremote.rc");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file

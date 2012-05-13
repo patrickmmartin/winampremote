@@ -1,7 +1,7 @@
 USEUNIT("conremote.cpp");
 USEUNIT("RPCFuncsU.cpp");
 USEUNIT("WAINT.CPP");
-USEUNIT("ConsoleWinampClient.cpp");
+USEUNIT("WinampClientBase.cpp");
 USELIB("..\lib\winampinterface.lib");
 USERC("winampremote.rc");
 //---------------------------------------------------------------------------
