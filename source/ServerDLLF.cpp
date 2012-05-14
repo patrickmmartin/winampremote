@@ -158,6 +158,7 @@ void __fastcall TfrmMain::timerMainTimer(TObject *Sender)
       break;
     default:
       sbrMain->Panels->Items[0]->Text = "unknown";
+      break;
     }
 
 

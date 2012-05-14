@@ -133,6 +133,7 @@ const char * WinampVersionString(int version)
 		{
 			StandardVersion(version);
 		}
+		break;
 	}
 	return winampver;
 }

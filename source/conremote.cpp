@@ -52,6 +52,7 @@ char * port;
     default: // no break
       address = "127.0.0.1";
       port = "\\pipe\\winampremote";
+      break;
   }
 
 
