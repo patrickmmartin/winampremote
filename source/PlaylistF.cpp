@@ -88,7 +88,7 @@ const char* States[odComboBoxEdit + 1] =
 	"odNoAccel",  "odNoFocusRect",  "odReserved1",  "odReserved2",  "odComboBoxEdit"
 };
 
-AnsiString itemState(TOwnerDrawState State)
+void itemState(TOwnerDrawState State, int Index)
 {
   AnsiString setstr;
 
@@ -98,7 +98,11 @@ AnsiString itemState(TOwnerDrawState State)
                 setstr += AnsiString(States[i]) + " ";
   }
 
-  return setstr;
+
+  OutputDebugString(AnsiString().sprintf("drawing %i [%s]",
+		  	  	  	  Index,
+		  	  	  	  setstr.c_str()).c_str());
+
 }
 
  void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control, int Index, const TRect &Rect, TOwnerDrawState State)
@@ -110,12 +114,13 @@ AnsiString itemState(TOwnerDrawState State)
   if (State.Contains(odFocused))
         return;
 
-  AnsiString setstr = itemState(State);
+  itemState(State, Index);
 
   if (Index == frmMain->CurrentIndex)
     Canvas->Font->Color = clRed;
 
-  OutputDebugString(AnsiString().sprintf("drawing %i [%s]", Index, itemState(State).c_str()).c_str());
+  itemState(State, Index);
+
   Canvas->TextOut(Rect.Left + Offset, Rect.Top, ItemText);
 
   if (Index == frmMain->CurrentIndex)
@@ -134,12 +139,10 @@ AnsiString itemState(TOwnerDrawState State)
   if (State.Contains(odFocused))
         return;
 
-  AnsiString setstr = itemState(State);
+  itemState(State, Index);
 
-  OutputDebugString(AnsiString().sprintf("drawing %i [%s]", Index, itemState(State).c_str()).c_str());
   // paints now accumulate, so this is needed
-  if (!State.Contains(odSelected))
-	  Canvas->FillRect(Rect);
+  Canvas->FillRect(Rect);
   ge->drawGlowText(Canvas->Handle, ItemText, Rect, (Index == frmMain->CurrentIndex) );
 }
 
@@ -176,9 +179,6 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
   }
 
 }
-
-
-
 
 void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 {
