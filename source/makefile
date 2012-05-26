@@ -77,7 +77,15 @@ clean-setup:
 setup: remote.exe gen_RPCinterface.dll
 	build-setup Build
 
-TARGETS= winampinterface.lib unittests.exe testserver.exe testclient.exe conremote.exe remote.exe winampserver.exe winampclient.dll gen_RPCinterface.dll
+TARGETS= winampinterface.lib\
+		unittests.exe\
+		testserver.exe\
+		testclient.exe\
+		conremote.exe\
+		remote.exe\
+		winampserver.exe\
+		winampclient.dll\
+		gen_RPCinterface.dll 
 
 all: $(TARGETS)
 
@@ -90,8 +98,8 @@ help:
 	@echo tests - performs some tests on targets
 	@echo midl - compiles the IDL files
 	@echo docs - generates the doxygen output
-	@echo setup - builds the installer
-	@echo install - installs the plugin to the default location for the OS
+	@echo setup	- builds the installer
+	@echo copy-plugin - installs the plugin to the default location for the OS
 	@echo default - clean all
 	
 docs:
@@ -107,7 +115,7 @@ WINAMP_PLUGINS_DEFAULT=$(PROGRAMFILES)\Winamp\Plugins
 WINAMP_PLUGINS_DEFAULT=$(PROGRAMFILES(x86))\Winamp\Plugins
 !endif
 	
-install:
+copy-plugin:
 	echo ========== copying plugin dll to $(WINAMP_PLUGINS_DEFAULT) ======
 	copy ..\bin\gen_RPCinterface.dll "$(WINAMP_PLUGINS_DEFAULT)"
 	
