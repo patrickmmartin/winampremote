@@ -87,7 +87,7 @@ TARGETS= winampinterface.lib\
 		winampclient.dll\
 		gen_RPCinterface.dll 
 
-all: $(TARGETS)
+all: $(TARGETS) docs
 
 help:
 	@echo targets built by this makefile: $(TARGETS)
