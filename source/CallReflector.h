@@ -5,14 +5,16 @@
  *      Author: Patrick
  */
 
+#ifndef CALLREFLECTOR_H_
+#define CALLREFLECTOR_H_
+
 #include <vcl.h>
+#pragma hdrstop
 
 #include "waint.h"
 
 #include "ICallObserver.h"
 
-#ifndef CALLREFLECTOR_H_
-#define CALLREFLECTOR_H_
 
 namespace WinampRemote
 {
