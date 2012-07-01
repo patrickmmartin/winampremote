@@ -51,6 +51,8 @@
 
 #nav-tree .selected a {
   text-decoration:none;
+  padding:2px;
+  margin:0px;
   color:#fff;
 }
 
@@ -76,7 +78,6 @@
   display:block;
   padding:0px;
   margin:0px;
-  -webkit-overflow-scrolling : touch; /* iOS 5+ */
 }
 
 #side-nav {
@@ -116,12 +117,7 @@
   background-image:url('nav_h.png');
   background-repeat:repeat-x;
   background-color: #F9FAFC;
-  -webkit-overflow-scrolling : touch; /* iOS 5+ */
 }
 
-@media print
-{
-  #nav-tree { display: none; }
-  div.ui-resizable-handle { display: none; position: relative; }
-}
+
 
