@@ -1,0 +1,25 @@
+var winampinterface__s_8c =
+[
+    [ "_MIDL_TYPE_FORMAT_STRING", "struct___m_i_d_l___t_y_p_e___f_o_r_m_a_t___s_t_r_i_n_g.html", "struct___m_i_d_l___t_y_p_e___f_o_r_m_a_t___s_t_r_i_n_g" ],
+    [ "_MIDL_PROC_FORMAT_STRING", "struct___m_i_d_l___p_r_o_c___f_o_r_m_a_t___s_t_r_i_n_g.html", "struct___m_i_d_l___p_r_o_c___f_o_r_m_a_t___s_t_r_i_n_g" ],
+    [ "PROC_FORMAT_STRING_SIZE", "winampinterface__s_8c.html#aaf88f77ac2cd3ef19e67916d5da5a42a", null ],
+    [ "TYPE_FORMAT_STRING_SIZE", "winampinterface__s_8c.html#ada96888875bf0b021f125d5dcb974d59", null ],
+    [ "MIDL_PROC_FORMAT_STRING", "winampinterface__s_8c.html#ae49c8684f287c01d45e857b3ac7cad47", null ],
+    [ "MIDL_TYPE_FORMAT_STRING", "winampinterface__s_8c.html#ac90f2a92649fb24571211a18c4ba1cea", null ],
+    [ "winamp_WAExecuteMessage", "winampinterface__s_8c.html#a50984bf8f3ff72dbb73efcf99941cf94", null ],
+    [ "winamp_WAExecuteMessageString", "winampinterface__s_8c.html#a2f33fc0731cc3e284c759119394d8fa2", null ],
+    [ "winamp_WAGetStringDataList", "winampinterface__s_8c.html#a48c61169ec0085c93469aef4926302e6", null ],
+    [ "winamp_WAGetStringList", "winampinterface__s_8c.html#a4f80019df028537cf19374bf0bc11506", null ],
+    [ "winamp_WAIntegerResult", "winampinterface__s_8c.html#a43faf3bff046119222a6dcc2091ee1d1", null ],
+    [ "winamp_WAMessageProc", "winampinterface__s_8c.html#aa7b08c239ebb88b019ef0a743bc7022d", null ],
+    [ "winamp_WASetStringList", "winampinterface__s_8c.html#a71f917dee429796f5bb6dc873d2e0a97", null ],
+    [ "winamp_WAShutdown", "winampinterface__s_8c.html#ac6af23c574382de52d9557851a25467c", null ],
+    [ "winamp_WAStringResult", "winampinterface__s_8c.html#ac206436b2d0d7fb777373fd53623c996", null ],
+    [ "__MIDL_ProcFormatString", "winampinterface__s_8c.html#a3f4f89274d4bd73a55e3c51d0ecccc9f", null ],
+    [ "__MIDL_TypeFormatString", "winampinterface__s_8c.html#a8c804be272b3b7ff02cf51b0be25e562", null ],
+    [ "winamp___RpcServerInterface", "winampinterface__s_8c.html#a7dd51ce44c563d98d3ca8c3996bfb7af", null ],
+    [ "winamp_StubDesc", "winampinterface__s_8c.html#a181791815fb2c76f51a91d2c5b9ae69a", null ],
+    [ "winamp_table", "winampinterface__s_8c.html#a8e0f012d947af3cb46e3cebc7726a5ad", null ],
+    [ "winamp_v1_0_DispatchTable", "winampinterface__s_8c.html#a4dbee9a0ebbdbb6095b68d1ae8f95922", null ],
+    [ "winamp_v1_0_s_ifspec", "winampinterface__s_8c.html#a10f15beac0a4418c4edcd222df7014af", null ]
+];
