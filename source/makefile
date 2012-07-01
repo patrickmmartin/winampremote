@@ -107,7 +107,7 @@ docs:
 	echo ========== cleaning doxygen output ======
 	>nul del /S /Q ..\doc\*.* 
 	echo ========== building doxygen output ======
-	>nul build-docs 
+	>nul doxygen 
 	
 	
 WINAMP_PLUGINS_DEFAULT=$(PROGRAMFILES)\Winamp\Plugins
