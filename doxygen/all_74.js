@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['the_20winamp_20remote_20control_20suite_2e',['The Winamp Remote Control suite.',['../index.html',1,'']]],
   ['tbbalance',['tbBalance',['../class_tfrm_settings.html#a32b685be52fd50c9f4b31943de1e9c82',1,'TfrmSettings']]],
   ['tbbalancechange',['tbBalanceChange',['../class_tfrm_settings.html#a83ac427e1d2bffd9aa553cf640f39df5',1,'TfrmSettings']]],
   ['tbbalanceenter',['tbBalanceEnter',['../class_tfrm_settings.html#a63c25b1cd304f5943dd338072b7e7e21',1,'TfrmSettings']]],

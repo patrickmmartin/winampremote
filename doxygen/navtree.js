@@ -1,6 +1,7 @@
 var NAVTREE =
 [
-  [ "winamp remote control", "index.html", [
+  [ "The Winamp Remote Control suite", "index.html", [
+    [ "The Winamp Remote Control suite.", "index.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -40,8 +41,8 @@ var NAVTREEINDEX =
 "class_tfrm_main.html#a5b322fbc0da728bfd44d7edaf9291ead",
 "class_tfrm_servers.html#a8f77087d6c43adfda81cb33f09291475",
 "gen___r_p_cinterface_8cpp.html",
-"remotestrs_8h.html#aa85250f130ecc7b597fe1a5db021cb66",
-"winampinterface_8h.html#a46f16637c8cd6c36e96b46976442cc60",
+"remotestrs_8h.html#a9a1043a97adf1d60810b9ea69d6c17f7",
+"winampinterface_8h.html#a43ca1d334a8111ea6fa37514396b7a63",
 ];
 
 var navTreeSubIndices = new Array();
