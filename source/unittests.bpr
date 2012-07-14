@@ -25,8 +25,8 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="tlink32"/>
-    <USERDEFINES value="_DEBUG"/>
-    <SYSDEFINES value="NO_STRICT;USEPACKAGES"/>
+    <USERDEFINES value="_DEBUG;CATCH_PLATFORM_WINDOWS"/>
+    <SYSDEFINES value="NO_STRICT;_NO_VCL;USEPACKAGES"/>
     <MAINSOURCE value="unittests.bpf"/>
     <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
     <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
@@ -37,13 +37,13 @@
       -tWM- -c"/>
     <PFLAGS value="-N2..\obj\unittests -N0..\obj\unittests -$YD -$W -$O- -v -JPHNE -M"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zi"/>
+    <AFLAGS value="/mx /w2 /zd"/>
     <LFLAGS value="-I..\obj\unittests -D&quot;&quot; -ap -Tpe -x -Gn -v"/>
   </OPTIONS>
   <LINKER>
-    <ALLOBJ value="c0x32.obj $(PACKAGES) sysinit.obj $(OBJFILES)"/>
+    <ALLOBJ value="c0x32.obj $(PACKAGES) $(OBJFILES)"/>
     <ALLRES value="$(RESFILES)"/>
-    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cw32.lib"/>
   </LINKER>
   <IDEOPTIONS>
 [Version Info]
@@ -71,8 +71,42 @@ LegalTrademarks=
 OriginalFilename=unittests.exe
 ProductName=Winamp Remote Control
 ProductVersion=1.4
-Build Time=Sun 03/11/2012 21:26:41.35
-Build Machine=VXP-PATRICK
+Build Time=14/07/2012 22:28:02.92
+Build Machine=TIMELINE
+
+[Excluded Packages]
+$(BCB)\Projects\Bpl\ThemeManagerC5D.bpl=Soft Gems Theme Manager
+
+[HistoryLists\hlIncludePath]
+Count=5
+Item0=$(BCB)\include;$(BCB)\include\vcl;..\..\Catch\single_include
+Item1=..\..\Catch\projects\CPPBuilder5;$(BCB)\include;$(BCB)\include\vcl;..\..\Catch\single_include
+Item2=$(BCB)\include;$(BCB)\include\vcl;..\..\single_include
+Item3=..\..\..\..\CatchSimpleTest;$(BCB)\include;$(BCB)\include\vcl
+Item4=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=3
+Item0=$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\..\Catch\projects\CPPBuilder5;$(BCB)\lib\obj;$(BCB)\lib
+Item2=..\..\..\..\CatchSimpleTest;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=2
+Item0=_DEBUG;CATCH_PLATFORM_WINDOWS
+Item1=_DEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=1
+Item0=..\obj\unittests
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=..\bin\
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
