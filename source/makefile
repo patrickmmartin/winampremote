@@ -1,3 +1,4 @@
+
 ROOT = $(MAKEDIR)\..
 BRCC = $(ROOT)\bin\brcc32.exe 
 
@@ -95,7 +96,7 @@ help:
 	@echo help - shows this output
 	@echo all - builds all targets
 	@echo clean - cleans all targets
-	@echo tests - performs some tests on targets
+	@echo test-suite - performs some tests on targets
 	@echo midl - compiles the IDL files
 	@echo docs - generates the doxygen output
 	@echo setup	- builds the installer
@@ -125,7 +126,7 @@ pre-tests:
 post-tests: 
 	echo ========== completed tests ======
 
-tests: unittests.exe pre-tests unit-tests post-tests
+tests: pre-tests test-suite post-tests
 		
 test-builds:
 	echo ========== ensuring independent builds ======
@@ -137,12 +138,14 @@ test-builds:
 	make clean gen_RPCinterface.dll > nul
 	make clean winampserver.exe > nul
 	@echo independent builds completed
-	
-unit-tests: testserver.exe
-	start "mock server"  ..\bin\testserver	
+
+run-unittests: unittests.exe
 	..\bin\unittests
+
+start-mockserver: testserver.exe 
+	start "mock server"  ..\bin\testserver	
+	
+test-suite: start-mockserver run-unittests
 	-taskkill /IM testserver.exe	
-
-
 
 	
