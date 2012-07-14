@@ -139,13 +139,15 @@ test-builds:
 	make clean winampserver.exe > nul
 	@echo independent builds completed
 
-run-unittests: unittests.exe
-	..\bin\unittests
+run-unittests: 
+	-..\bin\unittests
 
-start-mockserver: testserver.exe 
+start-mockserver:  
+	echo running mock server
 	start "mock server"  ..\bin\testserver	
 	
-test-suite: start-mockserver run-unittests
-	-taskkill /IM testserver.exe	
+test-suite: testserver.exe unittests.exe start-mockserver run-unittests
+	echo killing mock server
+	taskkill /IM testserver.exe > nul	
 
 	
