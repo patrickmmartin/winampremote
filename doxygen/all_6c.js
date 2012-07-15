@@ -25,6 +25,7 @@ var searchData=
   ['lbpsi_5fhotselected',['LBPSI_HOTSELECTED',['../_glass_extender_8cpp.html#a9da3d8165c8351aa24d4fd0699fae18b',1,'GlassExtender.cpp']]],
   ['lbpsi_5fselected',['LBPSI_SELECTED',['../_glass_extender_8cpp.html#ad414ac51812467d4643e4109916fbf22',1,'GlassExtender.cpp']]],
   ['lbpsi_5fselectednotfocus',['LBPSI_SELECTEDNOTFOCUS',['../_glass_extender_8cpp.html#af28d609eb5b64c1bcd0f0c4a6b6b5b8d',1,'GlassExtender.cpp']]],
+  ['line',['line',['../struct_catch_1_1_source_line_info.html#a841e5d696c7b9cde24e45e61dd979c77',1,'Catch::SourceLineInfo']]],
   ['localexecutecommand',['LocalExecuteCommand',['../waint_8cpp.html#a6ce8b98e5e3c0471a98b71e953550060',1,'LocalExecuteCommand(HWND HWinamp, WinampCommand Command):&#160;waint.cpp'],['../waint_8h.html#a89f83e0f4a8df3e465f0524336b24de3',1,'LocalExecuteCommand(HWND HWinamp, WinampCommand MessageToExecute):&#160;waint.cpp']]],
   ['localexecutestringcommand',['LocalExecuteStringCommand',['../waint_8cpp.html#af2a89ea68ce8e0d5712b6b7bee8cbf2d',1,'LocalExecuteStringCommand(HWND HWinamp, char *CommandString, WinampCommand Command):&#160;waint.cpp'],['../waint_8h.html#af2a89ea68ce8e0d5712b6b7bee8cbf2d',1,'LocalExecuteStringCommand(HWND HWinamp, char *CommandString, WinampCommand Command):&#160;waint.cpp']]],
   ['localgetwinampversion',['LocalGetWinampVersion',['../waint_8cpp.html#a72ceae4fe8f84aa0a39de1ce81ea0015',1,'LocalGetWinampVersion(HWND HWinamp):&#160;waint.cpp'],['../waint_8h.html#a72ceae4fe8f84aa0a39de1ce81ea0015',1,'LocalGetWinampVersion(HWND HWinamp):&#160;waint.cpp']]],

@@ -1,5 +1,6 @@
 var annotated =
 [
+    [ "Catch", "namespace_catch.html", "namespace_catch" ],
     [ "std", null, null ],
     [ "WinampRemote", "namespace_winamp_remote.html", "namespace_winamp_remote" ],
     [ "__MIDL_winamp_0001", "struct_____m_i_d_l__winamp__0001.html", "struct_____m_i_d_l__winamp__0001" ],
@@ -12,6 +13,7 @@ var annotated =
     [ "NetworkSuite", "class_network_suite.html", "class_network_suite" ],
     [ "porttype", "structporttype.html", "structporttype" ],
     [ "ServerEnumerator", "class_server_enumerator.html", "class_server_enumerator" ],
+    [ "ServerInfo", "struct_server_info.html", "struct_server_info" ],
     [ "ServerTester", "class_server_tester.html", "class_server_tester" ],
     [ "TConfigForm", "class_t_config_form.html", "class_t_config_form" ],
     [ "TfrmAbout", "class_tfrm_about.html", "class_tfrm_about" ],

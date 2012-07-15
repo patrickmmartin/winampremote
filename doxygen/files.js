@@ -5,6 +5,11 @@ var files =
     [ "binding.c", "binding_8c.html", "binding_8c" ],
     [ "CallReflector.cpp", "_call_reflector_8cpp.html", null ],
     [ "CallReflector.h", "_call_reflector_8h.html", "_call_reflector_8h" ],
+    [ "catch.hpp", "catch_8hpp.html", "catch_8hpp" ],
+    [ "ClientBinder.cpp", "_client_binder_8cpp.html", null ],
+    [ "ClientBinder.h", "_client_binder_8h.html", [
+      [ "ClientBinder", "class_winamp_remote_1_1_client_1_1_client_binder.html", "class_winamp_remote_1_1_client_1_1_client_binder" ]
+    ] ],
     [ "ColourU.cpp", "_colour_u_8cpp.html", "_colour_u_8cpp" ],
     [ "ColourU.h", "_colour_u_8h.html", "_colour_u_8h" ],
     [ "CommandF.cpp", "_command_f_8cpp.html", "_command_f_8cpp" ],

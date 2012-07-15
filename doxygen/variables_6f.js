@@ -4,7 +4,7 @@ var searchData=
   ['objectnummajor',['objectNumMajor',['../_about_f_8cpp.html#ad31cc8aa8b14ca9200ab062d4b56c00b',1,'AboutF.cpp']]],
   ['objectnumminor',['objectNumMinor',['../_about_f_8cpp.html#a67c3e4a987b1ed8a6f2b6caa182cf035',1,'AboutF.cpp']]],
   ['objectxform',['objectXform',['../_about_f_8cpp.html#a23263b037ce066e52938ad5d8e5dd022',1,'AboutF.cpp']]],
-  ['offset',['offset',['../_colour_u_8cpp.html#ac3ff054eb35612881dadbc52013c28c1',1,'offset():&#160;ColourU.cpp'],['../_playlist_f_8cpp.html#a93cddc425f6ac3162575b312fc6090cb',1,'Offset():&#160;PlaylistF.cpp']]],
+  ['offset',['Offset',['../_playlist_f_8cpp.html#a93cddc425f6ac3162575b312fc6090cb',1,'Offset():&#160;PlaylistF.cpp'],['../_colour_u_8cpp.html#ac3ff054eb35612881dadbc52013c28c1',1,'offset():&#160;ColourU.cpp']]],
   ['onident',['OnIdent',['../class_winamp_remote_1_1_remoting_1_1_call_reflector.html#a93f701d38bbe407a8256f4cf3ee38a48',1,'WinampRemote::Remoting::CallReflector']]],
   ['oninfo',['OnInfo',['../class_winamp_remote_1_1_remoting_1_1_call_reflector.html#acb43d6a3a4de8df79c2272bd7c13b08d',1,'WinampRemote::Remoting::CallReflector']]],
   ['onmessage',['OnMessage',['../class_server_enumerator.html#a93c5fd7bea8860f8957b06bb608554bf',1,'ServerEnumerator']]],

@@ -78,6 +78,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -127,7 +131,7 @@ $(document).ready(function(){initNavTree('functions_0x65.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -160,6 +164,9 @@ $(document).ready(function(){initNavTree('functions_0x65.html','');});
 <li>EndDock()
 : <a class="el" href="class_tfrm_main.html#a3d26d56dfc3d552d93093dc07344d1fa">TfrmMain</a>
 </li>
+<li>EndGroup()
+: <a class="el" href="struct_catch_1_1_i_reporter.html#a4f535483a2b67ea035149bbb3cef329f">Catch::IReporter</a>
+</li>
 <li>Endpoint
 : <a class="el" href="class_t_r_p_c_server_d_l_l_thread.html#a753495964a924f735842d75976a5b385">TRPCServerDLLThread</a>
 </li>
@@ -169,14 +176,46 @@ $(document).ready(function(){initNavTree('functions_0x65.html','');});
 <li>endPoint
 : <a class="el" href="class_server_tester.html#aef255f4fe5eca1e3e969d57a8c70932f">ServerTester</a>
 </li>
+<li>EndSection()
+: <a class="el" href="struct_catch_1_1_i_reporter.html#a1d30e7c58ff3de2ae04d1741c80a74b2">Catch::IReporter</a>
+</li>
+<li>EndsWith()
+: <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_ends_with.html#ae8b4302029094a6486656b2d800e5e1f">Catch::Matchers::Impl::StdString::EndsWith</a>
+</li>
+<li>EndTestCase()
+: <a class="el" href="struct_catch_1_1_i_reporter.html#a294e878c40061753eda12e326db31ec8">Catch::IReporter</a>
+</li>
+<li>EndTesting()
+: <a class="el" href="struct_catch_1_1_i_reporter.html#a26790d01ce89a9cededdea3de8dd2435">Catch::IReporter</a>
+</li>
 <li>enumerateServers()
 : <a class="el" href="class_server_enumerator.html#a345e6a1d9ed19f2bbdc91ee3aec28679">ServerEnumerator</a>
+</li>
+<li>epsilon()
+: <a class="el" href="class_catch_1_1_detail_1_1_approx.html#a05c50c3ad0a971fab19345b5d94979a9">Catch::Detail::Approx</a>
+</li>
+<li>Equals()
+: <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_equals.html#a11a973d939bcf2ee056157f43bdfb536">Catch::Matchers::Impl::StdString::Equals</a>
 </li>
 <li>EQUpdateNeeded
 : <a class="el" href="class_tfrm_settings.html#ac54013b0144d7a51b5842d3b67375fd6">TfrmSettings</a>
 </li>
 <li>ERPCException()
 : <a class="el" href="class_e_r_p_c_exception.html#a1e9b5f043a5fdbc9d1acc2de85da2083">ERPCException</a>
+</li>
+<li>evaluate()
+: <a class="el" href="struct_catch_1_1_internal_1_1_evaluator_3_01_t1_00_01_t2_00_01_is_less_than_or_equal_to_01_4.html#ae19849a42f94cd1da6f2d586da477f0e">Catch::Internal::Evaluator&lt; T1, T2, IsLessThanOrEqualTo &gt;</a>
+, <a class="el" href="struct_catch_1_1_internal_1_1_evaluator_3_01_t1_00_01_t2_00_01_is_equal_to_01_4.html#a431f1bd4594c031017e70c378761d8b4">Catch::Internal::Evaluator&lt; T1, T2, IsEqualTo &gt;</a>
+, <a class="el" href="struct_catch_1_1_internal_1_1_evaluator_3_01_t1_00_01_t2_00_01_is_not_equal_to_01_4.html#a9429437090b0dd5d90d3d40d29c4a2cc">Catch::Internal::Evaluator&lt; T1, T2, IsNotEqualTo &gt;</a>
+, <a class="el" href="struct_catch_1_1_internal_1_1_evaluator_3_01_t1_00_01_t2_00_01_is_less_than_01_4.html#a585bde9ed1a97de5fd8f222406735b3b">Catch::Internal::Evaluator&lt; T1, T2, IsLessThan &gt;</a>
+, <a class="el" href="struct_catch_1_1_internal_1_1_evaluator_3_01_t1_00_01_t2_00_01_is_greater_than_01_4.html#ac3ea1a985441ab97c362517e59a6317b">Catch::Internal::Evaluator&lt; T1, T2, IsGreaterThan &gt;</a>
+, <a class="el" href="struct_catch_1_1_internal_1_1_evaluator_3_01_t1_00_01_t2_00_01_is_greater_than_or_equal_to_01_4.html#a9eedb75e0642ab8e6be995641cbc40de">Catch::Internal::Evaluator&lt; T1, T2, IsGreaterThanOrEqualTo &gt;</a>
+</li>
+<li>Exception
+: <a class="el" href="struct_catch_1_1_result_was.html#a624e1ee3661fcf6094ceef1f654601efaa9107b7836cc7590ca668002f76d27c7">Catch::ResultWas</a>
+</li>
+<li>ExceptionTranslatorRegistrar()
+: <a class="el" href="class_catch_1_1_exception_translator_registrar.html#aa73229de911f26b1df6c6c87c4d9e04e">Catch::ExceptionTranslatorRegistrar</a>
 </li>
 <li>Execute()
 : <a class="el" href="class_t_r_p_c_server_d_l_l_thread.html#a68c190124f520945311831a29aa0dc1b">TRPCServerDLLThread</a>
@@ -187,14 +226,28 @@ $(document).ready(function(){initNavTree('functions_0x65.html','');});
 , <a class="el" href="class_winamp_remote_1_1_server_1_1_winamp_server.html#aa172f52e411b81b6c8b1270fdeb65ec1">WinampRemote::Server::WinampServer</a>
 </li>
 <li>ExecuteStringCommand()
-: <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a6db0a5f09c67775117629395ee9b7bd9">WinampRemote::Server::IWinampServer</a>
-, <a class="el" href="class_winamp_remote_1_1_server_1_1_winamp_server.html#a75f21dfdf352fb52e46b00d6ed478c8d">WinampRemote::Server::WinampServer</a>
+: <a class="el" href="class_winamp_remote_1_1_server_1_1_winamp_server.html#a75f21dfdf352fb52e46b00d6ed478c8d">WinampRemote::Server::WinampServer</a>
+, <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a6db0a5f09c67775117629395ee9b7bd9">WinampRemote::Server::IWinampServer</a>
 </li>
 <li>Exit
 : <a class="el" href="class_tfrm_main.html#a414eb8e05a43ebc6952d94eeea20b763">TfrmMain</a>
 </li>
 <li>ExitExecute()
 : <a class="el" href="class_tfrm_main.html#a365e39be9ce586b83472369520626930">TfrmMain</a>
+</li>
+<li>ExplicitFailure
+: <a class="el" href="struct_catch_1_1_result_was.html#a624e1ee3661fcf6094ceef1f654601efacecfc052e2499499b13304249303cc36">Catch::ResultWas</a>
+</li>
+<li>Expression()
+: <a class="el" href="class_catch_1_1_expression.html#ad5502009f1d9653ba09f4171c35528b4">Catch::Expression&lt; T &gt;</a>
+, <a class="el" href="class_catch_1_1_result_info_builder.html#ab239d4c3d545803e42de811cae1213bf">Catch::ResultInfoBuilder</a>
+</li>
+<li>ExpressionBuilder
+: <a class="el" href="class_catch_1_1_result_info_builder.html#a1912ceb0cba0cbbf0291b374a84f0608">Catch::ResultInfoBuilder</a>
+, <a class="el" href="class_catch_1_1_expression_builder.html#ace5fb1d3d95924fd928443fb8c2614d6">Catch::ExpressionBuilder</a>
+</li>
+<li>ExpressionFailed
+: <a class="el" href="struct_catch_1_1_result_was.html#a624e1ee3661fcf6094ceef1f654601efa5e7126b8458dc1376ac870a719f7873f">Catch::ResultWas</a>
 </li>
 </ul>
 </div><!-- contents -->

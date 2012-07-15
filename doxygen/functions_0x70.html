@@ -78,6 +78,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -127,7 +131,7 @@ $(document).ready(function(){initNavTree('functions_0x70.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -148,12 +152,17 @@ $(document).ready(function(){initNavTree('functions_0x70.html','');});
 : <a class="el" href="class_tfrm_main.html#af3a2654f260fca4eac270c67615fbb8e">TfrmMain</a>
 , <a class="el" href="class_t_config_form.html#ab609cdf27a46c61e2982d25a2b4ad0d7">TConfigForm</a>
 </li>
+<li>passed
+: <a class="el" href="struct_catch_1_1_counts.html#ad28daaf3de28006400208b6dd0c631e6">Catch::Counts</a>
+</li>
 <li>pause()
-: <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ab20f4d2fcb8c7da1cbfbd29050e4bb23">WinampRemote::Client::IWinamp</a>
-, <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a624a859be4fdf0e1bd9a5487994b77f6">WinampRemote::Client::WinampClientBase</a>
+: <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a624a859be4fdf0e1bd9a5487994b77f6">WinampRemote::Client::WinampClientBase</a>
 </li>
 <li>Pause
 : <a class="el" href="class_tfrm_main.html#a50d063422efd306a61ba92aedc18caa4">TfrmMain</a>
+</li>
+<li>pause()
+: <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ab20f4d2fcb8c7da1cbfbd29050e4bb23">WinampRemote::Client::IWinamp</a>
 </li>
 <li>Pause1
 : <a class="el" href="class_tfrm_main.html#a8673e5bd8c5aa4f32f3af97378e974a6">TfrmMain</a>
@@ -262,8 +271,8 @@ $(document).ready(function(){initNavTree('functions_0x70.html','');});
 : <a class="el" href="class_tfrm_main.html#a60e7679a312d08a41d9e20481ca68f08">TfrmMain</a>
 </li>
 <li>pnlIcon
-: <a class="el" href="class_tfrm_main.html#a8aa9ed9bde2f3e95403c0b90d9516adf">TfrmMain</a>
-, <a class="el" href="class_t_config_form.html#ad7cc6e4a7537630956e08e0bd51ad50e">TConfigForm</a>
+: <a class="el" href="class_t_config_form.html#ad7cc6e4a7537630956e08e0bd51ad50e">TConfigForm</a>
+, <a class="el" href="class_tfrm_main.html#a8aa9ed9bde2f3e95403c0b90d9516adf">TfrmMain</a>
 </li>
 <li>pnlMain
 : <a class="el" href="class_tfrm_message.html#a3d59a8dcae0fab59015d536dc0645572">TfrmMessage</a>
@@ -280,6 +289,9 @@ $(document).ready(function(){initNavTree('functions_0x70.html','');});
 </li>
 <li>pnlWinampBottom
 : <a class="el" href="class_tfrm_main.html#a54dfd85ad035885a36505f3d2155c507">TfrmMain</a>
+</li>
+<li>popScopedInfo()
+: <a class="el" href="struct_catch_1_1_i_result_capture.html#a8d6fd1ef854284b77c35a44b3e1b5929">Catch::IResultCapture</a>
 </li>
 <li>port
 : <a class="el" href="structporttype.html#a3155f6eefcd195e95a824f203ce0317b">porttype</a>
@@ -300,14 +312,23 @@ $(document).ready(function(){initNavTree('functions_0x70.html','');});
 : <a class="el" href="class_tfrm_main.html#aa5b7574cb2fa8425a1239a010532853f">TfrmMain</a>
 </li>
 <li>previousSong()
-: <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a2959e013a9ca7759b287d4274c3b3816">WinampRemote::Client::IWinamp</a>
-, <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#ab0fdebca2917f3da05005f86a9185a84">WinampRemote::Client::WinampClientBase</a>
+: <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#ab0fdebca2917f3da05005f86a9185a84">WinampRemote::Client::WinampClientBase</a>
+, <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a2959e013a9ca7759b287d4274c3b3816">WinampRemote::Client::IWinamp</a>
 </li>
 <li>ProductName
 : <a class="el" href="class_t_module_version_info.html#aa97420776682e9c34965d253f1cf2ad2">TModuleVersionInfo</a>
 </li>
 <li>ProductVersion
 : <a class="el" href="class_t_module_version_info.html#ad822ea6fa7184b782c1e9839ea6b2469">TModuleVersionInfo</a>
+</li>
+<li>Ptr()
+: <a class="el" href="class_catch_1_1_ptr.html#a69bea9e8deedd285cf22916a0b8ee014">Catch::Ptr&lt; T &gt;</a>
+</li>
+<li>PtrExpression
+: <a class="el" href="class_catch_1_1_result_info_builder.html#a7ecca1091c00a6d5c2ffa1134ca4c2e1">Catch::ResultInfoBuilder</a>
+</li>
+<li>pushScopedInfo()
+: <a class="el" href="struct_catch_1_1_i_result_capture.html#a372979aab5e851cfafceff905d6493a7">Catch::IResultCapture</a>
 </li>
 </ul>
 </div><!-- contents -->

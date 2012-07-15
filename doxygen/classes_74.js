@@ -1,6 +1,9 @@
 var searchData=
 [
   ['tconfigform',['TConfigForm',['../class_t_config_form.html',1,'']]],
+  ['testcaseinfo',['TestCaseInfo',['../class_catch_1_1_test_case_info.html',1,'Catch']]],
+  ['testfailureexception',['TestFailureException',['../struct_catch_1_1_test_failure_exception.html',1,'Catch']]],
+  ['testspec',['TestSpec',['../class_catch_1_1_test_spec.html',1,'Catch']]],
   ['tfrmabout',['TfrmAbout',['../class_tfrm_about.html',1,'']]],
   ['tfrmcommands',['TfrmCommands',['../class_tfrm_commands.html',1,'']]],
   ['tfrmdetails',['TfrmDetails',['../class_tfrm_details.html',1,'']]],
@@ -11,6 +14,7 @@ var searchData=
   ['tfrmsettings',['TfrmSettings',['../class_tfrm_settings.html',1,'']]],
   ['tfrmsplash',['TfrmSplash',['../class_tfrm_splash.html',1,'']]],
   ['tmoduleversioninfo',['TModuleVersionInfo',['../class_t_module_version_info.html',1,'']]],
+  ['totals',['Totals',['../struct_catch_1_1_totals.html',1,'Catch']]],
   ['trpcserverdllthread',['TRPCServerDLLThread',['../class_t_r_p_c_server_d_l_l_thread.html',1,'']]],
   ['trpcserverthread',['TRPCServerThread',['../class_t_r_p_c_server_thread.html',1,'']]]
 ];

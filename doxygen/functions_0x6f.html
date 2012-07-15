@@ -78,6 +78,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -127,7 +131,7 @@ $(document).ready(function(){initNavTree('functions_0x6f.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -140,6 +144,15 @@ $(document).ready(function(){initNavTree('functions_0x6f.html','');});
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>OfType
+: <a class="el" href="struct_catch_1_1_result_was.html#a624e1ee3661fcf6094ceef1f654601ef">Catch::ResultWas</a>
+</li>
+<li>Ok
+: <a class="el" href="struct_catch_1_1_result_was.html#a624e1ee3661fcf6094ceef1f654601efae7cbe89bb9ec7ece9b44d48b63d01b63">Catch::ResultWas</a>
+</li>
+<li>ok()
+: <a class="el" href="class_catch_1_1_result_info.html#abe3c9f3a08a1b24474156b41d1f5f475">Catch::ResultInfo</a>
+</li>
 <li>OnIdent
 : <a class="el" href="class_winamp_remote_1_1_remoting_1_1_call_reflector.html#a93f701d38bbe407a8256f4cf3ee38a48">WinampRemote::Remoting::CallReflector</a>
 </li>
@@ -166,6 +179,88 @@ $(document).ready(function(){initNavTree('functions_0x6f.html','');});
 </li>
 <li>OpenDialog1
 : <a class="el" href="class_tfrm_main.html#a393994371a30537b28d1d0c6809a5cba">TfrmMain</a>
+</li>
+<li>operator bool()
+: <a class="el" href="class_catch_1_1_section.html#ac9a2be9ed0b2248f8b9c4c06efde4a29">Catch::Section</a>
+</li>
+<li>operator ResultInfoBuilder &amp;()
+: <a class="el" href="class_catch_1_1_expression.html#af7c19481ee40f56a0ae9c274cb9e3baa">Catch::Expression&lt; T &gt;</a>
+, <a class="el" href="class_catch_1_1_expression_builder.html#ab7c53debf1bfd505ae404665363248fe">Catch::ExpressionBuilder</a>
+</li>
+<li>operator T()
+: <a class="el" href="class_catch_1_1_composite_generator.html#aa3f627d84fb256df0404d19d7fd4b784">Catch::CompositeGenerator&lt; T &gt;</a>
+</li>
+<li>operator!=()
+: <a class="el" href="class_catch_1_1_expression.html#acd9e24e866370bda640156191f41be0c">Catch::Expression&lt; T &gt;</a>
+, <a class="el" href="class_catch_1_1_detail_1_1_approx.html#a41f275e4477e91642fd4c997dfef3546">Catch::Detail::Approx</a>
+</li>
+<li>operator&amp;&amp;()
+: <a class="el" href="class_catch_1_1_result_info_builder.html#a573ec514165f53dd57154f12e9187567">Catch::ResultInfoBuilder</a>
+</li>
+<li>operator()()
+: <a class="el" href="class_catch_1_1_detail_1_1_approx.html#a48c9cbc28a05dc9dc8c3973b9eae2268">Catch::Detail::Approx</a>
+, <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_equals.html#aa6c1e3ad1e27d3569cfb38d89e7e1a2c">Catch::Matchers::Impl::StdString::Equals</a>
+, <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_contains.html#a00b2607249ca28c81a1aced2a5c77b8f">Catch::Matchers::Impl::StdString::Contains</a>
+, <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_starts_with.html#adcaf65cd080610d4ebd9a7ccbff01f1c">Catch::Matchers::Impl::StdString::StartsWith</a>
+, <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_ends_with.html#a8baf52ce3d1693940244f496c64c119d">Catch::Matchers::Impl::StdString::EndsWith</a>
+</li>
+<li>operator*()
+: <a class="el" href="class_catch_1_1_ptr.html#a5d68c1d007b910e06468f08d31dfe350">Catch::Ptr&lt; T &gt;</a>
+</li>
+<li>operator+()
+: <a class="el" href="class_catch_1_1_expression.html#a7cd07f3cc77303310eaedb0431a54ff3">Catch::Expression&lt; T &gt;</a>
+</li>
+<li>operator+=()
+: <a class="el" href="struct_catch_1_1_counts.html#a727c114e105e44562554aecddea96cbb">Catch::Counts</a>
+</li>
+<li>operator-()
+: <a class="el" href="struct_catch_1_1_totals.html#a3e75dac7af1ab1cf43ace3ae63de5a11">Catch::Totals</a>
+, <a class="el" href="class_catch_1_1_expression.html#ad8b6189cc41070b597c073e0c23e48af">Catch::Expression&lt; T &gt;</a>
+, <a class="el" href="struct_catch_1_1_counts.html#a44035ac5faae026c24c61467ce49e501">Catch::Counts</a>
+</li>
+<li>operator-&gt;()
+: <a class="el" href="class_catch_1_1_ptr.html#a3ac95cf74ee69b51f343ebced69ad4f8">Catch::Ptr&lt; T &gt;</a>
+</li>
+<li>operator-&gt;*()
+: <a class="el" href="class_catch_1_1_expression_builder.html#a3af0b2041ebfab8c0c05d4e65102bb6e">Catch::ExpressionBuilder</a>
+</li>
+<li>operator&lt;()
+: <a class="el" href="struct_catch_1_1_i_test_case.html#aae3e96da1a4494890326db813c010ddb">Catch::ITestCase</a>
+, <a class="el" href="class_catch_1_1_expression.html#ac4cd605b13884865d9d2654f759b242b">Catch::Expression&lt; T &gt;</a>
+, <a class="el" href="class_catch_1_1_test_case_info.html#a3d18d7554624bd10d155e42f24d95e95">Catch::TestCaseInfo</a>
+, <a class="el" href="class_catch_1_1_method_test_case.html#ac411bdeb5057d7e32ef64e1287debbef">Catch::MethodTestCase&lt; C &gt;</a>
+</li>
+<li>operator&lt;&lt;
+: <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_equals.html#a373e9d0e4cc18bd5ffa530140e035387">Catch::Matchers::Impl::StdString::Equals</a>
+, <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_starts_with.html#a1a3b7c561d8d8fd405c090274e690ca6">Catch::Matchers::Impl::StdString::StartsWith</a>
+, <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_contains.html#a8df8dcad0e24173b72cb72dcd0d1d1e0">Catch::Matchers::Impl::StdString::Contains</a>
+, <a class="el" href="class_catch_1_1_expression_builder.html#a0ec28bcd4789a85c20543358087cad4e">Catch::ExpressionBuilder</a>
+, <a class="el" href="class_catch_1_1_scoped_info.html#a33b1862c5bdb66f5b701b71348f07eb6">Catch::ScopedInfo</a>
+, <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_ends_with.html#a3389586caac8a112f2413ecc3d155131">Catch::Matchers::Impl::StdString::EndsWith</a>
+</li>
+<li>operator&lt;=()
+: <a class="el" href="class_catch_1_1_expression.html#ad7273b285b2d9ea81ac580ee9951eeac">Catch::Expression&lt; T &gt;</a>
+</li>
+<li>operator=()
+: <a class="el" href="class_catch_1_1_ptr.html#aef9b11ce6f90aee5267c0f309600374a">Catch::Ptr&lt; T &gt;</a>
+, <a class="el" href="class_catch_1_1_test_case_info.html#ac79abcad5920a22e2f7f4af8a972c0f1">Catch::TestCaseInfo</a>
+</li>
+<li>operator==()
+: <a class="el" href="class_catch_1_1_expression.html#a83582006221d363d90cec0cb81dac716">Catch::Expression&lt; T &gt;</a>
+, <a class="el" href="class_catch_1_1_method_test_case.html#a78295dacec5d279e6ea312c6af9aebb0">Catch::MethodTestCase&lt; C &gt;</a>
+, <a class="el" href="struct_catch_1_1_i_test_case.html#a21ba9bd73bbf9c8e0384ed94d0f4cbb9">Catch::ITestCase</a>
+, <a class="el" href="class_catch_1_1_test_case_info.html#a3007b667cc1ef9b173ea80cb068a1758">Catch::TestCaseInfo</a>
+, <a class="el" href="class_catch_1_1_expression.html#ae6be91d91dea612743f3165caf5ea943">Catch::Expression&lt; T &gt;</a>
+, <a class="el" href="class_catch_1_1_detail_1_1_approx.html#a18af42d25e159f300e7ed4d77c06fa09">Catch::Detail::Approx</a>
+</li>
+<li>operator&gt;()
+: <a class="el" href="class_catch_1_1_expression.html#a683e967108380ceb955dfc152c7874d0">Catch::Expression&lt; T &gt;</a>
+</li>
+<li>operator&gt;=()
+: <a class="el" href="class_catch_1_1_expression.html#adfa8af4179fe39b8465a4b011d80432f">Catch::Expression&lt; T &gt;</a>
+</li>
+<li>operator||()
+: <a class="el" href="class_catch_1_1_result_info_builder.html#a895bf3931f5f0540878c830efffbc5c8">Catch::ResultInfoBuilder</a>
 </li>
 <li>OriginalFileName
 : <a class="el" href="class_t_module_version_info.html#a3548dbcca7adfd4c26d9ff797945fe3a">TModuleVersionInfo</a>

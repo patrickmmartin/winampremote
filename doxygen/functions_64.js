@@ -1,7 +1,10 @@
 var searchData=
 [
   ['delaytimer',['DelayTimer',['../class_tfrm_main.html#ae5f1f3a5042fb3858d92d8e9d6f0f6d8',1,'TfrmMain']]],
+  ['deleteall',['deleteAll',['../namespace_catch.html#aadf9786550a462740ec355f8219863a9',1,'Catch']]],
+  ['deleteallvalues',['deleteAllValues',['../namespace_catch.html#af2fcec1d4bd984fe19ff8b9a432c36a8',1,'Catch']]],
   ['deleteplaylistexecute',['DeletePlayListExecute',['../class_tfrm_main.html#a9fbae30d7dd331b95dc4066c032c5baa',1,'TfrmMain']]],
+  ['delta',['delta',['../struct_catch_1_1_totals.html#a5cec1515b555197748fcd6ebffc855d8',1,'Catch::Totals']]],
   ['detailsclick',['DetailsClick',['../class_t_config_form.html#a2e348c878511b54943adbc1729231e56',1,'TConfigForm']]],
   ['detailsexecute',['DetailsExecute',['../class_tfrm_main.html#aa3f3288d474deb4ce18733df1fa17683',1,'TfrmMain']]],
   ['dllentrypoint',['DllEntryPoint',['../gen___r_p_cinterface_8cpp.html#a350f0e200e738d6318d2ded5fb4e32f6',1,'gen_RPCinterface.cpp']]],

@@ -78,6 +78,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -127,7 +131,7 @@ $(document).ready(function(){initNavTree('functions_0x6d.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -140,8 +144,52 @@ $(document).ready(function(){initNavTree('functions_0x6d.html','');});
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>m_expr
+: <a class="el" href="class_catch_1_1_result_info.html#a61ae199b2f3eb23b734f8bf5383cf9a9">Catch::ResultInfo</a>
+</li>
+<li>m_isNot
+: <a class="el" href="class_catch_1_1_result_info.html#a06ff6701fda52a7de486cc1408cf6e82">Catch::ResultInfo</a>
+</li>
+<li>m_lhs
+: <a class="el" href="class_catch_1_1_result_info.html#af088cc41ffb8373060a77d5ab3b542a2">Catch::ResultInfo</a>
+</li>
+<li>m_lineInfo
+: <a class="el" href="class_catch_1_1_result_info.html#a906b6d6fea26f8d34510ab7b60597a43">Catch::ResultInfo</a>
+</li>
+<li>m_macroName
+: <a class="el" href="class_catch_1_1_result_info.html#af7189e82393ce53451cebb99514117e9">Catch::ResultInfo</a>
+</li>
+<li>m_message
+: <a class="el" href="class_catch_1_1_result_info.html#ad80d9d47a9c9b6c69b8f6fb9f29e099f">Catch::ResultInfo</a>
+</li>
+<li>m_op
+: <a class="el" href="class_catch_1_1_result_info.html#a477213435ccdb099aac1cede54b16619">Catch::ResultInfo</a>
+</li>
+<li>m_rc
+: <a class="el" href="struct_catch_1_1_shared_impl.html#a0430aa8c5c81bcb979336489149fcc65">Catch::SharedImpl&lt; T &gt;</a>
+</li>
+<li>m_result
+: <a class="el" href="class_catch_1_1_result_info.html#a8512a95aad07750c2175b21f7555173c">Catch::ResultInfo</a>
+</li>
+<li>m_rhs
+: <a class="el" href="class_catch_1_1_result_info.html#afa05ef8a897458eb861194097b7e577e">Catch::ResultInfo</a>
+</li>
+<li>m_str
+: <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_equals.html#a41fc4413185f47d8b6d8da7a55078921">Catch::Matchers::Impl::StdString::Equals</a>
+</li>
+<li>m_substr
+: <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_contains.html#a0bad82dd7cbdd0ec06b6d562181db03e">Catch::Matchers::Impl::StdString::Contains</a>
+, <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_starts_with.html#aebcdf35b98fd0097d9e9113b9219fcd1">Catch::Matchers::Impl::StdString::StartsWith</a>
+, <a class="el" href="struct_catch_1_1_matchers_1_1_impl_1_1_std_string_1_1_ends_with.html#a5abf70e94ea7893b7bd1e7b33880ba7b">Catch::Matchers::Impl::StdString::EndsWith</a>
+</li>
 <li>MainTimer()
 : <a class="el" href="class_tfrm_main.html#ab560656057c3bbd17772db7a583733dc">TfrmMain</a>
+</li>
+<li>makeSafe()
+: <a class="el" href="class_catch_1_1_safe_bool.html#af0ea63d9820f8bf7a8b76377913c4e77">Catch::SafeBool</a>
+</li>
+<li>matches()
+: <a class="el" href="class_catch_1_1_test_spec.html#a2086583fcb35382a839dbe8eb4545861">Catch::TestSpec</a>
 </li>
 <li>memInfo
 : <a class="el" href="class_t_config_form.html#ac875998d8431e5c585fe42be7deecef6">TConfigForm</a>
@@ -154,6 +202,9 @@ $(document).ready(function(){initNavTree('functions_0x6d.html','');});
 </li>
 <li>memTitle
 : <a class="el" href="class_tfrm_message.html#aa846104a3b9f5363851416960e719570">TfrmMessage</a>
+</li>
+<li>MethodTestCase()
+: <a class="el" href="class_catch_1_1_method_test_case.html#a7b043b85dae371358255dd9dc6582e7b">Catch::MethodTestCase&lt; C &gt;</a>
 </li>
 <li>mnuAbout
 : <a class="el" href="class_tfrm_main.html#a093b381f9e30f0f6dea4d3f379c84006">TfrmMain</a>

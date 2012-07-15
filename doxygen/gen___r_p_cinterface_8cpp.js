@@ -11,5 +11,7 @@ var gen___r_p_cinterface_8cpp =
     [ "USEUNIT", "gen___r_p_cinterface_8cpp.html#aa460c5a437e17c2f26dda18fd47d420f", null ],
     [ "USEUNIT", "gen___r_p_cinterface_8cpp.html#a25c497fc6a70e5090c77777661656dc5", null ],
     [ "USEUNIT", "gen___r_p_cinterface_8cpp.html#ae8f316a7deac6cc9378a50ae823e283a", null ],
-    [ "USEUNIT", "gen___r_p_cinterface_8cpp.html#aec1d28b20834b52b3978c204b6a0db18", null ]
+    [ "USEUNIT", "gen___r_p_cinterface_8cpp.html#aec1d28b20834b52b3978c204b6a0db18", null ],
+    [ "USEUNIT", "gen___r_p_cinterface_8cpp.html#a6644de2eb7c096cca850b3d67da309b7", null ],
+    [ "USEUNIT", "gen___r_p_cinterface_8cpp.html#ab6b3907b1fd368a4908d3b5e56ef758d", null ]
 ];

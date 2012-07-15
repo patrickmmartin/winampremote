@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['foreach',['forEach',['../namespace_catch.html#a9f7e030a07e17848442215e851911206',1,'Catch::forEach(ContainerT &amp;container, Function function)'],['../namespace_catch.html#ade633ef745f88327d7d446b592a3f7a8',1,'Catch::forEach(const ContainerT &amp;container, Function function)']]],
   ['formactivate',['FormActivate',['../class_tfrm_message.html#aa08f0417c3e6f1276e7497ed09a99b6d',1,'TfrmMessage']]],
   ['formclose',['FormClose',['../class_tfrm_commands.html#a05e4b474dc791b7a88cdfe3f2be58d1e',1,'TfrmCommands::FormClose()'],['../class_tfrm_main.html#a17903d142775d0a6eca551bcfe1d56dd',1,'TfrmMain::FormClose()'],['../class_tfrm_playlist.html#accda1b1a89968d1966a1af6222ce0288',1,'TfrmPlaylist::FormClose()'],['../class_tfrm_servers.html#a704ecd1feebc87bf06747d5c23cd0577',1,'TfrmServers::FormClose()'],['../class_tfrm_settings.html#ac3964f341d6317166ef98daa5e0660cd',1,'TfrmSettings::FormClose()']]],
   ['formclosequery',['FormCloseQuery',['../class_tfrm_main.html#ac51ebe92d0e17c4ab3020f6d2f38bc5f',1,'TfrmMain::FormCloseQuery(TObject *Sender, bool &amp;CanClose)'],['../class_tfrm_main.html#ac51ebe92d0e17c4ab3020f6d2f38bc5f',1,'TfrmMain::FormCloseQuery(TObject *Sender, bool &amp;CanClose)']]],

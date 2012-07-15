@@ -6,7 +6,10 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ]
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", null, [
@@ -16,7 +19,11 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ]
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ],
+        [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", null, [
@@ -37,12 +44,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"_servers_f_8h.html#a25e9e828b63cc5142822430ecfb9701f",
-"class_tfrm_main.html#a5b322fbc0da728bfd44d7edaf9291ead",
-"class_tfrm_servers.html#a8f77087d6c43adfda81cb33f09291475",
-"gen___r_p_cinterface_8cpp.html",
-"remotestrs_8h.html#a9a1043a97adf1d60810b9ea69d6c17f7",
-"winampinterface_8h.html#a43ca1d334a8111ea6fa37514396b7a63",
+"_server_tester_8h.html#a23331e5df325fea12f9a553d3b1cab4aac6d96cacee4a6edf2a79d0c4a468b793",
+"class_catch_1_1_ptr.html#aacec063a79cd142e39040a31c6b3c40b",
+"class_tfrm_main.html#a29d72a56c90f914c8c21f1cdb9008c34",
+"class_tfrm_playlist.html#a00551f4fdef065067dd1414fd461fcf2",
+"functions_0x6c.html",
+"remotestrs_8cpp.html#a3fb6e64d5c00c2a60f76ccc0fbe83de8",
+"struct_catch_1_1_i_result_capture.html#a8d6fd1ef854284b77c35a44b3e1b5929",
+"waint_8h.html#a6817d27f4a84498c7218e3dd73a29930af4b62029bffe207905f28b3f10ca4cf5",
 ];
 
 var navTreeSubIndices = new Array();

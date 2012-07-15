@@ -78,6 +78,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -127,7 +131,7 @@ $(document).ready(function(){initNavTree('functions_0x62.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -151,6 +155,9 @@ $(document).ready(function(){initNavTree('functions_0x62.html','');});
 </li>
 <li>BarsChange()
 : <a class="el" href="class_tfrm_settings.html#aa60de2f01ff3c8c15cf2943585fdea6e">TfrmSettings</a>
+</li>
+<li>BetweenGenerator()
+: <a class="el" href="class_catch_1_1_between_generator.html#a835a057d691ae37caef660624099b51c">Catch::BetweenGenerator&lt; T &gt;</a>
 </li>
 <li>Bevel1
 : <a class="el" href="class_tfrm_main.html#a21213a8be56039ad2f53d94e9e5e7464">TfrmMain</a>
@@ -197,8 +204,8 @@ $(document).ready(function(){initNavTree('functions_0x62.html','');});
 : <a class="el" href="class_tfrm_servers.html#ab5f8e4db90289d6e587300f5d3174320">TfrmServers</a>
 </li>
 <li>btnLocate
-: <a class="el" href="class_tfrm_servers.html#af06b4d01add1f0a77aae3da37254d9bc">TfrmServers</a>
-, <a class="el" href="class_tfrm_main.html#ae06c5ba30f36d961b828f3c778961e37">TfrmMain</a>
+: <a class="el" href="class_tfrm_main.html#ae06c5ba30f36d961b828f3c778961e37">TfrmMain</a>
+, <a class="el" href="class_tfrm_servers.html#af06b4d01add1f0a77aae3da37254d9bc">TfrmServers</a>
 </li>
 <li>btnLocateClick()
 : <a class="el" href="class_tfrm_servers.html#a7cb56b823f5e10146b145685389375a5">TfrmServers</a>
@@ -216,12 +223,12 @@ $(document).ready(function(){initNavTree('functions_0x62.html','');});
 : <a class="el" href="class_tfrm_servers.html#a80023f103bb5da39747d1565ddd6132e">TfrmServers</a>
 </li>
 <li>Buffer
-: <a class="el" href="struct_____m_i_d_l__winamp__0001.html#a517f92216d9c4abb0dc079a45d65f670">__MIDL_winamp_0001</a>
-, <a class="el" href="structwinamp_1_1_b_u_f_f_e_r.html#afd20b00ac6f521af4c78ee4a91d02804">winamp::BUFFER</a>
+: <a class="el" href="structwinamp_1_1_b_u_f_f_e_r.html#afd20b00ac6f521af4c78ee4a91d02804">winamp::BUFFER</a>
+, <a class="el" href="struct_____m_i_d_l__winamp__0001.html#a517f92216d9c4abb0dc079a45d65f670">__MIDL_winamp_0001</a>
 </li>
 <li>BufferLength
-: <a class="el" href="structwinamp_1_1_b_u_f_f_e_r.html#a460d18cd506b9c73676cc769372f5f68">winamp::BUFFER</a>
-, <a class="el" href="struct_____m_i_d_l__winamp__0001.html#aadab447a854a9b118faed018339d410a">__MIDL_winamp_0001</a>
+: <a class="el" href="struct_____m_i_d_l__winamp__0001.html#aadab447a854a9b118faed018339d410a">__MIDL_winamp_0001</a>
+, <a class="el" href="structwinamp_1_1_b_u_f_f_e_r.html#a460d18cd506b9c73676cc769372f5f68">winamp::BUFFER</a>
 </li>
 <li>bvl2
 : <a class="el" href="class_tfrm_main.html#a2715836b1ac97475c44d785c1c5407f4">TfrmMain</a>
