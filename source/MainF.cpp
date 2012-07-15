@@ -844,7 +844,7 @@ void TfrmMain::UpdateIcon(void)
       } // if list length non-zero
     }
 
-  catch( ERPCException &E)
+  catch( ERPCException *E)
   {
     doHide = false;
     if (frmPlaylist)
@@ -854,7 +854,7 @@ void TfrmMain::UpdateIcon(void)
     }  
 
     WAStatus = WA_UNUSED;
-    lblMessage->Caption = E.Message;
+    lblMessage->Caption = E->Message;
     lblVersion->Caption = WinampVersionString(0);
     timerMain->Interval = 1000 * POLL_ERROR_FACTOR;
   }

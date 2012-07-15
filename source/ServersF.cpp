@@ -374,7 +374,7 @@ void TfrmServers::getServers(map<AnsiString, ServerInfo>& servers)
 
   for (int i = 0; (i < lvServers->Items->Count); i++)
     {
-      servers[lvServers->Selected->Caption].status = SI_UNTESTED;
+      servers[lvServers->Items->Item[i]->Caption].status = SI_UNTESTED;
   }
 }
 
