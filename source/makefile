@@ -3,7 +3,7 @@ ROOT = $(MAKEDIR)\..
 BRCC = $(ROOT)\bin\brcc32.exe 
 
 .silent
-default: clean all
+default: clean all docs
 
 clean: clean-setup
 	echo ========== cleaning object files ======
@@ -88,7 +88,7 @@ TARGETS= winampinterface.lib\
 		winampclient.dll\
 		gen_RPCinterface.dll 
 
-all: $(TARGETS) docs
+all: $(TARGETS)
 
 help:
 	@echo targets built by this makefile: $(TARGETS)
