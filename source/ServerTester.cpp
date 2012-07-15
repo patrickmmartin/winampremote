@@ -45,6 +45,7 @@ void ServerTester::testServers(vector<AnsiString>& servers)
            ++i)
         {
           AnsiString remote = *i;
+          testServer(remote);
 
        }
   }
