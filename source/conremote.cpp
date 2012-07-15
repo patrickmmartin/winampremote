@@ -141,7 +141,7 @@ char * port;
   // the errors I understand
   {
     UnBind();
-    cout << endl << "RPC failure : " <<E.Message.c_str();
+    cout << endl << "RPC failure : " <<E->Message.c_str();
   }
 
   catch (...)
