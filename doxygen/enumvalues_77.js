@@ -7,6 +7,7 @@ var searchData=
   ['waexecuting',['waExecuting',['../_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745a0bd722976fbaafee426960fcb0642627',1,'ServerDLLF.h']]],
   ['wainitialisefailed',['waInitialiseFailed',['../_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745a42af6c1978f98059a448a8c6547a86f4',1,'ServerDLLF.h']]],
   ['walistening',['waListening',['../_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745ada144236b69c8a597e8c6ac2d1e5f1ed',1,'ServerDLLF.h']]],
+  ['warning',['Warning',['../struct_catch_1_1_result_was.html#a624e1ee3661fcf6094ceef1f654601efa67e9d36ba0f04a60a19896834d840c21',1,'Catch::ResultWas']]],
   ['waserverstarted',['waServerStarted',['../_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745a26bb22933daa9e7dbdf9876a89c9aea1',1,'ServerDLLF.h']]],
   ['waserverstarting',['waServerStarting',['../_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745a9eeea09a6bc9fa3a558761366e4e2a8a',1,'ServerDLLF.h']]],
   ['waserverstopped',['waServerStopped',['../_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745aa7b5a6d577c2e663feb5ac07f342c2a8',1,'ServerDLLF.h']]],

@@ -11,6 +11,7 @@ var searchData=
   ['command',['command',['../rpcimport_8h.html#ad732c0c7a8bcc3ecf8c7c360b382740d',1,'command():&#160;rpcimport.h'],['../rpcimport_8h.html#ade4ad069c9ea1dbe8c67290b4ea46cdf',1,'Command():&#160;rpcimport.h']]],
   ['command_5finteger',['COMMAND_INTEGER',['../_server_d_l_l_f_8h.html#a97afd1ef82b3ccf11b738df1186a2feb',1,'ServerDLLF.h']]],
   ['command_5fstring',['COMMAND_STRING',['../_server_d_l_l_f_8h.html#a5ab481ebbbf3b0996e3e887be6c77691',1,'ServerDLLF.h']]],
+  ['comment',['comment',['../struct_server_info.html#aed5657f986b7d86aaaf8ea011e24fb43',1,'ServerInfo']]],
   ['comments',['Comments',['../class_t_module_version_info.html#a21b23ad363c07bccefe1479b8d4b0009',1,'TModuleVersionInfo']]],
   ['companyname',['CompanyName',['../class_t_module_version_info.html#a127424ac9c16c457a5fc6a0a9cce1e4c',1,'TModuleVersionInfo']]],
   ['config',['config',['../structwinamp_general_purpose_plugin.html#ae5711709d9b17a05fdeb8b3269814c05',1,'winampGeneralPurposePlugin']]],

@@ -15,7 +15,10 @@ var searchData=
   ['playliststartexecute',['PlaylistStartExecute',['../class_tfrm_main.html#a85c0f80c73fd376da3357674219745ff',1,'TfrmMain']]],
   ['playsong',['playSong',['../class_winamp_remote_1_1_client_1_1_i_winamp.html#ade9eb94e0fc0d384df8bafd6b515b675',1,'WinampRemote::Client::IWinamp::playSong()'],['../class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a60969ab984a41d9df4a3ee8ee9f13410',1,'WinampRemote::Client::WinampClientBase::playSong()']]],
   ['pmnusongspopup',['pmnuSongsPopup',['../class_tfrm_playlist.html#aea6afad565171a080a6a2dc25613b265',1,'TfrmPlaylist']]],
+  ['popscopedinfo',['popScopedInfo',['../struct_catch_1_1_i_result_capture.html#a8d6fd1ef854284b77c35a44b3e1b5929',1,'Catch::IResultCapture']]],
   ['previousexecute',['PreviousExecute',['../class_tfrm_main.html#a27bc5ceb92ad1f58880980e1bf34aeda',1,'TfrmMain']]],
   ['previousfadeexecute',['PreviousFadeExecute',['../class_tfrm_main.html#aa5b7574cb2fa8425a1239a010532853f',1,'TfrmMain']]],
-  ['previoussong',['previousSong',['../class_winamp_remote_1_1_client_1_1_i_winamp.html#a2959e013a9ca7759b287d4274c3b3816',1,'WinampRemote::Client::IWinamp::previousSong()'],['../class_winamp_remote_1_1_client_1_1_winamp_client_base.html#ab0fdebca2917f3da05005f86a9185a84',1,'WinampRemote::Client::WinampClientBase::previousSong()']]]
+  ['previoussong',['previousSong',['../class_winamp_remote_1_1_client_1_1_i_winamp.html#a2959e013a9ca7759b287d4274c3b3816',1,'WinampRemote::Client::IWinamp::previousSong()'],['../class_winamp_remote_1_1_client_1_1_winamp_client_base.html#ab0fdebca2917f3da05005f86a9185a84',1,'WinampRemote::Client::WinampClientBase::previousSong()']]],
+  ['ptr',['Ptr',['../class_catch_1_1_ptr.html#a6108f0195595ee9d7a411daea810beaf',1,'Catch::Ptr::Ptr()'],['../class_catch_1_1_ptr.html#aacec063a79cd142e39040a31c6b3c40b',1,'Catch::Ptr::Ptr(T *p)'],['../class_catch_1_1_ptr.html#a69bea9e8deedd285cf22916a0b8ee014',1,'Catch::Ptr::Ptr(const Ptr &amp;other)']]],
+  ['pushscopedinfo',['pushScopedInfo',['../struct_catch_1_1_i_result_capture.html#a372979aab5e851cfafceff905d6493a7',1,'Catch::IResultCapture']]]
 ];

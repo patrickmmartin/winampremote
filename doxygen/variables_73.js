@@ -78,6 +78,7 @@ var searchData=
   ['startx',['startX',['../_about_f_8cpp.html#a85da7669cabd63b0459f1335886dbf2e',1,'AboutF.cpp']]],
   ['starty',['startY',['../_about_f_8cpp.html#a7fd8d76428f3da6360d3219bb2b9673a',1,'AboutF.cpp']]],
   ['states',['States',['../_playlist_f_8cpp.html#a80cbaadf6a7e02f2ec1eae85f141886a',1,'PlaylistF.cpp']]],
+  ['status',['status',['../struct_server_info.html#a9f01d59607305f75bf6d231322ddd203',1,'ServerInfo']]],
   ['statusbar1',['StatusBar1',['../class_tfrm_servers.html#a99f81fad98c06443b7f9d2a832b11bdb',1,'TfrmServers']]],
   ['stest',['sTest',['../remotestrs_8cpp.html#a661b2c6b6b20811a54cc90b609607f5a',1,'sTest():&#160;remotestrs.cpp'],['../remotestrs_8h.html#a661b2c6b6b20811a54cc90b609607f5a',1,'sTest():&#160;remotestrs.cpp']]],
   ['stesting',['sTesting',['../_main_f_8cpp.html#a22100c8352a53ef93b53b1c2122cfee7',1,'MainF.cpp']]],

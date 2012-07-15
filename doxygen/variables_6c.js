@@ -20,6 +20,7 @@ var searchData=
   ['lblupdate',['lblUpdate',['../class_tfrm_main.html#abe46bfb5fc9d956ca9b0fcb736bda18c',1,'TfrmMain']]],
   ['lblversion',['lblVersion',['../class_tfrm_main.html#ad4be9d41ea5fc3ca8f7ccf3c3a38b0f9',1,'TfrmMain']]],
   ['lblvol',['lblVol',['../class_tfrm_settings.html#a389c145893164435bde6d8245e2d7d8b',1,'TfrmSettings']]],
+  ['line',['line',['../struct_catch_1_1_source_line_info.html#a841e5d696c7b9cde24e45e61dd979c77',1,'Catch::SourceLineInfo']]],
   ['localwinamp',['localWinamp',['../rpcthread_8cpp.html#aaf01e132f4986e92cb5300a1e470d43b',1,'localWinamp():&#160;rpcthread.cpp'],['../rpcthread_d_l_l_8cpp.html#a0faf8057618d103c82db326457f057b2',1,'localWinamp():&#160;rpcthreadDLL.cpp']]],
   ['locateservers',['LocateServers',['../class_tfrm_main.html#a26f089ab60b86043fa5580eb03d9e25a',1,'TfrmMain']]],
   ['locateservers1',['LocateServers1',['../class_tfrm_main.html#adddab6f0c200f73b8a8c8c19db0c4b51',1,'TfrmMain']]],

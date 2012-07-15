@@ -13,6 +13,7 @@ var searchData=
   ['administer1',['Administer1',['../class_tfrm_main.html#a6ce2262a62b1a79902c4b2503849f854',1,'TfrmMain']]],
   ['almain',['alMain',['../class_tfrm_main.html#a1aadcfed3ff07b0b4476b0e08e91565f',1,'TfrmMain']]],
   ['angle',['angle',['../_about_f_8cpp.html#ab8ef1bf8a70cc07c6d55823c390a7e76',1,'AboutF.cpp']]],
+  ['assertions',['assertions',['../struct_catch_1_1_totals.html#a885ded66df752147b30c3d45aa602ec9',1,'Catch::Totals']]],
   ['autoload',['Autoload',['../class_tfrm_main.html#a3e324ce1a5ca5bc42e7252b523b90304',1,'TfrmMain']]],
   ['axis',['axis',['../_about_f_8cpp.html#a2d92a1813eaba82e5fb2cbd1aaee96fc',1,'AboutF.cpp']]]
 ];

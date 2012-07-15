@@ -17,6 +17,7 @@ var searchData=
   ['tbtnprevious',['tbtnPrevious',['../class_tfrm_commands.html#ae8ab4187ca5ea0a7eb9398ffc992b4cb',1,'TfrmCommands']]],
   ['tbtnstop',['tbtnStop',['../class_tfrm_commands.html#a600ba697ec34f05fd9c621e60af6a314',1,'TfrmCommands']]],
   ['tbvolume',['tbVolume',['../class_tfrm_settings.html#a11341f5e3dcb626bcdfe2192ec18952e',1,'TfrmSettings']]],
+  ['testcases',['testCases',['../struct_catch_1_1_totals.html#adb195fe477aedee2ecea88c888f16506',1,'Catch::Totals']]],
   ['textextrusion',['textExtrusion',['../_about_f_8cpp.html#a1f16cc5ada8e94ec4377a69dec7f2b90',1,'AboutF.cpp']]],
   ['textureenabled',['textureEnabled',['../_about_f_8cpp.html#a238d721f282d4ab3ede66d685ce496ea',1,'AboutF.cpp']]],
   ['texturereplace',['textureReplace',['../_about_f_8cpp.html#a936f1d1a09731ce8b0734cb0e4659367',1,'AboutF.cpp']]],

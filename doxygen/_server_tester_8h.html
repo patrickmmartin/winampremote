@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('_server_tester_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -102,24 +102,33 @@ $(document).ready(function(){initNavTree('_server_tester_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">ServerTester.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;vcl.h&gt;</code><br/>
-<code>#include &lt;vector.h&gt;</code><br/>
+<code>#include &lt;map.h&gt;</code><br/>
 </div>
 <p><a href="_server_tester_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_server_info.html">ServerInfo</a></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html">ServerTester</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:afe8774ef96ebcfb836d7a8c9f14dd3d8"><td class="memItemLeft" align="right" valign="top">typedef void(__closure *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_server_tester_8h.html#afe8774ef96ebcfb836d7a8c9f14dd3d8">TSTServerMessageEvent</a> )(const AnsiString &amp;remoteName, const AnsiString &amp;<a class="el" href="rpcimport_8h.html#a2c43b4908dfeae2903da68a4d8c9ce5f">data</a>, const int level)</td></tr>
 <tr class="memitem:ad857874213bc34cf83fafca010dfa4ca"><td class="memItemLeft" align="right" valign="top">typedef void(__closure *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_server_tester_8h.html#ad857874213bc34cf83fafca010dfa4ca">TSTServerResultEvent</a> )(const AnsiString &amp;remoteName, const bool success, bool &amp;abort)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a23331e5df325fea12f9a553d3b1cab4a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_server_tester_8h.html#a23331e5df325fea12f9a553d3b1cab4a">ServerStatus</a> { <a class="el" href="_server_tester_8h.html#a23331e5df325fea12f9a553d3b1cab4aac6d96cacee4a6edf2a79d0c4a468b793">SI_UNTESTED</a>, 
+<a class="el" href="_server_tester_8h.html#a23331e5df325fea12f9a553d3b1cab4aaaa9d7a398a32a4f73e03cf9a0645bcbc">SI_FAILED</a>, 
+<a class="el" href="_server_tester_8h.html#a23331e5df325fea12f9a553d3b1cab4aac31dd49ac688e15896951c7e2f3f3290">SI_SUCCESS</a>
+ }</td></tr>
 </table>
 <hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="afe8774ef96ebcfb836d7a8c9f14dd3d8"></a>
@@ -141,7 +150,7 @@ Typedefs</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_server_tester_8h_source.html#l00027">27</a> of file <a class="el" href="_server_tester_8h_source.html">ServerTester.h</a>.</p>
+<p>Definition at line <a class="el" href="_server_tester_8h_source.html#l00043">43</a> of file <a class="el" href="_server_tester_8h_source.html">ServerTester.h</a>.</p>
 
 </div>
 </div>
@@ -164,7 +173,32 @@ Typedefs</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_server_tester_8h_source.html#l00037">37</a> of file <a class="el" href="_server_tester_8h_source.html">ServerTester.h</a>.</p>
+<p>Definition at line <a class="el" href="_server_tester_8h_source.html#l00053">53</a> of file <a class="el" href="_server_tester_8h_source.html">ServerTester.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Enumeration Type Documentation</h2>
+<a class="anchor" id="a23331e5df325fea12f9a553d3b1cab4a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_server_tester_8h.html#a23331e5df325fea12f9a553d3b1cab4a">ServerStatus</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a23331e5df325fea12f9a553d3b1cab4aac6d96cacee4a6edf2a79d0c4a468b793"></a>SI_UNTESTED</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a23331e5df325fea12f9a553d3b1cab4aaaa9d7a398a32a4f73e03cf9a0645bcbc"></a>SI_FAILED</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a23331e5df325fea12f9a553d3b1cab4aac31dd49ac688e15896951c7e2f3f3290"></a>SI_SUCCESS</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_server_tester_8h_source.html#l00016">16</a> of file <a class="el" href="_server_tester_8h_source.html">ServerTester.h</a>.</p>
 
 </div>
 </div>
