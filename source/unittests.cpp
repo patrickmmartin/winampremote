@@ -3,7 +3,8 @@
 #include "catch.hpp"
 
 #include "NetworkSuite.h"
-
+#include "WinampClientBase.h"
+#include "ClientBinder.h"
 
 TEST_CASE("Network/Enumeration", "local Network enumeration")
 {
@@ -43,3 +44,63 @@ TEST_CASE("Network/Invalid", "test communication with invalid server")
 	// test invalid
 	CHECK(ns.testServerInvalid());
 }
+
+TEST_CASE("Client/Version", "test server version")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+	CHECK(client.winampVersion() >= 0);
+
+}
+
+TEST_CASE("Client/Status", "test server status")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+	WAPlaybackStatus status = client.getPlaybackStatus();
+	CHECK( ((status == WA_NOT_PLAYING) || (status == WA_PLAYING) || (status == WA_PAUSED)) );
+
+}
+
+TEST_CASE("Client/Stop", "test stop")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+	client.stopSong();
+	CHECK( client.getPlaybackStatus() == WA_NOT_PLAYING );
+
+}
+
+TEST_CASE("Client/Play", "test play")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+	client.playSong();
+	CHECK( client.getPlaybackStatus() == WA_PLAYING );
+
+}
+
+TEST_CASE("Client/Pause", "test pause")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+	client.playSong();
+	client.pause();
+	CHECK( client.getPlaybackStatus() == WA_PAUSED );
+
+}
+
+TEST_CASE("Client/Playlist", "test playlist")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+    std::auto_ptr <vector<string> > playList (client.getPlayList() );
+    CHECK( playList.get() );
+    CHECK( playList->size() > (unsigned int) 0 );
+
+}
+
+
+
+

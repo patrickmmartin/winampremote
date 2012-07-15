@@ -50,6 +50,7 @@ void NetworkSuite::doNetworkMessage(const AnsiString& message, const int level)
 {
   std::string msg = "Network message: ";
   msg += message.c_str();
+  // TODO update the server status
   INFO(msg);
 }
 
@@ -71,6 +72,7 @@ void NetworkSuite::doTestEvent(const AnsiString& remoteName,
   msg += remoteName.c_str();
   msg += " ";
   msg += data.c_str();
+  // TODO update the server status
   INFO(msg);
 
 }
@@ -84,6 +86,7 @@ void NetworkSuite::doTestResult(const AnsiString& remoteName,
   msg += remoteName.c_str();
   msg += " result ";
   msg += success?"true":"false";
+  // TODO update the server status
   INFO(msg);
 
 }
@@ -141,9 +144,7 @@ bool NetworkSuite::testServerInvalid()
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
-    map<AnsiString, ServerInfo> servers;
-    servers["__invalid__"].comment = "should not exist";
-    st.testServers(servers);
+    st.testServer("__invalid__");
     // TODO: validate some state
     return true;
 }

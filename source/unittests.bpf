@@ -6,6 +6,8 @@ USEUNIT("ServerTester.cpp");
 USEUNIT("RPCFuncsU.cpp");
 USELIB("..\lib\winampinterface.lib");
 USEUNIT("waint.cpp");
+USEUNIT("ClientBinder.cpp");
+USEUNIT("WinampClientBase.cpp");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 
