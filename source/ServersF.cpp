@@ -37,7 +37,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "remotestrs.h"
 
 #include "ServerEnumerator.h" // class to enumerate servers
-#include "ServerTester.h" // class to test servers
 
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -143,7 +142,7 @@ void __fastcall TfrmServers::StartTest(TObject *)
       st.OnResult = doTestResult;
       st.OnTest = doTestEvent;
       st.endPoint = ebEndPoint->Text;
-      vector<AnsiString> servers;
+      map<AnsiString, ServerInfo> servers;
       getServers(servers);
       st.testServers(servers);
 
@@ -365,17 +364,17 @@ TListItem* TfrmServers::findServerItem(const AnsiString& RemoteName)
       return lvServers->Items->Add();
 }
 
-void TfrmServers::getServers(vector<AnsiString>& servers)
+void TfrmServers::getServers(map<AnsiString, ServerInfo>& servers)
 {
   if (lvServers->Selected)
     {
-      servers.push_back(lvServers->Selected->Caption);
+      servers[lvServers->Selected->Caption].status = SI_UNTESTED;
       return;
     }
 
   for (int i = 0; (i < lvServers->Items->Count); i++)
     {
-    servers.push_back(lvServers->Items->Item[i]->Caption);
+      servers[lvServers->Selected->Caption].status = SI_UNTESTED;
   }
 }
 

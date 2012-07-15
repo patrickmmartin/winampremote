@@ -11,7 +11,8 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include <vector.h>
+#include <map.h>
+#include "ServerTester.h" // ServerInfo
 
 
 class NetworkSuite
@@ -21,7 +22,7 @@ public:
   virtual ~NetworkSuite();
 private:
 
-  vector<AnsiString> _servers;
+  map<AnsiString, ServerInfo> _servers;
   bool _abort_test;
   char * levelString(const int level);
 

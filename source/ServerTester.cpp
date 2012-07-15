@@ -37,14 +37,15 @@ void ServerTester::DoResult(const AnsiString& remoteName, const bool success)
     _serverResultEvent(remoteName, success, _abort);
 }
 
-void ServerTester::testServers(vector<AnsiString>& servers)
+void ServerTester::testServers(map<AnsiString, ServerInfo>& servers)
 {
 
-      for (vector<AnsiString>::iterator i = servers.begin();
+      for (map<AnsiString, ServerInfo>::iterator i = servers.begin();
            !_abort && (i != servers.end());
            ++i)
         {
-          AnsiString remote = *i;
+          pair<AnsiString, ServerInfo> remote = *i;
+          testServer(remote.first);
 
        }
   }
@@ -73,9 +74,9 @@ void ServerTester::testServer(const AnsiString& remote)
       DoResult(remote, true);
       DoMessage(remote, WinampVersionString(retval), 1);
     }
-    catch( ERPCException &E)
+    catch( ERPCException *E)
     {
-      DoMessage(remote, AnsiString("failed: " ) + E.Message, 3);
+      DoMessage(remote, AnsiString("failed: " ) + E->Message, 3);
       DoResult(remote, false);
     }
 

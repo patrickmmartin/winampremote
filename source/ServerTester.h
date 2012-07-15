@@ -11,7 +11,23 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include <vector.h>
+#include <map.h>
+
+enum ServerStatus
+{
+	SI_UNTESTED, SI_FAILED, SI_SUCCESS
+};
+
+
+struct ServerInfo
+{
+	AnsiString comment;
+	ServerStatus status;
+
+	ServerInfo(): comment(""), status(SI_UNTESTED) {};
+};
+
+
 
 /**
  * class to wrap up the task of testing servers for a running Winamp server.
@@ -69,7 +85,7 @@ public:
          * Function to accept list of servers to be tested.
          * @param servers
          */
-        void testServers(vector<AnsiString>& servers);
+        void testServers(map<AnsiString, ServerInfo>& servers);
 
         /**
          * Function to accept a server to be tested for a response

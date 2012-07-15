@@ -10,7 +10,8 @@
 #include <ImgList.hpp>
 #include <ExtCtrls.hpp>
 
-#include <vector.h>
+#include <map.h>
+#include "ServerTester.h"
 
 class TfrmServers : public TForm
 {
@@ -62,7 +63,7 @@ void doTestResult(const AnsiString& remoteName,
 void addProcessMessage(const AnsiString & Message, const int Level);
 
 TListItem* findServerItem(const AnsiString& RemoteName);
-void TfrmServers::getServers(vector<AnsiString>& servers);
+void getServers(map<AnsiString, ServerInfo>& servers);
 
 bool AbortTest;
 void __fastcall CheckPort(void);

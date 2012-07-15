@@ -105,7 +105,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
     }
     RpcEndExcept;
 
@@ -121,7 +121,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
     }
     RpcEndExcept
 
@@ -137,7 +137,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
     }
     RpcEndExcept
   }
@@ -154,7 +154,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
     }
     RpcEndExcept
     return result;
@@ -172,7 +172,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
     }
     RpcEndExcept
     return result;
@@ -188,7 +188,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
     }
     RpcEndExcept
   }
@@ -203,7 +203,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
     }
     RpcEndExcept
   }
@@ -227,7 +227,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
     }
     RpcEndExcept
   }

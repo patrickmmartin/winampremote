@@ -137,7 +137,7 @@ char * port;
     return 0;
   }
 
-  catch (ERPCException& E)
+  catch (ERPCException* E)
   // the errors I understand
   {
     UnBind();

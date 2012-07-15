@@ -38,7 +38,7 @@ char * NetworkSuite::levelString(const int level)
 
 void NetworkSuite::doNetworkServer(const AnsiString& remoteName, const AnsiString& comment)
 {
-  _servers.push_back(remoteName);
+  _servers[remoteName].comment = comment;
 
   std::string msg = "Network Server located: ";
   msg += remoteName.c_str();
@@ -117,7 +117,6 @@ bool NetworkSuite::testServerTest()
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
     st.testServers(_servers);
-    // TODO: validate some state
     return true;
 }
 
@@ -128,9 +127,9 @@ bool NetworkSuite::testServerTestAbort()
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
-    vector<AnsiString> servers;
-    servers.push_back("localhost");
-    servers.push_back("localhost");
+    map<AnsiString, ServerInfo> servers;
+    servers["localhost"].comment = "local machine";
+    servers["__invalid__"].comment = "should not exist";
     st.testServers(servers);
     _abort_test = prior_abort_test;
     // TODO: validate some state
@@ -142,8 +141,8 @@ bool NetworkSuite::testServerInvalid()
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
-    vector<AnsiString> servers;
-    servers.push_back("__invalid__");
+    map<AnsiString, ServerInfo> servers;
+    servers["__invalid__"].comment = "should not exist";
     st.testServers(servers);
     // TODO: validate some state
     return true;
