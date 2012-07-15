@@ -883,10 +883,10 @@ namespace Internal {
     }
 
     // "base" overload
-//    template<Operator Op, typename T1, typename T2>
-//    bool compare( const T1& lhs, const T2& rhs ) {
-//        return Evaluator<T1, T2, Op>::evaluate( lhs, rhs );
-//    }
+    template<Operator Op, typename T1, typename T2>
+    bool compare( const T1& lhs, const T2& rhs ) {
+        return Evaluator<T1, T2, Op>::evaluate( lhs, rhs );
+    }
 
     // unsigned X to int
     template<Operator Op> bool compare( unsigned int lhs, int rhs ) {
