@@ -23,16 +23,24 @@ public:
 
 
 #include <string>
+#include <exception>
+
 using namespace std;
 
-class ERPCException
+class ERPCException : public runtime_error
 {
-public:
-         string Message;
-	 ERPCException(const string Msg)
-           {Message = Msg;}
-};
 
+public:
+        explicit ERPCException(const std::string& error_message)  :
+        std::runtime_error(error_message), what_(error_message) {}
+
+        virtual const char* what() const throw ()
+        { return what_.c_str(); }
+
+        virtual ~ERPCException() throw () {}
+private:
+        std::string what_;
+};
 
 #endif
 
