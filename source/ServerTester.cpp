@@ -40,39 +40,43 @@ void ServerTester::DoResult(const AnsiString& remoteName, const bool success)
 void ServerTester::testServers(vector<AnsiString>& servers)
 {
 
-  int retval;
-
-  clock_t start, end;
-
-  char title[MAX_PATH] = "";
-
       for (vector<AnsiString>::iterator i = servers.begin();
            !_abort && (i != servers.end());
            ++i)
         {
           AnsiString remote = *i;
 
-          // static method from RPCFuncs
-          Bind(remote.c_str(), _endPoint.c_str());
-          try
-          {
-            DoMessage(remote, "beginning", 1);
-            DoMessage(remote, "may take some time", 2);
-            start = clock();
-
-            retval = IntegerResult("probe", IPC_GETVERSION, 0);
-            StringResult(title, IPC_GETPLAYLISTTITLE, 0);
-
-            end = clock();
-            DoMessage(remote, AnsiString().sprintf("response after %.2fs ", (end - start) / CLK_TCK), 1);
-            DoResult(remote, true);
-            DoMessage(remote, WinampVersionString(retval), 1);
-          }
-          catch( ERPCException &E)
-          {
-            DoMessage(remote, AnsiString("failed: " ) + E.Message, 3);
-            DoResult(remote, false);
-          }
        }
   }
 
+void ServerTester::testServer(const AnsiString& remote)
+{
+	 int retval;
+
+	  clock_t start, end;
+
+	  char title[MAX_PATH] = "";
+
+    // static method from RPCFuncs
+    Bind(remote.c_str(), _endPoint.c_str());
+    try
+    {
+      DoMessage(remote, "beginning", 1);
+      DoMessage(remote, "may take some time", 2);
+      start = clock();
+
+      retval = IntegerResult("probe", IPC_GETVERSION, 0);
+      StringResult(title, IPC_GETPLAYLISTTITLE, 0);
+
+      end = clock();
+      DoMessage(remote, AnsiString().sprintf("response after %.2fs ", (end - start) / CLK_TCK), 1);
+      DoResult(remote, true);
+      DoMessage(remote, WinampVersionString(retval), 1);
+    }
+    catch( ERPCException &E)
+    {
+      DoMessage(remote, AnsiString("failed: " ) + E.Message, 3);
+      DoResult(remote, false);
+    }
+
+}

@@ -18,32 +18,12 @@ class NetworkSuite
 {
 public:
   NetworkSuite();
-  virtual
-  ~NetworkSuite();
-  void run();
+  virtual ~NetworkSuite();
 private:
 
   vector<AnsiString> _servers;
   bool _abort_test;
-  void testServerInvalid();
-  void testServerTestAbort();
-
   char * levelString(const int level);
-
-
-  /**
-   * test method for test local server
-   */
-  void testLocalServer();
-  /**
-   * test method for network enumeration
-   */
-  void testEnumeration();
-
-  /**
-   * test method for server testing
-   */
-  void testServerTest();
 
   /**
    * handler for server found event
@@ -80,6 +60,33 @@ private:
   void doTestResult(const AnsiString& remoteName,
                     const bool success,
                     bool& abort);
+
+public:
+  /**
+   * test method for communication with an invalid server
+   * @return was an invalid server trapped correctly in attempting to connect
+   */
+  bool testServerInvalid();
+
+  /**
+   * test method for abort
+   * @return success of the abort
+   */
+  bool testServerTestAbort();
+
+  /**
+   * test method for test local server
+   */
+  bool testLocalServer();
+  /**
+   * test method for network enumeration
+   */
+  bool testEnumeration();
+
+  /**
+   * test method for server testing
+   */
+  bool testServerTest();
 
 };
 

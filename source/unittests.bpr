@@ -38,7 +38,7 @@
     <PFLAGS value="-N2..\obj\unittests -N0..\obj\unittests -$YD -$W -$O- -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-I..\obj\unittests -D&quot;&quot; -ap -Tpe -x -Gn -v"/>
+    <LFLAGS value="-I..\obj\unittests -D&quot;&quot; -ap -Tpe -x -Gn -w -v"/>
   </OPTIONS>
   <LINKER>
     <ALLOBJ value="c0x32.obj $(PACKAGES) $(OBJFILES)"/>

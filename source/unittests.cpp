@@ -1,25 +1,45 @@
+#define CATCH_CONFIG_MAIN
 
-#include <vcl.h>
-
-#include <iostream.h>
-
-#pragma hdrstop
+#include "catch.hpp"
 
 #include "NetworkSuite.h"
 
-using std::cout;
-using std::endl;
 
-
-#pragma argsused
-int main(int argc, char* argv[])
+TEST_CASE("Network/Enumeration", "local Network enumeration")
 {
-    cout << "unit tests starting" << endl;
-
-    NetworkSuite ns;
-    ns.run();
-
-    cout << "unit tests completing" << endl;
-    return 0;
+	NetworkSuite ns;
+	// test network enumeration
+	CHECK(ns.testEnumeration());
 }
 
+TEST_CASE("Network/Local", "test interface")
+{
+	NetworkSuite ns;
+	// test local server properties
+	CHECK(ns.testLocalServer());
+	// test abort
+}
+
+TEST_CASE("Network/Servers", "test local servers")
+{
+	NetworkSuite ns;
+	// test network enumeration
+	CHECK(ns.testEnumeration());
+	// TODO: uses the server list from the prior test
+	// TODO: would be useful to have the server list controllable to validate testing
+	CHECK(ns.testServerTest());
+}
+
+TEST_CASE("Network/Abort", "test abort")
+{
+	NetworkSuite ns;
+	// test abort
+	CHECK(ns.testServerTestAbort());
+}
+
+TEST_CASE("Network/Invalid", "test communication with invalid server")
+{
+	NetworkSuite ns;
+	// test invalid
+	CHECK(ns.testServerInvalid());
+}

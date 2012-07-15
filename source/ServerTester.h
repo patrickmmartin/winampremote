@@ -71,6 +71,12 @@ public:
          */
         void testServers(vector<AnsiString>& servers);
 
+        /**
+         * Function to accept a server to be tested for a response
+         * @param remote - machine name to test
+         */
+        void testServer(const AnsiString& remote);
+
 private:
 
         AnsiString _endPoint;

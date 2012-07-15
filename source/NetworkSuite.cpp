@@ -5,16 +5,12 @@
  *      Author: Patrick
  */
 
+#include "catch.hpp"
+
 #include "NetworkSuite.h"
 
 #include "ServerEnumerator.h"
 #include "ServerTester.h"
-
-#include <iostream.h>
-
-using std::cout;
-using std::endl;
-using std::boolalpha;
 
 NetworkSuite::NetworkSuite() :  _servers(), _abort_test(false)
 
@@ -43,17 +39,25 @@ char * NetworkSuite::levelString(const int level)
 void NetworkSuite::doNetworkServer(const AnsiString& remoteName, const AnsiString& comment)
 {
   _servers.push_back(remoteName);
-  cout << "Network Server: " << remoteName.c_str() << " \"" << comment.c_str() << " \"" << endl;
+
+  std::string msg = "Network Server located: ";
+  msg += remoteName.c_str();
+  msg += comment.c_str();
+  INFO(msg);
 }
 
 void NetworkSuite::doNetworkMessage(const AnsiString& message, const int level)
 {
-  cout << "Network Message: " << levelString(level) << " " << message.c_str() << " " << endl;
+  std::string msg = "Network message: ";
+  msg += message.c_str();
+  INFO(msg);
 }
 
 void NetworkSuite::doNetworkProgress(const float complete)
 {
-  cout << "Network Progress: " << 100 * complete << "%" << endl;
+  std::string msg = "Network Progress: ";
+  msg += complete;
+  INFO(msg);
 }
 
 
@@ -61,19 +65,32 @@ void NetworkSuite::doTestEvent(const AnsiString& remoteName,
                                           const AnsiString& data,
                                           const int level)
 {
-  cout << "Test Event: " << levelString(level) << " " << remoteName.c_str() << " " << data.c_str() << endl;
+  std::string msg = "Test Event: ";
+  msg += levelString(level);
+  msg += " ";
+  msg += remoteName.c_str();
+  msg += " ";
+  msg += data.c_str();
+  INFO(msg);
+
 }
 
 void NetworkSuite::doTestResult(const AnsiString& remoteName,
                                            const bool success,
                                            bool& abort)
 {
-  cout << "Test Result: " << remoteName.c_str() << " result " << boolalpha << success << endl;
-  if (_abort_test)
-    abort = true;
+
+  std::string msg = "Test Result: ";
+  msg += remoteName.c_str();
+  msg += " result ";
+  msg += success?"true":"false";
+  INFO(msg);
+
 }
 
-void NetworkSuite::testLocalServer()
+
+
+bool NetworkSuite::testLocalServer()
 {
     _servers.clear();
     _servers.push_back("localhost");
@@ -81,26 +98,32 @@ void NetworkSuite::testLocalServer()
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
     st.testServers(_servers);
+    // TODO: validate some state
+    return true;
 }
 
-void NetworkSuite::testEnumeration()
+bool NetworkSuite::testEnumeration()
 {
     ServerEnumerator se;
     se.OnMessage = doNetworkMessage;
     se.OnServer = doNetworkServer;
     se.OnProgress = doNetworkProgress;
     se.enumerateServers();
+    // TODO: validate some state
+    return true;
 }
 
-void NetworkSuite::testServerTest()
+bool NetworkSuite::testServerTest()
 {
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
     st.testServers(_servers);
+    // TODO: validate some state
+    return true;
 }
 
-void NetworkSuite::testServerTestAbort()
+bool NetworkSuite::testServerTestAbort()
 {
     bool prior_abort_test = _abort_test;
     _abort_test = true;
@@ -112,9 +135,11 @@ void NetworkSuite::testServerTestAbort()
     servers.push_back("localhost");
     st.testServers(servers);
     _abort_test = prior_abort_test;
+    // TODO: validate some state
+    return true;
 }
 
-void NetworkSuite::testServerInvalid()
+bool NetworkSuite::testServerInvalid()
 {
     ServerTester st;
     st.OnResult = doTestResult;
@@ -122,22 +147,6 @@ void NetworkSuite::testServerInvalid()
     vector<AnsiString> servers;
     servers.push_back("__invalid__");
     st.testServers(servers);
-}
-
-void NetworkSuite::run()
-{
-
-    // test local server properties
-    testLocalServer();
-    // test network enumeration
-    testEnumeration();
-    // TODO: this test has a dependency upon the prior test
-    testServerTest();
-    // test abort
-    testServerTestAbort();
-    // test invalid
-    testServerInvalid();
-
-
-
+    // TODO: validate some state
+    return true;
 }
