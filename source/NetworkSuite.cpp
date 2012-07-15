@@ -92,13 +92,11 @@ void NetworkSuite::doTestResult(const AnsiString& remoteName,
 
 bool NetworkSuite::testLocalServer()
 {
-    _servers.clear();
-    _servers.push_back("localhost");
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
-    st.testServers(_servers);
-    // TODO: validate some state
+    st.testServer("localhost");
+    // TODO: return the result for that server
     return true;
 }
 
