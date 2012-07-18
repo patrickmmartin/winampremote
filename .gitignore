@@ -104,3 +104,4 @@
 /setup/bin
 /source/winampinterface.~idl
 /RemoteSystemsTempFiles/.project
+/source/*.~hpp
