@@ -149,37 +149,47 @@ void WinampClientBase::back5(void)
 
 void WinampClientBase::volumeUp(void)
 {
-	throw std::runtime_error("volumeUp not implemented");
+	setVolume(51);
 }
 
 void WinampClientBase::volumeDown(void)
 {
-	throw std::runtime_error("volumeDown not implemented");
+	setVolume(49);
 }
 
 void WinampClientBase::setVolume(int volume)
 {
-	throw std::runtime_error("setVolume not implemented");
+	IntegerResult(IdentBuf, IPC_SETVOLUME, volume);
 }
 
 void WinampClientBase::toggleShuffle(void)
 {
-	throw std::runtime_error("toggleShuffle not implemented");
+//	int shuffle = IntegerResult(IdentBuf, IPC_GETSHUFFLEOPTION, 0);
+	ExecuteMessage(IdentBuf, WINAMP_FILE_SHUFFLE);;
 }
 
 void WinampClientBase::toggleRepeat(void)
 {
-	throw std::runtime_error("toggleRepeat not implemented");
+//	int repeat = IntegerResult(IdentBuf, IPC_GETREPEATOPTION, 0);
+	ExecuteMessage(IdentBuf, WINAMP_FILE_REPEAT);
+
 }
 
 void WinampClientBase::toggleAutoload(void)
 {
-	throw std::runtime_error("toggleAutoload not implemented");
+	int autoLoad = IntegerResult(IdentBuf, IPC_GETEQDATA, 11);
+	IntegerResult(IdentBuf, IPC_SETEQDATA, !autoLoad );
 }
 
 void WinampClientBase::getTimes(int& songLength, int& songPos)
 {
-	throw std::runtime_error("getTimes not implemented");
+
+	int songS = IntegerResult(IdentBuf, IPC_GETOUTPUTTIME, 1);
+	int posMS = IntegerResult(IdentBuf, IPC_GETOUTPUTTIME, 0);
+
+	songLength = songS;
+	songPos =  posMS;
+
 }
 
 } // end of namespace Client

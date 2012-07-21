@@ -31,10 +31,15 @@ struct TestContext
 } // end namespace WinampRemote
 
 
+/**
+ * extracts the text from an ERPCException
+ */
+/*
 CATCH_TRANSLATE_EXCEPTION( ERPCException& ex )
 {
     return ex.what();
 }
+*/
 
 TEST_CASE("Network/Enumeration", "local Network enumeration")
 {
@@ -51,15 +56,17 @@ TEST_CASE("Network/Local", "test interface")
 	// test abort
 }
 
+// disabling for now, as it burns time and such a test should only be run
+// for the right prerequisites
+/*
 TEST_CASE("Network/Servers", "test local servers")
 {
 	NetworkSuite ns;
 	// test network enumeration
 	CHECK(ns.testEnumeration());
-	// TODO: uses the server list from the prior test
-	// TODO: would be useful to have the server list controllable to validate testing
 	CHECK(ns.testServerTest());
 }
+*/
 
 TEST_CASE("Network/Abort", "test abort")
 {
@@ -285,7 +292,7 @@ TEST_CASE("Client/GetTimes", "test getTimes")
 	client.getTimes(songLength, songPos);
 }
 
-TEST_CASE_NORETURN( "exception/ERPCException", "ERPCException can be translated" )
+TEST_CASE_NORETURN( "./exception/ERPCException", "ERPCException can be translated" )
 {
     throw ERPCException(RPC_S_UNKNOWN_PRINCIPAL);
 }
