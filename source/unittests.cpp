@@ -107,25 +107,17 @@ TEST_CASE("Client/Status", "test server status")
 }
 
 /**
- * tests that stop is received and honoured
- */
-TEST_CASE("Client/Stop", "test stop")
-{
-	WinampRemote::UnitTest::TestContext tc;
-	WinampRemote::Client::WinampClientBase client;
-	client.stopSong();
-	CHECK( client.getPlaybackStatus() == WA_NOT_PLAYING );
-
-}
-
-/**
  * tests that play is received and honoured
  */
 TEST_CASE("Client/Play", "test play")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
+	INFO("initiate play request");
 	client.playSong();
+	INFO("the process is not synchronous and takes a while");
+	Sleep(500);
+	INFO("test playback state");
 	CHECK( client.getPlaybackStatus() == WA_PLAYING );
 
 }
@@ -137,9 +129,37 @@ TEST_CASE("Client/Pause", "test pause")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
+	INFO("initiate play request");
 	client.playSong();
+	INFO("the process is not synchronous and takes a while");
+	Sleep(500);
+	CHECK( client.getPlaybackStatus() == WA_PLAYING );
+	INFO("state is playing - initiate pause request");
 	client.pause();
+	INFO("the process is not synchronous and takes a while");
+	Sleep(500);
+	INFO("test playback state");
 	CHECK( client.getPlaybackStatus() == WA_PAUSED );
+
+}
+
+/**
+ * tests that stop is received and honoured
+ */
+TEST_CASE("Client/Stop", "test stop")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+	INFO("initiate play request");
+	client.playSong();
+	INFO("the process is not synchronous and takes a while");
+	Sleep(500);
+	CHECK( client.getPlaybackStatus() == WA_PLAYING );
+	INFO("state is playing - initiate stop request");
+	client.stopSong();
+	INFO("the process is not synchronous and takes a while");
+	Sleep(500);
+	CHECK( client.getPlaybackStatus() == WA_NOT_PLAYING );
 
 }
 
@@ -152,7 +172,6 @@ TEST_CASE("Client/Playlist", "test playlist")
 	WinampRemote::Client::WinampClientBase client;
 
 	std::auto_ptr <vector<string> > playList (client.getPlayList() );
-	CHECK( playList.get() );
 	CHECK( playList->size() > (unsigned int) 0 );
 
 }
@@ -237,13 +256,13 @@ TEST_CASE("Client/StartPlaylist", "test startPlaylist")
 /**
  * test delete of playlist
  */
-TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
-{
-	WinampRemote::UnitTest::TestContext tc;
-	WinampRemote::Client::WinampClientBase client;
-
-	client.deletePlaylist();
-}
+//TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
+//{
+//	WinampRemote::UnitTest::TestContext tc;
+//	WinampRemote::Client::WinampClientBase client;
+//
+//	client.deletePlaylist();
+//}
 
 /**
  * tests stop song with fade effect

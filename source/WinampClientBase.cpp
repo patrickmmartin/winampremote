@@ -85,7 +85,7 @@ WAPlaybackStatus WinampClientBase::getPlaybackStatus(void)
 	return (WAPlaybackStatus) IntegerResult(IdentBuf, IPC_ISPLAYING, 0);
 }
 
-// TODO this implementation should be replaced with the bulk version
+// TODO this implementation should ultimately be replaced with the bulk version
 vector<string>* WinampClientBase::getPlayList(void)
 {
 	vector<string> * result = new vector<string>();

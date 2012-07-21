@@ -49,10 +49,6 @@ void __fastcall MainIdent(char * msgString);
 
 WinampRemote::Server::WinampServer * localWinamp = NULL;
 
-// TODO:: keeps the Eclipse parser happy
-#ifndef strdup
-#define strdup(A) A
-#endif
 
 
 TRTLCriticalSection fCriticalSection ;
@@ -205,7 +201,7 @@ int result;
       if (frmMain->requestlog[QUERY_INTEGER])
       {
         AnsiString str = (char *) pszString;
-        str += " sent  - command : ";
+        str += " sent  - query : ";
         commandStr = WinampCommandDesc(command);
         if (commandStr)
           str += commandStr;
@@ -262,7 +258,7 @@ long int WAStringResult(
           if (frmMain->requestlog[QUERY_STRING])
           {
             str = (char *) pszString;
-            str += " sent  - command : ";
+            str += " sent  - query : ";
 
             commandStr = WinampCommandDesc(command);
             if (commandStr)

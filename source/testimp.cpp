@@ -30,12 +30,11 @@ static void inline MainStatus(char * msgString);
 void WAMessageProc(
     /* [string][out][in] */ unsigned char __RPC_FAR *pszString)
 {
-  MainStatus("executing request");
+
   AnsiString str = (char *) pszString;
   str += " sent hello";
   MainMessage(str.c_str());
-  MainStatus("welcome from the winamp RPC server");
-  MainStatus("listening...");
+
 }
 
 
@@ -43,13 +42,13 @@ void WAExecuteMessage(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in] */ long command)
 {
-  MainStatus("executing request");
+
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
   MainMessage( str.c_str());
   // TODO implement mock execution
-  MainStatus("listening...");
+
 
 }
 
@@ -59,7 +58,7 @@ void WAExecuteMessageString(
     /* [string][in] */ unsigned char __RPC_FAR *pszParam,
     /* [in] */ long command)
 {
-  MainStatus("executing request");
+
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
@@ -68,7 +67,7 @@ void WAExecuteMessageString(
   MainMessage( str.c_str());
 
   // TODO implement mock execution
-  MainStatus("listening...");
+
 
 }
 
@@ -77,7 +76,7 @@ long WAIntegerResult(
     /* [in] */ long command,
     /* [in] */ long data)
 {
-  MainStatus("executing request");
+
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
@@ -87,7 +86,7 @@ long WAIntegerResult(
   MainMessage( str.c_str());
 
   // TODO implement mock execution
-  MainStatus("listening...");
+
   return 0;
 
 }
@@ -98,7 +97,7 @@ long WAStringResult(
     /* [in] */ long data)
 {
   char * retval;
-  MainStatus("executing request");
+
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
@@ -116,7 +115,6 @@ long WAStringResult(
   strcpy((char *) pszString, retval);
   /* return status*/
 
-  MainStatus("listening...");
   return 0;
 
 }
@@ -135,7 +133,7 @@ void WASetStringList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-         MainStatus("executing request");
+
 
           TStringList * StringList = new TStringList;
           try
@@ -182,7 +180,7 @@ void WAGetStringList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-         MainStatus("executing request");
+
 
           TStringList * StringList = new TStringList;
           try
@@ -243,7 +241,7 @@ void WAGetStringDataList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-         MainStatus("executing request");
+
 
           TStringList * StringList = new TStringList;
           try
