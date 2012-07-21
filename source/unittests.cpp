@@ -17,13 +17,12 @@ namespace UnitTest
 
 struct TestContext
 {
-	// blink and you might miss the declaration order matters
+	// blink and you might miss the fact that declaration order matters for the members
 	WinampRemote::Context::ContextInfo ci;
 	WinampRemote::Client::ClientBinder binder;
 	TestContext() : ci(), binder(ci.computername().c_str(), "\\pipe\\winampremote")
 	{
 	}
-
 
 };
 
@@ -32,15 +31,8 @@ struct TestContext
 
 
 /**
- * extracts the text from an ERPCException
+ * tests network enumeration
  */
-/*
-CATCH_TRANSLATE_EXCEPTION( ERPCException& ex )
-{
-    return ex.what();
-}
-*/
-
 TEST_CASE("Network/Enumeration", "local Network enumeration")
 {
 	NetworkSuite ns;
@@ -48,6 +40,9 @@ TEST_CASE("Network/Enumeration", "local Network enumeration")
 	CHECK(ns.testEnumeration());
 }
 
+/**
+ * tests the network interface on the running local server
+ */
 TEST_CASE("Network/Local", "test interface")
 {
 	NetworkSuite ns;
@@ -68,6 +63,9 @@ TEST_CASE("Network/Servers", "test local servers")
 }
 */
 
+/**
+ * tests that aborting network enumeration works
+ */
 TEST_CASE("Network/Abort", "test abort")
 {
 	NetworkSuite ns;
@@ -75,6 +73,9 @@ TEST_CASE("Network/Abort", "test abort")
 	CHECK(ns.testServerTestAbort());
 }
 
+/**
+ * tests attempting to connect with an invalid server is handled appropriately
+ */
 TEST_CASE("Network/Invalid", "test communication with invalid server")
 {
 	NetworkSuite ns;
@@ -82,6 +83,9 @@ TEST_CASE("Network/Invalid", "test communication with invalid server")
 	CHECK(ns.testServerInvalid());
 }
 
+/**
+ * test obtaining the server version
+ */
 TEST_CASE("Client/Version", "test server version")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -90,6 +94,9 @@ TEST_CASE("Client/Version", "test server version")
 
 }
 
+/**
+ * tests the server status returned is in range
+ */
 TEST_CASE("Client/Status", "test server status")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -99,6 +106,9 @@ TEST_CASE("Client/Status", "test server status")
 
 }
 
+/**
+ * tests that stop is received and honoured
+ */
 TEST_CASE("Client/Stop", "test stop")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -108,6 +118,9 @@ TEST_CASE("Client/Stop", "test stop")
 
 }
 
+/**
+ * tests that play is received and honoured
+ */
 TEST_CASE("Client/Play", "test play")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -117,6 +130,9 @@ TEST_CASE("Client/Play", "test play")
 
 }
 
+/**
+ * tests that pause is received and honoured
+ */
 TEST_CASE("Client/Pause", "test pause")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -127,6 +143,9 @@ TEST_CASE("Client/Pause", "test pause")
 
 }
 
+/**
+ * tests that the play is returned
+ */
 TEST_CASE("Client/Playlist", "test playlist")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -138,6 +157,9 @@ TEST_CASE("Client/Playlist", "test playlist")
 
 }
 
+/**
+ * tests that string is sent
+ */
 TEST_CASE("Client/SendString", "test sendString")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -146,6 +168,9 @@ TEST_CASE("Client/SendString", "test sendString")
 	client.sendString("");
 }
 
+/**
+ * tests advancing song works
+ */
 TEST_CASE("Client/NextSong", "test nextSong")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -154,6 +179,9 @@ TEST_CASE("Client/NextSong", "test nextSong")
 	client.nextSong();
 }
 
+/**
+ * tests rewinding one song works
+ */
 TEST_CASE("Client/PreviousSong", "test previousSong")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -162,6 +190,9 @@ TEST_CASE("Client/PreviousSong", "test previousSong")
 	client.previousSong();
 }
 
+/**
+ * tests move to start of playlist
+ */
 TEST_CASE("Client/PlaylistStart", "test playlistStart")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -170,6 +201,9 @@ TEST_CASE("Client/PlaylistStart", "test playlistStart")
 	client.playlistStart();
 }
 
+/**
+ * tests move to end of playlist
+ */
 TEST_CASE("Client/PlaylistEnd", "test playlistEnd")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -178,6 +212,9 @@ TEST_CASE("Client/PlaylistEnd", "test playlistEnd")
 	client.playlistEnd();
 }
 
+/**
+ * tests setting the playlist index works
+ */
 TEST_CASE("Client/SetPlaylistIndex", "test setPlaylistIndex")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -186,6 +223,9 @@ TEST_CASE("Client/SetPlaylistIndex", "test setPlaylistIndex")
 	client.setPlaylistIndex(0);
 }
 
+/**
+ * tests starting playback
+ */
 TEST_CASE("Client/StartPlaylist", "test startPlaylist")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -194,6 +234,9 @@ TEST_CASE("Client/StartPlaylist", "test startPlaylist")
 	client.startPlaylist();
 }
 
+/**
+ * test delete of playlist
+ */
 TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -202,6 +245,9 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 	client.deletePlaylist();
 }
 
+/**
+ * tests stop song with fade effect
+ */
 TEST_CASE("Client/StopWithFade", "test stopWithFade")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -210,6 +256,9 @@ TEST_CASE("Client/StopWithFade", "test stopWithFade")
 	client.stopWithFade();
 }
 
+/**
+ * tests stop after current command
+ */
 TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -218,6 +267,10 @@ TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 	client.stopAfterCurrent();
 }
 
+
+/**
+ * tests forward 5 works
+ */
 TEST_CASE("Client/Forward5", "test forward5")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -226,6 +279,9 @@ TEST_CASE("Client/Forward5", "test forward5")
 	client.forward5();
 }
 
+/**
+ * tests back 5 works
+ */
 TEST_CASE("Client/Back5", "test back5")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -234,6 +290,9 @@ TEST_CASE("Client/Back5", "test back5")
 	client.back5();
 }
 
+/**
+ * tests volume up works
+ */
 TEST_CASE("Client/VolumeUp", "test volumeUp")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -242,6 +301,9 @@ TEST_CASE("Client/VolumeUp", "test volumeUp")
 	client.volumeUp();
 }
 
+/**
+ * tests volume down works
+ */
 TEST_CASE("Client/VolumeDown", "test volumeDown")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -250,7 +312,9 @@ TEST_CASE("Client/VolumeDown", "test volumeDown")
 	client.volumeDown();
 }
 
-
+/**
+ * tests set volume works
+ */
 TEST_CASE("Client/setVolume", "test setVolume")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -259,6 +323,9 @@ TEST_CASE("Client/setVolume", "test setVolume")
 	client.setVolume(50);
 }
 
+/**
+ * tests that shuffle toggle works
+ */
 TEST_CASE("Client/ToggleShuffle", "test toggleShuffle")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -267,6 +334,9 @@ TEST_CASE("Client/ToggleShuffle", "test toggleShuffle")
 	client.toggleShuffle();
 }
 
+/**
+ * tests that repeat works
+ */
 TEST_CASE("Client/ToggleRepeat", "test toggleRepeat")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -275,6 +345,9 @@ TEST_CASE("Client/ToggleRepeat", "test toggleRepeat")
 	client.toggleRepeat();
 }
 
+/**
+ * tests that autoload toggle works
+ */
 TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -283,6 +356,9 @@ TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
 	client.toggleAutoload();
 }
 
+/**
+ * tests that getting the output times works
+ */
 TEST_CASE("Client/GetTimes", "test getTimes")
 {
 	WinampRemote::UnitTest::TestContext tc;
@@ -292,7 +368,10 @@ TEST_CASE("Client/GetTimes", "test getTimes")
 	client.getTimes(songLength, songPos);
 }
 
-TEST_CASE_NORETURN( "./exception/ERPCException", "ERPCException can be translated" )
+/**
+ * tests exception handling
+ */
+TEST_CASE_NORETURN( "./exception/ERPCException", "ERPCException can handled" )
 {
     throw ERPCException(RPC_S_UNKNOWN_PRINCIPAL);
 }
