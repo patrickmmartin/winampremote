@@ -41,6 +41,12 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "CallReflector.h"
 
+void __fastcall MainMessage(char * msgString);
+static void inline MainStatus(WAExecutionStatus Status);
+void __fastcall MainIdent(char * msgString);
+
+
+
 WinampRemote::Server::WinampServer * localWinamp = NULL;
 
 // TODO:: keeps the Eclipse parser happy
@@ -646,7 +652,7 @@ void __fastcall MainMessage(char * msgString)
 
 
 
-void __fastcall MainStatus(WAExecutionStatus Status)
+static void inline MainStatus(WAExecutionStatus Status)
 {
   // TODO: this global handle should be factored out
   PostMessage(mainhwnd, WM_THREAD_STATUS, 0, Status);

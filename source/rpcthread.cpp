@@ -25,6 +25,11 @@
 #include "ConsoleCallObserver.h"
 #include "WinampServerImpl.h"
 
+static void inline MainMessage(char * msgString);
+static void inline MainStatus(char * msgString);
+
+
+
 // this code is only used in the out of process test process
 WinampRemote::Server::WinampServer localWinamp(NULL);
 
@@ -366,12 +371,12 @@ void __fastcall TRPCServerThread::Execute()
 
 
 
-void __fastcall MainMessage(char * msgString)
+static void inline MainMessage(char * msgString)
 {
   TRPCServerThread::CallObserver.notifyMessage(msgString);
 }
 
-void __fastcall MainStatus(char * msgString)
+static void inline MainStatus(char * msgString)
 {
   TRPCServerThread::CallObserver.notifyStatus(msgString);
 }

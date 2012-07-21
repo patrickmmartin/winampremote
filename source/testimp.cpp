@@ -18,6 +18,12 @@
 
 #include "ConsoleCallObserver.h"
 
+
+static void inline MainMessage(char * msgString);
+static void inline MainStatus(char * msgString);
+
+
+
 /* __RPC_FAR is literally nothing, but is left in for consistency
 - none of the MIDL generated code should need direct modification*/
 
@@ -345,12 +351,12 @@ void __fastcall TRPCServerThread::Execute()
 
 
 
-void __fastcall MainMessage(char * msgString)
+static void inline MainMessage(char * msgString)
 {
   TRPCServerThread::CallObserver.notifyMessage(msgString);
 }
 
-void __fastcall MainStatus(char * msgString)
+static void inline MainStatus(char * msgString)
 {
   TRPCServerThread::CallObserver.notifyStatus(msgString);
 }

@@ -22,9 +22,4 @@ public:
 };
 
 
-void __fastcall MainMessage(char * msgString);
-void __fastcall MainStatus(char * msgString);
-
-
-
 #endif

@@ -34,10 +34,4 @@ public:
 extern TRPCServerDLLThread *serverThread;
 
 
-  void __fastcall MainMessage(char * msgString);
-  void __fastcall MainStatus(WAExecutionStatus Status);
-  void __fastcall MainIdent(char * msgString);
-
-
-
 #endif
