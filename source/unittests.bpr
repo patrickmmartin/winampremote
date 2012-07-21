@@ -48,7 +48,7 @@
   </LINKER>
   <IDEOPTIONS>
 [Version Info]
-IncludeVerInfo=1
+IncludeVerInfo=0
 AutoIncBuild=0
 MajorVer=1
 MinorVer=4
@@ -113,7 +113,7 @@ Item0=..\bin\
 DebugSourceDirs=$(BCB)\source\vcl
 
 [Parameters]
-RunParams=--test &quot;Client/SendString&quot;
+RunParams=--test &quot;Client/*&quot;
 HostApplication=
 RemoteHost=
 RemotePath=

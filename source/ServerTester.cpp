@@ -74,9 +74,9 @@ void ServerTester::testServer(const AnsiString& remote)
       DoResult(remote, true);
       DoMessage(remote, WinampVersionString(retval), 1);
     }
-    catch( ERPCException *E)
+    catch( ERPCException& E)
     {
-      DoMessage(remote, AnsiString("failed: " ) + E->Message, 3);
+      DoMessage(remote, AnsiString("failed: " ) + E.what(), 3);
       DoResult(remote, false);
     }
 

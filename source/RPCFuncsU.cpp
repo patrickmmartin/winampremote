@@ -40,30 +40,6 @@ unsigned char * pszProtocolSequence = (unsigned char *) "ncacn_np";
 // global string binding information
 unsigned char * StringBinding = NULL;
 
-#ifdef NO_VCL_EXCEPTION
-
-char * SysErrorMessage(int status)
-{
-
-static char ErrorBuf[1024];
-
-char * lpMessageBuffer;
-
-  FormatMessage(
-                FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
-                NULL,  status, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), //The user default language
-                (LPTSTR) &lpMessageBuffer, 0, NULL );
-
-  strncpy(ErrorBuf, lpMessageBuffer, sizeof(ErrorBuf) - 1);
-
-  LocalFree(lpMessageBuffer);
-
-  return ErrorBuf;
-
-}
-
-#endif
-
 extern "C"
 {
 
@@ -107,7 +83,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw ERPCException(RpcExceptionCode());
     }
     RpcEndExcept;
 
@@ -123,7 +99,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw ERPCException(RpcExceptionCode());
     }
     RpcEndExcept
 
@@ -139,7 +115,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw ERPCException(RpcExceptionCode());
     }
     RpcEndExcept
   }
@@ -156,7 +132,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw ERPCException(RpcExceptionCode());
     }
     RpcEndExcept
     return result;
@@ -174,7 +150,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw ERPCException(RpcExceptionCode());
     }
     RpcEndExcept
     return result;
@@ -190,7 +166,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw ERPCException(RpcExceptionCode());
     }
     RpcEndExcept
   }
@@ -205,7 +181,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw ERPCException(RpcExceptionCode());
     }
     RpcEndExcept
   }
@@ -229,7 +205,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw ERPCException(RpcExceptionCode());
     }
     RpcEndExcept
   }
@@ -254,7 +230,7 @@ extern "C"
     }
     RpcExcept(1)
     {
-        throw new ERPCException(SysErrorMessage(RpcExceptionCode()));
+        throw ERPCException(RpcExceptionCode());
     }
     RpcEndExcept
   }

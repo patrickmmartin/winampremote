@@ -5,6 +5,14 @@
 #include "NetworkSuite.h"
 #include "WinampClientBase.h"
 #include "ClientBinder.h"
+#include "RPCFuncsU.h"
+
+
+CATCH_TRANSLATE_EXCEPTION( ERPCException& ex )
+{
+    return ex.what();
+}
+
 
 TEST_CASE("Network/Enumeration", "local Network enumeration")
 {
@@ -253,6 +261,11 @@ TEST_CASE("Client/GetTimes", "test getTimes")
 
 	int songLength, songPos;
 	client.getTimes(songLength, songPos);
+}
+
+TEST_CASE_NORETURN( "exception/ERPCException", "ERPCException can be translated" )
+{
+    throw ERPCException(RPC_S_UNKNOWN_PRINCIPAL);
 }
 
 

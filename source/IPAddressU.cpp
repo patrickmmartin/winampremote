@@ -34,11 +34,8 @@ void __fastcall GetIPAddress(char * HostName, AnsiString &ResolvedName, TStringL
   // must NOT attempt to modify this
   const hostent * hent = NULL;
   WSADATA wsaData;
-  WORD wVersionRequested;
+  WORD wVersionRequested = MAKEWORD(2, 2);
   int err;
-
-  /* Use the MAKEWORD(lowbyte, highbyte) macro declared in Windef.h */
-  wVersionRequested = MAKEWORD(2, 2);
 
   err = WSAStartup(wVersionRequested, &wsaData);
   if (err == 0)

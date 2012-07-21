@@ -725,14 +725,7 @@ void __fastcall TfrmMain::FormCreate(TObject *)
 void __fastcall TfrmMain::AppException(TObject *, Exception *E)
 {
   AnsiString RPCHint = sRPCFailed;
-
-  if (dynamic_cast <ERPCException*> (E)){
-    MessageForm((AnsiString(RPCHint) + "\nMessage: " + E->Message));
-    }
-  else
-  {
-    MessageForm((AnsiString(sUnhandledException) + E->ClassName()+ ":\n" + E->Message));
-  }
+  MessageForm((AnsiString(sUnhandledException) + E->ClassName()+ ":\n" + E->Message));
 }
 
 
@@ -844,17 +837,17 @@ void TfrmMain::UpdateIcon(void)
       } // if list length non-zero
     }
 
-  catch( ERPCException *E)
+  catch( ERPCException& E)
   {
     doHide = false;
     if (frmPlaylist)
     {
       LastIndex = -1;
       LastLength = -1;
-    }  
+    }
 
     WAStatus = WA_UNUSED;
-    lblMessage->Caption = E->Message;
+    lblMessage->Caption = E.what();
     lblVersion->Caption = WinampVersionString(0);
     timerMain->Interval = 1000 * POLL_ERROR_FACTOR;
   }
@@ -1497,7 +1490,7 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
     }
     catch( ERPCException &E)
     {
-      frmPlaylist->lstSongs->Items->Text = AnsiString().sprintf(sListUnobtainable.c_str(), E.Message.c_str());
+      frmPlaylist->lstSongs->Items->Text = AnsiString().sprintf(sListUnobtainable.c_str(), E.what());
     }
 
   }

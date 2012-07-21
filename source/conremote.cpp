@@ -137,11 +137,11 @@ char * port;
     return 0;
   }
 
-  catch (ERPCException* E)
+  catch (ERPCException& E)
   // the errors I understand
   {
     UnBind();
-    cout << endl << "RPC failure : " <<E->Message.c_str();
+    cout << endl << "RPC failure : " <<E.what();
   }
 
   catch (...)

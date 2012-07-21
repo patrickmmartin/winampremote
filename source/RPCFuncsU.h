@@ -5,19 +5,8 @@
 
 #include <rpc.h>
 
-#ifndef NO_VCL_EXCEPTION
-
 #include "sysutils.hpp"
 
-//class ERPCException based upon VCL Exception
-class ERPCException : public Sysutils::Exception
-{
-public:
-	 __fastcall ERPCException(const System::AnsiString Msg) : Sysutils::Exception(Msg)
-            { }
-};
-
-#else
 
 // supply a simple Exception class
 
@@ -31,8 +20,11 @@ class ERPCException : public runtime_error
 {
 
 public:
-        explicit ERPCException(const std::string& error_message)  :
-        std::runtime_error(error_message), what_(error_message) {}
+        explicit ERPCException(int rpc_error_code)  :
+        std::runtime_error("rpc runtime error"), what_("")
+        {
+                what_ = SysErrorMessage(rpc_error_code).c_str();
+        }
 
         virtual const char* what() const throw ()
         { return what_.c_str(); }
@@ -41,8 +33,6 @@ public:
 private:
         std::string what_;
 };
-
-#endif
 
 extern "C"
 {
