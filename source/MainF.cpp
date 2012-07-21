@@ -733,7 +733,7 @@ void __fastcall TfrmMain::AppException(TObject *, Exception *E)
 
 void TfrmMain::UpdateIcon(void)
 {
-  char title[sizeof(IdentChars)]; // MAX_PATH == maximum user name ?
+  char title[sizeof(IdentChars)] = ""; // MAX_PATH == maximum user name ?
   int index, length;
   AnsiString saveStr;
 
