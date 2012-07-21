@@ -39,7 +39,7 @@ public:
 	/**
 	 * send a string to the server
 	 * TODO may be used for simple authorisation at some point
-	 * @param ident
+	 * @param msg the message string
 	 */
 	virtual void sendString(std::string msg) = 0;
 
