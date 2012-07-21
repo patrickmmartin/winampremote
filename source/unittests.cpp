@@ -6,13 +6,35 @@
 #include "WinampClientBase.h"
 #include "ClientBinder.h"
 #include "RPCFuncsU.h"
+#include "ContextInfo.h"
+#include <string.h>
+
+
+namespace WinampRemote
+{
+namespace UnitTest
+{
+
+struct TestContext
+{
+	// blink and you might miss the declaration order matters
+	WinampRemote::Context::ContextInfo ci;
+	WinampRemote::Client::ClientBinder binder;
+	TestContext() : ci(), binder(ci.computername().c_str(), "\\pipe\\winampremote")
+	{
+	}
+
+
+};
+
+} // end namespace UnitTest
+} // end namespace WinampRemote
 
 
 CATCH_TRANSLATE_EXCEPTION( ERPCException& ex )
 {
     return ex.what();
 }
-
 
 TEST_CASE("Network/Enumeration", "local Network enumeration")
 {
@@ -55,7 +77,7 @@ TEST_CASE("Network/Invalid", "test communication with invalid server")
 
 TEST_CASE("Client/Version", "test server version")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 	CHECK(client.winampVersion() >= 0);
 
@@ -63,7 +85,7 @@ TEST_CASE("Client/Version", "test server version")
 
 TEST_CASE("Client/Status", "test server status")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 	WAPlaybackStatus status = client.getPlaybackStatus();
 	CHECK( ((status == WA_NOT_PLAYING) || (status == WA_PLAYING) || (status == WA_PAUSED)) );
@@ -72,7 +94,7 @@ TEST_CASE("Client/Status", "test server status")
 
 TEST_CASE("Client/Stop", "test stop")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 	client.stopSong();
 	CHECK( client.getPlaybackStatus() == WA_NOT_PLAYING );
@@ -81,7 +103,7 @@ TEST_CASE("Client/Stop", "test stop")
 
 TEST_CASE("Client/Play", "test play")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 	client.playSong();
 	CHECK( client.getPlaybackStatus() == WA_PLAYING );
@@ -90,7 +112,7 @@ TEST_CASE("Client/Play", "test play")
 
 TEST_CASE("Client/Pause", "test pause")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 	client.playSong();
 	client.pause();
@@ -100,18 +122,18 @@ TEST_CASE("Client/Pause", "test pause")
 
 TEST_CASE("Client/Playlist", "test playlist")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-    std::auto_ptr <vector<string> > playList (client.getPlayList() );
-    CHECK( playList.get() );
-    CHECK( playList->size() > (unsigned int) 0 );
+	std::auto_ptr <vector<string> > playList (client.getPlayList() );
+	CHECK( playList.get() );
+	CHECK( playList->size() > (unsigned int) 0 );
 
 }
 
 TEST_CASE("Client/SendString", "test sendString")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.sendString("");
@@ -119,7 +141,7 @@ TEST_CASE("Client/SendString", "test sendString")
 
 TEST_CASE("Client/NextSong", "test nextSong")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.nextSong();
@@ -127,7 +149,7 @@ TEST_CASE("Client/NextSong", "test nextSong")
 
 TEST_CASE("Client/PreviousSong", "test previousSong")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.previousSong();
@@ -135,7 +157,7 @@ TEST_CASE("Client/PreviousSong", "test previousSong")
 
 TEST_CASE("Client/PlaylistStart", "test playlistStart")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.playlistStart();
@@ -143,7 +165,7 @@ TEST_CASE("Client/PlaylistStart", "test playlistStart")
 
 TEST_CASE("Client/PlaylistEnd", "test playlistEnd")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.playlistEnd();
@@ -151,7 +173,7 @@ TEST_CASE("Client/PlaylistEnd", "test playlistEnd")
 
 TEST_CASE("Client/SetPlaylistIndex", "test setPlaylistIndex")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.setPlaylistIndex(0);
@@ -159,7 +181,7 @@ TEST_CASE("Client/SetPlaylistIndex", "test setPlaylistIndex")
 
 TEST_CASE("Client/StartPlaylist", "test startPlaylist")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.startPlaylist();
@@ -167,7 +189,7 @@ TEST_CASE("Client/StartPlaylist", "test startPlaylist")
 
 TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.deletePlaylist();
@@ -175,7 +197,7 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 
 TEST_CASE("Client/StopWithFade", "test stopWithFade")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.stopWithFade();
@@ -183,7 +205,7 @@ TEST_CASE("Client/StopWithFade", "test stopWithFade")
 
 TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.stopAfterCurrent();
@@ -191,7 +213,7 @@ TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 
 TEST_CASE("Client/Forward5", "test forward5")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.forward5();
@@ -199,7 +221,7 @@ TEST_CASE("Client/Forward5", "test forward5")
 
 TEST_CASE("Client/Back5", "test back5")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.back5();
@@ -207,7 +229,7 @@ TEST_CASE("Client/Back5", "test back5")
 
 TEST_CASE("Client/VolumeUp", "test volumeUp")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.volumeUp();
@@ -215,7 +237,7 @@ TEST_CASE("Client/VolumeUp", "test volumeUp")
 
 TEST_CASE("Client/VolumeDown", "test volumeDown")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.volumeDown();
@@ -224,7 +246,7 @@ TEST_CASE("Client/VolumeDown", "test volumeDown")
 
 TEST_CASE("Client/setVolume", "test setVolume")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.setVolume(50);
@@ -232,7 +254,7 @@ TEST_CASE("Client/setVolume", "test setVolume")
 
 TEST_CASE("Client/ToggleShuffle", "test toggleShuffle")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.toggleShuffle();
@@ -240,7 +262,7 @@ TEST_CASE("Client/ToggleShuffle", "test toggleShuffle")
 
 TEST_CASE("Client/ToggleRepeat", "test toggleRepeat")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.toggleRepeat();
@@ -248,7 +270,7 @@ TEST_CASE("Client/ToggleRepeat", "test toggleRepeat")
 
 TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.toggleAutoload();
@@ -256,7 +278,7 @@ TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
 
 TEST_CASE("Client/GetTimes", "test getTimes")
 {
-	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	int songLength, songPos;

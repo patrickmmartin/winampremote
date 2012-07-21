@@ -37,7 +37,7 @@ private:
 extern "C"
 {
 /* this binds to the interface before the RPC call*/
-void __stdcall Bind(char * NetworkAddress, char * EndPoint);
+void __stdcall Bind(const char * NetworkAddress, const char * EndPoint);
 void __stdcall UnBind(void);
 
 void __stdcall SendString(char * pszString);

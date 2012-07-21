@@ -49,7 +49,7 @@ extern "C"
   }
 
   // this binds to the interface , and assigns to the interface handle
-  void __stdcall Bind(char * NetworkAddress, char * EndPoint)
+  void __stdcall Bind(const char * NetworkAddress, const char * EndPoint)
   {
     // avoid leaking handles ?
     if (StringBinding)

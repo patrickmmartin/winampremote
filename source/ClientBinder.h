@@ -16,7 +16,7 @@ namespace Client
 class ClientBinder
 {
 public:
-	ClientBinder(char * address, char * port);
+	ClientBinder(const char * address, const char * port);
 	virtual ~ClientBinder();
 };
 

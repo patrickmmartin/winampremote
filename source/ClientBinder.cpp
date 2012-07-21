@@ -14,7 +14,7 @@ namespace WinampRemote
 namespace Client
 {
 
-ClientBinder::ClientBinder(char * address, char * port)
+ClientBinder::ClientBinder(const char * address, const char * port)
 {
 	Bind(address, port);
 
