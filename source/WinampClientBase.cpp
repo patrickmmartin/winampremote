@@ -27,12 +27,12 @@ static void GetIdent(void)
 
 void winampSendList(void)
 {
-//  SendList();
+//  TODO SendList()
 }
 
 void winampGetList(void)
 {
-//  GetList();
+//  TODO GetList()
 }
 
 namespace WinampRemote
@@ -43,6 +43,16 @@ namespace Client
 WinampClientBase::WinampClientBase()
 {
 	GetIdent();
+}
+
+int WinampClientBase::winampVersion(void)
+{
+	return IntegerResult(IdentBuf, IPC_GETVERSION, 0);
+}
+
+void WinampClientBase::sendString(std::string msg)
+{
+	SendString(IdentBuf);
 }
 
 void WinampClientBase::nextSong(void)
@@ -75,6 +85,7 @@ WAPlaybackStatus WinampClientBase::getPlaybackStatus(void)
 	return (WAPlaybackStatus) IntegerResult(IdentBuf, IPC_ISPLAYING, 0);
 }
 
+// TODO this implementation should be replaced with the bulk version
 vector<string>* WinampClientBase::getPlayList(void)
 {
 	vector<string> * result = new vector<string>();
@@ -91,9 +102,84 @@ vector<string>* WinampClientBase::getPlayList(void)
 	return result;
 }
 
-int WinampClientBase::winampVersion(void)
+void WinampClientBase::playlistStart()
 {
-	return IntegerResult(IdentBuf, IPC_GETVERSION, 0);
+	ExecuteMessage(IdentBuf, WINAMP_STARTOFPLAYLIST);
+}
+
+void WinampClientBase::playlistEnd()
+{
+	ExecuteMessage(IdentBuf, WINAMP_ENDOFPLAYLIST);
+}
+
+void WinampClientBase::setPlaylistIndex(int index)
+{
+	IntegerResult(IdentBuf, IPC_SETPLAYLISTPOS, index);
+}
+
+void WinampClientBase::startPlaylist(void)
+{
+	IntegerResult(IdentBuf, IPC_STARTPLAY, 0);
+}
+
+void WinampClientBase::deletePlaylist(void)
+{
+	IntegerResult(IdentBuf, IPC_DELETE, 0);
+}
+
+void WinampClientBase::stopWithFade(void)
+{
+	ExecuteMessage(IdentBuf, WINAMP_STOPFADE);
+}
+
+void WinampClientBase::stopAfterCurrent(void)
+{
+	ExecuteMessage(IdentBuf, WINAMP_STOPAFTERCURRENT);
+}
+
+void WinampClientBase::forward5(void)
+{
+	ExecuteMessage(IdentBuf, WINAMP_FORWARD5S);
+}
+
+void WinampClientBase::back5(void)
+{
+	ExecuteMessage(IdentBuf, WINAMP_BACK5S);
+}
+
+void WinampClientBase::volumeUp(void)
+{
+	throw std::runtime_error("volumeUp not implemented");
+}
+
+void WinampClientBase::volumeDown(void)
+{
+	throw std::runtime_error("volumeDown not implemented");
+}
+
+void WinampClientBase::setVolume(int volume)
+{
+	throw std::runtime_error("setVolume not implemented");
+}
+
+void WinampClientBase::toggleShuffle(void)
+{
+	throw std::runtime_error("toggleShuffle not implemented");
+}
+
+void WinampClientBase::toggleRepeat(void)
+{
+	throw std::runtime_error("toggleRepeat not implemented");
+}
+
+void WinampClientBase::toggleAutoload(void)
+{
+	throw std::runtime_error("toggleAutoload not implemented");
+}
+
+void WinampClientBase::getTimes(int& songLength, int& songPos)
+{
+	throw std::runtime_error("getTimes not implemented");
 }
 
 } // end of namespace Client

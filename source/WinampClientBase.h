@@ -35,6 +35,11 @@ public:
 	{
 	}
 
+
+	virtual int winampVersion(void);
+
+	virtual void sendString(std::string msg);
+
 	virtual void nextSong(void);
 
 	virtual void previousSong(void);
@@ -49,7 +54,39 @@ public:
 
 	virtual vector<string>* getPlayList(void);
 
-	virtual int winampVersion(void);
+	virtual void playlistStart();
+
+	virtual void playlistEnd();
+
+	virtual void setPlaylistIndex(int index);
+
+	virtual void startPlaylist(void);
+
+	virtual void deletePlaylist(void);
+
+	virtual void stopWithFade(void);
+
+	virtual void stopAfterCurrent(void);
+
+	virtual void forward5(void);
+
+	virtual void back5(void);
+
+	virtual void volumeUp(void);
+
+	virtual void volumeDown(void);
+
+	virtual void setVolume(int volume);
+
+	virtual void toggleShuffle(void);
+
+	virtual void toggleRepeat(void);
+
+	virtual void toggleAutoload(void);
+
+	virtual void getTimes(int& songLength, int& songPos);
+
+
 
 };
 } // end of namespace Client

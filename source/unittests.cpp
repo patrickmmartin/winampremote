@@ -101,6 +101,158 @@ TEST_CASE("Client/Playlist", "test playlist")
 
 }
 
+TEST_CASE("Client/SendString", "test sendString")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
 
+	client.sendString("");
+}
+
+TEST_CASE("Client/NextSong", "test nextSong")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.nextSong();
+}
+
+TEST_CASE("Client/PreviousSong", "test previousSong")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.previousSong();
+}
+
+TEST_CASE("Client/PlaylistStart", "test playlistStart")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.playlistStart();
+}
+
+TEST_CASE("Client/PlaylistEnd", "test playlistEnd")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.playlistEnd();
+}
+
+TEST_CASE("Client/SetPlaylistIndex", "test setPlaylistIndex")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.setPlaylistIndex(0);
+}
+
+TEST_CASE("Client/StartPlaylist", "test startPlaylist")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.startPlaylist();
+}
+
+TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.deletePlaylist();
+}
+
+TEST_CASE("Client/StopWithFade", "test stopWithFade")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.stopWithFade();
+}
+
+TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.stopAfterCurrent();
+}
+
+TEST_CASE("Client/Forward5", "test forward5")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.forward5();
+}
+
+TEST_CASE("Client/Back5", "test back5")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.back5();
+}
+
+TEST_CASE("Client/VolumeUp", "test volumeUp")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.volumeUp();
+}
+
+TEST_CASE("Client/VolumeDown", "test volumeDown")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.volumeDown();
+}
+
+
+TEST_CASE("Client/setVolume", "test setVolume")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.setVolume(50);
+}
+
+TEST_CASE("Client/ToggleShuffle", "test toggleShuffle")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.toggleShuffle();
+}
+
+TEST_CASE("Client/ToggleRepeat", "test toggleRepeat")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.toggleRepeat();
+}
+
+TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	client.toggleAutoload();
+}
+
+TEST_CASE("Client/GetTimes", "test getTimes")
+{
+	WinampRemote::Client::ClientBinder binder("localhost", "\\pipe\\winampremote");
+	WinampRemote::Client::WinampClientBase client;
+
+	int songLength, songPos;
+	client.getTimes(songLength, songPos);
+}
 
 

@@ -113,7 +113,7 @@ Item0=..\bin\
 DebugSourceDirs=$(BCB)\source\vcl
 
 [Parameters]
-RunParams=
+RunParams=--test &quot;Client/SendString&quot;
 HostApplication=
 RemoteHost=
 RemotePath=
@@ -123,10 +123,5 @@ RemoteDebug=0
 ShowInfoMsgs=0
 LinkDebugVcl=0
 LinkCGLIB=0
-
-[Language]
-ActiveLang=
-ProjectLang=
-RootDir=
   </IDEOPTIONS>
 </PROJECT>

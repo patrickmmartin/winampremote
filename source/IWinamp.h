@@ -30,6 +30,18 @@ public:
 	{
 	}
 
+	/**
+	 * return the hosting winamp version
+	 * @return the winamp version number
+	 */
+	virtual int winampVersion(void) =0;
+
+	/**
+	 * send a string to the server
+	 * TODO may be used for simple authorisation at some point
+	 * @param ident
+	 */
+	virtual void sendString(std::string msg) = 0;
 
 	/**
 	 * move to next song
@@ -69,17 +81,96 @@ public:
 	virtual vector<string>* getPlayList(void) = 0;
 
 	/**
-	 * return the hosting winamp version
-	 * @return the winamp version number
+	 * go to start of playList
 	 */
-	virtual int winampVersion(void) =0;
+	virtual void playlistStart() = 0;
+
+	/**
+	 * go to end of playlist
+	 */
+	virtual void playlistEnd() = 0;
+
+	/**
+	 * sets the current playlist index
+	 * @param index
+	 */
+	virtual void setPlaylistIndex(int index) = 0;
+
+	/**
+	 * sets current position to the start of the playlist
+	 */
+	virtual void startPlaylist(void) = 0;
+
+	/**
+	 * deletes the playlist
+	 */
+	virtual void deletePlaylist(void) = 0;
+
+	/**
+	 * performs a stop with fade
+	 */
+	virtual void stopWithFade(void) = 0;
+
+	/**
+	 * stops playback after the current
+	 */
+	virtual void stopAfterCurrent(void) = 0;
+
+	/**
+	 * advances the position in the playlist by 5
+	 */
+	virtual void forward5(void) = 0;
+
+	/**
+	 * rewinds the position in the playlist by 5
+	 */
+	virtual void back5(void) = 0;
+
+	/**
+	 * increments volume
+	 */
+	virtual void volumeUp(void) = 0;
+
+	/**
+	 * decrements volume
+	 */
+	virtual void volumeDown(void) = 0;
+
+	/**
+	 * sets the volume
+	 * @param volume
+	 */
+	virtual void setVolume(int volume) = 0;
+
+	/**
+	 * toggles the shuffle option
+	 */
+	virtual void toggleShuffle(void) = 0;
+
+	/**
+	 * toggles the repeat option
+	 */
+	virtual void toggleRepeat(void) = 0;
+
+	/**
+	 * toggles the autoload option
+	 */
+	virtual void toggleAutoload(void) = 0;
+
+	/**
+	 * returns the current song times for length and position
+	 * in seconds and milliseconds respectively
+	 * @param songLength
+	 * @param songPos
+	 */
+	virtual void getTimes(int& songLength, int& songPos) = 0;
 
 };
 
 } // end of namespace Client
 
 /**
- * interface defining the operations Winamp supports for clients
+ * namespace for the Winamp server operations
  */
 namespace Server
 {
@@ -99,14 +190,39 @@ public:
 	{
 	}
 
+	/**
+	 * returns the winamp version rendered as string
+	 * @return the winamp version
+	 */
 	string WinampVersion();
 
+	/**
+	 * executes a Winamp API command
+	 * @param MessageToExecute
+	 */
 	void ExecuteCommand(WinampCommand MessageToExecute);
 
+	/**
+	 * executes a string command
+	 * @param CommandString
+	 * @param Command
+	 */
 	void ExecuteStringCommand(char * CommandString, WinampCommand Command);
 
+	/**
+	 * queries an integer property
+	 * @param Command
+	 * @param Data
+	 * @return the property value
+	 */
 	int QueryInt(WinampCommand Command, int Data);
 
+	/**
+	 * queries a string property
+	 * @param Command
+	 * @param Data
+	 * @return
+	 */
 	string QueryString(WinampCommand Command, int Data);
 
 };
