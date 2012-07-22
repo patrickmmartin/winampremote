@@ -18,6 +18,12 @@
 
 #include "ConsoleCallObserver.h"
 
+#include "WinampTestServer.h"
+
+// this code is only used in the out of process test process
+WinampRemote::Server::WinampTestServer localWinamp;
+
+
 
 static void inline MainMessage(char * msgString);
 static void inline MainStatus(char * msgString);
@@ -47,8 +53,7 @@ void WAExecuteMessage(
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
   MainMessage( str.c_str());
-  // TODO implement mock execution
-
+  localWinamp.ExecuteCommand(command);
 
 }
 
@@ -66,7 +71,7 @@ void WAExecuteMessageString(
   str += (char *) pszParam;
   MainMessage( str.c_str());
 
-  // TODO implement mock execution
+  localWinamp.ExecuteStringCommand(pszParam, command);
 
 
 }
@@ -85,9 +90,7 @@ long WAIntegerResult(
 
   MainMessage( str.c_str());
 
-  // TODO implement mock execution
-
-  return 0;
+  return localWinamp.QueryInt(command, data);
 
 }
 
@@ -104,12 +107,10 @@ long WAStringResult(
 
   MainMessage( str.c_str());
 
-  str = "list item ";
-  str += data;
+  str = localWinamp.QueryString(command, data).c_str();
 
   MainMessage (str.c_str());
 
-  // TODO implement mock execution
   strcpy((char *) pszString, str.c_str());
   /* return status*/
 
