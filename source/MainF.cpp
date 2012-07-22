@@ -1612,8 +1612,8 @@ void __fastcall TfrmMain::GetFilenames(int Start, int Stop, TStringList * Files)
 
 int i;
 
-char filename[RET_STR_SIZE];
-char saveident[RET_STR_SIZE];
+char filename[WA_RETURN_STRING_SIZE];
+char saveident[WA_RETURN_STRING_SIZE];
 
   // cache this
   strcpy(saveident, IdentChars);

@@ -234,10 +234,10 @@ int result;
  return 0;
 }
 
-long int WAStringResult(
-    /* [size_is][string][out][in] */ unsigned char __RPC_FAR *pszString,
-    long command,
-    long data)
+long WAStringResult( 
+    /* [string][out][in] */ unsigned char __RPC_FAR pszString[ WA_RETURN_STRING_SIZE ],
+    /* [in] */ long command,
+    /* [in] */ long data)
 {
   std::string retval;
   const char * commandStr;
@@ -251,9 +251,9 @@ long int WAStringResult(
         try
         {         // test for C-based structured exceptions
           MainIdent((char *) pszString);
-          MainStatus(waListening);
+          MainStatus(waExecuting);
 
-          retval = localWinamp->QueryString(static_cast<WinampCommand>(command), data);
+           retval = localWinamp->QueryString(static_cast<WinampCommand>(command), data);
 
           if (frmMain->requestlog[QUERY_STRING])
           {
@@ -277,17 +277,8 @@ long int WAStringResult(
             MainMessage (str.c_str());
           }
 
-
-          if (!retval.empty())
-          {
-            strcpy((char *) pszString, retval.c_str());
-          }
-          else
-          {
-            sprintf((char *) pszString,  "command %d data %d returned null", command, data);
-          }  
+          strcpy( (char *) pszString, retval.c_str() );
         }
-
         __except(1)
         {
           throw(Exception(AnsiString("structured exception generated in WAStringResult() : " + SysErrorMessage(RpcExceptionCode()))));
@@ -306,6 +297,7 @@ long int WAStringResult(
   {
    LeaveCriticalSection(&fCriticalSection);
   }
+  MainStatus(waListening);
   return 0;
 
 }

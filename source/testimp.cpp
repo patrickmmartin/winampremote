@@ -91,8 +91,8 @@ long WAIntegerResult(
 
 }
 
-long WAStringResult(
-    /* [string][out][in] */ unsigned char __RPC_FAR *pszString,
+long WAStringResult( 
+    /* [string][out][in] */ unsigned char __RPC_FAR pszString[ WA_RETURN_STRING_SIZE ],
     /* [in] */ long command,
     /* [in] */ long data)
 {

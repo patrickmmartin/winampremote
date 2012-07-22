@@ -28,7 +28,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 interface winamp
 {
 
-  const short RET_STR_SIZE = 260;  /* MAX_PATH */
+  const short WA_RETURN_STRING_SIZE = 260;  /* MAX_PATH */
 
   /* simple probing function to announce presence */
   void WAMessageProc([in, string] char *pszString);
@@ -39,7 +39,7 @@ interface winamp
   /* execute winamp function and return long integer result */
   long int WAIntegerResult([in, string] char *pszString, [in] long int command, [in] long int data);
   /* execute winamp function and return string result */
-  long int WAStringResult([in, out, string] char *pszString, [in] long int command, [in] long int data);
+  long int WAStringResult([in, out, string] char pszString[WA_RETURN_STRING_SIZE], [in] long int command, [in] long int data);
   /* Shutdown function */
   void WAShutdown(void);
 

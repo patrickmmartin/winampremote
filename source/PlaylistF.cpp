@@ -183,7 +183,7 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
 void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 {
 
-  char title[RET_STR_SIZE];
+  char title[WA_RETURN_STRING_SIZE];
   // needed to ensure we can see the currently playing track
   try
   {
@@ -235,8 +235,8 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
 {
 int i;
 
-char filename[RET_STR_SIZE];
-char saveident[RET_STR_SIZE];
+char filename[WA_RETURN_STRING_SIZE];
+char saveident[WA_RETURN_STRING_SIZE];
 bool CurrentSong;
 int NewPos;
 
