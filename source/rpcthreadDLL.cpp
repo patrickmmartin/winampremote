@@ -47,7 +47,7 @@ void __fastcall MainIdent(char * msgString);
 
 
 
-WinampRemote::Server::WinampServer * localWinamp = NULL;
+WinampRemote::Server::IWinampServer * localWinamp = NULL;
 
 
 

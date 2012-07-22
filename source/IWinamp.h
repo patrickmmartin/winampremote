@@ -210,20 +210,20 @@ public:
 	 * returns the winamp version rendered as string
 	 * @return the winamp version
 	 */
-	string WinampVersion();
+	virtual string WinampVersion() = 0;
 
 	/**
 	 * executes a Winamp API command
 	 * @param MessageToExecute
 	 */
-	void ExecuteCommand(WinampCommand MessageToExecute);
+	virtual void ExecuteCommand(WinampCommand MessageToExecute) = 0;
 
 	/**
 	 * executes a string command
 	 * @param CommandString
 	 * @param Command
 	 */
-	void ExecuteStringCommand(char * CommandString, WinampCommand Command);
+	virtual void ExecuteStringCommand(char * CommandString, WinampCommand Command) = 0;
 
 	/**
 	 * queries an integer property
@@ -231,7 +231,7 @@ public:
 	 * @param Data
 	 * @return the property value
 	 */
-	int QueryInt(WinampCommand Command, int Data);
+	virtual int QueryInt(WinampCommand Command, int Data) = 0;
 
 	/**
 	 * queries a string property
@@ -239,7 +239,7 @@ public:
 	 * @param Data
 	 * @return
 	 */
-	string QueryString(WinampCommand Command, int Data);
+	virtual string QueryString(WinampCommand Command, int Data) = 0;
 
 };
 
