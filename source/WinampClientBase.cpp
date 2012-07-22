@@ -85,11 +85,28 @@ WAPlaybackStatus WinampClientBase::getPlaybackStatus(void)
 	return (WAPlaybackStatus) IntegerResult(IdentBuf, IPC_ISPLAYING, 0);
 }
 
+
+string WinampClientBase::getPlayListItem(int index, bool title)
+{
+	char buffer[MAX_PATH] = "";
+	strcpy(buffer, IdentBuf);
+	StringResult(buffer, (title)?IPC_GETPLAYLISTTITLE:IPC_GETPLAYLISTFILE, index);
+	string result = buffer;
+	return result;
+}
+
+string WinampClientBase::getCurrentPlayListItem(int& index, bool title)
+{
+    index = IntegerResult(IdentBuf, IPC_GETLISTPOS, 0);
+	return getPlayListItem(index, title);
+}
+
+
 // TODO this implementation should ultimately be replaced with the bulk version
-vector<string>* WinampClientBase::getPlayList(void)
+vector<string>* WinampClientBase::getPlayList(bool title)
 {
 	vector<string> * result = new vector<string>();
-	char buffer[MAX_PATH];
+	char buffer[MAX_PATH] = "";
 
 	int lastlength = IntegerResult(IdentBuf, IPC_GETLISTLENGTH, 0);
 

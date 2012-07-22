@@ -164,7 +164,36 @@ TEST_CASE("Client/Stop", "test stop")
 }
 
 /**
- * tests that the play is returned
+ * tests that the playlist item is returned
+ */
+TEST_CASE("Client/PlaylistItem", "test playlist item")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	string playlistItem = client.getPlayListItem(0);
+
+}
+
+/**
+ * tests that the current playlist item is returned
+ */
+TEST_CASE("Client/PlaylistCurrentItem", "test playlist current item")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	int index = 0;
+	client.setPlaylistIndex(1);
+	string current = client.getPlayListItem(1);
+	string playlistItem = client.getCurrentPlayListItem(index);
+	CHECK(index == 1);
+	CHECK(current == playlistItem);
+
+}
+
+/**
+ * tests that the playlist is returned
  */
 TEST_CASE("Client/Playlist", "test playlist")
 {

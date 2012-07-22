@@ -74,11 +74,27 @@ public:
 	 */
 	virtual WAPlaybackStatus getPlaybackStatus(void) = 0;
 
+
+	/**
+	 * returns the playlist item, either title or filename
+	 * @return the playlist item property
+	 */
+	virtual string getPlayListItem(int index, bool title = true) = 0;
+
+
+	/**
+	 * returns the current playlist item and current index, either title or filename
+	 * @param index
+	 * @param title
+	 * @return
+	 */
+	virtual string getCurrentPlayListItem(int& index, bool title = true) = 0;
+
 	/**
 	 * returns the playlist
 	 * @return the playlist
 	 */
-	virtual vector<string>* getPlayList(void) = 0;
+	virtual vector<string>* getPlayList(bool title = true) = 0;
 
 	/**
 	 * go to start of playList

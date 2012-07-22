@@ -52,7 +52,11 @@ public:
 
 	virtual WAPlaybackStatus getPlaybackStatus(void);
 
-	virtual vector<string>* getPlayList(void);
+	virtual string getPlayListItem(int index, bool title = true);
+
+	virtual string getCurrentPlayListItem(int& index, bool title = true);
+
+	virtual vector<string>* getPlayList(bool title = true);
 
 	virtual void playlistStart();
 
