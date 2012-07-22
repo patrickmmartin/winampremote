@@ -15,9 +15,16 @@ namespace WinampRemote
 namespace Server
 {
 
+/**
+ * concrete class to implement the IWinampServer interface
+ * for use in-process in Winamp to pass on the messages based API calls
+ */
 class WinampServer: public IWinampServer
 {
 private:
+	/**
+	 * handle to the Winamp main instance passed in plugin initialisation
+	 */
 	HWND m_winamphwnd;
 
 public:

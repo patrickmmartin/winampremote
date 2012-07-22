@@ -5,6 +5,7 @@ USERC("winampremote.rc");
 USEUNIT("testimp.cpp");
 USEUNIT("RPCErrors.cpp");
 USEUNIT("waint.cpp");
+USEUNIT("WinampTestServer.cpp");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 
