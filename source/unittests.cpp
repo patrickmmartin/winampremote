@@ -172,6 +172,7 @@ TEST_CASE("Client/PlaylistItem", "test playlist item")
 	WinampRemote::Client::WinampClientBase client;
 
 	string playlistItem = client.getPlayListItem(0);
+	CAPTURE(playlistItem);
 
 }
 
@@ -187,6 +188,8 @@ TEST_CASE("Client/PlaylistCurrentItem", "test playlist current item")
 	client.setPlaylistIndex(1);
 	string current = client.getPlayListItem(1);
 	string playlistItem = client.getCurrentPlayListItem(index);
+	CAPTURE(current);
+	CAPTURE(playlistItem);
 	CHECK(index == 1);
 	CHECK(current == playlistItem);
 

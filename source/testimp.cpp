@@ -96,8 +96,6 @@ long WAStringResult(
     /* [in] */ long command,
     /* [in] */ long data)
 {
-  char * retval;
-
   AnsiString str = (char *) pszString;
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
@@ -106,13 +104,13 @@ long WAStringResult(
 
   MainMessage( str.c_str());
 
-  retval = "list item ";
+  str = "list item ";
+  str += data;
 
-  str = retval;
   MainMessage (str.c_str());
 
   // TODO implement mock execution
-  strcpy((char *) pszString, retval);
+  strcpy((char *) pszString, str.c_str());
   /* return status*/
 
   return 0;
