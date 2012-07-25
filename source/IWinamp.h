@@ -83,6 +83,18 @@ public:
 
 
 	/**
+	 * returns the current playlist position
+	 * @return the index
+	 */
+	int getCurrentPlayPosition(void);
+
+	/**
+	 * returns the current playlist length
+	 * @return the length
+	 */
+	int getPlaylistLength(void);
+
+	/**
 	 * returns the current playlist item and current index, either title or filename
 	 * @param index
 	 * @param title

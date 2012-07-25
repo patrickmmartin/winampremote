@@ -184,13 +184,11 @@ TEST_CASE("Client/PlaylistCurrentItem", "test playlist current item")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	int index = 0;
-	client.setPlaylistIndex(1);
 	string current = client.getPlayListItem(1);
-	string playlistItem = client.getCurrentPlayListItem(index);
-	CAPTURE(current);
-	CAPTURE(playlistItem);
+	client.setPlaylistIndex(1);
+	int index = client.getCurrentPlayPosition();
 	CHECK(index == 1);
+	string playlistItem = client.getCurrentPlayListItem(index);
 	CHECK(current == playlistItem);
 
 }
@@ -204,7 +202,7 @@ TEST_CASE("Client/Playlist", "test playlist")
 	WinampRemote::Client::WinampClientBase client;
 
 	std::auto_ptr <vector<string> > playList (client.getPlayList() );
-	CHECK( playList->size() > (unsigned int) 0 );
+	CHECK( playList->size() ==  (unsigned int) client.getPlaylistLength() );
 
 }
 
@@ -227,7 +225,10 @@ TEST_CASE("Client/NextSong", "test nextSong")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	client.setPlaylistIndex(1);
+	CHECK(client.getCurrentPlayPosition() == 1);
 	client.nextSong();
+	CHECK(client.getCurrentPlayPosition() == 2);
 }
 
 /**
@@ -238,7 +239,11 @@ TEST_CASE("Client/PreviousSong", "test previousSong")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	client.setPlaylistIndex(2);
+	CHECK(client.getCurrentPlayPosition() == 2);
 	client.previousSong();
+	CHECK(client.getCurrentPlayPosition() == 1);
+
 }
 
 /**
@@ -249,7 +254,10 @@ TEST_CASE("Client/PlaylistStart", "test playlistStart")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	client.setPlaylistIndex(2);
+	CHECK(client.getCurrentPlayPosition() == 2);
 	client.playlistStart();
+	CHECK(client.getCurrentPlayPosition() == 0);
 }
 
 /**
@@ -261,6 +269,7 @@ TEST_CASE("Client/PlaylistEnd", "test playlistEnd")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.playlistEnd();
+	CHECK( client.getCurrentPlayPosition() ==  client.getPlaylistLength() - 1);
 }
 
 /**

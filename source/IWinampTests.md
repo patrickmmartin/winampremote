@@ -9,15 +9,15 @@
 | SayHello | sendString |Y | Y | Y |
 | Pause  |  pause | Y | Y | Y |
 | Play  |  playSong | Y | Y | Y |
-| Next  |  nextSong | Y | Y |  |
-| Previous  |  previousSong | Y | Y | N |
+| Next  |  nextSong | Y | Y | Y |
+| Previous  |  previousSong | Y | Y | Y |
 | Stop  |  stopSong | Y | Y | Y |
 | Forward5 | forward5 | Y | Y | N |
 | Back5 | back5 | Y | Y | N | 
 | VolumeUp | volumeUp | Y | Y | N |
 | VolumeDown | volumeDown | Y | Y | N | 
-| PlaylistStart | | Y | N | N | 
-| PlaylistEnd | | Y | N | N | 
+| PlaylistStart | | Y | Y | Y | 
+| PlaylistEnd | | Y | Y | Y | 
 | DeletePlayList | deletePlaylist | Y | Y | N | 
 | StopFade |  stopFade | Y | N | N | 
 | StopAfterCurrent | stopAfterCurrent  | Y | N | N | 

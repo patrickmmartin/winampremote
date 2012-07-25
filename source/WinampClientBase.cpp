@@ -95,6 +95,16 @@ string WinampClientBase::getPlayListItem(int index, bool title)
 	return result;
 }
 
+int WinampClientBase::getCurrentPlayPosition(void)
+{
+    return IntegerResult(IdentBuf, IPC_GETLISTPOS, 0);
+}
+
+int WinampClientBase::getPlaylistLength(void)
+{
+	return IntegerResult(IdentBuf, IPC_GETLISTLENGTH, 0);
+}
+
 string WinampClientBase::getCurrentPlayListItem(int& index, bool title)
 {
     index = IntegerResult(IdentBuf, IPC_GETLISTPOS, 0);
@@ -108,7 +118,7 @@ vector<string>* WinampClientBase::getPlayList(bool title)
 	vector<string> * result = new vector<string>();
 	char buffer[MAX_PATH] = "";
 
-	int lastlength = IntegerResult(IdentBuf, IPC_GETLISTLENGTH, 0);
+	int lastlength = getPlaylistLength();
 
 	for (int i = 0; i < lastlength; i++)
 	{

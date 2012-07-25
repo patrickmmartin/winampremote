@@ -54,6 +54,10 @@ public:
 
 	virtual string getPlayListItem(int index, bool title = true);
 
+	int getCurrentPlayPosition(void);
+
+	int getPlaylistLength(void);
+
 	virtual string getCurrentPlayListItem(int& index, bool title = true);
 
 	virtual vector<string>* getPlayList(bool title = true);

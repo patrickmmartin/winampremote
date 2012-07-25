@@ -46,10 +46,12 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 	{
 
 		case WINAMP_FILE_PLAY:
-			// TODO: Play file
+
+			m_playbackStatus = WA_PLAYING;
+			break;
 		case WINAMP_PLAYENTRY:
                 IPC_STARTPLAY:
-		IPC_PLAYFILE:
+                IPC_PLAYFILE:
 			m_playbackStatus = WA_PLAYING;
 			m_playlistPosition = (-1 == m_playlistPosition)? 0 : m_playlistPosition;
 			break;
@@ -99,6 +101,12 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			// TODO: forward 5s
 		case WINAMP_REW5S:
 			// TODO: rewind 5s
+		case WINAMP_STARTOFPLAYLIST:
+			m_playlistPosition = 0;
+			break;
+		case WINAMP_ENDOFPLAYLIST:
+			m_playlistPosition = m_playList.size() - 1;
+			break;
 		return;
 	}
 
