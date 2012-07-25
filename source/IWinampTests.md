@@ -1,8 +1,8 @@
 # Test Coverage Document
 
 
-| Action |method  |  defined | implemented  | tested | 
-|:---------|----------:|----------:|----------:|
+| Action | method  |  defined | implemented  | tested | 
+|:---------|----------:|----------:|----------:|----------:|
 |    |  getPlayList | Y |  |  |
 |   |  getPlaybackStatus |  Y |  |  |
 | SayHello | sendString |Y |  |  |
