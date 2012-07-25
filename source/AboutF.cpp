@@ -1,7 +1,7 @@
 /*
-winamp remote control suite ï¿½Patrick Michael Martin 2000, 2001, 2002
+winamp remote control suite ©Patrick Michael Martin 2000, 2001, 2012
 
-Copyright (C) 2000,2001,2002  Patrick M. Martin
+Copyright (C) 2000,2001,2012  Patrick M. Martin
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -37,10 +37,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 TfrmAbout *frmAbout;
 TStringList *OutText, *CharsText;
 
-
-#if !defined(M_PI)
-#define M_PI 3.14159265F
-#endif
 
 HDC hDC;
 HGLRC hGLRC;
@@ -87,7 +83,7 @@ GLfloat textExtrusion = 0.2;
 GLYPHMETRICSFLOAT glyphMetrics[127];
 
 void TfrmAbout::CreateFontList(void){
-  // create text displaylist
+  // create text display list
 LOGFONT lf;
 HFONT hFont, hOldFont;
 
@@ -588,8 +584,8 @@ or GL_DONT_CARE to indicate no preference.
     glEnable(GL_POINT_SMOOTH);
     glEnable(GL_LINE_SMOOTH);
 
-//    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
-//    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
 
     glHint(GL_POINT_SMOOTH_HINT, GL_FASTEST);

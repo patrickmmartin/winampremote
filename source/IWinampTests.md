@@ -3,23 +3,24 @@
 
 | Action | method  |  defined | implemented  | tested | 
 |:---------|----------:|----------:|----------:|----------:|
-|    |  getPlayList | Y |  |  |
-|   |  getPlaybackStatus |  Y |  |  |
-| SayHello | sendString |Y |  |  |
-| Pause  |  pause | Y |  |  |
-| Play  |  playSong | Y |  |  |
-| Next  |  nextSong | Y |  |  |
-| Previous  |  previousSong | Y |  |  |
-| Stop  |  stopSong | Y |  |  |
-| Forward5 | forward5 | Y |  |  |
-| Back5 | back5 | Y |  |  | 
-| VolumeUp | |Y |  |  |
-| VolumeDown | | Y |  |  | 
-| PlaylistStart | | Y |  |  | 
-| PlaylistEnd | | Y |  |  | 
-| DeletePlayList | deletePlaylist | Y |  |  | 
-| StopFade |  stopFade | Y |  |  | 
-| StopAfterCurrent | stopAfterCurrent  | Y |  |  | 
+| version |  winampVersion | Y | Y | Y |
+| Playlist |  getPlayList | Y | Y | Y |
+| PlaybackStatus |  getPlaybackStatus |  Y | Y | Y |
+| SayHello | sendString |Y | Y | Y |
+| Pause  |  pause | Y | Y | Y |
+| Play  |  playSong | Y | Y | Y |
+| Next  |  nextSong | Y | Y |  |
+| Previous  |  previousSong | Y | Y | N |
+| Stop  |  stopSong | Y | Y | Y |
+| Forward5 | forward5 | Y | Y | N |
+| Back5 | back5 | Y | Y | N | 
+| VolumeUp | volumeUp | Y | Y | N |
+| VolumeDown | volumeDown | Y | Y | N | 
+| PlaylistStart | | Y | N | N | 
+| PlaylistEnd | | Y | N | N | 
+| DeletePlayList | deletePlaylist | Y | Y | N | 
+| StopFade |  stopFade | Y | N | N | 
+| StopAfterCurrent | stopAfterCurrent  | Y | N | N | 
 | Shuffle | | Y |  |  | 
 | Repeat | | Y |  |  | 
 | PlayFromStart | | Y |  |  | 
