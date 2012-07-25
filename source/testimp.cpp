@@ -34,7 +34,7 @@ static void inline MainStatus(char * msgString);
 - none of the MIDL generated code should need direct modification*/
 
 void WAMessageProc(
-    /* [string][out][in] */ unsigned char __RPC_FAR *pszString)
+    /* [string][in] */ unsigned char __RPC_FAR *pszString)
 {
 
   AnsiString str = (char *) pszString;
@@ -53,7 +53,7 @@ void WAExecuteMessage(
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
   MainMessage( str.c_str());
-  localWinamp.ExecuteCommand(command);
+  localWinamp.ExecuteCommand( static_cast<WinampCommand>(command) );
 
 }
 
@@ -71,7 +71,7 @@ void WAExecuteMessageString(
   str += (char *) pszParam;
   MainMessage( str.c_str());
 
-  localWinamp.ExecuteStringCommand(pszParam, command);
+  localWinamp.ExecuteStringCommand(pszParam, static_cast<WinampCommand>(command) );
 
 
 }
@@ -83,7 +83,7 @@ long WAIntegerResult(
 {
 
   AnsiString str = (char *) pszString;
-  str += " sent  - command : ";
+  str += " sent  - query : ";
   str += WinampCommandDesc(command);
   str += " - data : ";
   str += data;
@@ -95,19 +95,19 @@ long WAIntegerResult(
 }
 
 long WAStringResult( 
-    /* [string][out][in] */ unsigned char __RPC_FAR pszString[ WA_RETURN_STRING_SIZE ],
+    /* [string][out][in] */ unsigned char __RPC_FAR pszString[ 260 ],
     /* [in] */ long command,
     /* [in] */ long data)
 {
   AnsiString str = (char *) pszString;
-  str += " sent  - command : ";
+  str += " sent  - query : ";
   str += WinampCommandDesc(command);
   str += " - data : ";
   str += data;
 
   MainMessage( str.c_str());
 
-  str = localWinamp.QueryString(command, data).c_str();
+  str = localWinamp.QueryString( static_cast<WinampCommand>(command), data).c_str();
 
   MainMessage (str.c_str());
 

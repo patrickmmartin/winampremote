@@ -19,6 +19,7 @@
  */
 
 #include <stdio.h>
+#include <windows.h>
 #pragma hdrstop
 
 #include "waint.h"
@@ -151,156 +152,87 @@ const char * WinampCommandDesc(int Command)
 	switch (Command)
 	{
 
-	case IPC_GETVERSION:
-		return "Get Winamp Version";
-	case IPC_PLAYFILE:
-		return "Play File";
-	case IPC_DELETE:
-		return "Delete Playlist";
-	case IPC_STARTPLAY:
-		return "Start Play";
-	case IPC_CHDIR:
-		return "Change Directory";
-	case IPC_ISPLAYING:
-		return "Winamp Play Status";
-	case IPC_GETOUTPUTTIME:
-		return "Get Output Time";
-	case IPC_JUMPTOTIME:
-		return "Jump To Time";
-	case IPC_WRITEPLAYLIST:
-		return "Write Playlist";
-	case IPC_SETPLAYLISTPOS:
-		return "Set Playlist Position";
-	case IPC_SETVOLUME:
-		return "Set Volume";
-	case IPC_SETPANNING:
-		return "Set Panning";
-	case IPC_GETLISTLENGTH:
-		return "Get Playlist Length";
+	case IPC_GETVERSION: return "Get Winamp Version";
+	case IPC_PLAYFILE: return "Play File";
+	case IPC_DELETE: return "Delete Playlist";
+	case IPC_STARTPLAY: return "Start Play";
+	case IPC_CHDIR: return "Change Directory";
+	case IPC_ISPLAYING: return "Winamp Play Status";
+	case IPC_GETOUTPUTTIME: return "Get Output Time";
+	case IPC_JUMPTOTIME: return "Jump To Time";
+	case IPC_WRITEPLAYLIST: return "Write Playlist";
+	case IPC_SETPLAYLISTPOS: return "Set Playlist Position";
+	case IPC_SETVOLUME: return "Set Volume";
+	case IPC_SETPANNING: return "Set Panning";
+	case IPC_GETLISTLENGTH: return "Get Playlist Length";
 
-	case IPC_GETPLAYLISTFILE:
-		return "Get PlayList File";
-	case IPC_GETPLAYLISTTITLE:
-		return "Get Playlist Title";
+	case IPC_GETPLAYLISTFILE: return "Get PlayList File";
+	case IPC_GETPLAYLISTTITLE: return "Get Playlist Title";
 
-	case IPC_GETLISTPOS:
-		return "Get Playlist Position";
-	case IPC_GETINFO:
-		return "Get Information";
-	case IPC_GETEQDATA:
-		return "Get EQ data";
-	case IPC_SETEQDATA:
-		return "Set EQ Data";
+	case IPC_GETLISTPOS: return "Get Playlist Position";
+	case IPC_GETINFO: return "Get Information";
+	case IPC_GETEQDATA: return "Get EQ data";
+	case IPC_SETEQDATA: return "Set EQ Data";
 
-	case IPC_GETSHUFFLEOPTION:
-		return "Get Shuffle Option";
-	case IPC_GETREPEATOPTION:
-		return "Get Repeat Option";
-	case IPC_SETSHUFFLEOPTION:
-		return "Set Shuffle Option";
-	case IPC_SETREPEATOPTION:
-		return "Set Repeat Option";
+	case IPC_GETSHUFFLEOPTION: return "Get Shuffle Option";
+	case IPC_GETREPEATOPTION: return "Get Repeat Option";
+	case IPC_SETSHUFFLEOPTION: return "Set Shuffle Option";
+	case IPC_SETREPEATOPTION: return "Set Repeat Option";
 
-	case WINAMP_FILE_QUIT:
-		return "Quit";
-	case WINAMP_OPTIONS_PREFS:
-		return "Options Preferences";
-	case WINAMP_OPTIONS_AOT:
-		return "Options Always On Top";
-	case WINAMP_FILE_REPEAT:
-		return "File Repeat";
-	case WINAMP_FILE_SHUFFLE:
-		return "File Shuffle";
-	case WINAMP_HIGH_PRIORITY:
-		return "High Priority";
-	case WINAMP_FILE_PLAY:
-		return "Play File";
-	case WINAMP_OPTIONS_EQ:
-		return "Options EQ";
-	case WINAMP_HELP_ABOUT:
-		return "Help About";
-	case WINAMP_OPTIONS_PLEDIT:
-		return "Option Playlist Editor";
-	case WINAMP_VOLUMEUP:
-		return "Volume Up";
-	case WINAMP_VOLUMEDOWN:
-		return "Volume Down";
-	case WINAMP_FFWD5S:
-		return "Forward 5s";
-	case WINAMP_REW5S:
-		return "Back 5s";
+	case WINAMP_FILE_QUIT: return "Quit";
+	case WINAMP_OPTIONS_PREFS: return "Options Preferences";
+	case WINAMP_OPTIONS_AOT: return "Options Always On Top";
+	case WINAMP_FILE_REPEAT: return "File Repeat";
+	case WINAMP_FILE_SHUFFLE: return "File Shuffle";
+	case WINAMP_HIGH_PRIORITY: return "High Priority";
+	case WINAMP_FILE_PLAY: return "Play File";
+	case WINAMP_OPTIONS_EQ: return "Options EQ";
+	case WINAMP_HELP_ABOUT: return "Help About";
+	case WINAMP_OPTIONS_PLEDIT: return "Option Playlist Editor";
+	case WINAMP_VOLUMEUP: return "Volume Up";
+	case WINAMP_VOLUMEDOWN: return "Volume Down";
+	case WINAMP_FFWD5S: return "Forward 5s";
+	case WINAMP_REW5S: return "Back 5s";
 
-	case WINAMP_PREVIOUS:
-		return "Previous Song";
-	case WINAMP_PLAYENTRY:
-		return "Play Entry";
-	case WINAMP_PAUSE:
-		return "Pause";
-	case WINAMP_STOP:
-		return "Stop";
-	case WINAMP_NEXT:
-		return "Next Song";
+	case WINAMP_PREVIOUS: return "Previous Song";
+	case WINAMP_PLAYENTRY: return "Play Entry";
+	case WINAMP_PAUSE: return "Pause";
+	case WINAMP_STOP: return "Stop";
+	case WINAMP_NEXT: return "Next Song";
 
-	case WINAMP_BACK5S:
-		return "Back 5s";
-	case WINAMP_OPENFILE:
-		return "Open File";
+	case WINAMP_BACK5S: return "Back 5s";
+	case WINAMP_OPENFILE: return "Open File";
 		// case ?? WINAMP_BUTTON3_SHIFT
-	case WINAMP_STOPFADE:
-		return "Stop With Fade";
-	case WINAMP_FORWARD5S:
-		return "Foward 5s";
+	case WINAMP_STOPFADE: return "Stop With Fade";
+	case WINAMP_FORWARD5S: return "Foward 5s";
 
-	case WINAMP_STARTOFPLAYLIST:
-		return "Start OF Playlist";
-	case WINAMP_OPENLOCATION:
-		return "Open Location";
+	case WINAMP_STARTOFPLAYLIST: return "Start OF Playlist";
+	case WINAMP_OPENLOCATION: return "Open Location";
 		// case ?? WINAMP_BUTTON3_CTRL
-	case WINAMP_STOPAFTERCURRENT:
-		return "Stop After Current";
-	case WINAMP_ENDOFPLAYLIST:
-		return "End of Playlist";
+	case WINAMP_STOPAFTERCURRENT: return "Stop After Current";
+	case WINAMP_ENDOFPLAYLIST: return "End of Playlist";
 
-	case IDC_SORT_FILENAME:
-		return "Sort Filename";
-	case IDC_SORT_FILETITLE:
-		return "Sort File Title";
-	case IDC_SORT_ENTIREFILENAME:
-		return "Sort Entire Filename";
-	case IDC_SELECTALL:
-		return "SelectAll";
-	case IDC_SELECTNONE:
-		return "Select None";
-	case IDC_SELECTINV:
-		return "Selection Invert";
+	case IDC_SORT_FILENAME: return "Sort Filename";
+	case IDC_SORT_FILETITLE: return "Sort File Title";
+	case IDC_SORT_ENTIREFILENAME: return "Sort Entire Filename";
+	case IDC_SELECTALL: return "SelectAll";
+	case IDC_SELECTNONE: return "Select None";
+	case IDC_SELECTINV: return "Selection Invert";
 
-	case IDM_EQ_LOADPRE:
-		return "Load Preset";
-	case IDM_EQ_LOADMP3:
-		return "Load MP3";
-	case IDM_EQ_LOADDEFAULT:
-		return "Load Default";
-	case IDM_EQ_SAVEPRE:
-		return "Save Preset";
-	case IDM_EQ_SAVEMP3:
-		return "Save MP3";
-	case IDM_EQ_SAVEDEFAULT:
-		return "Save Default";
-	case IDM_EQ_DELPRE:
-		return "Delete Preset";
-	case IDM_EQ_DELMP3:
-		return "Delete MP3";
+	case IDM_EQ_LOADPRE: return "Load Preset";
+	case IDM_EQ_LOADMP3: return "Load MP3";
+	case IDM_EQ_LOADDEFAULT: return "Load Default";
+	case IDM_EQ_SAVEPRE: return "Save Preset";
+	case IDM_EQ_SAVEMP3: return "Save MP3";
+	case IDM_EQ_SAVEDEFAULT: return "Save Default";
+	case IDM_EQ_DELPRE: return "Delete Preset";
+	case IDM_EQ_DELMP3: return "Delete MP3";
 
-	case WINAMP_JUMP:
-		return "Jump";
-	case WINAMP_JUMPFILE:
-		return "Jump File";
-	case WINAMP_JUMP10FWD:
-		return "Jump 10 Forward";
-	case WINAMP_JUMP10BACK:
-		return "Jump 10 Back";
-	case WINAMP_PREVSONG:
-		return "Previous Song";
+	case WINAMP_JUMP: return "Jump";
+	case WINAMP_JUMPFILE: return "Jump File";
+	case WINAMP_JUMP10FWD: return "Jump 10 Forward";
+	case WINAMP_JUMP10BACK: return "Jump 10 Back";
+	case WINAMP_PREVSONG: return "Previous Song";
 
 	default:
 		return "";

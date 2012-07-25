@@ -15,6 +15,14 @@ namespace WinampRemote
 namespace Server
 {
 
+struct PlaylistItem
+{
+	string title;
+	string filename;
+
+	PlaylistItem(string title_, string filename_): title(title_), filename(filename_) {};
+};
+
 class WinampTestServer: public WinampRemote::Server::IWinampServer
 {
 public:
@@ -30,8 +38,12 @@ public:
 	int QueryInt(WinampCommand Command, int Data);
 
 	string QueryString(WinampCommand Command, int Data);
+private:
+	WAPlaybackStatus m_playbackStatus;
+	vector<PlaylistItem> m_playList;
+	int m_playlistPosition;
 
-
+	void wrapPlaylistIndex(int increment);
 };
 
 } /* namespace Server */

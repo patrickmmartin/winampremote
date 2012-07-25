@@ -3,7 +3,6 @@
 #define waintH
 //---------------------------------------------------------------------------
 
-#include <windows.h>
 #pragma hdrstop
 
 enum WAPlaybackStatus
