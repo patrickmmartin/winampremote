@@ -9,7 +9,7 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-         BLOCK "040904E4"
+         BLOCK "080904E4"
          BEGIN
               #include "appkeys.rcinc"
               #include "buildkeys.rcinc"
@@ -19,7 +19,7 @@ BEGIN
     END
     BLOCK "VarFileInfo"
     BEGIN
-         VALUE "Translation", 0x0409, 1252
+         VALUE "Translation", 0x0809, 1252
     END
 END
 

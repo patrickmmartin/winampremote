@@ -48,6 +48,7 @@ USEUNIT("ServerEnumerator.cpp");
 USEUNIT("ServerTester.cpp");
 USERC("windowsthemes.rc");
 USEUNIT("GlassExtender.cpp");
+USERES("remote.RES");
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 //---------------------------------------------------------------------------

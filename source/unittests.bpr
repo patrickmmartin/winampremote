@@ -9,7 +9,7 @@
       ..\obj\unittests\ServerTester.obj ..\obj\unittests\RPCFuncsU.obj 
       ..\obj\unittests\waint.obj ..\obj\unittests\ClientBinder.obj 
       ..\obj\unittests\WinampClientBase.obj ..\obj\unittests\ContextInfo.obj"/>
-    <RESFILES value=""/>
+    <RESFILES value="unittests.RES"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
     <LIBFILES value="..\lib\winampinterface.lib"/>

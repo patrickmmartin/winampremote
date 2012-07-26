@@ -37,6 +37,7 @@ USELIB("..\lib\winampinterface.lib");
 USEUNIT("GlassExtender.cpp");
 USEUNIT("CallReflector.cpp");
 USEUNIT("WinampServerImpl.cpp");
+USERES("gen_RPCinterface.RES");
 //---------------------------------------------------------------------------
 int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void*)
 {

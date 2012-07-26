@@ -9,7 +9,7 @@
       ..\obj\winampserver\rpcthread.obj ..\obj\winampserver\RPCErrors.obj 
       ..\obj\winampserver\ServerF.obj 
       ..\obj\winampserver\ConsoleCallObserver.obj ..\obj\winampserver\WinampServerImpl.obj"/>
-    <RESFILES value="..\obj\winampserver\winampremote.res"/>
+    <RESFILES value="..\obj\winampserver\winampremote.res winampserver.RES"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) ConfigF.dfm AboutF.dfm ServerF.dfm"/>

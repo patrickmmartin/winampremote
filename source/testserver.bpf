@@ -6,6 +6,7 @@ USEUNIT("testimp.cpp");
 USEUNIT("RPCErrors.cpp");
 USEUNIT("waint.cpp");
 USEUNIT("WinampTestServer.cpp");
+USERES("testserver.RES");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 

@@ -9,7 +9,7 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-         BLOCK "040904E4"
+         BLOCK "080904E4"
          BEGIN
               #include "appkeys.rcinc"
               #include "buildkeys.rcinc"

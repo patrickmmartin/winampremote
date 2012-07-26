@@ -11,6 +11,7 @@ USELIB("..\lib\winampinterface.lib");
 USEUNIT("ConsoleCallObserver.cpp");
 USERC("winampremote.rc");
 USEUNIT("WinampServerImpl.cpp");
+USERES("winampserver.RES");
 //---------------------------------------------------------------------------
 #include "ServerF.h"
 //---------------------------------------------------------------------------

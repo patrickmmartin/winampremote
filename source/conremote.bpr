@@ -6,7 +6,7 @@
     <PROJECT value="..\bin\conremote.exe"/>
     <OBJFILES value="..\obj\conremote\conremote.obj ..\obj\conremote\RPCFuncsU.obj 
       ..\obj\conremote\WAINT.obj ..\obj\conremote\WinampClientBase.obj"/>
-    <RESFILES value="..\obj\conremote\winampremote.res"/>
+    <RESFILES value="..\obj\conremote\winampremote.res conremote.RES"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>

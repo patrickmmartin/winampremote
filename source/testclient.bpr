@@ -6,7 +6,7 @@
     <PROJECT value="..\bin\testclient.exe"/>
     <OBJFILES value="..\obj\testclient\testclient.obj ..\obj\testclient\RPCFuncsU.obj 
       ..\obj\testclient\WAINT.obj ..\obj\testclient\WinampClientBase.obj"/>
-    <RESFILES value="..\obj\testclient\winampremote.res"/>
+    <RESFILES value="..\obj\testclient\winampremote.res testclient.RES"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
