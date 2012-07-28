@@ -186,6 +186,7 @@ TEST_CASE("Client/PlaylistCurrentItem", "test playlist current item")
 
 	string current = client.getPlayListItem(1);
 	client.setPlaylistIndex(1);
+	Sleep(1000);
 	int index = client.getCurrentPlayPosition();
 	CHECK(index == 1);
 	string playlistItem = client.getCurrentPlayListItem(index);
@@ -226,8 +227,10 @@ TEST_CASE("Client/NextSong", "test nextSong")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.setPlaylistIndex(1);
+	Sleep(1000);
 	CHECK(client.getCurrentPlayPosition() == 1);
 	client.nextSong();
+	Sleep(1000);
 	CHECK(client.getCurrentPlayPosition() == 2);
 }
 
@@ -240,8 +243,10 @@ TEST_CASE("Client/PreviousSong", "test previousSong")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.setPlaylistIndex(2);
+	Sleep(1000);
 	CHECK(client.getCurrentPlayPosition() == 2);
 	client.previousSong();
+	Sleep(1000);
 	CHECK(client.getCurrentPlayPosition() == 1);
 
 }
@@ -255,8 +260,10 @@ TEST_CASE("Client/PlaylistStart", "test playlistStart")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.setPlaylistIndex(2);
+	Sleep(1000);
 	CHECK(client.getCurrentPlayPosition() == 2);
 	client.playlistStart();
+	Sleep(1000);
 	CHECK(client.getCurrentPlayPosition() == 0);
 }
 
@@ -269,6 +276,7 @@ TEST_CASE("Client/PlaylistEnd", "test playlistEnd")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.playlistEnd();
+	Sleep(1000);
 	CHECK( client.getCurrentPlayPosition() ==  client.getPlaylistLength() - 1);
 }
 
