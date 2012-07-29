@@ -30,15 +30,16 @@
 					</Component>
 				</Directory>
 			</Directory>
+		</DirectoryRef>			
 		
 		
-        <Directory Id="WINAMPDIR" Name="WinampDir">
-			<Directory Id="WinampPluginsFolder" Name="Plugins">
-				<Component Id="WinampRemotePlugin" Guid="BBCEAD6F-8E79-4713-97DC-3F5CE1418E98" DiskId="1">
-					<!-- Plugin dll -->
-					<File Source="..\bin\gen_RPCinterface.dll" Id="Plugin" />
-				</Component>
-			</Directory>
+		
+	<DirectoryRef Id="TARGETDIR">
+        <Directory Id="WINAMP_PLUGIN_DIR" Name="WinampPluginsDir">
+			<Component Id="WinampRemotePlugin" Guid="BBCEAD6F-8E79-4713-97DC-3F5CE1418E98" DiskId="1">
+				<!-- Plugin dll -->
+				<File Source="..\bin\gen_RPCinterface.dll" Id="Plugin" />
+			</Component>
 		</Directory>
 		
 		</DirectoryRef>			
