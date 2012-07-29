@@ -37,9 +37,9 @@
 
 	    <Feature Id="Plugin"
 		         Title="Winamp Remote Server Plugin"
-		         Description="The Client for the Winamp Remote Control"
+		         Description="The Server for the Winamp Remote Control"
 		     	Level="3"
-				ConfigurableDirectory="WINAMPDIR">
+				ConfigurableDirectory="WINAMP_PLUGIN_DIR">
 		  <ComponentRef Id="WinampRemotePlugin" />
         </Feature>
 		
@@ -52,29 +52,51 @@
 	
 	  <Property Id="ALLUSERS">1</Property>
 		
-	  <Property Id="WINAMPDIR">C:\Program Files (x86)\Winamp</Property>
+		<Property Id="WINAMPDIR">C:\Program Files (x86)\Winamp</Property>
 				
-		<!-- TODO find the winamp install location -->
+		<!-- find the winamp install location -->
 				
-<!--		<Property Id="WINAMPDIR">
-	        <RegistrySearch Id="WINAMPDIR"
+		<Property Id="WINAMPREG">
+	        <RegistrySearch Id="WINAMPUNINSTALL"
 	                        Root="HKLM"			                
-	                        Key="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Winamp"
+	                        Key="SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Winamp"
 	                        Name="UninstallString"
 							Type="raw" />
 		</Property>	
--->				
+				
 	<UI>
 			<!-- excise the License Dialogue from the UI sequence -->		
             <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="SetupTypeDlg">1</Publish>
             <Publish Dialog="SetupTypeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
 	</UI>
 		
+	<!-- Attempts to locate the winamp Installer entry and set correctly, accounting for win64
+         - which is automagtically corrrected by MSI as install time
+           as the 32-bit fully qualified name is in the registry -->	
+    <CustomAction Id="FindWinamp" Script="vbscript">
+      <![CDATA[
+		reg = Replace( Session.Property("WINAMPREG"), Chr(34), "" )
+		reg = Replace( reg, " (x86)", "" )
+		fragments = Split( reg, "\" )
+		fragments( Ubound( fragments ) ) = "Plugins\"
+		Session.Property( "WINAMP_PLUGIN_DIR" ) = Join( fragments, "\" )
+
+	  ]]>
+    </CustomAction>
+
+	<InstallUISequence>			
+			
+	 	<!-- finds the Winamp Install -->			
+      	<Custom Action="FindWinamp" After="LaunchConditions">Not Installed</Custom>		
 		
-	<CustomAction Id="SetCmdPath" Property="CMDPATH" Value="[SystemFolder]cmd.exe" />
+    </InstallUISequence> 
+
 		
 	<InstallExecuteSequence>			
-	      <Custom Action="SaveTargetDir" Before="InstallValidate">Not Installed</Custom>		
+			
+	    <!-- saves the install location into the ARP setting -->
+		<Custom Action="SaveTargetDir" Before="InstallValidate">Not Installed</Custom>
+		
     </InstallExecuteSequence> 
 		
 	</Product>

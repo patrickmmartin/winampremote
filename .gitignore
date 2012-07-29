@@ -105,3 +105,4 @@
 /source/winampinterface.~idl
 /RemoteSystemsTempFiles/.project
 /source/*.~hpp
+/setup/*.log
