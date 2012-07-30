@@ -7,7 +7,7 @@ FOR /F "eol=; delims=, tokens=1,2,3,4" %%i IN (version.txt) DO (
 SET APPVER=%%i.%%j.%%k.%%l
 )
 
-SET INSTALLER=WinampRemote-%APPVER%.msi
+SET INSTALLER=WinampRemote.msi
 
 :: clean is a well-known name
  

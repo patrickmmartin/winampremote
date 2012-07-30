@@ -150,4 +150,12 @@ test-suite: testserver.exe unittests.exe start-mockserver run-unittests
 	echo killing mock server
 	-taskkill /IM testserver.exe > nul	
 
+install:
+	echo installer action: $&
+	pushd ..\bin & msiexec /i WinampRemote.msi /quiet /l* $&.log	
+
 	
+uninstall:
+	echo installer action: $&
+	pushd ..\bin & msiexec /x WinampRemote.msi /quiet /l* $&.log	
+		
