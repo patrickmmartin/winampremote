@@ -73,14 +73,20 @@
 	<!-- Attempts to locate the winamp Installer entry and set correctly, accounting for win64
          - which is automagtically corrrected by MSI as install time
            as the 32-bit fully qualified name is in the registry -->	
-    <CustomAction Id="FindWinamp" Script="vbscript">
+    <CustomAction Id="FindWinamp" Script="jscript">
       <![CDATA[
-		reg = Replace( Session.Property("WINAMPREG"), Chr(34), "" )
-		reg = Replace( reg, " (x86)", "" )
-		fragments = Split( reg, "\" )
-		fragments( Ubound( fragments ) ) = "Plugins\"
-		Session.Property( "WINAMP_PLUGIN_DIR" ) = Join( fragments, "\" )
-
+		try
+		{
+			var reg = Session.Property( "WINAMPREG" ).replace( "\"", "" )
+			reg = reg.replace( " (x86)", "" )
+			var fragments = reg.split( "\\" )
+			fragments[fragments.length-1] = "Plugins\\"
+			Session.Property( "WINAMP_PLUGIN_DIR" ) = fragments.join ( "\\"  )
+		}
+		catch (e)
+		{
+			Session.Property( "ERROR_WINAMP_PLUGIN_DIR" ) = e
+		}
 	  ]]>
     </CustomAction>
 
