@@ -16,7 +16,6 @@ object frmCommands: TfrmCommands
   OldCreateOrder = True
   Position = poDefault
   OnClose = FormClose
-  OnEndDock = FormEndDock
   OnShow = FormShow
   OnStartDock = FormStartDock
   PixelsPerInch = 96

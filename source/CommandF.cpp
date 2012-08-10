@@ -55,12 +55,6 @@ void __fastcall TfrmCommands::FormStartDock(TObject *Sender,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmCommands::FormEndDock(TObject *Sender, TObject *Target,
-      int X, int Y)
-{
-  frmMain->EndDock(Sender, Target, X, Y);
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TfrmCommands::FormShow(TObject *)
 {

@@ -19,7 +19,6 @@ object frmSettings: TfrmSettings
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  OnEndDock = FormEndDock
   OnShow = FormShow
   OnStartDock = FormStartDock
   PixelsPerInch = 96

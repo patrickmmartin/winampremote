@@ -6,8 +6,8 @@ object frmMain: TfrmMain
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Winamp Remote Control'
-  ClientHeight = 136
-  ClientWidth = 392
+  ClientHeight = 158
+  ClientWidth = 391
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,6 @@ object frmMain: TfrmMain
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  OnEndDock = EndDock
   OnHide = FormHide
   OnShow = FormShow
   OnStartDock = StartDock
@@ -59,8 +58,8 @@ object frmMain: TfrmMain
   end
   object sbMain: TStatusBar
     Left = 0
-    Top = 135
-    Width = 392
+    Top = 157
+    Width = 391
     Height = 1
     Panels = <
       item
@@ -78,8 +77,8 @@ object frmMain: TfrmMain
   object pgSettings: TPageControl
     Left = 0
     Top = 0
-    Width = 392
-    Height = 135
+    Width = 391
+    Height = 157
     Hint = 'pages of information and configuration'
     ActivePage = tbsMain
     Align = alClient
@@ -96,8 +95,8 @@ object frmMain: TfrmMain
       object pnlWinampBottom: TPanel
         Left = 0
         Top = 0
-        Width = 384
-        Height = 103
+        Width = 383
+        Height = 125
         Align = alClient
         BevelOuter = bvLowered
         Caption = 'pnlWinampBottom'
@@ -105,25 +104,23 @@ object frmMain: TfrmMain
         object pnlIcon: TPanel
           Left = 1
           Top = 1
-          Width = 382
-          Height = 55
+          Width = 381
+          Height = 123
           Align = alClient
           BevelOuter = bvNone
-          Caption = 'pnlIcon'
           TabOrder = 0
           object lblVersion: TLabel
-            Left = 48
-            Top = 23
-            Width = 286
-            Height = 32
+            Left = 0
+            Top = 7
+            Width = 382
+            Height = 34
             Hint = 'the winamp version on the server machine'
-            Align = alClient
             Alignment = taCenter
             AutoSize = False
             Caption = 'unknown version'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = -24
+            Font.Height = -18
             Font.Name = 'Arial'
             Font.Style = []
             ParentFont = False
@@ -133,11 +130,10 @@ object frmMain: TfrmMain
           end
           object lblMessage: TLabel
             Left = 0
-            Top = 0
+            Top = 40
             Width = 382
-            Height = 23
+            Height = 25
             Hint = 'the current track name, if accessible'
-            Align = alTop
             Alignment = taCenter
             AutoSize = False
             Caption = 'connecting...'
@@ -151,166 +147,37 @@ object frmMain: TfrmMain
             Layout = tlCenter
             WordWrap = True
           end
-          object icoState: TImage
-            Left = 0
-            Top = 23
-            Width = 48
-            Height = 32
-            Hint = 'graphical view of winamp status'
-            Align = alLeft
-            Center = True
-            Transparent = True
-            Visible = False
-          end
-          object Bevel2: TBevel
-            Left = 334
-            Top = 23
-            Width = 48
-            Height = 32
-            Align = alRight
-            Shape = bsSpacer
-          end
-        end
-        object Panel1: TPanel
-          Left = 1
-          Top = 56
-          Width = 382
-          Height = 46
-          Align = alBottom
-          Caption = 'pnlBottom'
-          TabOrder = 1
-          object Bevel3: TBevel
-            Left = 306
-            Top = 1
-            Width = 75
-            Height = 44
-            Align = alRight
-            Shape = bsSpacer
-          end
-          object Bevel1: TBevel
-            Left = 1
-            Top = 1
-            Width = 75
-            Height = 44
-            Align = alLeft
-            Shape = bsSpacer
-          end
-          object pnlMiddle: TPanel
-            Left = 76
-            Top = 1
-            Width = 230
-            Height = 44
-            Align = alClient
-            Caption = 'pnlMiddle'
+          object ebEndPoint: TEdit
+            Left = 160
+            Top = 84
+            Width = 145
+            Height = 21
+            Hint = 'the server'#39's endpoint'
+            AutoSize = False
             TabOrder = 0
-            object pnlCommands: TPanel
-              Left = 1
-              Top = 1
-              Width = 228
-              Height = 42
-              Align = alBottom
-              BevelOuter = bvLowered
-              Caption = 'commands'
-              DockSite = True
-              TabOrder = 0
-              OnDockOver = FormDockOver
-            end
+            Text = '\\pipe\winampremote'
+            OnChange = AddressChange
+          end
+          object ebAddress: TEdit
+            Left = 8
+            Top = 84
+            Width = 145
+            Height = 22
+            Hint = 'the server'#39's address (ip or network neighbourhood name)'
+            TabOrder = 1
+            Text = 'localhost'
+            OnChange = AddressChange
+          end
+          object btnLocate: TButton
+            Left = 312
+            Top = 84
+            Width = 65
+            Height = 21
+            Action = LocateServers
+            Caption = 'Find'
+            TabOrder = 2
           end
         end
-      end
-    end
-    object tbsConfig: TTabSheet
-      Hint = 'net configuration stuff'
-      Caption = '&Net'
-      ImageIndex = 7
-      object bvl2: TBevel
-        Left = 0
-        Top = 0
-        Width = 384
-        Height = 103
-        Align = alClient
-      end
-      object lblEndpoint: TLabel
-        Left = 8
-        Top = 12
-        Width = 100
-        Height = 21
-        AutoSize = False
-        Caption = '&Endpoint'
-        FocusControl = ebEndPoint
-        Layout = tlCenter
-      end
-      object lblAddress: TLabel
-        Left = 8
-        Top = 40
-        Width = 100
-        Height = 21
-        AutoSize = False
-        Caption = '&Address'
-        FocusControl = ebAddress
-        Layout = tlCenter
-      end
-      object lblTimer: TLabel
-        Left = 8
-        Top = 68
-        Width = 100
-        Height = 21
-        AutoSize = False
-        Caption = '&Interval'
-        FocusControl = lstTimer
-        Layout = tlCenter
-      end
-      object ebEndPoint: TEdit
-        Left = 112
-        Top = 12
-        Width = 145
-        Height = 21
-        Hint = 'the server'#39's endpoint'
-        AutoSize = False
-        TabOrder = 0
-        Text = '\\pipe\winampremote'
-        OnChange = AddressChange
-      end
-      object ebAddress: TEdit
-        Left = 112
-        Top = 40
-        Width = 145
-        Height = 22
-        Hint = 'the server'#39's address (ip or network neighbourhood name)'
-        TabOrder = 1
-        Text = 'localhost'
-        OnChange = AddressChange
-      end
-      object lstTimer: TListBox
-        Left = 112
-        Top = 68
-        Width = 146
-        Height = 21
-        Hint = 'interval between polling server'
-        Columns = 11
-        ItemHeight = 14
-        Items.Strings = (
-          ' 1'
-          ' 2'
-          ' 3'
-          ' 4'
-          ' 5'
-          ' 6'
-          ' 7'
-          ' 8'
-          ' 9'
-          '10')
-        TabOrder = 3
-        OnClick = lstTimerClick
-      end
-      object btnLocate: TButton
-        Left = 264
-        Top = 40
-        Width = 65
-        Height = 22
-        Action = LocateServers
-        Caption = 'Locate ...'
-        TabOrder = 2
       end
     end
     object tbsPreferences: TTabSheet
@@ -320,8 +187,8 @@ object frmMain: TfrmMain
       object bvl3: TBevel
         Left = 0
         Top = 0
-        Width = 384
-        Height = 114
+        Width = 383
+        Height = 125
         Align = alClient
       end
       object lblUpdate: TLabel
@@ -344,6 +211,13 @@ object frmMain: TfrmMain
         Width = 71
         Height = 14
         Caption = 'Song Changed'
+      end
+      object lblTimer: TLabel
+        Left = 8
+        Top = 84
+        Width = 54
+        Height = 14
+        Caption = 'Poll Interval'
       end
       object chkAutoHide: TCheckBox
         Left = 96
@@ -394,6 +268,28 @@ object frmMain: TfrmMain
         Checked = True
         State = cbChecked
         TabOrder = 4
+      end
+      object lstTimer: TListBox
+        Left = 96
+        Top = 84
+        Width = 146
+        Height = 21
+        Hint = 'interval between polling server'
+        Columns = 11
+        ItemHeight = 14
+        Items.Strings = (
+          ' 1'
+          ' 2'
+          ' 3'
+          ' 4'
+          ' 5'
+          ' 6'
+          ' 7'
+          ' 8'
+          ' 9'
+          '10')
+        TabOrder = 5
+        OnClick = lstTimerClick
       end
     end
   end

@@ -21,8 +21,6 @@ __published:	// IDE-managed Components
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall FormStartDock(TObject *Sender,
           TDragDockObject *&DragObject);
-        void __fastcall FormEndDock(TObject *Sender, TObject *Target,
-          int X, int Y);
         void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 public:		// User declarations

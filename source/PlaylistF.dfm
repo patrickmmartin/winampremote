@@ -15,7 +15,6 @@ object frmPlaylist: TfrmPlaylist
   Position = poDefault
   OnClose = FormClose
   OnCreate = FormCreate
-  OnEndDock = FormEndDock
   OnResize = FormResize
   OnShow = FormShow
   OnStartDock = FormStartDock

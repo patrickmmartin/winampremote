@@ -182,10 +182,7 @@ HANDLE __fastcall TfrmMain::IconHandle(void)
     fIconIndex = 6;
   }
 
-  imlCommandsHot->GetIcon( fIconIndex, icoState->Picture->Icon);
   imlTrayIcons->GetIcon( fIconIndex, icoTrayIcon->Picture->Icon);
-
-  Application->Icon->Handle = icoState->Picture->Icon->Handle;
 
   return icoTrayIcon->Picture->Icon->Handle;
 
@@ -305,7 +302,6 @@ void __fastcall TfrmMain::ExitExecute(TObject *)
 }
 
 const AnsiString sRegKey = "software\\PMMSoft\\Winamp controller\\client settings";
-const AnsiString sCommandsDocked = "Commands Docked";
 const AnsiString sCommandsLeft = "Commands Left";
 const AnsiString sCommandsTop = "Commands Top";
 const AnsiString sCommandsVisible = "Commands Visible";
@@ -345,12 +341,6 @@ void __fastcall TfrmMain::FormShow(TObject *)
 
       if (chkAutoRestore->Checked)
       {
-
-         if (reg->ReadString(sCommandsDocked).LowerCase() != sFalse)
-         {
-           frmCommands->ManualDock(pnlCommands, NULL, alTop);
-           EndDock(frmCommands, NULL, 0,0);
-         }
 
          FormRect = TRect(0, 0, frmCommands->Width, frmCommands->Height);
          FormLeft = reg->ReadString(sCommandsLeft).ToIntDef(-1);
@@ -409,7 +399,6 @@ void __fastcall TfrmMain::FormShow(TObject *)
   timerMain->Enabled = true;
   UpdateIcon();
   Refresh();
-  pgSettings->ActivePage = tbsConfig;
   pgSettings->ActivePage = tbsMain;
 
 
@@ -1192,12 +1181,9 @@ void __fastcall TfrmMain::StartDock(TObject *Sender, TDragDockObject *&)
   // set up dock targets manually
   // note DragObject is not used
   pgSettings->DockSite = false;
-  pnlCommands->DockSite = false;
 
   if ( (Sender == frmPlaylist) || (Sender == frmSettings) )
     pgSettings->DockSite = true;
-  if ( Sender == frmCommands )
-    pnlCommands->DockSite = true;
 
 }
 
@@ -1223,15 +1209,6 @@ void __fastcall TfrmMain::pgSettingsDockDrop(TObject *, TDragDockObject *Source,
   // and have a shortcut
   pgSettings->Pages[PageIndex]->Caption = "&" + pgSettings->Pages[PageIndex]->Caption;
 }
-
-
-
-
-void __fastcall TfrmMain::EndDock(TObject *, TObject *, int , int )
-{
-  pnlCommands->DockSite = true;
-}
-
 
 
 
@@ -1658,3 +1635,4 @@ void __fastcall TfrmMain::DropFiles(TStringList *, int DropIndex)
   PlaylistRefresh->Execute();
   
 }
+

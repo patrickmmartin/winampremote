@@ -146,12 +146,6 @@ void __fastcall TfrmSettings::FormStartDock(TObject *Sender,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmSettings::FormEndDock(TObject *Sender, TObject *Target,
-      int X, int Y)
-{
-  frmMain->EndDock(Sender, Target, X, Y);
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TfrmSettings::FormShow(TObject *)
 {

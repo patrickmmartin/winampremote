@@ -49,8 +49,6 @@ __published:	// IDE-managed Components
         void __fastcall FormStartDock(TObject *Sender,
           TDragDockObject *&DragObject);
         void __fastcall FormShow(TObject *Sender);
-        void __fastcall FormEndDock(TObject *Sender, TObject *Target,
-          int X, int Y);
         void __fastcall lstSongsMouseMove(TObject *Sender,
           TShiftState Shift, int X, int Y);
         void __fastcall mnuPlayClick(TObject *Sender);

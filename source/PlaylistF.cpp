@@ -332,16 +332,6 @@ void __fastcall TfrmPlaylist::FormShow(TObject *)
 
 
 
-
-void __fastcall TfrmPlaylist::FormEndDock(TObject *Sender, TObject *Target,
-      int X, int Y)
-{
-  frmMain->EndDock(Sender, Target, X, Y);
-}
-
-
-
-
 void __fastcall TfrmPlaylist::lstSongsMouseMove(TObject *, TShiftState , int X, int Y)
 {
 
