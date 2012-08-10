@@ -151,6 +151,7 @@ void __fastcall TfrmSettings::FormShow(TObject *)
 {
 
   // extend glass on Aero
+  // this would need a bit of a UI overhaul
   /*
   GlassExtender * ge = new GlassExtender(this);
   if (ge->isCompositionActive())
