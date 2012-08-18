@@ -77,30 +77,30 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 		case IPC_CHDIR:
 			// TODO: not currently implemented
 		case IPC_JUMPTOTIME:
-			// TODO: jump to time
+			// TODO: implement jump to time
 		case IPC_SETVOLUME:
-			// TODO: set volume
+			// TODO: implement set volume
 		case IPC_SETPANNING:
-			// TODO: set panning
+			// TODO: implement set panning
 		case IPC_SETEQDATA:
-			// TODO: set eq data
+			// TODO: implement set eq data
 		case IPC_SETSHUFFLEOPTION:
-			// TODO: set shuffle
+			// TODO: implement set shuffle
 		case IPC_SETREPEATOPTION:
-			// TODO: set repeat option
+			// TODO: implement set repeat option
 		case WINAMP_FILE_REPEAT:
-			// TODO: set repeat option
+			// TODO: implement set repeat option
 		case WINAMP_FILE_SHUFFLE:
-			// TODO: set shuffle
+			// TODO: implement set shuffle
 
 		case WINAMP_VOLUMEUP:
-			// TODO: volume up
+			// TODO: implement volume up
 		case WINAMP_VOLUMEDOWN:
-			// TODO: volume down
+			// TODO: implement volume down
 		case WINAMP_FFWD5S:
-			// TODO: forward 5s
+			// TODO: implement forward 5s
 		case WINAMP_REW5S:
-			// TODO: rewind 5s
+			// TODO: implement rewind 5s
 		case WINAMP_STARTOFPLAYLIST:
 			m_playlistPosition = 0;
 			break;

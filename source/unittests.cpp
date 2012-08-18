@@ -289,6 +289,7 @@ TEST_CASE("Client/SetPlaylistIndex", "test setPlaylistIndex")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.setPlaylistIndex(0);
+	CHECK(client.getCurrentPlayPosition() == 0);
 }
 
 /**
@@ -299,7 +300,9 @@ TEST_CASE("Client/StartPlaylist", "test startPlaylist")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.startPlaylist();
+	FAIL("no test implemented");
 }
 
 /**
@@ -321,7 +324,9 @@ TEST_CASE("Client/StopWithFade", "test stopWithFade")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.stopWithFade();
+	FAIL("no test implemented");
 }
 
 /**
@@ -332,7 +337,9 @@ TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.stopAfterCurrent();
+	FAIL("no test implemented");
 }
 
 
@@ -344,7 +351,9 @@ TEST_CASE("Client/Forward5", "test forward5")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.forward5();
+	FAIL("no test implemented");
 }
 
 /**
@@ -355,7 +364,9 @@ TEST_CASE("Client/Back5", "test back5")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.back5();
+	FAIL("no test implemented");
 }
 
 /**
@@ -366,7 +377,9 @@ TEST_CASE("Client/VolumeUp", "test volumeUp")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.volumeUp();
+	FAIL("no test implemented");
 }
 
 /**
@@ -377,7 +390,9 @@ TEST_CASE("Client/VolumeDown", "test volumeDown")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.volumeDown();
+	FAIL("no test implemented");
 }
 
 /**
@@ -388,7 +403,9 @@ TEST_CASE("Client/setVolume", "test setVolume")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.setVolume(50);
+	FAIL("no test implemented");
 }
 
 /**
@@ -399,7 +416,9 @@ TEST_CASE("Client/ToggleShuffle", "test toggleShuffle")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.toggleShuffle();
+	FAIL("no test implemented");
 }
 
 /**
@@ -410,7 +429,9 @@ TEST_CASE("Client/ToggleRepeat", "test toggleRepeat")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.toggleRepeat();
+	FAIL("no test implemented");
 }
 
 /**
@@ -421,7 +442,9 @@ TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	client.toggleAutoload();
+	FAIL("no test implemented");
 }
 
 /**
@@ -432,8 +455,10 @@ TEST_CASE("Client/GetTimes", "test getTimes")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	// TODO - #95 complete test coverage for this
 	int songLength, songPos;
 	client.getTimes(songLength, songPos);
+	FAIL("no test implemented");
 }
 
 /**
