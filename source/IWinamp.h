@@ -41,7 +41,7 @@ public:
 	 * TODO may be used for simple authorisation at some point
 	 * @param msg the message string
 	 */
-	virtual void sendString(std::string msg) = 0;
+	virtual void sendString() = 0;
 
 	/**
 	 * move to next song

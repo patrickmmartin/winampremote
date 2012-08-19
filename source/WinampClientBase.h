@@ -38,7 +38,7 @@ public:
 
 	virtual int winampVersion(void);
 
-	virtual void sendString(std::string msg);
+	virtual void sendString();
 
 	virtual void nextSong(void);
 

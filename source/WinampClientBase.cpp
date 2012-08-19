@@ -50,7 +50,7 @@ int WinampClientBase::winampVersion(void)
 	return IntegerResult(IdentBuf, IPC_GETVERSION, 0);
 }
 
-void WinampClientBase::sendString(std::string msg)
+void WinampClientBase::sendString()
 {
 	SendString(IdentBuf);
 }

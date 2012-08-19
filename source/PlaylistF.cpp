@@ -43,7 +43,7 @@ const int Offset = 4;
 TfrmPlaylist *frmPlaylist;
 
 __fastcall TfrmPlaylist::TfrmPlaylist(TComponent* Owner)
-    : TForm(Owner)
+    : TForm(Owner), _currentpos(0), _lastindex(0), _lastlength(0)
 {
 }
 

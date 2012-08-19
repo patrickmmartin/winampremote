@@ -215,7 +215,7 @@ TEST_CASE("Client/SendString", "test sendString")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.sendString("");
+	client.sendString();
 }
 
 /**
