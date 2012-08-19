@@ -31,7 +31,6 @@ __published:	// IDE-managed Components
     TButton *btnOK;
     TButton *btnTest;
     TButton *btnLocate;
-    TButton *btnGetIp;
     TStatusBar *StatusBar1;
     TListView *lvServers;
     TSplitter *spltMessages;
@@ -49,7 +48,7 @@ __published:	// IDE-managed Components
 private:	// User declarations
 
 void addLocal();
-void doNetworkServer(const AnsiString& RemoteName, const AnsiString& Comment);
+void doNetworkServer(const AnsiString& RemoteName, const AnsiString& Comment, const AnsiString& ip);
 void doNetworkMessage(const AnsiString& Message, const int Level);
 void doNetworkProgress(const float complete);
 

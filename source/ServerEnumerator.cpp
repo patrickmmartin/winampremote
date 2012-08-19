@@ -13,6 +13,8 @@
 #include "ServerEnumerator.h"
 #include "remotestrs.h"
 
+#include "IPAddressU.h"
+
 using std::cout;
 using std::endl;
 
@@ -47,7 +49,17 @@ void ServerEnumerator::addMessage(const AnsiString& message, const int level) {
 void ServerEnumerator::addServer(const AnsiString& remoteName, const AnsiString& comment) {
   debugOutput("Server", remoteName + " \"" + comment + " \"");
   if (FServerEvent != NULL)
-      FServerEvent(remoteName, comment);
+  {
+      AnsiString resolvedName = "";
+      TStringList * Addresses = new TStringList();
+      TStringList * Aliases = new TStringList();
+	  GetIPAddress(remoteName.c_str(), resolvedName, Addresses, Aliases);
+
+	  FServerEvent(remoteName, comment, Addresses->Strings[0]);
+      delete Aliases;
+      delete Addresses;
+
+  }
 }
 
 void ServerEnumerator::updateProgress(const float complete) {

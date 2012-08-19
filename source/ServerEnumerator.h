@@ -23,7 +23,7 @@
        * @param remoteName
        * @param comment
        */
-      typedef void (__closure *TSEServerEvent)(const AnsiString& remoteName, const AnsiString& comment);
+      typedef void (__closure *TSEServerEvent)(const AnsiString& remoteName, const AnsiString& comment, const AnsiString& ip);
       /**
        * Closure for a general message event.
        * @param message

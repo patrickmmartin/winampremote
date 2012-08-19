@@ -111,7 +111,6 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
 void __fastcall TfrmServers::lvServersClick(TObject *)
 {
   btnOK->Enabled =(lvServers->Selected != NULL );
-  btnGetIp->Enabled =(lvServers->Selected != NULL );
 }
 
 
@@ -127,7 +126,6 @@ void __fastcall TfrmServers::StartTest(TObject *)
   lvMessages->Items->Clear();
   btnLocate->Enabled = false;
   btnOK->Enabled = false;
-  btnGetIp->Enabled = false;
   btnCancel->Enabled = false;
 
   btnTest->Caption = sStop;
@@ -153,7 +151,6 @@ void __fastcall TfrmServers::StartTest(TObject *)
     pbServers->Position = 0;
     btnLocate->Enabled = true;
     btnOK->Enabled = false;
-    btnGetIp->Enabled = false;
     btnCancel->Enabled = true;
     btnTest->OnClick = StartTest;
     btnTest->Caption = sTest;
@@ -296,17 +293,19 @@ void  TfrmServers::addLocal()
   dwSize = sizeof(szComputerName);
   Win32Check(GetComputerName(szComputerName, &dwSize));
   AnsiString ComputerName = szComputerName;
-  doNetworkServer(ComputerName.c_str(), sLocalMachine.c_str());
+  AnsiString localhost = "127.0.0.1";
+  doNetworkServer(ComputerName.c_str(), sLocalMachine.c_str(), localhost);
 
 }
 
-void TfrmServers::doNetworkServer(const AnsiString& RemoteName, const AnsiString& Comment)
+void TfrmServers::doNetworkServer(const AnsiString& RemoteName, const AnsiString& Comment, const AnsiString& ip)
 {
   TListItem * ListItem = findServerItem(RemoteName);
 
   ListItem->Caption = RemoteName;
   ListItem->SubItems->Clear();
   ListItem->SubItems->Add(Comment);
+  ListItem->SubItems->Add(ip);
   ListItem->SubItems->Add(sServerUntested);
   ListItem->ImageIndex = 0;
 
@@ -329,7 +328,7 @@ void TfrmServers::doTestEvent(const AnsiString& remoteName,
 {
     addProcessMessage(remoteName + ":" + data, level);
     TListItem * ListItem = findServerItem(remoteName);
-    ListItem->SubItems->Strings[1] = data;
+    ListItem->SubItems->Strings[2] = data;
 }
 
 void TfrmServers::doTestResult(const AnsiString& remoteName,

@@ -33,7 +33,7 @@ private:
    * @param remoteName
    * @param comment
    */
-  void doNetworkServer(const AnsiString& remoteName, const AnsiString& comment);
+  void doNetworkServer(const AnsiString& remoteName, const AnsiString& comment, const AnsiString& ip);
   /**
    * handler for network message
    * @param message

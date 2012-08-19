@@ -89,6 +89,10 @@ object frmServers: TfrmServers
           Caption = 'Comment'
         end
         item
+          Caption = 'IP address'
+          Width = 120
+        end
+        item
           AutoSize = True
           Caption = 'Winamp version'
         end>
@@ -171,7 +175,7 @@ object frmServers: TfrmServers
       Cancel = True
       Caption = 'Cancel'
       ModalResult = 2
-      TabOrder = 4
+      TabOrder = 3
     end
     object btnOK: TButton
       Left = 535
@@ -182,11 +186,11 @@ object frmServers: TfrmServers
       Anchors = [akRight, akBottom]
       Caption = 'OK'
       Enabled = False
-      TabOrder = 3
+      TabOrder = 2
       OnClick = btnOKClick
     end
     object btnTest: TButton
-      Left = 359
+      Left = 447
       Top = 13
       Width = 75
       Height = 25
@@ -198,7 +202,7 @@ object frmServers: TfrmServers
       OnClick = StartTest
     end
     object btnLocate: TButton
-      Left = 271
+      Left = 359
       Top = 13
       Width = 75
       Height = 25
@@ -207,18 +211,6 @@ object frmServers: TfrmServers
       Caption = 'Locate All'
       TabOrder = 0
       OnClick = btnLocateClick
-    end
-    object btnGetIp: TButton
-      Left = 447
-      Top = 13
-      Width = 75
-      Height = 25
-      Hint = 'Get ip addresses and aliases'
-      Anchors = [akRight, akBottom]
-      Caption = 'Get IP'
-      Enabled = False
-      TabOrder = 2
-      OnClick = GetServerIp
     end
     object StatusBar1: TStatusBar
       Left = 0

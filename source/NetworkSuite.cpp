@@ -91,7 +91,7 @@ char * NetworkSuite::levelString(const int level)
 }
 
 
-void NetworkSuite::doNetworkServer(const AnsiString& remoteName, const AnsiString& comment)
+void NetworkSuite::doNetworkServer(const AnsiString& remoteName, const AnsiString& comment, const AnsiString& ip)
 {
   _servers[remoteName].comment = comment;
 
