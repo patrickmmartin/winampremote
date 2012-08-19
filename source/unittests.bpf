@@ -10,6 +10,7 @@ USEUNIT("ClientBinder.cpp");
 USEUNIT("WinampClientBase.cpp");
 USEUNIT("ContextInfo.cpp");
 USERES("unittests.RES");
+USEUNIT("ClientSuite.cpp");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 

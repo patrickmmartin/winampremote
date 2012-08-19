@@ -14,7 +14,9 @@
 #include <map.h>
 #include "ServerTester.h" // ServerInfo
 
-
+/**
+ * A class to wrap up testing the network utility functions.
+ */
 class NetworkSuite
 {
 public:

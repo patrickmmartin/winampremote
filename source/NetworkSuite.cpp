@@ -12,8 +12,63 @@
 #include "ServerEnumerator.h"
 #include "ServerTester.h"
 
-NetworkSuite::NetworkSuite() :  _servers(), _abort_test(false)
 
+/**
+ * tests network enumeration
+ */
+TEST_CASE("Network/Enumeration", "local Network enumeration")
+{
+	NetworkSuite ns;
+	// test network enumeration
+	CHECK(ns.testEnumeration());
+}
+
+/**
+ * tests the network interface on the running local server
+ */
+TEST_CASE("Network/Local", "test interface")
+{
+	NetworkSuite ns;
+	// test local server properties
+	CHECK(ns.testLocalServer());
+	// test abort
+}
+
+// disabling for now, as it burns time and such a test should only be run
+// for the right prerequisites
+/*
+TEST_CASE("Network/Servers", "test local servers")
+{
+	NetworkSuite ns;
+	// test network enumeration
+	CHECK(ns.testEnumeration());
+	CHECK(ns.testServerTest());
+}
+*/
+
+/**
+ * tests that aborting network enumeration works
+ */
+TEST_CASE("Network/Abort", "test abort")
+{
+	NetworkSuite ns;
+	// test abort
+	CHECK(ns.testServerTestAbort());
+}
+
+/**
+ * tests attempting to connect with an invalid server is handled appropriately
+ */
+TEST_CASE("Network/Invalid", "test communication with invalid server")
+{
+	NetworkSuite ns;
+	// test invalid
+	CHECK(ns.testServerInvalid());
+}
+
+
+
+NetworkSuite::NetworkSuite() :  _servers(), _abort_test(false)
 {
 }
 

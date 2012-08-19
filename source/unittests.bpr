@@ -8,7 +8,8 @@
       ..\obj\unittests\NetworkSuite.obj ..\obj\unittests\remotestrs.obj 
       ..\obj\unittests\ServerTester.obj ..\obj\unittests\RPCFuncsU.obj 
       ..\obj\unittests\waint.obj ..\obj\unittests\ClientBinder.obj 
-      ..\obj\unittests\WinampClientBase.obj ..\obj\unittests\ContextInfo.obj"/>
+      ..\obj\unittests\WinampClientBase.obj ..\obj\unittests\ContextInfo.obj 
+      ..\obj\unittests\ClientSuite.obj"/>
     <RESFILES value="unittests.RES"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
@@ -29,8 +30,8 @@
     <USERDEFINES value="_DEBUG;CATCH_PLATFORM_WINDOWS"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;USEPACKAGES"/>
     <MAINSOURCE value="unittests.bpf"/>
-    <INCLUDEPATH value="&quot;C:\Program Files\Borland\CBuilder5\Projects&quot;;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="&quot;C:\Program Files\Borland\CBuilder5\Projects&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="C:\CBuilder5\Projects;&quot;C:\Program Files\Borland\CBuilder5\Projects&quot;;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="C:\CBuilder5\Projects;&quot;C:\Program Files\Borland\CBuilder5\Projects&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
   </MACROS>
   <OPTIONS>
