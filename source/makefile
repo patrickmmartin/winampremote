@@ -3,7 +3,7 @@ ROOT = $(MAKEDIR)\..
 BRCC = $(ROOT)\bin\brcc32.exe 
 
 .silent
-default: clean all docs
+default: clean winampinterface.lib all docs
 
 clean: clean-setup
 	echo ========== cleaning object files ======
@@ -56,21 +56,21 @@ winampinterface.lib: midl
 	bpr2mak -q -t$(ROOT)\bin\deflib.bmk $&.bpr
 	make -B -a -$(MAKEFLAGS) -f $&.mak
 
-unittests.exe: winampinterface.lib
+unittests.exe: 
 
-testserver.exe: winampinterface.lib
+testserver.exe: 
 
-testclient.exe: winampinterface.lib
+testclient.exe: 
 
-conremote.exe: winampinterface.lib
+conremote.exe: 
 
-remote.exe: winampinterface.lib
+remote.exe: 
 
-winampclient.dll: winampinterface.lib
+winampclient.dll: 
 
-gen_RPCinterface.dll: winampinterface.lib
+gen_RPCinterface.dll: 
 
-winampserver.exe: winampinterface.lib
+winampserver.exe: 
 
 clean-setup:
 	build-setup Clean
@@ -78,8 +78,7 @@ clean-setup:
 setup: remote.exe gen_RPCinterface.dll
 	build-setup Build
 
-TARGETS= winampinterface.lib\
-		unittests.exe\
+TARGETS= unittests.exe\
 		testserver.exe\
 		testclient.exe\
 		conremote.exe\
@@ -101,7 +100,7 @@ help:
 	@echo docs - generates the doxygen output
 	@echo setup	- builds the installer
 	@echo copy-plugin - installs the plugin to the default location for the OS
-	@echo default - clean all
+	@echo default - cleans, builds IDL and lib and then all targets
 	
 docs:
 	# ideally would discover from the Doxygen
