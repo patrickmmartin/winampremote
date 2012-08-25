@@ -53,9 +53,17 @@ void ServerEnumerator::addServer(const AnsiString& remoteName, const AnsiString&
       AnsiString resolvedName = "";
       TStringList * Addresses = new TStringList();
       TStringList * Aliases = new TStringList();
-	  GetIPAddress(remoteName.c_str(), resolvedName, Addresses, Aliases);
+      try
+      {
+    	  GetIPAddress(remoteName.c_str(), resolvedName, Addresses, Aliases);
+    	  FServerEvent(remoteName, comment, Addresses->Strings[0]);
+      }
+      catch (EIPException * eip)
+      {
+    	  addMessage(eip->Message, 2);
+      }
 
-	  FServerEvent(remoteName, comment, Addresses->Strings[0]);
+
       delete Aliases;
       delete Addresses;
 

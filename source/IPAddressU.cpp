@@ -70,18 +70,19 @@ void __fastcall GetIPAddress(char * HostName, AnsiString &ResolvedName, TStringL
   }
   else
   {
-    switch(WSAGetLastError())
+	int WSAError = WSAGetLastError();
+    switch(WSAError)
     {
       case WSANOTINITIALISED : throw EIPException("A successful WSAStartup must occur before using this function."); // no break
       case WSAENETDOWN  : throw EIPException("The network subsystem has failed."); // no break
       case WSAHOST_NOT_FOUND  : throw EIPException("Authoritative Answer Host not found."); // no break
       case WSATRY_AGAIN  : throw EIPException("Non-Authoritative Host not found, or server failure."); // no break
-      case WSANO_RECOVERY  : throw EIPException("Nonrecoverable error occurred."); // no break
+      case WSANO_RECOVERY  : throw EIPException("Non-recoverable error occurred."); // no break
       case WSANO_DATA  : throw EIPException("Valid name, no data record of requested type."); // no break
       case WSAEINPROGRESS  : throw EIPException("A blocking Windows Sockets 1.1 call is in progress, or the service provider is still processing a callback function."); // no break
       case WSAEFAULT  : throw EIPException("The name argument is not a valid part of the user address space."); // no break
       case WSAEINTR  : throw EIPException("The (blocking) call was canceled through WSACancelBlockingCall."); // no break
-      default : throw EIPException("Unknown Socket Error");
+      default : throw EIPException(AnsiString().sprintf("Unknown WSA Error %d", WSAError));
     }
   }
 }
