@@ -52,8 +52,7 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			m_playbackStatus = WA_PLAYING;
 			break;
 		case WINAMP_PLAYENTRY:
-                IPC_STARTPLAY:
-                IPC_PLAYFILE:
+		case IPC_PLAYFILE:
 			m_playbackStatus = WA_PLAYING;
 			m_playlistPosition = (-1 == m_playlistPosition)? 0 : m_playlistPosition;
 			break;
@@ -114,7 +113,7 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 
 void WinampTestServer::ExecuteStringCommand(char * CommandString, WinampCommand Command)
 {
-	//throw std::runtime_error("WinampTestServer::ExecuteStringCommand not implemented");
+	throw std::runtime_error("WinampTestServer::ExecuteStringCommand not implemented");
 }
 
 int WinampTestServer::QueryInt(WinampCommand Command, int Data)
@@ -137,13 +136,13 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 		case IPC_GETLISTPOS:
 			return m_playlistPosition;
 		case IPC_GETINFO:
-			return 1;	// TODO: what does this do?
+			return 1;	// TODO: this is not used
 		case IPC_GETEQDATA:
 			return 50;	// TODO: implement EQData
 		case IPC_GETSHUFFLEOPTION:
-			return 1;
+			return 1;   // TODO implement get shuffle option
 		case IPC_GETREPEATOPTION:
-			return 1;
+			return 1;    // TODO implement get repeat option
 		case IPC_SETVOLUME:
 		{
 			if (Data == -666)
@@ -154,10 +153,14 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 		case IPC_JUMPTOTIME:
 			m_songPosition = Data;
 			return 0;
+		case IPC_STARTPLAY:
+			m_playbackStatus = WA_PLAYING;
+			m_playlistPosition = (-1 == m_playlistPosition)? 0 : m_playlistPosition;
+			break;
 	}
 
 	return 0;
-//	throw std::runtime_error("WinampTestServer::QueryInt not implemented");
+	throw std::runtime_error("WinampTestServer::QueryInt not implemented");
 }
 
 string WinampTestServer::QueryString(WinampCommand Command, int Data)

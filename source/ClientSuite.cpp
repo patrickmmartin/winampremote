@@ -246,9 +246,9 @@ TEST_CASE("Client/StartPlaylist", "test startPlaylist")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	client.stopSong();
 	client.startPlaylist();
-	FAIL("no test implemented");
+	CHECK(client.getPlaybackStatus() == WA_PLAYING);
 }
 
 /**
