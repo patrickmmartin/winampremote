@@ -12,7 +12,9 @@
 ServerTester::ServerTester() : _serverMessageEvent(NULL),
                                _serverResultEvent(NULL),
                                _endPoint("\\pipe\\winampremote"),
-                               _abort(false)
+                               _abort(false),
+                               OnResult(NULL), OnTest(NULL)
+
 {
   // constructor
 

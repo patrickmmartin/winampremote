@@ -18,9 +18,11 @@
 using std::cout;
 using std::endl;
 
-ServerEnumerator::ServerEnumerator() : FMessageEvent(NULL),
-                                       FProgressEvent(NULL),
-                                       FServerEvent(NULL) {
+ServerEnumerator::ServerEnumerator() : FMessageEvent(NULL), OnMessage(NULL),
+                                       FProgressEvent(NULL), OnProgress(NULL),
+                                       FServerEvent(NULL), OnServer(NULL),
+                                       resourceTotal_(0),
+                                       resourcesProcessed_(0){
 	// nothing explicit here
 
 }
