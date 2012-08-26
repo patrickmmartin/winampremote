@@ -170,6 +170,11 @@ public:
 	virtual void setVolume(int volume) = 0;
 
 	/**
+	 * returns the volume
+	 */
+	virtual int getVolume() = 0;
+
+	/**
 	 * toggles the shuffle option
 	 */
 	virtual void toggleShuffle(void) = 0;

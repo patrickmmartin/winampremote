@@ -10,7 +10,8 @@ namespace Server
 WinampTestServer::WinampTestServer() :
 		m_playbackStatus(WA_NOT_PLAYING),
 		m_playList(),
-		m_playlistPosition(-1)
+		m_playlistPosition(-1),
+		m_volume(0)
 {
 	char title[MAX_PATH] = "";
 	char filename[MAX_PATH] = "";
@@ -78,8 +79,6 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			// TODO: not currently implemented
 		case IPC_JUMPTOTIME:
 			// TODO: implement jump to time
-		case IPC_SETVOLUME:
-			// TODO: implement set volume
 		case IPC_SETPANNING:
 			// TODO: implement set panning
 		case IPC_SETEQDATA:
@@ -107,7 +106,6 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 		case WINAMP_ENDOFPLAYLIST:
 			m_playlistPosition = m_playList.size() - 1;
 			break;
-		return;
 	}
 
 //		throw std::runtime_error("WinampTestServer::ExecuteCommand not implemented");
@@ -146,6 +144,13 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			return 1;
 		case IPC_GETREPEATOPTION:
 			return 1;
+		case IPC_SETVOLUME:
+		{
+			if (Data == -666)
+				return m_volume;
+			m_volume = Data;
+			return 0;
+		}
 	}
 
 	return 0;

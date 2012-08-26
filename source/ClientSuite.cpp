@@ -323,9 +323,9 @@ TEST_CASE("Client/VolumeUp", "test volumeUp")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	client.setVolume(50);
 	client.volumeUp();
-	FAIL("no test implemented");
+	CHECK(client.getVolume() == 51);
 }
 
 /**
@@ -336,9 +336,9 @@ TEST_CASE("Client/VolumeDown", "test volumeDown")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	client.setVolume(50);
 	client.volumeDown();
-	FAIL("no test implemented");
+	CHECK(client.getVolume() == 49);
 }
 
 /**
@@ -349,9 +349,8 @@ TEST_CASE("Client/setVolume", "test setVolume")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
 	client.setVolume(50);
-	FAIL("no test implemented");
+	CHECK(client.getVolume() == 50);
 }
 
 /**

@@ -86,6 +86,8 @@ public:
 
 	virtual void setVolume(int volume);
 
+	virtual int getVolume();
+
 	virtual void toggleShuffle(void);
 
 	virtual void toggleRepeat(void);

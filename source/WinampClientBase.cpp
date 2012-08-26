@@ -189,6 +189,11 @@ void WinampClientBase::setVolume(int volume)
 	IntegerResult(IdentBuf, IPC_SETVOLUME, volume);
 }
 
+int WinampClientBase::getVolume()
+{
+	return IntegerResult(IdentBuf, IPC_SETVOLUME, -666);
+}
+
 void WinampClientBase::toggleShuffle(void)
 {
 //	int shuffle = IntegerResult(IdentBuf, IPC_GETSHUFFLEOPTION, 0);

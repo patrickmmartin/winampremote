@@ -42,6 +42,7 @@ private:
 	WAPlaybackStatus m_playbackStatus;
 	vector<PlaylistItem> m_playList;
 	int m_playlistPosition;
+	int m_volume;
 
 	void wrapPlaylistIndex(int increment);
 };
