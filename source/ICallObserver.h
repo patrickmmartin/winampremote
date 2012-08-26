@@ -8,7 +8,7 @@ namespace WinampRemote
 {
 
 /**
- * interface defining remoting operations
+ * interface defining observable operations
  */
 namespace Remoting
 {
@@ -25,7 +25,7 @@ class ICallObserver {
      */
 	virtual ~ICallObserver() {}
 
-    // TODO parameter should be WAExecutionStatus NewThreadState
+    // TODO parameter should be WAExecutionStatus
 	/**
      * status output
      * @param status

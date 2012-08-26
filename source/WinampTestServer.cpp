@@ -58,7 +58,6 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			m_playlistPosition = (-1 == m_playlistPosition)? 0 : m_playlistPosition;
 			break;
 
-
 		case WINAMP_STOP:
 			m_playbackStatus = WA_NOT_PLAYING;
 			break;
@@ -83,18 +82,18 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 		case IPC_SETEQDATA:
 			// TODO: implement set eq data
 		case IPC_SETSHUFFLEOPTION:
-			// TODO: implement set shuffle
+			// TODO: this was never used
 		case IPC_SETREPEATOPTION:
-			// TODO: implement set repeat option
+			// TODO: this was never used
 		case WINAMP_FILE_REPEAT:
 			// TODO: implement set repeat option
 		case WINAMP_FILE_SHUFFLE:
-			// TODO: implement set shuffle
+			// TODO: this was never used
 
 		case WINAMP_VOLUMEUP:
-			// TODO: implement volume up
+			// TODO: this was never used
 		case WINAMP_VOLUMEDOWN:
-			// TODO: implement volume down
+			// TODO: this was never used
 		case WINAMP_STARTOFPLAYLIST:
 			m_playlistPosition = 0;
 			break;

@@ -153,6 +153,7 @@ bool NetworkSuite::testLocalServer()
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
+    // TODO : failure results in the Server event with a parameter of false being fired
     st.testServer("localhost");
     // TODO: return the result for that server
     return true;
