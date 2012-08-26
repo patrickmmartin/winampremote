@@ -186,12 +186,12 @@ void WinampClientBase::back5(void)
 
 void WinampClientBase::volumeUp(void)
 {
-	setVolume(51);
+	setVolume(getVolume() + 1);
 }
 
 void WinampClientBase::volumeDown(void)
 {
-	setVolume(49);
+	setVolume(getVolume() - 1);
 }
 
 void WinampClientBase::setVolume(int volume)

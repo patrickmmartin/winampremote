@@ -337,9 +337,14 @@ TEST_CASE("Client/VolumeUp", "test volumeUp")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.setVolume(50);
+	int volume = client.getVolume();
+	if (volume == 255)
+	{
+		client.setVolume(254);
+		volume = client.getVolume();
+	}
 	client.volumeUp();
-	CHECK(client.getVolume() == 51);
+	CHECK(client.getVolume() == volume + 1);
 }
 
 /**
@@ -350,9 +355,14 @@ TEST_CASE("Client/VolumeDown", "test volumeDown")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.setVolume(50);
+	int volume = client.getVolume();
+	if (volume == 0)
+	{
+		client.setVolume(1);
+		volume = client.getVolume();
+	}
 	client.volumeDown();
-	CHECK(client.getVolume() == 49);
+	CHECK(client.getVolume() == volume - 1);
 }
 
 /**
