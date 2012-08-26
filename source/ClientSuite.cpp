@@ -428,8 +428,10 @@ TEST_CASE("Client/GetTimes", "test getTimes")
 
 	// TODO - #95 complete test coverage for this
 	int songLength, songPos;
+	client.startPlaylist();
 	client.getTimes(songLength, songPos);
-	FAIL("no test implemented");
+	CHECK(songPos > 0);
+	CHECK(songLength > 0);
 }
 
 /**

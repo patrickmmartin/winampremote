@@ -134,7 +134,9 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			m_playlistPosition = Data;
 			break;
 		case IPC_GETOUTPUTTIME:
-			return m_songPosition;
+			if (Data == 0)
+				return m_songPosition;
+			return 202; // 3 minutes 22 seconds
 		case IPC_GETLISTLENGTH:
 			return m_playList.size();
 		case IPC_GETLISTPOS:
