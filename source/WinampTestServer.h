@@ -39,10 +39,16 @@ public:
 
 	string QueryString(WinampCommand Command, int Data);
 private:
+	// playback status
 	WAPlaybackStatus m_playbackStatus;
+	// internal playlist
 	vector<PlaylistItem> m_playList;
+	// playlist position
 	int m_playlistPosition;
+	// volume
 	int m_volume;
+	// time position in song
+	int m_songPosition;
 
 	void wrapPlaylistIndex(int increment);
 };

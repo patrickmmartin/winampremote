@@ -143,6 +143,20 @@ public:
 	 */
 	virtual void stopAfterCurrent(void) = 0;
 
+
+	/**
+	 * sets the current song time position
+	 * @param time
+	 */
+	virtual void setTime(int time) = 0;
+
+
+	/**
+	 * gets the current song time position
+	 */
+	virtual int getTime() = 0;
+
+
 	/**
 	 * advances the position in the playlist by 5
 	 */

@@ -164,6 +164,16 @@ void WinampClientBase::stopAfterCurrent(void)
 	ExecuteMessage(IdentBuf, WINAMP_STOPAFTERCURRENT);
 }
 
+void WinampClientBase::setTime(int time)
+{
+	IntegerResult(IdentBuf, IPC_JUMPTOTIME, time);
+}
+
+int WinampClientBase::getTime()
+{
+	return IntegerResult(IdentBuf, IPC_GETOUTPUTTIME, 0);
+}
+
 void WinampClientBase::forward5(void)
 {
 	ExecuteMessage(IdentBuf, WINAMP_FORWARD5S);

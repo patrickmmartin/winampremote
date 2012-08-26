@@ -11,7 +11,8 @@ WinampTestServer::WinampTestServer() :
 		m_playbackStatus(WA_NOT_PLAYING),
 		m_playList(),
 		m_playlistPosition(-1),
-		m_volume(0)
+		m_volume(0),
+		m_songPosition(0)
 {
 	char title[MAX_PATH] = "";
 	char filename[MAX_PATH] = "";
@@ -77,8 +78,6 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			// TODO: implement delete
 		case IPC_CHDIR:
 			// TODO: not currently implemented
-		case IPC_JUMPTOTIME:
-			// TODO: implement jump to time
 		case IPC_SETPANNING:
 			// TODO: implement set panning
 		case IPC_SETEQDATA:
@@ -96,15 +95,17 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			// TODO: implement volume up
 		case WINAMP_VOLUMEDOWN:
 			// TODO: implement volume down
-		case WINAMP_FFWD5S:
-			// TODO: implement forward 5s
-		case WINAMP_REW5S:
-			// TODO: implement rewind 5s
 		case WINAMP_STARTOFPLAYLIST:
 			m_playlistPosition = 0;
 			break;
 		case WINAMP_ENDOFPLAYLIST:
 			m_playlistPosition = m_playList.size() - 1;
+			break;
+		case WINAMP_FORWARD5S:
+			m_songPosition += 5000;
+			break;
+		case WINAMP_BACK5S:
+			m_songPosition -= 5000;
 			break;
 	}
 
@@ -131,7 +132,7 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			m_playlistPosition = Data;
 			break;
 		case IPC_GETOUTPUTTIME:
-			return 360;
+			return m_songPosition;
 		case IPC_GETLISTLENGTH:
 			return m_playList.size();
 		case IPC_GETLISTPOS:
@@ -151,6 +152,9 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			m_volume = Data;
 			return 0;
 		}
+		case IPC_JUMPTOTIME:
+			m_songPosition = Data;
+			return 0;
 	}
 
 	return 0;

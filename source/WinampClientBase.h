@@ -76,6 +76,10 @@ public:
 
 	virtual void stopAfterCurrent(void);
 
+	virtual void setTime(int time);
+
+	virtual int getTime();
+
 	virtual void forward5(void);
 
 	virtual void back5(void);

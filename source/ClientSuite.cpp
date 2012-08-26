@@ -288,6 +288,18 @@ TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 	FAIL("no test implemented");
 }
 
+/**
+ * tests set time works
+ */
+TEST_CASE("Client/SetTime", "test setTime")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	client.stopSong();
+	client.setTime(3000);
+	CHECK(client.getTime() == 3000 );
+}
 
 /**
  * tests forward 5 works
@@ -297,9 +309,10 @@ TEST_CASE("Client/Forward5", "test forward5")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	client.stopSong();
+	client.setTime(0);
 	client.forward5();
-	FAIL("no test implemented");
+	CHECK(client.getTime() == 5000 );
 }
 
 /**
@@ -310,9 +323,10 @@ TEST_CASE("Client/Back5", "test back5")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	client.stopSong();
+	client.setTime(10000);
 	client.back5();
-	FAIL("no test implemented");
+	CHECK(client.getTime() == 5000 );
 }
 
 /**
