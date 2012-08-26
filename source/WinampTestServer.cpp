@@ -57,6 +57,7 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			m_playlistPosition = (-1 == m_playlistPosition)? 0 : m_playlistPosition;
 			break;
 
+		case WINAMP_STOPAFTERCURRENT:
 		case WINAMP_STOPFADE:
 		case WINAMP_STOP:
 			m_playbackStatus = WA_NOT_PLAYING;

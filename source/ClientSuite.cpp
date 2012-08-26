@@ -284,9 +284,10 @@ TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	client.startPlaylist();
 	client.stopAfterCurrent();
-	FAIL("no test implemented");
+	Sleep(500);
+	CHECK(client.getPlaybackStatus() == WA_NOT_PLAYING);
 }
 
 /**
