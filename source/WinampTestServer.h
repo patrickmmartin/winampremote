@@ -49,6 +49,8 @@ private:
 	int m_volume;
 	// time position in song
 	int m_songPosition;
+	// autoload, repeat, shuffle
+	bool m_autoload, m_repeat, m_shuffle;
 
 	void wrapPlaylistIndex(int increment);
 };

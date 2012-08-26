@@ -207,7 +207,12 @@ int WinampClientBase::getVolume()
 void WinampClientBase::toggleShuffle(void)
 {
 //	int shuffle = IntegerResult(IdentBuf, IPC_GETSHUFFLEOPTION, 0);
-	ExecuteMessage(IdentBuf, WINAMP_FILE_SHUFFLE);;
+	ExecuteMessage(IdentBuf, WINAMP_FILE_SHUFFLE);
+}
+
+int WinampClientBase::getShuffle()
+{
+	return IntegerResult(IdentBuf, IPC_GETSHUFFLEOPTION, 0);
 }
 
 void WinampClientBase::toggleRepeat(void)
@@ -217,10 +222,20 @@ void WinampClientBase::toggleRepeat(void)
 
 }
 
+int WinampClientBase::getRepeat()
+{
+	return IntegerResult(IdentBuf, IPC_GETREPEATOPTION, 0);
+}
+
 void WinampClientBase::toggleAutoload(void)
 {
-	int autoLoad = IntegerResult(IdentBuf, IPC_GETEQDATA, 11);
+	int autoLoad = getAutoload();
 	IntegerResult(IdentBuf, IPC_SETEQDATA, !autoLoad );
+}
+
+int WinampClientBase::getAutoload()
+{
+	return IntegerResult(IdentBuf, IPC_GETEQDATA, 11);
 }
 
 void WinampClientBase::getTimes(int& songLength, int& songPos)

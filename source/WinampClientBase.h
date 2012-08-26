@@ -94,9 +94,15 @@ public:
 
 	virtual void toggleShuffle(void);
 
+	virtual int getShuffle(void);
+
 	virtual void toggleRepeat(void);
 
+	virtual int getRepeat(void);
+
 	virtual void toggleAutoload(void);
+
+	virtual int getAutoload(void);
 
 	virtual void getTimes(int& songLength, int& songPos);
 

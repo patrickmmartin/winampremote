@@ -387,9 +387,9 @@ TEST_CASE("Client/ToggleShuffle", "test toggleShuffle")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	bool shuffle = client.getShuffle();
 	client.toggleShuffle();
-	FAIL("no test implemented");
+	CHECK(client.getShuffle() != shuffle);
 }
 
 /**
@@ -400,9 +400,9 @@ TEST_CASE("Client/ToggleRepeat", "test toggleRepeat")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	bool repeat = client.getRepeat();
 	client.toggleRepeat();
-	FAIL("no test implemented");
+	CHECK(client.getRepeat() != repeat);
 }
 
 /**
@@ -413,9 +413,9 @@ TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	bool  autoload = client.getAutoload();
 	client.toggleAutoload();
-	FAIL("no test implemented");
+	CHECK(client.getAutoload() != autoload);
 }
 
 /**

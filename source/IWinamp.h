@@ -194,14 +194,29 @@ public:
 	virtual void toggleShuffle(void) = 0;
 
 	/**
+	 * returns the shuffle option
+	 */
+	virtual int getShuffle(void) = 0;
+
+	/**
 	 * toggles the repeat option
 	 */
 	virtual void toggleRepeat(void) = 0;
 
 	/**
+	 * returns the repeat option
+	 */
+	virtual int getRepeat(void) = 0;
+
+	/**
 	 * toggles the autoload option
 	 */
 	virtual void toggleAutoload(void) = 0;
+
+	/**
+	 * returns the autoload option
+	 */
+	virtual int getAutoload(void) = 0;
 
 	/**
 	 * returns the current song times for length and position

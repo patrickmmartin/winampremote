@@ -12,7 +12,8 @@ WinampTestServer::WinampTestServer() :
 		m_playList(),
 		m_playlistPosition(-1),
 		m_volume(0),
-		m_songPosition(0)
+		m_songPosition(0),
+		m_autoload(false), m_repeat(false), m_shuffle(false)
 {
 	char title[MAX_PATH] = "";
 	char filename[MAX_PATH] = "";
@@ -87,10 +88,11 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 		case IPC_SETREPEATOPTION:
 			// TODO: this was never used
 		case WINAMP_FILE_REPEAT:
-			// TODO: implement set repeat option
+			m_repeat = !m_repeat;
+			break;
 		case WINAMP_FILE_SHUFFLE:
-			// TODO: this was never used
-
+			m_shuffle = !m_shuffle;
+			break;
 		case WINAMP_VOLUMEUP:
 			// TODO: this was never used
 		case WINAMP_VOLUMEDOWN:
@@ -142,9 +144,9 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 		case IPC_GETEQDATA:
 			return 50;	// TODO: implement EQData
 		case IPC_GETSHUFFLEOPTION:
-			return 1;   // TODO implement get shuffle option
+			return m_shuffle;
 		case IPC_GETREPEATOPTION:
-			return 1;    // TODO implement get repeat option
+			return m_repeat;
 		case IPC_SETVOLUME:
 		{
 			if (Data == -666)
