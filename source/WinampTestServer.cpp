@@ -13,7 +13,8 @@ WinampTestServer::WinampTestServer() :
 		m_playlistPosition(-1),
 		m_volume(0),
 		m_songPosition(0),
-		m_autoload(false), m_repeat(false), m_shuffle(false)
+		m_repeat(false), m_shuffle(false),
+		m_eqdata()
 {
 	char title[MAX_PATH] = "";
 	char filename[MAX_PATH] = "";
@@ -81,8 +82,6 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			// TODO: not currently implemented
 		case IPC_SETPANNING:
 			// TODO: implement set panning
-		case IPC_SETEQDATA:
-			// TODO: implement set eq data
 		case IPC_SETSHUFFLEOPTION:
 			// TODO: this was never used
 		case IPC_SETREPEATOPTION:
@@ -144,7 +143,13 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 		case IPC_GETINFO:
 			return 1;	// TODO: this is not used
 		case IPC_GETEQDATA:
-			return 50;	// TODO: implement EQData
+			if ((Data >= 0 ) && (Data < 12))
+			{
+				  m_eqindex = Data;
+				  return m_eqdata[m_eqindex];
+
+			}
+			return 0;
 		case IPC_GETSHUFFLEOPTION:
 			return m_shuffle;
 		case IPC_GETREPEATOPTION:
@@ -163,10 +168,12 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			m_playbackStatus = WA_PLAYING;
 			m_playlistPosition = (-1 == m_playlistPosition)? 0 : m_playlistPosition;
 			break;
+		case IPC_SETEQDATA:
+			m_eqdata[m_eqindex] = Data;
+			break;
 	}
 
 	return 0;
-	throw std::runtime_error("WinampTestServer::QueryInt not implemented");
 }
 
 string WinampTestServer::QueryString(WinampCommand Command, int Data)

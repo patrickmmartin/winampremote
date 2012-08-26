@@ -426,12 +426,21 @@ TEST_CASE("Client/GetTimes", "test getTimes")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
 	int songLength, songPos;
 	client.startPlaylist();
 	client.getTimes(songLength, songPos);
 	CHECK(songPos > 0);
 	CHECK(songLength > 0);
+}
+
+/**
+ * tests getting and setting EQ
+ */
+TEST_CASE("Client/GetEQ", "test getEQ")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+	FAIL("Test not implemented");
 }
 
 /**
