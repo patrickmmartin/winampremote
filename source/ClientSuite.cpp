@@ -270,9 +270,10 @@ TEST_CASE("Client/StopWithFade", "test stopWithFade")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	// TODO - #95 complete test coverage for this
+	client.startPlaylist();
 	client.stopWithFade();
-	FAIL("no test implemented");
+	Sleep(500);
+	CHECK(client.getPlaybackStatus() == WA_NOT_PLAYING);
 }
 
 /**
