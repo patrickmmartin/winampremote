@@ -440,7 +440,31 @@ TEST_CASE("Client/GetEQ", "test getEQ")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
-	FAIL("Test not implemented");
+	for (int eqindex = 0 ; eqindex < 11 ; eqindex++)
+	{
+		byte eqvalue = client.getEQData(eqindex);
+	}
+}
+
+/**
+ * tests getting and setting EQ
+ */
+TEST_CASE("Client/SetQ", "test setEQ")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+	int eqvalues[11] = {0};
+	for (int eqindex = 0 ; eqindex < 11 ; eqindex++)
+	{
+		eqvalues[eqindex] = client.getEQData(eqindex);
+		client.setEQData(eqindex, eqvalues[eqindex] + 1);
+	}
+
+	for (int eqindex = 0 ; eqindex < 11 ; eqindex++)
+	{
+		CHECK(client.getEQData(eqindex) == eqvalues[eqindex] + 1);
+	}
+
 }
 
 /**

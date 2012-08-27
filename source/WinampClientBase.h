@@ -104,6 +104,12 @@ public:
 
 	virtual int getAutoload(void);
 
+	virtual void setAutoload(bool value);
+
+	virtual int getEQData(int eqindex);
+
+	void setEQData(int eqindex, int eqvalue);
+
 	virtual void getTimes(int& songLength, int& songPos);
 
 

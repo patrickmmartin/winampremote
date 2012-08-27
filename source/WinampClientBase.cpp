@@ -230,13 +230,31 @@ int WinampClientBase::getRepeat()
 void WinampClientBase::toggleAutoload(void)
 {
 	int autoLoad = getAutoload();
-	IntegerResult(IdentBuf, IPC_SETEQDATA, !autoLoad );
+	setAutoload(!autoLoad);
 }
 
 int WinampClientBase::getAutoload()
 {
-	return IntegerResult(IdentBuf, IPC_GETEQDATA, 11);
+	return getEQData(11);
 }
+
+void WinampClientBase::setAutoload(bool value)
+{
+	return setEQData(11, value);
+}
+
+WinampClientBase::getEQData(int eqindex)
+{
+	return IntegerResult(IdentBuf, IPC_GETEQDATA, eqindex);
+}
+
+void WinampClientBase::setEQData(int eqindex, int eqvalue)
+{
+	getEQData(eqindex);
+	IntegerResult(IdentBuf, IPC_SETEQDATA, eqvalue );
+}
+
+
 
 void WinampClientBase::getTimes(int& songLength, int& songPos)
 {

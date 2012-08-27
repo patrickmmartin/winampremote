@@ -219,6 +219,23 @@ public:
 	virtual int getAutoload(void) = 0;
 
 	/**
+	 * sets the autload options
+	 * @param value
+	 */
+	virtual void setAutoload(bool value) = 0;
+
+	/**
+	 * returns the eq data
+	 */
+	virtual int getEQData(int eqindex) = 0;
+
+	/**
+	 * sets the eq data
+	 */
+	// TODO would like to use byte
+	virtual void setEQData(int eqindex, int eqvalue) = 0;
+
+	/**
 	 * returns the current song times for length and position
 	 * in seconds and milliseconds respectively
 	 * @param songLength
