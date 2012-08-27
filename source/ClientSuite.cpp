@@ -449,7 +449,7 @@ TEST_CASE("Client/GetEQ", "test getEQ")
 /**
  * tests getting and setting EQ
  */
-TEST_CASE("Client/SetQ", "test setEQ")
+TEST_CASE("Client/SetEQ", "test setEQ")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
