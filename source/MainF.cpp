@@ -38,11 +38,9 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "ServersF.h"
 
 // RPC functions
-#include "winampinterface.h"
 #include "RPCFuncsU.h"
 #include "DetailsF.h"
 #include "remotestrs.h"
-//#include "reinit.hpp"
 #include "SplashF.h"
 
 #include <math.h>
@@ -290,8 +288,8 @@ void __fastcall TfrmMain::ShowMainFormExecute(TObject *)
 
 void __fastcall TfrmMain::PauseExecute(TObject *)
 {
-  if (WAStatus == IntegerResult(IdentChars, IPC_ISPLAYING, 0))
-    ExecuteMessage(IdentChars, WINAMP_PAUSE);
+  if (WAStatus == client->getPlaybackStatus() )
+    client->pause();
     UpdateIcon();
 }
 
@@ -410,7 +408,7 @@ void __fastcall TfrmMain::FormShow(TObject *)
 
 void __fastcall TfrmMain::mnuSayHelloClick(TObject *)
 {
-  SendString(IdentChars);
+  client->sendString();
 }
 
 
@@ -435,7 +433,7 @@ void __fastcall TfrmMain::PlayExecute(TObject *)
 void __fastcall TfrmMain::NextExecute(TObject *)
 {
   SongChanging->Execute();
-  ExecuteMessage(IdentChars, WINAMP_NEXT);
+  client->nextSong();
   SongChanged->Execute();
 }
 
@@ -456,7 +454,7 @@ void __fastcall TfrmMain::NextFadeExecute(TObject *)
 void __fastcall TfrmMain::PreviousExecute(TObject *)
 {
   SongChanging->Execute();
-  ExecuteMessage(IdentChars, WINAMP_PREVIOUS);
+  client->previousSong();
   SongChanged->Execute();
 }
 
@@ -500,7 +498,7 @@ void __fastcall TfrmMain::AboutExecute(TObject *)
 
 void __fastcall TfrmMain::StopExecute(TObject *)
 {
-  ExecuteMessage(IdentChars, WINAMP_STOP);
+  client->stopSong();
 }
 
 
@@ -508,7 +506,7 @@ void __fastcall TfrmMain::StopExecute(TObject *)
 
 void __fastcall TfrmMain::Forward5Execute(TObject *)
 {
-  ExecuteMessage(IdentChars, WINAMP_FORWARD5S);
+  client->forward5();
 }
 
 
@@ -516,7 +514,7 @@ void __fastcall TfrmMain::Forward5Execute(TObject *)
 
 void __fastcall TfrmMain::Back5Execute(TObject *)
 {
-  ExecuteMessage(IdentChars, WINAMP_BACK5S);
+  client->forward5();
 }
 
 
@@ -557,7 +555,7 @@ void __fastcall TfrmMain::VolumeDownMoreExecute(TObject *)
 void __fastcall TfrmMain::PlaylistStartExecute(TObject *)
 {
   SongChanging->Execute();
-  ExecuteMessage(IdentChars, WINAMP_STARTOFPLAYLIST);
+  client->startPlaylist();
   SongChanged->Execute();
 }
 
@@ -567,7 +565,7 @@ void __fastcall TfrmMain::PlaylistStartExecute(TObject *)
 void __fastcall TfrmMain::PlaylistEndExecute(TObject *)
 {
   SongChanging->Execute();
-  ExecuteMessage(IdentChars, WINAMP_ENDOFPLAYLIST);
+  client->playlistEnd();
   SongChanged->Execute();
 }
 
@@ -576,7 +574,7 @@ void __fastcall TfrmMain::PlaylistEndExecute(TObject *)
 
 void __fastcall TfrmMain::DeletePlayListExecute(TObject *)
 {
-  IntegerResult(IdentChars, IPC_DELETE, 0);
+  client->deletePlaylist();
   PlaylistRefresh->Execute();
 }
 
@@ -636,7 +634,7 @@ void MessageForm(AnsiString MessageStr)
 
 void __fastcall TfrmMain::StopFadeExecute(TObject *)
 {
-  ExecuteMessage(IdentChars, WINAMP_STOPFADE);
+  client->stopWithFade();
 }
 
 
@@ -644,7 +642,7 @@ void __fastcall TfrmMain::StopFadeExecute(TObject *)
 
 void __fastcall TfrmMain::StopAfterCurrentExecute(TObject *)
 {
-  ExecuteMessage(IdentChars, WINAMP_STOPAFTERCURRENT);
+  client->stopAfterCurrent();
 }
 
 
@@ -738,11 +736,11 @@ void TfrmMain::UpdateIcon(void)
     IconHandle();
     sbMain->Refresh();
 
-    WAStatus = (WAPlaybackStatus) IntegerResult(IdentChars, IPC_ISPLAYING, 0);
+    WAStatus = client->getPlaybackStatus();
     TrayMessage(NIM_MODIFY);
 
-    Shuffle->Checked = (WinampVerNo >= 0x2604) && IntegerResult(IdentChars, IPC_GETSHUFFLEOPTION, 0);
-    Repeat->Checked = (WinampVerNo >= 0x2604) && IntegerResult(IdentChars, IPC_GETREPEATOPTION, 0);
+    Shuffle->Checked = (WinampVerNo >= 0x2604) && client->getShuffle();
+    Repeat->Checked = (WinampVerNo >= 0x2604) && client->getRepeat();
 
     // TODO: would ideally disable handlers
     frmSettings->tbVolume->Position = client->getVolume();
@@ -753,43 +751,38 @@ void TfrmMain::UpdateIcon(void)
     if ( timerMain->Interval != UpdateTime)
     {
       timerMain->Interval = UpdateTime;
-      WinampVerNo = IntegerResult(IdentChars, IPC_GETVERSION,  0);
+      WinampVerNo = client->winampVersion();
       lblVersion->Caption = WinampVersionString(WinampVerNo);
     }
 
     strcpy(title, IdentChars);
 
-    length = IntegerResult(IdentChars, IPC_GETLISTLENGTH, 0);
+    length = client->getPlaylistLength();
     if (length > 0)
     {
-      index = IntegerResult(IdentChars, IPC_GETLISTPOS, 0);
+		index = client->getCurrentPlayPosition();
+		std::string title = client->getPlayListItem(index, true);
+		SongTitle = title.c_str();
+		lblMessage->Caption = SongTitle;
 
-      StringResult(title, IPC_GETPLAYLISTTITLE, index);
-      if (title)
-      {
-        SongTitle = title;
-        lblMessage->Caption = (title);
+		if (lblMessage->Canvas->TextWidth(lblMessage->Caption) > lblMessage->Width)
+		{
+		  lblMessage->Hint = lblMessage->Caption;
+		  lblMessage->ParentShowHint = false;
+		  lblMessage->ShowHint = true;
 
-        if (lblMessage->Canvas->TextWidth(lblMessage->Caption) > lblMessage->Width)
-        {
-          lblMessage->Hint = lblMessage->Caption;
-          lblMessage->ParentShowHint = false;
-          lblMessage->ShowHint = true;
+		  while (lblMessage->Canvas->TextWidth(lblMessage->Caption + "... ") > lblMessage->Width)
+			lblMessage->Caption = lblMessage->Caption.SubString(1, lblMessage->Caption.Length() - 1);
 
-          while (lblMessage->Canvas->TextWidth(lblMessage->Caption + "... ") > lblMessage->Width)
-            lblMessage->Caption = lblMessage->Caption.SubString(1, lblMessage->Caption.Length() - 1);
+		  lblMessage->Caption = lblMessage->Caption + "...";
 
-          lblMessage->Caption = lblMessage->Caption + "...";
-
-         }
-         else
-         {
-           lblMessage->Hint = sCurrentTrack;
-           lblMessage->ParentShowHint = true;
-           lblMessage->ShowHint = false;
-         }
-
-       }
+		 }
+		 else
+		 {
+		   lblMessage->Hint = sCurrentTrack;
+		   lblMessage->ParentShowHint = true;
+		   lblMessage->ShowHint = false;
+		 }
 
         //update the playlist form
         //always check this first, to get length straight
@@ -892,8 +885,8 @@ void __fastcall TfrmMain::ShuffleExecute(TObject *)
 {
   // shuffle / repeat status only works in very recent versions,
   // so always do for older
-  if ( (WinampVerNo < 0x2604) || (Shuffle->Checked == IntegerResult(IdentChars, IPC_GETSHUFFLEOPTION, 0)) )
-    ExecuteMessage(IdentChars, WINAMP_FILE_SHUFFLE);
+  if ( (WinampVerNo < 0x2604) || (Shuffle->Checked == client->getShuffle() ) )
+    client->toggleShuffle();
   UpdateIcon();
 }
 
@@ -904,8 +897,8 @@ void __fastcall TfrmMain::RepeatExecute(TObject *)
 {
   // shuffle / repeat status only works in very recent versions,
   // so always do for older
-  if  ( (WinampVerNo < 0x2604) || (Repeat->Checked == IntegerResult(IdentChars, IPC_GETREPEATOPTION, 0)) )
-    ExecuteMessage(IdentChars, WINAMP_FILE_REPEAT);
+  if  ( (WinampVerNo < 0x2604) || (Repeat->Checked ==  client->getRepeat() ) )
+    client->toggleRepeat();
   UpdateIcon();
 }
 
@@ -915,7 +908,7 @@ void __fastcall TfrmMain::RepeatExecute(TObject *)
 void __fastcall TfrmMain::PlayFromStartExecute(TObject *)
 {
   SongChanging->Execute();
-  IntegerResult(IdentChars, IPC_STARTPLAY, 0);
+  client->playlistStart();
   SongChanged->Execute();
 }
 
@@ -1167,9 +1160,7 @@ void _fastcall TfrmMain::DoBind(void)
 
 void __fastcall TfrmMain::AutoloadExecute(TObject *)
 {
-  Autoload->Checked = !Autoload->Checked;
-  IntegerResult(IdentChars, IPC_GETEQDATA, 11);
-  IntegerResult(IdentChars, IPC_SETEQDATA, Autoload->Checked );
+  client->toggleAutoload();
 }
 
 
@@ -1314,96 +1305,11 @@ void __fastcall TfrmMain::NewSongExecute(TObject *)
 {
   // gets the index from the playlist form
   SongChanging->Execute();
-  IntegerResult(IdentChars, IPC_SETPLAYLISTPOS, frmPlaylist->lstSongs->ItemIndex);
+  client->setPlaylistIndex(frmPlaylist->lstSongs->ItemIndex);
   Play->Execute();
   SongChanged->Execute();
 
 }
-
-
-
-
-/*
-void __fastcall TfrmMain::CountTimesExecute(TObject *)
-{
-  try
-  {
-    try
-    {
-      int i, Index, SongS, PlayListS;
-      TStringList * StringList;
-
-      Screen->Cursor = crHourGlass;
-      Querying = true;
-      IconHandle();
-      sbMain->Update();
-      TrayMessage(NIM_MODIFY);
-
-      Index = IntegerResult(IdentChars, IPC_GETLISTPOS, 0);
-
-      void * buf = NULL;
-      int bufsize = 0;
-
-      StringList = new TStringList;
-      try
-      {
-        GetStringDataList(IdentChars, &buf, bufsize, IPC_GETPLAYLISTTITLE, IPC_GETOUTPUTTIME, 1);
-
-        if (buf)
-        {
-          StringList->Text = (char *) buf;
-          delete buf;
-        }
-
-        PlayListS = 0;
-        for (i = 0 ; i < StringList->Count - 2 ; i += 2)
-        {
-          SongS = StringList->Strings[i + 1].ToIntDef(0);
-          PlayListS += SongS;
-        }
-
-      }
-      __finally
-      {
-        delete StringList;
-      }
-
-
-      AnsiString TimeFmt = "%02d:%02d:%02d";
-      Word Hour, Minute, Second, MSec;
-
-      TDateTime PlayListTime = (float) PlayListS / (SecsPerDay);
-      DecodeTime(PlayListTime, Hour, Minute, Second, MSec);
-      Hour +=  24 * floor(PlayListTime);
-
-      frmPlaylist->sbPlaylist->Panels->Items[5]->Text =
-                                        AnsiString().sprintf(TimeFmt.c_str(), Hour, Minute, Second);
-
-
-      // reset the currently playing song
-      IntegerResult(IdentChars, IPC_SETPLAYLISTPOS, Index);
-
-    }
-    catch( ERPCException &E)
-    {
-      //
-    }
-
-  }
-  __finally
-  {
-    Screen->Cursor = crDefault;
-
-    Querying = false;
-    IconHandle();
-    sbMain->Update();
-
-    TrayMessage(NIM_MODIFY);
-
-  }
-
-}
-*/
 
 
 
@@ -1438,9 +1344,9 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
       TrayMessage(NIM_MODIFY);
 
 
-      LastLength = IntegerResult(IdentChars, IPC_GETLISTLENGTH, 0);
+      LastLength = client->getPlaylistLength();
       LastIndex = CurrentIndex;
-      CurrentIndex = IntegerResult(IdentChars, IPC_GETLISTPOS, 0);
+      CurrentIndex = client->getCurrentPlayPosition();
 
       frmPlaylist->lstSongs->Items->Clear();
 
@@ -1505,13 +1411,14 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
 void __fastcall TfrmMain::PlaylistRefreshStatsExecute(TObject *)
 {
 
-  int SongS = IntegerResult(frmMain->IdentChars, IPC_GETOUTPUTTIME, 1);
+
+  int SongS = 0;
+  int PosMS = 0;
+
+  client->getTimes(SongS, PosMS);
 
   if ((SongS) && (!frmPlaylist->Dragging))
-  {
-    int PosMS = IntegerResult (frmMain->IdentChars, IPC_GETOUTPUTTIME, 0);
     frmPlaylist->pbSongPos->Position = (frmPlaylist->pbSongPos->Max * PosMS) / (SongS * 1000);
-  }
 
   if (frmPlaylist->lstSongs->Items->Count > 1)
     frmPlaylist->pbListPos->Position = (frmPlaylist->pbListPos->Max * CurrentIndex) /
@@ -1572,13 +1479,13 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
     } // for
 
     // delete current
-    IntegerResult(IdentChars, IPC_DELETE, 0);
+    client->deletePlaylist();
 
     // add remaining
     DoAddFiles(StringList);
     // reset position
 
-    IntegerResult(IdentChars, IPC_SETPLAYLISTPOS, CurrentIndex);
+    client->setPlaylistIndex(CurrentIndex);
 
     PlaylistRefresh->Execute();
   }
@@ -1596,17 +1503,9 @@ void __fastcall TfrmMain::GetFilenames(int Start, int Stop, TStringList * Files)
 
 int i;
 
-char filename[WA_RETURN_STRING_SIZE];
-char saveident[WA_RETURN_STRING_SIZE];
-
-  // cache this
-  strcpy(saveident, IdentChars);
-
   for (i = Start ; i < Stop; i++)
   {
-    strcpy(filename, saveident);
-    StringResult(filename, IPC_GETPLAYLISTFILE, i);
-    Files->Add(filename);
+    Files->Add(client->getPlayListItem(i, false).c_str());
   } // for
 
 }
@@ -1615,9 +1514,6 @@ char saveident[WA_RETURN_STRING_SIZE];
 void __fastcall TfrmMain::DropFiles(TStringList *, int DropIndex)
 {
   TStringList * Files = new TStringList;
-  int NewPos;
-
-
   // get the top of the list
   if (DropIndex > -1)
     GetFilenames(0, DropIndex, Files);
@@ -1629,15 +1525,16 @@ void __fastcall TfrmMain::DropFiles(TStringList *, int DropIndex)
   if (DropIndex > -1)
     GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count, Files);
 
-  // delete
-  IntegerResult(frmMain->IdentChars, IPC_DELETE, 0);
+  // TODO a nice smooth merge might be nice
+  // delete the playlist
+  client->deletePlaylist();
 
   DoAddFiles(Files);
   // reset position here
 
   // AAAACK - used to be a "magic object"
-  NewPos = Files->IndexOfObject((TObject *) true);
-  IntegerResult(IdentChars, IPC_SETPLAYLISTPOS, NewPos);
+  int NewPos = Files->IndexOfObject((TObject *) true);
+  client->setPlaylistIndex(NewPos);
 
   PlaylistRefresh->Execute();
   

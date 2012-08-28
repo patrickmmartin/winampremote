@@ -85,13 +85,13 @@ public:
 	 * returns the current playlist position
 	 * @return the index
 	 */
-	int getCurrentPlayPosition(void);
+	virtual int getCurrentPlayPosition(void) = 0;
 
 	/**
 	 * returns the current playlist length
 	 * @return the length
 	 */
-	int getPlaylistLength(void);
+	virtual int getPlaylistLength(void) = 0;
 
 	/**
 	 * returns the current playlist item and current index, either title or filename

@@ -54,9 +54,9 @@ public:
 
 	virtual string getPlayListItem(int index, bool title = true);
 
-	int getCurrentPlayPosition(void);
+	virtual int getCurrentPlayPosition(void);
 
-	int getPlaylistLength(void);
+	virtual int getPlaylistLength(void);
 
 	virtual string getCurrentPlayListItem(int& index, bool title = true);
 
