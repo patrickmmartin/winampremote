@@ -46,6 +46,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "SplashF.h"
 
 #include <math.h>
+#include "WinampClientBase.h"
 
 const int POLL_ERROR_FACTOR = 10; // seconds
 
@@ -425,7 +426,7 @@ void __fastcall TfrmMain::btnCloseClick(TObject *)
 
 void __fastcall TfrmMain::PlayExecute(TObject *)
 {
-  ExecuteMessage(IdentChars, WINAMP_PLAYENTRY);
+  client->playSong();
 }
 
 
@@ -661,6 +662,8 @@ void __fastcall TfrmMain::FormCreate(TObject *)
 
   Application->OnException = AppException;
 
+  client = new WinampRemote::Client::WinampClientBase();
+
   Application->OnHint = DisplayHint;
   WAStatus = WA_UNUSED;
 
@@ -740,6 +743,9 @@ void TfrmMain::UpdateIcon(void)
 
     Shuffle->Checked = (WinampVerNo >= 0x2604) && IntegerResult(IdentChars, IPC_GETSHUFFLEOPTION, 0);
     Repeat->Checked = (WinampVerNo >= 0x2604) && IntegerResult(IdentChars, IPC_GETREPEATOPTION, 0);
+
+    // TODO: would ideally disable handlers
+    frmSettings->tbVolume->Position = client->getVolume();
 
     if ((frmSettings) && (frmSettings->EQUpdateNeeded))
       frmSettings->UpdateBars();
@@ -1060,6 +1066,7 @@ AnsiString str;
 
 void __fastcall TfrmMain::FormDestroy(TObject *)
 {
+  delete client;
   UnBind();
 }
 

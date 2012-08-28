@@ -20,7 +20,7 @@
 
 // winamp IPC declarations
 #include "waint.h"
-
+#include "WinampClientBase.h"
 
 const int TRAY_NOTIFY = WM_APP + 100;
 
@@ -270,6 +270,7 @@ __published:
         void __fastcall PlaylistRefreshStatsExecute(TObject *Sender);
 
 private:        // private user declarations
+    WinampRemote::Client::IWinamp * client;
     int Delay;
     int WinampVerNo;
     int fIconIndex;
