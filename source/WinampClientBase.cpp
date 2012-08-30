@@ -123,7 +123,10 @@ vector<string>* WinampClientBase::getPlayList(bool title)
 	for (int i = 0; i < lastlength; i++)
 	{
 		strcpy(buffer, IdentBuf);
-		StringResult(buffer, IPC_GETPLAYLISTTITLE, i);
+                if (title)
+		        StringResult(buffer, IPC_GETPLAYLISTTITLE, i);
+                else
+                        StringResult(buffer, IPC_GETPLAYLISTFILE, i);
 		result->push_back(buffer);
 	}
 	return result;
