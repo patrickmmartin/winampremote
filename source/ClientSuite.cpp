@@ -443,6 +443,7 @@ TEST_CASE("Client/GetEQ", "test getEQ")
 	for (int eqindex = 0 ; eqindex < 11 ; eqindex++)
 	{
 		byte eqvalue = client.getEQData(eqindex);
+		CHECK(eqvalue == (byte) client.getEQData(eqindex));
 	}
 }
 
