@@ -53,7 +53,7 @@ USEUNIT("WinampClientBase.cpp");
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 //---------------------------------------------------------------------------
-WINAPI WinMain(HINSTANCE, HINSTANCE hInstance, LPSTR, int)
+WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
     try
     {
