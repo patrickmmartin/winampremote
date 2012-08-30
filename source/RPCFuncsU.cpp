@@ -127,7 +127,7 @@ extern "C"
 
     RpcTryExcept
     {
-        result = WAStringResult(pszString, command, data);
+        result = WAStringResult( (unsigned char *) pszString, command, data);
     }
     RpcExcept(1)
     {
