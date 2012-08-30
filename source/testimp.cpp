@@ -90,7 +90,7 @@ long WAIntegerResult(
 
   MainMessage( str.c_str());
 
-  return localWinamp.QueryInt(command, data);
+  return localWinamp.QueryInt( (WinampCommand) command, data);
 
 }
 
