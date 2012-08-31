@@ -139,7 +139,7 @@ test-builds:
 	@echo independent builds completed
 
 run-unittests: 
-	-..\bin\unittests
+	-..\bin\unittests  -w NoAssertions
 
 start-mockserver:  
 	echo running mock server
