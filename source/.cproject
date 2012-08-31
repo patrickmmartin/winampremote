@@ -34,6 +34,7 @@
 									<listOptionValue builtIn="false" value="__closure"/>
 									<listOptionValue builtIn="false" value="__property"/>
 									<listOptionValue builtIn="false" value="__USING_STD_NAMES__=1"/>
+									<listOptionValue builtIn="false" value="CATCH_CONFIG_MAIN=1"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.cl.inputType.1584538669" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
 							</tool>
@@ -43,7 +44,7 @@
 									<listOptionValue builtIn="false" value="&quot;C:\CBuilder5\Include\Vcl&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\CBuilder5\Include\Sys&quot;"/>
 								</option>
-								<option id="org.eclipse.cdt.msvc.rc.option.defines.2026459738" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
+								<option id="org.eclipse.cdt.msvc.rc.option.defines.2026459738" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__USING_STD_NAMES__=1"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.rc.inputType.669080875" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
@@ -53,6 +54,10 @@
 								<inputType id="org.eclipse.cdt.msvc.link.inputType.1423402544" superClass="org.eclipse.cdt.msvc.link.inputType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.msvc.lib.771133405" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
+							<tool id="org.eclipse.cdt.msvc.cl.c.exe.debug.534834118" name="C Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.c.exe.debug">
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.1028611279" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols"/>
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.464128484" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
+							</tool>
 						</toolChain>
 					</folderInfo>
 				</configuration>
@@ -76,13 +81,14 @@
 							<tool id="org.eclipse.cdt.msvc.cl.exe.release.932553792" name="C/C++ Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.exe.release">
 								<option id="org.eclipse.cdt.msvc.cl.option.optimization.1797974485" name="Optimization" superClass="org.eclipse.cdt.msvc.cl.option.optimization"/>
 								<option id="org.eclipse.cdt.msvc.cl.option.debugFormat.1388149951" name="Debug Information Format" superClass="org.eclipse.cdt.msvc.cl.option.debugFormat"/>
-								<option id="org.eclipse.cdt.msvc.cl.option.macros.1938140207" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.1938140207" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__USING_STD_NAMES__=1"/>
+									<listOptionValue builtIn="false" value="CATCH_CONFIG_MAIN=1"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.cl.inputType.1559307232" superClass="org.eclipse.cdt.msvc.cl.inputType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.msvc.rc.exe.release.1754986975" name="Resource Compiler (rc)" superClass="org.eclipse.cdt.msvc.rc.exe.release">
-								<option id="org.eclipse.cdt.msvc.rc.option.defines.51648794" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
+								<option id="org.eclipse.cdt.msvc.rc.option.defines.51648794" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.rc.option.defines" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__USING_STD_NAMES__=1"/>
 								</option>
 								<inputType id="org.eclipse.cdt.msvc.rc.inputType.638430654" superClass="org.eclipse.cdt.msvc.rc.inputType"/>
@@ -91,6 +97,9 @@
 								<inputType id="org.eclipse.cdt.msvc.link.inputType.1885883306" superClass="org.eclipse.cdt.msvc.link.inputType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.msvc.lib.1395632168" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
+							<tool id="org.eclipse.cdt.msvc.cl.c.exe.release.468974085" name="C Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.c.exe.release">
+								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.842534299" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
+							</tool>
 						</toolChain>
 					</folderInfo>
 				</configuration>
@@ -109,15 +118,6 @@
 			<path value=""/>
 		</doc-comment-owner>
 	</storageModule>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.exe.release.538556574;org.eclipse.cdt.msvc.exe.release.538556574.;org.eclipse.cdt.msvc.cl.exe.release.932553792;org.eclipse.cdt.msvc.cl.inputType.1559307232">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.exe.debug.729492796;org.eclipse.cdt.msvc.exe.debug.729492796.;org.eclipse.cdt.msvc.cl.exe.debug.1784450755;org.eclipse.cdt.msvc.cl.inputType.1584538669">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
-		</scannerConfigBuildInfo>
-	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
 		<buildTargets>
 			<target name="docs" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
@@ -130,4 +130,20 @@
 			</target>
 		</buildTargets>
 	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.exe.release.538556574;org.eclipse.cdt.msvc.exe.release.538556574.;org.eclipse.cdt.msvc.cl.c.exe.release.468974085;org.eclipse.cdt.msvc.cl.inputType.c.842534299">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.exe.release.538556574;org.eclipse.cdt.msvc.exe.release.538556574.;org.eclipse.cdt.msvc.cl.exe.release.932553792;org.eclipse.cdt.msvc.cl.inputType.1559307232">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.exe.debug.729492796;org.eclipse.cdt.msvc.exe.debug.729492796.;org.eclipse.cdt.msvc.cl.exe.debug.1784450755;org.eclipse.cdt.msvc.cl.inputType.1584538669">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.msvc.exe.debug.729492796;org.eclipse.cdt.msvc.exe.debug.729492796.;org.eclipse.cdt.msvc.cl.c.exe.debug.534834118;org.eclipse.cdt.msvc.cl.inputType.c.464128484">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.msw.build.clScannerInfo"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 </cproject>
