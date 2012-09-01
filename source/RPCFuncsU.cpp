@@ -29,7 +29,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 // no longer required in BCB5 ?
 //#define __try try
 
-#include "RPCFuncsU.h"
+#include "winampinterface.h"
 #include "RPCException.h"
 #include "RPCBind.h"
 

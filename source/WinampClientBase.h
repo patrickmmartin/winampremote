@@ -116,6 +116,9 @@ public:
 
 	virtual void getTimes(int& songLength, int& songPos);
 
+	virtual vector<string>*  getStringList(WinampCommand Command);
+
+
 
 
 };

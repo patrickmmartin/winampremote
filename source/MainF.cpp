@@ -1463,7 +1463,8 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
     void * buf = NULL;
     int bufsize = 0;
 
-    GetStringList(IdentChars, &buf, bufsize, IPC_GETPLAYLISTFILE);
+    // TODO: get playlist
+    client->getStringList(IPC_GETPLAYLISTTITLE);
 
     if (bufsize)
       StringList->Text = (char *) buf;

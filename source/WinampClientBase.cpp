@@ -283,6 +283,23 @@ void WinampClientBase::getTimes(int& songLength, int& songPos)
 
 }
 
+vector<string>*  WinampClientBase::getStringList(WinampCommand Command)
+{
+
+	vector<string> * result = new vector<string>();
+	char buffer[MAX_PATH] = "";
+
+	int lastlength = getPlaylistLength();
+
+	for (int i = 0; i < lastlength; i++)
+	{
+		strcpy(buffer, IdentBuf);
+		StringResult(buffer, Command, i);
+		result->push_back(buffer);
+	}
+	return result;
+}
+
 } // end of namespace Client
 } // end of namespace WinampRemote
 

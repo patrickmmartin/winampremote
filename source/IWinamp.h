@@ -254,6 +254,9 @@ public:
 	 */
 	virtual void getTimes(int& songLength, int& songPos) = 0;
 
+
+	virtual vector<string>*  getStringList(WinampCommand Command) = 0;
+
 };
 
 } // end of namespace Client
