@@ -40,6 +40,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 // RPC functions
 #include "RPCFuncsU.h"
 #include "RPCException.h"
+#include "RPCBind.h"
 #include "DetailsF.h"
 #include "remotestrs.h"
 #include "SplashF.h"

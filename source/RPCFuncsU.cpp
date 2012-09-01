@@ -31,6 +31,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "RPCFuncsU.h"
 #include "RPCException.h"
+#include "RPCBind.h"
 
 //TODO: introduce parameter for this selection
 // hard-coded for tcpip

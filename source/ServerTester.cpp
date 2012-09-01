@@ -6,9 +6,10 @@
  */
 
 #include "ServerTester.h"
-#include "RPCFuncsU.h"  // TODO: should only require Bind()
+#include "RPCBind.h"  // TODO: should only require Bind()
 #include "RPCException.h"
 #include "waint.h"
+#include "WinampClientBase.h"
 
 ServerTester::ServerTester() : _serverMessageEvent(NULL),
                                _serverResultEvent(NULL),
@@ -59,8 +60,6 @@ void ServerTester::testServer(const AnsiString& remote)
 
 	  clock_t start, end;
 
-	  char title[MAX_PATH] = "";
-
     // static method from RPCFuncs
     Bind(remote.c_str(), _endPoint.c_str());
     try
@@ -69,8 +68,10 @@ void ServerTester::testServer(const AnsiString& remote)
       DoMessage(remote, "may take some time", 2);
       start = clock();
 
-      retval = IntegerResult("probe", IPC_GETVERSION, 0);
-      StringResult(title, IPC_GETPLAYLISTTITLE, 0);
+      WinampRemote::Client::WinampClientBase client;
+
+
+      retval = client.winampVersion();
 
       end = clock();
       DoMessage(remote, AnsiString().sprintf("response after %.2fs ", (end - start) / CLK_TCK), 1);

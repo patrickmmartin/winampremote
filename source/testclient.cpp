@@ -33,7 +33,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #endif
 
 // to force the RPC functions unit to use a non-VCL exception #define NO_VCL_EXCEPTION
-#include "RPCFuncsU.h"  // TODO: only need Bind()
+#include "RPCBind.h"
 #include "RPCException.h"
 
 // to force the waint unit to unit non-VCL, non localised, #define WAINT_NO_VCL

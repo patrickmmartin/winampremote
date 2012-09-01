@@ -23,7 +23,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include <iostream.h>
 
-#include "RPCFuncsU.h" // TODO: only needed for Bind()
+#include "RPCBind.h" // TODO: only needed for Bind()
 #include "RPCException.h"
 
 #include "WinampClientBase.h"
