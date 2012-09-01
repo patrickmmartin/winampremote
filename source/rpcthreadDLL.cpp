@@ -31,9 +31,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 // winamp interface definitions
 #include "waint.h"
 
-// RPC function definitions
-#include "RPCFuncsU.h"
-
 // bring the Winamp interfaces
 #include "WinampServerImpl.h"
 

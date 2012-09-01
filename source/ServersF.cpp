@@ -30,7 +30,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "messageF.h"    // message form
 #include "RFC1060U.h"    // ports
 #include "IPAddressU.h"  // IP utility
-#include "RPCFuncsU.h"   // RPC functions
 
 // winamp IPC declarations
 #include "waint.h"

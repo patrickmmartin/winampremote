@@ -2,7 +2,7 @@
 #include "ClientBinder.h"
 #include "ContextInfo.h"
 #include <string.h>
-#include "RPCFuncsU.h"
+#include "RPCException.h"
 #include "catch.hpp"
 
 namespace WinampRemote

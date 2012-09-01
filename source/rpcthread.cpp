@@ -17,7 +17,6 @@
 // winamp definitions
 #include "waint.h"
 // RPC functions definitions
-#include "RPCFuncsU.h"
 
 //RPC errors
 # include "RPCErrors.h"

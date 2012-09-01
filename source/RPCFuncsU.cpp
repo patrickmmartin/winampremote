@@ -30,7 +30,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 //#define __try try
 
 #include "RPCFuncsU.h"
-#include <comutil.h>			// TODO: what do we need this for, remind me?
+#include "RPCException.h"
 
 //TODO: introduce parameter for this selection
 // hard-coded for tcpip

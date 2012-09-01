@@ -6,7 +6,8 @@
  */
 
 #include "ServerTester.h"
-#include "RPCFuncsU.h"
+#include "RPCFuncsU.h"  // TODO: should only require Bind()
+#include "RPCException.h"
 #include "waint.h"
 
 ServerTester::ServerTester() : _serverMessageEvent(NULL),

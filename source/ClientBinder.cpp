@@ -7,7 +7,7 @@
 
 #include "ClientBinder.h"
 
-#include "RPCFuncsU.h"
+#include "RPCFuncsU.h" // TODO: only needed for Bind()
 
 namespace WinampRemote
 {
