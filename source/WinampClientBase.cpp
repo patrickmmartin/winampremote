@@ -209,13 +209,17 @@ int WinampClientBase::getVolume()
 
 void WinampClientBase::toggleShuffle(void)
 {
-//	int shuffle = IntegerResult(IdentBuf, IPC_GETSHUFFLEOPTION, 0);
 	ExecuteMessage(IdentBuf, WINAMP_FILE_SHUFFLE);
 }
 
 int WinampClientBase::getShuffle()
 {
 	return IntegerResult(IdentBuf, IPC_GETSHUFFLEOPTION, 0);
+}
+
+void WinampClientBase::setShuffle(bool shuffle)
+{
+	IntegerResult(IdentBuf, IPC_SETSHUFFLEOPTION, shuffle);
 }
 
 void WinampClientBase::toggleRepeat(void)

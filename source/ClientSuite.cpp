@@ -118,7 +118,7 @@ TEST_CASE("Client/PlaylistItem", "test playlist item")
 	WinampRemote::Client::WinampClientBase client;
 
 	string playlistItem = client.getPlayListItem(0);
-	CAPTURE(playlistItem);
+	CHECK(playlistItem == client.getPlayListItem(0));
 
 }
 
@@ -162,6 +162,8 @@ TEST_CASE("Client/SendString", "test sendString")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.sendString();
+	// TODO: this returns void: what is a valid test?
+	CHECK(true);
 }
 
 /**
@@ -399,6 +401,9 @@ TEST_CASE("Client/SetShuffle", "test setShuffle")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
+
+	client.setShuffle(false);
+	CHECK(false == client.getShuffle());
 
 }
 

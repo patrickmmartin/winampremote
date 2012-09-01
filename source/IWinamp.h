@@ -199,6 +199,12 @@ public:
 	virtual int getShuffle(void) = 0;
 
 	/**
+	 * set the shuffle option
+	 * @param shuffle
+	 */
+	virtual void setShuffle(bool shuffle) = 0;
+
+	/**
 	 * toggles the repeat option
 	 */
 	virtual void toggleRepeat(void) = 0;

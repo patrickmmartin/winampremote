@@ -96,6 +96,8 @@ public:
 
 	virtual int getShuffle(void);
 
+	virtual void setShuffle(bool shuffle);
+
 	virtual void toggleRepeat(void);
 
 	virtual int getRepeat(void);
