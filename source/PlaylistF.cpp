@@ -28,7 +28,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "waint.h"
 #include "MainF.h"
 #include "SplashF.h"
-#include "RPCFuncsU.h"
 #include "shellapi.h"
 #include "remotestrs.h"
 
@@ -185,12 +184,14 @@ void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 
   char title[WA_RETURN_STRING_SIZE];
   // needed to ensure we can see the currently playing track
+
   try
   {
     lstSongs->Items->BeginUpdate();
      strcpy(title, frmMain->IdentChars);
      // update the current title, at least
-     StringResult(title, IPC_GETPLAYLISTTITLE, _currentpos);
+     std::string current = client->getPlayListItem(_currentpos, true);
+     strcpy(title, current.c_str());
 
      if ((lstSongs->Items->Count - 1) > _currentpos)
      {
@@ -228,15 +229,10 @@ void __fastcall TfrmPlaylist::lstSongsDragOver(TObject *, TObject *, int , int ,
 }
 
 
-
-
-
 void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int Y)
 {
 int i;
 
-char filename[WA_RETURN_STRING_SIZE];
-char saveident[WA_RETURN_STRING_SIZE];
 bool CurrentSong;
 int NewPos;
 
@@ -247,45 +243,45 @@ int NewPos;
   TStringList * TopList = new TStringList;
   TStringList * MiddleList = new TStringList;
   TStringList * BottomList = new TStringList;
+
   try
   {
   /* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
 
-    // cache this
-  strcpy(saveident, frmMain->IdentChars);
 
     for (i = 0 ; i < lstSongs->Items->Count; i++)
     {
-      strcpy(filename, saveident);
-      StringResult(filename, IPC_GETPLAYLISTFILE, i);
+	  std::string filename = client->getPlayListItem(i, true);
+
       CurrentSong = i == _currentpos;
 
       if (lstSongs->Selected[i])
       {
-        MiddleList->AddObject(filename, (TObject *) CurrentSong);
+        MiddleList->AddObject(filename.c_str(), (TObject *) CurrentSong);
       }
       else if (i < DropIndex)
       {
-        TopList->AddObject(filename, (TObject *) CurrentSong);
+        TopList->AddObject(filename.c_str(), (TObject *) CurrentSong);
       }
       else
       {
-        BottomList->AddObject(filename, (TObject *) CurrentSong);
+        BottomList->AddObject(filename.c_str(), (TObject *) CurrentSong);
       }
     } // for
 
-    // delete
-    frmMain->Delete->Execute();
+    // delete the playlist
+    client->deletePlaylist();
 
     // rebuild list
     TopList->AddStrings(MiddleList);
     TopList->AddStrings(BottomList);
   // reset position
 
+  // TODO: stop filching functionality from the main form
   frmMain->DoAddFiles(TopList);
 
   NewPos = TopList->IndexOfObject((TObject *) true);
-  IntegerResult(frmMain->IdentChars, IPC_SETPLAYLISTPOS, NewPos);
+  client->setPlaylistIndex(NewPos);
 
   frmMain->PlaylistRefresh->Execute();
   }
@@ -424,8 +420,9 @@ void __fastcall TfrmPlaylist::pbSongPosMouseMove(TObject *, TShiftState , int X,
     if (PtInRect(&(pbSongPos->ClientRect), TPoint(X,Y)))
     {
       pbSongPos->Position = (pbSongPos->Max *  X) / pbSongPos->ClientWidth;
-      int SongS = IntegerResult (frmMain->IdentChars, IPC_GETOUTPUTTIME, 1);
-      IntegerResult(frmMain->IdentChars, IPC_JUMPTOTIME, ( (1000 *  SongS *  X) / pbSongPos->ClientWidth));
+      int PosMS, SongS;
+      client->getTimes(SongS, PosMS);
+      client->setTime( (1000 *  SongS *  X) / pbSongPos->ClientWidth);
 
     }
   }

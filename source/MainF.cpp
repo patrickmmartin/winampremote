@@ -323,6 +323,7 @@ const AnsiString sFalse = "false";
 void __fastcall TfrmMain::FormShow(TObject *)
 {
 
+  frmPlaylist->client = client;
 
   // show hints on visible forms
   frmPlaylist->ShowHint = false;

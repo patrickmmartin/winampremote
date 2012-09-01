@@ -20,7 +20,7 @@
 
 // winamp IPC declarations
 #include "waint.h"
-#include "WinampClientBase.h"
+#include "IWinamp.h"
 
 const int TRAY_NOTIFY = WM_APP + 100;
 
