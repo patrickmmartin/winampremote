@@ -404,6 +404,8 @@ TEST_CASE("Client/SetShuffle", "test setShuffle")
 
 	client.setShuffle(false);
 	CHECK(false == client.getShuffle());
+	client.setShuffle(true);
+	CHECK(true == client.getShuffle());
 
 }
 
@@ -415,7 +417,8 @@ TEST_CASE("Client/GetShuffle", "test getShuffle")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.getShuffle();
+	bool shuffle = client.getShuffle();
+	CHECK(shuffle == client.getShuffle());
 }
 
 /**
@@ -439,6 +442,13 @@ TEST_CASE("Client/SetRepeat", "test setRepeat")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	client.setRepeat(true);
+	CHECK(client.getRepeat() == true);
+	client.setRepeat(false);
+	CHECK(client.getRepeat() == false);
+
+
+
 }
 
 /**
@@ -449,7 +459,9 @@ TEST_CASE("Client/GetRepeat", "test getRepeat")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.getRepeat();
+	bool repeat = client.getRepeat();
+	CHECK(repeat == client.getRepeat());
+
 }
 
 /**
@@ -474,6 +486,9 @@ TEST_CASE("Client/SetAutoload", "test setAutoload")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.setAutoload(false);
+	CHECK(client.getAutoload() == false);
+	client.setAutoload(true);
+	CHECK(client.getAutoload() == true);
 }
 
 /**
@@ -484,7 +499,8 @@ TEST_CASE("Client/GetAutoload", "test getAutoload")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.getAutoload();
+	bool autoload = client.getAutoload();
+	CHECK(autoload == client.getAutoload());
 }
 
 /**

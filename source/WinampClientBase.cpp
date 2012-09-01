@@ -234,6 +234,15 @@ int WinampClientBase::getRepeat()
 	return IntegerResult(IdentBuf, IPC_GETREPEATOPTION, 0);
 }
 
+/**
+ * sets the repeat option
+ */
+void WinampClientBase::setRepeat(bool repeat)
+{
+	IntegerResult(IdentBuf, IPC_SETREPEATOPTION, repeat);
+}
+
+
 void WinampClientBase::toggleAutoload(void)
 {
 	int autoLoad = getAutoload();

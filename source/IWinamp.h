@@ -215,6 +215,11 @@ public:
 	virtual int getRepeat(void) = 0;
 
 	/**
+	 * sets the repeat option
+	 */
+	virtual void setRepeat(bool repeat) = 0;
+
+	/**
 	 * toggles the autoload option
 	 */
 	virtual void toggleAutoload(void) = 0;

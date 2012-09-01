@@ -102,6 +102,8 @@ public:
 
 	virtual int getRepeat(void);
 
+	virtual void setRepeat(bool repeat);
+
 	virtual void toggleAutoload(void);
 
 	virtual int getAutoload(void);

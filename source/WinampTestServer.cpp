@@ -82,8 +82,6 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			// TODO: not currently implemented
 		case IPC_SETPANNING:
 			// TODO: implement set panning
-		case IPC_SETSHUFFLEOPTION:
-			// TODO: this was never used
 		case IPC_SETREPEATOPTION:
 			// TODO: this was never used
 		case WINAMP_FILE_REPEAT:
@@ -170,6 +168,12 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			break;
 		case IPC_SETEQDATA:
 			m_eqdata[m_eqindex] = Data;
+			break;
+		case IPC_SETSHUFFLEOPTION:
+			m_shuffle = Data;
+			break;
+		case IPC_SETREPEATOPTION:
+			m_repeat = Data;
 			break;
 	}
 
