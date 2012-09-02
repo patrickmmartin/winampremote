@@ -64,8 +64,6 @@ protected:
   void __fastcall TfrmMain::ThreadStatus(TMessage &Message);
   void __fastcall TfrmMain::ThreadIdent(TMessage &Message);
 BEGIN_MESSAGE_MAP
-  MESSAGE_HANDLER(WM_THREAD_MESSAGE, TMessage, ThreadMessage)
-  MESSAGE_HANDLER(WM_THREAD_STATUS, TMessage, ThreadStatus)
   MESSAGE_HANDLER(WM_THREAD_IDENT, TMessage, ThreadIdent)
 END_MESSAGE_MAP(TControl)
 

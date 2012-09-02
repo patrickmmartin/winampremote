@@ -630,9 +630,6 @@ int retval;
 
 void __fastcall MainMessage(char * msgString)
 {
-  // TODO: this global handle should be factored out
-  // TODO: and has this been made obsolete?
-  PostMessage(mainhwnd, WM_THREAD_MESSAGE, 0, (long) strdup(msgString));
   TRPCServerDLLThread::CallObserver.notifyMessage(msgString);
 }
 
@@ -640,9 +637,6 @@ void __fastcall MainMessage(char * msgString)
 
 static void inline MainStatus(WAExecutionStatus Status)
 {
-  // TODO: this global handle should be factored out
-  PostMessage(mainhwnd, WM_THREAD_STATUS, 0, Status);
-
   char * statusStrings[] =
   	  	  	  	  	  {"Server Starting",
                        "Server Started",

@@ -81,18 +81,12 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			m_playList.clear();
 			m_playlistPosition = 0;
 			break;
-		case IPC_CHDIR:
-			// TODO: this was never used
 		case WINAMP_FILE_REPEAT:
 			m_repeat = !m_repeat;
 			break;
 		case WINAMP_FILE_SHUFFLE:
 			m_shuffle = !m_shuffle;
 			break;
-		case WINAMP_VOLUMEUP:
-			// TODO: this was never used
-		case WINAMP_VOLUMEDOWN:
-			// TODO: this was never used
 		case WINAMP_STARTOFPLAYLIST:
 			m_playlistPosition = 0;
 			break;
@@ -137,8 +131,6 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			return m_playList.size();
 		case IPC_GETLISTPOS:
 			return m_playlistPosition;
-		case IPC_GETINFO:
-			return 1;	// TODO: this was never used
 		case IPC_GETEQDATA:
 			if ((Data >= 0 ) && (Data < 12))
 			{
