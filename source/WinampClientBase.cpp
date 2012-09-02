@@ -28,16 +28,6 @@ static void GetIdent(void)
 
 }
 
-void winampSendList(void)
-{
-//  TODO implement SendList()
-}
-
-void winampGetList(void)
-{
-//  TODO implement GetList()
-}
-
 namespace WinampRemote
 {
 namespace Client
