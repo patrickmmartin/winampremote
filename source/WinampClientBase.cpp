@@ -264,7 +264,7 @@ WinampClientBase::getEQData(int eqindex)
 	return IntegerResult(IdentBuf, IPC_GETEQDATA, eqindex);
 }
 
-void WinampClientBase::setEQData(int eqindex, int eqvalue)
+void WinampClientBase::setEQData(int eqindex, byte eqvalue)
 {
 	getEQData(eqindex);
 	IntegerResult(IdentBuf, IPC_SETEQDATA, eqvalue );

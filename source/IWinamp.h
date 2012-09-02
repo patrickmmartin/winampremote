@@ -18,7 +18,8 @@ namespace WinampRemote
 namespace Client
 {
 
-using namespace std;
+// TODO: server executables are not seeing byte  
+typedef unsigned char byte;
 
 class IWinamp
 {
@@ -243,8 +244,7 @@ public:
 	/**
 	 * sets the eq data
 	 */
-	// TODO would like to use byte
-	virtual void setEQData(int eqindex, int eqvalue) = 0;
+	virtual void setEQData(int eqindex, byte eqvalue) = 0;
 
 	/**
 	 * returns the current song times for length and position

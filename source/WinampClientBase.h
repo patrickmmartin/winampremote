@@ -112,7 +112,7 @@ public:
 
 	virtual int getEQData(int eqindex);
 
-	void setEQData(int eqindex, int eqvalue);
+	void setEQData(int eqindex, byte eqvalue);
 
 	virtual void getTimes(int& songLength, int& songPos);
 
