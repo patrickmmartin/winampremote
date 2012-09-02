@@ -167,7 +167,7 @@ TEST_CASE("Client/SendString", "test sendString")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.sendString();
-	// TODO: this returns void: what is a valid test?
+	// this returns void: what is a valid test?
 	CHECK(true);
 }
 

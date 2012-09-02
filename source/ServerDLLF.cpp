@@ -56,7 +56,6 @@ void __fastcall TfrmMain::ThreadMessage(TMessage &Message)
 }
 
 
-//TODO: suitable recipient for status change
 void __fastcall TfrmMain::ExecutionStatus(WAExecutionStatus NewThreadState)
 {
 
