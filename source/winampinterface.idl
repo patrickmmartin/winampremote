@@ -30,34 +30,58 @@ interface winamp
 
   const short WA_RETURN_STRING_SIZE = 260;  /* MAX_PATH */
 
-  /* simple probing function to announce presence */
+  /**
+   @brief simple probing function 
+	*/
   void WAMessageProc([in, string] char *pszString);
-  /* execute winamp command */
+  /**
+   @brief execute winamp command
+	*/
   void WAExecuteMessage([in,  string] char *pszString, [in] long int command);
-  /* execute winamp command with string parameter */
+  /**
+   @brief execute winamp command with string parameter
+	*/
   void WAExecuteMessageString([in, string] char *pszString, [in, string] char *pszParam, [in] long int command);
-  /* execute winamp function and return long integer result */
+  /**
+   @brief execute winamp function and return long integer result
+	*/
   long int WAIntegerResult([in, string] char *pszString, [in] long int command, [in] long int data);
-  /* execute winamp function and return string result */
+  /**
+   @brief execute winamp function and return string result
+	*/
   long int WAStringResult([in, out, string] char pszString[WA_RETURN_STRING_SIZE], [in] long int command, [in] long int data);
-  /* Shutdown function */
+  /**
+   @brief Shutdown function - do not call
+    */
   void WAShutdown(void);
 
-  void WASetStringList([in, string] char *pszString,
+  /**
+   @brief sets a list in TStrings format with the command supplied
+   */ 
+     void WASetStringList([in, string] char *pszString,
                         [size_is(BufferLength), in ] byte Buffer[],
                         [in] unsigned long BufferLength,
                         [in] long int command);
 
+  /**
+   @brief struct to wrap up marshalling the data back
+   */   
   typedef struct {
                   unsigned long BufferLength;
                   [unique, size_is(BufferLength)] byte *Buffer;
                   } BUFFER;
 
+  /**
+   @brief sets a list in TStrings format from the result of command supplied
+   */ 
   void WAGetStringList([in, string] char *pszString,
                        [out] BUFFER *pBuffer,
                        [in] long int command);
 
 
+  /**
+   @brief sets a list in TStrings format from the result of commands supplied
+   */ 
   void WAGetStringDataList([in, string] char *pszString,
                        [out] BUFFER *pBuffer,
                        [in] long int stringcommand,
