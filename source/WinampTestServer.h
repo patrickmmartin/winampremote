@@ -53,6 +53,7 @@ private:
 	bool m_repeat, m_shuffle;
 	byte m_eqdata[12];
 	int m_eqindex;
+	byte m_panning;
 
 	void wrapPlaylistIndex(int increment);
 };

@@ -207,6 +207,17 @@ int WinampClientBase::getVolume()
 	return IntegerResult(IdentBuf, IPC_SETVOLUME, -666);
 }
 
+void WinampClientBase::setPanning(byte panning)
+{
+	IntegerResult(IdentBuf, IPC_SETPANNING, panning);
+}
+
+int WinampClientBase::getPanning()
+{
+	return IntegerResult(IdentBuf, IPC_SETPANNING, -666);
+}
+
+
 void WinampClientBase::toggleShuffle(void)
 {
 	ExecuteMessage(IdentBuf, WINAMP_FILE_SHUFFLE);
@@ -259,7 +270,7 @@ void WinampClientBase::setAutoload(bool value)
 	return setEQData(11, value);
 }
 
-WinampClientBase::getEQData(int eqindex)
+int WinampClientBase::getEQData(int eqindex)
 {
 	return IntegerResult(IdentBuf, IPC_GETEQDATA, eqindex);
 }

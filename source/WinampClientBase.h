@@ -92,6 +92,10 @@ public:
 
 	virtual int getVolume();
 
+	virtual void setPanning(byte panning);
+
+	virtual int getPanning();
+
 	virtual void toggleShuffle(void);
 
 	virtual int getShuffle(void);

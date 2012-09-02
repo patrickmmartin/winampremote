@@ -14,7 +14,8 @@ WinampTestServer::WinampTestServer() :
 		m_volume(0),
 		m_songPosition(0),
 		m_repeat(false), m_shuffle(false),
-		m_eqdata()
+		m_eqdata(),
+		m_panning(0)
 {
 	char title[MAX_PATH] = "";
 	char filename[MAX_PATH] = "";
@@ -82,8 +83,6 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			break;
 		case IPC_CHDIR:
 			// TODO: this was never used
-		case IPC_SETPANNING:
-			// TODO: implement set panning
 		case WINAMP_FILE_REPEAT:
 			m_repeat = !m_repeat;
 			break;
@@ -175,6 +174,13 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 		case IPC_SETREPEATOPTION:
 			m_repeat = Data;
 			break;
+		case IPC_SETPANNING:
+		{
+			if (Data == -666)
+				return m_panning;
+			m_panning = Data;
+			return 0;
+		}
 	}
 
 	return 0;

@@ -190,6 +190,17 @@ public:
 	virtual int getVolume() = 0;
 
 	/**
+	 * sets the panning
+	 * @param panning
+	 */
+	virtual void setPanning(byte panning) = 0;
+
+	/**
+	 * returns the panning
+	 */
+	virtual int getPanning() = 0;
+
+	/**
 	 * toggles the shuffle option
 	 */
 	virtual void toggleShuffle(void) = 0;

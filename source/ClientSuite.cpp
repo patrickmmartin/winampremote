@@ -372,13 +372,38 @@ TEST_CASE("Client/VolumeDown", "test volumeDown")
 /**
  * tests set volume works
  */
-TEST_CASE("Client/setVolume", "test setVolume")
+TEST_CASE("Client/SetVolume", "test setVolume")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
 	client.setVolume(50);
 	CHECK(client.getVolume() == 50);
+}
+
+/**
+ * tests set volume works
+ */
+TEST_CASE("Client/SetPanning", "test setPanning")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	client.setPanning(0);
+	CHECK(client.getPanning() == 0);
+}
+
+
+/**
+ * tests set volume works
+ */
+TEST_CASE("Client/GetPanning", "test getPanning")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	int panning = client.getPanning();
+	CHECK(client.getPanning() == panning);
 }
 
 /**
@@ -472,7 +497,7 @@ TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	bool  autoload = client.getAutoload();
+	bool autoload = client.getAutoload();
 	client.toggleAutoload();
 	CHECK(client.getAutoload() != autoload);
 }
