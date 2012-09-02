@@ -77,13 +77,13 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 
 
 		case IPC_DELETE:
-			// TODO: implement delete
+			m_playList.clear();
+			m_playlistPosition = 0;
+			break;
 		case IPC_CHDIR:
-			// TODO: not currently implemented
+			// TODO: this was never used
 		case IPC_SETPANNING:
 			// TODO: implement set panning
-		case IPC_SETREPEATOPTION:
-			// TODO: this was never used
 		case WINAMP_FILE_REPEAT:
 			m_repeat = !m_repeat;
 			break;
@@ -139,7 +139,7 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 		case IPC_GETLISTPOS:
 			return m_playlistPosition;
 		case IPC_GETINFO:
-			return 1;	// TODO: this is not used
+			return 1;	// TODO: this was never used
 		case IPC_GETEQDATA:
 			if ((Data >= 0 ) && (Data < 12))
 			{

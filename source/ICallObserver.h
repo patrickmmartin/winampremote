@@ -25,7 +25,6 @@ class ICallObserver {
      */
 	virtual ~ICallObserver() {}
 
-    // TODO parameter should be WAExecutionStatus
 	/**
      * status output
      * @param status

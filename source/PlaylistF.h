@@ -63,7 +63,6 @@ __published:	// IDE-managed Components
         void __fastcall pbSongPosMouseDown(TObject *Sender,
           TMouseButton Button, TShiftState Shift, int X, int Y);
         void __fastcall mnuRefreshClick(TObject *Sender);
-        void __fastcall FormResize(TObject *Sender);
         void __fastcall lstSongsMeasureItem(TWinControl *Control,
           int Index, int &Height);
 

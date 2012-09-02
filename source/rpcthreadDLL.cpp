@@ -631,6 +631,7 @@ int retval;
 void __fastcall MainMessage(char * msgString)
 {
   // TODO: this global handle should be factored out
+  // TODO: and has this been made obsolete?
   PostMessage(mainhwnd, WM_THREAD_MESSAGE, 0, (long) strdup(msgString));
   TRPCServerDLLThread::CallObserver.notifyMessage(msgString);
 }
@@ -641,8 +642,18 @@ static void inline MainStatus(WAExecutionStatus Status)
 {
   // TODO: this global handle should be factored out
   PostMessage(mainhwnd, WM_THREAD_STATUS, 0, Status);
-	// TODO use the correct type
-  TRPCServerDLLThread::CallObserver.notifyStatus("status");
+
+  char * statusStrings[] =
+  	  	  	  	  	  {"Server Starting",
+                       "Server Started",
+                       "Listening",
+                       "Executing",
+                       "Server Stopped",
+                       "Initialise Failed"};
+
+  std::string statusStr = "status: ";
+  statusStr += statusStrings[Status];
+  TRPCServerDLLThread::CallObserver.notifyStatus(statusStr.c_str());
 }
 
 

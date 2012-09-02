@@ -108,7 +108,6 @@ char * port;
   }
 
   catch (...)
-  // TODO: handled all the rest, and provide some explanation, ideally
   {
     perror("Unhandled error ");
     return errno;

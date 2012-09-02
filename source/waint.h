@@ -5,6 +5,9 @@
 
 #pragma hdrstop
 
+/* TODO : are these sort types working? IDC_SORT_FILETITLE, IDC_SORT_FILENAME, IDC_SORT_ENTIREFILENAME */
+
+
 enum WAPlaybackStatus
 {
 	WA_NOT_PLAYING, WA_PLAYING, WA_UNUSED, WA_PAUSED

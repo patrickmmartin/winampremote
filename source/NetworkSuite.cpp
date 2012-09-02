@@ -105,7 +105,6 @@ void NetworkSuite::doNetworkMessage(const AnsiString& message, const int level)
 {
   std::string msg = "Network message: ";
   msg += message.c_str();
-  // TODO update the server status
   INFO(msg);
 }
 
@@ -127,7 +126,6 @@ void NetworkSuite::doTestEvent(const AnsiString& remoteName,
   msg += remoteName.c_str();
   msg += " ";
   msg += data.c_str();
-  // TODO update the server status
   INFO(msg);
 
 }
@@ -141,7 +139,6 @@ void NetworkSuite::doTestResult(const AnsiString& remoteName,
   msg += remoteName.c_str();
   msg += " result ";
   msg += success?"true":"false";
-  // TODO update the server status
   INFO(msg);
 
 }
@@ -153,10 +150,7 @@ bool NetworkSuite::testLocalServer()
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
-    // TODO : failure results in the Server event with a parameter of false being fired
-    st.testServer("localhost");
-    // TODO: return the result for that server
-    return true;
+    return st.testServer("localhost");
 }
 
 bool NetworkSuite::testEnumeration()
@@ -166,7 +160,6 @@ bool NetworkSuite::testEnumeration()
     se.OnServer = doNetworkServer;
     se.OnProgress = doNetworkProgress;
     se.enumerateServers();
-    // TODO: validate some state
     return true;
 }
 
@@ -191,7 +184,6 @@ bool NetworkSuite::testServerTestAbort()
     servers["__invalid__"].comment = "should not exist";
     st.testServers(servers);
     _abort_test = prior_abort_test;
-    // TODO: validate some state
     return true;
 }
 
@@ -201,6 +193,5 @@ bool NetworkSuite::testServerInvalid()
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
     st.testServer("__invalid__");
-    // TODO: validate some state
     return true;
 }

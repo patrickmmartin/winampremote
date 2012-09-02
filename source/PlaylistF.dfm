@@ -15,7 +15,6 @@ object frmPlaylist: TfrmPlaylist
   Position = poDefault
   OnClose = FormClose
   OnCreate = FormCreate
-  OnResize = FormResize
   OnShow = FormShow
   OnStartDock = FormStartDock
   PixelsPerInch = 96

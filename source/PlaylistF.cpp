@@ -47,9 +47,6 @@ __fastcall TfrmPlaylist::TfrmPlaylist(TComponent* Owner)
 }
 
 
-/* TODO : are these sort types working? IDC_SORT_FILETITLE, IDC_SORT_FILENAME, IDC_SORT_ENTIREFILENAME */
-
-
 void __fastcall TfrmPlaylist::lstSongsDblClick(TObject *)
 {
 
@@ -439,18 +436,9 @@ void __fastcall TfrmPlaylist::pbSongPosMouseDown(TObject *, TMouseButton , TShif
 }
 
 
-
 void __fastcall TfrmPlaylist::mnuRefreshClick(TObject *)
 {
   frmMain->PlaylistRefresh->Execute();
-}
-
-
-
-void __fastcall TfrmPlaylist::FormResize(TObject *)
-{
-   // TODO: necessary to refresh upon resize?
-	Refresh();
 }
 
 

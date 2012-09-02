@@ -6,7 +6,7 @@
  */
 
 #include "ServerTester.h"
-#include "RPCBind.h"  // TODO: should only require Bind()
+#include "RPCBind.h"
 #include "RPCException.h"
 #include "waint.h"
 #include "WinampClientBase.h"
@@ -54,11 +54,12 @@ void ServerTester::testServers(map<AnsiString, ServerInfo>& servers)
        }
   }
 
-void ServerTester::testServer(const AnsiString& remote)
+bool ServerTester::testServer(const AnsiString& remote)
 {
 	 int retval;
 
-	  clock_t start, end;
+	clock_t start, end;
+	bool result = false;
 
     // static method from RPCFuncs
     Bind(remote.c_str(), _endPoint.c_str());
@@ -75,13 +76,14 @@ void ServerTester::testServer(const AnsiString& remote)
 
       end = clock();
       DoMessage(remote, AnsiString().sprintf("response after %.2fs ", (end - start) / CLK_TCK), 1);
-      DoResult(remote, true);
       DoMessage(remote, WinampVersionString(retval), 1);
+      result = true;
     }
     catch( ERPCException& E)
     {
       DoMessage(remote, AnsiString("failed: " ) + E.what(), 3);
-      DoResult(remote, false);
     }
+    DoResult(remote, result);
+	return result;
 
 }

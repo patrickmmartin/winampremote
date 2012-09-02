@@ -18,7 +18,7 @@ namespace WinampRemote
 namespace Client
 {
 
-// TODO: server executables are not seeing byte  
+// TODO: server executables are not seeing type byte - hence local redefinition
 typedef unsigned char byte;
 
 class IWinamp

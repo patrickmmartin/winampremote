@@ -42,7 +42,7 @@ __fastcall TfrmCommands::TfrmCommands(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TfrmCommands::FormClose(TObject *, TCloseAction &)
 {
-  // TODO: need to stop liberating functionality from the main form
+  // TODO: ideally would have a distinct UI controller for this
   frmMain->ViewToolBar->Execute();
 }
 //---------------------------------------------------------------------------

@@ -745,7 +745,6 @@ void TfrmMain::UpdateIcon(void)
     Shuffle->Checked = (WinampVerNo >= 0x2604) && client->getShuffle();
     Repeat->Checked = (WinampVerNo >= 0x2604) && client->getRepeat();
 
-    // TODO: would ideally disable handlers
     frmSettings->tbVolume->Position = client->getVolume();
 
     if ((frmSettings) && (frmSettings->EQUpdateNeeded))
@@ -1463,8 +1462,7 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
     void * buf = NULL;
     int bufsize = 0;
 
-    // TODO: get playlist
-    client->getStringList(IPC_GETPLAYLISTTITLE);
+    client->getStringList(IPC_GETPLAYLISTFILE);
 
     if (bufsize)
       StringList->Text = (char *) buf;
@@ -1529,7 +1527,6 @@ void __fastcall TfrmMain::DropFiles(TStringList *, int DropIndex)
   if (DropIndex > -1)
     GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count, Files);
 
-  // TODO a nice smooth merge might be nice
   // delete the playlist
   client->deletePlaylist();
 
