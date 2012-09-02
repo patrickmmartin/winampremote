@@ -15,9 +15,14 @@ namespace UnitTest
  */
 struct TestContext
 {
-	// TODO : member construction order
-    // blink and you might miss the fact that declaration order matters for the members
+    // NOTA BENE: blink and you might miss the fact that *declaration order* matters for the members
+	/**
+	 * create a scoped context
+	 */
 	WinampRemote::Context::ContextInfo ci;
+	/**
+	 * create a scoped binder dependent upon the context
+	 */
 	WinampRemote::Client::ClientBinder binder;
 	TestContext() : ci(), binder(ci.computername().c_str(), "\\pipe\\winampremote")
 	{
