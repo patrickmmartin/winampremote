@@ -143,7 +143,7 @@ TEST_CASE("Client/PlaylistCurrentItem", "test playlist current item")
 /**
  * tests that the playlist is returned
  */
-TEST_CASE("Client/Playlist", "test playlist")
+TEST_CASE("Client/PlaylistSize", "test getPlaylistLength")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -169,7 +169,7 @@ TEST_CASE("Client/SendString", "test sendString")
 /**
  * tests advancing song works
  */
-TEST_CASE("Client/NextSong", "test nextSong")
+TEST_CASE("Client/SongNext", "test nextSong")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -185,7 +185,7 @@ TEST_CASE("Client/NextSong", "test nextSong")
 /**
  * tests rewinding one song works
  */
-TEST_CASE("Client/PreviousSong", "test previousSong")
+TEST_CASE("Client/SongPrevious", "test previousSong")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -202,7 +202,7 @@ TEST_CASE("Client/PreviousSong", "test previousSong")
 /**
  * tests move to start of playlist
  */
-TEST_CASE("Client/PlaylistStart", "test playlistStart")
+TEST_CASE("Client/PlaylistStart", "test playlistStart position")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -231,7 +231,7 @@ TEST_CASE("Client/PlaylistEnd", "test playlistEnd")
 /**
  * tests setting the playlist index works
  */
-TEST_CASE("Client/SetPlaylistIndex", "test setPlaylistIndex")
+TEST_CASE("Client/PlaylistIndexSet", "test setPlaylistIndex")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -243,7 +243,7 @@ TEST_CASE("Client/SetPlaylistIndex", "test setPlaylistIndex")
 /**
  * tests starting playback
  */
-TEST_CASE("Client/StartPlaylist", "test startPlaylist")
+TEST_CASE("Client/PlaylistStartBegins", "test startPlaylist begins play")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -295,7 +295,7 @@ TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 /**
  * tests set time works
  */
-TEST_CASE("Client/SetTime", "test setTime")
+TEST_CASE("Client/TimeSet", "test setTime")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -372,7 +372,7 @@ TEST_CASE("Client/VolumeDown", "test volumeDown")
 /**
  * tests set volume works
  */
-TEST_CASE("Client/SetVolume", "test setVolume")
+TEST_CASE("Client/VolumeSet", "test setVolume")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -384,7 +384,7 @@ TEST_CASE("Client/SetVolume", "test setVolume")
 /**
  * tests set volume works
  */
-TEST_CASE("Client/SetPanning", "test setPanning")
+TEST_CASE("Client/PanningSet", "test setPanning")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -397,7 +397,7 @@ TEST_CASE("Client/SetPanning", "test setPanning")
 /**
  * tests set volume works
  */
-TEST_CASE("Client/GetPanning", "test getPanning")
+TEST_CASE("Client/PanningGet", "test getPanning")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -409,7 +409,7 @@ TEST_CASE("Client/GetPanning", "test getPanning")
 /**
  * tests that shuffle toggle works
  */
-TEST_CASE("Client/ToggleShuffle", "test toggleShuffle")
+TEST_CASE("Client/ShuffleToggle", "test toggleShuffle")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -422,7 +422,7 @@ TEST_CASE("Client/ToggleShuffle", "test toggleShuffle")
 /**
  * tests that set Shuffle works
  */
-TEST_CASE("Client/SetShuffle", "test setShuffle")
+TEST_CASE("Client/ShuffleSet", "test setShuffle")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -437,7 +437,7 @@ TEST_CASE("Client/SetShuffle", "test setShuffle")
 /**
  * tests that get Shuffle works
  */
-TEST_CASE("Client/GetShuffle", "test getShuffle")
+TEST_CASE("Client/ShuffleGet", "test getShuffle")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -449,7 +449,7 @@ TEST_CASE("Client/GetShuffle", "test getShuffle")
 /**
  * tests that toggle repeat works
  */
-TEST_CASE("Client/ToggleRepeat", "test toggleRepeat")
+TEST_CASE("Client/RepeatToggle", "test toggleRepeat")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -462,7 +462,7 @@ TEST_CASE("Client/ToggleRepeat", "test toggleRepeat")
 /**
  * tests that set Repeat works
  */
-TEST_CASE("Client/SetRepeat", "test setRepeat")
+TEST_CASE("Client/RepeatSet", "test setRepeat")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -479,7 +479,7 @@ TEST_CASE("Client/SetRepeat", "test setRepeat")
 /**
  * tests that get repeat works
  */
-TEST_CASE("Client/GetRepeat", "test getRepeat")
+TEST_CASE("Client/RepeatGet", "test getRepeat")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -492,7 +492,7 @@ TEST_CASE("Client/GetRepeat", "test getRepeat")
 /**
  * tests that autoload toggle works
  */
-TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
+TEST_CASE("Client/AutoloadToggle", "test toggleAutoload")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -505,7 +505,7 @@ TEST_CASE("Client/ToggleAutoload", "test toggleAutoload")
 /**
  * tests that set autoload works
  */
-TEST_CASE("Client/SetAutoload", "test setAutoload")
+TEST_CASE("Client/AutoloadSet", "test setAutoload")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -519,7 +519,7 @@ TEST_CASE("Client/SetAutoload", "test setAutoload")
 /**
  * tests that get autoload works
  */
-TEST_CASE("Client/GetAutoload", "test getAutoload")
+TEST_CASE("Client/AutoloadGet", "test getAutoload")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -531,7 +531,7 @@ TEST_CASE("Client/GetAutoload", "test getAutoload")
 /**
  * tests that getting the output times works
  */
-TEST_CASE("Client/GetTimes", "test getTimes")
+TEST_CASE("Client/TimesGet", "test getTimes")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -546,7 +546,7 @@ TEST_CASE("Client/GetTimes", "test getTimes")
 /**
  * tests getting and setting EQ
  */
-TEST_CASE("Client/GetEQ", "test getEQ")
+TEST_CASE("Client/EQGet", "test getEQ")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
@@ -560,7 +560,7 @@ TEST_CASE("Client/GetEQ", "test getEQ")
 /**
  * tests getting and setting EQ
  */
-TEST_CASE("Client/SetEQ", "test setEQ")
+TEST_CASE("Client/EQSet", "test setEQ")
 {
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;

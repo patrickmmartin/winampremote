@@ -18,7 +18,7 @@
  */
 TEST_CASE("Network/Enumeration", "local Network enumeration")
 {
-	NetworkSuite ns;
+	NetworkTest ns;
 	// test network enumeration
 	CHECK(ns.testEnumeration());
 }
@@ -28,7 +28,7 @@ TEST_CASE("Network/Enumeration", "local Network enumeration")
  */
 TEST_CASE("Network/Local", "test interface")
 {
-	NetworkSuite ns;
+	NetworkTest ns;
 	// test local server properties
 	CHECK(ns.testLocalServer());
 	// test abort
@@ -51,7 +51,7 @@ TEST_CASE("Network/Servers", "test local servers")
  */
 TEST_CASE("Network/Abort", "test abort")
 {
-	NetworkSuite ns;
+	NetworkTest ns;
 	// test abort
 	CHECK(ns.testServerTestAbort());
 }
@@ -61,23 +61,23 @@ TEST_CASE("Network/Abort", "test abort")
  */
 TEST_CASE("Network/Invalid", "test communication with invalid server")
 {
-	NetworkSuite ns;
+	NetworkTest ns;
 	// test invalid
 	CHECK(ns.testServerInvalid());
 }
 
 
 
-NetworkSuite::NetworkSuite() :  _servers(), _abort_test(false)
+NetworkTest::NetworkTest() :  _servers(), _abort_test(false)
 {
 }
 
-NetworkSuite::~NetworkSuite()
+NetworkTest::~NetworkTest()
 {
   // clean up any owned resources
 }
 
-char * NetworkSuite::levelString(const int level)
+char * NetworkTest::levelString(const int level)
 {
   switch (level)
   {
@@ -90,8 +90,7 @@ char * NetworkSuite::levelString(const int level)
   }
 }
 
-
-void NetworkSuite::doNetworkServer(const AnsiString& remoteName, const AnsiString& comment, const AnsiString& ip)
+void NetworkTest::doNetworkServer(const AnsiString& remoteName, const AnsiString& comment, const AnsiString& ip)
 {
   _servers[remoteName].comment = comment;
 
@@ -101,14 +100,14 @@ void NetworkSuite::doNetworkServer(const AnsiString& remoteName, const AnsiStrin
   INFO(msg);
 }
 
-void NetworkSuite::doNetworkMessage(const AnsiString& message, const int level)
+void NetworkTest::doNetworkMessage(const AnsiString& message, const int level)
 {
   std::string msg = "Network message: ";
   msg += message.c_str();
   INFO(msg);
 }
 
-void NetworkSuite::doNetworkProgress(const float complete)
+void NetworkTest::doNetworkProgress(const float complete)
 {
   std::string msg = "Network Progress: ";
   msg += complete;
@@ -116,7 +115,7 @@ void NetworkSuite::doNetworkProgress(const float complete)
 }
 
 
-void NetworkSuite::doTestEvent(const AnsiString& remoteName,
+void NetworkTest::doTestEvent(const AnsiString& remoteName,
                                           const AnsiString& data,
                                           const int level)
 {
@@ -130,7 +129,7 @@ void NetworkSuite::doTestEvent(const AnsiString& remoteName,
 
 }
 
-void NetworkSuite::doTestResult(const AnsiString& remoteName,
+void NetworkTest::doTestResult(const AnsiString& remoteName,
                                            const bool success,
                                            bool& abort)
 {
@@ -145,7 +144,7 @@ void NetworkSuite::doTestResult(const AnsiString& remoteName,
 
 
 
-bool NetworkSuite::testLocalServer()
+bool NetworkTest::testLocalServer()
 {
     ServerTester st;
     st.OnResult = doTestResult;
@@ -153,7 +152,7 @@ bool NetworkSuite::testLocalServer()
     return st.testServer("localhost");
 }
 
-bool NetworkSuite::testEnumeration()
+bool NetworkTest::testEnumeration()
 {
     ServerEnumerator se;
     se.OnMessage = doNetworkMessage;
@@ -163,7 +162,7 @@ bool NetworkSuite::testEnumeration()
     return true;
 }
 
-bool NetworkSuite::testServerTest()
+bool NetworkTest::testServerTest()
 {
     ServerTester st;
     st.OnResult = doTestResult;
@@ -172,7 +171,7 @@ bool NetworkSuite::testServerTest()
     return true;
 }
 
-bool NetworkSuite::testServerTestAbort()
+bool NetworkTest::testServerTestAbort()
 {
     bool prior_abort_test = _abort_test;
     _abort_test = true;
@@ -187,7 +186,7 @@ bool NetworkSuite::testServerTestAbort()
     return true;
 }
 
-bool NetworkSuite::testServerInvalid()
+bool NetworkTest::testServerInvalid()
 {
     ServerTester st;
     st.OnResult = doTestResult;

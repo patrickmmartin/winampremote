@@ -17,11 +17,11 @@
 /**
  * A class to wrap up testing the network utility functions.
  */
-class NetworkSuite
+class NetworkTest
 {
 public:
-  NetworkSuite();
-  virtual ~NetworkSuite();
+  NetworkTest();
+  virtual ~NetworkTest();
 private:
 
   map<AnsiString, ServerInfo> _servers;
