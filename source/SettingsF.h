@@ -9,6 +9,7 @@
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
 #include <ToolWin.hpp>
+#include "IWinamp.h"
 //---------------------------------------------------------------------------
 class TfrmSettings : public TForm
 {
@@ -56,6 +57,7 @@ public:		// User declarations
     __fastcall TfrmSettings(TComponent* Owner);
    bool EQUpdateNeeded;
    void __fastcall UpdateBars(void);
+   WinampRemote::Client::IWinamp * client;
 
 };
 //---------------------------------------------------------------------------

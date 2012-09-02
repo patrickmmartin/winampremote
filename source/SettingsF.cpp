@@ -26,9 +26,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "SettingsF.h"
 #include "MainF.h"
 #include "waint.h"
-#include "RPCFuncsU.h"
 #include "GlassExtender.h"
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
@@ -36,12 +35,12 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 
 TfrmSettings *frmSettings;
-//---------------------------------------------------------------------------
+
 __fastcall TfrmSettings::TfrmSettings(TComponent* Owner)
-    : TForm(Owner)
+    : TForm(Owner), client(NULL)
 {
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmSettings::tbBalanceEnter(TObject *Sender)
 {
@@ -54,25 +53,25 @@ void __fastcall TfrmSettings::tbBalanceEnter(TObject *Sender)
     tbBalance->Position = tbBalance->Max;
     }
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmSettings::tbVolumeChange(TObject *)
 {
-  IntegerResult(frmMain->IdentChars, IPC_SETVOLUME, tbVolume->Position);
+  client->setVolume(tbVolume->Position);
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmSettings::tbBalanceChange(TObject *)
 {
-  IntegerResult(frmMain->IdentChars, IPC_SETPANNING, tbBalance->Position);
+  client->setPanning(tbBalance->Position);
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmSettings::FormClose(TObject *, TCloseAction &)
 {
   frmMain->ViewVolume->Execute();
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmSettings::FormCreate(TObject *)
 {
@@ -94,29 +93,28 @@ void __fastcall TfrmSettings::FormCreate(TObject *)
   EQUpdateNeeded = true;
 
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmSettings::FormDestroy(TObject *)
 {
   delete Bars;
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmSettings::UpdateBars(void)
 {
 
   for (int i = 0; i < Bars->Count ; i++)
   {
-    ( (TTrackBar *) Bars->Items[i])->Position =
-      IntegerResult(frmMain->IdentChars, IPC_GETEQDATA, i);
+    ( (TTrackBar *) Bars->Items[i])->Position = client->getEQData(i);
   }
 
   // last one...
-  frmMain->Autoload->Checked = IntegerResult(frmMain->IdentChars, IPC_GETEQDATA, 11);
+  frmMain->Autoload->Checked = client->getAutoload();
   EQUpdateNeeded = false;
 
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmSettings::BarsChange(TObject *Sender)
 {
@@ -124,19 +122,12 @@ void __fastcall TfrmSettings::BarsChange(TObject *Sender)
   int Index = Bars->IndexOf(Sender);
   if (Index > -1)
   {
-    IntegerResult(frmMain->IdentChars, IPC_GETEQDATA, Index);
-    IntegerResult(frmMain->IdentChars, IPC_SETEQDATA,  ( (TTrackBar *)Sender)->Position );
+    client->setEQData(Index, (byte) ((TTrackBar *)Sender)->Position );
   }
   EQUpdateNeeded = true;
 
 
 }
-//---------------------------------------------------------------------------
-
-
-
-
-
 
 
 void __fastcall TfrmSettings::FormStartDock(TObject *Sender,
@@ -144,7 +135,7 @@ void __fastcall TfrmSettings::FormStartDock(TObject *Sender,
 {
   frmMain->StartDock(Sender, DragObject);
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmSettings::FormShow(TObject *)
@@ -161,5 +152,5 @@ void __fastcall TfrmSettings::FormShow(TObject *)
   */
 
 }
-//---------------------------------------------------------------------------
+
 

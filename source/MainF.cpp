@@ -38,7 +38,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "ServersF.h"
 
 // RPC functions
-#include "RPCFuncsU.h"
+#include "RPCFuncsU.h" // TODO: only for [Set/Get]StringList
 #include "RPCException.h"
 #include "RPCBind.h"
 #include "DetailsF.h"
@@ -326,6 +326,7 @@ void __fastcall TfrmMain::FormShow(TObject *)
 {
 
   frmPlaylist->client = client;
+  frmSettings->client = client;
 
   // show hints on visible forms
   frmPlaylist->ShowHint = false;
@@ -745,7 +746,9 @@ void TfrmMain::UpdateIcon(void)
     Shuffle->Checked = (WinampVerNo >= 0x2604) && client->getShuffle();
     Repeat->Checked = (WinampVerNo >= 0x2604) && client->getRepeat();
 
+    // TODO: use a proper interface
     frmSettings->tbVolume->Position = client->getVolume();
+    frmSettings->tbBalance->Position = client->getPanning();
 
     if ((frmSettings) && (frmSettings->EQUpdateNeeded))
       frmSettings->UpdateBars();

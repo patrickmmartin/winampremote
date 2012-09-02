@@ -207,7 +207,7 @@ int WinampClientBase::getVolume()
 	return IntegerResult(IdentBuf, IPC_SETVOLUME, -666);
 }
 
-void WinampClientBase::setPanning(byte panning)
+void WinampClientBase::setPanning(int panning)
 {
 	IntegerResult(IdentBuf, IPC_SETPANNING, panning);
 }

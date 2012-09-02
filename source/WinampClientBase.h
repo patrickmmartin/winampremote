@@ -92,7 +92,7 @@ public:
 
 	virtual int getVolume();
 
-	virtual void setPanning(byte panning);
+	virtual void setPanning(int panning);
 
 	virtual int getPanning();
 

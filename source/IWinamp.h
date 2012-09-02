@@ -193,7 +193,7 @@ public:
 	 * sets the panning
 	 * @param panning
 	 */
-	virtual void setPanning(byte panning) = 0;
+	virtual void setPanning(int panning) = 0;
 
 	/**
 	 * returns the panning
