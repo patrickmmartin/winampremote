@@ -83,7 +83,6 @@ TARGETS= unittests.exe\
 		testclient.exe\
 		conremote.exe\
 		remote.exe\
-		winampserver.exe\
 		winampclient.dll\
 		gen_RPCinterface.dll 
 
@@ -135,7 +134,6 @@ test-builds:
 	make clean remote.exe > nul
 	make clean winampclient.dll > nul
 	make clean gen_RPCinterface.dll > nul
-	make clean winampserver.exe > nul
 	@echo independent builds completed
 
 run-unittests: 

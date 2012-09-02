@@ -3,7 +3,7 @@
 
 #pragma hdrstop
 
-#include "rpcthread.h"
+#include "testimp.h"
 
 #include <iostream>
 
