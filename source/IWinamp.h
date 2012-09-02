@@ -266,7 +266,23 @@ public:
 	virtual void getTimes(int& songLength, int& songPos) = 0;
 
 
-	virtual vector<string>*  getStringList(WinampCommand Command) = 0;
+	/**
+	 * returns the string list run over all the playlist for the given StringResult command
+	 * @param Command
+	 * @return the returns in TStrings format
+	 */
+	virtual std::string getStringList(WinampCommand Command) = 0;
+
+
+	/**
+	 * apply the passed list of string values in TStrings format with the passed command
+	 * @param list
+	 * @param Command
+	 */
+	virtual void setStringList(std::string list, WinampCommand Command) = 0;
+
+
+
 
 };
 

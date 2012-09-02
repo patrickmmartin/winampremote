@@ -38,7 +38,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "ServersF.h"
 
 // RPC functions
-#include "RPCFuncsU.h" // TODO: only for [Set/Get]StringList
 #include "RPCException.h"
 #include "RPCBind.h"
 #include "DetailsF.h"
@@ -1355,21 +1354,14 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
 
       frmPlaylist->lstSongs->Items->Clear();
 
-      void * buf = NULL;
-      int bufsize = 0;
       TStringList * SongList = new TStringList;
       try
       {
 
-        //GetStringDataList(IdentChars, &buf, bufsize, IPC_GETPLAYLISTTITLE, IPC_GETOUTPUTTIME, 1);
-        // char * pszString, void ** Buffer, int& Size, int Command
-        GetStringList(IdentChars, &buf, bufsize, IPC_GETPLAYLISTTITLE);
-
-
+        std::string list = client->getStringList(IPC_GETPLAYLISTTITLE);
 
         SongList->Clear();
-        if (bufsize)
-          SongList->Text = (char *) buf;
+        SongList->Text = list.c_str();
 
         frmPlaylist->lstSongs->Items->Assign(SongList);
 
@@ -1378,9 +1370,6 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
       {
         delete SongList;
       }
-
-      if (buf)
-        delete buf;
 
     }
     catch( ERPCException &E)
@@ -1445,7 +1434,7 @@ void __fastcall TfrmMain::DoAddFiles(TStrings * Files)
   Screen->Cursor = crHourGlass;
   try
   {
-    SetStringList(frmMain->IdentChars, Files->Text.c_str(), Files->Text.Length() + 1, IPC_PLAYFILE);
+	  client->setStringList(Files->Text.c_str(), IPC_PLAYFILE);
   }
   __finally
   {
@@ -1462,16 +1451,9 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
   {
   /* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
 
-    void * buf = NULL;
-    int bufsize = 0;
+    std::string list = client->getStringList(IPC_GETPLAYLISTFILE);
 
-    client->getStringList(IPC_GETPLAYLISTFILE);
-
-    if (bufsize)
-      StringList->Text = (char *) buf;
-
-    if (buf)
-      delete buf;
+	StringList->Text = list.c_str();
 
     for (i = frmPlaylist->lstSongs->Items->Count - 1 ; i >= 0 ; i--)
     {

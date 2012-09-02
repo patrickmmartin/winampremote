@@ -120,8 +120,9 @@ public:
 
 	virtual void getTimes(int& songLength, int& songPos);
 
-	virtual vector<string>*  getStringList(WinampCommand Command);
+	virtual std::string getStringList(WinampCommand Command);
 
+	virtual void setStringList(std::string list, WinampCommand Command);
 
 
 

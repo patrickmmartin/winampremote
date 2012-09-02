@@ -1,3 +1,6 @@
+    // TODO: remove the VCL-isms
+#include <vcl>
+
 #include <iostream.h>
 #include "windows.h"
 #include "stddef.h"
@@ -112,24 +115,32 @@ string WinampClientBase::getCurrentPlayListItem(int& index, bool title)
 }
 
 
-// TODO this implementation should ultimately be replaced with the bulk version
 vector<string>* WinampClientBase::getPlayList(bool title)
 {
 	vector<string> * result = new vector<string>();
-	char buffer[MAX_PATH] = "";
 
-	int lastlength = getPlaylistLength();
+	std::string playlist = getStringList(IPC_GETPLAYLISTTITLE);
 
-	for (int i = 0; i < lastlength; i++)
+	/*
+	std::ifstream input("filename.txt");
+    std::string line;
+
+    while( std::getline( input, line ) ) {
+        std::cout<<line<<'\n';
+    }
+
+    */
+
+	TStringList * list = new TStringList();
+	list->Text = playlist.c_str();
+	for (int i = 0; i < list->Count ; i++)
 	{
-		strcpy(buffer, IdentBuf);
-                if (title)
-		        StringResult(buffer, IPC_GETPLAYLISTTITLE, i);
-                else
-                        StringResult(buffer, IPC_GETPLAYLISTFILE, i);
-		result->push_back(buffer);
+		result->push_back(list->Strings[i].c_str());
 	}
+	delete list;
+
 	return result;
+
 }
 
 void WinampClientBase::playlistStart()
@@ -253,7 +264,6 @@ void WinampClientBase::setRepeat(bool repeat)
 	IntegerResult(IdentBuf, IPC_SETREPEATOPTION, repeat);
 }
 
-
 void WinampClientBase::toggleAutoload(void)
 {
 	int autoLoad = getAutoload();
@@ -281,8 +291,6 @@ void WinampClientBase::setEQData(int eqindex, byte eqvalue)
 	IntegerResult(IdentBuf, IPC_SETEQDATA, eqvalue );
 }
 
-
-
 void WinampClientBase::getTimes(int& songLength, int& songPos)
 {
 
@@ -294,21 +302,29 @@ void WinampClientBase::getTimes(int& songLength, int& songPos)
 
 }
 
-vector<string>*  WinampClientBase::getStringList(WinampCommand Command)
+std::string WinampClientBase::getStringList(WinampCommand Command)
 {
 
-	vector<string> * result = new vector<string>();
-	char buffer[MAX_PATH] = "";
+	std::string result = "";
+	BUFFER returnBuf;
 
-	int lastlength = getPlaylistLength();
+	returnBuf.BufferLength = 0;
+	returnBuf.Buffer = NULL;
 
-	for (int i = 0; i < lastlength; i++)
-	{
-		strcpy(buffer, IdentBuf);
-		StringResult(buffer, Command, i);
-		result->push_back(buffer);
-	}
+	WAGetStringList( (unsigned char *) IdentBuf, &returnBuf, Command);
+
+	result = (char *) returnBuf.Buffer;
+	delete returnBuf.Buffer;
+
 	return result;
+
+}
+
+void WinampClientBase::setStringList(std::string list, WinampCommand Command)
+{
+
+    WASetStringList( IdentBuf, (unsigned char *) list.c_str(), list.size(), Command);
+
 }
 
 } // end of namespace Client
