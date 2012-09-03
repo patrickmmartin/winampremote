@@ -305,7 +305,6 @@ void WAShutdown(void)
 
 RPC_STATUS status;
 
-  // TODO consider who has responsibility for the lifetime management of the RPC thread?
   MainMessage("rpc thread asked to stop");
   status = RpcMgmtStopServerListening(NULL);
   if (status == RPC_S_OK)

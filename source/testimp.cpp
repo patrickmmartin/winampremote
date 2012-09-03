@@ -141,7 +141,7 @@ void WASetStringList(
 
             for (int i = 0 ; i < StringList->Count ; i++)
             {
-                  // TODO implement mock execution for playlist title and playlist file
+            	  localWinamp.ExecuteStringCommand(StringList->Strings[i].c_str(), static_cast<WinampCommand>(command));
             }
 
 
