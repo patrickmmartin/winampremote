@@ -1,7 +1,5 @@
-    // TODO: remove the VCL-isms
-#include <vcl>
-
 #include <iostream.h>
+#include <sstream.h>
 #include "windows.h"
 #include "stddef.h"
 
@@ -111,23 +109,14 @@ vector<string>* WinampClientBase::getPlayList(bool title)
 
 	std::string playlist = getStringList(IPC_GETPLAYLISTTITLE);
 
-	/*
-	std::ifstream input("filename.txt");
+
+	std::stringstream input(playlist);
     std::string line;
 
-    while( std::getline( input, line ) ) {
-        std::cout<<line<<'\n';
+    while ( std::getline( input, line ) )
+    {
+        result->push_back(line);
     }
-
-    */
-
-	TStringList * list = new TStringList();
-	list->Text = playlist.c_str();
-	for (int i = 0; i < list->Count ; i++)
-	{
-		result->push_back(list->Strings[i].c_str());
-	}
-	delete list;
 
 	return result;
 
