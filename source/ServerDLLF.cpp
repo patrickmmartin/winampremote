@@ -35,7 +35,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #pragma resource "*.dfm"
 TfrmMain *frmMain;
 
-HWND mainhwnd;
 TRPCServerDLLThread *serverThread;
 
 const int FAIL_TIMEOUT = 15; // seconds
@@ -240,10 +239,6 @@ TRegistry * reg;
   if (success)
   {
       sbrMain->Panels->Items[1]->Text = AnsiString("name: ") + Computername;
-      // TODO: this global handle should be factored out
-      mainhwnd = this->Handle;
-
-
         }
   else
   {
@@ -305,9 +300,8 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
 
 void __fastcall TfrmMain::CreateThread()
 {
-  // should
-  serverThread =  new TRPCServerDLLThread(true);
-  // should set the server thread Endpoint property
+  serverThread =  new TRPCServerDLLThread(true, this->Handle);
+  // TODO: should set the server thread Endpoint property too
   serverThread->Resume();
 }
 

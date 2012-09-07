@@ -40,7 +40,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 void __fastcall MainMessage(char * msgString);
 static void inline MainStatus(WAExecutionStatus Status);
-void __fastcall MainIdent(char * msgString);
 
 
 
@@ -61,12 +60,13 @@ TRTLCriticalSection fCriticalSection ;
 void WAMessageProc(
     /* [string][out][in] */ unsigned char __RPC_FAR *pszString)
 {
+
   try
   {            // test for C++ exceptions
     try
     {         // test for C-based structured exceptions
       // functions to be protected in here
-      MainIdent((char *) pszString);
+      serverThread->MainIdent((char *) pszString);
       AnsiString str = (char *) pszString;
       str += " sent hello";
       MainMessage(str.c_str());
@@ -100,7 +100,7 @@ const char * commandStr;
   {            // test for C++ exceptions
     try
     {         // test for C-based structured exceptions
-      MainIdent((char *) pszString);
+      serverThread->MainIdent((char *) pszString);
       if (frmMain->requestlog[COMMAND_INTEGER])
       {
         AnsiString str = (char *) pszString;
@@ -145,7 +145,7 @@ const char * commandStr;
   {            // test for C++ exceptions
     try
     {         // test for C-based structured exceptions
-      MainIdent((char *) pszString);
+      serverThread->MainIdent((char *) pszString);
       if (frmMain->requestlog[COMMAND_STRING])
       {
 
@@ -194,7 +194,7 @@ int result;
   {            // test for C++ exceptions
     try
     {         // test for C-based structured exceptions
-      MainIdent((char *) pszString);
+        serverThread->MainIdent((char *) pszString);
       if (frmMain->requestlog[QUERY_INTEGER])
       {
         AnsiString str = (char *) pszString;
@@ -247,7 +247,7 @@ long WAStringResult(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-          MainIdent((char *) pszString);
+            serverThread->MainIdent((char *) pszString);
           MainStatus(waExecuting);
 
            retval = localWinamp->QueryString(static_cast<WinampCommand>(command), data);
@@ -345,7 +345,7 @@ void WASetStringList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-          MainIdent((char *) pszString);
+            serverThread->MainIdent((char *) pszString);
 
           TStringList * StringList = new TStringList;
           try
@@ -403,7 +403,7 @@ void WAGetStringList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-          MainIdent((char *) pszString);
+            serverThread->MainIdent((char *) pszString);
 
           TStringList * StringList = new TStringList;
           try
@@ -475,7 +475,7 @@ void WAGetStringDataList(
      {            // test for C++ exceptions
         try
         {         // test for C-based structured exceptions
-          MainIdent((char *) pszString);
+            serverThread->MainIdent((char *) pszString);
 
           TStringList * StringList = new TStringList;
           try
@@ -549,8 +549,8 @@ void WAGetStringDataList(
 
 
 
-__fastcall TRPCServerDLLThread::TRPCServerDLLThread(bool CreateSuspended)
-    : TThread(CreateSuspended)
+__fastcall TRPCServerDLLThread::TRPCServerDLLThread(bool CreateSuspended, HWND mainhwnd)
+    : TThread(CreateSuspended), m_mainhwnd(mainhwnd)
 {
 }
 
@@ -651,10 +651,9 @@ static void inline MainStatus(WAExecutionStatus Status)
 
 
 
-void __fastcall MainIdent(char * msgString)
+void TRPCServerDLLThread::MainIdent(char * msgString)
 {
-  // TODO: this global handle should be factored out
-  PostMessage(mainhwnd, WM_THREAD_IDENT, 0, (long) strdup(msgString));
+  PostMessage(m_mainhwnd, WM_THREAD_IDENT, 0, (long) strdup(msgString));
 }
 
 
