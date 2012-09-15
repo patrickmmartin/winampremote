@@ -9,12 +9,12 @@
       ..\obj\remote\ServersF.obj ..\obj\remote\DetailsF.obj 
       ..\obj\remote\PlaylistF.obj ..\obj\remote\SplashF.obj 
       ..\obj\remote\MainF.obj ..\obj\remote\messageF.obj 
-      ..\obj\remote\RPCFuncsU.obj ..\obj\remote\binding.obj 
-      ..\obj\remote\WAINT.obj ..\obj\remote\ColourU.obj 
-      ..\obj\remote\RFC1060U.obj ..\obj\remote\IPAddressU.obj 
-      ..\obj\remote\VersionInfoU.obj ..\obj\remote\remotestrs.obj 
-      ..\obj\remote\ServerEnumerator.obj ..\obj\remote\ServerTester.obj 
-      ..\obj\remote\GlassExtender.obj ..\obj\remote\WinampClientBase.obj"/>
+      ..\obj\remote\RPCFuncsU.obj ..\obj\remote\WAINT.obj 
+      ..\obj\remote\ColourU.obj ..\obj\remote\RFC1060U.obj 
+      ..\obj\remote\IPAddressU.obj ..\obj\remote\VersionInfoU.obj 
+      ..\obj\remote\remotestrs.obj ..\obj\remote\ServerEnumerator.obj 
+      ..\obj\remote\ServerTester.obj ..\obj\remote\GlassExtender.obj 
+      ..\obj\remote\WinampClientBase.obj"/>
     <RESFILES value="..\obj\remote\winampremote.res ..\obj\remote\windowsthemes.res remote.RES"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
@@ -146,12 +146,4 @@ ActiveLang=
 ProjectLang=0x00000809
 RootDir=D:\home\Patrick\Code\CBuilder5\RPC\winampremote1.3.8\
   </IDEOPTIONS>
-
-  <FILES>
-    <FILE type="override" value="binding.c" translator="Auto">
-      <CFLAG1 value=" -Tkh30000"/>
-      <WARNINGS value=" -w-use -w-pch"/>
-      <WARNOPTSTR value=" -w-"/>
-    </FILE>
-  </FILES>
 </PROJECT>

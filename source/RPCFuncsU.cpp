@@ -33,15 +33,13 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "RPCException.h"
 #include "RPCBind.h"
 
-//TODO: introduce parameter for this selection
-// hard-coded for tcpip
-//unsigned char * pszProtocolSequence = (unsigned char *) "ncacn_ip_tcp";
-unsigned char * pszProtocolSequence = (unsigned char *) "ncacn_np";
 // global string binding information
 unsigned char * StringBinding = NULL;
 
 extern "C"
 {
+const unsigned char * const pszProtocolSequenceTCP = (unsigned char *) "ncacn_ip_tcp";
+const unsigned char * const pszProtocolSequenceNP = (unsigned char *) "ncacn_np";
 
   void __stdcall ClientFree(void * mem)
   {
@@ -49,16 +47,16 @@ extern "C"
   }
 
   // this binds to the interface , and assigns to the interface handle
-  void __stdcall Bind(const char * NetworkAddress, const char * EndPoint)
+  void __stdcall Bind(const char * NetworkAddress, const char * EndPoint, const char * protocolSequence)
   {
     // avoid leaking handles ?
     if (StringBinding)
       UnBind();
 
     RpcStringBindingCompose(NULL,
-                            pszProtocolSequence,
+    						(unsigned char *) protocolSequence,
                             (unsigned char *) NetworkAddress,
-                            (unsigned char *)EndPoint,
+                            (unsigned char *) EndPoint,
                             NULL,
                             &StringBinding);
     RpcBindingFromStringBinding(StringBinding, &winamp_IfHandle);
@@ -389,4 +387,5 @@ extern "C"
 
 */
 }// extern "c"
+
 

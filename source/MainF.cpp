@@ -1156,7 +1156,7 @@ void __fastcall TfrmMain::RefreshEQExecute(TObject *)
 
 void _fastcall TfrmMain::DoBind(void)
 {
-  Bind(ebAddress->Text.c_str(), ebEndPoint->Text.c_str());
+  Bind(ebAddress->Text.c_str(), ebEndPoint->Text.c_str(), pszProtocolSequenceNP);
 }
 
 
@@ -1525,4 +1525,6 @@ void __fastcall TfrmMain::DropFiles(TStringList *, int DropIndex)
   PlaylistRefresh->Execute();
   
 }
+
+
 

@@ -62,7 +62,7 @@ bool ServerTester::testServer(const AnsiString& remote)
 	bool result = false;
 
     // static method from RPCFuncs
-    Bind(remote.c_str(), _endPoint.c_str());
+    Bind(remote.c_str(), _endPoint.c_str(), pszProtocolSequenceNP);
     try
     {
       DoMessage(remote, "beginning", 1);

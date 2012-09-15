@@ -60,8 +60,6 @@ unittests.exe:
 
 testserver.exe: 
 
-testclient.exe: 
-
 conremote.exe: 
 
 remote.exe: 
@@ -80,7 +78,6 @@ setup: remote.exe gen_RPCinterface.dll
 
 TARGETS= unittests.exe\
 		testserver.exe\
-		testclient.exe\
 		conremote.exe\
 		remote.exe\
 		winampclient.dll\

@@ -17,7 +17,7 @@ namespace Client
 
 ClientBinder::ClientBinder(const char * address, const char * port)
 {
-	Bind(address, port);
+	Bind(address, port, pszProtocolSequenceNP);
 
 }
 

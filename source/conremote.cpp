@@ -60,7 +60,7 @@ char * port;
   try
   {
 
-    Bind(address, port);
+    Bind(address, port, pszProtocolSequenceNP);
 
     WinampRemote::Client::WinampClientBase * cwc = new WinampRemote::Client::WinampClientBase();
 

@@ -274,7 +274,7 @@ int NewPos;
     TopList->AddStrings(BottomList);
   // reset position
 
-  // TODO: stop filching functionality from the main form
+  // TODO: use a proper interface
   frmMain->DoAddFiles(TopList);
 
   NewPos = TopList->IndexOfObject((TObject *) true);

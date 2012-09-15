@@ -34,7 +34,6 @@ USEFORM("SplashF.cpp", frmSplash);
 USEFORM("MainF.cpp", frmMain);
 USEFORM("messageF.cpp", frmMessage);
 USEUNIT("RPCFuncsU.cpp");
-USEUNIT("binding.c");
 USEUNIT("WAINT.CPP");
 USEUNIT("ColourU.cpp");
 USEUNIT("RFC1060U.CPP");
