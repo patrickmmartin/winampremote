@@ -38,8 +38,6 @@ unsigned char * StringBinding = NULL;
 
 extern "C"
 {
-const unsigned char * const pszProtocolSequenceTCP = (unsigned char *) "ncacn_ip_tcp";
-const unsigned char * const pszProtocolSequenceNP = (unsigned char *) "ncacn_np";
 
   void __stdcall ClientFree(void * mem)
   {

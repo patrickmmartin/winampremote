@@ -29,6 +29,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "waint.h"
 #include "gen_plugin.h"
 #include "AboutF.h"
+#include "RPCBind.h"
 
 
 #pragma package(smart_init)
@@ -300,8 +301,7 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
 
 void __fastcall TfrmMain::CreateThread()
 {
-  serverThread =  new TRPCServerDLLThread(true, this->Handle);
-  // TODO: should set the server thread Endpoint property too
+  serverThread =  new TRPCServerDLLThread(true, this->Handle, pszProtocolSequenceNP);
   serverThread->Resume();
 }
 

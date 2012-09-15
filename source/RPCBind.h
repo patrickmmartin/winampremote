@@ -9,10 +9,9 @@
 #define RPCBIND_H_
 
 
-// hard-coded for tcpip
-extern const unsigned char * const pszProtocolSequenceTCP;
-extern const unsigned char * const pszProtocolSequenceNP;
-
+// TODO: do we have a definition of these in the SDK headers somewhere?
+#define pszProtocolSequenceTCP "ncacn_ip_tcp"
+#define pszProtocolSequenceNP "ncacn_np"
 
 extern "C"
 {

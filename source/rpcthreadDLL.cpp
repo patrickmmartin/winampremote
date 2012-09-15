@@ -549,8 +549,8 @@ void WAGetStringDataList(
 
 
 
-__fastcall TRPCServerDLLThread::TRPCServerDLLThread(bool CreateSuspended, HWND mainhwnd)
-    : TThread(CreateSuspended), m_mainhwnd(mainhwnd)
+__fastcall TRPCServerDLLThread::TRPCServerDLLThread(bool CreateSuspended, HWND mainhwnd, const char * protocolSequence)
+    : TThread(CreateSuspended), m_mainhwnd(mainhwnd), m_protocolSequence(protocolSequence)
 {
 }
 
@@ -565,10 +565,6 @@ int retval;
 
 	// initialize with obtained handle
 	localWinamp = new WinampRemote::Server::WinampServer(plugin.hwndParent);
-
-
-    unsigned char * protocol_seq_np = "ncacn_np";
-//    unsigned char * protocol_seq_ip_tcp = "ncacn_ip_tcp";
 
     InitializeCriticalSection(&fCriticalSection);
     MainStatus(waServerStarting);
@@ -593,10 +589,12 @@ int retval;
       }
 
 
-    // should check status codes here for previously registered interfaces
-    status = RpcServerUseProtseqEp(protocol_seq_np,
+    // TODO: should check status codes here for previously registered interfaces
+    // TODO: should have the endpoint selectable perhaps?
+    status = RpcServerUseProtseqEp((unsigned char *) m_protocolSequence.c_str(),
                                    20,
-                                   (unsigned char *) "\\pipe\\winampremote", NULL);
+                                   (unsigned char *) "\\pipe\\winampremote",
+                                   NULL);
     if (status == RPC_S_OK)
     {
       status = RpcServerRegisterIf(winamp_v1_0_s_ifspec, NULL, NULL);

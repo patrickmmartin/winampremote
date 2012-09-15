@@ -18,11 +18,12 @@ class TRPCServerDLLThread : public TThread
 {
 private:
 	HWND m_mainhwnd;
+	std::string m_protocolSequence;
 
 protected:
     void __fastcall Execute();
 public:
-    __fastcall TRPCServerDLLThread(bool CreateSuspended, HWND mainhwnd);
+    __fastcall TRPCServerDLLThread(bool CreateSuspended, HWND mainhwnd, const char * protocolSequence);
     AnsiString Endpoint;
     static ICallObserver& CallObserver;
 	void MainIdent(char * msgString);
