@@ -8,8 +8,6 @@
 #ifndef RPCBIND_H_
 #define RPCBIND_H_
 
-
-// TODO: do we have a definition of these in the SDK headers somewhere?
 #define pszProtocolSequenceTCP "ncacn_ip_tcp"
 #define pszProtocolSequenceNP "ncacn_np"
 
