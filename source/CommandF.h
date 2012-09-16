@@ -1,14 +1,14 @@
-//---------------------------------------------------------------------------
+
 #ifndef CommandFH
 #define CommandFH
-//---------------------------------------------------------------------------
+
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ComCtrls.hpp>
 #include <ToolWin.hpp>
-//---------------------------------------------------------------------------
+
 class TfrmCommands : public TForm
 {
 __published:	// IDE-managed Components
@@ -26,7 +26,7 @@ private:	// User declarations
 public:		// User declarations
     __fastcall TfrmCommands(TComponent* Owner);
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TfrmCommands *frmCommands;
-//---------------------------------------------------------------------------
+
 #endif

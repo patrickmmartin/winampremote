@@ -55,7 +55,7 @@ void __fastcall TfrmMessage::tmrAnimateTimer(TObject *)
 //
 
   int TicksCount = GetTickCount() - StartCount;
-  memTitle->Font->Color = RainbowColour(TicksCount);
+  memTitle->Font->Color = rainbowColour(TicksCount);
   if (TicksCount > 3000)
   {
     tmrAnimate->Enabled = false;

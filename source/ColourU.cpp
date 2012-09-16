@@ -27,16 +27,15 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 const int BASE_RANGE = 500;
 const double offset = 0.15;
 
-
 double periodic(double percent)
 {
-//returns a periodic (cos ^2) function from any real input periodicity of 1
+  // TODO: function can be optimised
   double temp = M_PI * percent;
   return cos(temp) * cos(temp);
 }
 
 
-TColor RainbowColour(int value)
+TColor rainbowColour(int value)
 {
   double percent = (double) ( value % BASE_RANGE) /BASE_RANGE;
 
@@ -47,6 +46,3 @@ TColor RainbowColour(int value)
   return (TColor) RGB(R, G, B);
   }
 
-
-//---------------------------------------------------------------------------
-#pragma package(smart_init)

@@ -29,17 +29,17 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "RFC1060U.h"
 #include "DetailsF.h"
 
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
 TConfigForm *ConfigForm;
-//---------------------------------------------------------------------------
+
 __fastcall TConfigForm::TConfigForm(TComponent* Owner)
     : TForm(Owner)
 {
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TConfigForm::btnAboutClick(TObject *Sender)
 {
@@ -59,19 +59,19 @@ void __fastcall TConfigForm::btnAboutClick(TObject *Sender)
   }
 
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TConfigForm::chkVisibleClick(TObject *Sender)
 {
   frmMain->Visible = chkVisible->Checked;
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TConfigForm::FormCreate(TObject *Sender)
 {
   chkVisible->Checked = frmMain->Visible;
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TConfigForm::btnChangeEndpointClick(TObject *Sender)
 {
@@ -128,7 +128,7 @@ void __fastcall TConfigForm::btnChangeEndpointClick(TObject *Sender)
   btnChangeEndpoint->Enabled = false;
 
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TConfigForm::DetailsClick(TObject *Sender)
@@ -146,5 +146,5 @@ void __fastcall TConfigForm::DetailsClick(TObject *Sender)
   }
 
 }
-//---------------------------------------------------------------------------
+
 

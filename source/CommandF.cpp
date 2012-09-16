@@ -27,24 +27,24 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "MainF.h"
 #include "GlassExtender.h"
 
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
 
 
 TfrmCommands *frmCommands;
-//---------------------------------------------------------------------------
+
 __fastcall TfrmCommands::TfrmCommands(TComponent* Owner)
     : TForm(Owner)
 {
 }
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmCommands::FormClose(TObject *, TCloseAction &)
 {
   frmMain->ViewToolBar->Execute();
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmCommands::FormStartDock(TObject *Sender,
       TDragDockObject *&DragObject)
@@ -52,7 +52,7 @@ void __fastcall TfrmCommands::FormStartDock(TObject *Sender,
   frmMain->StartDock(Sender, DragObject);
         
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmCommands::FormShow(TObject *)
@@ -66,5 +66,5 @@ void __fastcall TfrmCommands::FormShow(TObject *)
       tbCommands->Transparent = true;
   }
 }
-//---------------------------------------------------------------------------
+
 

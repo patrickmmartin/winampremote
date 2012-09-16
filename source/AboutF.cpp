@@ -21,7 +21,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 */
 
 
-//---------------------------------------------------------------------------
+
 #include <vcl.h>
 #pragma hdrstop
 
@@ -30,7 +30,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include <math.h>
 #include "AboutF.h"
 
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
@@ -861,13 +861,13 @@ void TfrmAbout::setupPixelformat(HDC hDC)
 
 
 
-//---------------------------------------------------------------------------
+
 __fastcall TfrmAbout::TfrmAbout(TComponent* Owner)
     : TForm(Owner)
 {
 }
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmAbout::WMPaletteChanged(TMessage& Msg)
 {
 
@@ -879,7 +879,7 @@ void __fastcall TfrmAbout::WMPaletteChanged(TMessage& Msg)
   }
 
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmAbout::WMQueryNewPalette(TMessage& /* Msg */)
 {
@@ -915,7 +915,7 @@ void __fastcall TfrmAbout::FormCreate(TObject *)
 
 //
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmAbout::FormDestroy(TObject *)
 {
@@ -927,7 +927,7 @@ void __fastcall TfrmAbout::FormDestroy(TObject *)
   delete OutText;
 //
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmAbout::FormMouseDown(TObject *, TMouseButton , TShiftState , int X, int Y)
 {
@@ -937,7 +937,7 @@ void __fastcall TfrmAbout::FormMouseDown(TObject *, TMouseButton , TShiftState ,
         }
 //
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmAbout::FormMouseMove(TObject *, TShiftState , int X, int Y)
 {
@@ -946,7 +946,7 @@ void __fastcall TfrmAbout::FormMouseMove(TObject *, TShiftState , int X, int Y)
         }
 //
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmAbout::FormMouseUp(TObject *, TMouseButton , TShiftState , int X, int Y)
 {
@@ -956,7 +956,7 @@ void __fastcall TfrmAbout::FormMouseUp(TObject *, TMouseButton , TShiftState , i
 	    }
 //
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmAbout::FormPaint(TObject *)
 {
@@ -968,7 +968,7 @@ void __fastcall TfrmAbout::FormPaint(TObject *)
   }
 //
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmAbout::FormResize(TObject *)
 {
@@ -977,7 +977,7 @@ void __fastcall TfrmAbout::FormResize(TObject *)
   }
 //
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TfrmAbout::FormKeyPress(TObject *, char &Key)
@@ -1041,7 +1041,7 @@ void __fastcall TfrmAbout::FormKeyPress(TObject *, char &Key)
 
 
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmAbout::FormKeyDown(TObject *, WORD &Key, TShiftState )
 {
@@ -1066,13 +1066,13 @@ void __fastcall TfrmAbout::FormKeyDown(TObject *, WORD &Key, TShiftState )
   if (hGLRC) redraw();
   return;
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmAbout::IdleHandler(TObject *)
 {
   redraw();
 }
-//---------------------------------------------------------------------------
+
 
 
 
@@ -1082,5 +1082,5 @@ void __fastcall TfrmAbout::FormShow(TObject *)
   tmrMain->Enabled = true;
 
 }
-//---------------------------------------------------------------------------
+
 

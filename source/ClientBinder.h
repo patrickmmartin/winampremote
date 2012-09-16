@@ -13,9 +13,17 @@ namespace WinampRemote
 namespace Client
 {
 
+/**
+ * class to wrap up the task of binding the RPC global context
+ */
 class ClientBinder
 {
 public:
+	/**
+	 * Binds the global RPC binding handle to the address and port
+	 * @param address
+	 * @param port
+	 */
 	ClientBinder(const char * address, const char * port);
 	virtual ~ClientBinder();
 };

@@ -1,14 +1,14 @@
-//---------------------------------------------------------------------------
+
 #ifndef ConfigDLLFH
 #define ConfigDLLFH
-//---------------------------------------------------------------------------
+
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
 #include <Graphics.hpp>
-//---------------------------------------------------------------------------
+
 
 
 
@@ -33,7 +33,7 @@ private:	// User declarations
 public:		// User declarations
     __fastcall TConfigForm(TComponent* Owner);
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TConfigForm *ConfigForm;
-//---------------------------------------------------------------------------
+
 #endif
