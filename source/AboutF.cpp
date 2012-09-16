@@ -677,7 +677,7 @@ or GL_DONT_CARE to indicate no preference.
     }
 }
 
-//=================================================================
+
 
 void TfrmAbout::redraw(void)
 {
@@ -686,7 +686,7 @@ void TfrmAbout::redraw(void)
   doRedraw();
 }
 
-//=================================================================
+
 
 // these functions implement a simple trackball-like motion control
 BOOL trackingMotion = FALSE;
@@ -759,7 +759,7 @@ void TfrmAbout::trackMotion(DWORD /* time */, int x, int y)
     }
 }
 
-//=================================================================
+
 
 void TfrmAbout::setupPalette(HDC hDC)
 {

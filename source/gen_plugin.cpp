@@ -68,7 +68,7 @@ extern "C" winampGeneralPurposePlugin *  __declspec(dllexport)  __stdcall winamp
   return &plugin;
 }
 
-//==========================================================
+
 
 void config(void)
 {
@@ -85,7 +85,7 @@ void config(void)
   }
 }
 
-//==========================================================
+
 
 void quit(void)
 {
@@ -104,7 +104,7 @@ void quit(void)
   }
 }
 
-//==========================================================
+
 
 int init()
 {
