@@ -25,7 +25,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include <winsock.h>
 #include "IPAddressU.h"
 
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 
 void __fastcall GetIPAddress(char * HostName, AnsiString &ResolvedName, TStringList * Addresses, TStringList * Aliases)

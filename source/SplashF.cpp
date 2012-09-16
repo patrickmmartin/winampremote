@@ -25,22 +25,22 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "SplashF.h"
 #include "remotestrs.h"
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
 TfrmSplash *frmSplash;
-//---------------------------------------------------------------------------
+
 __fastcall TfrmSplash::TfrmSplash(TComponent* Owner)
     : TForm(Owner)
 {
 }
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmSplash::FormCreate(TObject *)
 {
   Caption = sWinampRemoteLoading;
 }
-//---------------------------------------------------------------------------
+
 

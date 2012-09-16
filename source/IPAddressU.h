@@ -1,7 +1,7 @@
-//---------------------------------------------------------------------------
+
 #ifndef IPAddressUH
 #define IPAddressUH
-//---------------------------------------------------------------------------
+
 #endif
 
 void __fastcall GetIPAddress(char * HostName, AnsiString &ResolvedName, TStringList * Addresses, TStringList * Aliases);

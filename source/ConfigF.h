@@ -1,14 +1,14 @@
-//---------------------------------------------------------------------------
+
 #ifndef ConfigFH
 #define ConfigFH
-//---------------------------------------------------------------------------
+
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
 #include <Graphics.hpp>
-//---------------------------------------------------------------------------
+
 class TConfigForm : public TForm
 {
 __published:	// IDE-managed Components
@@ -23,7 +23,7 @@ private:	// User declarations
 public:		// User declarations
     __fastcall TConfigForm(TComponent* Owner);
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TConfigForm *ConfigForm;
-//---------------------------------------------------------------------------
+
 #endif

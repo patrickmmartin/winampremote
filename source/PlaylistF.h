@@ -1,7 +1,7 @@
-//---------------------------------------------------------------------------
+
 #ifndef PlaylistFH
 #define PlaylistFH
-//---------------------------------------------------------------------------
+
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
@@ -9,7 +9,7 @@
 #include <Menus.hpp>
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
-//---------------------------------------------------------------------------
+
 
 #include "IWinamp.h"
 #include "GlassExtender.h"
@@ -94,7 +94,7 @@ MESSAGE_HANDLER(WM_DROPFILES,TMessage,DropFiles)
 END_MESSAGE_MAP(TForm)
 
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TfrmPlaylist *frmPlaylist;
-//---------------------------------------------------------------------------
+
 #endif

@@ -24,7 +24,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "RFC1060U.h"
 
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 
   porttype RFC1060ports[] =

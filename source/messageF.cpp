@@ -25,7 +25,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "messageF.h"
 #include "ColourU.h"
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
@@ -36,20 +36,20 @@ TfrmMessage *frmMessage;
 const TRect FinalSize = TRect(0, 0, 350, 150);
 
 float startcount = 0;
-//---------------------------------------------------------------------------
+
 __fastcall TfrmMessage::TfrmMessage(TComponent* Owner)
     : TForm(Owner)
 {
 }
 
-//---------------------------------------------------------------------------
+
 
 void __fastcall TfrmMessage::FormShow(TObject *)
 {
   tmrAnimate->Enabled = true;
   StartCount = GetTickCount();
 }
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMessage::tmrAnimateTimer(TObject *)
 {
 //
@@ -62,12 +62,12 @@ void __fastcall TfrmMessage::tmrAnimateTimer(TObject *)
     Close();
   }
 }
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmMessage::FormActivate(TObject *)
 {
 //
 }
-//---------------------------------------------------------------------------
+
 
 
 

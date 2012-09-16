@@ -22,8 +22,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include <vcl.h>
 #pragma hdrstop
-//---------------------------------------------------------------------------
-//---------------------------------------------------------------------------
+
+
 USEFORM("AboutF.cpp", frmAbout);
 USEFORM("ServerDLLF.cpp", frmMain);
 USEFORM("ConfigDLLF.cpp", ConfigForm);
@@ -38,7 +38,7 @@ USEUNIT("GlassExtender.cpp");
 USEUNIT("CallReflector.cpp");
 USEUNIT("WinampServerImpl.cpp");
 USERES("gen_RPCinterface.RES");
-//---------------------------------------------------------------------------
+
 int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void*)
 {
 
@@ -59,4 +59,4 @@ int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void*)
 
   return 1;
 }
-//---------------------------------------------------------------------------
+

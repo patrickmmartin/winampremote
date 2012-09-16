@@ -446,5 +446,5 @@ void __fastcall TfrmPlaylist::lstSongsMeasureItem(TWinControl *, int , int &Heig
 {
    Height = 17;        
 }
-//---------------------------------------------------------------------------
+
 

@@ -1,7 +1,7 @@
-//---------------------------------------------------------------------------
+
 #ifndef ServerDLLFH
 #define ServerDLLFH
-//---------------------------------------------------------------------------
+
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
@@ -14,7 +14,7 @@
 #include <ImgList.hpp>
 #include <ToolWin.hpp>
 
-//---------------------------------------------------------------------------
+
 
 enum WAExecutionStatus {waServerStarting, waServerStarted, waListening, waExecuting, waServerStopped, waInitialiseFailed};
 
@@ -84,8 +84,8 @@ public:		// User declarations
       void __fastcall CreateThread();
       void __fastcall StopThread(TObject *Sender);
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TfrmMain *frmMain;
 
-//---------------------------------------------------------------------------
+
 #endif

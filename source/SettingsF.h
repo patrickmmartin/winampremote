@@ -1,7 +1,7 @@
-//---------------------------------------------------------------------------
+
 #ifndef SettingsFH
 #define SettingsFH
-//---------------------------------------------------------------------------
+
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
@@ -10,7 +10,7 @@
 #include <ExtCtrls.hpp>
 #include <ToolWin.hpp>
 #include "IWinamp.h"
-//---------------------------------------------------------------------------
+
 class TfrmSettings : public TForm
 {
 __published:	// IDE-managed Components
@@ -60,7 +60,7 @@ public:		// User declarations
    WinampRemote::Client::IWinamp * client;
 
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TfrmSettings *frmSettings;
-//---------------------------------------------------------------------------
+
 #endif

@@ -49,9 +49,9 @@ USERC("windowsthemes.rc");
 USEUNIT("GlassExtender.cpp");
 USERES("remote.RES");
 USEUNIT("WinampClientBase.cpp");
-//---------------------------------------------------------------------------
+
 #include "remotestrs.h"
-//---------------------------------------------------------------------------
+
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
     try
@@ -90,4 +90,4 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     }
     return 0;
 }
-//---------------------------------------------------------------------------
+

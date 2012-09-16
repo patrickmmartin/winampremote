@@ -5,7 +5,7 @@ USEUNIT("WinampClientBase.cpp");
 USELIB("..\lib\winampinterface.lib");
 USERC("winampremote.rc");
 USERES("conremote.RES");
-//---------------------------------------------------------------------------
+
 This file is used by the project manager only and should be treated like the project file
 
 main

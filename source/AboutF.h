@@ -1,7 +1,7 @@
-//---------------------------------------------------------------------------
+
 #ifndef AboutFH
 #define AboutFH
-//---------------------------------------------------------------------------
+
 #include <Forms.hpp>
 #include <StdCtrls.hpp>
 #include <Controls.hpp>
@@ -10,7 +10,7 @@
 #include <Menus.hpp>
 #include <ComCtrls.hpp>
 
-//---------------------------------------------------------------------------
+
 
 
 class TfrmAbout : public TForm
@@ -69,10 +69,10 @@ MESSAGE_HANDLER(WM_QUERYNEWPALETTE,TMessage,WMQueryNewPalette)
 END_MESSAGE_MAP(TForm)
 
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TfrmAbout *frmAbout;
 extern TStringList *OutText;
 
 
-//---------------------------------------------------------------------------
+
 #endif

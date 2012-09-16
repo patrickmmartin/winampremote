@@ -115,5 +115,5 @@ AnsiString __fastcall TModuleVersionInfo::GetVersionInfo (int Index)
 
 
 
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)

@@ -27,21 +27,21 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "VersionInfoU.h"
 #include "remotestrs.h"
 
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
 
 
 TfrmDetails *frmDetails;
-//---------------------------------------------------------------------------
+
 __fastcall TfrmDetails::TfrmDetails(TComponent* Owner)
         : TForm(Owner)
 {
 }
 
 
-//---------------------------------------------------------------------------
+
 void __fastcall TfrmDetails::FormCreate(TObject *)
 {
 
@@ -84,4 +84,4 @@ void __fastcall TfrmDetails::FormCreate(TObject *)
 
 
 }
-//---------------------------------------------------------------------------
+

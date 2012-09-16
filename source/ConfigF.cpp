@@ -1,20 +1,20 @@
-//---------------------------------------------------------------------------
+
 #include <vcl.h>
 #pragma hdrstop
 
 #include "ConfigF.h"
 #include "AboutF.h"
 #include "ServerDLLF.h"
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TConfigForm *ConfigForm;
-//---------------------------------------------------------------------------
+
 __fastcall TConfigForm::TConfigForm(TComponent* Owner)
     : TForm(Owner)
 {
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TConfigForm::btnAboutClick(TObject *Sender)
 {
@@ -38,12 +38,12 @@ void __fastcall TConfigForm::btnAboutClick(TObject *Sender)
 
 
 }
-//---------------------------------------------------------------------------
+
 
 
 void __fastcall TConfigForm::FormCreate(TObject *Sender)
 {
   ebEndPoint->Text = "\\pipe\\winampremote";
 }
-//---------------------------------------------------------------------------
+
 

@@ -1,14 +1,14 @@
-//---------------------------------------------------------------------------
+
 #ifndef messageFH
 #define messageFH
-//---------------------------------------------------------------------------
+
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
 #include <Graphics.hpp>
-//---------------------------------------------------------------------------
+
 class TfrmMessage : public TForm
 {
 __published:	// IDE-managed Components
@@ -25,7 +25,7 @@ private:	// User declarations
 public:		// User declarations
 virtual __fastcall TfrmMessage(TComponent* Owner);
 };
-//---------------------------------------------------------------------------
+
 extern PACKAGE TfrmMessage *frmMessage;
-//---------------------------------------------------------------------------
+
 #endif

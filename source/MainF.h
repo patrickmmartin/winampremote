@@ -1,11 +1,11 @@
-//----------------------------------------------------------------------------
+
 //Borland C++Builder
 //Copyright (c) 1987, 1998 Borland International Inc. All Rights Reserved.
-//----------------------------------------------------------------------------
-//---------------------------------------------------------------------------
+
+
 #ifndef MainFH
 #define MainFH
-//---------------------------------------------------------------------------
+
 #include <Forms.hpp>
 #include <StdCtrls.hpp>
 #include <Controls.hpp>
@@ -31,7 +31,7 @@ static const Word FRENCH = 0x40c;
 static const Word DUTCH = 0x413;
 
 
-//---------------------------------------------------------------------------
+
 class TfrmMain : public TForm
 {
 __published:
@@ -309,12 +309,12 @@ BEGIN_MESSAGE_MAP
 MESSAGE_HANDLER(TRAY_NOTIFY, TMessage, TrayNotify)
 END_MESSAGE_MAP(TForm)
 };
-//---------------------------------------------------------------------------
+
 extern TfrmMain *frmMain;
 
 void MessageForm(AnsiString MessageStr);
 
 
-//---------------------------------------------------------------------------
+
 #endif
 
