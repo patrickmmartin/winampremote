@@ -4,7 +4,8 @@
 #include <vector.h>
 #include <string.h>
 
-#include "waint.h"
+#include "waint.h" // for WAPlaybackStatus, etc.
+#include "winampinterface.h" // for byte
 
 /**
  * namespace for the WinampRemote project
@@ -17,9 +18,6 @@ namespace WinampRemote
  */
 namespace Client
 {
-
-// TODO: server executables are not seeing type byte - hence local redefinition
-typedef unsigned char byte;
 
 class IWinamp
 {
