@@ -589,7 +589,6 @@ int retval;
       }
 
 
-    // TODO: should check status codes here for previously registered interfaces
     // TODO: should have the endpoint selectable perhaps?
     status = RpcServerUseProtseqEp((unsigned char *) m_protocolSequence.c_str(),
                                    20,

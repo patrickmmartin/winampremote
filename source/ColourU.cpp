@@ -29,9 +29,7 @@ const double offset = 0.15;
 
 double periodic(double percent)
 {
-  // TODO: function can be optimised
-  double temp = M_PI * percent;
-  return cos(temp) * cos(temp);
+	return (0.5 + ( 1 + cos(M_PI * 2 * percent )));
 }
 
 
