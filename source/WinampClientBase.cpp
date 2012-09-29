@@ -105,12 +105,16 @@ string WinampClientBase::getCurrentPlayListItem(int& index, bool title)
 
 vector<string>* WinampClientBase::getPlayList(bool title)
 {
-	vector<string> * result = new vector<string>();
+    vector<string> * result = new vector<string>();
 
-	std::string playlist = getStringList(IPC_GETPLAYLISTTITLE);
+    std::string playlist;
+    if (title)
+        playlist = getStringList(IPC_GETPLAYLISTTITLE);
+    else
+        playlist = getStringList(IPC_GETPLAYLISTFILE);
 
 
-	std::stringstream input(playlist);
+    std::stringstream input(playlist);
     std::string line;
 
     while ( std::getline( input, line ) )
@@ -118,7 +122,7 @@ vector<string>* WinampClientBase::getPlayList(bool title)
         result->push_back(line);
     }
 
-	return result;
+    return result;
 
 }
 
@@ -302,7 +306,7 @@ std::string WinampClientBase::getStringList(WinampCommand Command)
 void WinampClientBase::setStringList(std::string list, WinampCommand Command)
 {
 
-    WASetStringList( IdentBuf, (unsigned char *) list.c_str(), list.size(), Command);
+    WASetStringList( (unsigned char *) IdentBuf, (unsigned char *) list.c_str(), list.size(), Command);
 
 }
 
