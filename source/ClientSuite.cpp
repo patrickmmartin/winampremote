@@ -15,7 +15,6 @@ namespace UnitTest
  */
 struct TestContext
 {
-    // NOTA BENE: blink and you might miss the fact that *declaration order* matters for the members
 	/**
 	 * create a scoped context
 	 */
@@ -24,6 +23,7 @@ struct TestContext
 	 * create a scoped binder dependent upon the context
 	 */
 	WinampRemote::Client::ClientBinder binder;
+    // NOTA BENE: declaration order guarantees the correct initialisation order
 	TestContext() : ci(), binder(ci.computername().c_str(), "\\pipe\\winampremote")
 	{
 	}

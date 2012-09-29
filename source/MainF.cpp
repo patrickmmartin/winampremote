@@ -525,14 +525,13 @@ void __fastcall TfrmMain::Back5Execute(TObject *)
 
 void __fastcall TfrmMain::VolumeUpExecute(TObject *)
 {
+    // TODO: use a notification interface
   frmSettings->tbVolume->Position++;
 }
 
-
-
-
 void __fastcall TfrmMain::VolumeDownExecute(TObject *)
 {
+    // TODO: use a notification interface
   frmSettings->tbVolume->Position--;
 }
 
@@ -541,6 +540,7 @@ void __fastcall TfrmMain::VolumeDownExecute(TObject *)
 
 void __fastcall TfrmMain::VolumeUpMoreExecute(TObject *)
 {
+    // TODO: use a notification interface
   frmSettings->tbVolume->Position+=10;
 }
 
@@ -549,6 +549,7 @@ void __fastcall TfrmMain::VolumeUpMoreExecute(TObject *)
 
 void __fastcall TfrmMain::VolumeDownMoreExecute(TObject *)
 {
+    // TODO: use a notification interface
   frmSettings->tbVolume->Position-=10;
 }
 
@@ -745,10 +746,11 @@ void TfrmMain::UpdateIcon(void)
     Shuffle->Checked = (WinampVerNo >= 0x2604) && client->getShuffle();
     Repeat->Checked = (WinampVerNo >= 0x2604) && client->getRepeat();
 
-    // TODO: use a proper interface
+    // TODO: use a notification interface to refresh
     frmSettings->tbVolume->Position = client->getVolume();
     frmSettings->tbBalance->Position = client->getPanning();
 
+    // TODO: use a notification interface
     if ((frmSettings) && (frmSettings->EQUpdateNeeded))
       frmSettings->UpdateBars();
 
@@ -870,15 +872,15 @@ void __fastcall TfrmMain::MainTimer(TObject *)
 
 void __fastcall TfrmMain::SetVolume0Execute(TObject *)
 {
+    // TODO: use a notification interface
   frmSettings->tbVolume->Position = 0;
 
 }
 
 
-
-
 void __fastcall TfrmMain::SetVolume100Execute(TObject *)
 {
+    // TODO: use a notification interface
   frmSettings->tbVolume->Position = 255;
 }
 
@@ -994,6 +996,7 @@ void __fastcall TfrmMain::lstTimerClick(TObject *)
 
 void __fastcall TfrmMain::HalfExecute(TObject *)
 {
+    // TODO: use a notification interface
   frmSettings->tbVolume->Position = 128;
 }
 
@@ -1025,6 +1028,7 @@ void __fastcall TfrmMain::ViewPlaylistExecute(TObject *)
 
 void __fastcall TfrmMain::ViewVolumeExecute(TObject *)
 {
+	// TODO: should be in forms management interface
   frmSettings->Visible = !frmSettings->Visible;
   AnimateForm(frmSettings, ViewVolume->Checked);
   ViewVolume->Checked = frmSettings->Visible;
@@ -1149,6 +1153,7 @@ void __fastcall TfrmMain::DelayTimer(TObject *)
 
 void __fastcall TfrmMain::RefreshEQExecute(TObject *)
 {
+    // TODO: use a notification interface
    frmSettings->UpdateBars();
 }
 
