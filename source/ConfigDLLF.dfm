@@ -94,7 +94,6 @@ object ConfigForm: TConfigForm
     Height = 23
     AutoSize = False
     Caption = '&EndPoint'
-    FocusControl = ebEndPoint
     Layout = tlCenter
     Visible = False
   end
@@ -193,33 +192,14 @@ object ConfigForm: TConfigForm
     TabOrder = 1
     OnClick = chkVisibleClick
   end
-  object ebEndPoint: TEdit
-    Left = 90
-    Top = 83
-    Width = 127
-    Height = 22
-    TabOrder = 2
-    Visible = False
-  end
   object btnAbout: TButton
     Left = 146
     Top = 118
     Width = 75
     Height = 25
     Caption = '&About'
-    TabOrder = 3
+    TabOrder = 2
     OnClick = btnAboutClick
-  end
-  object btnChangeEndpoint: TButton
-    Left = 241
-    Top = 81
-    Width = 75
-    Height = 25
-    Caption = 'Change'
-    Enabled = False
-    TabOrder = 4
-    Visible = False
-    OnClick = btnChangeEndpointClick
   end
   object memInfo: TMemo
     Left = 56
@@ -232,7 +212,7 @@ object ConfigForm: TConfigForm
       'https://github.com/patrickmmartin/winampremote/')
     ParentColor = True
     ReadOnly = True
-    TabOrder = 5
+    TabOrder = 3
   end
   object Details: TButton
     Left = 240
@@ -240,7 +220,15 @@ object ConfigForm: TConfigForm
     Width = 75
     Height = 25
     Caption = 'Details'
-    TabOrder = 6
+    TabOrder = 4
     OnClick = DetailsClick
+  end
+  object ebEndPoint: TEdit
+    Left = 90
+    Top = 83
+    Width = 127
+    Height = 22
+    ReadOnly = True
+    TabOrder = 5
   end
 end

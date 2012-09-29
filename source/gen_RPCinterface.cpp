@@ -25,7 +25,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 
 USEFORM("AboutF.cpp", frmAbout);
-USEFORM("ServerDLLF.cpp", frmMain);
+USEFORM("ServerDLLF.cpp", frmPluginMain);
 USEFORM("ConfigDLLF.cpp", ConfigForm);
 USEFORM("DetailsF.cpp", frmDetails);
 USEUNIT("gen_plugin.cpp");

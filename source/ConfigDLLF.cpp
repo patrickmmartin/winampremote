@@ -63,73 +63,14 @@ void __fastcall TConfigForm::btnAboutClick(TObject *Sender)
 
 void __fastcall TConfigForm::chkVisibleClick(TObject *Sender)
 {
-  frmMain->Visible = chkVisible->Checked;
+  frmPluginMain->Visible = chkVisible->Checked;
 }
 
 
 void __fastcall TConfigForm::FormCreate(TObject *Sender)
 {
-  chkVisible->Checked = frmMain->Visible;
+  chkVisible->Checked = frmPluginMain->Visible;
 }
-
-
-void __fastcall TConfigForm::btnChangeEndpointClick(TObject *Sender)
-{
-// shutdown
-
-//watch for infringing upon RFC 1060 (Assigned Numbers) ports
-
-
-  unsigned short port = (unsigned short ) ebEndPoint->Text.ToInt();
-  bool usedport = false;
-  int i;
-
-  for (i = 0  ; i < RFC1060portscount ; i++)
-  {
-    if (RFC1060ports[i].port == port)
-    {
-      usedport = true;
-      break;
-    }
-  }
-
-  if (!usedport ||
-        MessageBox(this->Handle,
-                   (AnsiString("The port chosen: ") + port + " (" + RFC1060ports[i].service + "), is a well known port number.\n"
-                               "This choice of port could lead to serious problems if it is already in use on the server.\n"
-                               "Proceed with this choice?").c_str(),
-                               "Alert - Well-known port number chosen!",
-                               MB_ICONASTERISK | MB_OKCANCEL | MB_DEFBUTTON2) == IDOK){
-
-
-    frmMain->Show();
-    frmMain->Refresh();
-    frmMain->StopThread(this);
-
-    // TODO: why is this wait here? - StopThread is waiting synchronously on the thread
-    // need to wait before creating the new thread, magic wait constant here?
-    // perhaps retry logic would work?
-    Sleep(2000);
-
-  //create new
-
-    frmMain->CreateThread();
-
-    Application->ProcessMessages();
-    frmMain->Refresh();
-    Sleep(2000);
-    frmMain->Visible = chkVisible->Checked;
-    this->BringToFront();
-    }
-  else
-  {
-    ebEndPoint->Text = frmMain->sbrMain->Panels->Items[2]->Text;
-  }
-  btnChangeEndpoint->Enabled = false;
-
-}
-
-
 
 void __fastcall TConfigForm::DetailsClick(TObject *Sender)
 {

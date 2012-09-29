@@ -239,7 +239,7 @@ public:
 	virtual int getAutoload(void) = 0;
 
 	/**
-	 * sets the autload options
+	 * sets the autoload options
 	 * @param value
 	 */
 	virtual void setAutoload(bool value) = 0;

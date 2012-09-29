@@ -34,7 +34,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TfrmMain *frmMain;
+TfrmPluginMain *frmPluginMain;
 
 TRPCServerDLLThread *serverThread;
 
@@ -42,7 +42,7 @@ const int FAIL_TIMEOUT = 15; // seconds
 
 
 
-void __fastcall TfrmMain::ThreadMessage(TMessage &Message)
+void __fastcall TfrmPluginMain::ThreadMessage(TMessage &Message)
 
 {
   if (lstMessages->Items->Add( (char *) Message.LParam) > 1000){
@@ -56,7 +56,7 @@ void __fastcall TfrmMain::ThreadMessage(TMessage &Message)
 }
 
 
-void __fastcall TfrmMain::ExecutionStatus(WAExecutionStatus NewThreadState)
+void __fastcall TfrmPluginMain::ExecutionStatus(WAExecutionStatus NewThreadState)
 {
 
   fThreadState = NewThreadState;
@@ -74,7 +74,7 @@ void __fastcall TfrmMain::ExecutionStatus(WAExecutionStatus NewThreadState)
 }
 
 
-void __fastcall TfrmMain::ThreadStatus(TMessage &Message)
+void __fastcall TfrmPluginMain::ThreadStatus(TMessage &Message)
 {
 
   ExecutionStatus ((WAExecutionStatus) Message.LParam);
@@ -83,7 +83,7 @@ void __fastcall TfrmMain::ThreadStatus(TMessage &Message)
 
 
 
-void __fastcall TfrmMain::ThreadIdent(TMessage &Message)
+void __fastcall TfrmPluginMain::ThreadIdent(TMessage &Message)
 {
 //do something here
 
@@ -125,7 +125,7 @@ void __fastcall TfrmMain::ThreadIdent(TMessage &Message)
 
 
 
-void __fastcall TfrmMain::timerMainTimer(TObject *Sender)
+void __fastcall TfrmPluginMain::timerMainTimer(TObject *Sender)
 {
 
   switch (fThreadState)
@@ -202,12 +202,12 @@ void __fastcall TfrmMain::timerMainTimer(TObject *Sender)
 
 
 
-__fastcall TfrmMain::TfrmMain(TComponent* Owner)
+__fastcall TfrmPluginMain::TfrmPluginMain(TComponent* Owner)
         : TForm(Owner)
 {
 }
 
-void __fastcall TfrmMain::FormCreate(TObject *Sender)
+void __fastcall TfrmPluginMain::FormCreate(TObject *Sender)
 {
 const BufferSize = 32;		//Buffer max size
 char Computername[BufferSize];     // pointer to system information string
@@ -259,14 +259,14 @@ TRegistry * reg;
 
 
 
-void __fastcall TfrmMain::AppException(TObject *Sender, Exception *E)
+void __fastcall TfrmPluginMain::AppException(TObject *Sender, Exception *E)
 
 {
   lstMessages->Items->Add(AnsiString("There was an unhandled exception Type: " + E->ClassName()+ " Message: " + E->Message));
 }
 
 
-void __fastcall TfrmMain::FormKeyDown(TObject *Sender, WORD &Key,
+void __fastcall TfrmPluginMain::FormKeyDown(TObject *Sender, WORD &Key,
       TShiftState Shift)
 {
 
@@ -278,7 +278,7 @@ void __fastcall TfrmMain::FormKeyDown(TObject *Sender, WORD &Key,
 
 
 
-void __fastcall TfrmMain::chkListEventsClickCheck(TObject *Sender)
+void __fastcall TfrmPluginMain::chkListEventsClickCheck(TObject *Sender)
 {
 int i;
 
@@ -290,7 +290,7 @@ int i;
 
 
 
-void __fastcall TfrmMain::FormShow(TObject *Sender)
+void __fastcall TfrmPluginMain::FormShow(TObject *Sender)
 {
   chkListEvents->Checked[2] = true;
   chkListEvents->Checked[3] = true;
@@ -299,13 +299,13 @@ void __fastcall TfrmMain::FormShow(TObject *Sender)
     
 }
 
-void __fastcall TfrmMain::CreateThread()
+void __fastcall TfrmPluginMain::CreateThread()
 {
   serverThread =  new TRPCServerDLLThread(true, this->Handle, pszProtocolSequenceNP);
   serverThread->Resume();
 }
 
-void __fastcall TfrmMain::StopThread(TObject *Sender)
+void __fastcall TfrmPluginMain::StopThread(TObject *Sender)
 {
   WAShutdown();
   serverThread->WaitFor();
@@ -314,7 +314,7 @@ void __fastcall TfrmMain::StopThread(TObject *Sender)
 }
 
 
-void __fastcall TfrmMain::FormCloseQuery(TObject *Sender, bool &CanClose)
+void __fastcall TfrmPluginMain::FormCloseQuery(TObject *Sender, bool &CanClose)
 {
 
 TRegistry * reg;
@@ -335,13 +335,13 @@ TRegistry * reg;
 }
 
 
-void __fastcall TfrmMain::btnConfigClick(TObject *Sender)
+void __fastcall TfrmPluginMain::btnConfigClick(TObject *Sender)
 {
   config();
 }
 
 
-void __fastcall TfrmMain::btnAboutClick(TObject *Sender)
+void __fastcall TfrmPluginMain::btnAboutClick(TObject *Sender)
 {
   frmAbout = new TfrmAbout(Application);
 
