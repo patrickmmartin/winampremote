@@ -2,6 +2,8 @@
 #ifndef ColourUH
 #define ColourUH
 
+#include "graphics.hpp"
+
 
 /**
  * Returns a periodic (cos ^2) function from any real input

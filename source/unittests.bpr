@@ -9,7 +9,8 @@
       ..\obj\unittests\ServerTester.obj ..\obj\unittests\RPCFuncsU.obj 
       ..\obj\unittests\waint.obj ..\obj\unittests\ClientBinder.obj 
       ..\obj\unittests\WinampClientBase.obj ..\obj\unittests\ContextInfo.obj 
-      ..\obj\unittests\ClientSuite.obj ..\obj\unittests\IPAddressU.obj"/>
+      ..\obj\unittests\ClientSuite.obj ..\obj\unittests\IPAddressU.obj 
+      ..\obj\unittests\ColourU.obj ..\obj\unittests\UtilsSuite.obj"/>
     <RESFILES value="unittests.RES"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
