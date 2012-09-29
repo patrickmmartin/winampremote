@@ -29,8 +29,9 @@ const double offset = 0.15;
 
 double periodic(double percent)
 {
-	return (0.5 + ( 1 + cos(M_PI * 2 * percent )));
+	return (0.5 *( cos(2.0 * M_PI * percent) + 1) );
 }
+
 
 
 TColor rainbowColour(int value)

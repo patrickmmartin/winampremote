@@ -28,6 +28,11 @@
 									<listOptionValue builtIn="false" value="&quot;C:\CBuilder5\Include\Vcl&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\CBuilder5\Include\Rw&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\CBuilder5\Include\Gl&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\Borland\CBuilder5\Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\Borland\CBuilder5\Include\Sys&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\Borland\CBuilder5\Include\Vcl&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\Borland\CBuilder5\Include\Rw&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\Borland\CBuilder5\Include\Gl&quot;"/>
 								</option>
 								<option id="org.eclipse.cdt.msvc.cl.option.macros.532606968" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__published=public"/>
@@ -55,7 +60,7 @@
 							</tool>
 							<tool id="org.eclipse.cdt.msvc.lib.771133405" name="Library Manager (lib)" superClass="org.eclipse.cdt.msvc.lib"/>
 							<tool id="org.eclipse.cdt.msvc.cl.c.exe.debug.534834118" name="C Compiler (cl)" superClass="org.eclipse.cdt.msvc.cl.c.exe.debug">
-								<option id="org.eclipse.cdt.msvc.cl.option.macros.1028611279" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros" valueType="definedSymbols"/>
+								<option id="org.eclipse.cdt.msvc.cl.option.macros.1028611279" name="Defines (/D)" superClass="org.eclipse.cdt.msvc.cl.option.macros"/>
 								<inputType id="org.eclipse.cdt.msvc.cl.inputType.c.464128484" superClass="org.eclipse.cdt.msvc.cl.inputType.c"/>
 							</tool>
 						</toolChain>
@@ -110,8 +115,13 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="source.org.eclipse.cdt.msvc.projectType.exe.676434578" name="Executable" projectType="org.eclipse.cdt.msvc.projectType.exe"/>
 	</storageModule>
-	<storageModule moduleId="refreshScope" versionNumber="1">
-		<resource resourceType="PROJECT" workspacePath="/source"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/source"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/source"/>
+		</configuration>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings">
 		<doc-comment-owner id="org.eclipse.cdt.ui.doxygen">

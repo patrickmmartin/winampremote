@@ -82,7 +82,7 @@ void WAMessageProc(
   {
     // handler for any C++ exception
     OutputDebugString(E.Message.c_str());
-    if (frmMain->requestlog[EXCEPTIONS])
+    if (frmPluginMain->requestlog[EXCEPTIONS])
     {
       MainMessage(strdup(E.Message.c_str()));
     }
@@ -101,7 +101,7 @@ const char * commandStr;
     try
     {         // test for C-based structured exceptions
       serverThread->MainIdent((char *) pszString);
-      if (frmMain->requestlog[COMMAND_INTEGER])
+      if (frmPluginMain->requestlog[COMMAND_INTEGER])
       {
         AnsiString str = (char *) pszString;
         str += " sent  - command : ";
@@ -125,7 +125,7 @@ const char * commandStr;
   catch ( Exception &E )
   {
     OutputDebugString(E.Message.c_str());
-    if (frmMain->requestlog[EXCEPTIONS])
+    if (frmPluginMain->requestlog[EXCEPTIONS])
     {
       MainMessage(strdup(E.Message.c_str()));
     }
@@ -146,7 +146,7 @@ const char * commandStr;
     try
     {         // test for C-based structured exceptions
       serverThread->MainIdent((char *) pszString);
-      if (frmMain->requestlog[COMMAND_STRING])
+      if (frmPluginMain->requestlog[COMMAND_STRING])
       {
 
         AnsiString str = (char *) pszString;
@@ -175,7 +175,7 @@ const char * commandStr;
   {
     // handler for any C++ exception
     OutputDebugString(E.Message.c_str());
-    if (frmMain->requestlog[EXCEPTIONS])
+    if (frmPluginMain->requestlog[EXCEPTIONS])
     {
       MainMessage(strdup(E.Message.c_str()));
     }
@@ -195,7 +195,7 @@ int result;
     try
     {         // test for C-based structured exceptions
         serverThread->MainIdent((char *) pszString);
-      if (frmMain->requestlog[QUERY_INTEGER])
+      if (frmPluginMain->requestlog[QUERY_INTEGER])
       {
         AnsiString str = (char *) pszString;
         str += " sent  - query : ";
@@ -223,7 +223,7 @@ int result;
   catch ( Exception &E )
   {
     OutputDebugString(E.Message.c_str());
-    if (frmMain->requestlog[EXCEPTIONS]){
+    if (frmPluginMain->requestlog[EXCEPTIONS]){
       MainMessage(strdup(E.Message.c_str()));
     }
   }
@@ -252,7 +252,7 @@ long WAStringResult(
 
            retval = localWinamp->QueryString(static_cast<WinampCommand>(command), data);
 
-          if (frmMain->requestlog[QUERY_STRING])
+          if (frmPluginMain->requestlog[QUERY_STRING])
           {
             str = (char *) pszString;
             str += " sent  - query : ";
@@ -284,7 +284,7 @@ long WAStringResult(
      catch ( Exception &E )
      {
        OutputDebugString(E.Message.c_str());
-        if (frmMain->requestlog[EXCEPTIONS])
+        if (frmPluginMain->requestlog[EXCEPTIONS])
         {
           MainMessage(strdup(E.Message.c_str()));
         }
@@ -375,7 +375,7 @@ void WASetStringList(
      catch ( Exception &E )
      {
        OutputDebugString(E.Message.c_str());
-        if (frmMain->requestlog[EXCEPTIONS])
+        if (frmPluginMain->requestlog[EXCEPTIONS])
         {
           MainMessage(strdup(E.Message.c_str()));
         }
@@ -446,7 +446,7 @@ void WAGetStringList(
      catch ( Exception &E )
      {
        OutputDebugString(E.Message.c_str());
-        if (frmMain->requestlog[EXCEPTIONS])
+        if (frmPluginMain->requestlog[EXCEPTIONS])
         {
           MainMessage(strdup(E.Message.c_str()));
         }
@@ -532,7 +532,7 @@ void WAGetStringDataList(
      catch ( Exception &E )
      {
        OutputDebugString(E.Message.c_str());
-        if (frmMain->requestlog[EXCEPTIONS])
+        if (frmPluginMain->requestlog[EXCEPTIONS])
         {
           MainMessage(strdup(E.Message.c_str()));
         }

@@ -1,13 +1,13 @@
 object frmMain: TfrmMain
-  Left = -8
-  Top = -8
+  Left = 452
+  Top = 279
   Hint = 'the winamp remote control client'
   Action = Shuffle
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Winamp Remote Control'
-  ClientHeight = 1118
-  ClientWidth = 1600
+  ClientHeight = 158
+  ClientWidth = 391
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -58,8 +58,8 @@ object frmMain: TfrmMain
   end
   object sbMain: TStatusBar
     Left = 0
-    Top = 1117
-    Width = 1600
+    Top = 157
+    Width = 391
     Height = 1
     Panels = <
       item
@@ -77,8 +77,8 @@ object frmMain: TfrmMain
   object pgSettings: TPageControl
     Left = 0
     Top = 0
-    Width = 1600
-    Height = 1117
+    Width = 391
+    Height = 157
     Hint = 'pages of information and configuration'
     ActivePage = tbsMain
     Align = alClient
@@ -95,8 +95,8 @@ object frmMain: TfrmMain
       object pnlWinampBottom: TPanel
         Left = 0
         Top = 0
-        Width = 1592
-        Height = 1085
+        Width = 383
+        Height = 125
         Align = alClient
         BevelOuter = bvLowered
         Caption = 'pnlWinampBottom'
@@ -104,8 +104,8 @@ object frmMain: TfrmMain
         object pnlIcon: TPanel
           Left = 1
           Top = 1
-          Width = 1590
-          Height = 1083
+          Width = 381
+          Height = 123
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
@@ -187,8 +187,8 @@ object frmMain: TfrmMain
       object bvl3: TBevel
         Left = 0
         Top = 0
-        Width = 1592
-        Height = 1085
+        Width = 383
+        Height = 125
         Align = alClient
       end
       object lblUpdate: TLabel

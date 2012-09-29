@@ -29,7 +29,7 @@ const int COMMAND_INTEGER = 3;
 const int EXCEPTIONS = 4;
 
 
-class TfrmMain : public TForm
+class TfrmPluginMain : public TForm
 {
 __published:	// IDE-managed Components
         TStatusBar *sbrMain;
@@ -60,9 +60,9 @@ __published:	// IDE-managed Components
         void __fastcall btnConfigClick(TObject *Sender);
         void __fastcall btnAboutClick(TObject *Sender);
 protected:
-  void __fastcall TfrmMain::ThreadMessage(TMessage &Message);
-  void __fastcall TfrmMain::ThreadStatus(TMessage &Message);
-  void __fastcall TfrmMain::ThreadIdent(TMessage &Message);
+  void __fastcall TfrmPluginMain::ThreadMessage(TMessage &Message);
+  void __fastcall TfrmPluginMain::ThreadStatus(TMessage &Message);
+  void __fastcall TfrmPluginMain::ThreadIdent(TMessage &Message);
 BEGIN_MESSAGE_MAP
   MESSAGE_HANDLER(WM_THREAD_IDENT, TMessage, ThreadIdent)
 END_MESSAGE_MAP(TControl)
@@ -75,7 +75,7 @@ protected:
 
 
 public:		// User declarations
-        __fastcall TfrmMain(TComponent* Owner);
+        __fastcall TfrmPluginMain(TComponent* Owner);
 
       __property WAExecutionStatus ThreadState = {read = fThreadState};
 
@@ -85,7 +85,7 @@ public:		// User declarations
       void __fastcall StopThread(TObject *Sender);
 };
 
-extern PACKAGE TfrmMain *frmMain;
+extern PACKAGE TfrmPluginMain *frmPluginMain;
 
 
 #endif

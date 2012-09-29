@@ -90,16 +90,16 @@ void config(void)
 void quit(void)
 {
   OutputDebugString("RPCInterface quit");
-  if (frmMain != NULL)
+  if (frmPluginMain != NULL)
   {
     try
     {
-      frmMain->Close();
-      delete frmMain;
+      frmPluginMain->Close();
+      delete frmPluginMain;
     }
     __finally
     {
-      frmMain = NULL;
+      frmPluginMain = NULL;
     }
   }
 }
@@ -111,14 +111,14 @@ int init()
   OutputDebugString("RPCInterface init");
 TRegistry * reg;
 AnsiString str;
-  if (frmMain == NULL)
+  if (frmPluginMain == NULL)
   {
     try
     {
       // pass on the provided parameters
 	  // this gets better behaviour for VCL dlls
       Application->Handle = plugin.hwndParent;
-      frmMain = new TfrmMain(Application);
+      frmPluginMain = new TfrmPluginMain(Application);
       try
       {
         // set parent handle
@@ -126,7 +126,7 @@ AnsiString str;
         reg->OpenKey("software\\PMMSoft\\Winamp controller\\server settings", true);
         str = reg->ReadString("Visible");
         if (str.LowerCase() == "true")
-          frmMain->Show();
+          frmPluginMain->Show();
       }
       __finally
       {
@@ -135,8 +135,8 @@ AnsiString str;
     }
     catch (...)
     {
-      delete frmMain;
-      frmMain = NULL;
+      delete frmPluginMain;
+      frmPluginMain = NULL;
     }
   }
   return 0;
