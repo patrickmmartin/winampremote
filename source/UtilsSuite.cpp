@@ -22,7 +22,6 @@ TEST_CASE("Utils/ColourPeriodic", "tests the output of the periodic function")
 TEST_CASE("Utils/ColourRainbow", "tests the colour output")
 {
 
-	// TODO: parallel calculation of the expected values would be nice
 	CHECK(rainbowColour(0) == 46026);
 	CHECK(rainbowColour(250) == 16665396);
 	CHECK(rainbowColour(500) == 46026);
