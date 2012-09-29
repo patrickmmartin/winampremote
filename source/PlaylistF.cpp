@@ -179,21 +179,16 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
 void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 {
 
-  char title[WA_RETURN_STRING_SIZE];
-  // needed to ensure we can see the currently playing track
-
   try
   {
     lstSongs->Items->BeginUpdate();
-     strcpy(title, frmMain->IdentChars);
      // update the current title, at least
      std::string current = client->getPlayListItem(_currentpos, true);
-     strcpy(title, current.c_str());
 
      if ((lstSongs->Items->Count - 1) > _currentpos)
      {
        bool Selected = lstSongs->Selected[_currentpos];
-       lstSongs->Items->Strings[_currentpos] = (/*AnsiString(currentpos + 1) + ". " */+ title);
+       lstSongs->Items->Strings[_currentpos] = current.c_str();
        lstSongs->Selected[_currentpos] =  Selected;
      }
 
@@ -214,6 +209,7 @@ void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 
 void __fastcall TfrmPlaylist::FormClose(TObject *, TCloseAction &)
 {
+	// TODO: should be in forms management interface
   frmMain->ViewPlaylist->Execute();
 }
 
@@ -280,6 +276,7 @@ int NewPos;
   NewPos = TopList->IndexOfObject((TObject *) true);
   client->setPlaylistIndex(NewPos);
 
+	// TODO: should be in forms management interface
   frmMain->PlaylistRefresh->Execute();
   }
   __finally
@@ -295,6 +292,7 @@ int NewPos;
 void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
       TDragDockObject *&DragObject)
 {
+	// TODO: should be in forms management interface
   frmMain->StartDock(Sender, DragObject);
 
 }

@@ -42,13 +42,15 @@ __fastcall TfrmCommands::TfrmCommands(TComponent* Owner)
 
 void __fastcall TfrmCommands::FormClose(TObject *, TCloseAction &)
 {
-  frmMain->ViewToolBar->Execute();
+	// TODO: should be in forms management interface
+	frmMain->ViewToolBar->Execute();
 }
 
 
 void __fastcall TfrmCommands::FormStartDock(TObject *Sender,
       TDragDockObject *&DragObject)
 {
+	// TODO: should be in forms management interface
   frmMain->StartDock(Sender, DragObject);
         
 }
