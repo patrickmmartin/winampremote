@@ -108,3 +108,7 @@
 /setup/*.log
 /source/*.log
 /source/*.log
+/source\WARC/Debug
+/source\WARC/ipch
+Debug
+ipch

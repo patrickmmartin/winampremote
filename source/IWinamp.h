@@ -1,11 +1,13 @@
 #ifndef IWINAMP_H
 #define IWINAMP_H
 
-#include <vector.h>
-#include <string.h>
+#include <vector>
+#include <string>
 
 #include "waint.h" // for WAPlaybackStatus, etc.
 #include "winampinterface.h" // for byte
+
+using namespace std;
 
 /**
  * namespace for the WinampRemote project

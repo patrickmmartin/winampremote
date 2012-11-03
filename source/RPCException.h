@@ -3,7 +3,6 @@
 
 #include <string>
 #include <exception>
-#include <sysutils.hpp>
 
 using namespace std;
 
@@ -12,9 +11,21 @@ class ERPCException : public runtime_error
 
 public:
         explicit ERPCException(int rpc_error_code)  :
-        std::runtime_error("rpc runtime error"), what_("")
+        std::runtime_error("rpc runtime error"), what_("error message could not be formatted")
         {
-                what_ = SysErrorMessage(rpc_error_code).c_str();
+
+
+			char buffer[255] = "";
+			int len = FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM || FORMAT_MESSAGE_IGNORE_INSERTS || FORMAT_MESSAGE_ARGUMENT_ARRAY,
+									NULL,
+									rpc_error_code,
+									0,
+									buffer,
+									sizeof(buffer),
+									NULL);
+
+            if (len)
+				what_ = buffer;
         }
 
         virtual const char* what() const throw ()

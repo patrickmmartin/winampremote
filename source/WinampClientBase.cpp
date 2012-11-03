@@ -1,5 +1,4 @@
-#include <iostream.h>
-#include <sstream.h>
+#include <sstream>
 #include "windows.h"
 #include "stddef.h"
 
