@@ -1,7 +1,7 @@
+#include <string.h>
 #include "WinampClientBase.h"
 #include "ClientBinder.h"
 #include "ContextInfo.h"
-#include <string.h>
 #include "RPCException.h"
 #include "catch.hpp"
 

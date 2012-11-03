@@ -11,8 +11,6 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include "waint.h"
-
 #include "ICallObserver.h"
 
 
