@@ -28,6 +28,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "WinampClientBase.h"
 
+#include "sysutils.hpp"
 
 int main(int argc , char* argv[] )
 {
