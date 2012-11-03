@@ -22,7 +22,7 @@ void __stdcall Shutdown(void);
 
 void __stdcall SetStringList(char * pszString, void * Buffer, int Size, int Command);
 void __stdcall GetStringList(char * pszString, void ** Buffer, int& Size, int Command);
-void _stdcall GetStringDataList(char * pszString, void ** Buffer, int& Size,
+void __stdcall GetStringDataList(char * pszString, void ** Buffer, int& Size,
                                 int stringcommand, int datacommand, int datadata);
 
 
