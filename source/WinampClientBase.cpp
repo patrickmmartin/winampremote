@@ -3,7 +3,7 @@
 #include "windows.h"
 #include "stddef.h"
 
-#include "RPCFuncsU.h"
+#include "RPCFuncsU.h" // the only use of this header
 #include "waint.h"
 #include "WinampClientBase.h"
 

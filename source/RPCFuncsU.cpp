@@ -24,14 +24,9 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #pragma hdrstop
 
-// contains wrappers for the MIDL generated stubs
-// define to fix problem of definition of __try in generated c stubs
-// no longer required in BCB5 ?
-//#define __try try
-
-#include "winampinterface.h"
-#include "RPCException.h"
-#include "RPCBind.h"
+#include "RPCFuncsU.h" 		// for unit declarations
+#include "RPCException.h"   // for ERPCException
+#include "RPCBind.h"		// global Bind/UnBind
 
 // global string binding information
 unsigned char * StringBinding = NULL;
@@ -356,6 +351,7 @@ extern "C"
 
   }
 
+// TODO need to implement or remove this
 /*
 
   int __stdcall SafeGetStringList(char * pszString, BSTR * Str, int Command)
