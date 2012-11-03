@@ -9,6 +9,6 @@ var interfacewinamp =
     [ "WAMessageProc", "interfacewinamp.html#a1c20039f5183ac3664e78e9fbf0ba425", null ],
     [ "WASetStringList", "interfacewinamp.html#a1752aab5534688ae083607e6614be5a8", null ],
     [ "WAShutdown", "interfacewinamp.html#a5053915f8b00b2c40e98787abab8f93b", null ],
-    [ "WAStringResult", "interfacewinamp.html#aa68868ef56b8a16644571e62da160927", null ],
-    [ "RET_STR_SIZE", "interfacewinamp.html#a6a8725e1498ab3da72e1dd0b7755237f", null ]
+    [ "WAStringResult", "interfacewinamp.html#a83fc62be1191b432ae0a320db72fe0f2", null ],
+    [ "WA_RETURN_STRING_SIZE", "interfacewinamp.html#a9b5614196e90dcee9db04ed3d767f6e7", null ]
 ];

@@ -12,7 +12,6 @@ var functions_func =
     [ "l", "functions_func_0x6c.html", null ],
     [ "m", "functions_func_0x6d.html", null ],
     [ "n", "functions_func_0x6e.html", null ],
-    [ "o", "functions_func_0x6f.html", null ],
     [ "p", "functions_func_0x70.html", null ],
     [ "q", "functions_func_0x71.html", null ],
     [ "r", "functions_func_0x72.html", null ],

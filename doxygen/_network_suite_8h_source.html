@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('_network_suite_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -120,41 +120,40 @@ $(document).ready(function(){initNavTree('_network_suite_8h.html','');});
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;map.h&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_server_tester_8h.html">ServerTester.h</a>&quot;</span> <span class="comment">// ServerInfo</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="class_network_suite.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_network_suite.html">NetworkSuite</a></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="class_network_suite.html#afd53747d31ea2a538a7f22267fe9c807">NetworkSuite</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="class_network_suite.html#ae8b95f4bcca21fed2355b866a62b00db">~NetworkSuite</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  map&lt;AnsiString, ServerInfo&gt; _servers;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">bool</span> _abort_test;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">char</span> * levelString(<span class="keyword">const</span> <span class="keywordtype">int</span> level);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">void</span> doNetworkServer(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> AnsiString&amp; comment);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">void</span> doNetworkMessage(<span class="keyword">const</span> AnsiString&amp; message, <span class="keyword">const</span> <span class="keywordtype">int</span> level);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">void</span> doNetworkProgress(<span class="keyword">const</span> <span class="keywordtype">float</span> complete);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> doTestEvent(<span class="keyword">const</span> AnsiString&amp; remoteName,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                   <span class="keyword">const</span> AnsiString&amp; <a class="code" href="rpcimport_8h.html#a2c43b4908dfeae2903da68a4d8c9ce5f">data</a>,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                   <span class="keyword">const</span> <span class="keywordtype">int</span> level);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">void</span> doTestResult(<span class="keyword">const</span> AnsiString&amp; remoteName,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">bool</span> success,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    <span class="keywordtype">bool</span>&amp; abort);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_suite.html#a0d282295d67e4914cc0fa5f38da6c46e">testServerInvalid</a>();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_suite.html#adc028daaed20b5ec68b98ac88be3867e">testServerTestAbort</a>();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_suite.html#a9fb0f4ad766855473e7957520e8e13e5">testLocalServer</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_suite.html#ab14f551fe8adf8a2665df4df67ffb9fb">testEnumeration</a>();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_suite.html#a90bc97c29c206a8b659c316a7002aef5">testServerTest</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="class_network_test.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_network_test.html">NetworkTest</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="class_network_test.html#a6db4548a8407b33582fa2bd36fc74747">NetworkTest</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="class_network_test.html#a6d06a985ccf6d0715b7a9f93cdba41d2">~NetworkTest</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  map&lt;AnsiString, ServerInfo&gt; _servers;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">bool</span> _abort_test;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">char</span> * levelString(<span class="keyword">const</span> <span class="keywordtype">int</span> level);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">void</span> doNetworkServer(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> AnsiString&amp; comment, <span class="keyword">const</span> AnsiString&amp; ip);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordtype">void</span> doNetworkMessage(<span class="keyword">const</span> AnsiString&amp; message, <span class="keyword">const</span> <span class="keywordtype">int</span> level);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> doNetworkProgress(<span class="keyword">const</span> <span class="keywordtype">float</span> complete);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">void</span> doTestEvent(<span class="keyword">const</span> AnsiString&amp; remoteName,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                   <span class="keyword">const</span> AnsiString&amp; <a class="code" href="rpcimport_8h.html#a2c43b4908dfeae2903da68a4d8c9ce5f">data</a>,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                   <span class="keyword">const</span> <span class="keywordtype">int</span> level);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">void</span> doTestResult(<span class="keyword">const</span> AnsiString&amp; remoteName,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">bool</span> success,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    <span class="keywordtype">bool</span>&amp; abort);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_test.html#a2dd5b61bb804e400a31b2e13eb06d8a2">testServerInvalid</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_test.html#ac52a3a45511b490776b27fd42e131247">testServerTestAbort</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_test.html#abf8f2a3431f860d3548c6e12ded8fd8a">testLocalServer</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_test.html#ad28669db159f399ac6eb7da7cfdd7e75">testEnumeration</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_network_test.html#a1b85c59ff539245fb2a44e0a46ff819d">testServerTest</a>();</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* NETWORKSUITE_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;};</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* NETWORKSUITE_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

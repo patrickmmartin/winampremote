@@ -6,10 +6,9 @@ var searchData=
   ['lastpos',['lastPos',['../_about_f_8cpp.html#a324ef80871ad9ae3c063365b8b5fcda7',1,'AboutF.cpp']]],
   ['lasttime',['lastTime',['../_about_f_8cpp.html#a07c1166542a7b1ee01ff58d203284dec',1,'AboutF.cpp']]],
   ['lbcp_5fitem',['LBCP_ITEM',['../_glass_extender_8cpp.html#a080e88f7d2dc160ebff2887ed00a9e21',1,'GlassExtender.cpp']]],
-  ['lbladdress',['lblAddress',['../class_tfrm_main.html#a019212c8a5b687cdb21f28e776c7c942',1,'TfrmMain']]],
   ['lblappname',['lblAppname',['../class_tfrm_splash.html#a33df7caeb295701bdfbeea7d6b996d24',1,'TfrmSplash']]],
   ['lblbal',['lblBal',['../class_tfrm_settings.html#af115abed6642af91a2ea406a4e3a2ae3',1,'TfrmSettings']]],
-  ['lblendpoint',['lblEndpoint',['../class_tfrm_main.html#a3bdc094d883d5db17aa1e76cc7eac1af',1,'TfrmMain::lblEndpoint()'],['../class_t_config_form.html#ab68a080a0ffc9749f619d7c7c02b24ae',1,'TConfigForm::lblEndPoint()'],['../class_tfrm_servers.html#a531e0207da09c0695bb85848f9e2dc28',1,'TfrmServers::lblEndPoint()']]],
+  ['lblendpoint',['lblEndPoint',['../class_t_config_form.html#ab68a080a0ffc9749f619d7c7c02b24ae',1,'TConfigForm::lblEndPoint()'],['../class_tfrm_servers.html#a531e0207da09c0695bb85848f9e2dc28',1,'TfrmServers::lblEndPoint()']]],
   ['lbleq',['lblEQ',['../class_tfrm_settings.html#a5228a969c1bf30bc17651e44d72bef21',1,'TfrmSettings']]],
   ['lbll',['lblL',['../class_tfrm_settings.html#a45cbe9e2c4b3eda007f8d6b616557def',1,'TfrmSettings']]],
   ['lblmessage',['lblMessage',['../class_tfrm_main.html#acf134ae254e6c083e50e5cafd65fe9b6',1,'TfrmMain::lblMessage()'],['../class_tfrm_splash.html#a4b43214c61fc2cc57fc4765bda1c3846',1,'TfrmSplash::lblMessage()']]],
@@ -30,11 +29,11 @@ var searchData=
   ['localgetwinampversion',['LocalGetWinampVersion',['../waint_8cpp.html#a72ceae4fe8f84aa0a39de1ce81ea0015',1,'LocalGetWinampVersion(HWND HWinamp):&#160;waint.cpp'],['../waint_8h.html#a72ceae4fe8f84aa0a39de1ce81ea0015',1,'LocalGetWinampVersion(HWND HWinamp):&#160;waint.cpp']]],
   ['localqueryint',['LocalQueryInt',['../waint_8cpp.html#a1dac4a30cd6ef2253bda3b19746463f0',1,'LocalQueryInt(HWND HWinamp, WinampCommand Command, int Data):&#160;waint.cpp'],['../waint_8h.html#a1dac4a30cd6ef2253bda3b19746463f0',1,'LocalQueryInt(HWND HWinamp, WinampCommand Command, int Data):&#160;waint.cpp']]],
   ['localquerystring',['LocalQueryString',['../waint_8cpp.html#a04ece507c5be3e71fd7d88ba6fd86cff',1,'LocalQueryString(HWND HWinamp, WinampCommand Command, int Data):&#160;waint.cpp'],['../waint_8h.html#a04ece507c5be3e71fd7d88ba6fd86cff',1,'LocalQueryString(HWND HWinamp, WinampCommand Command, int Data):&#160;waint.cpp']]],
-  ['localwinamp',['localWinamp',['../rpcthread_8cpp.html#aaf01e132f4986e92cb5300a1e470d43b',1,'localWinamp():&#160;rpcthread.cpp'],['../rpcthread_d_l_l_8cpp.html#a0faf8057618d103c82db326457f057b2',1,'localWinamp():&#160;rpcthreadDLL.cpp']]],
+  ['localwinamp',['localWinamp',['../rpcthread_d_l_l_8cpp.html#acfdcdf1601c42d15c6d1cae37c0db04d',1,'localWinamp():&#160;rpcthreadDLL.cpp'],['../testimp_8cpp.html#a99b974d67306cdef2974aacd6fe31965',1,'localWinamp():&#160;testimp.cpp']]],
   ['locateservers',['LocateServers',['../class_tfrm_main.html#a26f089ab60b86043fa5580eb03d9e25a',1,'TfrmMain']]],
   ['locateservers1',['LocateServers1',['../class_tfrm_main.html#adddab6f0c200f73b8a8c8c19db0c4b51',1,'TfrmMain']]],
   ['locateserversexecute',['LocateServersExecute',['../class_tfrm_main.html#a6e824decf1358bb3725dc56525d9fa75',1,'TfrmMain']]],
-  ['lstmessages',['lstMessages',['../class_tfrm_main.html#af16fb4d77b1df6523b6b417c3ac4999a',1,'TfrmMain']]],
+  ['lstmessages',['lstMessages',['../class_tfrm_plugin_main.html#a25082a16e9cf0e8b589e71c00b163e70',1,'TfrmPluginMain']]],
   ['lstsongs',['lstSongs',['../class_tfrm_playlist.html#a8385f6df48f1f94da2f4a383a46c93bf',1,'TfrmPlaylist']]],
   ['lstsongsdblclick',['lstSongsDblClick',['../class_tfrm_playlist.html#ab315d0357bfbd178152836a2cc5b15ef',1,'TfrmPlaylist']]],
   ['lstsongsdragdrop',['lstSongsDragDrop',['../class_tfrm_playlist.html#aa68dee1a53641b09518fff14a9400f1b',1,'TfrmPlaylist']]],
@@ -50,5 +49,5 @@ var searchData=
   ['lvmessages',['lvMessages',['../class_tfrm_servers.html#a4a80b558004889442db1bf8586f673c8',1,'TfrmServers']]],
   ['lvservers',['lvServers',['../class_tfrm_servers.html#a18cfeeb188e2b52bcca18adf98df67de',1,'TfrmServers']]],
   ['lvserversclick',['lvServersClick',['../class_tfrm_servers.html#abd9f724cc872930ed3ba7edb9c8e4b25',1,'TfrmServers']]],
-  ['lvusers',['lvUsers',['../class_tfrm_main.html#a7f5a254bc0f67c44836ad055556849b2',1,'TfrmMain']]]
+  ['lvusers',['lvUsers',['../class_tfrm_plugin_main.html#a9c86837e9c0fd58602c97e3063a2d73c',1,'TfrmPluginMain']]]
 ];

@@ -4,8 +4,6 @@ var searchData=
   ['serverdllf_2eh',['ServerDLLF.h',['../_server_d_l_l_f_8h.html',1,'']]],
   ['serverenumerator_2ecpp',['ServerEnumerator.cpp',['../_server_enumerator_8cpp.html',1,'']]],
   ['serverenumerator_2eh',['ServerEnumerator.h',['../_server_enumerator_8h.html',1,'']]],
-  ['serverf_2ecpp',['ServerF.cpp',['../_server_f_8cpp.html',1,'']]],
-  ['serverf_2eh',['ServerF.h',['../_server_f_8h.html',1,'']]],
   ['serversf_2ecpp',['ServersF.cpp',['../_servers_f_8cpp.html',1,'']]],
   ['serversf_2eh',['ServersF.h',['../_servers_f_8h.html',1,'']]],
   ['servertester_2ecpp',['ServerTester.cpp',['../_server_tester_8cpp.html',1,'']]],

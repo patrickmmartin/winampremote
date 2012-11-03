@@ -14,7 +14,7 @@ var winampinterface__c_8c =
     [ "WAMessageProc", "winampinterface__c_8c.html#ab39251d40350022e3d56e38651b4500e", null ],
     [ "WASetStringList", "winampinterface__c_8c.html#a023887102a15e2ac770acb60f81e3568", null ],
     [ "WAShutdown", "winampinterface__c_8c.html#a46f16637c8cd6c36e96b46976442cc60", null ],
-    [ "WAStringResult", "winampinterface__c_8c.html#af10221a560673d2af561da1536d22d6f", null ],
+    [ "WAStringResult", "winampinterface__c_8c.html#a7af2e3c018ebd34a5ee7a96060d9ea24", null ],
     [ "winamp_free_wrapper", "winampinterface__c_8c.html#a6332c6e2bc4cf9c3611aab85a907c1d4", null ],
     [ "winamp_malloc_wrapper", "winampinterface__c_8c.html#a9ddf6f2bb68a22d10b42b1122a94fabc", null ],
     [ "__MIDL_ProcFormatString", "winampinterface__c_8c.html#ac29694439179e7e4795b2398741d86ff", null ],

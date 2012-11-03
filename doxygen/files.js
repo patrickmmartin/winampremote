@@ -2,7 +2,6 @@ var files =
 [
     [ "AboutF.cpp", "_about_f_8cpp.html", "_about_f_8cpp" ],
     [ "AboutF.h", "_about_f_8h.html", "_about_f_8h" ],
-    [ "binding.c", "binding_8c.html", "binding_8c" ],
     [ "CallReflector.cpp", "_call_reflector_8cpp.html", null ],
     [ "CallReflector.h", "_call_reflector_8h.html", "_call_reflector_8h" ],
     [ "catch.hpp", "catch_8hpp.html", "catch_8hpp" ],
@@ -10,6 +9,7 @@ var files =
     [ "ClientBinder.h", "_client_binder_8h.html", [
       [ "ClientBinder", "class_winamp_remote_1_1_client_1_1_client_binder.html", "class_winamp_remote_1_1_client_1_1_client_binder" ]
     ] ],
+    [ "ClientSuite.cpp", "_client_suite_8cpp.html", "_client_suite_8cpp" ],
     [ "ColourU.cpp", "_colour_u_8cpp.html", "_colour_u_8cpp" ],
     [ "ColourU.h", "_colour_u_8h.html", "_colour_u_8h" ],
     [ "CommandF.cpp", "_command_f_8cpp.html", "_command_f_8cpp" ],
@@ -22,6 +22,10 @@ var files =
     [ "ConsoleCallObserver.cpp", "_console_call_observer_8cpp.html", null ],
     [ "ConsoleCallObserver.h", "_console_call_observer_8h.html", [
       [ "ConsoleCallObserver", "class_winamp_remote_1_1_remoting_1_1_console_call_observer.html", "class_winamp_remote_1_1_remoting_1_1_console_call_observer" ]
+    ] ],
+    [ "ContextInfo.cpp", "_context_info_8cpp.html", null ],
+    [ "ContextInfo.h", "_context_info_8h.html", [
+      [ "ContextInfo", "class_winamp_remote_1_1_context_1_1_context_info.html", "class_winamp_remote_1_1_context_1_1_context_info" ]
     ] ],
     [ "DefaultCallObserver.h", "_default_call_observer_8h.html", [
       [ "DefaultCallObserver", "class_default_call_observer.html", "class_default_call_observer" ]
@@ -47,9 +51,9 @@ var files =
     [ "MainF.h", "_main_f_8h.html", "_main_f_8h" ],
     [ "messageF.cpp", "message_f_8cpp.html", "message_f_8cpp" ],
     [ "messageF.h", "message_f_8h.html", "message_f_8h" ],
-    [ "NetworkSuite.cpp", "_network_suite_8cpp.html", null ],
+    [ "NetworkSuite.cpp", "_network_suite_8cpp.html", "_network_suite_8cpp" ],
     [ "NetworkSuite.h", "_network_suite_8h.html", [
-      [ "NetworkSuite", "class_network_suite.html", "class_network_suite" ]
+      [ "NetworkTest", "class_network_test.html", "class_network_test" ]
     ] ],
     [ "PlaylistF.cpp", "_playlist_f_8cpp.html", "_playlist_f_8cpp" ],
     [ "PlaylistF.h", "_playlist_f_8h.html", "_playlist_f_8h" ],
@@ -58,21 +62,21 @@ var files =
     [ "remotestrs.h", "remotestrs_8h.html", "remotestrs_8h" ],
     [ "rfc1060u.cpp", "rfc1060u_8cpp.html", "rfc1060u_8cpp" ],
     [ "rfc1060u.h", "rfc1060u_8h.html", "rfc1060u_8h" ],
+    [ "RPCBind.h", "_r_p_c_bind_8h.html", "_r_p_c_bind_8h" ],
     [ "RPCErrors.cpp", "_r_p_c_errors_8cpp.html", "_r_p_c_errors_8cpp" ],
     [ "RPCErrors.h", "_r_p_c_errors_8h.html", "_r_p_c_errors_8h" ],
+    [ "RPCException.h", "_r_p_c_exception_8h.html", [
+      [ "ERPCException", "class_e_r_p_c_exception.html", "class_e_r_p_c_exception" ]
+    ] ],
     [ "RPCFuncsU.cpp", "_r_p_c_funcs_u_8cpp.html", "_r_p_c_funcs_u_8cpp" ],
     [ "RPCFuncsU.h", "_r_p_c_funcs_u_8h.html", "_r_p_c_funcs_u_8h" ],
     [ "rpcimport.h", "rpcimport_8h.html", "rpcimport_8h" ],
-    [ "rpcthread.cpp", "rpcthread_8cpp.html", "rpcthread_8cpp" ],
-    [ "rpcthread.h", "rpcthread_8h.html", "rpcthread_8h" ],
     [ "rpcthreadDLL.cpp", "rpcthread_d_l_l_8cpp.html", "rpcthread_d_l_l_8cpp" ],
     [ "rpcthreadDLL.h", "rpcthread_d_l_l_8h.html", "rpcthread_d_l_l_8h" ],
     [ "ServerDLLF.cpp", "_server_d_l_l_f_8cpp.html", "_server_d_l_l_f_8cpp" ],
     [ "ServerDLLF.h", "_server_d_l_l_f_8h.html", "_server_d_l_l_f_8h" ],
     [ "ServerEnumerator.cpp", "_server_enumerator_8cpp.html", null ],
     [ "ServerEnumerator.h", "_server_enumerator_8h.html", "_server_enumerator_8h" ],
-    [ "ServerF.cpp", "_server_f_8cpp.html", "_server_f_8cpp" ],
-    [ "ServerF.h", "_server_f_8h.html", "_server_f_8h" ],
     [ "ServersF.cpp", "_servers_f_8cpp.html", "_servers_f_8cpp" ],
     [ "ServersF.h", "_servers_f_8h.html", "_servers_f_8h" ],
     [ "ServerTester.cpp", "_server_tester_8cpp.html", null ],
@@ -81,10 +85,13 @@ var files =
     [ "SettingsF.h", "_settings_f_8h.html", "_settings_f_8h" ],
     [ "SplashF.cpp", "_splash_f_8cpp.html", "_splash_f_8cpp" ],
     [ "SplashF.h", "_splash_f_8h.html", "_splash_f_8h" ],
-    [ "testclient.cpp", "testclient_8cpp.html", "testclient_8cpp" ],
     [ "testimp.cpp", "testimp_8cpp.html", "testimp_8cpp" ],
+    [ "testimp.h", "testimp_8h.html", [
+      [ "TRPCServerThread", "class_t_r_p_c_server_thread.html", "class_t_r_p_c_server_thread" ]
+    ] ],
     [ "testserver.cpp", "testserver_8cpp.html", "testserver_8cpp" ],
     [ "unittests.cpp", "unittests_8cpp.html", "unittests_8cpp" ],
+    [ "UtilsSuite.cpp", "_utils_suite_8cpp.html", "_utils_suite_8cpp" ],
     [ "VersionInfoU.cpp", "_version_info_u_8cpp.html", "_version_info_u_8cpp" ],
     [ "VersionInfoU.h", "_version_info_u_8h.html", "_version_info_u_8h" ],
     [ "waint.cpp", "waint_8cpp.html", "waint_8cpp" ],
@@ -101,9 +108,13 @@ var files =
     ] ],
     [ "winampinterface_c.c", "winampinterface__c_8c.html", "winampinterface__c_8c" ],
     [ "winampinterface_s.c", "winampinterface__s_8c.html", "winampinterface__s_8c" ],
-    [ "winampserver.cpp", "winampserver_8cpp.html", "winampserver_8cpp" ],
     [ "WinampServerImpl.cpp", "_winamp_server_impl_8cpp.html", null ],
     [ "WinampServerImpl.h", "_winamp_server_impl_8h.html", [
       [ "WinampServer", "class_winamp_remote_1_1_server_1_1_winamp_server.html", "class_winamp_remote_1_1_server_1_1_winamp_server" ]
+    ] ],
+    [ "WinampTestServer.cpp", "_winamp_test_server_8cpp.html", null ],
+    [ "WinampTestServer.h", "_winamp_test_server_8h.html", [
+      [ "PlaylistItem", "struct_winamp_remote_1_1_server_1_1_playlist_item.html", "struct_winamp_remote_1_1_server_1_1_playlist_item" ],
+      [ "WinampTestServer", "class_winamp_remote_1_1_server_1_1_winamp_test_server.html", "class_winamp_remote_1_1_server_1_1_winamp_test_server" ]
     ] ]
 ];

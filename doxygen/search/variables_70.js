@@ -1,7 +1,7 @@
 var searchData=
 [
   ['pad',['Pad',['../struct___m_i_d_l___t_y_p_e___f_o_r_m_a_t___s_t_r_i_n_g.html#aaafe9971e9a72ce5879f6316c5be378e',1,'_MIDL_TYPE_FORMAT_STRING::Pad()'],['../struct___m_i_d_l___p_r_o_c___f_o_r_m_a_t___s_t_r_i_n_g.html#ac33ffe492a0a6184d3e0504c9a9c7855',1,'_MIDL_PROC_FORMAT_STRING::Pad()']]],
-  ['panel1',['Panel1',['../class_t_config_form.html#ab609cdf27a46c61e2982d25a2b4ad0d7',1,'TConfigForm::Panel1()'],['../class_tfrm_main.html#af3a2654f260fca4eac270c67615fbb8e',1,'TfrmMain::Panel1()']]],
+  ['panel1',['Panel1',['../class_t_config_form.html#ab609cdf27a46c61e2982d25a2b4ad0d7',1,'TConfigForm']]],
   ['pause',['Pause',['../class_tfrm_main.html#a50d063422efd306a61ba92aedc18caa4',1,'TfrmMain']]],
   ['pause1',['Pause1',['../class_tfrm_main.html#a8673e5bd8c5aa4f32f3af97378e974a6',1,'TfrmMain']]],
   ['pblistpos',['pbListPos',['../class_tfrm_playlist.html#aea725de4642ff7a2b7113bb532b4c33a',1,'TfrmPlaylist']]],
@@ -9,7 +9,7 @@ var searchData=
   ['pbsongpos',['pbSongPos',['../class_tfrm_playlist.html#a72f51a11d1b3bc7b51994970c7cbc5f3',1,'TfrmPlaylist']]],
   ['perspectiveproj',['perspectiveProj',['../_about_f_8cpp.html#a87483356c0151b0cb4ffbbbe6cbb91b5',1,'AboutF.cpp']]],
   ['pgcsettings',['pgcSettings',['../class_tfrm_settings.html#afea4c96cd6ec01bcd6d154986f4af7ee',1,'TfrmSettings']]],
-  ['pgmain',['pgMain',['../class_tfrm_main.html#a1cc6cb93d80e65766f334410ecce52b6',1,'TfrmMain']]],
+  ['pgmain',['pgMain',['../class_tfrm_plugin_main.html#a09185d14c39d32bb77fdf0bde248daec',1,'TfrmPluginMain']]],
   ['pgsettings',['pgSettings',['../class_tfrm_main.html#a17c04f000b02c1c050fa3b92064eaa07',1,'TfrmMain']]],
   ['placeontray',['PlaceOnTray',['../class_tfrm_main.html#a2fc91151c896e4b5c76314e85db08224',1,'TfrmMain']]],
   ['play',['Play',['../class_tfrm_main.html#adcf0256b9cf3bacb87fb1e3f11175827',1,'TfrmMain']]],
@@ -26,10 +26,8 @@ var searchData=
   ['pnlbottom',['pnlBottom',['../class_tfrm_playlist.html#a18e1dfd79405c1b1d3b0fe4bcd44b092',1,'TfrmPlaylist']]],
   ['pnlbuttons',['pnlButtons',['../class_tfrm_servers.html#aa45932349ef6553a09accdb041773b40',1,'TfrmServers']]],
   ['pnlcaption',['pnlCaption',['../class_tfrm_details.html#a366d02e9b5a7695c5da819f66643e497',1,'TfrmDetails']]],
-  ['pnlcommands',['pnlCommands',['../class_tfrm_main.html#a60e7679a312d08a41d9e20481ca68f08',1,'TfrmMain']]],
   ['pnlicon',['pnlIcon',['../class_t_config_form.html#ad7cc6e4a7537630956e08e0bd51ad50e',1,'TConfigForm::pnlIcon()'],['../class_tfrm_main.html#a8aa9ed9bde2f3e95403c0b90d9516adf',1,'TfrmMain::pnlIcon()']]],
-  ['pnlmain',['pnlMain',['../class_tfrm_message.html#a3d59a8dcae0fab59015d536dc0645572',1,'TfrmMessage::pnlMain()'],['../class_tfrm_main.html#a74837352e99d5de5eb0ce856a673934c',1,'TfrmMain::pnlMain()']]],
-  ['pnlmiddle',['pnlMiddle',['../class_tfrm_main.html#a8af655fb0e37bc3cc61c49c67809d9e6',1,'TfrmMain']]],
+  ['pnlmain',['pnlMain',['../class_tfrm_message.html#a3d59a8dcae0fab59015d536dc0645572',1,'TfrmMessage::pnlMain()'],['../class_tfrm_plugin_main.html#a18c80a7c723912454d304ac94d77c649',1,'TfrmPluginMain::pnlMain()']]],
   ['pnlpages',['pnlPages',['../class_tfrm_servers.html#acd8370afaf645529a607f7e8bec23743',1,'TfrmServers']]],
   ['pnltop',['pnlTop',['../class_tfrm_servers.html#a6dc8ecab3c4302bf00e66b2afc2cdbec',1,'TfrmServers']]],
   ['pnlwinampbottom',['pnlWinampBottom',['../class_tfrm_main.html#a54dfd85ad035885a36505f3d2155c507',1,'TfrmMain']]],
@@ -40,6 +38,5 @@ var searchData=
   ['previousfade',['PreviousFade',['../class_tfrm_main.html#a1e1f3a488efcde1cd200ff1ca6f4621c',1,'TfrmMain']]],
   ['productname',['ProductName',['../class_t_module_version_info.html#aa97420776682e9c34965d253f1cf2ad2',1,'TModuleVersionInfo']]],
   ['productversion',['ProductVersion',['../class_t_module_version_info.html#ad822ea6fa7184b782c1e9839ea6b2469',1,'TModuleVersionInfo']]],
-  ['pszparam',['pszParam',['../rpcimport_8h.html#adbec8a8543e4f571f75a71b688cfe450',1,'rpcimport.h']]],
-  ['pszprotocolsequence',['pszProtocolSequence',['../binding_8c.html#a13129b94470b020a24026311b84c1790',1,'pszProtocolSequence():&#160;binding.c'],['../_r_p_c_funcs_u_8cpp.html#a13129b94470b020a24026311b84c1790',1,'pszProtocolSequence():&#160;RPCFuncsU.cpp']]]
+  ['pszparam',['pszParam',['../rpcimport_8h.html#adbec8a8543e4f571f75a71b688cfe450',1,'rpcimport.h']]]
 ];

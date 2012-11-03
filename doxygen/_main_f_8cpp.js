@@ -5,7 +5,6 @@ var _main_f_8cpp =
     [ "MessageForm", "_main_f_8cpp.html#a3643abe480ae346fd861c6ba5f26c4b0", null ],
     [ "frmMain", "_main_f_8cpp.html#a05f9d195e1efff9004a745a5bcb4ba13", null ],
     [ "POLL_ERROR_FACTOR", "_main_f_8cpp.html#a7a0a88d6cad0fdd4be122d3cafa36cef", null ],
-    [ "sCommandsDocked", "_main_f_8cpp.html#a603a161a949bb3452ef1283e9519ddfd", null ],
     [ "sCommandsLeft", "_main_f_8cpp.html#ab27859c1fc4069b979c2b2e21e4452de", null ],
     [ "sCommandsTop", "_main_f_8cpp.html#a2d5cdd97ddb80af7f36cbf2c58519a65", null ],
     [ "sCommandsVisible", "_main_f_8cpp.html#a7d7eed39a67646fe3aca410a4a3a57ed", null ],

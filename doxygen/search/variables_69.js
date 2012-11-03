@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['icostate',['icoState',['../class_tfrm_main.html#aa5335c30960a9345d7ebab636a0eccc9',1,'TfrmMain']]],
   ['icotrayicon',['icoTrayIcon',['../class_tfrm_main.html#ab0f6ae056611ac1c167e8b73ccc64afc',1,'TfrmMain']]],
   ['identbuf',['IdentBuf',['../_winamp_client_base_8cpp.html#a138584b7ecb3a39c0ea00259b23dd262',1,'WinampClientBase.cpp']]],
   ['identchars',['IdentChars',['../class_tfrm_main.html#a0aec2221dd521563a2b5de49170f9261',1,'TfrmMain']]],
@@ -16,8 +15,8 @@ var searchData=
   ['imlevents',['imlEvents',['../class_tfrm_servers.html#a8eafdff6ae58a1a7b943e6ef614d2c19',1,'TfrmServers']]],
   ['imlservers',['imlServers',['../class_tfrm_servers.html#a82262130f0caf31d8ae72d773f65bd5a',1,'TfrmServers']]],
   ['imltrayicons',['imlTrayIcons',['../class_tfrm_main.html#a17f5be2177240d803947fd7fd7077b5f',1,'TfrmMain']]],
-  ['imlusers',['imlUsers',['../class_tfrm_main.html#a031f7b1148edcd9c976596b7c52942ea',1,'TfrmMain']]],
+  ['imlusers',['imlUsers',['../class_tfrm_plugin_main.html#ad68820b879e16324b2cd04c96074047a',1,'TfrmPluginMain']]],
   ['init',['init',['../structwinamp_general_purpose_plugin.html#abb3cf2560acb6f68ae2be9e6a5e8f07b',1,'winampGeneralPurposePlugin']]],
   ['internalname',['InternalName',['../class_t_module_version_info.html#a36e1b0d6c333b9e6e29d64a37f926dca',1,'TModuleVersionInfo']]],
-  ['isexe',['isExe',['../class_tfrm_main.html#aa5db26dea8a6b4a8f06ee3f773a54548',1,'TfrmMain::isExe()'],['../_server_f_8cpp.html#ad117d35e4c19798f5ae553fba9c8d4fc',1,'isExe():&#160;ServerF.cpp']]]
+  ['isexe',['isExe',['../class_tfrm_plugin_main.html#a157171ceaf6e301a7a8ceab515616107',1,'TfrmPluginMain']]]
 ];

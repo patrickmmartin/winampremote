@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('_server_tester_8cpp.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,81 +112,87 @@ $(document).ready(function(){initNavTree('_server_tester_8cpp.html','');});
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_server_tester_8h.html">ServerTester.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_r_p_c_funcs_u_8h.html">RPCFuncsU.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="waint_8h.html">waint.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="class_server_tester.html#a9c07a3999a66c9ecd72e636349581563">   12</a></span>&#160;<a class="code" href="class_server_tester.html#a9c07a3999a66c9ecd72e636349581563">ServerTester::ServerTester</a>() : _serverMessageEvent(NULL),</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                               _serverResultEvent(NULL),</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                               _endPoint(<span class="stringliteral">&quot;\\pipe\\winampremote&quot;</span>),</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                               _abort(false)</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="comment">// constructor</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="class_server_tester.html#ac75cef731ad4e67f163e5886dab1b596">   21</a></span>&#160;<a class="code" href="class_server_tester.html#ac75cef731ad4e67f163e5886dab1b596">ServerTester::~ServerTester</a>()</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="comment">// destructor</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> ServerTester::DoMessage(<span class="keyword">const</span> AnsiString&amp; remoteName,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                             <span class="keyword">const</span> AnsiString&amp; <a class="code" href="rpcimport_8h.html#a2c43b4908dfeae2903da68a4d8c9ce5f">data</a>,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                            <span class="keyword">const</span> <span class="keywordtype">int</span> level)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordflow">if</span> (_serverMessageEvent)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    _serverMessageEvent(remoteName, data, level);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> ServerTester::DoResult(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> <span class="keywordtype">bool</span> success)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">if</span> (_serverResultEvent)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    _serverResultEvent(remoteName, success, _abort);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="class_server_tester.html#ae698440e65eb292ab80eba57212418bb">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_server_tester.html#ae698440e65eb292ab80eba57212418bb">ServerTester::testServers</a>(map&lt;AnsiString, ServerInfo&gt;&amp; servers)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="keywordflow">for</span> (map&lt;AnsiString, ServerInfo&gt;::iterator i = servers.begin();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;           !_abort &amp;&amp; (i != servers.end());</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;           ++i)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;          pair&lt;AnsiString, ServerInfo&gt; remote = *i;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;          <a class="code" href="class_server_tester.html#a302d927a01ab4fceb5897cfda15ca8c0">testServer</a>(remote.first);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;       }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="class_server_tester.html#a302d927a01ab4fceb5897cfda15ca8c0">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_server_tester.html#a302d927a01ab4fceb5897cfda15ca8c0">ServerTester::testServer</a>(<span class="keyword">const</span> AnsiString&amp; remote)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;         <span class="keywordtype">int</span> retval;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_r_p_c_bind_8h.html">RPCBind.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_r_p_c_exception_8h.html">RPCException.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="waint_8h.html">waint.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_winamp_client_base_8h.html">WinampClientBase.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="class_server_tester.html#a9c07a3999a66c9ecd72e636349581563">   14</a></span>&#160;<a class="code" href="class_server_tester.html#a9c07a3999a66c9ecd72e636349581563">ServerTester::ServerTester</a>() : _serverMessageEvent(NULL),</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                               _serverResultEvent(NULL),</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                               _endPoint(<span class="stringliteral">&quot;\\pipe\\winampremote&quot;</span>),</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                               _abort(false),</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                               OnResult(NULL), OnTest(NULL)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment">// constructor</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="class_server_tester.html#ac75cef731ad4e67f163e5886dab1b596">   25</a></span>&#160;<a class="code" href="class_server_tester.html#ac75cef731ad4e67f163e5886dab1b596">ServerTester::~ServerTester</a>()</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">// destructor</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> ServerTester::DoMessage(<span class="keyword">const</span> AnsiString&amp; remoteName,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                             <span class="keyword">const</span> AnsiString&amp; <a class="code" href="rpcimport_8h.html#a2c43b4908dfeae2903da68a4d8c9ce5f">data</a>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                            <span class="keyword">const</span> <span class="keywordtype">int</span> level)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">if</span> (_serverMessageEvent)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    _serverMessageEvent(remoteName, data, level);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> ServerTester::DoResult(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> <span class="keywordtype">bool</span> success)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">if</span> (_serverResultEvent)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    _serverResultEvent(remoteName, success, _abort);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="class_server_tester.html#ae698440e65eb292ab80eba57212418bb">   44</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_server_tester.html#ae698440e65eb292ab80eba57212418bb">ServerTester::testServers</a>(map&lt;AnsiString, ServerInfo&gt;&amp; servers)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <span class="keywordflow">for</span> (map&lt;AnsiString, ServerInfo&gt;::iterator i = servers.begin();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;           !_abort &amp;&amp; (i != servers.end());</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;           ++i)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;          pair&lt;AnsiString, ServerInfo&gt; remote = *i;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;          <a class="code" href="class_server_tester.html#a0974dded169e9d625d5f8752d5f57871">testServer</a>(remote.first);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;       }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;          clock_t start, end;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;          <span class="keywordtype">char</span> title[MAX_PATH] = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="class_server_tester.html#a0974dded169e9d625d5f8752d5f57871">   57</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_server_tester.html#a0974dded169e9d625d5f8752d5f57871">ServerTester::testServer</a>(<span class="keyword">const</span> AnsiString&amp; remote)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         <span class="keywordtype">int</span> retval;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// static method from RPCFuncs</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="binding_8c.html#aa54391f9fae3f66918ac930eb75bff71">Bind</a>(remote.c_str(), _endPoint.c_str());</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      DoMessage(remote, <span class="stringliteral">&quot;beginning&quot;</span>, 1);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      DoMessage(remote, <span class="stringliteral">&quot;may take some time&quot;</span>, 2);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      start = clock();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      retval = <a class="code" href="_r_p_c_funcs_u_8cpp.html#aa55acb0da0873f5bb599242543f6e46c">IntegerResult</a>(<span class="stringliteral">&quot;probe&quot;</span>, <a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930af6e3426296e7da2adc3955e33f79ecbd">IPC_GETVERSION</a>, 0);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <a class="code" href="_r_p_c_funcs_u_8cpp.html#a77c529c1431212177221346652810b73">StringResult</a>(title, <a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930a7069782089e6b233abaeaefa9ba18aeb">IPC_GETPLAYLISTTITLE</a>, 0);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        clock_t start, end;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">bool</span> result = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// static method from RPCFuncs</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="_r_p_c_bind_8h.html#a915dbc28ac9e5709036b28ec5baccdb9">Bind</a>(remote.c_str(), _endPoint.c_str(), <a class="code" href="_r_p_c_bind_8h.html#a796aa8ac755305188c36e156922a4dd0">pszProtocolSequenceNP</a>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      DoMessage(remote, <span class="stringliteral">&quot;beginning&quot;</span>, 1);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      DoMessage(remote, <span class="stringliteral">&quot;may take some time&quot;</span>, 2);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      start = clock();</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      end = clock();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      DoMessage(remote, AnsiString().sprintf(<span class="stringliteral">&quot;response after %.2fs &quot;</span>, (end - start) / CLK_TCK), 1);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      DoResult(remote, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      DoMessage(remote, <a class="code" href="waint_8cpp.html#a13c6e4b244d47f4d7b006eaa43657e22">WinampVersionString</a>(retval), 1);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">catch</span>( <a class="code" href="class_e_r_p_c_exception.html">ERPCException</a> *E)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      DoMessage(remote, AnsiString(<span class="stringliteral">&quot;failed: &quot;</span> ) + E-&gt;Message, 3);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      DoResult(remote, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <a class="code" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html">WinampRemote::Client::WinampClientBase</a> client;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      retval = client.<a class="code" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a514d0284f82835675c80cd110c95d216">winampVersion</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      end = clock();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      DoMessage(remote, AnsiString().sprintf(<span class="stringliteral">&quot;response after %.2fs &quot;</span>, (end - start) / CLK_TCK), 1);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      DoMessage(remote, <a class="code" href="waint_8cpp.html#a13c6e4b244d47f4d7b006eaa43657e22">WinampVersionString</a>(retval), 1);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      result = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">catch</span>( <a class="code" href="class_e_r_p_c_exception.html">ERPCException</a>&amp; E)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      DoMessage(remote, AnsiString(<span class="stringliteral">&quot;failed: &quot;</span> ) + E.<a class="code" href="class_e_r_p_c_exception.html#a65a02df13cadf66687a0706d57c95963">what</a>(), 3);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    DoResult(remote, result);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

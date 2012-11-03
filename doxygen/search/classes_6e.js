@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['networksuite',['NetworkSuite',['../class_network_suite.html',1,'']]]
+  ['networktest',['NetworkTest',['../class_network_test.html',1,'']]]
 ];

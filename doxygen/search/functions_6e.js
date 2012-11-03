@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['networksuite',['NetworkSuite',['../class_network_suite.html#afd53747d31ea2a538a7f22267fe9c807',1,'NetworkSuite']]],
+  ['networktest',['NetworkTest',['../class_network_test.html#a6db4548a8407b33582fa2bd36fc74747',1,'NetworkTest']]],
   ['newsongexecute',['NewSongExecute',['../class_tfrm_main.html#ad4485de78eccb9aa21c8cd7efff80c66',1,'TfrmMain']]],
   ['nextexecute',['NextExecute',['../class_tfrm_main.html#a54f6799b3f9dd2f684c0ab4fcba80c9c',1,'TfrmMain']]],
   ['nextfadeexecute',['NextFadeExecute',['../class_tfrm_main.html#a3f8a2b7341703bda3ca1cc5ed11c8508',1,'TfrmMain']]],

@@ -1,6 +1,6 @@
 var annotated =
 [
-    [ "Catch", "namespace_catch.html", "namespace_catch" ],
+    [ "Catch", null, null ],
     [ "std", null, null ],
     [ "WinampRemote", "namespace_winamp_remote.html", "namespace_winamp_remote" ],
     [ "__MIDL_winamp_0001", "struct_____m_i_d_l__winamp__0001.html", "struct_____m_i_d_l__winamp__0001" ],
@@ -10,7 +10,7 @@ var annotated =
     [ "EIPException", "class_e_i_p_exception.html", "class_e_i_p_exception" ],
     [ "ERPCException", "class_e_r_p_c_exception.html", "class_e_r_p_c_exception" ],
     [ "GlassExtender", "class_glass_extender.html", "class_glass_extender" ],
-    [ "NetworkSuite", "class_network_suite.html", "class_network_suite" ],
+    [ "NetworkTest", "class_network_test.html", "class_network_test" ],
     [ "porttype", "structporttype.html", "structporttype" ],
     [ "ServerEnumerator", "class_server_enumerator.html", "class_server_enumerator" ],
     [ "ServerInfo", "struct_server_info.html", "struct_server_info" ],
@@ -22,6 +22,7 @@ var annotated =
     [ "TfrmMain", "class_tfrm_main.html", "class_tfrm_main" ],
     [ "TfrmMessage", "class_tfrm_message.html", "class_tfrm_message" ],
     [ "TfrmPlaylist", "class_tfrm_playlist.html", "class_tfrm_playlist" ],
+    [ "TfrmPluginMain", "class_tfrm_plugin_main.html", "class_tfrm_plugin_main" ],
     [ "TfrmServers", "class_tfrm_servers.html", "class_tfrm_servers" ],
     [ "TfrmSettings", "class_tfrm_settings.html", "class_tfrm_settings" ],
     [ "TfrmSplash", "class_tfrm_splash.html", "class_tfrm_splash" ],

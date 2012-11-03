@@ -1,6 +1,6 @@
 var _r_p_c_funcs_u_8cpp =
 [
-    [ "Bind", "_r_p_c_funcs_u_8cpp.html#aa54391f9fae3f66918ac930eb75bff71", null ],
+    [ "Bind", "_r_p_c_funcs_u_8cpp.html#a915dbc28ac9e5709036b28ec5baccdb9", null ],
     [ "ClientFree", "_r_p_c_funcs_u_8cpp.html#a7c6d119d7bffab93f86f99b7788021d4", null ],
     [ "ExecuteMessage", "_r_p_c_funcs_u_8cpp.html#aa222d65d3f4e39138221f341dd188b1a", null ],
     [ "ExecuteStringMessage", "_r_p_c_funcs_u_8cpp.html#a39ffc410f0647a8f79b79d3bbb9f9a0e", null ],
@@ -19,8 +19,7 @@ var _r_p_c_funcs_u_8cpp =
     [ "SendString", "_r_p_c_funcs_u_8cpp.html#a50a83834ec3b04a928826cd9aeaa191e", null ],
     [ "SetStringList", "_r_p_c_funcs_u_8cpp.html#aa21ac2d8d31d2ceec737c9f777fae2e2", null ],
     [ "Shutdown", "_r_p_c_funcs_u_8cpp.html#a50df1424a989ecf304c345c670758bd0", null ],
-    [ "StringResult", "_r_p_c_funcs_u_8cpp.html#a77c529c1431212177221346652810b73", null ],
+    [ "StringResult", "_r_p_c_funcs_u_8cpp.html#a33962ac5a3ef86e8fe1fc9aab77be1c6", null ],
     [ "UnBind", "_r_p_c_funcs_u_8cpp.html#ad61d0fa285d55218ae412b544f6edc45", null ],
-    [ "pszProtocolSequence", "_r_p_c_funcs_u_8cpp.html#a13129b94470b020a24026311b84c1790", null ],
     [ "StringBinding", "_r_p_c_funcs_u_8cpp.html#a2be177ca0c279fb204a5502559e7f026", null ]
 ];

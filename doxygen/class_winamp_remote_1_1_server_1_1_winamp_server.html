@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('class_winamp_remote_1_1_server_1_1_win
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -135,8 +135,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6fa968bcaa4d795953a81cb714130528 inherit pub_methods_class_winamp_remote_1_1_server_1_1_i_winamp_server"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a6fa968bcaa4d795953a81cb714130528">~IWinampServer</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="_winamp_server_impl_8h_source.html#l00018">18</a> of file <a class="el" href="_winamp_server_impl_8h_source.html">WinampServerImpl.h</a>.</p>
+<div class="textblock"><p>concrete class to implement the <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html">IWinampServer</a> interface for use in-process in Winamp to pass on the messages based API calls </p>
+
+<p>Definition at line <a class="el" href="_winamp_server_impl_8h_source.html#l00022">22</a> of file <a class="el" href="_winamp_server_impl_8h_source.html">WinampServerImpl.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="abeb53c70ac2c5bcdc46ae2873a3bd5b1"></a>
 <div class="memitem">
@@ -185,6 +186,9 @@ Public Member Functions</h2></td></tr>
 <a class="anchor" id="aa172f52e411b81b6c8b1270fdeb65ec1"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void WinampRemote::Server::WinampServer::ExecuteCommand </td>
@@ -194,9 +198,21 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>executes a Winamp API command </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">MessageToExecute</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Reimplemented from <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#aed8b38571942123d77925abdfc40863b">WinampRemote::Server::IWinampServer</a>.</p>
+<p>Implements <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a9fda89f1ca643ccd25e8b054f8244188">WinampRemote::Server::IWinampServer</a>.</p>
 
 <p>Definition at line <a class="el" href="_winamp_server_impl_8cpp_source.html#l00029">29</a> of file <a class="el" href="_winamp_server_impl_8cpp_source.html">WinampServerImpl.cpp</a>.</p>
 
@@ -205,6 +221,9 @@ Public Member Functions</h2></td></tr>
 <a class="anchor" id="a75f21dfdf352fb52e46b00d6ed478c8d"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void WinampRemote::Server::WinampServer::ExecuteStringCommand </td>
@@ -224,9 +243,22 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>executes a string command </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">CommandString</td><td></td></tr>
+    <tr><td class="paramname">Command</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Reimplemented from <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a6db0a5f09c67775117629395ee9b7bd9">WinampRemote::Server::IWinampServer</a>.</p>
+<p>Implements <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a6e8feeb42b266d3ee4db814647b42e81">WinampRemote::Server::IWinampServer</a>.</p>
 
 <p>Definition at line <a class="el" href="_winamp_server_impl_8cpp_source.html#l00034">34</a> of file <a class="el" href="_winamp_server_impl_8cpp_source.html">WinampServerImpl.cpp</a>.</p>
 
@@ -235,6 +267,9 @@ Public Member Functions</h2></td></tr>
 <a class="anchor" id="a060420b63dc107172732c6ba6fb39742"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int WinampRemote::Server::WinampServer::QueryInt </td>
@@ -254,9 +289,23 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>queries an integer property </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Command</td><td></td></tr>
+    <tr><td class="paramname">Data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns:</dt><dd>the property value </dd></dl>
 
-<p>Reimplemented from <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a8bebabbc22cb92dba1ddc2f5b282713d">WinampRemote::Server::IWinampServer</a>.</p>
+<p>Implements <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a331279d8e92ec27be8bda68b7d371c9a">WinampRemote::Server::IWinampServer</a>.</p>
 
 <p>Definition at line <a class="el" href="_winamp_server_impl_8cpp_source.html#l00039">39</a> of file <a class="el" href="_winamp_server_impl_8cpp_source.html">WinampServerImpl.cpp</a>.</p>
 
@@ -265,6 +314,9 @@ Public Member Functions</h2></td></tr>
 <a class="anchor" id="a5e49880821bc587bb9b5d1ced9d35d99"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">string WinampRemote::Server::WinampServer::QueryString </td>
@@ -284,9 +336,23 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>queries a string property </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Command</td><td></td></tr>
+    <tr><td class="paramname">Data</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns:</dt><dd></dd></dl>
 
-<p>Reimplemented from <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a44ab50360ca4af678772a843c786fc18">WinampRemote::Server::IWinampServer</a>.</p>
+<p>Implements <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#aada62c74088e82bcedc4f106019af7f6">WinampRemote::Server::IWinampServer</a>.</p>
 
 <p>Definition at line <a class="el" href="_winamp_server_impl_8cpp_source.html#l00044">44</a> of file <a class="el" href="_winamp_server_impl_8cpp_source.html">WinampServerImpl.cpp</a>.</p>
 
@@ -295,6 +361,9 @@ Public Member Functions</h2></td></tr>
 <a class="anchor" id="aa9c492ff92e06f63ff5dcfcbdab51e88"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">string WinampRemote::Server::WinampServer::WinampVersion </td>
@@ -303,9 +372,16 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>returns the winamp version rendered as string </p>
+<dl class="section return"><dt>Returns:</dt><dd>the winamp version </dd></dl>
 
-<p>Reimplemented from <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#ae012351528f8557c42672d0fed797f06">WinampRemote::Server::IWinampServer</a>.</p>
+<p>Implements <a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html#aaa13666b7bb0e974b3ef01aff1e30221">WinampRemote::Server::IWinampServer</a>.</p>
 
 <p>Definition at line <a class="el" href="_winamp_server_impl_8cpp_source.html#l00024">24</a> of file <a class="el" href="_winamp_server_impl_8cpp_source.html">WinampServerImpl.cpp</a>.</p>
 

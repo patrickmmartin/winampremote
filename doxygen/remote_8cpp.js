@@ -13,8 +13,8 @@ var remote_8cpp =
     [ "USELIB", "remote_8cpp.html#a68ae3f58ffc7268b71d0627208ce5062", null ],
     [ "USERC", "remote_8cpp.html#a2402bc08da2faa15d8a3351fa64479f2", null ],
     [ "USERC", "remote_8cpp.html#ab08a8f08fed268d780eedbcc5dd9e63d", null ],
+    [ "USERES", "remote_8cpp.html#a2bd1234900dc8c42ef3f332b15b17212", null ],
     [ "USEUNIT", "remote_8cpp.html#a9b17fa01f4f871ea738617648a4a5223", null ],
-    [ "USEUNIT", "remote_8cpp.html#ad115f9e6430434a8afb72aeb42fab2a2", null ],
     [ "USEUNIT", "remote_8cpp.html#a25c497fc6a70e5090c77777661656dc5", null ],
     [ "USEUNIT", "remote_8cpp.html#ac5e1bb26eeeea5fd777610781c4553bf", null ],
     [ "USEUNIT", "remote_8cpp.html#ae8f316a7deac6cc9378a50ae823e283a", null ],
@@ -24,5 +24,6 @@ var remote_8cpp =
     [ "USEUNIT", "remote_8cpp.html#a5083e072c9e65ee46313b51afaa0d41e", null ],
     [ "USEUNIT", "remote_8cpp.html#a1b49a0cce98418a2d5cac1f394133275", null ],
     [ "USEUNIT", "remote_8cpp.html#aec1d28b20834b52b3978c204b6a0db18", null ],
-    [ "WinMain", "remote_8cpp.html#a24938be1768402642c103dac1b7f18a3", null ]
+    [ "USEUNIT", "remote_8cpp.html#a0302a8b8f805b7de7eea48387427a830", null ],
+    [ "WinMain", "remote_8cpp.html#ab7f0bcd1595734d089476bf8c463de0e", null ]
 ];

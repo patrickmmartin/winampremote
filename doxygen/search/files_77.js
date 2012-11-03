@@ -9,7 +9,8 @@ var searchData=
   ['winampinterface_2eidl',['winampinterface.idl',['../winampinterface_8idl.html',1,'']]],
   ['winampinterface_5fc_2ec',['winampinterface_c.c',['../winampinterface__c_8c.html',1,'']]],
   ['winampinterface_5fs_2ec',['winampinterface_s.c',['../winampinterface__s_8c.html',1,'']]],
-  ['winampserver_2ecpp',['winampserver.cpp',['../winampserver_8cpp.html',1,'']]],
   ['winampserverimpl_2ecpp',['WinampServerImpl.cpp',['../_winamp_server_impl_8cpp.html',1,'']]],
-  ['winampserverimpl_2eh',['WinampServerImpl.h',['../_winamp_server_impl_8h.html',1,'']]]
+  ['winampserverimpl_2eh',['WinampServerImpl.h',['../_winamp_server_impl_8h.html',1,'']]],
+  ['winamptestserver_2ecpp',['WinampTestServer.cpp',['../_winamp_test_server_8cpp.html',1,'']]],
+  ['winamptestserver_2eh',['WinampTestServer.h',['../_winamp_test_server_8h.html',1,'']]]
 ];

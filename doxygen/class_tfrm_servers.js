@@ -12,7 +12,6 @@ var class_tfrm_servers =
     [ "StopTest", "class_tfrm_servers.html#a911ae1754f5ff593ad1f7466a84482e0", null ],
     [ "Address", "class_tfrm_servers.html#a405ca0e37600bbeefe2e8e79fa78e30f", null ],
     [ "btnCancel", "class_tfrm_servers.html#a71c25b3cfe5fc26ea22127bb028534ad", null ],
-    [ "btnGetIp", "class_tfrm_servers.html#ab5f8e4db90289d6e587300f5d3174320", null ],
     [ "btnLocate", "class_tfrm_servers.html#af06b4d01add1f0a77aae3da37254d9bc", null ],
     [ "btnOK", "class_tfrm_servers.html#aae4b6d469c60e9d99b4941075f190166", null ],
     [ "btnTest", "class_tfrm_servers.html#a80023f103bb5da39747d1565ddd6132e", null ],

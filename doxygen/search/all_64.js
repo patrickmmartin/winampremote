@@ -6,6 +6,7 @@ var searchData=
   ['delaytimer',['DelayTimer',['../class_tfrm_main.html#ae5f1f3a5042fb3858d92d8e9d6f0f6d8',1,'TfrmMain']]],
   ['delete',['Delete',['../class_tfrm_main.html#a125c6640b421236377284cc6be4fa385',1,'TfrmMain']]],
   ['delete1',['Delete1',['../class_tfrm_main.html#a244c932aa7e6cfbb6d5dce724b981b46',1,'TfrmMain']]],
+  ['deleteplaylist',['deletePlaylist',['../class_winamp_remote_1_1_client_1_1_i_winamp.html#a5c85bb0924ca034f9622e4f09cb22582',1,'WinampRemote::Client::IWinamp::deletePlaylist()'],['../class_winamp_remote_1_1_client_1_1_winamp_client_base.html#ab38c159b629e1c7c1ea77d92fae95733',1,'WinampRemote::Client::WinampClientBase::deletePlaylist()']]],
   ['deleteplaylistexecute',['DeletePlayListExecute',['../class_tfrm_main.html#a9fbae30d7dd331b95dc4066c032c5baa',1,'TfrmMain']]],
   ['depthbuffered',['depthBuffered',['../_about_f_8cpp.html#a3322ac149d5bb010d160cd9e0868c29c',1,'AboutF.cpp']]],
   ['description',['description',['../structwinamp_general_purpose_plugin.html#aa8a1c8d0fb9345d2468d4fafc2d1d855',1,'winampGeneralPurposePlugin::description()'],['../structporttype.html#a0566100e8a7022152848b4b0b9e4d0e4',1,'porttype::description()']]],
