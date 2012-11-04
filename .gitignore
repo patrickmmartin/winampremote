@@ -113,3 +113,4 @@
 Debug
 ipch
 *.sdf
+/source/WARC/WARC.opensdf
