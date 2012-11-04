@@ -112,3 +112,4 @@
 /source\WARC/ipch
 Debug
 ipch
+*.sdf
