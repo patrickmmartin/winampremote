@@ -1,18 +1,22 @@
 #pragma hdrstop
 
+#include <iostream>
+
 #include "TestRPCServer.h"
 
-#include <iostream>
+#include "ConsoleCallObserver.h"
+
 
 #pragma argsused
 int main(int argc, char* argv[])
 {
 
-  std::cout << "testserver starting" << std::endl;
+  ConsoleCallObserver cco;
+  cco.notifyStatus("testserver starting");
 
   // for this mock server, no need for another thread, simply block on this
-  TTestRPCServer::Execute();
-  std::cout << "RPC loop terminated: testserver exiting" << std::endl;
+  TTestRPCServer::Execute(cco);
+  cco.notifyStatus("RPC loop terminated: testserver exiting");
 
   return 0;
 

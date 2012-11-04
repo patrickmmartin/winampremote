@@ -5,8 +5,8 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\testserver.exe"/>
     <OBJFILES value="..\obj\testserver\testserver.obj ..\obj\testserver\ConsoleCallObserver.obj 
-      ..\obj\testserver\testimp.obj ..\obj\testserver\RPCErrors.obj 
-      ..\obj\testserver\waint.obj ..\obj\testserver\WinampTestServer.obj"/>
+      ..\obj\testserver\RPCErrors.obj ..\obj\testserver\waint.obj 
+      ..\obj\testserver\WinampTestServer.obj ..\obj\testserver\TestRPCServer.obj"/>
     <RESFILES value="..\obj\testserver\winampremote.res testserver.RES"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>

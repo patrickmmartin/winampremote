@@ -2,12 +2,12 @@ USEUNIT("testserver.cpp");
 USELIB("..\lib\winampinterface.lib");
 USEUNIT("ConsoleCallObserver.cpp");
 USERC("winampremote.rc");
-USEUNIT("testimp.cpp");
 USEUNIT("RPCErrors.cpp");
 USEUNIT("waint.cpp");
 USEUNIT("WinampTestServer.cpp");
 USERES("testserver.RES");
-
+USEUNIT("TestRPCServer.cpp");
+//---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 
 main

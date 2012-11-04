@@ -1,5 +1,3 @@
-#include <malloc.h>
-#include <stdio.h>
 #include <sstream>
 #pragma hdrstop
 
@@ -16,8 +14,6 @@
 
 //RPC errors
 # include "RPCErrors.h"
-
-#include "ConsoleCallObserver.h"
 
 #include "WinampTestServer.h"
 
@@ -205,19 +201,33 @@ void WAShutdown(void)
 }
 
 
-void TTestRPCServer::Execute()
+ICallObserver* CallObserver = NULL;
+static TTestRPCServer::StubCallObserver sco;
+
+void TTestRPCServer::resetStubObserver()
+{
+	// set the observer to the stub
+	if (CallObserver)
+		CallObserver = &sco;
+
+}
+
+void TTestRPCServer::Execute(ICallObserver& callObserver)
 {
 
-    std::string str;
+	std::string str;
     RPC_STATUS status;
     unsigned char * protocol_seq_np = (unsigned char *) "ncacn_np";
 //    unsigned char * protocol_seq_ip_tcp = "ncacn_ip_tcp";
 
-    MainStatus("initialising...");
+	// set the observer to the stub
+	CallObserver = &callObserver;
+
+    CallObserver->notifyStatus("initialising...");
 
     str = "winamp version : test";
 
-    MainMessage(str.c_str());
+    CallObserver->notifyMessage(str.c_str());
 
     // should check status codes here for previously registered interfaces
     // need a property of the appropriate type for the endpoint
@@ -228,37 +238,38 @@ void TTestRPCServer::Execute()
     if (status == RPC_S_OK){
       status = RpcServerRegisterIf(winamp_v1_0_s_ifspec, NULL, NULL);
       if (status == RPC_S_OK){
-        MainStatus("listening...");
+    	  CallObserver->notifyMessage("listening...");
         status = RpcServerListen(1, 20, FALSE);
         if (status != RPC_S_OK){
-          MainMessage("error in listening");
-          MainMessage(RPCError(status));
+        	CallObserver->notifyMessage("error in listening");
+        	CallObserver->notifyMessage(RPCError(status));
           }
         }
     else{
-      MainMessage("failed to register interface");
-      MainMessage(RPCError(status));
-      MainStatus("initialise failed");
+    	CallObserver->notifyMessage("failed to register interface");
+    	CallObserver->notifyMessage(RPCError(status));
+    	CallObserver->notifyStatus("initialise failed");
       }
     }
   else{
-    MainMessage("failed to create protocol sequence");
-    MainMessage(RPCError(status));
-    MainStatus("initialise failed");
+	  CallObserver->notifyMessage("failed to create protocol sequence");
+	  CallObserver->notifyMessage(RPCError(status));
+	  CallObserver->notifyStatus("initialise failed");
   }
+
+  // reset the observer
+  resetStubObserver();
 
 }
 
-
-
 static void inline MainMessage(const char * msgString)
 {
-  TTestRPCServer::CallObserver.notifyMessage(msgString);
+  CallObserver->notifyMessage(msgString);
 }
 
 static void inline MainStatus(const char * msgString)
 {
-  TTestRPCServer::CallObserver.notifyStatus(msgString);
+  CallObserver->notifyStatus(msgString);
 }
 
 
@@ -275,9 +286,5 @@ void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
 {
     free(ptr);
 }
-
-ConsoleCallObserver cco;
-ICallObserver& TTestRPCServer::CallObserver = cco;
-
 
  
