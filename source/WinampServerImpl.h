@@ -35,7 +35,7 @@ public:
 
 	void ExecuteCommand(WinampCommand MessageToExecute);
 
-	void ExecuteStringCommand(char * CommandString, WinampCommand Command);
+	void ExecuteStringCommand(const char * CommandString, WinampCommand Command);
 
 	int QueryInt(WinampCommand Command, int Data);
 

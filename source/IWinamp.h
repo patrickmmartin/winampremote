@@ -325,7 +325,7 @@ public:
 	 * @param CommandString
 	 * @param Command
 	 */
-	virtual void ExecuteStringCommand(char * CommandString, WinampCommand Command) = 0;
+	virtual void ExecuteStringCommand(const char * CommandString, WinampCommand Command) = 0;
 
 	/**
 	 * queries an integer property

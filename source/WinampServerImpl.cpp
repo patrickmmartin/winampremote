@@ -31,7 +31,7 @@ void WinampServer::ExecuteCommand(WinampCommand MessageToExecute)
 	LocalExecuteCommand(m_winamphwnd, MessageToExecute);
 }
 
-void WinampServer::ExecuteStringCommand(char * CommandString, WinampCommand Command)
+void WinampServer::ExecuteStringCommand(const char * CommandString, WinampCommand Command)
 {
 	LocalExecuteStringCommand(m_winamphwnd, CommandString, Command);
 }

@@ -105,7 +105,7 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 
 }
 
-void WinampTestServer::ExecuteStringCommand(char * CommandString, WinampCommand Command)
+void WinampTestServer::ExecuteStringCommand(const char * CommandString, WinampCommand Command)
 {
 	throw std::runtime_error("WinampTestServer::ExecuteStringCommand not implemented");
 }

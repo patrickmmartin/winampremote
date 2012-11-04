@@ -1,5 +1,6 @@
 #include <malloc.h>
 #include <stdio.h>
+#include <sstream>
 #pragma hdrstop
 
 // problem with definition of __try - this gets round out with no problems
@@ -23,10 +24,8 @@
 // this code is only used in the out of process test process
 WinampRemote::Server::WinampTestServer localWinamp;
 
-
-
-static void inline MainMessage(char * msgString);
-static void inline MainStatus(char * msgString);
+static void inline MainMessage(const char * msgString);
+static void inline MainStatus(const char * msgString);
 
 
 
@@ -37,7 +36,7 @@ void WAMessageProc(
     /* [string][in] */ unsigned char __RPC_FAR *pszString)
 {
 
-  AnsiString str = (char *) pszString;
+  std::string str = (char *) pszString;
   str += " sent hello";
   MainMessage(str.c_str());
 
@@ -49,7 +48,7 @@ void WAExecuteMessage(
     /* [in] */ long command)
 {
 
-  AnsiString str = (char *) pszString;
+  std::string str = (char *) pszString;
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
   MainMessage( str.c_str());
@@ -64,7 +63,7 @@ void WAExecuteMessageString(
     /* [in] */ long command)
 {
 
-  AnsiString str = (char *) pszString;
+  std::string str = (char *) pszString;
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
   str += " - parameter : ";
@@ -82,7 +81,7 @@ long WAIntegerResult(
     /* [in] */ long data)
 {
 
-  AnsiString str = (char *) pszString;
+  std::string str = (char *) pszString;
   str += " sent  - query : ";
   str += WinampCommandDesc(command);
   str += " - data : ";
@@ -99,7 +98,7 @@ long WAStringResult(
     /* [in] */ long command,
     /* [in] */ long data)
 {
-  AnsiString str = (char *) pszString;
+  std:string str = (char *) pszString;
   str += " sent  - query : ";
   str += WinampCommandDesc(command);
   str += " - data : ";
@@ -127,43 +126,16 @@ void WASetStringList(
     /* [in] */ long command)
 {
 
-  {
-     try
-     {            // test for C++ exceptions
-        try
-        {         // test for C-based structured exceptions
+	stringstream sstr;
+	sstr.str() = (char *) Buffer;
+	string line;
+	while (std::getline(sstr, line))
+	{
+		localWinamp.ExecuteStringCommand(line.c_str(), static_cast<WinampCommand>(command));
+	}
 
 
-          TStringList * StringList = new TStringList;
-          try
-          {
-            StringList->Text = (char *) Buffer;
-
-            for (int i = 0 ; i < StringList->Count ; i++)
-            {
-            	  localWinamp.ExecuteStringCommand(StringList->Strings[i].c_str(), static_cast<WinampCommand>(command));
-            }
-
-
-          }
-          __finally
-          {
-            delete StringList;
-          }
-
-          MainStatus("listening...");
-        }
-
-        __except(1)
-        {
-          throw(Exception(AnsiString("structured exception generated in WASetList() : " + SysErrorMessage(RpcExceptionCode()))));
-        }
-     }
-     catch ( Exception &E )
-     {
-       OutputDebugString(E.Message.c_str());
-      }
-    }
+	MainStatus("listening...");
 
 }
 
@@ -174,55 +146,23 @@ void WAGetStringList(
     /* [in] */ long command)
 {
 
-  {
-     try
-     {            // test for C++ exceptions
-        try
-        {         // test for C-based structured exceptions
 
+	std::stringstream list;
+	for (int i = 0 ; i < 20; i++ )
+	{
+		if (i)
+			list << std::endl;
+		list << "string #" << i;
+	}
 
-          TStringList * StringList = new TStringList;
-          try
-          {
-            try
-            {
-              // get all items in list
+	const char * buffer = list.str().c_str();
+	if (buffer)
+	{
+		pBuffer->BufferLength = list.str().size();
+		pBuffer->Buffer = (unsigned char *) buffer;
+	}
 
-              for (int i = 0 ; i < 20; i++ )
-              {
-                StringList->Add(AnsiString("string #") + i);
-              }
-
-              char * Buffer = StringList->GetText();
-              if (Buffer)
-              {
-                pBuffer->BufferLength = StringList->Text.Length() + 1;
-                pBuffer->Buffer = (unsigned char *) Buffer;
-              }
-            }
-            __finally
-            {
-              delete StringList;
-            }
-          }
-          catch(...)
-          {
-            throw(Exception(AnsiString("exception generated in WAGetList() : " + SysErrorMessage(GetLastError()))));
-          }
-
-          MainStatus("listening...");
-        }
-
-        __except(1)
-        {
-          throw(Exception(AnsiString("structured exception generated in WAGetList() : " + SysErrorMessage(RpcExceptionCode()))));
-        }
-     }
-     catch ( Exception &E )
-     {
-       OutputDebugString(E.Message.c_str());
-      }
-    }
+	MainStatus("listening...");
 
 }
 
@@ -235,55 +175,23 @@ void WAGetStringDataList(
     /* [in] */ long datadata)
 {
 
-  {
-     try
-     {            // test for C++ exceptions
-        try
-        {         // test for C-based structured exceptions
+	std::stringstream list;
+	for (int i = 0 ; i < 20; i++ )
+	{
+		if (i)
+			list << std::endl;
+		list << "string #" << i << std::endl;
+		list << "value #" << i;
+	}
 
+	const char * buffer = list.str().c_str();
+	if (buffer)
+	{
+		pBuffer->BufferLength = list.str().size();
+		pBuffer->Buffer = (unsigned char *) buffer;
+	}
 
-          TStringList * StringList = new TStringList;
-          try
-          {
-            try
-            {
-              // get all items in list
-
-              for (int i = 0 ; i < 20; i++ )
-              {
-                StringList->Add(AnsiString("string #") + i);
-              }
-
-              char * Buffer = StringList->GetText();
-              if (Buffer)
-              {
-                pBuffer->BufferLength = StringList->Text.Length() + 1;
-                pBuffer->Buffer = (unsigned char *) Buffer;
-              }
-            }
-            __finally
-            {
-              delete StringList;
-            }
-          }
-          catch(...)
-          {
-            throw(Exception(AnsiString("exception generated in WAGetList() : " + SysErrorMessage(GetLastError()))));
-          }
-
-          MainStatus("listening...");
-        }
-
-        __except(1)
-        {
-          throw(Exception(AnsiString("structured exception generated in WAGetList() : " + SysErrorMessage(RpcExceptionCode()))));
-        }
-     }
-     catch ( Exception &E )
-     {
-       OutputDebugString(E.Message.c_str());
-      }
-    }
+	MainStatus("listening...");
 
 }
 
@@ -297,15 +205,10 @@ void WAShutdown(void)
 }
 
 
-__fastcall TRPCServerThread::TRPCServerThread(bool CreateSuspended)
-    : TThread(CreateSuspended)
-{
-}
-
-void __fastcall TRPCServerThread::Execute()
+void TTestRPCServer::Execute()
 {
 
-    AnsiString str;
+    std::string str;
     RPC_STATUS status;
     unsigned char * protocol_seq_np = "ncacn_np";
 //    unsigned char * protocol_seq_ip_tcp = "ncacn_ip_tcp";
@@ -348,14 +251,14 @@ void __fastcall TRPCServerThread::Execute()
 
 
 
-static void inline MainMessage(char * msgString)
+static void inline MainMessage(const char * msgString)
 {
-  TRPCServerThread::CallObserver.notifyMessage(msgString);
+  TTestRPCServer::CallObserver.notifyMessage(msgString);
 }
 
-static void inline MainStatus(char * msgString)
+static void inline MainStatus(const char * msgString)
 {
-  TRPCServerThread::CallObserver.notifyStatus(msgString);
+  TTestRPCServer::CallObserver.notifyStatus(msgString);
 }
 
 
@@ -371,7 +274,7 @@ void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
 }
 
 ConsoleCallObserver cco;
-ICallObserver& TRPCServerThread::CallObserver = cco;
+ICallObserver& TTestRPCServer::CallObserver = cco;
 
 
  

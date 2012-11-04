@@ -2,20 +2,14 @@
 #ifndef rpcthreadH
 #define rpcthreadH
 
-#include <Classes.hpp>
-
-
 #include "ICallObserver.h"
 
 using namespace WinampRemote::Remoting;
 
-class TRPCServerThread : public TThread
+class TTestRPCServer
 {
-private:
-protected:
-    void __fastcall Execute();
 public:
-    __fastcall TRPCServerThread(bool CreateSuspended);
+    static void Execute();
     static ICallObserver& CallObserver;
 
 };

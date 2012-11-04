@@ -46,7 +46,7 @@ void LocalExecuteCommand(HWND HWinamp, WinampCommand Command)
 }
 
 // 1.7+ send a command with a string parameter
-void LocalExecuteStringCommand(HWND HWinamp, char * CommandString, WinampCommand Command)
+void LocalExecuteStringCommand(HWND HWinamp, const char * CommandString, WinampCommand Command)
 {
 	COPYDATASTRUCT cds;
 

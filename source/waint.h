@@ -174,7 +174,7 @@ void LocalExecuteCommand(HWND HWinamp, WinampCommand MessageToExecute);
  * @param Command - the winamp API command
  * returns nothing
  */
-void LocalExecuteStringCommand(HWND HWinamp, char * CommandString, WinampCommand Command);
+void LocalExecuteStringCommand(HWND HWinamp, const char * CommandString, WinampCommand Command);
 
 /**
  * Queries the Winamp API for an integer value.
