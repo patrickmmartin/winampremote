@@ -147,12 +147,11 @@ void WAGetStringList(
 		list << "string #" << i;
 	}
 
-	const char * buffer = list.str().c_str();
-	if (buffer)
-	{
-		pBuffer->BufferLength = list.str().size();
-		pBuffer->Buffer = (unsigned char *) buffer;
-	}
+	std::string buffer = list.str().c_str();
+	pBuffer->BufferLength = list.str().size() + 1;
+	// TODO check this rsult in RPC RT returning the memory
+	pBuffer->Buffer = (byte *) MIDL_user_allocate (pBuffer->BufferLength);
+	memcpy(pBuffer->Buffer, buffer.c_str(), pBuffer->BufferLength);
 
 	MainStatus("listening...");
 
