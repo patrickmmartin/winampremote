@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testserverVC", "testserverV
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unittestsVC", "unittestsVC\unittestsVC.vcxproj", "{C0297FDC-EE56-4121-A472-D9AE2E1DA386}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gen_remotecontrol", "gen_remotecontrol\gen_remotecontrol.vcxproj", "{4D757D2F-7A7D-4681-96BA-2315E7BEC3BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{C0297FDC-EE56-4121-A472-D9AE2E1DA386}.Debug|Win32.Build.0 = Debug|Win32
 		{C0297FDC-EE56-4121-A472-D9AE2E1DA386}.Release|Win32.ActiveCfg = Release|Win32
 		{C0297FDC-EE56-4121-A472-D9AE2E1DA386}.Release|Win32.Build.0 = Release|Win32
+		{4D757D2F-7A7D-4681-96BA-2315E7BEC3BF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4D757D2F-7A7D-4681-96BA-2315E7BEC3BF}.Debug|Win32.Build.0 = Debug|Win32
+		{4D757D2F-7A7D-4681-96BA-2315E7BEC3BF}.Release|Win32.ActiveCfg = Release|Win32
+		{4D757D2F-7A7D-4681-96BA-2315E7BEC3BF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
