@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C0297FDC-EE56-4121-A472-D9AE2E1DA386}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>WARC</RootNamespace>
+    <RootNamespace>unittestsVC</RootNamespace>
     <ProjectName>unittestsVC</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
