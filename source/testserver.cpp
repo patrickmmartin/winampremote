@@ -1,6 +1,6 @@
 #pragma hdrstop
 
-#include "testimp.h"
+#include "TestRPCServer.h"
 
 #include <iostream>
 
@@ -8,12 +8,11 @@
 int main(int argc, char* argv[])
 {
 
-
   std::cout << "testserver starting" << std::endl;
 
-  // we can just have the RPC loop block here, much more directly
+  // for this mock server, no need for another thread, simply block on this
   TTestRPCServer::Execute();
-  std::cout << "thread exited: testserver exiting" << std::endl;
+  std::cout << "RPC loop terminated: testserver exiting" << std::endl;
 
   return 0;
 
