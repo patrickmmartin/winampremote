@@ -50,8 +50,5 @@
     <ClCompile Include="..\winampinterface_c.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\winampinterface_s.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

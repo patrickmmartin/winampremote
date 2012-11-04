@@ -63,14 +63,12 @@ void WAExecuteMessageString(
     /* [in] */ long command)
 {
 
-  std::string str = (char *) pszString;
-  str += " sent  - command : ";
-  str += WinampCommandDesc(command);
-  str += " - parameter : ";
-  str += (char *) pszParam;
-  MainMessage( str.c_str());
-
-  localWinamp.ExecuteStringCommand(pszParam, static_cast<WinampCommand>(command) );
+  stringstream sstr;
+  sstr.str() = (char *) pszString;
+  sstr << " sent  - command : " << WinampCommandDesc(command) << " - parameter : " << (char *) pszParam;
+  MainMessage( sstr.str().c_str());
+// TODO: eliminate the cast
+  localWinamp.ExecuteStringCommand((const char *) pszParam, static_cast<WinampCommand>(command) );
 
 
 }
@@ -81,13 +79,10 @@ long WAIntegerResult(
     /* [in] */ long data)
 {
 
-  std::string str = (char *) pszString;
-  str += " sent  - query : ";
-  str += WinampCommandDesc(command);
-  str += " - data : ";
-  str += data;
-
-  MainMessage( str.c_str());
+  stringstream sstr;
+  sstr.str() = (char *) pszString;
+  sstr << " sent  - query : " << WinampCommandDesc(command) << " - data : " << data;
+  MainMessage( sstr.str().c_str());
 
   return localWinamp.QueryInt( (WinampCommand) command, data);
 
@@ -98,21 +93,18 @@ long WAStringResult(
     /* [in] */ long command,
     /* [in] */ long data)
 {
-  std:string str = (char *) pszString;
-  str += " sent  - query : ";
-  str += WinampCommandDesc(command);
-  str += " - data : ";
-  str += data;
 
-  MainMessage( str.c_str());
+  // TODO: identical to above
+  stringstream sstr;
+  sstr.str() = (char *) pszString;
+  sstr << " sent  - query : " << WinampCommandDesc(command) << " - data : " << data;
+  MainMessage( sstr.str().c_str());
 
-  str = localWinamp.QueryString( static_cast<WinampCommand>(command), data).c_str();
-
-  MainMessage (str.c_str());
+  std::string str  = localWinamp.QueryString( static_cast<WinampCommand>(command), data).c_str();
 
   strcpy((char *) pszString, str.c_str());
-  /* return status*/
 
+  // TODO: this obviously achieves nothing
   return 0;
 
 }
@@ -210,7 +202,7 @@ void TTestRPCServer::Execute()
 
     std::string str;
     RPC_STATUS status;
-    unsigned char * protocol_seq_np = "ncacn_np";
+    unsigned char * protocol_seq_np = (unsigned char *) "ncacn_np";
 //    unsigned char * protocol_seq_ip_tcp = "ncacn_ip_tcp";
 
     MainStatus("initialising...");
@@ -262,12 +254,15 @@ static void inline MainStatus(const char * msgString)
 }
 
 
+// TODO these are generating an annotation warning in VS2012
 /* required user alloc / free function pair */
+#pragma warning(suppress: 28251)
 void __RPC_FAR * __RPC_USER midl_user_allocate(size_t len)
 {
     return(malloc(len));
 }
 
+#pragma warning(suppress: 28251)
 void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
 {
     free(ptr);

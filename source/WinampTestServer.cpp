@@ -22,7 +22,7 @@ WinampTestServer::WinampTestServer() :
 	for (int i = 0 ; i < 20 ; i++)
 	{
 		sprintf(title, "playlist item %d", i);
-		sprintf(filename, "c:\music\file%d", i);
+		sprintf(filename, "c:\\music\\file%d", i);
 		m_playList.push_back(PlaylistItem(title, filename));
 	}
 }
@@ -161,10 +161,10 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			m_eqdata[m_eqindex] = Data;
 			break;
 		case IPC_SETSHUFFLEOPTION:
-			m_shuffle = Data;
+			m_shuffle = (Data)?true:false;
 			break;
 		case IPC_SETREPEATOPTION:
-			m_repeat = Data;
+			m_repeat = (Data)?true:false;
 			break;
 		case IPC_SETPANNING:
 		{
