@@ -48,6 +48,7 @@ void WAExecuteMessage(
     /* [in] */ long command)
 {
 
+  // TODO: factor out this logging concept
   std::string str = (char *) pszString;
   str += " sent  - command : ";
   str += WinampCommandDesc(command);
@@ -63,6 +64,7 @@ void WAExecuteMessageString(
     /* [in] */ long command)
 {
 
+  // TODO: factor out this logging concept
   stringstream sstr;
   sstr.str() = (char *) pszString;
   sstr << " sent  - command : " << WinampCommandDesc(command) << " - parameter : " << (char *) pszParam;
@@ -79,6 +81,7 @@ long WAIntegerResult(
     /* [in] */ long data)
 {
 
+  // TODO: factor out this logging concept
   stringstream sstr;
   sstr.str() = (char *) pszString;
   sstr << " sent  - query : " << WinampCommandDesc(command) << " - data : " << data;
@@ -94,7 +97,7 @@ long WAStringResult(
     /* [in] */ long data)
 {
 
-  // TODO: identical to above
+  // TODO: factor out this logging concept
   stringstream sstr;
   sstr.str() = (char *) pszString;
   sstr << " sent  - query : " << WinampCommandDesc(command) << " - data : " << data;
@@ -118,6 +121,7 @@ void WASetStringList(
     /* [in] */ long command)
 {
 
+  // TODO: factor out this logging concept
 	stringstream sstr;
 	sstr.str() = (char *) Buffer;
 	string line;
@@ -163,6 +167,7 @@ void WAGetStringList(
 	}
 
 	populateBuffer(pBuffer, list.str());
+  // TODO: no logging at all here
 	MainStatus("listening...");
 
 }
