@@ -29,25 +29,25 @@
     <ClCompile Include="unittestsVC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\unittests.cpp">
+    <ClCompile Include="..\..\ClientBinder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\ClientSuite.cpp">
+    <ClCompile Include="..\..\ClientSuite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\WinampClientBase.cpp">
+    <ClCompile Include="..\..\ContextInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\ClientBinder.cpp">
+    <ClCompile Include="..\..\RPCFuncsU.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\ContextInfo.cpp">
+    <ClCompile Include="..\..\unittests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\RPCFuncsU.cpp">
+    <ClCompile Include="..\..\WinampClientBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\winampinterface_c.c">
+    <ClCompile Include="..\..\winampinterface_c.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
