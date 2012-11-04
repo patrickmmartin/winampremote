@@ -132,6 +132,21 @@ void WASetStringList(
 }
 
 
+inline static void populateBuffer(BUFFER * pBuffer, std::string& buffer)
+{
+
+	pBuffer->BufferLength = 0;
+	int strlen = buffer.size();
+	// TODO check this results in the RPC RT returning the memory
+	pBuffer->Buffer = (byte *) MIDL_user_allocate (strlen +1);
+	if (pBuffer->Buffer)
+	{
+		pBuffer->BufferLength = strlen + 1;
+		memcpy(pBuffer->Buffer, buffer.c_str(), pBuffer->BufferLength);
+	}
+
+}
+
 void WAGetStringList(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [out] */ BUFFER __RPC_FAR *pBuffer,
@@ -147,17 +162,7 @@ void WAGetStringList(
 		list << "string #" << i;
 	}
 
-	pBuffer->BufferLength = 0;
-	std::string buffer = list.str();
-	int strlen = buffer.size();
-	// TODO check this results in the RPC RT returning the memory
-	pBuffer->Buffer = (byte *) MIDL_user_allocate (strlen +1);
-	if (pBuffer->Buffer)
-	{
-		pBuffer->BufferLength = strlen + 1;
-		memcpy(pBuffer->Buffer, buffer.c_str(), pBuffer->BufferLength);
-	}
-
+	populateBuffer(pBuffer, list.str());
 	MainStatus("listening...");
 
 }
@@ -180,13 +185,7 @@ void WAGetStringDataList(
 		list << "value #" << i;
 	}
 
-	const char * buffer = list.str().c_str();
-	if (buffer)
-	{
-		pBuffer->BufferLength = list.str().size();
-		pBuffer->Buffer = (unsigned char *) buffer;
-	}
-
+	populateBuffer(pBuffer, list.str());
 	MainStatus("listening...");
 
 }
