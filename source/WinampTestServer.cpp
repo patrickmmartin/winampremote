@@ -14,7 +14,7 @@ WinampTestServer::WinampTestServer() :
 		m_volume(0),
 		m_songPosition(0),
 		m_repeat(false), m_shuffle(false),
-		m_eqdata(),
+		m_eqdata(), m_eqindex(0),
 		m_panning(0)
 {
 	char title[MAX_PATH] = "";
