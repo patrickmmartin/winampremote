@@ -1,4 +1,6 @@
 #include <sstream>
+#include <string>
+
 #pragma hdrstop
 
 // problem with definition of __try - this gets round out with no problems
@@ -24,6 +26,24 @@ static void inline MainMessage(const char * msgString);
 static void inline MainStatus(const char * msgString);
 
 
+string queryLogFormat(char * strSender, long command, long data)
+{
+
+	stringstream sstr;
+	sstr.str() = strSender;
+	sstr << " sent  - query : " << WinampCommandDesc(command) << " - data : " << data;
+	return sstr.str();
+
+}
+
+string commandLogFormat(char * strSender, long command, char * strParam = NULL)
+{
+	  stringstream sstr;
+	  sstr.str() = (char *) strSender;
+	  sstr << " sent  - command : " << WinampCommandDesc(command) << " - parameter : " << strParam;
+	  return sstr.str();
+}
+
 
 /* __RPC_FAR is literally nothing, but is left in for consistency
 - none of the MIDL generated code should need direct modification*/
@@ -44,11 +64,8 @@ void WAExecuteMessage(
     /* [in] */ long command)
 {
 
-  // TODO: factor out this logging concept
-  std::string str = (char *) pszString;
-  str += " sent  - command : ";
-  str += WinampCommandDesc(command);
-  MainMessage( str.c_str());
+  MainMessage( commandLogFormat(pszString, command).c_str());
+
   localWinamp.ExecuteCommand( static_cast<WinampCommand>(command) );
 
 }
@@ -60,13 +77,10 @@ void WAExecuteMessageString(
     /* [in] */ long command)
 {
 
-  // TODO: factor out this logging concept
-  stringstream sstr;
-  sstr.str() = (char *) pszString;
-  sstr << " sent  - command : " << WinampCommandDesc(command) << " - parameter : " << (char *) pszParam;
-  MainMessage( sstr.str().c_str());
-// TODO: eliminate the cast
-  localWinamp.ExecuteStringCommand((const char *) pszParam, static_cast<WinampCommand>(command) );
+	MainMessage( commandLogFormat(pszString, command, pszParam).c_str());
+
+	// TODO: eliminate the cast
+	localWinamp.ExecuteStringCommand((const char *) pszParam, static_cast<WinampCommand>(command) );
 
 
 }
@@ -77,13 +91,9 @@ long WAIntegerResult(
     /* [in] */ long data)
 {
 
-  // TODO: factor out this logging concept
-  stringstream sstr;
-  sstr.str() = (char *) pszString;
-  sstr << " sent  - query : " << WinampCommandDesc(command) << " - data : " << data;
-  MainMessage( sstr.str().c_str());
+	MainMessage( queryLogFormat(pszString, command, data).c_str());
 
-  return localWinamp.QueryInt( (WinampCommand) command, data);
+	return localWinamp.QueryInt( (WinampCommand) command, data);
 
 }
 
@@ -93,11 +103,7 @@ long WAStringResult(
     /* [in] */ long data)
 {
 
-  // TODO: factor out this logging concept
-  stringstream sstr;
-  sstr.str() = (char *) pszString;
-  sstr << " sent  - query : " << WinampCommandDesc(command) << " - data : " << data;
-  MainMessage( sstr.str().c_str());
+  MainMessage( queryLogFormat(pszString, command, data).c_str());
 
   std::string str  = localWinamp.QueryString( static_cast<WinampCommand>(command), data).c_str();
 
@@ -117,7 +123,7 @@ void WASetStringList(
     /* [in] */ long command)
 {
 
-  // TODO: factor out this logging concept
+	// TODO: implement logging
 	stringstream sstr;
 	sstr.str() = (char *) Buffer;
 	string line;
