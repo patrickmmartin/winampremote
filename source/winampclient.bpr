@@ -5,7 +5,8 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="..\bin\winampclient.dll"/>
     <OBJFILES value="..\obj\winampclient\winampclient.obj ..\obj\winampclient\RPCFuncsU.obj 
-      ..\obj\winampclient\waint.obj"/>
+      ..\obj\winampclient\waint.obj ..\obj\winampclient\RPCExecutor.obj 
+      ..\obj\winampclient\RPCErrors.obj"/>
     <RESFILES value="winampclient.res"/>
     <IDLFILES value=""/>
     <DEFFILE value="rpcfuncs.def"/>
