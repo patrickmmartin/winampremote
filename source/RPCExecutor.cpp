@@ -162,6 +162,10 @@ void WAMessageProc(
   std::string str = (char *) pszString;
   str += " sent hello";
   MainMessage(str.c_str());
+  // TODO: need to implement WAExecutionStatus report status
+  // MainStatus(waListening);
+
+  // TODO: notification for exceptions
 
 }
 
@@ -172,8 +176,11 @@ void WAExecuteMessage(
 {
 
   MainMessage( commandLogFormat(pszString, command).c_str());
-
   localWinamp()->ExecuteCommand( static_cast<WinampCommand>(command) );
+  // TODO: need to implement WAExecutionStatus report status
+  // MainStatus(waListening);
+
+  // TODO: notification for exceptions
 
 }
 
@@ -184,9 +191,12 @@ void WAExecuteMessageString(
 {
 
 	MainMessage( commandLogFormat(pszString, command, pszParam).c_str());
-
 	// TODO: eliminate the cast
 	localWinamp()->ExecuteStringCommand((const char *) pszParam, static_cast<WinampCommand>(command) );
+	// TODO: need to implement WAExecutionStatus report status
+	// MainStatus(waListening);
+
+	// TODO: notification for exceptions
 
 
 }
@@ -200,6 +210,10 @@ long WAIntegerResult(
 	MainMessage( queryLogFormat(pszString, command, data).c_str());
 
 	return localWinamp()->QueryInt( (WinampCommand) command, data);
+	// TODO: need to implement WAExecutionStatus report status
+	// MainStatus(waListening);
+
+	// TODO: notification for exceptions
 
 }
 
@@ -214,6 +228,10 @@ long WAStringResult(
   std::string str  = localWinamp()->QueryString( static_cast<WinampCommand>(command), data).c_str();
 
   strcpy((char *) pszString, str.c_str());
+  // TODO: need to implement WAExecutionStatus report status
+  // MainStatus(waListening);
+
+  // TODO: notification for exceptions
 
   // TODO: this obviously achieves nothing
   return 0;
@@ -240,6 +258,10 @@ void WASetStringList(
 
 
 	MainStatus("listening...");
+	// TODO: need to implement WAExecutionStatus report status
+	// MainStatus(waListening);
+
+	// TODO: notification for exceptions
 
 }
 
@@ -277,6 +299,10 @@ void WAGetStringList(
 	populateBuffer(pBuffer, list.str());
   // TODO: no logging at all here
 	MainStatus("listening...");
+	// TODO: need to implement WAExecutionStatus report status
+	// MainStatus(waListening);
+
+	// TODO: notification for exceptions
 
 }
 
@@ -300,6 +326,10 @@ void WAGetStringDataList(
 
 	populateBuffer(pBuffer, list.str());
 	MainStatus("listening...");
+	// TODO: need to implement WAExecutionStatus report status
+	// MainStatus(waListening);
+
+	// TODO: notification for exceptions
 
 }
 
@@ -310,22 +340,11 @@ void WAShutdown(void)
     RpcServerUnregisterIf(NULL, NULL, FALSE);
     MainStatus("not listening");
     MainMessage("asked to close");
+	// TODO: need to implement WAExecutionStatus report status
+	// MainStatus(waListening);
+
+	// TODO: notification for exceptions
 }
 
-
-// TODO and these should be abstracted out into a single location
-// TODO these are generating an annotation warning in VS2012
-/* required user alloc / free function pair */
-#pragma warning(suppress: 28251)
-void __RPC_FAR * __RPC_USER midl_user_allocate(size_t len)
-{
-    return(malloc(len));
-}
-
-#pragma warning(suppress: 28251)
-void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
-{
-    free(ptr);
-}
 
 

@@ -6,7 +6,8 @@
     <PROJECT value="..\bin\testserver.exe"/>
     <OBJFILES value="..\obj\testserver\testserver.obj ..\obj\testserver\ConsoleCallObserver.obj 
       ..\obj\testserver\RPCErrors.obj ..\obj\testserver\waint.obj 
-      ..\obj\testserver\WinampTestServer.obj ..\obj\testserver\RPCExecutor.obj"/>
+      ..\obj\testserver\WinampTestServer.obj ..\obj\testserver\RPCExecutor.obj 
+      ..\obj\testserver\RPCAlloc.obj"/>
     <RESFILES value="..\obj\testserver\winampremote.res testserver.RES"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>

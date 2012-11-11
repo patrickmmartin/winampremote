@@ -32,10 +32,4 @@ int __stdcall SafeIntegerResult(char * pszString, int command, int data, int * R
 
 }
 
-// need to declare these somewhere
-
-void  __RPC_FAR * __RPC_USER midl_user_allocate(size_t len);
-void __RPC_USER midl_user_free(void __RPC_FAR * ptr);
-
-
 #endif

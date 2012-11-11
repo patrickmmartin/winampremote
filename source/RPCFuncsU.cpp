@@ -225,20 +225,6 @@ extern "C"
     RpcEndExcept
   }
 
-
-  // stub memory allocation functions
-  void  __RPC_FAR * __RPC_USER midl_user_allocate(size_t len)
-  {
-      return(malloc(len));
-  }
-
-  void __RPC_USER midl_user_free(void __RPC_FAR * ptr)
-  {
-      free(ptr);
-  }
-
-
-
   int __stdcall SafeSendString(char * pszString)
   {
     RpcTryExcept

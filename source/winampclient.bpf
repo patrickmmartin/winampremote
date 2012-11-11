@@ -3,8 +3,8 @@ USEUNIT("RPCFuncsU.cpp");
 USEUNIT("waint.cpp");
 USERES("winampclient.res");
 USELIB("..\lib\winampinterface.lib");
-USEUNIT("RPCExecutor.cpp");
 USEUNIT("RPCErrors.cpp");
+USEUNIT("RPCAlloc.cpp");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 
