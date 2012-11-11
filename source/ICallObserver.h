@@ -26,16 +26,22 @@ class ICallObserver {
 	virtual ~ICallObserver() {}
 
 	/**
-     * status output
+     * outputs status
      * @param status
      */
 	virtual void notifyStatus(const char * status) = 0;
 
     /**
-     * message output
+     * outputs a message
      * @param msg
      */
 	virtual void notifyMessage(const char * msg ) = 0;
+
+    /**
+     * notification for an error
+     * @param msg
+     */
+	virtual void notifyException(const char * msg ) = 0;
 
 };
 

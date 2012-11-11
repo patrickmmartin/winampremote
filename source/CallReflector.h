@@ -13,7 +13,6 @@
 
 #include "ICallObserver.h"
 
-
 namespace WinampRemote
 {
 namespace Remoting
@@ -51,6 +50,8 @@ class CallReflector: public ICallObserver  {
 	virtual void notifyStatus(const char * status);
 
 	virtual void notifyMessage(const char * msg);
+
+    virtual void notifyException(const char * msg);
 
     /**
      * closure property for the ident event

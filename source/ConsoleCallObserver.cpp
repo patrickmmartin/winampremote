@@ -23,6 +23,11 @@ void ConsoleCallObserver::notifyMessage(const char * msg ){
 
 }
 
+void ConsoleCallObserver::notifyException(const char * msg )
+{
+	  // output to console
+	  std::cerr << "msg  : " << ((msg)?msg:"(null)") << std::endl;
+}
 
 } // end of namespace Remoting
 } // end of namespace WinampRemote

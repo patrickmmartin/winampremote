@@ -20,6 +20,7 @@ class ConsoleCallObserver : public ICallObserver  {
 
     virtual void notifyMessage(const char * msg);
 
+    virtual void notifyException(const char * msg);
 };
 
 } // end of namespace Remoting

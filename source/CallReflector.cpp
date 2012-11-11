@@ -24,6 +24,11 @@ void CallReflector::notifyMessage(const char * msg)
 		_infoEvent(msg);
 }
 
+void CallReflector::notifyException(const char * msg)
+{
+	// TODO implement
+}
+
 
 } /* namespace Remoting */
 } /* namespace WinampRemote */
