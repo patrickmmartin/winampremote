@@ -30,7 +30,9 @@ namespace WinampRemote
 namespace Server
 {
 
-RPCExecutor::RPCExecutor() : m_callObserver(), m_winamp()
+RPCExecutor::RPCExecutor() : m_callObserver(), m_winamp(),
+							 m_protocolSequence("ncacn_np"),
+							 m_endPoint("\\pipe\\winampremote")
 {
 
 }
@@ -71,8 +73,7 @@ void RPCExecutor::setCallObserver(WinampRemote::Remoting::ICallObserver * callOb
 
 void RPCExecutor::Execute()
 {
-	// TODO check the instances have been set
-
+	// tempting to throw an exception here
 	if (!m_callObserver)
 		return;
 	if (!m_winamp)
@@ -83,17 +84,18 @@ void RPCExecutor::Execute()
 
 	std::string str;
     RPC_STATUS status;
-    unsigned char * protocol_seq_np = (unsigned char *) "ncacn_np";
-//    unsigned char * protocol_seq_ip_tcp = "ncacn_ip_tcp";
+    // "ncacn_np" for named pip
+    // "ncacn_ip_tcp" for tcpip
 
     m_callObserver->notifyStatus("initialising...");
 
     m_callObserver->notifyMessage(m_winamp->WinampVersion().c_str());
 
     // TODO: need a property of the appropriate type for the endpoint
-    status = RpcServerUseProtseqEp(protocol_seq_np,
+    status = RpcServerUseProtseqEp((unsigned char *) m_protocolSequence.c_str(),
                                    20,
-                                   (unsigned char *) "\\pipe\\winampremote", NULL);
+                                   (unsigned char *) m_endPoint.c_str(),
+                                   NULL);
 
     if (status == RPC_S_OK){
       status = RpcServerRegisterIf(winamp_v1_0_s_ifspec, NULL, NULL);

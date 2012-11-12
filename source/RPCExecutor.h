@@ -11,6 +11,8 @@
 #include "IWinamp.h"
 #include "ICallObserver.h"
 
+//TODO enum for the protocol sequence type
+
 namespace WinampRemote
 {
 namespace Server
@@ -29,6 +31,8 @@ class RPCExecutor
 private:
 	WinampRemote::Server::IWinampServer * m_winamp;
 	WinampRemote::Remoting::ICallObserver * m_callObserver;
+	std::string m_protocolSequence;
+	std::string m_endPoint;
 public:
 	/**
 	 * constructor
