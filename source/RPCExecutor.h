@@ -18,6 +18,10 @@ namespace WinampRemote
 namespace Server
 {
 
+enum WAExecutionStatus {waServerStarting, waServerStarted, waListening,
+						waExecuting, waServerStopped, waInitialiseFailed};
+
+
 /**
  * Class to wrap up handling the RPC runtime call-backs.
  * The RPC functions are linked in statically as a link demand from the

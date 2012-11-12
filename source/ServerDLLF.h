@@ -14,9 +14,9 @@
 #include <ImgList.hpp>
 #include <ToolWin.hpp>
 
+#include "RPCExecutor.h"
 
-
-enum WAExecutionStatus {waServerStarting, waServerStarted, waListening, waExecuting, waServerStopped, waInitialiseFailed};
+using namespace WinampRemote::Server;
 
 const int WM_THREAD_MESSAGE = (WM_APP + 2000);
 const int WM_THREAD_STATUS  = (WM_APP + 2001);

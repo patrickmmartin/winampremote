@@ -135,7 +135,7 @@ static void inline MainStatus(const char * msgString)
 	WinampRemote::Server::RPCExecutor::instance().getCallObserver()->notifyStatus(msgString);
 }
 
-static WinampRemote::Server::IWinampServer * localWinamp()
+static WinampRemote::Server::IWinampServer * winampServer()
 {
    return WinampRemote::Server::RPCExecutor::instance().getWinampServer();
 }
@@ -183,7 +183,7 @@ void WAExecuteMessage(
 {
 
   MainMessage( commandLogFormat(pszString, command).c_str());
-  localWinamp()->ExecuteCommand( static_cast<WinampCommand>(command) );
+  winampServer()->ExecuteCommand( static_cast<WinampCommand>(command) );
   // TODO: need to implement WAExecutionStatus report status
   // MainStatus(waListening);
 
@@ -199,7 +199,7 @@ void WAExecuteMessageString(
 
 	MainMessage( commandLogFormat(pszString, command, pszParam).c_str());
 	// TODO: eliminate the cast
-	localWinamp()->ExecuteStringCommand((const char *) pszParam, static_cast<WinampCommand>(command) );
+	winampServer()->ExecuteStringCommand((const char *) pszParam, static_cast<WinampCommand>(command) );
 	// TODO: need to implement WAExecutionStatus report status
 	// MainStatus(waListening);
 
@@ -216,7 +216,7 @@ long WAIntegerResult(
 
 	MainMessage( queryLogFormat(pszString, command, data).c_str());
 
-	return localWinamp()->QueryInt( (WinampCommand) command, data);
+	return winampServer()->QueryInt( (WinampCommand) command, data);
 	// TODO: need to implement WAExecutionStatus report status
 	// MainStatus(waListening);
 
@@ -232,7 +232,7 @@ long WAStringResult(
 
   MainMessage( queryLogFormat(pszString, command, data).c_str());
 
-  std::string str  = localWinamp()->QueryString( static_cast<WinampCommand>(command), data).c_str();
+  std::string str  = winampServer()->QueryString( static_cast<WinampCommand>(command), data).c_str();
 
   strcpy((char *) pszString, str.c_str());
   // TODO: need to implement WAExecutionStatus report status
@@ -260,7 +260,7 @@ void WASetStringList(
 	string line;
 	while (std::getline(sstr, line))
 	{
-		localWinamp()->ExecuteStringCommand(line.c_str(), static_cast<WinampCommand>(command));
+		winampServer()->ExecuteStringCommand(line.c_str(), static_cast<WinampCommand>(command));
 	}
 
 

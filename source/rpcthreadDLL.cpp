@@ -38,6 +38,10 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "CallReflector.h"
 
+#include "RPCExecutor.h"
+
+using namespace WinampRemote::Server;
+
 void __fastcall MainMessage(char * msgString);
 static void inline MainStatus(WAExecutionStatus Status);
 
@@ -63,7 +67,8 @@ void WAMessageProc(
 
   try
   {            // test for C++ exceptions
-    try
+
+	  try
     {         // test for C-based structured exceptions
       // functions to be protected in here
       serverThread->MainIdent((char *) pszString);

@@ -56,6 +56,7 @@ void __fastcall TfrmPluginMain::ThreadMessage(TMessage &Message)
 }
 
 
+
 void __fastcall TfrmPluginMain::ExecutionStatus(WAExecutionStatus NewThreadState)
 {
 
