@@ -28,7 +28,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "WinampClientBase.h"
 
-// TODO: hack for link failure
+// hack for link failure
 #include "sysutils.hpp"
 
 int main(int argc , char* argv[] )

@@ -73,6 +73,14 @@ void RPCExecutor::Execute()
 {
 	// TODO check the instances have been set
 
+	if (!m_callObserver)
+		return;
+	if (!m_winamp)
+	{
+		m_callObserver->notifyException("winamp implementation is not set");
+		return;
+	}
+
 	std::string str;
     RPC_STATUS status;
     unsigned char * protocol_seq_np = (unsigned char *) "ncacn_np";
@@ -80,12 +88,9 @@ void RPCExecutor::Execute()
 
     m_callObserver->notifyStatus("initialising...");
 
-    str = "winamp version : test";
+    m_callObserver->notifyMessage(m_winamp->WinampVersion().c_str());
 
-    m_callObserver->notifyMessage(str.c_str());
-
-    // should check status codes here for previously registered interfaces
-    // need a property of the appropriate type for the endpoint
+    // TODO: need a property of the appropriate type for the endpoint
     status = RpcServerUseProtseqEp(protocol_seq_np,
                                    20,
                                    (unsigned char *) "\\pipe\\winampremote", NULL);
@@ -96,20 +101,20 @@ void RPCExecutor::Execute()
     	  m_callObserver->notifyMessage("listening...");
         status = RpcServerListen(1, 20, FALSE);
         if (status != RPC_S_OK){
-        	m_callObserver->notifyMessage("error in listening");
-        	m_callObserver->notifyMessage(RPCError(status));
+        	m_callObserver->notifyException("error in listening");
+        	m_callObserver->notifyException(RPCError(status));
           }
         }
     else{
-    	m_callObserver->notifyMessage("failed to register interface");
-    	m_callObserver->notifyMessage(RPCError(status));
-    	m_callObserver->notifyStatus("initialise failed");
+    	m_callObserver->notifyException("failed to register interface");
+    	m_callObserver->notifyException(RPCError(status));
+    	m_callObserver->notifyException("initialise failed");
       }
     }
   else{
-	  m_callObserver->notifyMessage("failed to create protocol sequence");
-	  m_callObserver->notifyMessage(RPCError(status));
-	  m_callObserver->notifyStatus("initialise failed");
+	  m_callObserver->notifyException("failed to create protocol sequence");
+	  m_callObserver->notifyException(RPCError(status));
+	  m_callObserver->notifyException("initialise failed");
   }
 
 }
