@@ -159,9 +159,13 @@ string commandLogFormat(char * strSender, long command, char * strParam = NULL)
 }
 
 
-/* __RPC_FAR is literally nothing, but is left in for consistency
+/*note  __RPC_FAR is literally nothing, but is left in for consistency
 - none of the MIDL generated code should need direct modification*/
 
+/**
+ * @brief simple probing function
+ * @param pszString the string
+ */
 void WAMessageProc(
     /* [string][in] */ unsigned char __RPC_FAR *pszString)
 {
@@ -176,7 +180,11 @@ void WAMessageProc(
 
 }
 
-
+/**
+ * @brief execute winamp command
+ * @param pszString the string
+ * @param command the winamp command
+ */
 void WAExecuteMessage(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in] */ long command)
@@ -191,6 +199,12 @@ void WAExecuteMessage(
 
 }
 
+/**
+ * @brief execute winamp command with string parameter
+ * @param pszString the string
+ * @param pszParam the string parameter
+ * @param command the winamp command
+ */
 void WAExecuteMessageString(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [string][in] */ unsigned char __RPC_FAR *pszParam,
@@ -208,6 +222,12 @@ void WAExecuteMessageString(
 
 }
 
+/**
+ * @brief execute winamp function and return long integer result
+ * @param pszString the string
+ * @param command the winamp command
+ * @param data a data parameter
+ */
 long WAIntegerResult(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in] */ long command,
@@ -224,6 +244,12 @@ long WAIntegerResult(
 
 }
 
+/**
+ * @brief execute winamp function and return string result
+ * @param pszString the string
+ * @param command the winamp command
+ * @param data a data parameter
+ */
 long WAStringResult(
     /* [string][out][in] */ unsigned char __RPC_FAR pszString[ 260 ],
     /* [in] */ long command,
@@ -245,8 +271,28 @@ long WAStringResult(
 
 }
 
-// new functions
+/**
+ * @brief Shutdown function - do not call
+ */
+void WAShutdown(void)
+{
+    RpcMgmtStopServerListening(NULL);
+    RpcServerUnregisterIf(NULL, NULL, FALSE);
+    MainStatus("not listening");
+    MainMessage("asked to close");
+	// TODO: need to implement WAExecutionStatus report status
+	// MainStatus(waListening);
 
+	// TODO: notification for exceptions
+}
+
+/**
+ * @brief sets a list in TStrings format with the command supplied
+ * @param pszString the string
+ * @param Buffer the text buffer
+ * @param BufferLength the buffer length
+ * @param command the winamp command
+ */
 void WASetStringList(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [in][size_is] */ byte __RPC_FAR Buffer[  ],
@@ -288,6 +334,12 @@ inline static void populateBuffer(BUFFER * pBuffer, std::string& buffer)
 
 }
 
+/**
+ * @brief sets a list in TStrings format from the result of command supplied
+ * @param pszString the string
+ * @param pBuffer the text buffer
+ * @param command the winamp command
+ */
 void WAGetStringList(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [out] */ BUFFER __RPC_FAR *pBuffer,
@@ -313,7 +365,14 @@ void WAGetStringList(
 
 }
 
-
+/**
+ * @brief sets a list in TStrings format from the result of commands supplied
+ * @param pszString the string
+ * @param pBuffer the text buffer
+ * @param stringcommand the string query query
+ * @param datacommand the data query
+ * @param datadata the data parameter
+ */
 void WAGetStringDataList(
     /* [string][in] */ unsigned char __RPC_FAR *pszString,
     /* [out] */ BUFFER __RPC_FAR *pBuffer,
@@ -341,17 +400,6 @@ void WAGetStringDataList(
 }
 
 
-void WAShutdown(void)
-{
-    RpcMgmtStopServerListening(NULL);
-    RpcServerUnregisterIf(NULL, NULL, FALSE);
-    MainStatus("not listening");
-    MainMessage("asked to close");
-	// TODO: need to implement WAExecutionStatus report status
-	// MainStatus(waListening);
-
-	// TODO: notification for exceptions
-}
 
 
 

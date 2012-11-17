@@ -30,38 +30,54 @@ interface winamp
 
   const short WA_RETURN_STRING_SIZE = 260;  /* MAX_PATH */
 
-  /**
-   @brief simple probing function 
-	*/
+/**
+ * @brief simple probing function
+ * @param pszString the string
+ */
   void WAMessageProc([in, string] char *pszString);
-  /**
-   @brief execute winamp command
-	*/
+/**
+ * @brief execute winamp command
+ * @param pszString the string
+ * @param command the winamp command
+ */
   void WAExecuteMessage([in,  string] char *pszString, [in] long int command);
-  /**
-   @brief execute winamp command with string parameter
-	*/
+/**
+ * @brief execute winamp command with string parameter
+ * @param pszString the string
+ * @param pszParam the string parameter
+ * @param command the winamp command
+ */
   void WAExecuteMessageString([in, string] char *pszString, [in, string] char *pszParam, [in] long int command);
-  /**
-   @brief execute winamp function and return long integer result
-	*/
+/**
+ * @brief execute winamp function and return long integer result
+ * @param pszString the string
+ * @param command the winamp command
+ * @param data a data parameter
+ */
   long int WAIntegerResult([in, string] char *pszString, [in] long int command, [in] long int data);
-  /**
-   @brief execute winamp function and return string result
-	*/
+/**
+ * @brief execute winamp function and return string result
+ * @param pszString the string
+ * @param command the winamp command
+ * @param data a data parameter
+ */
   long int WAStringResult([in, out, string] char pszString[WA_RETURN_STRING_SIZE], [in] long int command, [in] long int data);
-  /**
-   @brief Shutdown function - do not call
-    */
-  void WAShutdown(void);
+/**
+ * @brief Shutdown function - do not call
+ */
+void WAShutdown(void);
 
-  /**
-   @brief sets a list in TStrings format with the command supplied
-   */ 
-     void WASetStringList([in, string] char *pszString,
-                        [size_is(BufferLength), in ] byte Buffer[],
-                        [in] unsigned long BufferLength,
-                        [in] long int command);
+/**
+ * @brief sets a list in TStrings format with the command supplied
+ * @param pszString the string
+ * @param Buffer the text buffer
+ * @param BufferLength the buffer length 
+ * @param command the winamp command
+ */
+ void WASetStringList([in, string] char *pszString,
+                    [size_is(BufferLength), in ] byte Buffer[],
+                    [in] unsigned long BufferLength,
+                    [in] long command);
 
   /**
    @brief struct to wrap up marshalling the data back
@@ -71,20 +87,28 @@ interface winamp
                   [unique, size_is(BufferLength)] byte *Buffer;
                   } BUFFER;
 
-  /**
-   @brief sets a list in TStrings format from the result of command supplied
-   */ 
+/**
+ * @brief sets a list in TStrings format from the result of command supplied
+ * @param pszString the string
+ * @param pBuffer the text buffer
+ * @param command the winamp command
+ */
   void WAGetStringList([in, string] char *pszString,
                        [out] BUFFER *pBuffer,
-                       [in] long int command);
+                       [in] long command);
 
 
-  /**
-   @brief sets a list in TStrings format from the result of commands supplied
-   */ 
+/**
+ * @brief sets a list in TStrings format from the result of commands supplied
+ * @param pszString the string
+ * @param pBuffer the text buffer
+ * @param stringcommand the string query query
+ * @param datacommand the data query
+ * @param datadata the data parameter
+ */
   void WAGetStringDataList([in, string] char *pszString,
                        [out] BUFFER *pBuffer,
-                       [in] long int stringcommand,
+                       [in] long stringcommand,
                        [in] long datacommand,
                        [in] long datadata);
 
