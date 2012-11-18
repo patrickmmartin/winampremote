@@ -180,14 +180,23 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 
 string WinampTestServer::QueryString(WinampCommand Command, int Data)
 {
+        // TODO sanity check for the current state of an index of -1 being passed in
+        if ( (Data > -1) && (Data < m_playList.size() ) )
+        {
 	switch (Command)
 	{
 		case IPC_GETPLAYLISTTITLE :
 			return m_playList[Data].title;
 		case IPC_GETPLAYLISTFILE :
 			return m_playList[Data].filename;
+        	throw std::runtime_error("WinampTestServer::QueryString not implemented");
 	}
-	throw std::runtime_error("WinampTestServer::QueryString not implemented");
+        }
+        else
+        {
+                return ( std::string("error index out of range" ) );
+        }
+
 }
 
 } /* namespace Server */

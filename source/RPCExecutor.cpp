@@ -325,7 +325,8 @@ inline static void populateBuffer(BUFFER * pBuffer, std::string& buffer)
 	pBuffer->BufferLength = 0;
 	int strlen = buffer.size();
 	// TODO check this results in the RPC RT returning the memory
-	pBuffer->Buffer = (byte *) MIDL_user_allocate (strlen +1);
+	// TODO hack for linker issue
+	pBuffer->Buffer = (byte *) malloc (strlen +1);
 	if (pBuffer->Buffer)
 	{
 		pBuffer->BufferLength = strlen + 1;
@@ -348,11 +349,13 @@ void WAGetStringList(
 
 
 	std::stringstream list;
-	for (int i = 0 ; i < 20; i++ )
-	{
+
+        int listLength = winampServer()->QueryInt(IPC_GETLISTLENGTH, 0);
+        for (int i = 0 ; i < listLength ; i++)
+        {
 		if (i)
 			list << std::endl;
-		list << "string #" << i;
+		list << winampServer()->QueryString(static_cast<WinampCommand>(command), i);
 	}
 
 	populateBuffer(pBuffer, list.str());
@@ -381,6 +384,7 @@ void WAGetStringDataList(
     /* [in] */ long datadata)
 {
 
+	// TODO: no test coverage exists for this function
 	std::stringstream list;
 	for (int i = 0 ; i < 20; i++ )
 	{
