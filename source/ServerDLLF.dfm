@@ -1,4 +1,4 @@
-object frmMain: TfrmMain
+object frmPluginMain: TfrmPluginMain
   Left = 382
   Top = 200
   Width = 349
