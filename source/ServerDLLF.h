@@ -36,11 +36,8 @@ __published:	// IDE-managed Components
     TImageList *imlUsers;
     TTimer *timerMain;
         TPageControl *pgMain;
-        TTabSheet *tbsMessages;
-        TListBox *lstMessages;
         TTabSheet *tbsClients;
         TTabSheet *tbsConfig;
-        TCheckListBox *chkListEvents;
         TPanel *pnlMain;
         TListView *lvUsers;
         TBevel *Bevel1;
@@ -52,7 +49,6 @@ __published:	// IDE-managed Components
     
     void __fastcall FormKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift);
-    void __fastcall chkListEventsClickCheck(TObject *Sender);
     
     void __fastcall FormShow(TObject *Sender);
     void __fastcall timerMainTimer(TObject *Sender);
@@ -60,27 +56,14 @@ __published:	// IDE-managed Components
         void __fastcall btnConfigClick(TObject *Sender);
         void __fastcall btnAboutClick(TObject *Sender);
 protected:
-  void __fastcall TfrmPluginMain::ThreadMessage(TMessage &Message);
-  void __fastcall TfrmPluginMain::ThreadStatus(TMessage &Message);
-  void __fastcall TfrmPluginMain::ThreadIdent(TMessage &Message);
-BEGIN_MESSAGE_MAP
-  MESSAGE_HANDLER(WM_THREAD_IDENT, TMessage, ThreadIdent)
-END_MESSAGE_MAP(TControl)
-
 private:	// User declarations
       void __fastcall AppException(TObject *Sender, Exception *E);
-      void __fastcall ExecutionStatus(WAExecutionStatus NewThreadState);
-      WAExecutionStatus fThreadState;
 protected:
 
 
 public:		// User declarations
         __fastcall TfrmPluginMain(TComponent* Owner);
 
-      __property WAExecutionStatus ThreadState = {read = fThreadState};
-
-      bool isExe;
-      bool requestlog[5];
       void __fastcall CreateThread();
       void __fastcall StopThread(TObject *Sender);
 };

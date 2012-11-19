@@ -4,8 +4,8 @@ object ConfigForm: TConfigForm
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Configure RPC interface Plugin'
-  ClientHeight = 148
-  ClientWidth = 321
+  ClientHeight = 134
+  ClientWidth = 368
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -87,16 +87,6 @@ object ConfigForm: TConfigForm
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
-  object lblEndPoint: TLabel
-    Left = 4
-    Top = 83
-    Width = 79
-    Height = 23
-    AutoSize = False
-    Caption = '&EndPoint'
-    Layout = tlCenter
-    Visible = False
-  end
   object pnlIcon: TPanel
     Left = 6
     Top = 8
@@ -181,11 +171,12 @@ object ConfigForm: TConfigForm
         3D07070707070707070707070707070707070707070707281B2307070707073D
         3C07070707070707070707070707070707070707070707072807070707070707
         0707}
+      Transparent = True
     end
   end
   object chkVisible: TCheckBox
     Left = 4
-    Top = 121
+    Top = 65
     Width = 133
     Height = 18
     Caption = 'Events Form Visible'
@@ -193,10 +184,11 @@ object ConfigForm: TConfigForm
     OnClick = chkVisibleClick
   end
   object btnAbout: TButton
-    Left = 146
-    Top = 118
+    Left = 193
+    Top = 103
     Width = 75
     Height = 25
+    Anchors = [akRight, akBottom]
     Caption = '&About'
     TabOrder = 2
     OnClick = btnAboutClick
@@ -204,8 +196,9 @@ object ConfigForm: TConfigForm
   object memInfo: TMemo
     Left = 56
     Top = 8
-    Width = 257
+    Width = 305
     Height = 49
+    Anchors = [akLeft, akTop, akRight]
     Lines.Strings = (
       'winamp RPC remote control'
       '© patrick m martin 2000-2012'
@@ -215,20 +208,13 @@ object ConfigForm: TConfigForm
     TabOrder = 3
   end
   object Details: TButton
-    Left = 240
-    Top = 118
+    Left = 287
+    Top = 103
     Width = 75
     Height = 25
+    Anchors = [akRight, akBottom]
     Caption = 'Details'
     TabOrder = 4
     OnClick = DetailsClick
-  end
-  object ebEndPoint: TEdit
-    Left = 90
-    Top = 83
-    Width = 127
-    Height = 22
-    ReadOnly = True
-    TabOrder = 5
   end
 end

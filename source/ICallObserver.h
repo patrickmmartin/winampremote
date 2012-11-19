@@ -45,6 +45,27 @@ class ICallObserver {
 
 };
 
+/**
+ * stub class to satisfy requirement for an ICallObserver implementation
+ */
+class StubCallObserver : public ICallObserver  {
+
+    public:
+
+    virtual ~StubCallObserver() {};
+
+    virtual void notifyStatus(const char * status){
+    }
+
+    virtual void notifyMessage(const char * msg){
+    }
+
+    virtual void notifyException(const char * msg){
+    }
+
+};
+
+
 } // end of namespace Remoting
 } // end of namespace WinampRemote
 

@@ -42,127 +42,8 @@ const int FAIL_TIMEOUT = 15; // seconds
 
 
 
-void __fastcall TfrmPluginMain::ThreadMessage(TMessage &Message)
-
-{
-  if (lstMessages->Items->Add( (char *) Message.LParam) > 1000){
-    lstMessages->Items->Clear();
-    }
-  lstMessages->ItemIndex = lstMessages->Items->Count - 1;
-// act upon the passed message
-
-  delete ((char *) Message.LParam);
-
-}
-
-
-
-void __fastcall TfrmPluginMain::ExecutionStatus(WAExecutionStatus NewThreadState)
-{
-
-  fThreadState = NewThreadState;
-
-  if (ThreadState == waExecuting)
-  {
-    if (sbrMain->Panels->Items[0]->Text != "working")
-    {
-      sbrMain->Panels->Items[0]->Text = "working";
-      sbrMain->Invalidate();
-    }
-  }
-
-
-}
-
-
-void __fastcall TfrmPluginMain::ThreadStatus(TMessage &Message)
-{
-
-  ExecutionStatus ((WAExecutionStatus) Message.LParam);
-
-}
-
-
-
-void __fastcall TfrmPluginMain::ThreadIdent(TMessage &Message)
-{
-//do something here
-
-  int i;
-  int pos = -1;
-  char * Ident = (char *) Message.LParam;
-  TListItem  *ListItem;
-
-  ExecutionStatus(waExecuting);
-
-  for (i = 0 ; i < lvUsers->Items->Count ; i++)
-  {
-    ListItem = lvUsers->Items->Item[i];
-    if (ListItem->Caption == Ident)
-    {
-      ListItem->Data = (void *) GetTickCount();
-      if ((ListItem->ImageIndex == 0) || (ListItem->ImageIndex == imlUsers->Count - 1))
-      {
-        ListItem->ImageIndex = 1;
-      }
-      pos = i;
-      break;
-    }
-  } // for
-
-  if (pos == -1)
-  {
-  //need new
-    ListItem = lvUsers->Items->Add();
-    ListItem->ImageIndex = 1;
-    ListItem->Caption = Ident;
-    ListItem->Data = (void *) GetTickCount();
-    }
-
-  delete ((char *) Message.LParam);
-
-}
-
-
-
-
 void __fastcall TfrmPluginMain::timerMainTimer(TObject *Sender)
 {
-
-  switch (fThreadState)
-  {
-    case waListening:
-      sbrMain->Panels->Items[0]->Text = "listening...";
-      break;
-
-    /*
-    case waExecuting:
-      sbrMain->Panels->Items[0]->Text = "working";
-      break;
-    */
-
-    case waServerStopped:
-      sbrMain->Panels->Items[0]->Text = "stopped";
-      break;
-
-    case waInitialiseFailed:
-      sbrMain->Panels->Items[0]->Text = "error";
-      break;
-
-    case waServerStarting:
-      sbrMain->Panels->Items[0]->Text = "starting";
-      break;
-
-    case waServerStarted:
-      sbrMain->Panels->Items[0]->Text = "started";
-      break;
-    default:
-      sbrMain->Panels->Items[0]->Text = "unknown";
-      break;
-    }
-
-
-  sbrMain->Invalidate();
 
   int i;
   TListItem  *ListItem;
@@ -201,8 +82,6 @@ void __fastcall TfrmPluginMain::timerMainTimer(TObject *Sender)
 }
 
 
-
-
 __fastcall TfrmPluginMain::TfrmPluginMain(TComponent* Owner)
         : TForm(Owner)
 {
@@ -215,6 +94,8 @@ char Computername[BufferSize];     // pointer to system information string
 DWORD cchBuff;       // size of computer or user name
 bool success;
 TRegistry * reg;
+
+  Application->OnException = AppException;
 
 
   try
@@ -241,29 +122,16 @@ TRegistry * reg;
   if (success)
   {
       sbrMain->Panels->Items[1]->Text = AnsiString("name: ") + Computername;
-        }
-  else
-  {
-    this->lstMessages->Items->Add("computer name not obtained");
-    this->lstMessages->Items->Add("rpc service not starting");
+        CreateThread();
   }
 
-  Application->OnException = AppException;
-
-  CreateThread();
-
-  pgMain->ActivePage =  tbsMessages;
-
 }
-
-
-
 
 
 void __fastcall TfrmPluginMain::AppException(TObject *Sender, Exception *E)
 
 {
-  lstMessages->Items->Add(AnsiString("There was an unhandled exception Type: " + E->ClassName()+ " Message: " + E->Message));
+  // TODO handle this error
 }
 
 
@@ -278,26 +146,9 @@ void __fastcall TfrmPluginMain::FormKeyDown(TObject *Sender, WORD &Key,
 }
 
 
-
-void __fastcall TfrmPluginMain::chkListEventsClickCheck(TObject *Sender)
-{
-int i;
-
-  for (i = 0 ; i < 4 ; i++){
-    requestlog[i] = chkListEvents->Checked[i];
-    }
-
-}
-
-
-
 void __fastcall TfrmPluginMain::FormShow(TObject *Sender)
 {
-  chkListEvents->Checked[2] = true;
-  chkListEvents->Checked[3] = true;
-
   lvUsers->Items->Clear();
-    
 }
 
 void __fastcall TfrmPluginMain::CreateThread()

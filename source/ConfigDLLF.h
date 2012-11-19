@@ -17,12 +17,10 @@ class TConfigForm : public TForm
 __published:	// IDE-managed Components
         TPanel *pnlIcon;
     TCheckBox *chkVisible;
-    TLabel *lblEndPoint;
     TButton *btnAbout;
         TMemo *memInfo;
         TImage *imgIcon;
         TButton *Details;
-	TEdit *ebEndPoint;
     void __fastcall btnAboutClick(TObject *Sender);
     void __fastcall chkVisibleClick(TObject *Sender);
     void __fastcall FormCreate(TObject *Sender);

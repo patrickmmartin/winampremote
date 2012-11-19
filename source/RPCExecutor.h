@@ -18,8 +18,20 @@ namespace WinampRemote
 namespace Server
 {
 
-enum WAExecutionStatus {waServerStarting, waServerStarted, waListening,
-						waExecuting, waServerStopped, waInitialiseFailed};
+enum WAExecutionStatus {/// server is inactive
+						waInactive,
+						/// server has begun startup
+						waServerStarting,
+						/// server startup has completed succesfully
+						waServerStarted,
+						/// server is listening on port
+						waListening,
+						/// server is handling a call
+						waExecuting,
+						/// server has stopped
+						waServerStopped,
+						/// server initialisation has failed
+						waInitialiseFailed};
 
 
 /**
@@ -37,6 +49,7 @@ private:
 	WinampRemote::Remoting::ICallObserver * m_callObserver;
 	std::string m_protocolSequence;
 	std::string m_endPoint;
+	WAExecutionStatus m_executionStatus;
 public:
 	/**
 	 * constructor
@@ -52,33 +65,44 @@ public:
 	 * @see IWinampServer
 	 * @return the server instance
 	 */
-	virtual WinampRemote::Server::IWinampServer * getWinampServer();
+	WinampRemote::Server::IWinampServer * getWinampServer();
 
 	/**
 	 * sets the winamp server implementation
 	 * @see IWinampServer
 	 * @param winampServer
 	 */
-	virtual void setWinampServer(WinampRemote::Server::IWinampServer * winampServer);
+	void setWinampServer(WinampRemote::Server::IWinampServer * winampServer);
 
 	/**
 	 * return the call observer instance
 	 * @see ICallObserver
 	 * @return the observer
 	 */
-	virtual WinampRemote::Remoting::ICallObserver * getCallObserver();
+	WinampRemote::Remoting::ICallObserver * getCallObserver();
 
 	/**
 	 * sets the call observer for the instance
 	 * @see ICallObserver
 	 * @param callObserver
 	 */
-	virtual void setCallObserver(WinampRemote::Remoting::ICallObserver * callObserver);
+	void setCallObserver(WinampRemote::Remoting::ICallObserver * callObserver);
+
+	/**
+	 * sets the execution status
+	 * @param status
+	 */
+	void setExecutionStatus(WAExecutionStatus status);
+
+	/**
+	 * returns the execution status
+	 */
+	WAExecutionStatus getExecutionStatus();
 
 	/**
 	 * execute function - sets up and begins the main loop
 	 */
-	virtual void Execute();
+	void Execute();
 
 	/**
 	 * returns a singleton instance of RPCExecutor

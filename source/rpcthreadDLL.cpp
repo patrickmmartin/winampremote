@@ -31,42 +31,21 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 // winamp interface definitions
 #include "waint.h"
 
+//
+#include "ICallObserver.h"
+
 // bring in the Winamp interfaces
 #include "WinampServerImpl.h"
 
 #include "gen_plugin.h"
 
-#include "CallReflector.h"
-
 #include "RPCExecutor.h"
 
 using namespace WinampRemote::Server;
 
-void __fastcall MainMessage(char * msgString);
-static void inline MainStatus(WAExecutionStatus Status);
-
-
-
 WinampRemote::Server::IWinampServer * localWinamp = NULL;
 
 using namespace WinampRemote::Remoting;
-
-class StubCallObserver : public ICallObserver  {
-
-    public:
-
-    virtual ~StubCallObserver() {};
-
-    virtual void notifyStatus(const char * status){
-    }
-
-    virtual void notifyMessage(const char * msg){
-    }
-
-    virtual void notifyException(const char * msg){
-    }
-
-};
 
 
 TRTLCriticalSection fCriticalSection ;
@@ -77,8 +56,6 @@ __fastcall TRPCServerDLLThread::TRPCServerDLLThread(bool CreateSuspended, HWND m
     : TThread(CreateSuspended), m_mainhwnd(mainhwnd), m_protocolSequence(protocolSequence)
 {
 }
-
-
 
 void __fastcall TRPCServerDLLThread::Execute()
 {
@@ -95,36 +72,3 @@ void __fastcall TRPCServerDLLThread::Execute()
 	  WinampRemote::Server::RPCExecutor::instance().Execute();
 
 }
-
-void __fastcall MainMessage(char * msgString)
-{
-  TRPCServerDLLThread::CallObserver.notifyMessage(msgString);
-}
-
-
-
-static void inline MainStatus(WAExecutionStatus Status)
-{
-  char * statusStrings[] =
-  	  	  	  	  	  {"Server Starting",
-                       "Server Started",
-                       "Listening",
-                       "Executing",
-                       "Server Stopped",
-                       "Initialise Failed"};
-
-  std::string statusStr = "status: ";
-  statusStr += statusStrings[Status];
-  TRPCServerDLLThread::CallObserver.notifyStatus(statusStr.c_str());
-}
-
-
-
-void TRPCServerDLLThread::MainIdent(char * msgString)
-{
-  PostMessage(m_mainhwnd, WM_THREAD_IDENT, 0, (long) strdup(msgString));
-}
-
-WinampRemote::Remoting::CallReflector cr;
-ICallObserver& TRPCServerDLLThread::CallObserver = cr;
-

@@ -1,7 +1,7 @@
 object frmPluginMain: TfrmPluginMain
   Left = 382
   Top = 200
-  Width = 349
+  Width = 455
   Height = 271
   BorderIcons = [biSystemMenu]
   Caption = 'RPC server events form'
@@ -96,15 +96,15 @@ object frmPluginMain: TfrmPluginMain
   object Bevel1: TBevel
     Left = 0
     Top = 0
-    Width = 333
+    Width = 439
     Height = 9
     Align = alTop
     Shape = bsSpacer
   end
   object sbrMain: TStatusBar
     Left = 0
-    Top = 212
-    Width = 333
+    Top = 211
+    Width = 439
     Height = 21
     Panels = <
       item
@@ -121,32 +121,20 @@ object frmPluginMain: TfrmPluginMain
   object pgMain: TPageControl
     Left = 0
     Top = 9
-    Width = 333
-    Height = 203
-    ActivePage = tbsClients
+    Width = 439
+    Height = 202
+    ActivePage = tbsConfig
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 1
-    object tbsMessages: TTabSheet
-      Caption = 'Messages'
-      object lstMessages: TListBox
-        Left = 0
-        Top = 0
-        Width = 333
-        Height = 182
-        Align = alClient
-        ItemHeight = 14
-        TabOrder = 0
-      end
-    end
     object tbsClients: TTabSheet
       Caption = 'Clients'
       ImageIndex = 1
       object pnlMain: TPanel
         Left = 0
         Top = 0
-        Width = 325
-        Height = 171
+        Width = 431
+        Height = 170
         Align = alClient
         BevelOuter = bvNone
         BorderWidth = 4
@@ -156,8 +144,8 @@ object frmPluginMain: TfrmPluginMain
         object lvUsers: TListView
           Left = 4
           Top = 4
-          Width = 313
-          Height = 159
+          Width = 419
+          Height = 158
           Align = alClient
           BorderStyle = bsNone
           Columns = <
@@ -178,31 +166,15 @@ object frmPluginMain: TfrmPluginMain
     object tbsConfig: TTabSheet
       Caption = 'Configuration'
       ImageIndex = 2
-      object chkListEvents: TCheckListBox
-        Left = 0
-        Top = 29
-        Width = 325
-        Height = 142
-        OnClickCheck = chkListEventsClickCheck
-        Align = alClient
-        ItemHeight = 14
-        Items.Strings = (
-          'Strings Queries'
-          'Integers Queries'
-          'String Commands'
-          'Integer Commands'
-          'Exceptions')
-        TabOrder = 0
-      end
       object tbConfig: TToolBar
         Left = 0
         Top = 0
-        Width = 325
+        Width = 431
         Height = 29
         ButtonWidth = 54
         Caption = 'tbConfig'
         ShowCaptions = True
-        TabOrder = 1
+        TabOrder = 0
         object btnConfig: TToolButton
           Left = 0
           Top = 2
