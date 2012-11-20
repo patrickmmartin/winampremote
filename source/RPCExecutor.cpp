@@ -163,7 +163,7 @@ static WinampRemote::Server::IWinampServer * winampServer()
    return WinampRemote::Server::RPCExecutor::instance().getWinampServer();
 }
 
-string queryLogFormat(char * strSender, long command, long data)
+string queryLogFormat(const char * strSender, long command, long data)
 {
 
 	stringstream sstr;
@@ -173,7 +173,7 @@ string queryLogFormat(char * strSender, long command, long data)
 
 }
 
-string commandLogFormat(char * strSender, long command, char * strParam = NULL)
+string commandLogFormat(const char * strSender, long command, const char * strParam = NULL)
 {
 	  stringstream sstr;
 	  sstr.str() = (char *) strSender;
@@ -213,7 +213,7 @@ void WAExecuteMessage(
     /* [in] */ long command)
 {
 
-  MainMessage( commandLogFormat(pszString, command).c_str());
+  MainMessage( commandLogFormat( (const char *) pszString, command).c_str());
   winampServer()->ExecuteCommand( static_cast<WinampCommand>(command) );
   // TODO: need to implement WAExecutionStatus report status
   // MainStatus(waListening);
@@ -234,7 +234,7 @@ void WAExecuteMessageString(
     /* [in] */ long command)
 {
 
-	MainMessage( commandLogFormat(pszString, command, pszParam).c_str());
+	MainMessage( commandLogFormat( (const char *) pszString, command, (const char *) pszParam).c_str());
 	// TODO: eliminate the cast
 	winampServer()->ExecuteStringCommand((const char *) pszParam, static_cast<WinampCommand>(command) );
 	// TODO: need to implement WAExecutionStatus report status
@@ -257,7 +257,7 @@ long WAIntegerResult(
     /* [in] */ long data)
 {
 
-	MainMessage( queryLogFormat(pszString, command, data).c_str());
+	MainMessage( queryLogFormat( (const char *) pszString, command, data).c_str());
 
 	return winampServer()->QueryInt( (WinampCommand) command, data);
 	// TODO: need to implement WAExecutionStatus report status
@@ -279,7 +279,7 @@ long WAStringResult(
     /* [in] */ long data)
 {
 
-  MainMessage( queryLogFormat(pszString, command, data).c_str());
+  MainMessage( queryLogFormat( (const char *) pszString, command, data).c_str());
 
   std::string str  = winampServer()->QueryString( static_cast<WinampCommand>(command), data).c_str();
 
