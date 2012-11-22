@@ -92,7 +92,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\ConsoleCallObserver.cpp" />
     <ClCompile Include="..\..\RPCErrors.cpp" />
-    <ClCompile Include="..\..\TestRPCServer.cpp" />
+    <ClCompile Include="..\..\RPCExecutor.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\testserver.cpp" />
     <ClCompile Include="..\..\waint.cpp" />
     <ClCompile Include="..\..\winampinterface_s.c" />

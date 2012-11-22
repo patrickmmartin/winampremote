@@ -77,7 +77,6 @@ void RPCExecutor::Execute()
 	// tempting to throw an exception here
 	if (!m_callObserver)
 	{
-		m_callObserver->notifyException("notification implementation is not set");
 		setExecutionStatus(waInitialiseFailed);
 		return;
 	}

@@ -53,7 +53,7 @@
     <ClCompile Include="..\..\WinampTestServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\TestRPCServer.cpp">
+    <ClCompile Include="..\..\RPCExecutor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
