@@ -5,6 +5,7 @@
  *      Author: Patrick
  */
 
+
 #include "RPCExecutor.h"
 #include "RPCErrors.h"
 
@@ -44,6 +45,26 @@ RPCExecutor::~RPCExecutor()
 	// no need to ensure shutdown was happened
 }
 
+std::string RPCExecutor::getProtocolSequence() const
+{
+	return m_protocolSequence;
+}
+
+void RPCExecutor::setProtocolSequence(const std::string value)
+{
+	m_protocolSequence = value;
+}
+
+std::string RPCExecutor::getEndpoint() const
+{
+	return m_protocolSequence;
+}
+
+void RPCExecutor::setEndpoint(const std::string value)
+{
+	m_protocolSequence = value;
+}
+
 RPCExecutor& RPCExecutor::instance()
 {
 	static RPCExecutor instance;
@@ -51,23 +72,23 @@ RPCExecutor& RPCExecutor::instance()
 	return instance;
 }
 
-WinampRemote::Server::IWinampServer * RPCExecutor::getWinampServer()
+WinampRemote::Server::IWinampServer * RPCExecutor::getWinampServer() const
 {
 	return m_winamp;
 }
 
 
-void RPCExecutor::setWinampServer(WinampRemote::Server::IWinampServer * winampServer)
+void RPCExecutor::setWinampServer(WinampRemote::Server::IWinampServer * const winampServer)
 {
 	m_winamp = winampServer;
 }
 
-WinampRemote::Remoting::ICallObserver * RPCExecutor::getCallObserver()
+WinampRemote::Remoting::ICallObserver * RPCExecutor::getCallObserver() const
 {
 	return m_callObserver;
 }
 
-void RPCExecutor::setCallObserver(WinampRemote::Remoting::ICallObserver * callObserver)
+void RPCExecutor::setCallObserver(WinampRemote::Remoting::ICallObserver * const callObserver)
 {
 	m_callObserver = callObserver;
 }
@@ -96,7 +117,6 @@ void RPCExecutor::Execute()
 
     m_callObserver->notifyMessage(m_winamp->WinampVersion().c_str());
 
-    // TODO: need a property of the appropriate type for the endpoint
 	setExecutionStatus(waServerStarting);
     status = RpcServerUseProtseqEp((unsigned char *) m_protocolSequence.c_str(),
                                    20,

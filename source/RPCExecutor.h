@@ -11,8 +11,6 @@
 #include "IWinamp.h"
 #include "ICallObserver.h"
 
-//TODO enum for the protocol sequence type
-
 namespace WinampRemote
 {
 namespace Server
@@ -40,7 +38,9 @@ enum WAExecutionStatus {/// server is inactive
  * generated stubs.
  * The handler for the winamp methods implements generic behaviour,
  * and for different implementations the correct handler needs to be
- * invoked for the mocked winamp or the actual winamp process
+ * invoked for the mocked winamp or the actual winamp process.
+ * The endpoint and protocol sequence are kept as the API strings
+ * and are default initialised.
  */
 class RPCExecutor
 {
@@ -61,32 +61,56 @@ public:
 	virtual ~RPCExecutor();
 
 	/**
+	 * returns the protocol sequence for the endpoint
+	 * @return
+	 */
+	std::string getProtocolSequence() const;
+
+	/**
+	 * set the protocol sequence for the endpoint
+	 * @param value
+	 */
+	void setProtocolSequence(const std::string value);
+
+	/**
+	 * returns the endpoint
+	 * @return
+	 */
+	std::string getEndpoint() const;
+
+	/**
+	 * sets the endpoint
+	 * @param value
+	 */
+	void setEndpoint(const std::string value);
+
+	/**
 	 *  return the winamp server instance
 	 * @see IWinampServer
 	 * @return the server instance
 	 */
-	WinampRemote::Server::IWinampServer * getWinampServer();
+	WinampRemote::Server::IWinampServer * getWinampServer() const;
 
 	/**
 	 * sets the winamp server implementation
 	 * @see IWinampServer
 	 * @param winampServer
 	 */
-	void setWinampServer(WinampRemote::Server::IWinampServer * winampServer);
+	void setWinampServer(WinampRemote::Server::IWinampServer * const winampServer);
 
 	/**
 	 * return the call observer instance
 	 * @see ICallObserver
 	 * @return the observer
 	 */
-	WinampRemote::Remoting::ICallObserver * getCallObserver();
+	WinampRemote::Remoting::ICallObserver * getCallObserver() const;
 
 	/**
 	 * sets the call observer for the instance
 	 * @see ICallObserver
 	 * @param callObserver
 	 */
-	void setCallObserver(WinampRemote::Remoting::ICallObserver * callObserver);
+	void setCallObserver(WinampRemote::Remoting::ICallObserver * const callObserver);
 
 	/**
 	 * sets the execution status
