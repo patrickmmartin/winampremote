@@ -152,6 +152,3 @@ switch (RPCErr){
    }
 }
 
-
-
-#pragma package(smart_init)
