@@ -50,7 +50,7 @@
   </LINKER>
   <IDEOPTIONS>
 [Version Info]
-IncludeVerInfo=0
+IncludeVerInfo=1
 AutoIncBuild=0
 MajorVer=1
 MinorVer=4
@@ -115,7 +115,7 @@ Item0=..\bin\
 DebugSourceDirs=$(BCB)\source\vcl
 
 [Parameters]
-RunParams=--test &quot;Client/*&quot;
+RunParams=--test &quot;Network/Invalid&quot;
 HostApplication=
 RemoteHost=
 RemotePath=
@@ -125,5 +125,10 @@ RemoteDebug=0
 ShowInfoMsgs=0
 LinkDebugVcl=0
 LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
   </IDEOPTIONS>
 </PROJECT>

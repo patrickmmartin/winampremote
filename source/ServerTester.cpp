@@ -49,17 +49,18 @@ void ServerTester::testServers(map<AnsiString, ServerInfo>& servers)
            ++i)
         {
           pair<AnsiString, ServerInfo> remote = *i;
-          testServer(remote.first);
+          testServer(remote.first, remote.second);
 
        }
   }
 
-bool ServerTester::testServer(const AnsiString& remote)
+bool ServerTester::testServer(const AnsiString& remote, ServerInfo& serverInfo)
 {
 	 int retval;
 
 	clock_t start, end;
 	bool result = false;
+	string versionString;
 
     // static method from RPCFuncs
     Bind(remote.c_str(), _endPoint.c_str(), pszProtocolSequenceNP);
@@ -76,6 +77,7 @@ bool ServerTester::testServer(const AnsiString& remote)
 
       end = clock();
       DoMessage(remote, AnsiString().sprintf("response after %.2fs ", (end - start) / CLK_TCK), 1);
+      versionString = WinampVersionString(retval);
       DoMessage(remote, WinampVersionString(retval), 1);
       result = true;
     }
@@ -84,6 +86,8 @@ bool ServerTester::testServer(const AnsiString& remote)
       DoMessage(remote, AnsiString("failed: " ) + E.what(), 3);
     }
     DoResult(remote, result);
+    serverInfo.comment = versionString.c_str();
+    serverInfo.status = (result)?SI_FAILED:SI_SUCCESS;
 	return result;
 
 }

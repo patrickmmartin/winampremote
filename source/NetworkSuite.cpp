@@ -12,6 +12,7 @@
 #include "ServerEnumerator.h"
 #include "ServerTester.h"
 
+//TODO: this needs thorough refactoring
 
 /**
  * tests network enumeration
@@ -36,15 +37,13 @@ TEST_CASE("Network/Local", "test interface")
 
 // disabling for now, as it burns time and such a test should only be run
 // for the right prerequisites
-/*
 TEST_CASE("Network/Servers", "test local servers")
 {
-	NetworkSuite ns;
+	NetworkTest ns;
 	// test network enumeration
 	CHECK(ns.testEnumeration());
 	CHECK(ns.testServerTest());
 }
-*/
 
 /**
  * tests that aborting network enumeration works
@@ -149,7 +148,8 @@ bool NetworkTest::testLocalServer()
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
-    return st.testServer("localhost");
+    ServerInfo si;
+    return st.testServer("localhost", si);
 }
 
 bool NetworkTest::testEnumeration()
@@ -191,6 +191,7 @@ bool NetworkTest::testServerInvalid()
     ServerTester st;
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
-    st.testServer("__invalid__");
+    ServerInfo ss;
+    st.testServer("__invalid__", ss);
     return true;
 }

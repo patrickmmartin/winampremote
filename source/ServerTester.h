@@ -90,7 +90,7 @@ public:
          * Function to accept a server to be tested for a response
          * @param remote - machine name to test
          */
-        bool testServer(const AnsiString& remote);
+        bool testServer(const AnsiString& remote, ServerInfo& serverInfo);
 
 private:
 
