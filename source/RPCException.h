@@ -16,16 +16,16 @@ public:
 
 
 			char buffer[255] = "";
-			int len = FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM || FORMAT_MESSAGE_IGNORE_INSERTS || FORMAT_MESSAGE_ARGUMENT_ARRAY,
-									NULL,
-									rpc_error_code,
-									0,
-									buffer,
-									sizeof(buffer),
-									NULL);
+			int len = FormatMessageA( FORMAT_MESSAGE_FROM_SYSTEM,
+                                                  NULL,
+                                                  rpc_error_code,
+                                                  LOCALE_USER_DEFAULT,
+                                                  buffer,
+                                                  sizeof(buffer),
+                                                  NULL);
 
             if (len)
-				what_ = buffer;
+                what_ = buffer;
         }
 
         virtual const char* what() const throw ()
