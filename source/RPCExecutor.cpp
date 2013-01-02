@@ -196,7 +196,9 @@ string commandLogFormat(const char * strSender, long command, const char * strPa
 {
 	  stringstream sstr;
 	  sstr.str() = (char *) strSender;
-	  sstr << " sent  - command : " << WinampCommandDesc(command) << " - parameter : " << strParam;
+	  sstr << " sent  - command : " << WinampCommandDesc(command);
+	  if (strParam)
+		  sstr << " - parameter : " << strParam;
 	  return sstr.str();
 }
 
