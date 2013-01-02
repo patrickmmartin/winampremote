@@ -12,7 +12,14 @@
 #include "ServerEnumerator.h"
 #include "ServerTester.h"
 
-//TODO: this needs thorough refactoring
+/* TODO: this class needs thorough refactoring
+ * test cases should be unrolled more into the ...Suite class from ..Test
+ */
+
+/*
+ * TODO: remove the VCL only style
+ */
+
 
 /**
  * tests network enumeration

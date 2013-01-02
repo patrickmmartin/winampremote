@@ -13,6 +13,10 @@
 
 #include <windows.h>
 
+/*
+ * TODO remove the VCL style callbacks and use Observer
+ */
+
 /**
  * class to wrap up the task of enumerating Windows local net neighbourhood resources
  * and extracting the machine nodes from the results.
