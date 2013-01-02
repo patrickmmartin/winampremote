@@ -82,15 +82,16 @@ public:
 
         /**
          * Function to accept list of servers to be tested.
-         * @param servers
+         * @param servers map of names -> server info
          */
         void testServers(map<AnsiString, ServerInfo>& servers);
 
         /**
          * Function to accept a server to be tested for a response
          * @param remote - machine name to test
+         * @param serverInfo server info to be populated
          */
-        bool testServer(const AnsiString& remote, ServerInfo& serverInfo);
+        void testServer(const AnsiString& remote, ServerInfo& serverInfo);
 
 private:
 

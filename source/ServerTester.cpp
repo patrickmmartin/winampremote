@@ -54,7 +54,7 @@ void ServerTester::testServers(map<AnsiString, ServerInfo>& servers)
        }
   }
 
-bool ServerTester::testServer(const AnsiString& remote, ServerInfo& serverInfo)
+void ServerTester::testServer(const AnsiString& remote, ServerInfo& serverInfo)
 {
 	 int retval;
 
@@ -87,7 +87,6 @@ bool ServerTester::testServer(const AnsiString& remote, ServerInfo& serverInfo)
     }
     DoResult(remote, result);
     serverInfo.comment = versionString.c_str();
-    serverInfo.status = (result)?SI_FAILED:SI_SUCCESS;
-	return result;
+    serverInfo.status = (result)?SI_SUCCESS:SI_FAILED;
 
 }

@@ -156,7 +156,8 @@ bool NetworkTest::testLocalServer()
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
     ServerInfo si;
-    return st.testServer("localhost", si);
+    st.testServer("localhost", si);
+    return (si.status == SI_SUCCESS);
 }
 
 bool NetworkTest::testEnumeration()
