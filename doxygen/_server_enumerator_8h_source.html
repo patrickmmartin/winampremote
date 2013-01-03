@@ -119,45 +119,49 @@ $(document).ready(function(){initNavTree('_server_enumerator_8h.html','');});
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="_server_enumerator_8h.html#a2e2f1a4172c4a3296f9c14647658acf2">   26</a></span>&#160;      <span class="keyword">typedef</span> void (__closure *<a class="code" href="_server_enumerator_8h.html#a2e2f1a4172c4a3296f9c14647658acf2">TSEServerEvent</a>)(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> AnsiString&amp; comment, <span class="keyword">const</span> AnsiString&amp; ip);</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="_server_enumerator_8h.html#aebf8b516ee543ae5a759cfb3695f3ebf">   32</a></span>&#160;      <span class="keyword">typedef</span> void (__closure *<a class="code" href="_server_enumerator_8h.html#aebf8b516ee543ae5a759cfb3695f3ebf">TSEMessageEvent</a>)(<span class="keyword">const</span> AnsiString&amp; message, <span class="keyword">const</span> <span class="keywordtype">int</span> Level);</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="_server_enumerator_8h.html#a0b1d911518c01c0ed9aa948dc9c3801f">   37</a></span>&#160;      <span class="keyword">typedef</span> void (__closure *<a class="code" href="_server_enumerator_8h.html#a0b1d911518c01c0ed9aa948dc9c3801f">TSEProgressEvent</a>)(<span class="keyword">const</span> <span class="keywordtype">float</span> complete);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="class_server_enumerator.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_server_enumerator.html">ServerEnumerator</a> {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="class_server_enumerator.html#ab26cd24b85e396f010e0c2fe0398884a">ServerEnumerator</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_server_enumerator.html#a2bc1e2c30de1aceafe0a10942445eb5c">~ServerEnumerator</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="class_server_enumerator.html#aa0fab4d021a5b74042015476efe5306c">   54</a></span>&#160;        __property <a class="code" href="_server_enumerator_8h.html#a2e2f1a4172c4a3296f9c14647658acf2">TSEServerEvent</a> <a class="code" href="class_server_enumerator.html#aa0fab4d021a5b74042015476efe5306c">OnServer</a> = {read = FServerEvent, write = FServerEvent};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="class_server_enumerator.html#a93c5fd7bea8860f8957b06bb608554bf">   59</a></span>&#160;        __property <a class="code" href="_server_enumerator_8h.html#aebf8b516ee543ae5a759cfb3695f3ebf">TSEMessageEvent</a> <a class="code" href="class_server_enumerator.html#a93c5fd7bea8860f8957b06bb608554bf">OnMessage</a> = {read = FMessageEvent, write = FMessageEvent};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="class_server_enumerator.html#a1068d418c032f4d67a207621d9767fec">   64</a></span>&#160;        __property <a class="code" href="_server_enumerator_8h.html#a0b1d911518c01c0ed9aa948dc9c3801f">TSEProgressEvent</a> <a class="code" href="class_server_enumerator.html#a1068d418c032f4d67a207621d9767fec">OnProgress</a> = {read = FProgressEvent, write = FProgressEvent};</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_server_enumerator.html#a345e6a1d9ed19f2bbdc91ee3aec28679">enumerateServers</a>();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">int</span> resourcesProcessed_;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">int</span> resourceTotal_;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="_server_enumerator_8h.html#a2e2f1a4172c4a3296f9c14647658acf2">TSEServerEvent</a> FServerEvent;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="_server_enumerator_8h.html#aebf8b516ee543ae5a759cfb3695f3ebf">TSEMessageEvent</a> FMessageEvent;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="_server_enumerator_8h.html#a0b1d911518c01c0ed9aa948dc9c3801f">TSEProgressEvent</a> FProgressEvent;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * TODO remove the VCL style callbacks and use Observer</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="_server_enumerator_8h.html#a2e2f1a4172c4a3296f9c14647658acf2">   30</a></span>&#160;      <span class="keyword">typedef</span> void (__closure *<a class="code" href="_server_enumerator_8h.html#a2e2f1a4172c4a3296f9c14647658acf2">TSEServerEvent</a>)(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> AnsiString&amp; comment, <span class="keyword">const</span> AnsiString&amp; ip);</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="_server_enumerator_8h.html#aebf8b516ee543ae5a759cfb3695f3ebf">   36</a></span>&#160;      <span class="keyword">typedef</span> void (__closure *<a class="code" href="_server_enumerator_8h.html#aebf8b516ee543ae5a759cfb3695f3ebf">TSEMessageEvent</a>)(<span class="keyword">const</span> AnsiString&amp; message, <span class="keyword">const</span> <span class="keywordtype">int</span> Level);</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="_server_enumerator_8h.html#a0b1d911518c01c0ed9aa948dc9c3801f">   41</a></span>&#160;      <span class="keyword">typedef</span> void (__closure *<a class="code" href="_server_enumerator_8h.html#a0b1d911518c01c0ed9aa948dc9c3801f">TSEProgressEvent</a>)(<span class="keyword">const</span> <span class="keywordtype">float</span> complete);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="class_server_enumerator.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_server_enumerator.html">ServerEnumerator</a> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="class_server_enumerator.html#ab26cd24b85e396f010e0c2fe0398884a">ServerEnumerator</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_server_enumerator.html#a2bc1e2c30de1aceafe0a10942445eb5c">~ServerEnumerator</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="class_server_enumerator.html#aa0fab4d021a5b74042015476efe5306c">   58</a></span>&#160;        __property <a class="code" href="_server_enumerator_8h.html#a2e2f1a4172c4a3296f9c14647658acf2">TSEServerEvent</a> <a class="code" href="class_server_enumerator.html#aa0fab4d021a5b74042015476efe5306c">OnServer</a> = {read = FServerEvent, write = FServerEvent};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="class_server_enumerator.html#a93c5fd7bea8860f8957b06bb608554bf">   63</a></span>&#160;        __property <a class="code" href="_server_enumerator_8h.html#aebf8b516ee543ae5a759cfb3695f3ebf">TSEMessageEvent</a> <a class="code" href="class_server_enumerator.html#a93c5fd7bea8860f8957b06bb608554bf">OnMessage</a> = {read = FMessageEvent, write = FMessageEvent};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="class_server_enumerator.html#a1068d418c032f4d67a207621d9767fec">   68</a></span>&#160;        __property <a class="code" href="_server_enumerator_8h.html#a0b1d911518c01c0ed9aa948dc9c3801f">TSEProgressEvent</a> <a class="code" href="class_server_enumerator.html#a1068d418c032f4d67a207621d9767fec">OnProgress</a> = {read = FProgressEvent, write = FProgressEvent};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_server_enumerator.html#a345e6a1d9ed19f2bbdc91ee3aec28679">enumerateServers</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">int</span> resourcesProcessed_;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">int</span> resourceTotal_;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> debugOutput(<span class="keyword">const</span> AnsiString &amp; operation, <span class="keyword">const</span> AnsiString &amp; message);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">void</span> netErrorHandler(<span class="keyword">const</span> DWORD dwErrorCode, <span class="keyword">const</span> AnsiString&amp; errorFunction);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">void</span> handleResource(<span class="keyword">const</span> NETRESOURCE&amp; resource);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        BOOL enumerateFunc(<span class="keyword">const</span> LPNETRESOURCE resourcePtr);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordtype">void</span> addServer(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> AnsiString&amp; comment);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordtype">void</span> addMessage(<span class="keyword">const</span> AnsiString&amp; message, <span class="keyword">const</span> <span class="keywordtype">int</span> Level);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">void</span> updateProgress(<span class="keyword">const</span> <span class="keywordtype">float</span> complete);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;};</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SERVERENUMERATOR_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="_server_enumerator_8h.html#a2e2f1a4172c4a3296f9c14647658acf2">TSEServerEvent</a> FServerEvent;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="_server_enumerator_8h.html#aebf8b516ee543ae5a759cfb3695f3ebf">TSEMessageEvent</a> FMessageEvent;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="_server_enumerator_8h.html#a0b1d911518c01c0ed9aa948dc9c3801f">TSEProgressEvent</a> FProgressEvent;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> debugOutput(<span class="keyword">const</span> AnsiString &amp; operation, <span class="keyword">const</span> AnsiString &amp; message);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">void</span> netErrorHandler(<span class="keyword">const</span> DWORD dwErrorCode, <span class="keyword">const</span> AnsiString&amp; errorFunction);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">void</span> handleResource(<span class="keyword">const</span> NETRESOURCE&amp; resource);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        BOOL enumerateFunc(<span class="keyword">const</span> LPNETRESOURCE resourcePtr);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">void</span> addServer(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> AnsiString&amp; comment);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">void</span> addMessage(<span class="keyword">const</span> AnsiString&amp; message, <span class="keyword">const</span> <span class="keywordtype">int</span> Level);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordtype">void</span> updateProgress(<span class="keyword">const</span> <span class="keywordtype">float</span> complete);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SERVERENUMERATOR_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

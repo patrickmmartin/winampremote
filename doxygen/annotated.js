@@ -28,7 +28,6 @@ var annotated =
     [ "TfrmSplash", "class_tfrm_splash.html", "class_tfrm_splash" ],
     [ "TModuleVersionInfo", "class_t_module_version_info.html", "class_t_module_version_info" ],
     [ "TRPCServerDLLThread", "class_t_r_p_c_server_d_l_l_thread.html", "class_t_r_p_c_server_d_l_l_thread" ],
-    [ "TRPCServerThread", "class_t_r_p_c_server_thread.html", "class_t_r_p_c_server_thread" ],
     [ "winamp", "interfacewinamp.html", "interfacewinamp" ],
     [ "winampGeneralPurposePlugin", "structwinamp_general_purpose_plugin.html", "structwinamp_general_purpose_plugin" ]
 ];

@@ -141,31 +141,33 @@ $(document).ready(function(){initNavTree('gen___r_p_cinterface_8cpp.html','');})
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#aaf1e241782ec70ebe3a7bd5ee1e7571c">USEUNIT</a>(<span class="stringliteral">&quot;RFC1060U.CPP&quot;</span>);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#a68ae3f58ffc7268b71d0627208ce5062">USELIB</a>(<span class="stringliteral">&quot;..\lib\winampinterface.lib&quot;</span>);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#aaf1e241782ec70ebe3a7bd5ee1e7571c">USEUNIT</a>(<span class="stringliteral">&quot;GlassExtender.cpp&quot;</span>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#aaf1e241782ec70ebe3a7bd5ee1e7571c">USEUNIT</a>(<span class="stringliteral">&quot;CallReflector.cpp&quot;</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#aaf1e241782ec70ebe3a7bd5ee1e7571c">USEUNIT</a>(<span class="stringliteral">&quot;WinampServerImpl.cpp&quot;</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#a08cd134308be7aa59de3000671ee4061">USERES</a>(<span class="stringliteral">&quot;gen_RPCinterface.RES&quot;</span>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="gen___r_p_cinterface_8cpp.html#a350f0e200e738d6318d2ded5fb4e32f6">   42</a></span>&#160;<span class="keywordtype">int</span> WINAPI <a class="code" href="gen___r_p_cinterface_8cpp.html#a350f0e200e738d6318d2ded5fb4e32f6">DllEntryPoint</a>(HINSTANCE hinst, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> reason, <span class="keywordtype">void</span>*)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">switch</span>(reason){</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">case</span> DLL_PROCESS_ATTACH :</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      DisableThreadLibraryCalls(hinst);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">case</span> DLL_THREAD_ATTACH :</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">case</span> DLL_THREAD_DETACH :</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">case</span> DLL_PROCESS_DETACH :</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#aaf1e241782ec70ebe3a7bd5ee1e7571c">USEUNIT</a>(<span class="stringliteral">&quot;WinampServerImpl.cpp&quot;</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#a08cd134308be7aa59de3000671ee4061">USERES</a>(<span class="stringliteral">&quot;gen_RPCinterface.RES&quot;</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#aaf1e241782ec70ebe3a7bd5ee1e7571c">USEUNIT</a>(<span class="stringliteral">&quot;RPCExecutor.cpp&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#aaf1e241782ec70ebe3a7bd5ee1e7571c">USEUNIT</a>(<span class="stringliteral">&quot;RPCErrors.cpp&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<a class="code" href="gen___r_p_cinterface_8cpp.html#aaf1e241782ec70ebe3a7bd5ee1e7571c">USEUNIT</a>(<span class="stringliteral">&quot;RPCAlloc.cpp&quot;</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">//---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="gen___r_p_cinterface_8cpp.html#a350f0e200e738d6318d2ded5fb4e32f6">   44</a></span>&#160;<span class="keywordtype">int</span> WINAPI <a class="code" href="gen___r_p_cinterface_8cpp.html#a350f0e200e738d6318d2ded5fb4e32f6">DllEntryPoint</a>(HINSTANCE hinst, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> reason, <span class="keywordtype">void</span>*)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">switch</span>(reason){</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">case</span> DLL_PROCESS_ATTACH :</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      DisableThreadLibraryCalls(hinst);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">case</span> DLL_THREAD_ATTACH :</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">case</span> DLL_THREAD_DETACH :</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">case</span> DLL_PROCESS_DETACH :</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

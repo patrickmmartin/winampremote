@@ -121,52 +121,55 @@ $(document).ready(function(){initNavTree('_winamp_test_server_8h.html','');});
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>Server</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html">   18</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html">PlaylistItem</a></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a9a1ba7f797ddec0a444703815cc2b183">   20</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a9a1ba7f797ddec0a444703815cc2b183">title</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#aa1568ea24d2dbb08ea11882663007687">   21</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#aa1568ea24d2dbb08ea11882663007687">filename</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a682cc0fe67af870f6a7493e98fbed70d">   23</a></span>&#160;        <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a682cc0fe67af870f6a7493e98fbed70d">PlaylistItem</a>(<span class="keywordtype">string</span> title_, <span class="keywordtype">string</span> filename_): <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a9a1ba7f797ddec0a444703815cc2b183">title</a>(title_), <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#aa1568ea24d2dbb08ea11882663007687">filename</a>(filename_) {};</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html">   21</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html">PlaylistItem</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a9a1ba7f797ddec0a444703815cc2b183">   23</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a9a1ba7f797ddec0a444703815cc2b183">title</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#aa1568ea24d2dbb08ea11882663007687">   24</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#aa1568ea24d2dbb08ea11882663007687">filename</a>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html">WinampTestServer</a>: <span class="keyword">public</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html">WinampRemote::Server::IWinampServer</a></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#ac053c1d11fc5c1c98ca9a9d5699b81b8">WinampTestServer</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#ad6c0ff7ef001d30a066f75e9d30e7d98">~WinampTestServer</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a1b4358b2e65302e99fdc8e0df849cc32">WinampVersion</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a682cc0fe67af870f6a7493e98fbed70d">   31</a></span>&#160;        <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a682cc0fe67af870f6a7493e98fbed70d">PlaylistItem</a>(<span class="keywordtype">string</span> title_, <span class="keywordtype">string</span> filename_): <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#a9a1ba7f797ddec0a444703815cc2b183">title</a>(title_), <a class="code" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html#aa1568ea24d2dbb08ea11882663007687">filename</a>(filename_) {};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#ae59c8b5691043fe826636a9e1a285118">ExecuteCommand</a>(<a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> MessageToExecute);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a8d48969f8a0b72b65f98db5bf0cf81a5">ExecuteStringCommand</a>(<span class="keywordtype">char</span> * CommandString, <a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> <a class="code" href="rpcimport_8h.html#ade4ad069c9ea1dbe8c67290b4ea46cdf">Command</a>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a7dba6daf1512f5532f6ed1336e5ff7f6">QueryInt</a>(<a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> Command, <span class="keywordtype">int</span> Data);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a342aa7d8a77fa2750ce171e01ad133e2">QueryString</a>(<a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> Command, <span class="keywordtype">int</span> Data);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">// playback status</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="waint_8h.html#a6968b374e3dcdf359c0d8661754ee54e">WAPlaybackStatus</a> m_playbackStatus;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// internal playlist</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        vector&lt;PlaylistItem&gt; m_playList;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">// playlist position</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">int</span> m_playlistPosition;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">// volume</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">int</span> m_volume;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// time position in song</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">int</span> m_songPosition;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">// repeat, shuffle</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">bool</span> m_repeat, m_shuffle;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        byte m_eqdata[12];</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">int</span> m_eqindex;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        byte m_panning;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> wrapPlaylistIndex(<span class="keywordtype">int</span> increment);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html">WinampTestServer</a>: <span class="keyword">public</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html">WinampRemote::Server::IWinampServer</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#ac053c1d11fc5c1c98ca9a9d5699b81b8">WinampTestServer</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#ad6c0ff7ef001d30a066f75e9d30e7d98">~WinampTestServer</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a1b4358b2e65302e99fdc8e0df849cc32">WinampVersion</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#ae59c8b5691043fe826636a9e1a285118">ExecuteCommand</a>(<a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> MessageToExecute);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;} <span class="comment">/* namespace Server */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <span class="comment">/* namespace WinampRemote */</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* WINAMPTESTSERVER_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a106a4fc49dcef37ee0e4e03a80a3fb7f">ExecuteStringCommand</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * CommandString, <a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> <a class="code" href="rpcimport_8h.html#ade4ad069c9ea1dbe8c67290b4ea46cdf">Command</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a7dba6daf1512f5532f6ed1336e5ff7f6">QueryInt</a>(<a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> Command, <span class="keywordtype">int</span> Data);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a342aa7d8a77fa2750ce171e01ad133e2">QueryString</a>(<a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> Command, <span class="keywordtype">int</span> Data);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">// playback status</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="waint_8h.html#a6968b374e3dcdf359c0d8661754ee54e">WAPlaybackStatus</a> m_playbackStatus;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// internal playlist</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        vector&lt;PlaylistItem&gt; m_playList;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">// playlist position</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">int</span> m_playlistPosition;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="comment">// volume 0-255</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">int</span> m_volume;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">// time position in song</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">int</span> m_songPosition;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// repeat, shuffle</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">bool</span> m_repeat, m_shuffle;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="comment">// eq data</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        byte m_eqdata[12];</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="comment">// eq index is stashed to remember for when the values are queried</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">int</span> m_eqindex;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">// panning value 0 - 255</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        byte m_panning;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span> wrapPlaylistIndex(<span class="keywordtype">int</span> increment);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;};</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;} <span class="comment">/* namespace Server */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <span class="comment">/* namespace WinampRemote */</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* WINAMPTESTSERVER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

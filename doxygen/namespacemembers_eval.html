@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>The Winamp Remote Control suite: testimp.h Source File</title>
+<title>The Winamp Remote Control suite: Namespace Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,9 +44,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -67,8 +67,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
+      <li class="current"><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow3" class="tabs2">
+    <ul class="tablist">
+      <li><a href="namespacemembers.html"><span>All</span></a></li>
+      <li><a href="namespacemembers_enum.html"><span>Enumerations</span></a></li>
+      <li class="current"><a href="namespacemembers_eval.html"><span>Enumerator</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -82,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('testimp_8h.html','');});
+$(document).ready(function(){initNavTree('namespacemembers_eval.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -99,41 +106,35 @@ $(document).ready(function(){initNavTree('testimp_8h.html','');});
 </iframe>
 </div>
 
-<div class="header">
-  <div class="headertitle">
-<div class="title">testimp.h</div>  </div>
-</div><!--header-->
 <div class="contents">
-<a href="testimp_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef rpcthreadH</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define rpcthreadH</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;Classes.hpp&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_i_call_observer_8h.html">ICallObserver.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using namespace </span>WinampRemote::Remoting;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="class_t_r_p_c_server_thread.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_t_r_p_c_server_thread.html">TRPCServerThread</a> : <span class="keyword">public</span> TThread</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> __fastcall Execute();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    __fastcall <a class="code" href="class_t_r_p_c_server_thread.html">TRPCServerThread</a>(<span class="keywordtype">bool</span> CreateSuspended);</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="class_t_r_p_c_server_thread.html#a099a8be048473017e50ee677ffda689d">   19</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="class_winamp_remote_1_1_remoting_1_1_i_call_observer.html">ICallObserver</a>&amp; <a class="code" href="class_t_r_p_c_server_thread.html#a099a8be048473017e50ee677ffda689d">CallObserver</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
-</div><!-- fragment --></div><!-- contents -->
+&#160;<ul>
+<li>waExecuting
+: <a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2ab6fe0b1cbee4a2ad46b1440d8ab7ffcc">WinampRemote::Server</a>
+</li>
+<li>waInactive
+: <a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a028468327073f521c63ccc799800e49b">WinampRemote::Server</a>
+</li>
+<li>waInitialiseFailed
+: <a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a5f872708b307441df39b13e10f68b77c">WinampRemote::Server</a>
+</li>
+<li>waListening
+: <a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a98558e48def3aa3ca3cfe06e4262e007">WinampRemote::Server</a>
+</li>
+<li>waServerStarted
+: <a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2afe8b01f2767b56c85be8a0b10df805fe">WinampRemote::Server</a>
+</li>
+<li>waServerStarting
+: <a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a9023a0c50d1744987f435fddabcecc39">WinampRemote::Server</a>
+</li>
+<li>waServerStopped
+: <a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2ab602af0c603a435775757916d3f0e22a">WinampRemote::Server</a>
+</li>
+</ul>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="testimp_8h.html">testimp.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.1 </li>

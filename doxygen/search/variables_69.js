@@ -17,6 +17,5 @@ var searchData=
   ['imltrayicons',['imlTrayIcons',['../class_tfrm_main.html#a17f5be2177240d803947fd7fd7077b5f',1,'TfrmMain']]],
   ['imlusers',['imlUsers',['../class_tfrm_plugin_main.html#ad68820b879e16324b2cd04c96074047a',1,'TfrmPluginMain']]],
   ['init',['init',['../structwinamp_general_purpose_plugin.html#abb3cf2560acb6f68ae2be9e6a5e8f07b',1,'winampGeneralPurposePlugin']]],
-  ['internalname',['InternalName',['../class_t_module_version_info.html#a36e1b0d6c333b9e6e29d64a37f926dca',1,'TModuleVersionInfo']]],
-  ['isexe',['isExe',['../class_tfrm_plugin_main.html#a157171ceaf6e301a7a8ceab515616107',1,'TfrmPluginMain']]]
+  ['internalname',['InternalName',['../class_t_module_version_info.html#a36e1b0d6c333b9e6e29d64a37f926dca',1,'TModuleVersionInfo']]]
 ];

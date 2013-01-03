@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>The Winamp Remote Control suite: CallReflector.h File Reference</title>
+<title>The Winamp Remote Control suite: RPCAlloc.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('_call_reflector_8h.html','');});
+$(document).ready(function(){initNavTree('_r_p_c_alloc_8cpp.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -101,39 +101,64 @@ $(document).ready(function(){initNavTree('_call_reflector_8h.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">CallReflector.h File Reference</div>  </div>
+<div class="title">RPCAlloc.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;vcl.h&gt;</code><br/>
-<code>#include &quot;<a class="el" href="_i_call_observer_8h_source.html">ICallObserver.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;stdlib.h&quot;</code><br/>
+<code>#include &quot;rpc.h&quot;</code><br/>
 </div>
-<p><a href="_call_reflector_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_r_p_c_alloc_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_call_reflector.html">WinampRemote::Remoting::CallReflector</a></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespace_winamp_remote"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_winamp_remote.html">WinampRemote</a></td></tr>
-<tr class="memitem:namespace_winamp_remote_1_1_remoting"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_winamp_remote_1_1_remoting.html">WinampRemote::Remoting</a></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:aec4549a226c57ecd9237be868a9a5565"><td class="memItemLeft" align="right" valign="top">typedef void(__closure *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_winamp_remote_1_1_remoting.html#aec4549a226c57ecd9237be868a9a5565">WinampRemote::Remoting::TCOStatusEvent</a> )(const AnsiString &amp;statusMessage)</td></tr>
-<tr class="memitem:aa9a3d6eeee95b73c02cfb2fb7c48ba9d"><td class="memItemLeft" align="right" valign="top">typedef void(__closure *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_winamp_remote_1_1_remoting.html#aa9a3d6eeee95b73c02cfb2fb7c48ba9d">WinampRemote::Remoting::TCOInfoEvent</a> )(const AnsiString &amp;infoMessage)</td></tr>
-<tr class="memitem:a5d00fed1ca110fae258a1b1869053425"><td class="memItemLeft" align="right" valign="top">typedef void(__closure *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_winamp_remote_1_1_remoting.html#a5d00fed1ca110fae258a1b1869053425">WinampRemote::Remoting::TCOIdentEvent</a> )(const AnsiString &amp;identMessage)</td></tr>
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a6c8c94e98d321f69e3b3fa7b1833870d"><td class="memItemLeft" align="right" valign="top">void __RPC_FAR *__RPC_USER&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_r_p_c_alloc_8cpp.html#a6c8c94e98d321f69e3b3fa7b1833870d">midl_user_allocate</a> (size_t len)</td></tr>
+<tr class="memitem:a9297d59b1ed8474c1e8470a931857229"><td class="memItemLeft" align="right" valign="top">void __RPC_USER&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_r_p_c_alloc_8cpp.html#a9297d59b1ed8474c1e8470a931857229">midl_user_free</a> (void __RPC_FAR *ptr)</td></tr>
 </table>
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a6c8c94e98d321f69e3b3fa7b1833870d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __RPC_FAR* __RPC_USER midl_user_allocate </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_r_p_c_alloc_8cpp_source.html#l00013">13</a> of file <a class="el" href="_r_p_c_alloc_8cpp_source.html">RPCAlloc.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9297d59b1ed8474c1e8470a931857229"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __RPC_USER midl_user_free </td>
+          <td>(</td>
+          <td class="paramtype">void __RPC_FAR *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_r_p_c_alloc_8cpp_source.html#l00019">19</a> of file <a class="el" href="_r_p_c_alloc_8cpp_source.html">RPCAlloc.cpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="_call_reflector_8h.html">CallReflector.h</a></li>
+    <li class="navelem"><a class="el" href="_r_p_c_alloc_8cpp.html">RPCAlloc.cpp</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.1 </li>

@@ -119,7 +119,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9c07a3999a66c9ecd72e636349581563"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#a9c07a3999a66c9ecd72e636349581563">ServerTester</a> ()</td></tr>
 <tr class="memitem:ac75cef731ad4e67f163e5886dab1b596"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#ac75cef731ad4e67f163e5886dab1b596">~ServerTester</a> ()</td></tr>
 <tr class="memitem:ae698440e65eb292ab80eba57212418bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#ae698440e65eb292ab80eba57212418bb">testServers</a> (map&lt; AnsiString, <a class="el" href="struct_server_info.html">ServerInfo</a> &gt; &amp;servers)</td></tr>
-<tr class="memitem:a0974dded169e9d625d5f8752d5f57871"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#a0974dded169e9d625d5f8752d5f57871">testServer</a> (const AnsiString &amp;remote)</td></tr>
+<tr class="memitem:a3e545ff27082631b46892e87ebeeb363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#a3e545ff27082631b46892e87ebeeb363">testServer</a> (const AnsiString &amp;remote, <a class="el" href="struct_server_info.html">ServerInfo</a> &amp;serverInfo)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -176,16 +176,26 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a0974dded169e9d625d5f8752d5f57871"></a>
+<a class="anchor" id="a3e545ff27082631b46892e87ebeeb363"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool ServerTester::testServer </td>
+          <td class="memname">void ServerTester::testServer </td>
           <td>(</td>
           <td class="paramtype">const AnsiString &amp;&#160;</td>
-          <td class="paramname"><em>remote</em></td><td>)</td>
+          <td class="paramname"><em>remote</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="struct_server_info.html">ServerInfo</a> &amp;&#160;</td>
+          <td class="paramname"><em>serverInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -193,6 +203,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
     <tr><td class="paramname">remote</td><td>- machine name to test </td></tr>
+    <tr><td class="paramname">serverInfo</td><td>server info to be populated </td></tr>
   </table>
   </dd>
 </dl>
@@ -217,7 +228,7 @@ Public Attributes</h2></td></tr>
 <p>Function to accept list of servers to be tested. </p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
-    <tr><td class="paramname">servers</td><td></td></tr>
+    <tr><td class="paramname">servers</td><td>map of names -&gt; server info </td></tr>
   </table>
   </dd>
 </dl>

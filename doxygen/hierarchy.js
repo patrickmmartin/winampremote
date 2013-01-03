@@ -11,8 +11,8 @@ var hierarchy =
     [ "GlassExtender", "class_glass_extender.html", null ],
     [ "WinampRemote::Remoting::ICallObserver", "class_winamp_remote_1_1_remoting_1_1_i_call_observer.html", [
       [ "DefaultCallObserver", "class_default_call_observer.html", null ],
-      [ "WinampRemote::Remoting::CallReflector", "class_winamp_remote_1_1_remoting_1_1_call_reflector.html", null ],
-      [ "WinampRemote::Remoting::ConsoleCallObserver", "class_winamp_remote_1_1_remoting_1_1_console_call_observer.html", null ]
+      [ "WinampRemote::Remoting::ConsoleCallObserver", "class_winamp_remote_1_1_remoting_1_1_console_call_observer.html", null ],
+      [ "WinampRemote::Remoting::StubCallObserver", "class_winamp_remote_1_1_remoting_1_1_stub_call_observer.html", null ]
     ] ],
     [ "WinampRemote::Client::IWinamp", "class_winamp_remote_1_1_client_1_1_i_winamp.html", [
       [ "WinampRemote::Client::WinampClientBase", "class_winamp_remote_1_1_client_1_1_winamp_client_base.html", null ]
@@ -24,6 +24,7 @@ var hierarchy =
     [ "NetworkTest", "class_network_test.html", null ],
     [ "WinampRemote::Server::PlaylistItem", "struct_winamp_remote_1_1_server_1_1_playlist_item.html", null ],
     [ "porttype", "structporttype.html", null ],
+    [ "WinampRemote::Server::RPCExecutor", "class_winamp_remote_1_1_server_1_1_r_p_c_executor.html", null ],
     [ "ServerEnumerator", "class_server_enumerator.html", null ],
     [ "ServerInfo", "struct_server_info.html", null ],
     [ "ServerTester", "class_server_tester.html", null ],
@@ -41,7 +42,6 @@ var hierarchy =
     [ "TfrmSplash", "class_tfrm_splash.html", null ],
     [ "TModuleVersionInfo", "class_t_module_version_info.html", null ],
     [ "TRPCServerDLLThread", "class_t_r_p_c_server_d_l_l_thread.html", null ],
-    [ "TRPCServerThread", "class_t_r_p_c_server_thread.html", null ],
     [ "winamp", "interfacewinamp.html", null ],
     [ "winampGeneralPurposePlugin", "structwinamp_general_purpose_plugin.html", null ]
 ];

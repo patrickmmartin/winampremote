@@ -126,8 +126,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a6a09219d7d219ae19814a00443391eb7"><td class="memItemLeft" align="right" valign="top">int __stdcall&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_r_p_c_funcs_u_8h.html#a6a09219d7d219ae19814a00443391eb7">SafeExecuteStringMessage</a> (char *pszString, char *<a class="el" href="rpcimport_8h.html#adbec8a8543e4f571f75a71b688cfe450">pszParam</a>, int <a class="el" href="rpcimport_8h.html#ad732c0c7a8bcc3ecf8c7c360b382740d">command</a>)</td></tr>
 <tr class="memitem:a4efe6b0d99adf5e679335120a3b1743f"><td class="memItemLeft" align="right" valign="top">int __stdcall&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_r_p_c_funcs_u_8h.html#a4efe6b0d99adf5e679335120a3b1743f">SafeStringResult</a> (char *pszString, int <a class="el" href="rpcimport_8h.html#ad732c0c7a8bcc3ecf8c7c360b382740d">command</a>, int <a class="el" href="rpcimport_8h.html#a2c43b4908dfeae2903da68a4d8c9ce5f">data</a>, int *<a class="el" href="rpcimport_8h.html#a376eb08c6cb77ec1fc63abd725281358">Result</a>)</td></tr>
 <tr class="memitem:a57358295b4c615e6aba1ced67b7cf648"><td class="memItemLeft" align="right" valign="top">int __stdcall&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_r_p_c_funcs_u_8h.html#a57358295b4c615e6aba1ced67b7cf648">SafeIntegerResult</a> (char *pszString, int <a class="el" href="rpcimport_8h.html#ad732c0c7a8bcc3ecf8c7c360b382740d">command</a>, int <a class="el" href="rpcimport_8h.html#a2c43b4908dfeae2903da68a4d8c9ce5f">data</a>, int *<a class="el" href="rpcimport_8h.html#a376eb08c6cb77ec1fc63abd725281358">Result</a>)</td></tr>
-<tr class="memitem:a6c8c94e98d321f69e3b3fa7b1833870d"><td class="memItemLeft" align="right" valign="top">void __RPC_FAR *__RPC_USER&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_r_p_c_funcs_u_8h.html#a6c8c94e98d321f69e3b3fa7b1833870d">midl_user_allocate</a> (size_t len)</td></tr>
-<tr class="memitem:a9297d59b1ed8474c1e8470a931857229"><td class="memItemLeft" align="right" valign="top">void __RPC_USER&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_r_p_c_funcs_u_8h.html#a9297d59b1ed8474c1e8470a931857229">midl_user_free</a> (void __RPC_FAR *ptr)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="aa222d65d3f4e39138221f341dd188b1a"></a>
@@ -318,42 +316,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6c8c94e98d321f69e3b3fa7b1833870d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void __RPC_FAR* __RPC_USER midl_user_allocate </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>len</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00231">231</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a9297d59b1ed8474c1e8470a931857229"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void __RPC_USER midl_user_free </td>
-          <td>(</td>
-          <td class="paramtype">void __RPC_FAR *&#160;</td>
-          <td class="paramname"><em>ptr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00236">236</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a7368aa3c456a52d09f72bccf63124ec6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -378,7 +340,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00257">257</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00243">243</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
 
 </div>
 </div>
@@ -412,7 +374,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00271">271</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00257">257</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
 
 </div>
 </div>
@@ -452,7 +414,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00299">299</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00285">285</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
 
 </div>
 </div>
@@ -470,7 +432,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00243">243</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00229">229</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
 
 </div>
 </div>
@@ -510,7 +472,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00285">285</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_r_p_c_funcs_u_8cpp_source.html#l00271">271</a> of file <a class="el" href="_r_p_c_funcs_u_8cpp_source.html">RPCFuncsU.cpp</a>.</p>
 
 </div>
 </div>

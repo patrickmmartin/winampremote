@@ -1,12 +1,10 @@
 var searchData=
 [
-  ['callobserver',['CallObserver',['../class_t_r_p_c_server_d_l_l_thread.html#a50cc26fc30a0b3bf8bce8939345d381f',1,'TRPCServerDLLThread::CallObserver()'],['../class_t_r_p_c_server_thread.html#a099a8be048473017e50ee677ffda689d',1,'TRPCServerThread::CallObserver()']]],
-  ['cco',['cco',['../testimp_8cpp.html#a659d95a1e25b5274ac981cd6c7847b73',1,'testimp.cpp']]],
+  ['callobserver',['CallObserver',['../class_t_r_p_c_server_d_l_l_thread.html#adb09d4efbcd99c8dcc29ccffbe183239',1,'TRPCServerDLLThread']]],
   ['charstext',['CharsText',['../_about_f_8cpp.html#a0a48eb726c7e3d7b54db6017b041d70b',1,'AboutF.cpp']]],
   ['chkautohide',['chkAutoHide',['../class_tfrm_main.html#a2d0a026c0c3694c6fcb3864670f1ba97',1,'TfrmMain']]],
   ['chkautorestore',['chkAutoRestore',['../class_tfrm_main.html#a6387204cd8b21eefb0faa32c4babc658',1,'TfrmMain']]],
   ['chkfadeold',['chkFadeOld',['../class_tfrm_main.html#a3847504ab5a103fce7d2fcdcca1fcf5c',1,'TfrmMain']]],
-  ['chklistevents',['chkListEvents',['../class_tfrm_plugin_main.html#a572602a2cda88f45d9d68203fd46aa34',1,'TfrmPluginMain']]],
   ['chkvisible',['chkVisible',['../class_t_config_form.html#af44273be2d03ad737cb69f529cd73ea7',1,'TConfigForm']]],
   ['ci',['ci',['../struct_winamp_remote_1_1_unit_test_1_1_test_context.html#a8596d007c3468f50dca125051a853387',1,'WinampRemote::UnitTest::TestContext']]],
   ['client',['client',['../class_tfrm_playlist.html#a6240afb720a537c8cdfb92d2d6c57da9',1,'TfrmPlaylist::client()'],['../class_tfrm_settings.html#ab0103001feb1d78478a6265aae79a7f1',1,'TfrmSettings::client()']]],
@@ -20,6 +18,5 @@ var searchData=
   ['configform',['ConfigForm',['../_config_d_l_l_f_8cpp.html#a6f9a010fd74106570798282402db4d53',1,'ConfigForm():&#160;ConfigDLLF.cpp'],['../_config_d_l_l_f_8h.html#a4fb0ad5c8499a1019f876c134699e02e',1,'ConfigForm():&#160;ConfigDLLF.cpp'],['../_config_f_8cpp.html#a6f9a010fd74106570798282402db4d53',1,'ConfigForm():&#160;ConfigF.cpp'],['../_config_f_8h.html#a4fb0ad5c8499a1019f876c134699e02e',1,'ConfigForm():&#160;ConfigDLLF.cpp']]],
   ['configuration',['Configuration',['../class_tfrm_main.html#a9dc14489140776ffb08840384dfa43c4',1,'TfrmMain']]],
   ['copyright',['Copyright',['../class_t_module_version_info.html#af062990e3683456291a00d4973843ebb',1,'TModuleVersionInfo']]],
-  ['cr',['cr',['../rpcthread_d_l_l_8cpp.html#ae67a4d3684820e0d7623e523da3c8d16',1,'rpcthreadDLL.cpp']]],
   ['currentindex',['CurrentIndex',['../class_tfrm_main.html#a0013da5adfc3154925b79b308b73e1dd',1,'TfrmMain']]]
 ];

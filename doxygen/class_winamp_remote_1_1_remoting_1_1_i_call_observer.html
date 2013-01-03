@@ -117,8 +117,8 @@ Inheritance diagram for WinampRemote::Remoting::ICallObserver:</div>
   <img src="class_winamp_remote_1_1_remoting_1_1_i_call_observer.png" usemap="#WinampRemote::Remoting::ICallObserver_map" alt=""/>
   <map id="WinampRemote::Remoting::ICallObserver_map" name="WinampRemote::Remoting::ICallObserver_map">
 <area href="class_default_call_observer.html" alt="DefaultCallObserver" shape="rect" coords="0,56,282,80"/>
-<area href="class_winamp_remote_1_1_remoting_1_1_call_reflector.html" alt="WinampRemote::Remoting::CallReflector" shape="rect" coords="292,56,574,80"/>
-<area href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html" alt="WinampRemote::Remoting::ConsoleCallObserver" shape="rect" coords="584,56,866,80"/>
+<area href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html" alt="WinampRemote::Remoting::ConsoleCallObserver" shape="rect" coords="292,56,574,80"/>
+<area href="class_winamp_remote_1_1_remoting_1_1_stub_call_observer.html" alt="WinampRemote::Remoting::StubCallObserver" shape="rect" coords="584,56,866,80"/>
 </map>
  </div></div>
 
@@ -129,6 +129,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaf0e282281b86f9382c7f0da7ffd9a1f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_i_call_observer.html#aaf0e282281b86f9382c7f0da7ffd9a1f">~ICallObserver</a> ()</td></tr>
 <tr class="memitem:a858d87d9ad6816d8f3136f69f65b24f6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_i_call_observer.html#a858d87d9ad6816d8f3136f69f65b24f6">notifyStatus</a> (const char *status)=0</td></tr>
 <tr class="memitem:a0e92f501549b6f43441c31b4f1dea93d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_i_call_observer.html#a0e92f501549b6f43441c31b4f1dea93d">notifyMessage</a> (const char *msg)=0</td></tr>
+<tr class="memitem:a830b5b44eb820528acf2c5c53f2fafac"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_i_call_observer.html#a830b5b44eb820528acf2c5c53f2fafac">notifyException</a> (const char *msg)=0</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>interface for call event observation </p>
@@ -162,6 +163,39 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a830b5b44eb820528acf2c5c53f2fafac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void WinampRemote::Remoting::ICallObserver::notifyException </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>notification for an error </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_winamp_remote_1_1_remoting_1_1_stub_call_observer.html#a7efcc0929aa0f168a4bb7978b83b271e">WinampRemote::Remoting::StubCallObserver</a>, and <a class="el" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a7e0acce7af8f46a028f6bbb4de022924">WinampRemote::Remoting::ConsoleCallObserver</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a0e92f501549b6f43441c31b4f1dea93d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +217,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>message output </p>
+<p>outputs a message </p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
     <tr><td class="paramname">msg</td><td></td></tr>
@@ -191,7 +225,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_winamp_remote_1_1_remoting_1_1_call_reflector.html#a47850a91048a95669988aceb19113d63">WinampRemote::Remoting::CallReflector</a>, <a class="el" href="class_default_call_observer.html#ac2e567f7e3ce1cf5d27af864a54a93ca">DefaultCallObserver</a>, and <a class="el" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a0fc01527996ab806891842aee6acab4a">WinampRemote::Remoting::ConsoleCallObserver</a>.</p>
+<p>Implemented in <a class="el" href="class_winamp_remote_1_1_remoting_1_1_stub_call_observer.html#a1f3851945d3892adfa732177bd12d863">WinampRemote::Remoting::StubCallObserver</a>, <a class="el" href="class_default_call_observer.html#ac2e567f7e3ce1cf5d27af864a54a93ca">DefaultCallObserver</a>, and <a class="el" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a0fc01527996ab806891842aee6acab4a">WinampRemote::Remoting::ConsoleCallObserver</a>.</p>
 
 </div>
 </div>
@@ -216,7 +250,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>status output </p>
+<p>outputs status </p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
     <tr><td class="paramname">status</td><td></td></tr>
@@ -224,7 +258,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_winamp_remote_1_1_remoting_1_1_call_reflector.html#af9d8768e655abe0da12990d384429ca0">WinampRemote::Remoting::CallReflector</a>, <a class="el" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a0e82ef68f2682f25524156b5cd9b2d87">WinampRemote::Remoting::ConsoleCallObserver</a>, and <a class="el" href="class_default_call_observer.html#aef615e01dcdca9e70ffd34461835ba35">DefaultCallObserver</a>.</p>
+<p>Implemented in <a class="el" href="class_winamp_remote_1_1_remoting_1_1_stub_call_observer.html#a4aad1f0162b68077308af29de85faee8">WinampRemote::Remoting::StubCallObserver</a>, <a class="el" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a0e82ef68f2682f25524156b5cd9b2d87">WinampRemote::Remoting::ConsoleCallObserver</a>, and <a class="el" href="class_default_call_observer.html#aef615e01dcdca9e70ffd34461835ba35">DefaultCallObserver</a>.</p>
 
 </div>
 </div>

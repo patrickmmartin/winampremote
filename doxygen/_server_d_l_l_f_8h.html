@@ -102,7 +102,6 @@ $(document).ready(function(){initNavTree('_server_d_l_l_f_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">ServerDLLF.h File Reference</div>  </div>
@@ -119,25 +118,13 @@ $(document).ready(function(){initNavTree('_server_d_l_l_f_8h.html','');});
 <code>#include &lt;CheckLst.hpp&gt;</code><br/>
 <code>#include &lt;ImgList.hpp&gt;</code><br/>
 <code>#include &lt;ToolWin.hpp&gt;</code><br/>
+<code>#include &quot;<a class="el" href="_r_p_c_executor_8h_source.html">RPCExecutor.h</a>&quot;</code><br/>
 </div>
 <p><a href="_server_d_l_l_f_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tfrm_plugin_main.html">TfrmPluginMain</a></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:ae45d6e57ae9c3940389157c43af6c745"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745">WAExecutionStatus</a> { <br/>
-&#160;&#160;<a class="el" href="_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745a9eeea09a6bc9fa3a558761366e4e2a8a">waServerStarting</a>, 
-<a class="el" href="_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745a26bb22933daa9e7dbdf9876a89c9aea1">waServerStarted</a>, 
-<a class="el" href="_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745ada144236b69c8a597e8c6ac2d1e5f1ed">waListening</a>, 
-<a class="el" href="_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745a0bd722976fbaafee426960fcb0642627">waExecuting</a>, 
-<br/>
-&#160;&#160;<a class="el" href="_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745aa7b5a6d577c2e663feb5ac07f342c2a8">waServerStopped</a>, 
-<a class="el" href="_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745a42af6c1978f98059a448a8c6547a86f4">waInitialiseFailed</a>
-<br/>
- }</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -151,37 +138,6 @@ Variables</h2></td></tr>
 <tr class="memitem:afbb02729f8505120b20b822f0452ce4c"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_server_d_l_l_f_8h.html#afbb02729f8505120b20b822f0452ce4c">EXCEPTIONS</a> = 4</td></tr>
 <tr class="memitem:af426de90ff027a9cfa7eafb68db0ebf5"><td class="memItemLeft" align="right" valign="top">PACKAGE <a class="el" href="class_tfrm_plugin_main.html">TfrmPluginMain</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_server_d_l_l_f_8h.html#af426de90ff027a9cfa7eafb68db0ebf5">frmPluginMain</a></td></tr>
 </table>
-<hr/><h2>Enumeration Type Documentation</h2>
-<a class="anchor" id="ae45d6e57ae9c3940389157c43af6c745"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="_server_d_l_l_f_8h.html#ae45d6e57ae9c3940389157c43af6c745">WAExecutionStatus</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="ae45d6e57ae9c3940389157c43af6c745a9eeea09a6bc9fa3a558761366e4e2a8a"></a>waServerStarting</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae45d6e57ae9c3940389157c43af6c745a26bb22933daa9e7dbdf9876a89c9aea1"></a>waServerStarted</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae45d6e57ae9c3940389157c43af6c745ada144236b69c8a597e8c6ac2d1e5f1ed"></a>waListening</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae45d6e57ae9c3940389157c43af6c745a0bd722976fbaafee426960fcb0642627"></a>waExecuting</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae45d6e57ae9c3940389157c43af6c745aa7b5a6d577c2e663feb5ac07f342c2a8"></a>waServerStopped</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae45d6e57ae9c3940389157c43af6c745a42af6c1978f98059a448a8c6547a86f4"></a>waInitialiseFailed</em>&nbsp;</td><td>
-</td></tr>
-</table>
-</dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_server_d_l_l_f_8h_source.html#l00019">19</a> of file <a class="el" href="_server_d_l_l_f_8h_source.html">ServerDLLF.h</a>.</p>
-
-</div>
-</div>
 <hr/><h2>Variable Documentation</h2>
 <a class="anchor" id="a97afd1ef82b3ccf11b738df1186a2feb"></a>
 <div class="memitem">

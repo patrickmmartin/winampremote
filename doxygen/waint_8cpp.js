@@ -1,7 +1,7 @@
 var waint_8cpp =
 [
     [ "LocalExecuteCommand", "waint_8cpp.html#a6ce8b98e5e3c0471a98b71e953550060", null ],
-    [ "LocalExecuteStringCommand", "waint_8cpp.html#af2a89ea68ce8e0d5712b6b7bee8cbf2d", null ],
+    [ "LocalExecuteStringCommand", "waint_8cpp.html#a529b9e37f3c27a6a46a729a397cf34e9", null ],
     [ "LocalGetWinampVersion", "waint_8cpp.html#a72ceae4fe8f84aa0a39de1ce81ea0015", null ],
     [ "LocalQueryInt", "waint_8cpp.html#a1dac4a30cd6ef2253bda3b19746463f0", null ],
     [ "LocalQueryString", "waint_8cpp.html#a04ece507c5be3e71fd7d88ba6fd86cff", null ],

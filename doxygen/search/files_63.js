@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['callreflector_2ecpp',['CallReflector.cpp',['../_call_reflector_8cpp.html',1,'']]],
-  ['callreflector_2eh',['CallReflector.h',['../_call_reflector_8h.html',1,'']]],
   ['catch_2ehpp',['catch.hpp',['../catch_8hpp.html',1,'']]],
   ['clientbinder_2ecpp',['ClientBinder.cpp',['../_client_binder_8cpp.html',1,'']]],
   ['clientbinder_2eh',['ClientBinder.h',['../_client_binder_8h.html',1,'']]],

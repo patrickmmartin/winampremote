@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>The Winamp Remote Control suite: testimp.h File Reference</title>
+<title>The Winamp Remote Control suite: RPCExecutor.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('testimp_8h.html','');});
+$(document).ready(function(){initNavTree('_r_p_c_executor_8h.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -101,26 +101,47 @@ $(document).ready(function(){initNavTree('testimp_8h.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
-<div class="title">testimp.h File Reference</div>  </div>
+<div class="title">RPCExecutor.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;Classes.hpp&gt;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="_i_winamp_8h_source.html">IWinamp.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_i_call_observer_8h_source.html">ICallObserver.h</a>&quot;</code><br/>
 </div>
-<p><a href="testimp_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_r_p_c_executor_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_r_p_c_server_thread.html">TRPCServerThread</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_server_1_1_r_p_c_executor.html">WinampRemote::Server::RPCExecutor</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespace_winamp_remote"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_winamp_remote.html">WinampRemote</a></td></tr>
+<tr class="memitem:namespace_winamp_remote_1_1_server"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_winamp_remote_1_1_server.html">WinampRemote::Server</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a895b78ac04abb702c69d3c50fa81d1e2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2">WinampRemote::Server::WAExecutionStatus</a> { <br/>
+&#160;&#160;<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a028468327073f521c63ccc799800e49b">WinampRemote::Server::waInactive</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a9023a0c50d1744987f435fddabcecc39">WinampRemote::Server::waServerStarting</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2afe8b01f2767b56c85be8a0b10df805fe">WinampRemote::Server::waServerStarted</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a98558e48def3aa3ca3cfe06e4262e007">WinampRemote::Server::waListening</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2ab6fe0b1cbee4a2ad46b1440d8ab7ffcc">WinampRemote::Server::waExecuting</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2ab602af0c603a435775757916d3f0e22a">WinampRemote::Server::waServerStopped</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a5f872708b307441df39b13e10f68b77c">WinampRemote::Server::waInitialiseFailed</a>
+<br/>
+ }</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="testimp_8h.html">testimp.h</a></li>
+    <li class="navelem"><a class="el" href="_r_p_c_executor_8h.html">RPCExecutor.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.1 </li>

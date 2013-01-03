@@ -157,23 +157,23 @@ $(document).ready(function(){initNavTree('_server_tester_8h.html','');});
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_server_tester.html#ae698440e65eb292ab80eba57212418bb">testServers</a>(map&lt;AnsiString, ServerInfo&gt;&amp; servers);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_server_tester.html#a0974dded169e9d625d5f8752d5f57871">testServer</a>(<span class="keyword">const</span> AnsiString&amp; remote);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        AnsiString _endPoint;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">bool</span> _abort;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="_server_tester_8h.html#afe8774ef96ebcfb836d7a8c9f14dd3d8">TSTServerMessageEvent</a> _serverMessageEvent;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="_server_tester_8h.html#ad857874213bc34cf83fafca010dfa4ca">TSTServerResultEvent</a> _serverResultEvent;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_server_tester.html#a3e545ff27082631b46892e87ebeeb363">testServer</a>(<span class="keyword">const</span> AnsiString&amp; remote, <a class="code" href="struct_server_info.html">ServerInfo</a>&amp; serverInfo);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        AnsiString _endPoint;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">bool</span> _abort;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="_server_tester_8h.html#afe8774ef96ebcfb836d7a8c9f14dd3d8">TSTServerMessageEvent</a> _serverMessageEvent;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="_server_tester_8h.html#ad857874213bc34cf83fafca010dfa4ca">TSTServerResultEvent</a> _serverResultEvent;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span> DoMessage(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> AnsiString&amp; <a class="code" href="rpcimport_8h.html#a2c43b4908dfeae2903da68a4d8c9ce5f">data</a>, <span class="keyword">const</span> <span class="keywordtype">int</span> level);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordtype">void</span> DoResult(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> <span class="keywordtype">bool</span> success);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordtype">void</span> DoMessage(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> AnsiString&amp; <a class="code" href="rpcimport_8h.html#a2c43b4908dfeae2903da68a4d8c9ce5f">data</a>, <span class="keyword">const</span> <span class="keywordtype">int</span> level);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordtype">void</span> DoResult(<span class="keyword">const</span> AnsiString&amp; remoteName, <span class="keyword">const</span> <span class="keywordtype">bool</span> success);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SERVERTESTER_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SERVERTESTER_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

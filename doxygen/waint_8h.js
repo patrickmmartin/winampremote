@@ -103,7 +103,7 @@ var waint_8h =
       [ "IDC_SELECTINV", "waint_8h.html#a1dcd2b50ff154210871bef732c540669ae0bd948415c3151e31fa1f24854f8520", null ]
     ] ],
     [ "LocalExecuteCommand", "waint_8h.html#a89f83e0f4a8df3e465f0524336b24de3", null ],
-    [ "LocalExecuteStringCommand", "waint_8h.html#af2a89ea68ce8e0d5712b6b7bee8cbf2d", null ],
+    [ "LocalExecuteStringCommand", "waint_8h.html#a529b9e37f3c27a6a46a729a397cf34e9", null ],
     [ "LocalGetWinampVersion", "waint_8h.html#a72ceae4fe8f84aa0a39de1ce81ea0015", null ],
     [ "LocalQueryInt", "waint_8h.html#a1dac4a30cd6ef2253bda3b19746463f0", null ],
     [ "LocalQueryString", "waint_8h.html#a04ece507c5be3e71fd7d88ba6fd86cff", null ],

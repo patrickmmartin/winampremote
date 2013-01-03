@@ -2,8 +2,6 @@ var files =
 [
     [ "AboutF.cpp", "_about_f_8cpp.html", "_about_f_8cpp" ],
     [ "AboutF.h", "_about_f_8h.html", "_about_f_8h" ],
-    [ "CallReflector.cpp", "_call_reflector_8cpp.html", null ],
-    [ "CallReflector.h", "_call_reflector_8h.html", "_call_reflector_8h" ],
     [ "catch.hpp", "catch_8hpp.html", "catch_8hpp" ],
     [ "ClientBinder.cpp", "_client_binder_8cpp.html", null ],
     [ "ClientBinder.h", "_client_binder_8h.html", [
@@ -39,7 +37,8 @@ var files =
     [ "GlassExtender.cpp", "_glass_extender_8cpp.html", "_glass_extender_8cpp" ],
     [ "GlassExtender.h", "_glass_extender_8h.html", "_glass_extender_8h" ],
     [ "ICallObserver.h", "_i_call_observer_8h.html", [
-      [ "ICallObserver", "class_winamp_remote_1_1_remoting_1_1_i_call_observer.html", "class_winamp_remote_1_1_remoting_1_1_i_call_observer" ]
+      [ "ICallObserver", "class_winamp_remote_1_1_remoting_1_1_i_call_observer.html", "class_winamp_remote_1_1_remoting_1_1_i_call_observer" ],
+      [ "StubCallObserver", "class_winamp_remote_1_1_remoting_1_1_stub_call_observer.html", "class_winamp_remote_1_1_remoting_1_1_stub_call_observer" ]
     ] ],
     [ "IPAddressU.cpp", "_i_p_address_u_8cpp.html", "_i_p_address_u_8cpp" ],
     [ "IPAddressU.h", "_i_p_address_u_8h.html", "_i_p_address_u_8h" ],
@@ -62,12 +61,15 @@ var files =
     [ "remotestrs.h", "remotestrs_8h.html", "remotestrs_8h" ],
     [ "rfc1060u.cpp", "rfc1060u_8cpp.html", "rfc1060u_8cpp" ],
     [ "rfc1060u.h", "rfc1060u_8h.html", "rfc1060u_8h" ],
+    [ "RPCAlloc.cpp", "_r_p_c_alloc_8cpp.html", "_r_p_c_alloc_8cpp" ],
     [ "RPCBind.h", "_r_p_c_bind_8h.html", "_r_p_c_bind_8h" ],
     [ "RPCErrors.cpp", "_r_p_c_errors_8cpp.html", "_r_p_c_errors_8cpp" ],
     [ "RPCErrors.h", "_r_p_c_errors_8h.html", "_r_p_c_errors_8h" ],
     [ "RPCException.h", "_r_p_c_exception_8h.html", [
       [ "ERPCException", "class_e_r_p_c_exception.html", "class_e_r_p_c_exception" ]
     ] ],
+    [ "RPCExecutor.cpp", "_r_p_c_executor_8cpp.html", "_r_p_c_executor_8cpp" ],
+    [ "RPCExecutor.h", "_r_p_c_executor_8h.html", "_r_p_c_executor_8h" ],
     [ "RPCFuncsU.cpp", "_r_p_c_funcs_u_8cpp.html", "_r_p_c_funcs_u_8cpp" ],
     [ "RPCFuncsU.h", "_r_p_c_funcs_u_8h.html", "_r_p_c_funcs_u_8h" ],
     [ "rpcimport.h", "rpcimport_8h.html", "rpcimport_8h" ],
@@ -85,10 +87,6 @@ var files =
     [ "SettingsF.h", "_settings_f_8h.html", "_settings_f_8h" ],
     [ "SplashF.cpp", "_splash_f_8cpp.html", "_splash_f_8cpp" ],
     [ "SplashF.h", "_splash_f_8h.html", "_splash_f_8h" ],
-    [ "testimp.cpp", "testimp_8cpp.html", "testimp_8cpp" ],
-    [ "testimp.h", "testimp_8h.html", [
-      [ "TRPCServerThread", "class_t_r_p_c_server_thread.html", "class_t_r_p_c_server_thread" ]
-    ] ],
     [ "testserver.cpp", "testserver_8cpp.html", "testserver_8cpp" ],
     [ "unittests.cpp", "unittests_8cpp.html", "unittests_8cpp" ],
     [ "UtilsSuite.cpp", "_utils_suite_8cpp.html", "_utils_suite_8cpp" ],

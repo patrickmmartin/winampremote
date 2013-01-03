@@ -107,12 +107,12 @@ $(document).ready(function(){initNavTree('_console_call_observer_8cpp.html','');
 <a href="_console_call_observer_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// implementation of ICallObserver</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_console_call_observer_8h.html">ConsoleCallObserver.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>WinampRemote</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>Remoting</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="code" href="namespace_winamp_remote_1_1_remoting.html">    9</a></span>&#160;<span class="keyword">namespace </span>Remoting</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a0e82ef68f2682f25524156b5cd9b2d87">   12</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a0e82ef68f2682f25524156b5cd9b2d87">ConsoleCallObserver::notifyStatus</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * status){</div>
@@ -129,9 +129,14 @@ $(document).ready(function(){initNavTree('_console_call_observer_8cpp.html','');
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;} <span class="comment">// end of namespace Remoting</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;} <span class="comment">// end of namespace WinampRemote</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a7e0acce7af8f46a028f6bbb4de022924">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a7e0acce7af8f46a028f6bbb4de022924">ConsoleCallObserver::notifyException</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * msg )</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;          <span class="comment">// output to console</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;          std::cerr &lt;&lt; <span class="stringliteral">&quot;error: &quot;</span> &lt;&lt; ((msg)?msg:<span class="stringliteral">&quot;(null)&quot;</span>) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <span class="comment">// end of namespace Remoting</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;} <span class="comment">// end of namespace WinampRemote</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

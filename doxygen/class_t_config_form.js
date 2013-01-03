@@ -12,10 +12,10 @@ var class_t_config_form =
     [ "btnClose", "class_t_config_form.html#a2c4d998db8ee5fd57b34c3ba168edd59", null ],
     [ "chkVisible", "class_t_config_form.html#af44273be2d03ad737cb69f529cd73ea7", null ],
     [ "Details", "class_t_config_form.html#a8d6b8654a6daabd689721a4c7b7136c9", null ],
-    [ "ebEndPoint", "class_t_config_form.html#a48b819cdc93374f2f6add56eb9d94e34", null ],
+    [ "ebEndPoint", "class_t_config_form.html#a08f92da76c5ee99bc50abecc93e0aedf", null ],
     [ "Image1", "class_t_config_form.html#a22efed39155484b4242c2ecb47edfe77", null ],
     [ "imgIcon", "class_t_config_form.html#a8c8b480432829dc1c14648279651dcf3", null ],
-    [ "lblEndPoint", "class_t_config_form.html#ab68a080a0ffc9749f619d7c7c02b24ae", null ],
+    [ "lblEndPoint", "class_t_config_form.html#a77db9736b2cfdbbe19bcc6fa0727ecdf", null ],
     [ "memInfo", "class_t_config_form.html#ac875998d8431e5c585fe42be7deecef6", null ],
     [ "Panel1", "class_t_config_form.html#ab609cdf27a46c61e2982d25a2b4ad0d7", null ],
     [ "pnlIcon", "class_t_config_form.html#ad7cc6e4a7537630956e08e0bd51ad50e", null ]

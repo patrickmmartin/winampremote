@@ -13,6 +13,5 @@ var searchData=
   ['tfrmsettings',['TfrmSettings',['../class_tfrm_settings.html',1,'']]],
   ['tfrmsplash',['TfrmSplash',['../class_tfrm_splash.html',1,'']]],
   ['tmoduleversioninfo',['TModuleVersionInfo',['../class_t_module_version_info.html',1,'']]],
-  ['trpcserverdllthread',['TRPCServerDLLThread',['../class_t_r_p_c_server_d_l_l_thread.html',1,'']]],
-  ['trpcserverthread',['TRPCServerThread',['../class_t_r_p_c_server_thread.html',1,'']]]
+  ['trpcserverdllthread',['TRPCServerDLLThread',['../class_t_r_p_c_server_d_l_l_thread.html',1,'']]]
 ];

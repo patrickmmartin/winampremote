@@ -101,7 +101,8 @@ $(document).ready(function(){initNavTree('namespace_winamp_remote_1_1_server.htm
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">WinampRemote::Server Namespace Reference</div>  </div>
 </div><!--header-->
@@ -110,13 +111,68 @@ $(document).ready(function(){initNavTree('namespace_winamp_remote_1_1_server.htm
 <tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_server_1_1_i_winamp_server.html">IWinampServer</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_server_1_1_r_p_c_executor.html">RPCExecutor</a></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_server_1_1_winamp_server.html">WinampServer</a></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_winamp_remote_1_1_server_1_1_playlist_item.html">PlaylistItem</a></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_server_1_1_winamp_test_server.html">WinampTestServer</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a895b78ac04abb702c69d3c50fa81d1e2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2">WAExecutionStatus</a> { <br/>
+&#160;&#160;<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a028468327073f521c63ccc799800e49b">waInactive</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a9023a0c50d1744987f435fddabcecc39">waServerStarting</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2afe8b01f2767b56c85be8a0b10df805fe">waServerStarted</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a98558e48def3aa3ca3cfe06e4262e007">waListening</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2ab6fe0b1cbee4a2ad46b1440d8ab7ffcc">waExecuting</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2ab602af0c603a435775757916d3f0e22a">waServerStopped</a>, 
+<a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2a5f872708b307441df39b13e10f68b77c">waInitialiseFailed</a>
+<br/>
+ }</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>namespace for the Winamp server operations </p>
-</div></div><!-- contents -->
+</div><hr/><h2>Enumeration Type Documentation</h2>
+<a class="anchor" id="a895b78ac04abb702c69d3c50fa81d1e2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_winamp_remote_1_1_server.html#a895b78ac04abb702c69d3c50fa81d1e2">WinampRemote::Server::WAExecutionStatus</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a895b78ac04abb702c69d3c50fa81d1e2a028468327073f521c63ccc799800e49b"></a>waInactive</em>&nbsp;</td><td>
+<p>server is inactive </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a895b78ac04abb702c69d3c50fa81d1e2a9023a0c50d1744987f435fddabcecc39"></a>waServerStarting</em>&nbsp;</td><td>
+<p>server has begun startup </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a895b78ac04abb702c69d3c50fa81d1e2afe8b01f2767b56c85be8a0b10df805fe"></a>waServerStarted</em>&nbsp;</td><td>
+<p>server startup has completed succesfully </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a895b78ac04abb702c69d3c50fa81d1e2a98558e48def3aa3ca3cfe06e4262e007"></a>waListening</em>&nbsp;</td><td>
+<p>server is listening on port </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a895b78ac04abb702c69d3c50fa81d1e2ab6fe0b1cbee4a2ad46b1440d8ab7ffcc"></a>waExecuting</em>&nbsp;</td><td>
+<p>server is handling a call </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a895b78ac04abb702c69d3c50fa81d1e2ab602af0c603a435775757916d3f0e22a"></a>waServerStopped</em>&nbsp;</td><td>
+<p>server has stopped </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a895b78ac04abb702c69d3c50fa81d1e2a5f872708b307441df39b13e10f68b77c"></a>waInitialiseFailed</em>&nbsp;</td><td>
+<p>server initialisation has failed </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_r_p_c_executor_8h_source.html#l00019">19</a> of file <a class="el" href="_r_p_c_executor_8h_source.html">RPCExecutor.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

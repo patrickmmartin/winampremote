@@ -5,8 +5,6 @@ var _r_p_c_funcs_u_8h =
     [ "GetStringDataList", "_r_p_c_funcs_u_8h.html#a8da1b761a8fcd5e63bca67dd98cd16ae", null ],
     [ "GetStringList", "_r_p_c_funcs_u_8h.html#a3887bb10fc709e8795e23cf70e2f11e7", null ],
     [ "IntegerResult", "_r_p_c_funcs_u_8h.html#aa55acb0da0873f5bb599242543f6e46c", null ],
-    [ "midl_user_allocate", "_r_p_c_funcs_u_8h.html#a6c8c94e98d321f69e3b3fa7b1833870d", null ],
-    [ "midl_user_free", "_r_p_c_funcs_u_8h.html#a9297d59b1ed8474c1e8470a931857229", null ],
     [ "SafeExecuteMessage", "_r_p_c_funcs_u_8h.html#a7368aa3c456a52d09f72bccf63124ec6", null ],
     [ "SafeExecuteStringMessage", "_r_p_c_funcs_u_8h.html#a6a09219d7d219ae19814a00443391eb7", null ],
     [ "SafeIntegerResult", "_r_p_c_funcs_u_8h.html#a57358295b4c615e6aba1ced67b7cf648", null ],

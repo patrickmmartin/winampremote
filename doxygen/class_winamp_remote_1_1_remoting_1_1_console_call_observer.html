@@ -127,6 +127,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa4576fff6c6cbe857ad6fc686e492854"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#aa4576fff6c6cbe857ad6fc686e492854">~ConsoleCallObserver</a> ()</td></tr>
 <tr class="memitem:a0e82ef68f2682f25524156b5cd9b2d87"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a0e82ef68f2682f25524156b5cd9b2d87">notifyStatus</a> (const char *status)</td></tr>
 <tr class="memitem:a0fc01527996ab806891842aee6acab4a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a0fc01527996ab806891842aee6acab4a">notifyMessage</a> (const char *msg)</td></tr>
+<tr class="memitem:a7e0acce7af8f46a028f6bbb4de022924"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#a7e0acce7af8f46a028f6bbb4de022924">notifyException</a> (const char *msg)</td></tr>
 <tr class="inherit_header pub_methods_class_winamp_remote_1_1_remoting_1_1_i_call_observer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_winamp_remote_1_1_remoting_1_1_i_call_observer')"><img src="closed.png" alt="-"/>&nbsp;Public Member Functions inherited from <a class="el" href="class_winamp_remote_1_1_remoting_1_1_i_call_observer.html">WinampRemote::Remoting::ICallObserver</a></td></tr>
 <tr class="memitem:aaf0e282281b86f9382c7f0da7ffd9a1f inherit pub_methods_class_winamp_remote_1_1_remoting_1_1_i_call_observer"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_remoting_1_1_i_call_observer.html#aaf0e282281b86f9382c7f0da7ffd9a1f">~ICallObserver</a> ()</td></tr>
 </table>
@@ -160,6 +161,41 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a7e0acce7af8f46a028f6bbb4de022924"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WinampRemote::Remoting::ConsoleCallObserver::notifyException </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>notification for an error </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_winamp_remote_1_1_remoting_1_1_i_call_observer.html#a830b5b44eb820528acf2c5c53f2fafac">WinampRemote::Remoting::ICallObserver</a>.</p>
+
+<p>Definition at line <a class="el" href="_console_call_observer_8cpp_source.html#l00026">26</a> of file <a class="el" href="_console_call_observer_8cpp_source.html">ConsoleCallObserver.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a0fc01527996ab806891842aee6acab4a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -181,7 +217,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>message output </p>
+<p>outputs a message </p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
     <tr><td class="paramname">msg</td><td></td></tr>
@@ -216,7 +252,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>status output </p>
+<p>outputs status </p>
 <dl class="params"><dt>Parameters:</dt><dd>
   <table class="params">
     <tr><td class="paramname">status</td><td></td></tr>

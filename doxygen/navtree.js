@@ -6,7 +6,8 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ]
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", null, [
@@ -37,13 +38,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"_r_p_c_funcs_u_8h.html#a8da1b761a8fcd5e63bca67dd98cd16ae",
-"class_tfrm_about.html#a7032505d0547cb113b745599560e7d04",
-"class_tfrm_main.html#af1e85aa6edf7c4a8963271c53b91c8ac",
+"_r_p_c_funcs_u_8cpp.html#a6a09219d7d219ae19814a00443391eb7",
+"class_t_r_p_c_server_d_l_l_thread.html#ae9a54f65fa95fdefc9fa7412a492356d",
+"class_tfrm_main.html#ae352c96b44494fdff382c1ef6a275dcd",
 "class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a89ffad6613d900f7dd36ae338173522f",
-"globals_0x71.html",
-"rpcthread_d_l_l_8cpp.html#a057bafb812c2b94c7d08dfce9b782108",
-"winampinterface__s_8c.html#aaf88f77ac2cd3ef19e67916d5da5a42a",
+"gen__plugin_8h.html#ac92a673771db92e7156490091aef7135",
+"rfc1060u_8cpp.html",
 ];
 
 var navTreeSubIndices = new Array();

@@ -155,44 +155,47 @@ $(document).ready(function(){initNavTree('_server_tester_8cpp.html','');});
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;           ++i)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;          pair&lt;AnsiString, ServerInfo&gt; remote = *i;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;          <a class="code" href="class_server_tester.html#a0974dded169e9d625d5f8752d5f57871">testServer</a>(remote.first);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;          <a class="code" href="class_server_tester.html#a3e545ff27082631b46892e87ebeeb363">testServer</a>(remote.first, remote.second);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;       }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="class_server_tester.html#a0974dded169e9d625d5f8752d5f57871">   57</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_server_tester.html#a0974dded169e9d625d5f8752d5f57871">ServerTester::testServer</a>(<span class="keyword">const</span> AnsiString&amp; remote)</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="class_server_tester.html#a3e545ff27082631b46892e87ebeeb363">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_server_tester.html#a3e545ff27082631b46892e87ebeeb363">ServerTester::testServer</a>(<span class="keyword">const</span> AnsiString&amp; remote, <a class="code" href="struct_server_info.html">ServerInfo</a>&amp; serverInfo)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         <span class="keywordtype">int</span> retval;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        clock_t start, end;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">bool</span> result = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// static method from RPCFuncs</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="_r_p_c_bind_8h.html#a915dbc28ac9e5709036b28ec5baccdb9">Bind</a>(remote.c_str(), _endPoint.c_str(), <a class="code" href="_r_p_c_bind_8h.html#a796aa8ac755305188c36e156922a4dd0">pszProtocolSequenceNP</a>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      DoMessage(remote, <span class="stringliteral">&quot;beginning&quot;</span>, 1);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      DoMessage(remote, <span class="stringliteral">&quot;may take some time&quot;</span>, 2);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      start = clock();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <a class="code" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html">WinampRemote::Client::WinampClientBase</a> client;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">string</span> versionString;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// static method from RPCFuncs</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="_r_p_c_bind_8h.html#a915dbc28ac9e5709036b28ec5baccdb9">Bind</a>(remote.c_str(), _endPoint.c_str(), <a class="code" href="_r_p_c_bind_8h.html#a796aa8ac755305188c36e156922a4dd0">pszProtocolSequenceNP</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      DoMessage(remote, <span class="stringliteral">&quot;beginning&quot;</span>, 1);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      DoMessage(remote, <span class="stringliteral">&quot;may take some time&quot;</span>, 2);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      start = clock();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <a class="code" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html">WinampRemote::Client::WinampClientBase</a> client;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      retval = client.<a class="code" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a514d0284f82835675c80cd110c95d216">winampVersion</a>();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      end = clock();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      DoMessage(remote, AnsiString().sprintf(<span class="stringliteral">&quot;response after %.2fs &quot;</span>, (end - start) / CLK_TCK), 1);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      DoMessage(remote, <a class="code" href="waint_8cpp.html#a13c6e4b244d47f4d7b006eaa43657e22">WinampVersionString</a>(retval), 1);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      result = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">catch</span>( <a class="code" href="class_e_r_p_c_exception.html">ERPCException</a>&amp; E)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      DoMessage(remote, AnsiString(<span class="stringliteral">&quot;failed: &quot;</span> ) + E.<a class="code" href="class_e_r_p_c_exception.html#a65a02df13cadf66687a0706d57c95963">what</a>(), 3);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    DoResult(remote, result);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      retval = client.<a class="code" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a514d0284f82835675c80cd110c95d216">winampVersion</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      end = clock();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      DoMessage(remote, AnsiString().sprintf(<span class="stringliteral">&quot;response after %.2fs &quot;</span>, (end - start) / CLK_TCK), 1);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      versionString = <a class="code" href="waint_8cpp.html#a13c6e4b244d47f4d7b006eaa43657e22">WinampVersionString</a>(retval);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      DoMessage(remote, <a class="code" href="waint_8cpp.html#a13c6e4b244d47f4d7b006eaa43657e22">WinampVersionString</a>(retval), 1);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      result = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">catch</span>( <a class="code" href="class_e_r_p_c_exception.html">ERPCException</a>&amp; E)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      DoMessage(remote, AnsiString(<span class="stringliteral">&quot;failed: &quot;</span> ) + E.<a class="code" href="class_e_r_p_c_exception.html#a65a02df13cadf66687a0706d57c95963">what</a>(), 3);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    DoResult(remote, result);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    serverInfo.<a class="code" href="struct_server_info.html#aed5657f986b7d86aaaf8ea011e24fb43">comment</a> = versionString.c_str();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    serverInfo.<a class="code" href="struct_server_info.html#a9f01d59607305f75bf6d231322ddd203">status</a> = (result)?<a class="code" href="_server_tester_8h.html#a23331e5df325fea12f9a553d3b1cab4aac31dd49ac688e15896951c7e2f3f3290">SI_SUCCESS</a>:<a class="code" href="_server_tester_8h.html#a23331e5df325fea12f9a553d3b1cab4aaaa9d7a398a32a4f73e03cf9a0645bcbc">SI_FAILED</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

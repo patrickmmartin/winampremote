@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['_7ecallreflector',['~CallReflector',['../class_winamp_remote_1_1_remoting_1_1_call_reflector.html#ae6603fc13b0302d8be913c5ebda6a73e',1,'WinampRemote::Remoting::CallReflector']]],
   ['_7eclientbinder',['~ClientBinder',['../class_winamp_remote_1_1_client_1_1_client_binder.html#ad4987696a817b3a1fa7f6dbae45c2933',1,'WinampRemote::Client::ClientBinder']]],
   ['_7econsolecallobserver',['~ConsoleCallObserver',['../class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#aa4576fff6c6cbe857ad6fc686e492854',1,'WinampRemote::Remoting::ConsoleCallObserver']]],
   ['_7econtextinfo',['~ContextInfo',['../class_winamp_remote_1_1_context_1_1_context_info.html#a543af0e2687020d524789d3836468ca1',1,'WinampRemote::Context::ContextInfo']]],
@@ -11,8 +10,10 @@ var searchData=
   ['_7eiwinamp',['~IWinamp',['../class_winamp_remote_1_1_client_1_1_i_winamp.html#ace1b25539352c34d59e29c3139f29d94',1,'WinampRemote::Client::IWinamp']]],
   ['_7eiwinampserver',['~IWinampServer',['../class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a6fa968bcaa4d795953a81cb714130528',1,'WinampRemote::Server::IWinampServer']]],
   ['_7enetworktest',['~NetworkTest',['../class_network_test.html#a6d06a985ccf6d0715b7a9f93cdba41d2',1,'NetworkTest']]],
+  ['_7erpcexecutor',['~RPCExecutor',['../class_winamp_remote_1_1_server_1_1_r_p_c_executor.html#a5dafef95ee244a4ba52d5d60632dae9c',1,'WinampRemote::Server::RPCExecutor']]],
   ['_7eserverenumerator',['~ServerEnumerator',['../class_server_enumerator.html#a2bc1e2c30de1aceafe0a10942445eb5c',1,'ServerEnumerator']]],
   ['_7eservertester',['~ServerTester',['../class_server_tester.html#ac75cef731ad4e67f163e5886dab1b596',1,'ServerTester']]],
+  ['_7estubcallobserver',['~StubCallObserver',['../class_winamp_remote_1_1_remoting_1_1_stub_call_observer.html#a863889d34794d40b980d4cd86d2ecc82',1,'WinampRemote::Remoting::StubCallObserver']]],
   ['_7etmoduleversioninfo',['~TModuleVersionInfo',['../class_t_module_version_info.html#afd1a2514c10cc9598b4e75a1a6d5996f',1,'TModuleVersionInfo']]],
   ['_7ewinampclientbase',['~WinampClientBase',['../class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a82318565afc808bed82b0389085e2c3c',1,'WinampRemote::Client::WinampClientBase']]],
   ['_7ewinampserver',['~WinampServer',['../class_winamp_remote_1_1_server_1_1_winamp_server.html#a353d59ba605bf079b31afa0b9261ff4f',1,'WinampRemote::Server::WinampServer']]],
