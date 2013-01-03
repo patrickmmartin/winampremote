@@ -187,7 +187,7 @@ string queryLogFormat(const char * strSender, long command, long data)
 
 	stringstream sstr;
 	sstr.str() = strSender;
-	sstr << " sent  - query : " << WinampCommandDesc(command) << " - data : " << data;
+	sstr << " sent  - query : " << WinampCommand(command) << " - data : " << data;
 	return sstr.str();
 
 }
@@ -196,7 +196,7 @@ string commandLogFormat(const char * strSender, long command, const char * strPa
 {
 	  stringstream sstr;
 	  sstr.str() = (char *) strSender;
-	  sstr << " sent  - command : " << WinampCommandDesc(command);
+	  sstr << " sent  - command : " << WinampCommand(command);
 	  if (strParam)
 		  sstr << " - parameter : " << strParam;
 	  return sstr.str();

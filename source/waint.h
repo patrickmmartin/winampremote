@@ -2,6 +2,7 @@
 #define waintH
 
 #include "windows.h"
+#include "iosfwd.h"
 
 #pragma hdrstop
 
@@ -12,6 +13,8 @@ enum WAPlaybackStatus
 {
 	WA_NOT_PLAYING, WA_PLAYING, WA_UNUSED, WA_PAUSED
 };
+
+std::ostream& operator << (std::ostream& os, WAPlaybackStatus status);
 
 /**
  * Winamp basic operations
@@ -62,6 +65,8 @@ enum WinampCommand
 	WINAMP_REW5S = 40061
 
 };
+
+std::ostream& operator << (std::ostream& os, WinampCommand command);
 
 /**
  * Winamp button definitions

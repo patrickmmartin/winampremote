@@ -20,6 +20,7 @@
 
 #include <stdio.h>
 #include <windows.h>
+#include <iostream.h>
 #pragma hdrstop
 
 #include "waint.h"
@@ -29,6 +30,33 @@
  */
 const int WM_WA_IPC = WM_USER;
 
+
+static const char * WAPlaybackStatusDesc[WA_PAUSED + 1] =
+	{"not playing", "playing", "unused", "paused"};
+
+ostream& operator << (ostream& os, WAPlaybackStatus status)
+{
+	switch (status)
+	{
+	case WA_NOT_PLAYING:
+	case WA_PLAYING:
+	case WA_UNUSED:
+	case WA_PAUSED:
+		os << WAPlaybackStatusDesc[status];
+		break;
+	default:
+		os << "unknown status value";
+		break;
+	};
+	return os;
+}
+
+
+std::ostream& operator << (std::ostream& os, WinampCommand command)
+{
+	os << WinampCommandDesc(command);
+	return os;
+}
 
 /*
  * Utility function to obtain the winamp handle when out of process

@@ -118,3 +118,4 @@ ipch
 /source\WARC\gen_remotecontrol/*.user
 /source/WARC/gen_remotecontrol/*.user
 /source/WARC/*.suo
+/source/WARC/*.cache
