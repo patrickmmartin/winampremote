@@ -2,7 +2,7 @@
 #define waintH
 
 #include "windows.h"
-#include "iosfwd.h"
+#include <iosfwd>
 
 #pragma hdrstop
 

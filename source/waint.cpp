@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 #include <windows.h>
-#include <iostream.h>
+#include <iostream>
 #pragma hdrstop
 
 #include "waint.h"
@@ -34,7 +34,7 @@ const int WM_WA_IPC = WM_USER;
 static const char * WAPlaybackStatusDesc[WA_PAUSED + 1] =
 	{"not playing", "playing", "unused", "paused"};
 
-ostream& operator << (ostream& os, WAPlaybackStatus status)
+std::ostream& operator << (std::ostream& os, WAPlaybackStatus status)
 {
 	switch (status)
 	{
