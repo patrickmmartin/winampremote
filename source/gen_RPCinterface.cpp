@@ -39,7 +39,6 @@ USEUNIT("WinampServerImpl.cpp");
 USERES("gen_RPCinterface.RES");
 USEUNIT("RPCExecutor.cpp");
 USEUNIT("RPCErrors.cpp");
-USEUNIT("RPCAlloc.cpp");
 //---------------------------------------------------------------------------
 int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void*)
 {

@@ -14,7 +14,7 @@
       ..\obj\gen_RPCinterface\GlassExtender.obj 
       ..\obj\gen_RPCinterface\WinampServerImpl.obj 
       ..\obj\gen_RPCinterface\RPCExecutor.obj 
-      ..\obj\gen_RPCinterface\RPCErrors.obj ..\obj\gen_RPCinterface\RPCAlloc.obj"/>
+      ..\obj\gen_RPCinterface\RPCErrors.obj"/>
     <RESFILES value="gen_RPCinterface.RES"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>

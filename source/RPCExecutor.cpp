@@ -26,6 +26,12 @@
 
 using namespace std;
 
+
+void * __stdcall MIDL_user_allocate(size_t size)
+{
+	return malloc(size);
+}
+
 namespace WinampRemote
 {
 namespace Server
@@ -256,7 +262,7 @@ void WAExecuteMessageString(
 {
 
 	MainMessage( commandLogFormat( (const char *) pszString, command, (const char *) pszParam).c_str());
-	// TODO: eliminate the cast
+	// FIXME: eliminate the cast
 	winampServer()->ExecuteStringCommand((const char *) pszParam, static_cast<WinampCommand>(command) );
 	// TODO: need to implement WAExecutionStatus report status
 	// MainStatus(waListening);
@@ -368,9 +374,8 @@ inline static void populateBuffer(BUFFER * pBuffer, std::string& buffer)
 
 	pBuffer->BufferLength = 0;
 	int strlen = buffer.size();
-	// TODO check this results in the RPC RT returning the memory
-	// TODO hack for linker issue
-	pBuffer->Buffer = (byte *) malloc (strlen +1);
+	// FIXME check this results in the RPC RT returning the memory
+	pBuffer->Buffer = (byte *) MIDL_user_allocate(strlen + 1);
 	if (pBuffer->Buffer)
 	{
 		pBuffer->BufferLength = strlen + 1;
