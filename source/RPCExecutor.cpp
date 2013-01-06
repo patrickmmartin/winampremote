@@ -316,7 +316,7 @@ long WAStringResult(
 
   // TODO: notification for exceptions
 
-  // TODO: this obviously achieves nothing
+  // TODO: return non-zero when error handling is implemented
   return 0;
 
 }

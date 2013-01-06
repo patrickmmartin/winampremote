@@ -35,8 +35,7 @@ extern "C"
 
   void __stdcall ClientFree(void * mem)
   {
-	  // TODO hack for linker error	
-	  free(mem);
+	  MIDL_user_free(mem);
   }
 
   // this binds to the interface , and assigns to the interface handle
