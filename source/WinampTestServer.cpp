@@ -1,6 +1,8 @@
 
 #include "WinampTestServer.h"
 
+#include <sstream>
+
 namespace WinampRemote
 {
 namespace Server
@@ -180,8 +182,7 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 
 string WinampTestServer::QueryString(WinampCommand Command, int Data)
 {
-        // TODO sanity check for the current state of an index of -1 being passed in
-        if ( (Data > -1) && (Data < m_playList.size() ) )
+        if ( (Data > -1) && (Data < (int) m_playList.size() ) )
         {
 	switch (Command)
 	{
@@ -189,7 +190,12 @@ string WinampTestServer::QueryString(WinampCommand Command, int Data)
 			return m_playList[Data].title;
 		case IPC_GETPLAYLISTFILE :
 			return m_playList[Data].filename;
-        	throw std::runtime_error("WinampTestServer::QueryString not implemented");
+		default:
+		{
+			std::stringstream sstr;
+			sstr << "WinampTestServer::QueryString not implemented for " << Command;
+        	throw std::runtime_error(sstr.str());
+		}
 	}
         }
         else

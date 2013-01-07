@@ -14,6 +14,11 @@ enum WAPlaybackStatus
 	WA_NOT_PLAYING, WA_PLAYING, WA_UNUSED, WA_PAUSED
 };
 
+/**
+ * @param os the output stream
+ * @param status the playback status
+ * @return streams out the string representation
+ */
 std::ostream& operator << (std::ostream& os, WAPlaybackStatus status);
 
 /**
@@ -66,6 +71,11 @@ enum WinampCommand
 
 };
 
+/**
+ * @param os the output stream
+ * @param status the command
+ * @return streams out the string representation
+ */
 std::ostream& operator << (std::ostream& os, WinampCommand command);
 
 /**
