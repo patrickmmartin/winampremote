@@ -134,15 +134,19 @@ test-builds:
 	@echo independent builds completed
 
 run-unittests: 
+	echo running unit tests ...
 	-..\bin\unittests  -w NoAssertions
+	echo unit tests complete
 
 start-mockserver:  
-	echo running mock server
+	echo running mock server ...
 	start "mock server"  ..\bin\testserver	
+	echo mock server launched
 	
 test-suite: testserver.exe unittests.exe start-mockserver run-unittests
 	echo killing mock server
 	-taskkill /IM testserver.exe > nul	
+	echo mock server killed
 
 install:
 	echo installer action: $&
