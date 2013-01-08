@@ -73,7 +73,7 @@ enum WinampCommand
 
 /**
  * @param os the output stream
- * @param status the command
+ * @param command the command
  * @return streams out the string representation
  */
 std::ostream& operator << (std::ostream& os, WinampCommand command);

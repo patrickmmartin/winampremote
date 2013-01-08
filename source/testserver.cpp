@@ -5,7 +5,9 @@
 #include "WinampTestServer.h"
 #include "ConsoleCallObserver.h"
 
+#ifdef __BORLANDC__
 #pragma argsused
+#endif
 int main(int argc, char* argv[])
 {
 

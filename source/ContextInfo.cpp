@@ -4,8 +4,6 @@
 
 #include "ContextInfo.h"
 
-#pragma package(smart_init)
-
 namespace WinampRemote
 {
 

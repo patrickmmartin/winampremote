@@ -27,7 +27,7 @@
 using namespace std;
 
 
-void * __stdcall MIDL_user_allocate(size_t size)
+static void * __stdcall MIDL_user_allocate(size_t size)
 {
 	return malloc(size);
 }
