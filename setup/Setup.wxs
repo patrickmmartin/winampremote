@@ -71,7 +71,7 @@
 	</UI>
 		
 	<!-- Attempts to locate the winamp Installer entry and set correctly, accounting for win64
-         - which is automagtically corrrected by MSI as install time
+         - which is automagically corrrected by MSI as install time
            as the 32-bit fully qualified name is in the registry -->	
     <CustomAction Id="FindWinamp" Script="jscript">
       <![CDATA[
