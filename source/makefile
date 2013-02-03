@@ -153,9 +153,17 @@ test-suite: testserver.exe unittests.exe start-mockserver run-unittests
 install:
 	echo installer action: $&
 	pushd ..\bin & msiexec /i WinampRemote.msi /quiet /l* $&.log	
-
 	
 uninstall:
 	echo installer action: $&
 	pushd ..\bin & msiexec /x WinampRemote.msi /quiet /l* $&.log	
 		
+
+install-gui:
+	echo installer action: $&
+	pushd ..\bin & msiexec /i WinampRemote.msi /l* $&.log	
+	
+uninstall-gui:
+	echo installer action: $&
+	pushd ..\bin & msiexec /x WinampRemote.msi /l* $&.log	
+				
