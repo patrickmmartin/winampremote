@@ -28,6 +28,7 @@ clean-server-reg:
 	buildkeys $@
 	$(BRCC) $&.rcscript
 	bpr2mak -q $&.bpr
+	echo PROJECT=..\bin\$&.exe >> $&.mak
 	make -a -f $&.mak
 
 # this copy of the .exe rule is a similar hack for not getting a ".bpr.dll" rule working correctly
@@ -40,6 +41,7 @@ clean-server-reg:
 	buildkeys $@
 	$(BRCC) $&.rcscript
 	bpr2mak -q $&.bpr
+	echo PROJECT=..\bin\$&.dll >> $&.mak
 	make -a -f $&.mak
 	
 midl: 
