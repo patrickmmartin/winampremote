@@ -71,20 +71,34 @@
 	</UI>
 		
 	<!-- Attempts to locate the winamp Installer entry and set correctly, accounting for win64
-         - which is automagically corrrected by MSI as install time
+         - which is automagically corrrected by MSI at install time
            as the 32-bit fully qualified name is in the registry -->	
     <CustomAction Id="FindWinamp" Script="jscript">
       <![CDATA[
+
+	function LogMessage(stage, msg) {
+		Session.Property(stage) = msg
+	}
 		try
 		{
-			var reg = Session.Property( "WINAMPREG" ).replace( "\"", "" )
-			reg = reg.replace( " (x86)", "" )
+			
+			LogMessage("FindWinampA", "Start")
+			var reg = Session.Property( "WINAMPREG" )
+			// TODO need to handle case of the empty value
+			LogMessage("FindWinampB", reg)
+			reg = reg.replace( "\"", "" )
+			LogMessage("FindWinampC", reg)
+//			reg = reg.replace( " (x86)", "" )
+//			LogMessage("FindWinampD", reg)
 			var fragments = reg.split( "\\" )
 			fragments[fragments.length-1] = "Plugins\\"
+			LogMessage("FindWinampE",  fragments.join ( "\\" ) )
 			Session.Property( "WINAMP_PLUGIN_DIR" ) = fragments.join ( "\\"  )
 		}
 		catch (e)
 		{
+			LogMessage("FindWinamp Exception", e)
+			Session.Property( "WINAMP_PLUGIN_DIR" ) = "c:\\Program Files (x86)\\Winamp\\Plugins\\"
 			Session.Property( "ERROR_WINAMP_PLUGIN_DIR" ) = e
 		}
 	  ]]>
@@ -93,7 +107,7 @@
 	<InstallUISequence>			
 			
 	 	<!-- finds the Winamp Install -->			
-      	<Custom Action="FindWinamp" After="LaunchConditions">Not Installed</Custom>		
+      	<Custom Action="FindWinamp" After="LaunchConditions">1</Custom>		
 		
     </InstallUISequence> 
 

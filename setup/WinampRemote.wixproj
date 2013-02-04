@@ -27,6 +27,7 @@
     <DebugType>Full</DebugType>
     <Optimize>False</Optimize>
     <StartAction>Project</StartAction>
+    <StartWorkingDirectory>C:\Users\Patrick\Documents\Git\winampremote\setup</StartWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release\</OutputPath>
