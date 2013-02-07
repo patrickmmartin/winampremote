@@ -262,8 +262,7 @@ void WAExecuteMessageString(
 {
 
 	MainMessage( commandLogFormat( (const char *) pszString, command, (const char *) pszParam).c_str());
-	// FIXME: eliminate the cast
-	winampServer()->ExecuteStringCommand((const char *) pszParam, static_cast<WinampCommand>(command) );
+	winampServer()->ExecuteStringCommand(pszParam, command );
 	// TODO: need to implement WAExecutionStatus report status
 	// MainStatus(waListening);
 

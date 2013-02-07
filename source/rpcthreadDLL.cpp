@@ -66,9 +66,10 @@ void __fastcall TRPCServerDLLThread::Execute()
 
 	  observer.notifyStatus("testserver starting");
 
-	  // for this mock server, no need for another thread, simply block on this
-	  WinampRemote::Server::RPCExecutor::instance().setWinampServer(&localWinamp);
-	  WinampRemote::Server::RPCExecutor::instance().setCallObserver(&observer);
-	  WinampRemote::Server::RPCExecutor::instance().Execute();
+	  // for this server, no need for another thread, simply block on this
+	  RPCExecutor &executor = WinampRemote::Server::RPCExecutor::instance();
+	  executor.setWinampServer(&localWinamp);
+	  executor.setCallObserver(&observer);
+	  executor.Execute();
 
 }
