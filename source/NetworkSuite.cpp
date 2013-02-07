@@ -23,9 +23,9 @@
  */
 TEST_CASE("Network/Enumeration", "local Network enumeration")
 {
-	NetworkTest ns;
+	NetworkTest nt;
 	// test network enumeration
-	CHECK(ns.testEnumeration());
+	CHECK(nt.testEnumeration());
 }
 
 /**
@@ -33,9 +33,9 @@ TEST_CASE("Network/Enumeration", "local Network enumeration")
  */
 TEST_CASE("Network/Local", "test interface")
 {
-	NetworkTest ns;
+	NetworkTest nt;
 	// test local server properties
-	CHECK(ns.testLocalServer());
+	CHECK(nt.testLocalServer());
 	// test abort
 }
 
@@ -43,10 +43,10 @@ TEST_CASE("Network/Local", "test interface")
 // for the right prerequisites
 TEST_CASE("Network/Servers", "test local servers")
 {
-	NetworkTest ns;
+	NetworkTest nt;
 	// test network enumeration
-	CHECK(ns.testEnumeration());
-	CHECK(ns.testServerTest());
+	CHECK(nt.testEnumeration());
+	CHECK(nt.testServerTest());
 }
 
 /**
@@ -54,9 +54,9 @@ TEST_CASE("Network/Servers", "test local servers")
  */
 TEST_CASE("Network/Abort", "test abort")
 {
-	NetworkTest ns;
+	NetworkTest nt;
 	// test abort
-	CHECK(ns.testServerTestAbort());
+	CHECK(nt.testServerTestAbort());
 }
 
 /**
@@ -64,9 +64,9 @@ TEST_CASE("Network/Abort", "test abort")
  */
 TEST_CASE("Network/Invalid", "test communication with invalid server")
 {
-	NetworkTest ns;
+	NetworkTest nt;
 	// test invalid
-	CHECK(ns.testServerInvalid());
+	CHECK(nt.testServerInvalid());
 }
 
 
