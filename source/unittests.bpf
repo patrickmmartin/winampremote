@@ -14,6 +14,7 @@ USEUNIT("ClientSuite.cpp");
 USEUNIT("IPAddressU.cpp");
 USEUNIT("ColourU.cpp");
 USEUNIT("UtilsSuite.cpp");
+USEUNIT("NetworkTest.cpp");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 
