@@ -25,6 +25,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include <winsock.h>
 #include "IPAddressU.h"
 
+// TODO remove the VCL style
 
 #pragma package(smart_init)
 

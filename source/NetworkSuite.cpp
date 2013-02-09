@@ -9,15 +9,6 @@
 
 #include "NetworkTest.h"
 
-/* FIXME: this class needs thorough refactoring
- * test cases should be unrolled more into the ...Suite class from ..Test
- */
-
-/*
- * FIXME: remove the VCL only style
- */
-
-
 /**
  * tests network enumeration
  */

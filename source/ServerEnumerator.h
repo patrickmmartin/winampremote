@@ -14,7 +14,7 @@
 #include <windows.h>
 
 /*
- * TODO remove the VCL style callbacks and use Observer
+ * TODO remove the VCL style callbacks and use some Observer pattern
  */
 
 /**
@@ -60,12 +60,12 @@ public:
 	/**
 	 * notification for a message event
 	 */
-        __property TSEMessageEvent OnMessage = {read = FMessageEvent, write = FMessageEvent};
+	__property TSEMessageEvent OnMessage = {read = FMessageEvent, write = FMessageEvent};
 
-        /**
-         * notification for a progress event
-         */
-        __property TSEProgressEvent OnProgress = {read = FProgressEvent, write = FProgressEvent};
+	/**
+	 * notification for a progress event
+	 */
+	__property TSEProgressEvent OnProgress = {read = FProgressEvent, write = FProgressEvent};
 
 	/**
 	 * enumerates the servers on the network neighbourhood.

@@ -11,6 +11,10 @@
 #include "waint.h"
 #include "WinampClientBase.h"
 
+/*
+ * TODO remove the VCL style callbacks and use come Observer pattern
+ */
+
 ServerTester::ServerTester() : _serverMessageEvent(NULL),
                                _serverResultEvent(NULL),
                                _endPoint("\\pipe\\winampremote"),
