@@ -17,7 +17,7 @@ using namespace WinampRemote::Remoting;
 class TRPCServerDLLThread : public TThread
 {
 private:
-	HWND m_mainhwnd;
+	HWND m_pluginhwnd;
 	std::string m_protocolSequence;
 
 protected:

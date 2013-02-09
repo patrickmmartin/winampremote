@@ -31,13 +31,11 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 // winamp interface definitions
 #include "waint.h"
 
-//
+// call observer interface
 #include "ICallObserver.h"
 
 // bring in the Winamp interfaces
 #include "WinampServerImpl.h"
-
-#include "gen_plugin.h"
 
 #include "RPCExecutor.h"
 
@@ -47,20 +45,15 @@ WinampRemote::Server::IWinampServer * localWinamp = NULL;
 
 using namespace WinampRemote::Remoting;
 
-
-TRTLCriticalSection fCriticalSection ;
-
-// here follow the previously prototyped functions implemented
-
-__fastcall TRPCServerDLLThread::TRPCServerDLLThread(bool CreateSuspended, HWND mainhwnd, const char * protocolSequence)
-    : TThread(CreateSuspended), m_mainhwnd(mainhwnd), m_protocolSequence(protocolSequence)
+__fastcall TRPCServerDLLThread::TRPCServerDLLThread(bool CreateSuspended, HWND pluginhwnd, const char * protocolSequence)
+    : TThread(CreateSuspended), m_pluginhwnd(pluginhwnd), m_protocolSequence(protocolSequence)
 {
 }
 
 void __fastcall TRPCServerDLLThread::Execute()
 {
 	  // supply the in-process winamp implementation
-	  WinampRemote::Server::WinampServer localWinamp(plugin.hwndParent);
+	  WinampRemote::Server::WinampServer localWinamp(m_pluginhwnd);
 	  // TODO: implement notification to the UI
 	  StubCallObserver observer;
 

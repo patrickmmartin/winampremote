@@ -153,7 +153,7 @@ void __fastcall TfrmPluginMain::FormShow(TObject *Sender)
 
 void __fastcall TfrmPluginMain::CreateThread()
 {
-  serverThread =  new TRPCServerDLLThread(true, this->Handle, pszProtocolSequenceNP);
+  serverThread =  new TRPCServerDLLThread(true, plugin.hwndParent, pszProtocolSequenceNP);
   serverThread->Resume();
 }
 
