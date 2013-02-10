@@ -49,7 +49,8 @@ USERC("windowsthemes.rc");
 USEUNIT("GlassExtender.cpp");
 USERES("remote.RES");
 USEUNIT("WinampClientBase.cpp");
-
+USEUNIT("IPAddressResolver.cpp");
+//---------------------------------------------------------------------------
 #include "remotestrs.h"
 
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
