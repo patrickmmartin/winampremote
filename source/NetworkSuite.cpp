@@ -8,6 +8,8 @@
 #include "catch.hpp"
 
 #include "NetworkTest.h"
+#include "IPAddressResolver.h"
+
 
 /**
  * tests network enumeration
@@ -60,5 +62,28 @@ TEST_CASE("Network/Invalid", "test communication with invalid server")
 	CHECK(nt.testServerInvalid());
 }
 
+/**
+ * tests IP resolution class
+ */
+
+TEST_CASE("Network/Localhost", "tests the IP resolution for localhost")
+{
+	std::string host = "localhost";
+	WinampRemote::Net::IPAddressResolver ipr(host);
+	CAPTURE(ipr.hostname());
+	CAPTURE(ipr.resolvedName());
+	CHECK("" != ipr.resolvedName());
+
+	// obtain the local machine name
+	char computerName[MAX_COMPUTERNAME_LENGTH + 1] = "";
+	DWORD nameLen = 15;
+	GetComputerName(computerName, &nameLen);
+
+	CHECK(computerName == ipr.resolvedName());
+
+	CHECK(ipr.getAddresses().size());
+	if (ipr.getAddresses().size())
+		CHECK("127.0.0.1" == ipr.getAddresses().at(0));
 
 
+}
