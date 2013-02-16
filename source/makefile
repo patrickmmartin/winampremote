@@ -162,6 +162,10 @@ install-typical-override:
 	echo installer action: $&
 	pushd ..\bin & msiexec /i WinampRemote.msi /quiet /l* $&.log INSTALLLEVEL=1	INSTALLDIR=c:\WinampRemote
 	
+install-typical-override-gui:
+	echo installer action: $&
+	pushd ..\bin & msiexec /i WinampRemote.msi /l* $&.log INSTALLLEVEL=1 INSTALLDIR=c:\WinampRemote
+	
 install-complete:
 	echo installer action: $&
 	pushd ..\bin & msiexec /i WinampRemote.msi /quiet /l* $&.log INSTALLLEVEL=3 
@@ -169,6 +173,10 @@ install-complete:
 install-complete-override:
 	echo installer action: $&
 	pushd ..\bin & msiexec /i WinampRemote.msi /quiet /l* $&.log INSTALLLEVEL=3	INSTALLDIR=c:\WinampRemote WINAMP_PLUGIN_DIR=c:\WinampRemote
+	
+install-complete-override-gui:
+	echo installer action: $&
+	pushd ..\bin & msiexec /i WinampRemote.msi /l* $&.log INSTALLLEVEL=3 INSTALLDIR=c:\WinampRemote WINAMP_PLUGIN_DIR=c:\WinampRemote
 	
 uninstall:
 	echo installer action: $&
