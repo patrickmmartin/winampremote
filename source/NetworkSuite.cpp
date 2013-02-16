@@ -78,8 +78,9 @@ TEST_CASE("Network/IP/Localhost", "tests the IP resolution for localhost")
 	char computerName[MAX_COMPUTERNAME_LENGTH + 1] = "";
 	DWORD nameLen = 15;
 	GetComputerName(computerName, &nameLen);
+	CAPTURE(computerName);
 
-	CHECK(computerName == ipr.resolvedName());
+	CHECK(0 == stricmp(computerName, ipr.resolvedName().c_str()));
 
 	CHECK(ipr.getAddresses().size());
 	if (ipr.getAddresses().size())
