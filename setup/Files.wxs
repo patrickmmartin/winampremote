@@ -6,12 +6,22 @@
 		
 		<DirectoryRef Id="TARGETDIR">
             <Directory Id="ProgramFilesFolder">
+				
 				<Directory Id="INSTALLDIR" Name="WinampRemote">
 					<Component Id="WinampRemoteFiles" Guid="2C966ED7-C597-4897-B3D4-0CB50FAE7917" DiskId="1">
 						<!-- UI Client executables -->
 						<File Source="..\bin\Remote.exe" Id="Remote" />
 					</Component>
 				</Directory>
+			
+		        <Directory Id="WinampFolder" Name="Winamp">
+			        <Directory Id="WINAMP_PLUGIN_DIR" Name="Plugins">
+						<Component Id="WinampRemotePlugin" Guid="BBCEAD6F-8E79-4713-97DC-3F5CE1418E98" DiskId="1">
+							<File Source="..\bin\gen_RPCinterface.dll" Id="Plugin" />
+						</Component>
+					</Directory>
+				</Directory>
+			
 			</Directory>
 			
 			<Directory Id="ProgramMenuFolder" Name="PMenu">
@@ -28,20 +38,9 @@
 						
 						<RemoveFolder Id="RemoveProgramMenuDir" Directory="ProgramMenuDir" On="uninstall" />
 					</Component>
-				</Directory>
+				</Directory>			
 			</Directory>
 		</DirectoryRef>			
-		
-		
-		
-	<DirectoryRef Id="TARGETDIR">
-        <Directory Id="WINAMP_PLUGIN_DIR" Name="WinampPluginsDir">
-			<Component Id="WinampRemotePlugin" Guid="BBCEAD6F-8E79-4713-97DC-3F5CE1418E98" DiskId="1">
-				<!-- Plugin dll -->
-				<File Source="..\bin\gen_RPCinterface.dll" Id="Plugin" />
-			</Component>
-		</Directory>
-		
-		</DirectoryRef>			
+			
 	</Fragment>
 </Wix>

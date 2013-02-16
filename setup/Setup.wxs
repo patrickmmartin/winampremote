@@ -50,16 +50,14 @@
 	  	<WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
 	  	<WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
 	
-	  <Property Id="ALLUSERS">1</Property>
+	  	<Property Id="ALLUSERS">1</Property>
 		
-		<Property Id="WINAMPDIR">C:\Program Files (x86)\Winamp</Property>
-				
 		<!-- find the winamp install location -->
 				
 		<Property Id="WINAMPREG">
 	        <RegistrySearch Id="WINAMPUNINSTALL"
 	                        Root="HKLM"			                
-	                        Key="SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Winamp"
+	                        Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Winamp"
 	                        Name="UninstallString"
 							Type="raw" />
 		</Property>	
@@ -74,35 +72,15 @@
          - which is automagically corrrected by MSI at install time
            as the 32-bit fully qualified name is in the registry -->	
     <CustomAction Id="FindWinamp" Script="jscript">
-      <![CDATA[
-
-	function LogMessage(stage, msg) {
-		Session.Property(stage) = msg
-	}
-		try
-		{
-			
-			LogMessage("FindWinampA", "Start")
-			var reg = Session.Property( "WINAMPREG" )
-			// TODO need to handle case of the empty value
-			LogMessage("FindWinampB", reg)
-			reg = reg.replace( "\"", "" )
-			LogMessage("FindWinampC", reg)
-//			reg = reg.replace( " (x86)", "" )
-//			LogMessage("FindWinampD", reg)
-			var fragments = reg.split( "\\" )
-			fragments[fragments.length-1] = "Plugins\\"
-			LogMessage("FindWinampE",  fragments.join ( "\\" ) )
-			Session.Property( "WINAMP_PLUGIN_DIR" ) = fragments.join ( "\\"  )
-		}
-		catch (e)
-		{
-			LogMessage("FindWinamp Exception", e)
-			Session.Property( "WINAMP_PLUGIN_DIR" ) = "c:\\Program Files (x86)\\Winamp\\Plugins\\"
-			Session.Property( "ERROR_WINAMP_PLUGIN_DIR" ) = e
-		}
-	  ]]>
-    </CustomAction>
+<![CDATA[ 
+var reg = Session.Property( "WINAMPREG" );
+if (reg) {
+var fragments = reg.replace( "\"", "" ).split( "\\" )
+fragments[fragments.length-1] = "Plugins\\"
+Session.Property( "WINAMP_PLUGIN_DIR" ) = fragments.join ( "\\"  )
+}
+]]>
+</CustomAction>
 
 	<InstallUISequence>			
 			
