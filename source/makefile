@@ -154,6 +154,14 @@ install:
 	echo installer action: $&
 	pushd ..\bin & msiexec /i WinampRemote.msi /quiet /l* $&.log	
 	
+install-typical:
+	echo installer action: $&
+	pushd ..\bin & msiexec /i WinampRemote.msi /quiet /l* $&.log INSTALLLEVEL=1	
+	
+install-complete:
+	echo installer action: $&
+	pushd ..\bin & msiexec /i WinampRemote.msi /quiet /l* $&.log INSTALLLEVEL=3	
+	
 uninstall:
 	echo installer action: $&
 	pushd ..\bin & msiexec /x WinampRemote.msi /quiet /l* $&.log	
