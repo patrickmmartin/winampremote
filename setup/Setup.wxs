@@ -85,7 +85,7 @@ Session.Property( "WINAMP_PLUGIN_DIR" ) = fragments.join ( "\\"  )
 	<InstallUISequence>			
 			
 	 	<!-- finds the Winamp Install -->			
-      	<Custom Action="FindWinamp" After="LaunchConditions">1</Custom>		
+      	<Custom Action="FindWinamp" After="LaunchConditions">WINAMP_PLUGIN_DIR=""</Custom>		
 		
     </InstallUISequence> 
 
