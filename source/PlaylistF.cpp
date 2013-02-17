@@ -302,8 +302,6 @@ void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
 
 void __fastcall TfrmPlaylist::FormShow(TObject *)
 {
-  // need to re-assert this
-  DragAcceptFiles(lstSongs->Handle, true);
   // extend glass on Aero
   ge = new GlassExtender(this);
   if (ge->isCompositionActive())
@@ -317,8 +315,8 @@ void __fastcall TfrmPlaylist::FormShow(TObject *)
       sbPlaylist->Color = clNone;
       lstSongs->OnDrawItem = lstSongsDrawItemGlass;
   }
-
-
+  // need to re-assert this
+  DragAcceptFiles(lstSongs->Handle, true);
 }
 
 
