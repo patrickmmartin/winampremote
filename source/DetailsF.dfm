@@ -1,8 +1,8 @@
 object frmDetails: TfrmDetails
-  Left = 325
-  Top = 368
-  Width = 412
-  Height = 240
+  Left = 403
+  Top = 253
+  Width = 451
+  Height = 303
   BorderIcons = [biSystemMenu]
   Caption = 'Details'
   Color = clBtnFace
@@ -19,8 +19,8 @@ object frmDetails: TfrmDetails
   object lvDetails: TListView
     Left = 0
     Top = 25
-    Width = 396
-    Height = 177
+    Width = 435
+    Height = 239
     Align = alClient
     Columns = <
       item
@@ -39,7 +39,7 @@ object frmDetails: TfrmDetails
   object pnlCaption: TPanel
     Left = 0
     Top = 0
-    Width = 396
+    Width = 435
     Height = 25
     Align = alTop
     Alignment = taLeftJustify
