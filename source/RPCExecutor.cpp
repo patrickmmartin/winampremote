@@ -32,6 +32,14 @@ static void * __stdcall MIDL_user_allocate(size_t size)
 	return malloc(size);
 }
 
+
+inline WinampCommand operator==( WinampCommand &wc, long value ) {
+	// TODO: should validate in range in due course
+   wc = (WinampCommand) value;
+   return wc;
+}
+
+
 namespace WinampRemote
 {
 namespace Server
@@ -223,10 +231,7 @@ void WAMessageProc(
   std::string str = (char *) pszString;
   str += " sent hello";
   MainMessage(str.c_str());
-  // TODO: need to implement WAExecutionStatus report status
-  // MainStatus(waListening);
-
-  // TODO: notification for exceptions
+  MainStatus("listening...");
 
 }
 
@@ -242,12 +247,10 @@ void WAExecuteMessage(
 
   MainMessage( commandLogFormat( (const char *) pszString, command).c_str());
   winampServer()->ExecuteCommand( static_cast<WinampCommand>(command) );
-  // TODO: need to implement WAExecutionStatus report status
-  // MainStatus(waListening);
-
-  // TODO: notification for exceptions
+  MainStatus("listening...");
 
 }
+
 
 /**
  * @brief execute winamp command with string parameter
@@ -263,11 +266,7 @@ void WAExecuteMessageString(
 
 	MainMessage( commandLogFormat( (const char *) pszString, command, (const char *) pszParam).c_str());
 	winampServer()->ExecuteStringCommand(pszParam, command );
-	// TODO: need to implement WAExecutionStatus report status
-	// MainStatus(waListening);
-
-	// TODO: notification for exceptions
-
+	MainStatus("listening...");
 
 }
 
@@ -285,11 +284,9 @@ long WAIntegerResult(
 
 	MainMessage( queryLogFormat( (const char *) pszString, command, data).c_str());
 
-	return winampServer()->QueryInt( (WinampCommand) command, data);
-	// TODO: need to implement WAExecutionStatus report status
-	// MainStatus(waListening);
-
-	// TODO: notification for exceptions
+	long retval = winampServer()->QueryInt( (WinampCommand) command, data);
+	MainStatus("listening");
+	return retval;
 
 }
 
@@ -310,10 +307,7 @@ long WAStringResult(
   std::string str  = winampServer()->QueryString( static_cast<WinampCommand>(command), data).c_str();
 
   strcpy((char *) pszString, str.c_str());
-  // TODO: need to implement WAExecutionStatus report status
-  // MainStatus(waListening);
-
-  // TODO: notification for exceptions
+  MainStatus("listening...");
 
   // TODO: return non-zero when error handling is implemented
   return 0;
@@ -330,9 +324,7 @@ void WAShutdown(void)
     MainStatus("not listening");
     MainMessage("asked to close");
 	// TODO: need to implement WAExecutionStatus report status
-	// MainStatus(waListening);
 
-	// TODO: notification for exceptions
 }
 
 /**
@@ -360,8 +352,6 @@ void WASetStringList(
 
 
 	MainStatus("listening...");
-	// TODO: need to implement WAExecutionStatus report status
-	// MainStatus(waListening);
 
 	// TODO: notification for exceptions
 
@@ -409,8 +399,6 @@ void WAGetStringList(
 	populateBuffer(pBuffer, list.str());
   // TODO: no logging at all here
 	MainStatus("listening...");
-	// TODO: need to implement WAExecutionStatus report status
-	// MainStatus(waListening);
 
 	// TODO: notification for exceptions
 
@@ -444,14 +432,7 @@ void WAGetStringDataList(
 
 	populateBuffer(pBuffer, list.str());
 	MainStatus("listening...");
-	// TODO: need to implement WAExecutionStatus report status
-	// MainStatus(waListening);
 
 	// TODO: notification for exceptions
 
 }
-
-
-
-
-
