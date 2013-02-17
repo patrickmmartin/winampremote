@@ -30,26 +30,17 @@ Some features of note were
  * automated discovery of servers on the network
  * and much, much, more ...
 
-## Security
- The final blow was the Windows XP Service Pack which locked down security for unauthenticated RPC endpoints.
- The original choice of transport was unauthenticated RPC over tcpip; something like named pipes transport allows
- basic authentication to be applied, and hence it seems (so far: touch wood) to work without requirements on current
- Windows revisions.
-
 ## Plan
 
  This is the archtypal pet project: for now I'll be happy to revisit some old friends from 12 years ago.
  The game plans are:
 ### short term 
-* Bring the build process / tests / coding  up to date
-* Produce a complete version that works on current Windows releases.
- Given it's been so long since the old version worked, backwards compatbility is not going to be an issue.
-
+* create the full of packages; code base, doxygen, Wiki, binaries, release quality installer 
+* complete re-factoring the code base
+* enhance for testability
 
 ### medium term
 * There was a linux client once for the _tcpip_ transport:  http://sourceforge.net/projects/wacontrol/ 
  * reactivating this would be an interesting exercise
- * working with named pipes endpoints is the bonus points exercise
-
-* As a parallel vein, creating a more transportable UI, such as in QT or HTML5 would be equally interesting 
+* abstract the UI from client and server, to allow re-use
 
