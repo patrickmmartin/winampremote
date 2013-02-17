@@ -95,7 +95,7 @@ bool NetworkTest::testLocalServer()
     st.OnResult = doTestResult;
     st.OnTest = doTestEvent;
     ServerInfo si;
-    st.testServer("localhost", si);
+    st.testServer("127.0.0.1", si);
     return (si.status == SI_SUCCESS);
 }
 
