@@ -43,4 +43,5 @@ Some features of note were
 * There was a linux client once for the _tcpip_ transport:  http://sourceforge.net/projects/wacontrol/ 
  * reactivating this would be an interesting exercise
 * abstract the UI from client and server, to allow re-use
+* there is now a VS 2012 solution, which might become part of a more Windows 8 friendly code base
 
