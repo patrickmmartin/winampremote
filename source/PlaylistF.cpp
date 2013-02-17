@@ -27,7 +27,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "PlaylistF.h"
 #include "waint.h"
 #include "MainF.h"
-#include "SplashF.h"
 #include "shellapi.h"
 #include "remotestrs.h"
 

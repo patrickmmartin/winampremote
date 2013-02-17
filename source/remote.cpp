@@ -22,7 +22,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include <vcl.h>
 #pragma hdrstop
-#include "SplashF.h"
 
 USEFORM("AboutF.cpp", frmAbout);
 USEFORM("SettingsF.cpp", frmSettings);
@@ -30,7 +29,6 @@ USEFORM("CommandF.cpp", frmCommands);
 USEFORM("ServersF.cpp", frmServers);
 USEFORM("DetailsF.cpp", frmDetails);
 USEFORM("PlaylistF.cpp", frmPlaylist);
-USEFORM("SplashF.cpp", frmSplash);
 USEFORM("MainF.cpp", frmMain);
 USEFORM("messageF.cpp", frmMessage);
 USEUNIT("RPCFuncsU.cpp");
@@ -55,36 +53,15 @@ USEUNIT("IPAddressResolver.cpp");
 
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
-    try
-    {
     Application->Title = sWinampRemoteClient;
-    frmSplash = new TfrmSplash(Application);
     try{
-        frmSplash->Show();
-        frmSplash->Update();
-        frmSplash->lblMessage->Caption = sInitialisingApplication;
-        frmSplash->lblMessage->Update();
         Application->Initialize();
-        frmSplash->lblMessage->Caption = sCreatingMainForm;
-        frmSplash->lblMessage->Update();
         Application->CreateForm(__classid(TfrmMain), &frmMain);
-                 Application->CreateForm(__classid(TfrmPlaylist), &frmPlaylist);
-                 Application->CreateForm(__classid(TfrmCommands), &frmCommands);
-                 Application->CreateForm(__classid(TfrmSettings), &frmSettings);
-                 frmSplash->lblMessage->Caption = sReadyToRun;
-        frmSplash->lblMessage->Update();
-        delete frmSplash;
-        frmSplash = NULL;
+        Application->CreateForm(__classid(TfrmPlaylist), &frmPlaylist);
+        Application->CreateForm(__classid(TfrmCommands), &frmCommands);
+        Application->CreateForm(__classid(TfrmSettings), &frmSettings);
         Application->Run();
-        frmSplash = new TfrmSplash(Application);
-        frmSplash->lblMessage->Caption = sClosing;
-        frmSplash->lblMessage->Update();
-        Sleep(200);
         }
-      __finally{
-        delete frmSplash;
-        }
-    }
     catch (Exception &exception)
     {
         Application->ShowException(&exception);

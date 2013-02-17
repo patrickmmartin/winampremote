@@ -7,19 +7,19 @@
     <OBJFILES value="..\obj\remote\remote.obj ..\obj\remote\AboutF.obj 
       ..\obj\remote\SettingsF.obj ..\obj\remote\CommandF.obj 
       ..\obj\remote\ServersF.obj ..\obj\remote\DetailsF.obj 
-      ..\obj\remote\PlaylistF.obj ..\obj\remote\SplashF.obj 
-      ..\obj\remote\MainF.obj ..\obj\remote\messageF.obj 
-      ..\obj\remote\RPCFuncsU.obj ..\obj\remote\WAINT.obj 
-      ..\obj\remote\ColourU.obj ..\obj\remote\RFC1060U.obj 
-      ..\obj\remote\IPAddressU.obj ..\obj\remote\VersionInfoU.obj 
-      ..\obj\remote\remotestrs.obj ..\obj\remote\ServerEnumerator.obj 
-      ..\obj\remote\ServerTester.obj ..\obj\remote\GlassExtender.obj 
-      ..\obj\remote\WinampClientBase.obj ..\obj\remote\IPAddressResolver.obj"/>
+      ..\obj\remote\PlaylistF.obj ..\obj\remote\MainF.obj 
+      ..\obj\remote\messageF.obj ..\obj\remote\RPCFuncsU.obj 
+      ..\obj\remote\WAINT.obj ..\obj\remote\ColourU.obj 
+      ..\obj\remote\RFC1060U.obj ..\obj\remote\IPAddressU.obj 
+      ..\obj\remote\VersionInfoU.obj ..\obj\remote\remotestrs.obj 
+      ..\obj\remote\ServerEnumerator.obj ..\obj\remote\ServerTester.obj 
+      ..\obj\remote\GlassExtender.obj ..\obj\remote\WinampClientBase.obj 
+      ..\obj\remote\IPAddressResolver.obj"/>
     <RESFILES value="..\obj\remote\winampremote.res ..\obj\remote\windowsthemes.res remote.RES"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) AboutF.dfm SettingsF.dfm CommandF.dfm ServersF.dfm 
-      DetailsF.dfm PlaylistF.dfm SplashF.dfm MainF.dfm messageF.dfm"/>
+      DetailsF.dfm PlaylistF.dfm MainF.dfm messageF.dfm"/>
     <LIBFILES value="..\lib\winampinterface.lib"/>
     <LIBRARIES value="vclx50.lib vcl50.lib"/>
     <SPARELIBS value="vcl50.lib vclx50.lib"/>

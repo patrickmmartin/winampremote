@@ -42,7 +42,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "RPCBind.h"
 #include "DetailsF.h"
 #include "remotestrs.h"
-#include "SplashF.h"
 
 #include <math.h>
 #include "WinampClientBase.h"
@@ -1334,12 +1333,6 @@ void __fastcall TfrmMain::alMainExecute(TBasicAction *Action, bool &)
 void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
 {
 
-  if ((frmSplash) && (frmSplash->Visible))
-  {
-    frmSplash->lblMessage->Caption = sGettingPlaylist;
-    frmSplash->Update();
-  }
-
   frmPlaylist->lstSongs->Items->BeginUpdate();
   try
   {
@@ -1394,13 +1387,7 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
     TrayMessage(NIM_MODIFY);
 
     frmPlaylist->lstSongs->Items->EndUpdate();
-    if ((frmSplash) && (frmSplash->Visible))
-    {
-      frmSplash->lblMessage->Caption = sGettingPlaylist;
-      frmSplash->Update();
-    }
   }
-
 }
 
 
