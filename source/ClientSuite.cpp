@@ -419,7 +419,7 @@ TEST_CASE("Client/ShuffleToggle", "test toggleShuffle")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	bool shuffle = client.getShuffle();
+	int shuffle = client.getShuffle();
 	client.toggleShuffle();
 	CHECK(client.getShuffle() != shuffle);
 }
@@ -432,10 +432,10 @@ TEST_CASE("Client/ShuffleSet", "test setShuffle")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.setShuffle(false);
-	CHECK(false == client.getShuffle());
-	client.setShuffle(true);
-	CHECK(true == client.getShuffle());
+	client.setShuffle(0);
+	CHECK(0 == client.getShuffle());
+	client.setShuffle(1);
+	CHECK(1 == client.getShuffle());
 
 }
 
@@ -447,7 +447,7 @@ TEST_CASE("Client/ShuffleGet", "test getShuffle")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	bool shuffle = client.getShuffle();
+	int shuffle = client.getShuffle();
 	CHECK(shuffle == client.getShuffle());
 }
 
@@ -459,7 +459,7 @@ TEST_CASE("Client/RepeatToggle", "test toggleRepeat")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	bool repeat = client.getRepeat();
+	int repeat = client.getRepeat();
 	client.toggleRepeat();
 	CHECK(client.getRepeat() != repeat);
 }
@@ -472,10 +472,10 @@ TEST_CASE("Client/RepeatSet", "test setRepeat")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.setRepeat(true);
-	CHECK(client.getRepeat() == true);
-	client.setRepeat(false);
-	CHECK(client.getRepeat() == false);
+	client.setRepeat(1);
+	CHECK(client.getRepeat() == 1);
+	client.setRepeat(0);
+	CHECK(client.getRepeat() == 0);
 
 
 
@@ -489,7 +489,7 @@ TEST_CASE("Client/RepeatGet", "test getRepeat")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	bool repeat = client.getRepeat();
+	int repeat = client.getRepeat();
 	CHECK(repeat == client.getRepeat());
 
 }
@@ -502,7 +502,7 @@ TEST_CASE("Client/AutoloadToggle", "test toggleAutoload")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	bool autoload = client.getAutoload();
+	int autoload = client.getAutoload();
 	client.toggleAutoload();
 	CHECK(client.getAutoload() != autoload);
 }
@@ -515,10 +515,10 @@ TEST_CASE("Client/AutoloadSet", "test setAutoload")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.setAutoload(false);
-	CHECK(client.getAutoload() == false);
-	client.setAutoload(true);
-	CHECK(client.getAutoload() == true);
+	client.setAutoload(0);
+	CHECK(client.getAutoload() == 0);
+	client.setAutoload(1);
+	CHECK(client.getAutoload() == 1);
 }
 
 /**
@@ -529,7 +529,7 @@ TEST_CASE("Client/AutoloadGet", "test getAutoload")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	bool autoload = client.getAutoload();
+	int autoload = client.getAutoload();
 	CHECK(autoload == client.getAutoload());
 }
 
