@@ -33,13 +33,6 @@ static void * __stdcall MIDL_user_allocate(size_t size)
 }
 
 
-inline WinampCommand operator==( WinampCommand &wc, long value ) {
-	// TODO: should validate in range in due course
-   wc = (WinampCommand) value;
-   return wc;
-}
-
-
 namespace WinampRemote
 {
 namespace Server
@@ -246,7 +239,7 @@ void WAExecuteMessage(
 {
 
   MainMessage( commandLogFormat( (const char *) pszString, command).c_str());
-  winampServer()->ExecuteCommand( static_cast<WinampCommand>(command) );
+  winampServer()->ExecuteCommand( WinampCommand(command) );
   MainStatus("listening...");
 
 }
@@ -265,7 +258,7 @@ void WAExecuteMessageString(
 {
 
 	MainMessage( commandLogFormat( (const char *) pszString, command, (const char *) pszParam).c_str());
-	winampServer()->ExecuteStringCommand(pszParam, command );
+	winampServer()->ExecuteStringCommand((const char *) pszParam, WinampCommand(command) );
 	MainStatus("listening...");
 
 }

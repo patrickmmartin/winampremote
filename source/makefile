@@ -135,17 +135,17 @@ test-builds:
 	make clean gen_RPCinterface.dll > nul
 	@echo independent builds completed
 
-run-unittests: 
+run-unittests: unittests.exe 
 	echo running unit tests ...
 	-..\bin\unittests  -w NoAssertions
 	echo unit tests complete
 
-start-mockserver:  
+start-mockserver:  testserver.exe 
 	echo running mock server ...
 	start "mock server"  ..\bin\testserver	
 	echo mock server launched
 	
-test-suite: testserver.exe unittests.exe start-mockserver run-unittests
+test-suite: start-mockserver run-unittests
 	echo killing mock server
 	-taskkill /IM testserver.exe > nul	
 	echo mock server killed
