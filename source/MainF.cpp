@@ -1293,6 +1293,7 @@ void __fastcall TfrmMain::PreviousFadeExecute(TObject *)
 void __fastcall TfrmMain::SongChangingExecute(TObject *)
 {
   // if special actions required, this action can do them
+  // if the fade on stop is checked, the playing status needs to be cached
   if (chkFadeOld->Checked)
     StopFade->Execute();
 
@@ -1304,6 +1305,8 @@ void __fastcall TfrmMain::SongChangingExecute(TObject *)
 void __fastcall TfrmMain::SongChangedExecute(TObject *)
 {
   // if special actions required, this action can do them
+  if ( (chkFadeOld->Checked) && (WAStatus == WA_PLAYING) )
+	Play->Execute();
 }
 
 
