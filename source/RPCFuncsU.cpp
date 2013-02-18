@@ -169,7 +169,6 @@ extern "C"
 
 
   void __stdcall SetStringList(char * pszString, void * Buffer, int Size, int Command)
-
   {
     RpcTryExcept
     {

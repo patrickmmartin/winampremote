@@ -57,10 +57,10 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     try{
         Application->Initialize();
         Application->CreateForm(__classid(TfrmMain), &frmMain);
-        Application->CreateForm(__classid(TfrmPlaylist), &frmPlaylist);
-        Application->CreateForm(__classid(TfrmCommands), &frmCommands);
-        Application->CreateForm(__classid(TfrmSettings), &frmSettings);
-        Application->Run();
+                 Application->CreateForm(__classid(TfrmPlaylist), &frmPlaylist);
+                 Application->CreateForm(__classid(TfrmCommands), &frmCommands);
+                 Application->CreateForm(__classid(TfrmSettings), &frmSettings);
+                 Application->Run();
         }
     catch (Exception &exception)
     {

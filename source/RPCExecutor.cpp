@@ -335,9 +335,10 @@ void WASetStringList(
 {
 
 	// TODO: implement logging
-	stringstream sstr;
-	sstr.str() = (char *) Buffer;
+	stringstream sstr (string( (char *) Buffer));
 	string line;
+	winampServer()->ExecuteCommand(IPC_DELETE);
+
 	while (std::getline(sstr, line))
 	{
 		winampServer()->ExecuteStringCommand(line.c_str(), static_cast<WinampCommand>(command));
