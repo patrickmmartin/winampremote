@@ -28,20 +28,24 @@ Some features of note were
  * EQ and volume
  * playlist import / management with our friends drag and drop
  * automated discovery of servers on the network
- * and much, much, more ...
+ * and much, much, more ... , no wait - that's it
 
 ## Plan
 
  This is the archtypal pet project: for now I'll be happy to revisit some old friends from 12 years ago.
- The game plans are:
+### What I've done so far are:
+ * restore the code
+ * change the RPC endpoint to allow it to work on modern Windows
+ * create an installer
+ * support Vista+ themes (mainly)
+ * create a test framework and test suite 
+
 ### short term 
-* create the full of packages; code base, doxygen, Wiki, binaries, release quality installer 
-* complete re-factoring the code base
-* enhance for testability
+ * complete re-factoring of the code base
+ * enhance for testability and implement a test suite 
 
 ### medium term
-* There was a linux client once for the _tcpip_ transport:  http://sourceforge.net/projects/wacontrol/ 
+ * There was a linux client once for the _tcpip_ transport:  http://sourceforge.net/projects/wacontrol/ 
  * reactivating this would be an interesting exercise
-* abstract the UI from client and server, to allow re-use
-* there is now a VS 2012 solution, which might become part of a more Windows 8 friendly code base
+ * there is now a VS 2012 solution, which might become part of a more Windows 8 friendly code base
 
