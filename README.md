@@ -33,21 +33,19 @@ Some features of note were
 ## Plan
 
  This is the archtypal pet project: for now I'll be happy to revisit some old friends from 12 years ago.
- What I've done so far are:
+### What I've done so far are:
  * restore the code
  * change the RPC endpoint to allow it to work on modern Windows
  * create an installer
  * support Vista+ themes (mainly)
  * create a test framework and test suite 
- * 
- 
- The game plans are:
+
 ### short term 
-* complete re-factoring of the code base
-* enhance for testability and implement a test suite 
+ * complete re-factoring of the code base
+ * enhance for testability and implement a test suite 
 
 ### medium term
-* There was a linux client once for the _tcpip_ transport:  http://sourceforge.net/projects/wacontrol/ 
+ * There was a linux client once for the _tcpip_ transport:  http://sourceforge.net/projects/wacontrol/ 
  * reactivating this would be an interesting exercise
-* there is now a VS 2012 solution, which might become part of a more Windows 8 friendly code base
+ * there is now a VS 2012 solution, which might become part of a more Windows 8 friendly code base
 
