@@ -39,6 +39,7 @@ Some features of note were
  * create an installer
  * support Vista+ themes (mainly)
  * create a test framework and test suite 
+ * 
  
  The game plans are:
 ### short term 
