@@ -265,7 +265,6 @@ __published:
         void __fastcall SongChangingExecute(TObject *Sender);
         void __fastcall SongChangedExecute(TObject *Sender);
         void __fastcall NewSongExecute(TObject *Sender);
-        void __fastcall alMainExecute(TBasicAction *Action, bool &Handled);
         void __fastcall PlaylistRefreshExecute(TObject *Sender);
         void __fastcall PlaylistRefreshStatsExecute(TObject *Sender);
 

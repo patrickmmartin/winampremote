@@ -614,7 +614,6 @@ object frmMain: TfrmMain
   end
   object alMain: TActionList
     Images = imlActions
-    OnExecute = alMainExecute
     Left = 185
     Top = 65520
     object Configuration: TAction

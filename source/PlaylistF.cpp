@@ -92,12 +92,6 @@ void itemState(TOwnerDrawState State, int Index)
         if (State.Contains(i))
                 setstr += AnsiString(States[i]) + " ";
   }
-
-
-  OutputDebugString(AnsiString().sprintf("drawing %i [%s]",
-		  	  	  	  Index,
-		  	  	  	  setstr.c_str()).c_str());
-
 }
 
  void __fastcall TfrmPlaylist::lstSongsDrawItem(TWinControl *Control, int Index, const TRect &Rect, TOwnerDrawState State)
@@ -243,7 +237,8 @@ int NewPos;
 
     for (i = 0 ; i < lstSongs->Items->Count; i++)
     {
-	  std::string filename = client->getPlayListItem(i, true);
+        std::string filename = client->getPlayListItem(i, true);
+        OutputDebugString((string("lstSongsDragDrop ") + filename).c_str()); 
 
       CurrentSong = i == _currentpos;
 

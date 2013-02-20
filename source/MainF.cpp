@@ -1324,15 +1324,6 @@ void __fastcall TfrmMain::NewSongExecute(TObject *)
 
 
 
-
-void __fastcall TfrmMain::alMainExecute(TBasicAction *Action, bool &)
-{
-  OutputDebugString(Action->Name.c_str());
-}
-
-
-
-
 void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
 {
 
@@ -1429,7 +1420,8 @@ void __fastcall TfrmMain::DoAddFiles(TStrings * Files)
   Screen->Cursor = crHourGlass;
   try
   {
-	  client->setStringList(Files->Text.c_str(), IPC_PLAYFILE);
+        string filelist = Files->Text.c_str();
+        client->setStringList(filelist, IPC_PLAYFILE);
   }
   __finally
   {
