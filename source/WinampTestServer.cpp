@@ -184,10 +184,8 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			return 0;
 		}
 		case IPC_DELETE:
-			cout << " IPC_DELETE " << m_playList.size() << endl;
 			m_playList.clear();
 			m_playlistPosition = 0;
-			cout << " IPC_DELETE " << m_playList.size() << endl;
 			break;
 	}
 
