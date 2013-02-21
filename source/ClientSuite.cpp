@@ -270,9 +270,10 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 	{
 
 		stringstream sstr;
+
 		for (int i = 0  ; i <  originalPlayList->size() ; i++ )
 		{
-			sstr << originalPlayList->at(i) << endl;
+			sstr << (originalPlayList->at(i)).c_str() << endl;
 		}
 	    CAPTURE(sstr.str());
 

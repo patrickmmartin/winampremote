@@ -116,7 +116,7 @@ Item0=..\bin\
 DebugSourceDirs=$(BCB)\source\vcl
 
 [Parameters]
-RunParams=--test &quot;Network/Invalid&quot;
+RunParams=--test &quot;Client/Delete*&quot;
 HostApplication=
 RemoteHost=
 RemotePath=
