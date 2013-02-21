@@ -28,6 +28,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include "WinampClientBase.h"
 
+#include <sstream>
+
 // hack for link failure
 #include "sysutils.hpp"
 
@@ -90,7 +92,15 @@ char * port;
       {
 
         case 'l':
-          cwc->getPlayList();
+			{
+				std::auto_ptr <vector<string> > playList (cwc->getPlayList() );
+
+				stringstream sstr;
+				for (int i = 0  ; i <  playList->size() ; i++ )
+				{
+					cout << playList->at(i) << endl;
+				}
+			}
           break;
 
         case '>':

@@ -261,13 +261,31 @@ TEST_CASE("Client/PlaylistStartBegins", "test startPlaylist begins play")
 /**
  * test delete of playlist
  */
-//TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
-//{
-//	WinampRemote::UnitTest::TestContext tc;
-//	WinampRemote::Client::WinampClientBase client;
-//
-//	client.deletePlaylist();
-//}
+TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList() );
+
+	stringstream sstr;
+	for (int i = 0  ; i <  originalPlayList->size() ; i++ )
+	{
+		sstr << originalPlayList->at(i) << endl;
+	}
+
+    CAPTURE(sstr.str());
+
+	CHECK( originalPlayList->size() ==  (unsigned int) client.getPlaylistLength() );
+	client.deletePlaylist();
+
+	CHECK( 0 == client.getPlaylistLength() );
+
+	client.setStringList(sstr.str(), IPC_PLAYFILE);
+
+	CHECK( originalPlayList->size() ==  (unsigned int) client.getPlaylistLength() );
+
+}
 
 /**
  * tests stop song with fade effect

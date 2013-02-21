@@ -79,10 +79,6 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 			break;
 
 
-		case IPC_DELETE:
-			m_playList.clear();
-			m_playlistPosition = 0;
-			break;
 		case WINAMP_FILE_REPEAT:
 			m_repeat = !m_repeat;
 			break;
@@ -109,7 +105,19 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 
 void WinampTestServer::ExecuteStringCommand(const char * CommandString, WinampCommand Command)
 {
-	throw std::runtime_error("WinampTestServer::ExecuteStringCommand not implemented");
+
+        switch (Command)
+        {
+                case IPC_PLAYFILE:
+                {
+                        PlaylistItem pi(CommandString, CommandString);
+                        m_playList.push_back(pi);
+                }
+                break;
+                default:
+		        throw std::runtime_error("WinampTestServer::ExecuteStringCommand not implemented");
+
+        }
 }
 
 int WinampTestServer::QueryInt(WinampCommand Command, int Data)
@@ -175,6 +183,12 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			m_panning = Data;
 			return 0;
 		}
+		case IPC_DELETE:
+			cout << " IPC_DELETE " << m_playList.size() << endl;
+			m_playList.clear();
+			m_playlistPosition = 0;
+			cout << " IPC_DELETE " << m_playList.size() << endl;
+			break;
 	}
 
 	return 0;
