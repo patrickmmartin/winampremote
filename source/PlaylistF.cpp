@@ -147,7 +147,7 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
   int DropIndex;
   DragQueryPoint(hDrop, &DropPoint);
 
-  // this returns -1 if there was a hit item
+  // this returns -1 if there was no hit item
   DropIndex = lstSongs->ItemAtPos(DropPoint, true);
 
   try
@@ -159,6 +159,7 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
         Files->Add(CFileName);
         }
       }
+     // TODO here is where playlist corruption is happening
      frmMain->DropFiles(Files, DropIndex);
     }
   __finally
@@ -255,9 +256,6 @@ int NewPos;
         BottomList->AddObject(filename.c_str(), (TObject *) CurrentSong);
       }
     } // for
-
-    // delete the playlist
-    client->deletePlaylist();
 
     // rebuild list
     TopList->AddStrings(MiddleList);

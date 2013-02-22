@@ -1485,24 +1485,26 @@ int i;
 }
 
 
-void __fastcall TfrmMain::DropFiles(TStringList *, int DropIndex)
+void __fastcall TfrmMain::DropFiles(TStringList * Files, int DropIndex)
 {
-  TStringList * Files = new TStringList;
+
+  TStringList * Playlist = new TStringList();
+
   // get the top of the list
   if (DropIndex > -1)
-    GetFilenames(0, DropIndex, Files);
+    GetFilenames(0, DropIndex, Playlist);
   else
-    GetFilenames(0, frmPlaylist->lstSongs->Items->Count, Files);
+    GetFilenames(0, frmPlaylist->lstSongs->Items->Count, Playlist);
 
+  Playlist->AddStrings(Files);    
 
   // get the rest of the list;
   if (DropIndex > -1)
-    GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count, Files);
+    GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count - 1, Playlist);
 
-  // delete the playlist
-  client->deletePlaylist();
+  DoAddFiles(Playlist);
 
-  DoAddFiles(Files);
+  delete Playlist;
   // reset position here
 
   // AAAACK - used to be a "magic object"
@@ -1510,7 +1512,7 @@ void __fastcall TfrmMain::DropFiles(TStringList *, int DropIndex)
   client->setPlaylistIndex(NewPos);
 
   PlaylistRefresh->Execute();
-  
+
 }
 
 
