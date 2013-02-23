@@ -1421,6 +1421,7 @@ void __fastcall TfrmMain::DoAddFiles(TStrings * Files)
   try
   {
         string filelist = Files->Text.c_str();
+        // TODO should direct to the setPlaylist method
         client->setStringList(filelist, IPC_PLAYFILE);
   }
   __finally

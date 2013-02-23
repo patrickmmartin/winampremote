@@ -108,6 +108,12 @@ public:
 	virtual vector<string>* getPlayList(bool title = true) = 0;
 
 	/**
+	 * sets the playlist on the server
+	 * @param playlist
+	 */
+	virtual void setPlayList(vector<string>& playlist) = 0;
+
+	/**
 	 * go to start of playList
 	 */
 	virtual void playlistStart() = 0;

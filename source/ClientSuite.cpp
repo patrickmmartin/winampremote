@@ -283,7 +283,7 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 
 		CHECK( 0 == client.getPlaylistLength() );
 
-		client.setStringList(sstr.str(), IPC_PLAYFILE);
+		client.setPlayList(*originalPlayList);
 	}
 
 	std::auto_ptr <vector<string> > playList (client.getPlayList() );

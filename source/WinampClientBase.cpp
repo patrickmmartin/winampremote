@@ -125,6 +125,22 @@ vector<string>* WinampClientBase::getPlayList(bool title)
 
 }
 
+void WinampClientBase::setPlayList(vector<string>& playlist)
+{
+
+	stringstream sstr;
+
+	for (int i = 0  ; i <  playlist.size() ; i++ )
+	{
+		sstr << playlist.at(i).c_str() << endl;
+	}
+
+	setStringList(sstr.str(), IPC_PLAYFILE);
+
+
+}
+
+
 void WinampClientBase::playlistStart()
 {
 	ExecuteMessage(IdentBuf, WINAMP_STARTOFPLAYLIST);

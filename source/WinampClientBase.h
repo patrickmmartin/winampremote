@@ -62,6 +62,8 @@ public:
 
 	virtual vector<string>* getPlayList(bool title = true);
 
+	virtual void setPlayList(vector<string>& playlist);
+
 	virtual void playlistStart();
 
 	virtual void playlistEnd();
