@@ -1421,9 +1421,10 @@ void __fastcall TfrmMain::DoAddFiles(TStrings * Files)
   try
   {
         string filelist = Files->Text.c_str();
-        // TODO should direct to the setPlaylist method
-        client->setStringList(filelist, IPC_PLAYFILE);
-  }
+        vector <string> playlist;
+        for (int i = 0 ; i < Files->Count ; i++)
+                playlist.push_back(Files->Strings[i].c_str());
+        client->setPlayList(playlist);  }
   __finally
   {
     Screen->Cursor = crDefault;
