@@ -39,7 +39,6 @@ void ServerEnumerator::enumerateServers() {
 void ServerEnumerator::debugOutput(const AnsiString & operation, const AnsiString & message)
 {
 
-    OutputDebugString(AnsiString().sprintf("%s: [%s]", operation.c_str(), message.c_str()).c_str());
 }
 
 void ServerEnumerator::addMessage(const AnsiString& message, const int level) {

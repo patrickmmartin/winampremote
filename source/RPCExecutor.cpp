@@ -339,15 +339,10 @@ void WASetStringList(
 	string line;
 	winampServer()->ExecuteCommand(IPC_DELETE);
 
-	OutputDebugString(string("WASetStringList start list processing ").c_str());
 	while (std::getline(sstr, line))
 	{
-		OutputDebugString((string("WASetStringList ") + line).c_str());
 		winampServer()->ExecuteStringCommand(line.c_str(), static_cast<WinampCommand>(command));
 	}
-	OutputDebugString(string("WASetStringList end list processing").c_str());
-
-
 	MainStatus("listening...");
 
 	// TODO: notification for exceptions

@@ -239,7 +239,6 @@ int NewPos;
     for (i = 0 ; i < lstSongs->Items->Count; i++)
     {
         std::string filename = client->getPlayListItem(i, true);
-        OutputDebugString((string("lstSongsDragDrop ") + filename).c_str()); 
 
       CurrentSong = i == _currentpos;
 

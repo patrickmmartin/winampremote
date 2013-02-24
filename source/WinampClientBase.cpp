@@ -337,7 +337,7 @@ std::string WinampClientBase::getStringList(WinampCommand Command)
 void WinampClientBase::setStringList(std::string list, WinampCommand Command)
 {
 
-    WASetStringList( (unsigned char *) IdentBuf, (unsigned char *) list.c_str(), list.size(), Command);
+    WASetStringList( (unsigned char *) IdentBuf, (unsigned char *) list.c_str(), list.size() + 1, Command);
 
 }
 
