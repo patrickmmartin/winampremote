@@ -34,13 +34,13 @@ TEST_CASE("Network/RPC/Local", "test interface")
 
 // disabling for now, as it burns time and such a test should only be run
 // for the right prerequisites
-TEST_CASE("Network/RPC/Servers", "test local servers")
-{
-	NetworkTest nt;
-	// test network enumeration
-	CHECK(nt.testEnumeration());
-	CHECK(nt.testServerTest());
-}
+//TEST_CASE("Network/RPC/Servers", "test local servers")
+//{
+//	NetworkTest nt;
+//	// test network enumeration
+//	CHECK(nt.testEnumeration());
+//	CHECK(nt.testServerTest());
+//}
 
 /**
  * tests that aborting network enumeration works
