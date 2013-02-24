@@ -7,7 +7,7 @@
 #pragma hdrstop
 
 /* TODO : are these sort types working? IDC_SORT_FILETITLE, IDC_SORT_FILENAME, IDC_SORT_ENTIREFILENAME */
-
+/* TODO: implement using IPC_UPDTITLE, IPC_REFRESHPLCACHE */
 
 enum WAPlaybackStatus
 {

@@ -113,6 +113,15 @@ public:
 	 */
 	virtual void setPlayList(vector<string>& playlist) = 0;
 
+
+	/**
+	 * inserts the passed playlist into the existing playlist,
+	 * beginning from the passed position
+	 * @param playlist
+	 * @param position
+	 */
+	virtual void insertPlayList(vector<string>& playlist, int position) = 0;
+
 	/**
 	 * go to start of playList
 	 */

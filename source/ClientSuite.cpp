@@ -266,7 +266,7 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList() );
+	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList(false) );
 	{
 
 		stringstream sstr;
@@ -286,7 +286,7 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 		client.setPlayList(*originalPlayList);
 	}
 
-	std::auto_ptr <vector<string> > playList (client.getPlayList() );
+	std::auto_ptr <vector<string> > playList (client.getPlayList(false) );
 	{
 
 		stringstream sstr;
@@ -300,9 +300,36 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 
 		CHECK( originalPlayList->size() ==  playList->size() );
 	}
+}
 
+/**
+ * test insert into playlist
+ */
+TEST_CASE("Client/InsertPlaylist", "test insertPlaylist")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList(false) );
+	{
+
+		stringstream sstr;
+
+		for (int i = 0  ; i <  originalPlayList->size() ; i++ )
+		{
+			sstr << (originalPlayList->at(i)).c_str() << endl;
+		}
+	    CAPTURE(sstr.str());
+
+	    client.insertPlayList(*originalPlayList, 0);
+
+		CHECK( (2 * originalPlayList->size()) == (unsigned int) client.getPlaylistLength() );
+
+		client.setPlayList(*originalPlayList);
+	}
 
 }
+
 
 /**
  * tests stop song with fade effect

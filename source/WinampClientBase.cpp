@@ -135,8 +135,23 @@ void WinampClientBase::setPlayList(vector<string>& playlist)
 		sstr << playlist.at(i).c_str() << endl;
 	}
 
+ 	deletePlaylist();
 	setStringList(sstr.str(), IPC_PLAYFILE);
 
+}
+
+
+void WinampClientBase::insertPlayList(vector<string>& playlist, int position)
+{
+	std::auto_ptr <vector<string> > newPlaylist (getPlayList(false) );
+
+	vector<string>::iterator it;
+
+	it = newPlaylist->begin();
+
+	newPlaylist->insert (it + position , playlist.begin(),playlist.end());
+
+	setPlayList(*newPlaylist);
 
 }
 

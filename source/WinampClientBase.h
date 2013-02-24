@@ -64,6 +64,8 @@ public:
 
 	virtual void setPlayList(vector<string>& playlist);
 
+	virtual void insertPlayList(vector<string>& playlist, int position);
+
 	virtual void playlistStart();
 
 	virtual void playlistEnd();
