@@ -11,7 +11,8 @@
       ..\obj\unittests\WinampClientBase.obj ..\obj\unittests\ContextInfo.obj 
       ..\obj\unittests\ClientSuite.obj ..\obj\unittests\IPAddressU.obj 
       ..\obj\unittests\ColourU.obj ..\obj\unittests\UtilsSuite.obj 
-      ..\obj\unittests\NetworkTest.obj ..\obj\unittests\IPAddressResolver.obj"/>
+      ..\obj\unittests\NetworkTest.obj ..\obj\unittests\IPAddressResolver.obj 
+      ..\obj\unittests\StringVectorPrinter.obj"/>
     <RESFILES value="unittests.RES"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>

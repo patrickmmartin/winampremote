@@ -3,6 +3,7 @@
 #include "ClientBinder.h"
 #include "ContextInfo.h"
 #include "RPCException.h"
+#include "StringVectorPrinter.h"
 #include "catch.hpp"
 
 namespace WinampRemote
@@ -29,35 +30,6 @@ struct TestContext
 	}
 
 };
-
-
-/**
- * class to wrap up the task of spitting out the playlist
- */
-struct StringVectorPrinter
-{
-
-        stringstream sstr;
-
-        StringVectorPrinter(vector<string> & playlist)
-        {
-            for (unsigned int i = 0  ; i <  playlist.size() ; i++ )
-            {
-                    sstr << (playlist.at(i)).c_str() << endl;
-            }
-        }
-
-        friend std::ostream& operator << ( std::ostream& os, const StringVectorPrinter&  svp)
-        {
-            os << svp.sstr.str();
-            return os;
-        }
-
-
-};
-
-
-
 
 } // end namespace UnitTest
 } // end namespace WinampRemote
@@ -298,7 +270,7 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList(false) );
 
 
-	CAPTURE(WinampRemote::UnitTest::StringVectorPrinter(*originalPlayList));
+	CAPTURE(WinampRemote::Utils::StringVectorPrinter(*originalPlayList));
 
 	CHECK( originalPlayList->size() ==  (unsigned int) client.getPlaylistLength() );
 	client.deletePlaylist();
@@ -309,7 +281,7 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 
 	std::auto_ptr <vector<string> > playList (client.getPlayList(false) );
 
-	CAPTURE(WinampRemote::UnitTest::StringVectorPrinter(*playList));
+	CAPTURE(WinampRemote::Utils::StringVectorPrinter(*playList));
 
 	CHECK( originalPlayList->size() ==  playList->size() );
 }
@@ -324,12 +296,12 @@ TEST_CASE("Client/InsertPlaylist", "test insertPlaylist")
 
 	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList(false) );
 
-	CAPTURE(WinampRemote::UnitTest::StringVectorPrinter(*originalPlayList));
+	CAPTURE(WinampRemote::Utils::StringVectorPrinter(*originalPlayList));
 
 	client.insertPlayList(*originalPlayList, 10);
 
 	std::auto_ptr <vector<string> > newPlayList (client.getPlayList(false) );
-	CAPTURE(WinampRemote::UnitTest::StringVectorPrinter(*newPlayList));
+	CAPTURE(WinampRemote::Utils::StringVectorPrinter(*newPlayList));
 	unsigned int newListLength = client.getPlaylistLength();
 	client.setPlayList(*originalPlayList);
 
