@@ -136,7 +136,8 @@ void WinampClientBase::setPlayList(vector<string>& playlist)
 	}
 
  	deletePlaylist();
-	setStringList(sstr.str(), IPC_PLAYFILE);
+	string list = sstr.str();
+	setStringList(list, IPC_PLAYFILE);
 
 }
 

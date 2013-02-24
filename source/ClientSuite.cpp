@@ -326,10 +326,11 @@ TEST_CASE("Client/InsertPlaylist", "test insertPlaylist")
 
 	CAPTURE(WinampRemote::UnitTest::StringVectorPrinter(*originalPlayList));
 
-	client.insertPlayList(*originalPlayList, 0);
+	client.insertPlayList(*originalPlayList, 10);
 
 	std::auto_ptr <vector<string> > newPlayList (client.getPlayList(false) );
-
+	CAPTURE(WinampRemote::UnitTest::StringVectorPrinter(*newPlayList));
+        
 	CHECK( (newPlayList->size()) == (unsigned int) client.getPlaylistLength() );
 
 	CHECK( (2 * originalPlayList->size()) == (unsigned int) client.getPlaylistLength() );
