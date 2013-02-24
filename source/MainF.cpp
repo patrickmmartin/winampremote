@@ -1454,9 +1454,6 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
       }
     } // for
 
-    // delete current
-    client->deletePlaylist();
-
     // add remaining
     DoAddFiles(StringList);
     // reset position
