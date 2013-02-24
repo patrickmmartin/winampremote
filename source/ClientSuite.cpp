@@ -41,7 +41,7 @@ struct StringVectorPrinter
 
         StringVectorPrinter(vector<string> & playlist)
         {
-            for (int i = 0  ; i <  playlist.size() ; i++ )
+            for (unsigned int i = 0  ; i <  playlist.size() ; i++ )
             {
                     sstr << (playlist.at(i)).c_str() << endl;
             }
@@ -330,12 +330,13 @@ TEST_CASE("Client/InsertPlaylist", "test insertPlaylist")
 
 	std::auto_ptr <vector<string> > newPlayList (client.getPlayList(false) );
 	CAPTURE(WinampRemote::UnitTest::StringVectorPrinter(*newPlayList));
-        
-	CHECK( (newPlayList->size()) == (unsigned int) client.getPlaylistLength() );
-
-	CHECK( (2 * originalPlayList->size()) == (unsigned int) client.getPlaylistLength() );
-
+	unsigned int newListLength = client.getPlaylistLength();
 	client.setPlayList(*originalPlayList);
+
+	CHECK( (newPlayList->size()) == newListLength );
+
+	CHECK( (2 * originalPlayList->size()) == newListLength );
+
 
 }
 
