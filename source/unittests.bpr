@@ -117,7 +117,7 @@ Item0=..\bin\
 DebugSourceDirs=$(BCB)\source\vcl
 
 [Parameters]
-RunParams=--test &quot;Client/Insert*&quot;
+RunParams=--test &quot;Network/Net/Enum*&quot;
 HostApplication=
 RemoteHost=
 RemotePath=
@@ -127,5 +127,10 @@ RemoteDebug=0
 ShowInfoMsgs=0
 LinkDebugVcl=0
 LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
   </IDEOPTIONS>
 </PROJECT>

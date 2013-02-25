@@ -38,7 +38,7 @@ void ServerEnumerator::enumerateServers() {
 
 void ServerEnumerator::debugOutput(const AnsiString & operation, const AnsiString & message)
 {
-
+//        cout << operation.c_str() << " " << message.c_str() << endl;
 }
 
 void ServerEnumerator::addMessage(const AnsiString& message, const int level) {
@@ -163,7 +163,6 @@ BOOL ServerEnumerator::enumerateFunc(const LPNETRESOURCE lpnr) {
 		// An application-defined error handler is demonstrated in the
 		// section titled "Retrieving Network Errors."
 
-		netErrorHandler(dwResult, "WNetOpenEnum");
 		return FALSE;
 	}
 
@@ -199,6 +198,8 @@ BOOL ServerEnumerator::enumerateFunc(const LPNETRESOURCE lpnr) {
 					addMessage(
 							AnsiString().sprintf(sEnumeratingContainer.c_str(),
 									ObjectName.c_str()), 1);
+
+
 					enumerateFunc(&lpnrLocal[i]);
 				}
 			}

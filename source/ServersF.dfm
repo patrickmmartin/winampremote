@@ -19,25 +19,25 @@ object frmServers: TfrmServers
   TextHeight = 14
   object imgWarning: TImage
     Left = 264
-    Top = 200
-    Width = 32
-    Height = 32
+    Top = 8
+    Width = 16
+    Height = 16
     AutoSize = True
     Visible = False
   end
   object imgError: TImage
     Left = 304
-    Top = 200
-    Width = 32
-    Height = 32
+    Top = 8
+    Width = 16
+    Height = 16
     AutoSize = True
     Visible = False
   end
   object imgInformation: TImage
     Left = 224
-    Top = 200
-    Width = 32
-    Height = 32
+    Top = 8
+    Width = 16
+    Height = 16
     AutoSize = True
     Visible = False
   end
@@ -45,14 +45,14 @@ object frmServers: TfrmServers
     Left = 0
     Top = 41
     Width = 710
-    Height = 336
+    Height = 335
     Align = alClient
     BevelInner = bvLowered
     BevelOuter = bvNone
     TabOrder = 0
     object spltMessages: TSplitter
       Left = 1
-      Top = 312
+      Top = 311
       Width = 708
       Height = 7
       Cursor = crVSplit
@@ -61,7 +61,7 @@ object frmServers: TfrmServers
     end
     object pbServers: TProgressBar
       Left = 1
-      Top = 319
+      Top = 318
       Width = 708
       Height = 16
       Align = alBottom
@@ -76,7 +76,7 @@ object frmServers: TfrmServers
       Left = 1
       Top = 1
       Width = 708
-      Height = 146
+      Height = 145
       Hint = 'list of servers'
       Align = alClient
       Columns = <
@@ -110,7 +110,7 @@ object frmServers: TfrmServers
     end
     object lvMessages: TListView
       Left = 1
-      Top = 147
+      Top = 146
       Width = 708
       Height = 165
       Align = alBottom
@@ -158,7 +158,7 @@ object frmServers: TfrmServers
   end
   object pnlButtons: TPanel
     Left = 0
-    Top = 377
+    Top = 376
     Width = 710
     Height = 62
     Align = alBottom

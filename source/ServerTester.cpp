@@ -71,7 +71,6 @@ void ServerTester::testServer(const AnsiString& remote, ServerInfo& serverInfo)
     try
     {
       DoMessage(remote, "beginning", 1);
-      DoMessage(remote, "may take some time", 2);
       start = clock();
 
       WinampRemote::Client::WinampClientBase client;
