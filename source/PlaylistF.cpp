@@ -83,7 +83,7 @@ const char* States[odComboBoxEdit + 1] =
 	"odNoAccel",  "odNoFocusRect",  "odReserved1",  "odReserved2",  "odComboBoxEdit"
 };
 
-void itemState(TOwnerDrawState State, int Index)
+void itemState(TOwnerDrawState State)
 {
   AnsiString setstr;
 
@@ -103,12 +103,12 @@ void itemState(TOwnerDrawState State, int Index)
   if (State.Contains(odFocused))
         return;
 
-  itemState(State, Index);
+  itemState(State);
 
   if (Index == frmMain->CurrentIndex)
     Canvas->Font->Color = clRed;
 
-  itemState(State, Index);
+  itemState(State);
 
   Canvas->TextOut(Rect.Left + Offset, Rect.Top, ItemText);
 
@@ -128,7 +128,7 @@ void itemState(TOwnerDrawState State, int Index)
   if (State.Contains(odFocused))
         return;
 
-  itemState(State, Index);
+  itemState(State);
 
   // paints now accumulate, so this is needed
   Canvas->FillRect(Rect);

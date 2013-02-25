@@ -1265,20 +1265,6 @@ void __fastcall TfrmMain::AnimateForm(TForm * Form, bool FormVisible)
 
 
 
-
-void __fastcall TfrmMain::SetLanguageMenu(TObject *Sender)
-{
-    mnuEnglishUS->Checked = mnuEnglishUS == Sender;
-    mnuEnglishUK->Checked = mnuEnglishUK == Sender;
-    mnuGerman->Checked  = mnuGerman == Sender;
-    mnuFrench->Checked  = mnuFrench == Sender;
-    mnuDutch->Checked  = mnuDutch == Sender;
-
-}
-
-
-
-
 void __fastcall TfrmMain::PreviousFadeExecute(TObject *)
 {
   StopFade->Execute();

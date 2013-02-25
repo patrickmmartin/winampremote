@@ -166,14 +166,7 @@ __published:
         TAction *Autoload;
         TMenuItem *mnuDetails;
         TAction *Details;
-        TMenuItem *mnuLanguage;
-        TMenuItem *mnuEnglishUS;
-        TMenuItem *mnuEnglishUK;
-        TMenuItem *mnuGerman;
-        TMenuItem *mnuFrench;
-        TMenuItem *mnuDutch;
         TAction *PlaylistRefresh;
-        TAction *SetLanguage;
         TAction *NextFade;
         TMenuItem *mnuNextwithFade;
         TMenuItem *NextwithFade2;
@@ -285,7 +278,6 @@ private:        // private user declarations
     bool doHide;
     bool DoubleClickedL;
     bool DoubleClickedR;
-    void __fastcall SetLanguageMenu(TObject *Sender);
     void __fastcall AppException(TObject *Sender, Exception *E);
     void __fastcall AnimateForm(TForm * Form, bool FormVisible);
 

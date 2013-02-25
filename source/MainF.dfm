@@ -431,35 +431,6 @@ object frmMain: TfrmMain
     object mnuFile: TMenuItem
       Caption = 'A&pplication'
       Hint = 'File Menu'
-      object mnuLanguage: TMenuItem
-        Caption = 'Set Language'
-        ImageIndex = 2
-        object mnuEnglishUK: TMenuItem
-          Action = SetLanguage
-          Caption = 'English (UK)'
-          ImageIndex = 28
-        end
-        object mnuEnglishUS: TMenuItem
-          Action = SetLanguage
-          Caption = 'English (US)'
-          ImageIndex = 29
-        end
-        object mnuGerman: TMenuItem
-          Action = SetLanguage
-          Caption = 'German'
-          ImageIndex = 30
-        end
-        object mnuFrench: TMenuItem
-          Action = SetLanguage
-          Caption = 'French'
-          ImageIndex = 31
-        end
-        object mnuDutch: TMenuItem
-          Action = SetLanguage
-          Caption = 'Dutch'
-          ImageIndex = 32
-        end
-      end
       object mnuPlaceOnTray: TMenuItem
         Action = PlaceOnTray
       end
@@ -882,11 +853,6 @@ object frmMain: TfrmMain
       Caption = 'Details'
       ImageIndex = 7
       OnExecute = DetailsExecute
-    end
-    object SetLanguage: TAction
-      Category = 'File'
-      Caption = 'SetLanguage'
-      ImageIndex = 2
     end
     object NextFade: TAction
       Category = 'Playlist'
