@@ -75,7 +75,7 @@ winampserver.exe:
 clean-setup:
 	build-setup Clean
 
-setup: remote.exe gen_RPCinterface.dll
+setup: default
 	build-setup Build
 
 TARGETS= unittests.exe\
