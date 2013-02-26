@@ -159,7 +159,6 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
         Files->Add(CFileName);
         }
       }
-     // TODO here is where playlist corruption is happening
      frmMain->DropFiles(Files, DropIndex);
     }
   __finally

@@ -268,16 +268,17 @@ private:        // private user declarations
     int fIconIndex;
     WAPlaybackStatus WAStatus;
     AnsiString SongTitle;
+    char TipChars[64];
+    bool doHide;
+    bool DoubleClickedL;
+    bool DoubleClickedR;
+    bool connected;
     void __fastcall SetIdent(void);
     void __fastcall TrayNotify(TMessage& Msg);
     void __fastcall ToggleState(void);
     PSTR __fastcall TipText(void);
     void __fastcall DisplayHint(TObject *Sender);
     void UpdateIcon(void);
-    char TipChars[64];
-    bool doHide;
-    bool DoubleClickedL;
-    bool DoubleClickedR;
     void __fastcall AppException(TObject *Sender, Exception *E);
     void __fastcall AnimateForm(TForm * Form, bool FormVisible);
 
@@ -285,7 +286,6 @@ public:         // public user declarations
     int CurrentIndex;
     int LastIndex;
     int LastLength;
-    bool Querying;
     char IdentChars[MAX_PATH];
     virtual __fastcall TfrmMain(TComponent* Owner);
     void _fastcall DoBind(void);

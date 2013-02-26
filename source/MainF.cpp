@@ -150,8 +150,6 @@ bool __fastcall TfrmMain::TrayMessage(DWORD dwMessage)
 HANDLE __fastcall TfrmMain::IconHandle(void)
 {
 
-  if (!Querying)
-  {
     switch (WAStatus)
     {
       case WA_NOT_PLAYING:
@@ -174,12 +172,6 @@ HANDLE __fastcall TfrmMain::IconHandle(void)
         fIconIndex = 5;
         break;
     }
-  }
-
-  else
-  {
-    fIconIndex = 6;
-  }
 
   imlTrayIcons->GetIcon( fIconIndex, icoTrayIcon->Picture->Icon);
 
@@ -718,7 +710,8 @@ void __fastcall TfrmMain::FormCreate(TObject *)
 void __fastcall TfrmMain::AppException(TObject *, Exception *E)
 {
   AnsiString RPCHint = sRPCFailed;
-  MessageForm((AnsiString(sUnhandledException) + E->ClassName()+ ":\n" + E->Message));
+  if (connected)
+	  MessageForm((AnsiString(sUnhandledException) + E->ClassName()+ ":\n" + E->Message));
 }
 
 
@@ -732,14 +725,15 @@ void TfrmMain::UpdateIcon(void)
 
   Cardinal UpdateTime = 1000 * lstTimer->Items->Strings[lstTimer->ItemIndex].ToIntDef(1);
 
+  bool previousConnected = connected;
   try
   {
 
-    Querying = true;
     IconHandle();
     sbMain->Refresh();
 
     WAStatus = client->getPlaybackStatus();
+    connected = true;
     TrayMessage(NIM_MODIFY);
 
     Shuffle->Checked = (WinampVerNo >= 0x2604) && client->getShuffle();
@@ -753,7 +747,8 @@ void TfrmMain::UpdateIcon(void)
     if ((frmSettings) && (frmSettings->EQUpdateNeeded))
       frmSettings->UpdateBars();
 
-    if ( timerMain->Interval != UpdateTime)
+    // TODO re-enable the client actions as this is the criterion for the re-connection
+    if ( connected && !previousConnected )
     {
       timerMain->Interval = UpdateTime;
       WinampVerNo = client->winampVersion();
@@ -832,6 +827,7 @@ void TfrmMain::UpdateIcon(void)
 
   catch( ERPCException& E)
   {
+	connected = false;
     doHide = false;
     if (frmPlaylist)
     {
@@ -845,7 +841,6 @@ void TfrmMain::UpdateIcon(void)
     timerMain->Interval = 1000 * POLL_ERROR_FACTOR;
   }
 
-  Querying = false;
   IconHandle();
   sbMain->Refresh();
 
@@ -1320,7 +1315,6 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
     {
 
       Screen->Cursor = crHourGlass;
-      Querying = true;
       IconHandle();
       sbMain->Update();
       TrayMessage(NIM_MODIFY);
@@ -1360,7 +1354,6 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
   {
     Screen->Cursor = crDefault;
 
-    Querying = false;
     IconHandle();
     sbMain->Update();
 
