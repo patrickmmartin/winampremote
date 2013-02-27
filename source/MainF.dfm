@@ -834,16 +834,9 @@ object frmMain: TfrmMain
       ShortCut = 16460
       OnExecute = LocateServersExecute
     end
-    object RefreshEQ: TAction
-      Category = 'Volume'
-      Caption = 'RefreshEQ'
-      Hint = 'Refresh EQ values'
-      ImageIndex = 12
-      OnExecute = RefreshEQExecute
-    end
     object Autoload: TAction
       Category = 'Volume'
-      Caption = 'Autoload'
+      Caption = 'EQ Autoload'
       Hint = 'Autoload EQ settings'
       ImageIndex = 13
       OnExecute = AutoloadExecute
@@ -894,6 +887,12 @@ object frmMain: TfrmMain
       Caption = 'PlaylistRefreshStats'
       ImageIndex = 26
       OnExecute = PlaylistRefreshStatsExecute
+    end
+    object EQOn: TAction
+      Category = 'Volume'
+      Caption = 'EQOn'
+      ImageIndex = 12
+      OnExecute = EQOnExecute
     end
   end
   object imlActions: TImageList

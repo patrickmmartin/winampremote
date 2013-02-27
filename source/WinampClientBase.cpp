@@ -278,20 +278,35 @@ void WinampClientBase::setRepeat(bool repeat)
 	IntegerResult(IdentBuf, IPC_SETREPEATOPTION, repeat);
 }
 
-void WinampClientBase::toggleAutoload(void)
+
+void WinampClientBase::toggleEQOn(void)
 {
-	int autoLoad = getAutoload();
-	setAutoload(!autoLoad);
+	setEQOn(!getEQOn());
 }
 
-int WinampClientBase::getAutoload()
+int WinampClientBase::getEQOn()
 {
 	return getEQData(11);
 }
 
-void WinampClientBase::setAutoload(bool value)
+void WinampClientBase::setEQOn(bool value)
 {
 	return setEQData(11, value);
+}
+
+void WinampClientBase::toggleAutoload(void)
+{
+	setAutoload(!getAutoload());
+}
+
+int WinampClientBase::getAutoload()
+{
+	return getEQData(12);
+}
+
+void WinampClientBase::setAutoload(bool value)
+{
+	return setEQData(12, value);
 }
 
 int WinampClientBase::getEQData(int eqindex)

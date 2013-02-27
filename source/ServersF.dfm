@@ -164,6 +164,7 @@ object frmServers: TfrmServers
     Align = alBottom
     BevelOuter = bvNone
     Constraints.MinWidth = 400
+    ParentColor = True
     TabOrder = 2
     object btnCancel: TButton
       Left = 623

@@ -94,7 +94,7 @@ private:
 	// repeat, shuffle
 	bool m_repeat, m_shuffle;
 	// eq data
-	byte m_eqdata[12];
+	byte m_eqdata[13];
 	// eq index is stashed to remember for when the values are queried
 	int m_eqindex;
 	// panning value 0 - 255

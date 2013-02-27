@@ -246,6 +246,22 @@ public:
 	virtual void setRepeat(bool repeat) = 0;
 
 	/**
+	 * toggles the EQ On option
+	 */
+	virtual void toggleEQOn(void) = 0;
+
+	/**
+	 * returns the EQ On option
+	 */
+	virtual int getEQOn(void) = 0;
+
+	/**
+	 * sets the EQ On option
+	 * @param value
+	 */
+	virtual void setEQOn(bool value) = 0;
+
+	/**
 	 * toggles the autoload option
 	 */
 	virtual void toggleAutoload(void) = 0;

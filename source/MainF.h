@@ -162,7 +162,6 @@ __published:
         TMenuItem *N5;
         TMenuItem *N6;
         TMenuItem *N7;
-        TAction *RefreshEQ;
         TAction *Autoload;
         TMenuItem *mnuDetails;
         TAction *Details;
@@ -198,6 +197,7 @@ __published:
         TButton *btnLocate;
         TListBox *lstTimer;
         TLabel *lblTimer;
+        TAction *EQOn;
     void __fastcall HideMain(TObject *Sender);
     void __fastcall PauseExecute(TObject *Sender);
     void __fastcall ExitExecute(TObject *Sender);
@@ -241,7 +241,6 @@ __published:
     void __fastcall AddressChange(TObject *Sender);
     void __fastcall LocateServersExecute(TObject *Sender);
     void __fastcall DelayTimer(TObject *Sender);
-    void __fastcall RefreshEQExecute(TObject *Sender);
     void __fastcall AutoloadExecute(TObject *Sender);
         void __fastcall FormDockOver(TObject *Sender,
           TDragDockObject *Source, int X, int Y, TDragState State,
@@ -260,6 +259,7 @@ __published:
         void __fastcall NewSongExecute(TObject *Sender);
         void __fastcall PlaylistRefreshExecute(TObject *Sender);
         void __fastcall PlaylistRefreshStatsExecute(TObject *Sender);
+        void __fastcall EQOnExecute(TObject *Sender);
 
 private:        // private user declarations
     WinampRemote::Client::IWinamp * client;

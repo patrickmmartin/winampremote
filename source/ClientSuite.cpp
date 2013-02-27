@@ -573,8 +573,47 @@ TEST_CASE("Client/AutoloadGet", "test getAutoload")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	int autoload = client.getAutoload();
-	CHECK(autoload == client.getAutoload());
+	int current = client.getAutoload();
+	CHECK(current == client.getAutoload());
+}
+
+/**
+ * tests that EQ toggle works
+ */
+TEST_CASE("Client/EQOnToggle", "test toggleEQ")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	int previous = client.getEQOn();
+	client.toggleEQOn();
+	CHECK(client.getEQOn() != previous);
+}
+
+/**
+ * tests that set EQ On works
+ */
+TEST_CASE("Client/EQOnSet", "test setEQOn")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	client.setEQOn(0);
+	CHECK(client.getEQOn() == 0);
+	client.setEQOn(1);
+	CHECK(client.getEQOn() == 1);
+}
+
+/**
+ * tests that get EQOn works
+ */
+TEST_CASE("Client/EQOnGet", "test getAutoload")
+{
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	int current = client.getEQOn();
+	CHECK(current == client.getEQOn());
 }
 
 /**

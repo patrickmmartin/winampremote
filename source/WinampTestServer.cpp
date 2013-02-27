@@ -142,7 +142,7 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 		case IPC_GETLISTPOS:
 			return m_playlistPosition;
 		case IPC_GETEQDATA:
-			if ((Data >= 0 ) && (Data < 12))
+			if ((Data >= 0 ) && (Data < 13))
 			{
 				  m_eqindex = Data;
 				  return m_eqdata[m_eqindex];

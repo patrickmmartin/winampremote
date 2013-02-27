@@ -39,8 +39,8 @@ __published:	// IDE-managed Components
         TBevel *bvlVolume;
         TBevel *bvlEQ;
         TToolBar *tbEQ;
-        TToolButton *btnRefreshEQ;
         TToolButton *btnAutoload;
+        TToolButton *btnEQOn;
     void __fastcall tbBalanceEnter(TObject *Sender);
     void __fastcall tbVolumeChange(TObject *Sender);
     void __fastcall tbBalanceChange(TObject *Sender);
@@ -55,7 +55,6 @@ private:	// User declarations
     TList * Bars;
 public:		// User declarations
     __fastcall TfrmSettings(TComponent* Owner);
-   bool EQUpdateNeeded;
    void __fastcall UpdateBars(void);
    WinampRemote::Client::IWinamp * client;
 

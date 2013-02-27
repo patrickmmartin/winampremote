@@ -744,7 +744,7 @@ void TfrmMain::UpdateIcon(void)
     frmSettings->tbBalance->Position = client->getPanning();
 
     // TODO: use a notification interface
-    if ((frmSettings) && (frmSettings->EQUpdateNeeded))
+    if ( (frmSettings) )
       frmSettings->UpdateBars();
 
     // TODO re-enable the client actions as this is the criterion for the re-connection
@@ -1144,15 +1144,6 @@ void __fastcall TfrmMain::DelayTimer(TObject *)
 
 
 
-
-void __fastcall TfrmMain::RefreshEQExecute(TObject *)
-{
-    // TODO: use a notification interface
-   frmSettings->UpdateBars();
-}
-
-
-
 void _fastcall TfrmMain::DoBind(void)
 {
   Bind(ebAddress->Text.c_str(), ebEndPoint->Text.c_str(), pszProtocolSequenceNP);
@@ -1164,9 +1155,18 @@ void _fastcall TfrmMain::DoBind(void)
 void __fastcall TfrmMain::AutoloadExecute(TObject *)
 {
   client->toggleAutoload();
+  Autoload->Checked = client->getAutoload();
 }
 
 
+
+void __fastcall TfrmMain::EQOnExecute(TObject *)
+{
+
+  client->toggleEQOn();
+  EQOn->Checked = client->getEQOn();
+
+}
 
 
 void __fastcall TfrmMain::FormDockOver(TObject *, TDragDockObject *, int , int , TDragState , bool &Accept)
@@ -1492,6 +1492,7 @@ void __fastcall TfrmMain::DropFiles(TStringList * Files, int DropIndex)
   PlaylistRefresh->Execute();
 
 }
+
 
 
 

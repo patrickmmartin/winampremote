@@ -91,7 +91,6 @@ void __fastcall TfrmSettings::FormCreate(TObject *)
   Bars->Add(TrackBar11);
 
   pgcSettings->ActivePage = tbsVol;
-  EQUpdateNeeded = true;
 
 }
 
@@ -112,7 +111,7 @@ void __fastcall TfrmSettings::UpdateBars(void)
 
   // last one...
   frmMain->Autoload->Checked = client->getAutoload();
-  EQUpdateNeeded = false;
+  frmMain->EQOn->Checked = client->getEQOn();
 
 }
 
@@ -125,8 +124,6 @@ void __fastcall TfrmSettings::BarsChange(TObject *Sender)
   {
     client->setEQData(Index, (byte) ((TTrackBar *)Sender)->Position );
   }
-  EQUpdateNeeded = true;
-
 
 }
 

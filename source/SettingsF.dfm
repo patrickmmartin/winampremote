@@ -372,10 +372,10 @@ object frmSettings: TfrmSettings
         Flat = True
         Images = frmMain.imlActions
         TabOrder = 11
-        object btnRefreshEQ: TToolButton
+        object btnEQOn: TToolButton
           Left = 0
           Top = 0
-          Action = frmMain.RefreshEQ
+          Action = frmMain.EQOn
           Wrap = True
         end
         object btnAutoload: TToolButton

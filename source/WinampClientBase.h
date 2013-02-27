@@ -112,6 +112,12 @@ public:
 
 	virtual void setRepeat(bool repeat);
 
+	virtual void toggleEQOn(void);
+
+	virtual int getEQOn(void);
+
+	virtual void setEQOn(bool value);
+
 	virtual void toggleAutoload(void);
 
 	virtual int getAutoload(void);
