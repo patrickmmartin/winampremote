@@ -45,23 +45,14 @@ object frmServers: TfrmServers
     Left = 0
     Top = 41
     Width = 710
-    Height = 335
+    Height = 359
     Align = alClient
     BevelInner = bvLowered
     BevelOuter = bvNone
     TabOrder = 0
-    object spltMessages: TSplitter
-      Left = 1
-      Top = 311
-      Width = 708
-      Height = 7
-      Cursor = crVSplit
-      Align = alBottom
-      OnCanResize = spltMessagesCanResize
-    end
     object pbServers: TProgressBar
       Left = 1
-      Top = 318
+      Top = 342
       Width = 708
       Height = 16
       Align = alBottom
@@ -76,7 +67,7 @@ object frmServers: TfrmServers
       Left = 1
       Top = 1
       Width = 708
-      Height = 145
+      Height = 176
       Hint = 'list of servers'
       Align = alClient
       Columns = <
@@ -110,7 +101,7 @@ object frmServers: TfrmServers
     end
     object lvMessages: TListView
       Left = 1
-      Top = 146
+      Top = 177
       Width = 708
       Height = 165
       Align = alBottom
@@ -158,9 +149,9 @@ object frmServers: TfrmServers
   end
   object pnlButtons: TPanel
     Left = 0
-    Top = 376
+    Top = 400
     Width = 710
-    Height = 62
+    Height = 39
     Align = alBottom
     BevelOuter = bvNone
     Constraints.MinWidth = 400
@@ -168,7 +159,7 @@ object frmServers: TfrmServers
     TabOrder = 2
     object btnCancel: TButton
       Left = 623
-      Top = 13
+      Top = 6
       Width = 75
       Height = 25
       Hint = 'cancel'
@@ -180,7 +171,7 @@ object frmServers: TfrmServers
     end
     object btnOK: TButton
       Left = 535
-      Top = 13
+      Top = 6
       Width = 75
       Height = 25
       Hint = 'select server'
@@ -192,7 +183,7 @@ object frmServers: TfrmServers
     end
     object btnTest: TButton
       Left = 447
-      Top = 13
+      Top = 6
       Width = 75
       Height = 25
       Hint = 'test the server list'
@@ -204,7 +195,7 @@ object frmServers: TfrmServers
     end
     object btnLocate: TButton
       Left = 359
-      Top = 13
+      Top = 6
       Width = 75
       Height = 25
       Hint = 'locate local machines'
@@ -212,14 +203,6 @@ object frmServers: TfrmServers
       Caption = 'Locate All'
       TabOrder = 0
       OnClick = btnLocateClick
-    end
-    object StatusBar1: TStatusBar
-      Left = 0
-      Top = 43
-      Width = 710
-      Height = 19
-      Panels = <>
-      SimplePanel = False
     end
   end
   object imlServers: TImageList

@@ -31,9 +31,7 @@ __published:	// IDE-managed Components
     TButton *btnOK;
     TButton *btnTest;
     TButton *btnLocate;
-    TStatusBar *StatusBar1;
     TListView *lvServers;
-    TSplitter *spltMessages;
     TListView *lvMessages;
         void __fastcall btnLocateClick(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
