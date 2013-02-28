@@ -96,7 +96,7 @@ bool GlassExtender::drawGlowText(HDC dc, const AnsiString& item,const TRect &ite
   dttOpts.dwSize = sizeof(DTTOPTS);
   dttOpts.iGlowSize = 2;
   dttOpts.dwFlags = /* DTT_GLOWSIZE |*/ DTT_STATEID;
-  dttOpts.crText = clGreen;
+  dttOpts.crText = clWhite;
   dttOpts.dwFlags |= DTT_TEXTCOLOR;
 
   HANDLE hTheme = m_OpenThemeDataProc(0, L"WINDOW");
