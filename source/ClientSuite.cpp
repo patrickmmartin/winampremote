@@ -180,6 +180,7 @@ TEST_CASE("Client/SongNext", "test nextSong")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	client.setShuffle(false);
 	client.setPlaylistIndex(1);
 	Sleep(1000);
 	CHECK(client.getCurrentPlayPosition() == 1);
@@ -196,6 +197,7 @@ TEST_CASE("Client/SongPrevious", "test previousSong")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
+	client.setShuffle(false);
 	client.setPlaylistIndex(2);
 	Sleep(1000);
 	CHECK(client.getCurrentPlayPosition() == 2);
