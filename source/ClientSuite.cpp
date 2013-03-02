@@ -383,7 +383,7 @@ TEST_CASE("Client/TimeSet", "test setTime")
 	client.startPlaylist();
 	client.pause();
 	client.setTime(3000);
-	CHECK(client.getTime() == 3000 );
+	CHECK( abs (client.getTime() - 3000 ) < 1000 );
 }
 
 /**
