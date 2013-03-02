@@ -130,7 +130,7 @@ void WinampClientBase::setPlayList(vector<string>& playlist)
 
 	stringstream sstr;
 
-	for (int i = 0  ; i <  playlist.size() ; i++ )
+	for (unsigned int i = 0  ; i <  playlist.size() ; i++ )
 	{
 		sstr << playlist.at(i).c_str() << endl;
 	}

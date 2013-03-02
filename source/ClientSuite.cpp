@@ -259,6 +259,25 @@ TEST_CASE("Client/PlaylistStartBegins", "test startPlaylist begins play")
 	CHECK(client.getPlaybackStatus() == WA_PLAYING);
 }
 
+TEST_CASE("Client/SetPlaylist", "test setPlaylist")
+{
+
+	WinampRemote::UnitTest::TestContext tc;
+	WinampRemote::Client::WinampClientBase client;
+
+	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList(false) );
+
+	WinampRemote::Utils::StringVectorPrinter original(*originalPlayList);
+	CAPTURE(original);
+
+	client.setPlayList(*originalPlayList);
+
+	WinampRemote::Utils::StringVectorPrinter current(*originalPlayList);
+	CAPTURE(current);
+
+	CHECK(original.sstr.str() == current.sstr.str());
+
+}
 /**
  * test delete of playlist
  */
@@ -296,12 +315,16 @@ TEST_CASE("Client/InsertPlaylist", "test insertPlaylist")
 
 	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList(false) );
 
-	CAPTURE(WinampRemote::Utils::StringVectorPrinter(*originalPlayList));
+	WinampRemote::Utils::StringVectorPrinter original (*originalPlayList);
+	CAPTURE(original);
 
 	client.insertPlayList(*originalPlayList, 10);
 
 	std::auto_ptr <vector<string> > newPlayList (client.getPlayList(false) );
-	CAPTURE(WinampRemote::Utils::StringVectorPrinter(*newPlayList));
+
+	WinampRemote::Utils::StringVectorPrinter current (*newPlayList);
+	CAPTURE(current);
+
 	unsigned int newListLength = client.getPlaylistLength();
 	client.setPlayList(*originalPlayList);
 
@@ -337,8 +360,16 @@ TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 
 	client.startPlaylist();
 	client.stopAfterCurrent();
-	Sleep(500);
+	CHECK(client.getPlaybackStatus() == WA_PLAYING);
+
+	int songLength = 0, songPos = 0;
+	client.getTimes(songLength, songPos);
+	CAPTURE(songLength);
+	CAPTURE(songPos);
+	client.setTime((songLength * 1000) - 500);
+	Sleep(1000);
 	CHECK(client.getPlaybackStatus() == WA_NOT_PLAYING);
+
 }
 
 /**
@@ -349,7 +380,8 @@ TEST_CASE("Client/TimeSet", "test setTime")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.stopSong();
+	client.startPlaylist();
+	client.pause();
 	client.setTime(3000);
 	CHECK(client.getTime() == 3000 );
 }
@@ -362,10 +394,12 @@ TEST_CASE("Client/Forward5", "test forward5")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.stopSong();
-	client.setTime(0);
+	client.playSong();
+	client.setTime(7000);
+	Sleep(50);
 	client.forward5();
-	CHECK(client.getTime() == 5000 );
+	Sleep(50);
+	CHECK( abs ( client.getTime() - 12000) < 1000 );
 }
 
 /**
@@ -376,10 +410,12 @@ TEST_CASE("Client/Back5", "test back5")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	client.stopSong();
-	client.setTime(10000);
+	client.playSong();
+	client.setTime(13000);
+	Sleep(50);
 	client.back5();
-	CHECK(client.getTime() == 5000 );
+	Sleep(50);
+	CHECK( abs ( client.getTime() - 8000) < 1000 );
 }
 
 /**
