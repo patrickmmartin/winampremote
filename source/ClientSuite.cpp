@@ -369,7 +369,10 @@ TEST_CASE("Client/StopAfterCurrent", "test stopAfterCurrent")
 	CAPTURE(songLength);
 	CAPTURE(songPos);
 	client.setTime((songLength * 1000) - 500);
+	CAPTURE(client.getTime());
 	Sleep(1000);
+	CAPTURE(client.getTime());
+
 	CHECK(client.getPlaybackStatus() == WA_NOT_PLAYING);
 
 }
@@ -413,10 +416,13 @@ TEST_CASE("Client/Back5", "test back5")
 	WinampRemote::Client::WinampClientBase client;
 
 	client.playSong();
+	Sleep(100);
 	client.setTime(13000);
-	Sleep(50);
+	Sleep(100);
 	client.back5();
-	Sleep(50);
+	Sleep(100);
+	CAPTURE(client.getPlaybackStatus());
+	CAPTURE(client.getTime());
 	CHECK( abs ( client.getTime() - 8000) < 1000 );
 }
 
