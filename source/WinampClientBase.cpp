@@ -8,6 +8,11 @@
 
 static char IdentBuf[2 * MAX_COMPUTERNAME_LENGTH + 2];
 
+void __stdcall MIDL_user_free(void * ptr)
+{
+	free(ptr);
+}
+
 /**
  * Function to obtain an identity "moniker"
  */
@@ -343,7 +348,7 @@ std::string WinampClientBase::getStringList(WinampCommand Command)
 	WAGetStringList( (unsigned char *) IdentBuf, &returnBuf, Command);
 
 	result = (char *) returnBuf.Buffer;
-	delete returnBuf.Buffer;
+	MIDL_user_free(returnBuf.Buffer);
 
 	return result;
 
