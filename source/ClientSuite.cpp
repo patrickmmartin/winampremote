@@ -348,8 +348,16 @@ TEST_CASE("Client/StopWithFade", "test stopWithFade")
 
 	client.startPlaylist();
 	client.stopWithFade();
-	Sleep(500);
-	CHECK(client.getPlaybackStatus() == WA_NOT_PLAYING);
+	CHECK(client.getPlaybackStatus() == WA_PLAYING);
+
+	int songLength = 0, songPos = 0;
+	client.getTimes(songLength, songPos);
+	CAPTURE(songLength);
+	CAPTURE(songPos);
+	client.setTime((songLength * 1000) - 500);
+	CAPTURE(client.getTime());
+	Sleep(1000);
+	CAPTURE(client.getTime());
 }
 
 /**

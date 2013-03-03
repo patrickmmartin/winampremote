@@ -17,7 +17,9 @@ WinampTestServer::WinampTestServer() :
 		m_songPosition(0),
 		m_repeat(false), m_shuffle(false),
 		m_eqdata(), m_eqindex(0),
-		m_panning(0)
+		m_panning(0),
+		m_stopType(Performed),
+		m_StartCount(0)
 {
 	char title[MAX_PATH] = "";
 	char filename[MAX_PATH] = "";
@@ -46,26 +48,64 @@ void WinampTestServer::wrapPlaylistIndex(int increment)
     m_playlistPosition = m_playlistPosition % length;
 }
 
+void WinampTestServer::updateStatus()
+{
+	switch (m_stopType)
+	{
+		case Performed:
+			return;
+		case Immediate:
+			break;
+		case WithFade:
+		case AfterCurrent: // TODO should really implement fake playback
+		{
+			DWORD currentCount = GetTickCount();
+			if (currentCount < (m_StartCount + 1000))
+				return;
+		}
+	}
+	// TODO: consider implementing a true timer, as opposed to flag
+	m_stopType = Performed;
+	m_playbackStatus = WA_NOT_PLAYING;
+}
+
+void WinampTestServer::setPlaying()
+{
+	m_stopType = Performed;
+	m_playbackStatus = WA_PLAYING;
+}
+
+void WinampTestServer::setStop(StopType stop)
+{
+	m_StartCount = GetTickCount();
+	m_stopType = stop;
+}
+
 void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 {
 
+	updateStatus();
 	switch (MessageToExecute)
 	{
 
 		case WINAMP_FILE_PLAY:
 
-			m_playbackStatus = WA_PLAYING;
+			setPlaying();
 			break;
 		case WINAMP_PLAYENTRY:
 		case IPC_PLAYFILE:
-			m_playbackStatus = WA_PLAYING;
+			setPlaying();
 			m_playlistPosition = (-1 == m_playlistPosition)? 0 : m_playlistPosition;
 			break;
 
 		case WINAMP_STOPAFTERCURRENT:
+			setStop(AfterCurrent);
+			break;
 		case WINAMP_STOPFADE:
+			setStop(WithFade);
+			break;
 		case WINAMP_STOP:
-			m_playbackStatus = WA_NOT_PLAYING;
+			setStop(Immediate);
 			break;
 		case WINAMP_PAUSE:
 			m_playbackStatus = WA_PAUSED;
@@ -106,6 +146,7 @@ void WinampTestServer::ExecuteCommand(WinampCommand MessageToExecute)
 void WinampTestServer::ExecuteStringCommand(const char * CommandString, WinampCommand Command)
 {
 
+	updateStatus();
         switch (Command)
         {
                 case IPC_PLAYFILE:
@@ -123,6 +164,7 @@ void WinampTestServer::ExecuteStringCommand(const char * CommandString, WinampCo
 int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 {
 
+	updateStatus();
 	switch (Command)
 	{
 
@@ -164,7 +206,7 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 			m_songPosition = Data;
 			return 0;
 		case IPC_STARTPLAY:
-			m_playbackStatus = WA_PLAYING;
+			setPlaying();
 			m_playlistPosition = (-1 == m_playlistPosition)? 0 : m_playlistPosition;
 			break;
 		case IPC_SETEQDATA:
@@ -194,26 +236,27 @@ int WinampTestServer::QueryInt(WinampCommand Command, int Data)
 
 string WinampTestServer::QueryString(WinampCommand Command, int Data)
 {
-        if ( (Data > -1) && (Data < (int) m_playList.size() ) )
-        {
-	switch (Command)
+	updateStatus();
+	if ( (Data > -1) && (Data < (int) m_playList.size() ) )
 	{
-		case IPC_GETPLAYLISTTITLE :
-			return m_playList[Data].title;
-		case IPC_GETPLAYLISTFILE :
-			return m_playList[Data].filename;
-		default:
+		switch (Command)
 		{
-			std::stringstream sstr;
-			sstr << "WinampTestServer::QueryString not implemented for " << Command;
-        	throw std::runtime_error(sstr.str());
+			case IPC_GETPLAYLISTTITLE :
+				return m_playList[Data].title;
+			case IPC_GETPLAYLISTFILE :
+				return m_playList[Data].filename;
+			default:
+			{
+				std::stringstream sstr;
+				sstr << "WinampTestServer::QueryString not implemented for " << Command;
+				throw std::runtime_error(sstr.str());
+			}
 		}
 	}
-        }
-        else
-        {
-                return ( std::string("error index out of range" ) );
-        }
+	else
+	{
+			return ( std::string("error index out of range" ) );
+	}
 
 }
 

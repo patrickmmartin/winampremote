@@ -37,6 +37,8 @@ struct PlaylistItem
 class WinampTestServer: public WinampRemote::Server::IWinampServer
 {
 public:
+
+	enum StopType {Performed, Immediate, WithFade, AfterCurrent};
 	/**
 	 * constructor
 	 */
@@ -81,26 +83,36 @@ public:
 	 */
 	string QueryString(WinampCommand Command, int Data);
 private:
-	// playback status
+	/** playback status */
 	WAPlaybackStatus m_playbackStatus;
-	// internal playlist
+	/** playlist storage */
 	vector<PlaylistItem> m_playList;
-	// playlist position
+	/** playlist position */
 	int m_playlistPosition;
-	// volume 0-255
+	/** volume 0-255 */
 	int m_volume;
-	// time position in song
+	/** time position in song */
 	int m_songPosition;
-	// repeat, shuffle
+	/** repeat, shuffle */
 	bool m_repeat, m_shuffle;
-	// eq data
+	/** eq data byte array, also EQ on and Auto */
 	byte m_eqdata[13];
-	// eq index is stashed to remember for when the values are queried
+	/** eq index is stashed to remember for when the values are queried */
 	int m_eqindex;
-	// panning value 0 - 255
+	/** panning value 0 - 255 */
 	byte m_panning;
+	/** stop type  */
+	StopType m_stopType;
+	/** */
+	DWORD m_StartCount;
 
 	void wrapPlaylistIndex(int increment);
+
+	void updateStatus();
+
+	void setPlaying();
+
+	void setStop(StopType stop);
 };
 
 } /* namespace Server */
