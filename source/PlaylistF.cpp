@@ -217,10 +217,10 @@ void __fastcall TfrmPlaylist::lstSongsDragOver(TObject *, TObject *, int , int ,
 
 void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int Y)
 {
-int i;
+  int i;
 
-bool CurrentSong;
-int NewPos;
+  bool CurrentSong;
+  int NewPos;
 
   // want to know if exceed the list length
   int DropIndex = lstSongs->ItemAtPos(TPoint(X, Y), false);
@@ -237,7 +237,7 @@ int NewPos;
 
     for (i = 0 ; i < lstSongs->Items->Count; i++)
     {
-        std::string filename = client->getPlayListItem(i, true);
+        std::string filename = client->getPlayListItem(i, false);
 
       CurrentSong = i == _currentpos;
 
@@ -260,14 +260,14 @@ int NewPos;
     TopList->AddStrings(BottomList);
   // reset position
 
-  // TODO: use a proper interface
-  frmMain->DoAddFiles(TopList);
+    // TODO: use a proper interface
+    frmMain->DoAddFiles(TopList);
 
-  NewPos = TopList->IndexOfObject((TObject *) true);
-  client->setPlaylistIndex(NewPos);
+    NewPos = TopList->IndexOfObject((TObject *) true);
+    client->setPlaylistIndex(NewPos);
 
-	// TODO: should be in forms management interface
-  frmMain->PlaylistRefresh->Execute();
+    // TODO: should be in forms management interface
+    frmMain->PlaylistRefresh->Execute();
   }
   __finally
   {
