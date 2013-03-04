@@ -33,8 +33,8 @@
     <USERDEFINES value="_DEBUG;CATCH_PLATFORM_WINDOWS"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;USEPACKAGES"/>
     <MAINSOURCE value="unittests.bpf"/>
-    <INCLUDEPATH value="C:\CBuilder5\Projects;&quot;C:\Program Files\Borland\CBuilder5\Projects&quot;;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="C:\CBuilder5\Projects;&quot;C:\Program Files\Borland\CBuilder5\Projects&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="C:\CBuilder5\Projects\;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="C:\CBuilder5\Projects\;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
   </MACROS>
   <OPTIONS>
@@ -56,45 +56,49 @@ IncludeVerInfo=1
 AutoIncBuild=0
 MajorVer=1
 MinorVer=4
-Release=1
+Release=2
 Build=0
 Debug=0
 PreRelease=0
 Special=0
 Private=0
 DLL=0
-Locale=1033
+Locale=2057
 CodePage=1252
 
 [Version Info Keys]
 CompanyName=Patrick Martin
 FileDescription=Winamp Remote Control
-FileVersion=1.4.1.0
+FileVersion=1.4.2.0
 InternalName=unittests
 LegalCopyright=(C) 2011 Patrick Martin
 LegalTrademarks=
 OriginalFilename=unittests.exe
 ProductName=Winamp Remote Control
 ProductVersion=1.4
-Build Time=14/07/2012 22:28:02.92
+Build Time=10/02/2013  0:07:03.27
 Build Machine=TIMELINE
 
 [Excluded Packages]
 $(BCB)\Projects\Bpl\ThemeManagerC5D.bpl=Soft Gems Theme Manager
 
 [HistoryLists\hlIncludePath]
-Count=5
-Item0=$(BCB)\include;$(BCB)\include\vcl;..\..\Catch\single_include
-Item1=..\..\Catch\projects\CPPBuilder5;$(BCB)\include;$(BCB)\include\vcl;..\..\Catch\single_include
-Item2=$(BCB)\include;$(BCB)\include\vcl;..\..\single_include
-Item3=..\..\..\..\CatchSimpleTest;$(BCB)\include;$(BCB)\include\vcl
-Item4=$(BCB)\include;$(BCB)\include\vcl
+Count=7
+Item0=C:\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl
+Item1=C:\CBuilder5\Projects;C:\Program Files\Borland\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl
+Item2=$(BCB)\include;$(BCB)\include\vcl;..\..\Catch\single_include
+Item3=..\..\Catch\projects\CPPBuilder5;$(BCB)\include;$(BCB)\include\vcl;..\..\Catch\single_include
+Item4=$(BCB)\include;$(BCB)\include\vcl;..\..\single_include
+Item5=..\..\..\..\CatchSimpleTest;$(BCB)\include;$(BCB)\include\vcl
+Item6=$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=3
-Item0=$(BCB)\lib\obj;$(BCB)\lib
-Item1=..\..\Catch\projects\CPPBuilder5;$(BCB)\lib\obj;$(BCB)\lib
-Item2=..\..\..\..\CatchSimpleTest;$(BCB)\lib\obj;$(BCB)\lib
+Count=5
+Item0=C:\CBuilder5\Projects;$(BCB)\lib\obj;$(BCB)\lib
+Item1=C:\CBuilder5\Projects;C:\Program Files\Borland\CBuilder5\Projects;$(BCB)\lib\obj;$(BCB)\lib
+Item2=$(BCB)\lib\obj;$(BCB)\lib
+Item3=..\..\Catch\projects\CPPBuilder5;$(BCB)\lib\obj;$(BCB)\lib
+Item4=..\..\..\..\CatchSimpleTest;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1
