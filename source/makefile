@@ -103,7 +103,7 @@ help:
 docs:
 	# ideally would discover from the Doxygen
 	echo ========== cleaning doxygen output ======
-	>nul del /S /Q ..\doc\*.* 
+	if exist ..\doc del /S /Q ..\doc\*.* > nul
 	echo ========== building doxygen output ======
 	>nul doxygen 
 	
