@@ -27,9 +27,14 @@
 using namespace std;
 
 
-static void * __stdcall MIDL_user_allocate(size_t size)
+void * __stdcall MIDL_user_allocate(size_t size)
 {
 	return malloc(size);
+}
+
+void __stdcall MIDL_user_free(void * mem)
+{
+	free(mem);
 }
 
 

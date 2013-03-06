@@ -30,9 +30,14 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 // global string binding information
 unsigned char * StringBinding = NULL;
 
-static void __stdcall MIDL_user_free( void * mem)
+void __stdcall MIDL_user_free( void * mem)
 {
 	free(mem);
+}
+
+void * __stdcall MIDL_user_allocate(size_t size)
+{
+	return malloc(size);
 }
 
 
