@@ -29,6 +29,7 @@ clean-server-reg:
 	$(BRCC) $&.rcscript
 	bpr2mak -q $&.bpr
 	echo PROJECT=..\bin\$&.exe >> $&.mak
+	if defined CG_BUILD addcg $&.mak
 	make -a -f $&.mak
 
 # this copy of the .exe rule is a similar hack for not getting a ".bpr.dll" rule working correctly
@@ -42,6 +43,7 @@ clean-server-reg:
 	$(BRCC) $&.rcscript
 	bpr2mak -q $&.bpr
 	echo PROJECT=..\bin\$&.dll >> $&.mak
+	if defined CG_BUILD addcg $&.mak
 	make -a -f $&.mak
 	
 midl: 
@@ -56,6 +58,7 @@ winampinterface.lib: midl
 	if not exist ..\lib mkdir ..\lib
 	if not exist ..\obj\$& mkdir ..\obj\$&
 	bpr2mak -q -t$(ROOT)\bin\deflib.bmk $&.bpr
+	if defined CG_BUILD addcg $&.mak
 	make -B -a -$(MAKEFLAGS) -f $&.mak
 
 unittests.exe: 

@@ -12,7 +12,7 @@ exit /b
 
 :output
 
-  if "%*"==".autodepend"  echo CFLAG1 = -vGc -vGt -vGd $(CFLAG1) &&  echo ALLLIB = cg32.lib $(ALLLIB)
+  @if "%*"==".autodepend" @echo CFLAG1 = -vGc -vGt -vGd $(CFLAG1) &&  echo ALLLIB = cg32.lib $(ALLLIB)
 
 goto :eof
 
