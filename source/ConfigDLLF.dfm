@@ -181,6 +181,7 @@ object ConfigForm: TConfigForm
     Height = 18
     Caption = 'Events Form Visible'
     TabOrder = 1
+    Visible = False
     OnClick = chkVisibleClick
   end
   object btnAbout: TButton
