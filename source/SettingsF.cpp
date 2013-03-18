@@ -41,20 +41,6 @@ __fastcall TfrmSettings::TfrmSettings(TComponent* Owner)
 {
 }
 
-
-void __fastcall TfrmSettings::tbBalanceEnter(TObject *Sender)
-{
-
-  if (Sender == lblL){
-    tbBalance->Position = tbBalance->Min;
-    }
-
-  if (Sender == lblR){
-    tbBalance->Position = tbBalance->Max;
-    }
-}
-
-
 void __fastcall TfrmSettings::tbVolumeChange(TObject *)
 {
   client->setVolume(tbVolume->Position);

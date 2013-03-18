@@ -1,6 +1,6 @@
 object frmSettings: TfrmSettings
-  Left = 457
-  Top = 382
+  Left = 339
+  Top = 236
   Hint = 'Audio Settings Form'
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -44,23 +44,6 @@ object frmSettings: TfrmSettings
         Height = 88
         Align = alClient
       end
-      object lblL: TLabel
-        Left = 38
-        Top = 51
-        Width = 6
-        Height = 14
-        Caption = '&L'
-        FocusControl = tbBalance
-      end
-      object lblR: TLabel
-        Left = 260
-        Top = 51
-        Width = 7
-        Height = 14
-        Anchors = [akTop, akRight]
-        Caption = '&R'
-        FocusControl = tbBalance
-      end
       object lblVol: TLabel
         Left = 16
         Top = 19
@@ -74,7 +57,8 @@ object frmSettings: TfrmSettings
         Top = 51
         Width = 15
         Height = 14
-        Caption = 'Bal'
+        Caption = '&Bal'
+        FocusControl = tbBalance
       end
       object tbVolume: TTrackBar
         Left = 50
@@ -92,7 +76,7 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 0
-        ThumbLength = 13
+        ThumbLength = 15
         TickMarks = tmTopLeft
         TickStyle = tsAuto
         OnChange = tbVolumeChange
@@ -116,11 +100,10 @@ object frmSettings: TfrmSettings
         SelEnd = 10
         SelStart = -10
         TabOrder = 1
-        ThumbLength = 12
+        ThumbLength = 15
         TickMarks = tmTopLeft
         TickStyle = tsManual
         OnChange = tbBalanceChange
-        OnEnter = tbBalanceEnter
       end
     end
     object tbsEQ: TTabSheet
@@ -150,7 +133,7 @@ object frmSettings: TfrmSettings
         Caption = 'EQ'
       end
       object TrackBar1: TTrackBar
-        Left = 120
+        Left = 112
         Top = 6
         Width = 21
         Height = 70
@@ -163,13 +146,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 0
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar2: TTrackBar
-        Left = 136
+        Left = 129
         Top = 6
         Width = 21
         Height = 70
@@ -182,13 +165,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 1
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar3: TTrackBar
-        Left = 151
+        Left = 146
         Top = 6
         Width = 21
         Height = 70
@@ -201,13 +184,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 2
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar4: TTrackBar
-        Left = 167
+        Left = 163
         Top = 6
         Width = 21
         Height = 70
@@ -220,13 +203,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 3
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar5: TTrackBar
-        Left = 182
+        Left = 180
         Top = 6
         Width = 21
         Height = 70
@@ -239,13 +222,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 4
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar6: TTrackBar
-        Left = 198
+        Left = 197
         Top = 6
         Width = 21
         Height = 70
@@ -258,13 +241,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 5
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar7: TTrackBar
-        Left = 213
+        Left = 214
         Top = 6
         Width = 21
         Height = 70
@@ -277,13 +260,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 6
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar8: TTrackBar
-        Left = 229
+        Left = 231
         Top = 6
         Width = 21
         Height = 70
@@ -296,13 +279,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 7
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar9: TTrackBar
-        Left = 244
+        Left = 248
         Top = 6
         Width = 21
         Height = 70
@@ -315,13 +298,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 8
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar10: TTrackBar
-        Left = 260
+        Left = 265
         Top = 6
         Width = 21
         Height = 70
@@ -334,13 +317,13 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 9
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
       end
       object TrackBar11: TTrackBar
-        Left = 72
+        Left = 68
         Top = 6
         Width = 21
         Height = 70
@@ -353,7 +336,7 @@ object frmSettings: TfrmSettings
         SelEnd = 0
         SelStart = 0
         TabOrder = 10
-        ThumbLength = 9
+        ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
         OnChange = BarsChange
@@ -361,14 +344,16 @@ object frmSettings: TfrmSettings
       object tbEQ: TToolBar
         Left = 8
         Top = 8
-        Width = 35
-        Height = 58
+        Width = 31
+        Height = 54
         Align = alNone
         AutoSize = True
         BorderWidth = 2
         ButtonHeight = 23
         Caption = 'tbEQ'
         EdgeBorders = [ebLeft, ebTop, ebRight, ebBottom]
+        EdgeInner = esNone
+        EdgeOuter = esNone
         Flat = True
         Images = frmMain.imlActions
         TabOrder = 11

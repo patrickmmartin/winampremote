@@ -30,8 +30,6 @@ __published:	// IDE-managed Components
         TTrackBar *TrackBar11;
         TLabel *lblPreamp;
         TLabel *lblEQ;
-        TLabel *lblL;
-        TLabel *lblR;
         TLabel *lblVol;
         TLabel *lblBal;
         TTrackBar *tbVolume;
@@ -41,7 +39,6 @@ __published:	// IDE-managed Components
         TToolBar *tbEQ;
         TToolButton *btnAutoload;
         TToolButton *btnEQOn;
-    void __fastcall tbBalanceEnter(TObject *Sender);
     void __fastcall tbVolumeChange(TObject *Sender);
     void __fastcall tbBalanceChange(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
