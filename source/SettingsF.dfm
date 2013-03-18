@@ -145,7 +145,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 0
+        TabOrder = 2
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -164,7 +164,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 1
+        TabOrder = 3
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -183,7 +183,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 2
+        TabOrder = 4
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -202,7 +202,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 3
+        TabOrder = 5
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -221,7 +221,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 4
+        TabOrder = 6
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -240,7 +240,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 5
+        TabOrder = 7
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -259,7 +259,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 6
+        TabOrder = 8
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -278,7 +278,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 7
+        TabOrder = 9
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -297,7 +297,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 8
+        TabOrder = 10
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -316,7 +316,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 9
+        TabOrder = 11
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -335,7 +335,7 @@ object frmSettings: TfrmSettings
         Position = 63
         SelEnd = 0
         SelStart = 0
-        TabOrder = 10
+        TabOrder = 1
         ThumbLength = 15
         TickMarks = tmBoth
         TickStyle = tsNone
@@ -356,7 +356,7 @@ object frmSettings: TfrmSettings
         EdgeOuter = esNone
         Flat = True
         Images = frmMain.imlActions
-        TabOrder = 11
+        TabOrder = 0
         object btnEQOn: TToolButton
           Left = 0
           Top = 0

@@ -154,7 +154,7 @@ object frmMain: TfrmMain
             Height = 21
             Hint = 'the server'#39's endpoint'
             AutoSize = False
-            TabOrder = 0
+            TabOrder = 1
             Text = '\\pipe\winampremote'
             OnChange = AddressChange
           end
@@ -164,7 +164,7 @@ object frmMain: TfrmMain
             Width = 145
             Height = 22
             Hint = 'the server'#39's address (ip or network neighbourhood name)'
-            TabOrder = 1
+            TabOrder = 0
             Text = 'localhost'
             OnChange = AddressChange
           end
