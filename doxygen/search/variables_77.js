@@ -1,6 +1,7 @@
 var searchData=
 [
   ['wa_5freturn_5fstring_5fsize',['WA_RETURN_STRING_SIZE',['../interfacewinamp.html#a9b5614196e90dcee9db04ed3d767f6e7',1,'winamp']]],
+  ['waplaybackstatusdesc',['WAPlaybackStatusDesc',['../waint_8cpp.html#a95dcec3a108c6ba678ca175df2d1416c',1,'waint.cpp']]],
   ['winamp_5f_5f_5frpcclientinterface',['winamp___RpcClientInterface',['../winampinterface__c_8c.html#ad09a9c12721f6a18afdac57ba55c3a0b',1,'winampinterface_c.c']]],
   ['winamp_5f_5f_5frpcserverinterface',['winamp___RpcServerInterface',['../winampinterface__s_8c.html#a7dd51ce44c563d98d3ca8c3996bfb7af',1,'winampinterface_s.c']]],
   ['winamp_5f_5fmidl_5fautobindhandle',['winamp__MIDL_AutoBindHandle',['../winampinterface__c_8c.html#a07201ffa138e639ec3c42088f3af2c0b',1,'winampinterface_c.c']]],

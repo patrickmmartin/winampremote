@@ -10,6 +10,6 @@ var searchData=
   ['servertester_2eh',['ServerTester.h',['../_server_tester_8h.html',1,'']]],
   ['settingsf_2ecpp',['SettingsF.cpp',['../_settings_f_8cpp.html',1,'']]],
   ['settingsf_2eh',['SettingsF.h',['../_settings_f_8h.html',1,'']]],
-  ['splashf_2ecpp',['SplashF.cpp',['../_splash_f_8cpp.html',1,'']]],
-  ['splashf_2eh',['SplashF.h',['../_splash_f_8h.html',1,'']]]
+  ['stringvectorprinter_2ecpp',['StringVectorPrinter.cpp',['../_string_vector_printer_8cpp.html',1,'']]],
+  ['stringvectorprinter_2eh',['StringVectorPrinter.h',['../_string_vector_printer_8h.html',1,'']]]
 ];

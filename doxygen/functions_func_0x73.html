@@ -78,6 +78,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -124,7 +127,7 @@ $(document).ready(function(){initNavTree('functions_func_0x73.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -167,12 +170,20 @@ $(document).ready(function(){initNavTree('functions_func_0x73.html','');});
 : <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a5fdce43f92f626873ebddd5c44a70eef">WinampRemote::Client::IWinamp</a>
 , <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a2db75ca1c1bb5a829276a732ce92c815">WinampRemote::Client::WinampClientBase</a>
 </li>
+<li>setEQOn()
+: <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a770dbe6792411aee19c31c730189d542">WinampRemote::Client::IWinamp</a>
+, <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#aa01dc87390c9ef5c1a838c4c16eccdd8">WinampRemote::Client::WinampClientBase</a>
+</li>
 <li>setExecutionStatus()
 : <a class="el" href="class_winamp_remote_1_1_server_1_1_r_p_c_executor.html#a7ac251a2b8c14a15b50b28662a9439a4">WinampRemote::Server::RPCExecutor</a>
 </li>
 <li>setPanning()
 : <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ab6cb3a13fc5824429de5d40532332faf">WinampRemote::Client::IWinamp</a>
 , <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#aaa0d835d8c97c837966de497c74bc4c2">WinampRemote::Client::WinampClientBase</a>
+</li>
+<li>setPlayList()
+: <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ae7f5529c4a80e3d0f4e3ec828effb998">WinampRemote::Client::IWinamp</a>
+, <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a267b198a0f97a838248e310ee2938ce9">WinampRemote::Client::WinampClientBase</a>
 </li>
 <li>setPlaylistIndex()
 : <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a9aedf3134bf70dc9c4aa254aa65dab13">WinampRemote::Client::IWinamp</a>
@@ -198,8 +209,8 @@ $(document).ready(function(){initNavTree('functions_func_0x73.html','');});
 , <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a06726abacf66466bfa003855e8faab06">WinampRemote::Client::WinampClientBase</a>
 </li>
 <li>setVolume()
-: <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ac47620ef44cad071c1dead1856851ecb">WinampRemote::Client::IWinamp</a>
-, <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a92e0e0ddd29bd46de288d065902d71cd">WinampRemote::Client::WinampClientBase</a>
+: <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a92e0e0ddd29bd46de288d065902d71cd">WinampRemote::Client::WinampClientBase</a>
+, <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ac47620ef44cad071c1dead1856851ecb">WinampRemote::Client::IWinamp</a>
 </li>
 <li>SetVolume0Execute()
 : <a class="el" href="class_tfrm_main.html#a3949cf2ee97107246b85c5862d5fe456">TfrmMain</a>
@@ -249,8 +260,8 @@ $(document).ready(function(){initNavTree('functions_func_0x73.html','');});
 : <a class="el" href="class_tfrm_main.html#ac6b9f1d3bdb8946f47cbce472447a29c">TfrmMain</a>
 </li>
 <li>stopSong()
-: <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a870480f0ae859e3f53147ddb6932f9b4">WinampRemote::Client::IWinamp</a>
-, <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#af197199671dcd752716065ef03729648">WinampRemote::Client::WinampClientBase</a>
+: <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#af197199671dcd752716065ef03729648">WinampRemote::Client::WinampClientBase</a>
+, <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a870480f0ae859e3f53147ddb6932f9b4">WinampRemote::Client::IWinamp</a>
 </li>
 <li>StopTest()
 : <a class="el" href="class_tfrm_servers.html#a911ae1754f5ff593ad1f7466a84482e0">TfrmServers</a>
@@ -259,8 +270,11 @@ $(document).ready(function(){initNavTree('functions_func_0x73.html','');});
 : <a class="el" href="class_tfrm_plugin_main.html#ada048414f0314d1795532058c5de6e05">TfrmPluginMain</a>
 </li>
 <li>stopWithFade()
-: <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a33e865c4719fa519f8e9163f136a97cc">WinampRemote::Client::IWinamp</a>
-, <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a6f392124ad1427c4077e61601a22c9b6">WinampRemote::Client::WinampClientBase</a>
+: <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a6f392124ad1427c4077e61601a22c9b6">WinampRemote::Client::WinampClientBase</a>
+, <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a33e865c4719fa519f8e9163f136a97cc">WinampRemote::Client::IWinamp</a>
+</li>
+<li>StringVectorPrinter()
+: <a class="el" href="struct_winamp_remote_1_1_utils_1_1_string_vector_printer.html#ad8f49fd145c051721ee7ba29be4bc8fd">WinampRemote::Utils::StringVectorPrinter</a>
 </li>
 </ul>
 </div><!-- contents -->

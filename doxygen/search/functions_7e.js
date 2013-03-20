@@ -7,6 +7,7 @@ var searchData=
   ['_7eerpcexception',['~ERPCException',['../class_e_r_p_c_exception.html#aaad8f35ad4780f84ff8c82b9eaa462d9',1,'ERPCException']]],
   ['_7eglassextender',['~GlassExtender',['../class_glass_extender.html#a00669472359461a08878d21cdb95ed3e',1,'GlassExtender']]],
   ['_7eicallobserver',['~ICallObserver',['../class_winamp_remote_1_1_remoting_1_1_i_call_observer.html#aaf0e282281b86f9382c7f0da7ffd9a1f',1,'WinampRemote::Remoting::ICallObserver']]],
+  ['_7eipaddressresolver',['~IPAddressResolver',['../class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#accd6e2c94e2cba2c7d084acb4946d1f6',1,'WinampRemote::Net::IPAddressResolver']]],
   ['_7eiwinamp',['~IWinamp',['../class_winamp_remote_1_1_client_1_1_i_winamp.html#ace1b25539352c34d59e29c3139f29d94',1,'WinampRemote::Client::IWinamp']]],
   ['_7eiwinampserver',['~IWinampServer',['../class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a6fa968bcaa4d795953a81cb714130528',1,'WinampRemote::Server::IWinampServer']]],
   ['_7enetworktest',['~NetworkTest',['../class_network_test.html#a6d06a985ccf6d0715b7a9f93cdba41d2',1,'NetworkTest']]],

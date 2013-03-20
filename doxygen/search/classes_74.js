@@ -11,7 +11,6 @@ var searchData=
   ['tfrmpluginmain',['TfrmPluginMain',['../class_tfrm_plugin_main.html',1,'']]],
   ['tfrmservers',['TfrmServers',['../class_tfrm_servers.html',1,'']]],
   ['tfrmsettings',['TfrmSettings',['../class_tfrm_settings.html',1,'']]],
-  ['tfrmsplash',['TfrmSplash',['../class_tfrm_splash.html',1,'']]],
   ['tmoduleversioninfo',['TModuleVersionInfo',['../class_t_module_version_info.html',1,'']]],
   ['trpcserverdllthread',['TRPCServerDLLThread',['../class_t_r_p_c_server_d_l_l_thread.html',1,'']]]
 ];

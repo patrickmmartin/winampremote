@@ -7,7 +7,6 @@ var searchData=
   ['imgerror',['imgError',['../class_tfrm_servers.html#ab01b23c4f7499d4db31d43138be2bfdc',1,'TfrmServers']]],
   ['imgicon',['imgIcon',['../class_t_config_form.html#a8c8b480432829dc1c14648279651dcf3',1,'TConfigForm::imgIcon()'],['../class_tfrm_message.html#a9580f45f246245f695afd9f7ab0171f4',1,'TfrmMessage::imgIcon()']]],
   ['imginformation',['imgInformation',['../class_tfrm_servers.html#a1ea9bd77ba995c8346a9de9b7ebfcc61',1,'TfrmServers']]],
-  ['imgsplash',['imgSplash',['../class_tfrm_splash.html#aa82dd8ffe863c9c8dc0ca5212bc77a4a',1,'TfrmSplash']]],
   ['imgwarning',['imgWarning',['../class_tfrm_servers.html#a208fe0fed338102e6a470046077afea1',1,'TfrmServers']]],
   ['imlactions',['imlActions',['../class_tfrm_main.html#ac6da090742f6fc820ae15938ecdfdd4a',1,'TfrmMain']]],
   ['imlcommandscool',['imlCommandsCool',['../class_tfrm_main.html#a0f67555f5b123a4f8e504d73d24b32b8',1,'TfrmMain']]],

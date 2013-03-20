@@ -78,6 +78,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -124,7 +127,7 @@ $(document).ready(function(){initNavTree('functions_func_0x74.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -139,9 +142,6 @@ $(document).ready(function(){initNavTree('functions_func_0x74.html','');});
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
 <li>tbBalanceChange()
 : <a class="el" href="class_tfrm_settings.html#a83ac427e1d2bffd9aa553cf640f39df5">TfrmSettings</a>
-</li>
-<li>tbBalanceEnter()
-: <a class="el" href="class_tfrm_settings.html#a63c25b1cd304f5943dd338072b7e7e21">TfrmSettings</a>
 </li>
 <li>tbVolumeChange()
 : <a class="el" href="class_tfrm_settings.html#a032f7021f43922bbc38b410012f226e4">TfrmSettings</a>
@@ -200,9 +200,6 @@ $(document).ready(function(){initNavTree('functions_func_0x74.html','');});
 <li>TfrmSettings()
 : <a class="el" href="class_tfrm_settings.html#a4880acd2952f81c7f9aceb03c1a0e090">TfrmSettings</a>
 </li>
-<li>TfrmSplash()
-: <a class="el" href="class_tfrm_splash.html#a6aff938415066e20a07503b38939489c">TfrmSplash</a>
-</li>
 <li>timerMainTimer()
 : <a class="el" href="class_tfrm_plugin_main.html#a6347143d4ebbbd0d6e9b874bc6109086">TfrmPluginMain</a>
 </li>
@@ -215,6 +212,10 @@ $(document).ready(function(){initNavTree('functions_func_0x74.html','');});
 <li>toggleAutoload()
 : <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a6f3e86f224241ca4d1b97e4dfa461a13">WinampRemote::Client::IWinamp</a>
 , <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a24fea7552dd62b624053c12c99d2930f">WinampRemote::Client::WinampClientBase</a>
+</li>
+<li>toggleEQOn()
+: <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a6d19bbc1b14c0151eda42d671486ec8b">WinampRemote::Client::IWinamp</a>
+, <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#af07dbf5154007a0de8fb390c8e780118">WinampRemote::Client::WinampClientBase</a>
 </li>
 <li>toggleRepeat()
 : <a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a3ba6868c259e1e2ec96a2282b676912b">WinampRemote::Client::IWinamp</a>

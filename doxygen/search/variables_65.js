@@ -7,7 +7,7 @@ var searchData=
   ['endpoint',['Endpoint',['../class_t_r_p_c_server_d_l_l_thread.html#a753495964a924f735842d75976a5b385',1,'TRPCServerDLLThread::Endpoint()'],['../class_tfrm_servers.html#ae2f80f100845a566aaf9e69820853099',1,'TfrmServers::EndPoint()'],['../class_server_tester.html#aef255f4fe5eca1e3e969d57a8c70932f',1,'ServerTester::endPoint()'],['../rpcimport_8h.html#afcc998a3b1c8b963c1ae21a7cd5db9fc',1,'EndPoint():&#160;rpcimport.h']]],
   ['englishuk',['ENGLISHUK',['../_main_f_8h.html#a18d5ba8e5cd546340d0b53426be6b205',1,'MainF.h']]],
   ['englishus',['ENGLISHUS',['../_main_f_8h.html#a56ab9e3f1489792a18ef8aef4a0dab31',1,'MainF.h']]],
-  ['equpdateneeded',['EQUpdateNeeded',['../class_tfrm_settings.html#ac54013b0144d7a51b5842d3b67375fd6',1,'TfrmSettings']]],
+  ['eqon',['EQOn',['../class_tfrm_main.html#a8cd183fa2af3d5e783994a9642a1f35f',1,'TfrmMain']]],
   ['exceptions',['EXCEPTIONS',['../_server_d_l_l_f_8h.html#afbb02729f8505120b20b822f0452ce4c',1,'ServerDLLF.h']]],
   ['exit',['Exit',['../class_tfrm_main.html#a414eb8e05a43ebc6952d94eeea20b763',1,'TfrmMain']]]
 ];

@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('waint_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -108,6 +108,7 @@ $(document).ready(function(){initNavTree('waint_8h.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;windows.h&quot;</code><br/>
+<code>#include &lt;iosfwd&gt;</code><br/>
 </div>
 <p><a href="waint_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -241,6 +242,8 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a8b12c60526b628ea9346dc332b88c104"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="waint_8h.html#a8b12c60526b628ea9346dc332b88c104">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="waint_8h.html#a6968b374e3dcdf359c0d8661754ee54e">WAPlaybackStatus</a> status)</td></tr>
+<tr class="memitem:a32616b86b7070301c979e6c1dff14099"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="waint_8h.html#a32616b86b7070301c979e6c1dff14099">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> <a class="el" href="rpcimport_8h.html#ad732c0c7a8bcc3ecf8c7c360b382740d">command</a>)</td></tr>
 <tr class="memitem:a9a3703ffb8cdd4a16129fbff5d2cb546"><td class="memItemLeft" align="right" valign="top">HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="waint_8h.html#a9a3703ffb8cdd4a16129fbff5d2cb546">setWinampHwnd</a> (HWND HWinamp)</td></tr>
 <tr class="memitem:a89f83e0f4a8df3e465f0524336b24de3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="waint_8h.html#a89f83e0f4a8df3e465f0524336b24de3">LocalExecuteCommand</a> (HWND HWinamp, <a class="el" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> MessageToExecute)</td></tr>
 <tr class="memitem:a529b9e37f3c27a6a46a729a397cf34e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="waint_8h.html#a529b9e37f3c27a6a46a729a397cf34e9">LocalExecuteStringCommand</a> (HWND HWinamp, const char *CommandString, <a class="el" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> <a class="el" href="rpcimport_8h.html#ade4ad069c9ea1dbe8c67290b4ea46cdf">Command</a>)</td></tr>
@@ -273,7 +276,7 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="waint_8h_source.html#l00011">11</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
+<p>Definition at line <a class="el" href="waint_8h_source.html#l00012">12</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
 
 </div>
 </div>
@@ -322,7 +325,7 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="waint_8h_source.html#l00070">70</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
+<p>Definition at line <a class="el" href="waint_8h_source.html#l00085">85</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
 
 </div>
 </div>
@@ -415,7 +418,7 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="waint_8h_source.html#l00020">20</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
+<p>Definition at line <a class="el" href="waint_8h_source.html#l00028">28</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
 
 </div>
 </div>
@@ -460,7 +463,7 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="waint_8h_source.html#l00091">91</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
+<p>Definition at line <a class="el" href="waint_8h_source.html#l00106">106</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
 
 </div>
 </div>
@@ -495,7 +498,7 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="waint_8h_source.html#l00128">128</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
+<p>Definition at line <a class="el" href="waint_8h_source.html#l00143">143</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
 
 </div>
 </div>
@@ -524,7 +527,7 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="waint_8h_source.html#l00143">143</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
+<p>Definition at line <a class="el" href="waint_8h_source.html#l00158">158</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
 
 </div>
 </div>
@@ -555,7 +558,7 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="waint_8h_source.html#l00115">115</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
+<p>Definition at line <a class="el" href="waint_8h_source.html#l00130">130</a> of file <a class="el" href="waint_8h_source.html">waint.h</a>.</p>
 
 </div>
 </div>
@@ -592,7 +595,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00043">43</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
+<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00071">71</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
 
 </div>
 </div>
@@ -635,7 +638,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00049">49</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
+<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00077">77</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
 
 </div>
 </div>
@@ -661,7 +664,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns:</dt><dd>the string for the Winamp version </dd></dl>
 
-<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00142">142</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
+<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00170">170</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
 
 </div>
 </div>
@@ -705,7 +708,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns:</dt><dd>the result of the query </dd></dl>
 
-<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00060">60</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
+<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00088">88</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
 
 </div>
 </div>
@@ -749,7 +752,79 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns:</dt><dd>in-process the pointer to the char data for the the result </dd></dl>
 
-<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00066">66</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
+<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00094">94</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8b12c60526b628ea9346dc332b88c104"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="waint_8h.html#a6968b374e3dcdf359c0d8661754ee54e">WAPlaybackStatus</a>&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>the output stream </td></tr>
+    <tr><td class="paramname">status</td><td>the playback status </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns:</dt><dd>streams out the string representation </dd></dl>
+
+<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00037">37</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a32616b86b7070301c979e6c1dff14099"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a>&#160;</td>
+          <td class="paramname"><em>command</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>the output stream </td></tr>
+    <tr><td class="paramname">command</td><td>the command </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns:</dt><dd>streams out the string representation </dd></dl>
+
+<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00055">55</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
 
 </div>
 </div>
@@ -799,7 +874,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns:</dt><dd>the Winamp API command description constant </dd></dl>
 
-<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00149">149</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
+<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00177">177</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
 
 </div>
 </div>
@@ -825,7 +900,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns:</dt><dd>the string for the Winamp version </dd></dl>
 
-<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00094">94</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
+<p>Definition at line <a class="el" href="waint_8cpp_source.html#l00122">122</a> of file <a class="el" href="waint_8cpp_source.html">waint.cpp</a>.</p>
 
 </div>
 </div>

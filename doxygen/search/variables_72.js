@@ -2,7 +2,6 @@ var searchData=
 [
   ['rbplaylistchange',['rbPlaylistChange',['../class_tfrm_main.html#ade531356571f32e250b9c5a703f81a84',1,'TfrmMain']]],
   ['rbsongchange',['rbSongChange',['../class_tfrm_main.html#ab31f3255366f0bf1214e41f27f141019',1,'TfrmMain']]],
-  ['refresheq',['RefreshEQ',['../class_tfrm_main.html#af8239631c65550a2e79f3b6ce520f80f',1,'TfrmMain']]],
   ['repeat',['Repeat',['../class_tfrm_main.html#af1a890faadec5fd7aa9324d2fb3ce5f7',1,'TfrmMain']]],
   ['repeat1',['Repeat1',['../class_tfrm_playlist.html#aaf9dfbe512aa952160f0252564a46ef5',1,'TfrmPlaylist']]],
   ['repeattoggle1',['Repeattoggle1',['../class_tfrm_main.html#a29d72a56c90f914c8c21f1cdb9008c34',1,'TfrmMain']]],

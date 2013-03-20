@@ -1,7 +1,6 @@
 var searchData=
 [
   ['fail_5ftimeout',['FAIL_TIMEOUT',['../_server_d_l_l_f_8cpp.html#a44fe67aed7eae409d5dc8a0b6478d8d7',1,'ServerDLLF.cpp']]],
-  ['fcriticalsection',['fCriticalSection',['../rpcthread_d_l_l_8cpp.html#a3916e28382d5286e617e003f0a0a1b8e',1,'rpcthreadDLL.cpp']]],
   ['filedescription',['FileDescription',['../class_t_module_version_info.html#a0e8b9847e10ab0403747d2547de9f3f8',1,'TModuleVersionInfo']]],
   ['filename',['filename',['../struct_winamp_remote_1_1_server_1_1_playlist_item.html#aa1568ea24d2dbb08ea11882663007687',1,'WinampRemote::Server::PlaylistItem']]],
   ['fileversion',['FileVersion',['../class_t_module_version_info.html#a515ba21915992f90f74fddcbb7526119',1,'TModuleVersionInfo']]],
@@ -19,6 +18,5 @@ var searchData=
   ['frmpluginmain',['frmPluginMain',['../_server_d_l_l_f_8cpp.html#a9126085161403491159f37ee8573f4f6',1,'frmPluginMain():&#160;ServerDLLF.cpp'],['../_server_d_l_l_f_8h.html#af426de90ff027a9cfa7eafb68db0ebf5',1,'frmPluginMain():&#160;ServerDLLF.cpp']]],
   ['frmservers',['frmServers',['../_servers_f_8cpp.html#a96f99e0be928f5600a4f1e3879374b61',1,'frmServers():&#160;ServersF.cpp'],['../_servers_f_8h.html#a25e9e828b63cc5142822430ecfb9701f',1,'frmServers():&#160;ServersF.cpp']]],
   ['frmsettings',['frmSettings',['../_settings_f_8cpp.html#a8e56bcc923aeecba63dff325ee8cd133',1,'frmSettings():&#160;SettingsF.cpp'],['../_settings_f_8h.html#a9cb83a527a963c96772c06e3e62516db',1,'frmSettings():&#160;SettingsF.cpp']]],
-  ['frmsplash',['frmSplash',['../_splash_f_8cpp.html#a322fa9a4acea7d1db870245a820803f0',1,'frmSplash():&#160;SplashF.cpp'],['../_splash_f_8h.html#aefe5eb61258ec635a1e75f8c47b9d891',1,'frmSplash():&#160;SplashF.cpp']]],
   ['full',['Full',['../class_tfrm_main.html#a86cabe949d358cdfde5a5391e473fab1',1,'TfrmMain']]]
 ];

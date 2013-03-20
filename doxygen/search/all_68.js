@@ -7,6 +7,7 @@ var searchData=
   ['hdllinstance',['hDllInstance',['../structwinamp_general_purpose_plugin.html#a8a2985c9934e09ed7af4510e01ca13ad',1,'winampGeneralPurposePlugin']]],
   ['hglrc',['hGLRC',['../_about_f_8cpp.html#a60f601e7bbbd27711e257016942b4e72',1,'AboutF.cpp']]],
   ['hidemain',['HideMain',['../class_tfrm_main.html#aa044ec1f54bbd02e06f95c84bb2533a9',1,'TfrmMain']]],
+  ['hostname',['hostname',['../class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#ae823c5f517c014d2161f9093821f62c5',1,'WinampRemote::Net::IPAddressResolver']]],
   ['hpalette',['hPalette',['../_about_f_8cpp.html#a34c54f1a237420fb59f07d0a820ee63a',1,'AboutF.cpp']]],
   ['hwndparent',['hwndParent',['../structwinamp_general_purpose_plugin.html#a5d753ba10eface62e4a337657a3422cc',1,'winampGeneralPurposePlugin']]]
 ];

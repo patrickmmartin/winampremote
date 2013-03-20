@@ -17,17 +17,16 @@ var searchData=
   ['btncloseclick',['btnCloseClick',['../class_tfrm_main.html#a8ab4bd9329f3e08d5941aed6a9f4a4b4',1,'TfrmMain']]],
   ['btnconfig',['btnConfig',['../class_tfrm_plugin_main.html#ae1239b61bd75b5d3842d88cba73897b4',1,'TfrmPluginMain']]],
   ['btnconfigclick',['btnConfigClick',['../class_tfrm_plugin_main.html#af305519414b578d1c588b779925f0dbf',1,'TfrmPluginMain']]],
+  ['btneqon',['btnEQOn',['../class_tfrm_settings.html#a97748418fcc2ac37e50ee08c05d87454',1,'TfrmSettings']]],
   ['btnlocate',['btnLocate',['../class_tfrm_main.html#ae06c5ba30f36d961b828f3c778961e37',1,'TfrmMain::btnLocate()'],['../class_tfrm_servers.html#af06b4d01add1f0a77aae3da37254d9bc',1,'TfrmServers::btnLocate()']]],
   ['btnlocateclick',['btnLocateClick',['../class_tfrm_servers.html#a7cb56b823f5e10146b145685389375a5',1,'TfrmServers']]],
   ['btnok',['btnOK',['../class_tfrm_servers.html#aae4b6d469c60e9d99b4941075f190166',1,'TfrmServers']]],
   ['btnokclick',['btnOKClick',['../class_tfrm_servers.html#a9e5a00a38dbd48b3d9f5ece6214e728d',1,'TfrmServers']]],
-  ['btnrefresheq',['btnRefreshEQ',['../class_tfrm_settings.html#ad8261044c8b787214d6c4429d98554db',1,'TfrmSettings']]],
   ['btntest',['btnTest',['../class_tfrm_servers.html#a80023f103bb5da39747d1565ddd6132e',1,'TfrmServers']]],
   ['buffer',['BUFFER',['../structwinamp_1_1_b_u_f_f_e_r.html',1,'winamp']]],
   ['buffer',['Buffer',['../struct_____m_i_d_l__winamp__0001.html#a517f92216d9c4abb0dc079a45d65f670',1,'__MIDL_winamp_0001::Buffer()'],['../structwinamp_1_1_b_u_f_f_e_r.html#afd20b00ac6f521af4c78ee4a91d02804',1,'winamp::BUFFER::Buffer()'],['../rpcimport_8h.html#aee5c96a244e05a9c5ab8b22935baaa78',1,'Buffer():&#160;rpcimport.h'],['../winampinterface_8h.html#a43ca1d334a8111ea6fa37514396b7a63',1,'BUFFER():&#160;winampinterface.h']]],
   ['bufferlength',['BufferLength',['../struct_____m_i_d_l__winamp__0001.html#aadab447a854a9b118faed018339d410a',1,'__MIDL_winamp_0001::BufferLength()'],['../structwinamp_1_1_b_u_f_f_e_r.html#a460d18cd506b9c73676cc769372f5f68',1,'winamp::BUFFER::BufferLength()']]],
   ['bvl3',['bvl3',['../class_tfrm_main.html#af5479e450c97eeac01385e3e5b331d37',1,'TfrmMain']]],
   ['bvleq',['bvlEQ',['../class_tfrm_settings.html#ae50849970eb52b75436052081e6d0b65',1,'TfrmSettings']]],
-  ['bvlmain',['bvlMain',['../class_tfrm_splash.html#a9ed9569d12ef0dd1f4f3ebe7c5efd999',1,'TfrmSplash']]],
   ['bvlvolume',['bvlVolume',['../class_tfrm_settings.html#ae513514dd8ef55287ca3c8a987c7eb0d',1,'TfrmSettings']]]
 ];

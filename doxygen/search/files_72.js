@@ -5,7 +5,6 @@ var searchData=
   ['remotestrs_2eh',['remotestrs.h',['../remotestrs_8h.html',1,'']]],
   ['rfc1060u_2ecpp',['rfc1060u.cpp',['../rfc1060u_8cpp.html',1,'']]],
   ['rfc1060u_2eh',['rfc1060u.h',['../rfc1060u_8h.html',1,'']]],
-  ['rpcalloc_2ecpp',['RPCAlloc.cpp',['../_r_p_c_alloc_8cpp.html',1,'']]],
   ['rpcbind_2eh',['RPCBind.h',['../_r_p_c_bind_8h.html',1,'']]],
   ['rpcerrors_2ecpp',['RPCErrors.cpp',['../_r_p_c_errors_8cpp.html',1,'']]],
   ['rpcerrors_2eh',['RPCErrors.h',['../_r_p_c_errors_8h.html',1,'']]],

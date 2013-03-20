@@ -4,6 +4,8 @@ var _r_p_c_executor_8cpp =
     [ "commandLogFormat", "_r_p_c_executor_8cpp.html#afc8fd633d8ce137cd924cd7b401bcbab", null ],
     [ "MainMessage", "_r_p_c_executor_8cpp.html#a409d7ae61bce0101e0eb22bcd147475b", null ],
     [ "MainStatus", "_r_p_c_executor_8cpp.html#ab877d10f71e7c44970b6b43c5a520be4", null ],
+    [ "MIDL_user_allocate", "_r_p_c_executor_8cpp.html#afcd316cf6637378290fd826613d34ac9", null ],
+    [ "MIDL_user_free", "_r_p_c_executor_8cpp.html#a5761eb07e3aedbe83df1bf5d3291901a", null ],
     [ "populateBuffer", "_r_p_c_executor_8cpp.html#a38e1d54891e187411d46765bade49127", null ],
     [ "queryLogFormat", "_r_p_c_executor_8cpp.html#a455b72fe61388094118d4bd5e40f9d24", null ],
     [ "WAExecuteMessage", "_r_p_c_executor_8cpp.html#ad254f888f5a47201eea032a71a36c07a", null ],

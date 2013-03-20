@@ -107,6 +107,8 @@ var waint_8h =
     [ "LocalGetWinampVersion", "waint_8h.html#a72ceae4fe8f84aa0a39de1ce81ea0015", null ],
     [ "LocalQueryInt", "waint_8h.html#a1dac4a30cd6ef2253bda3b19746463f0", null ],
     [ "LocalQueryString", "waint_8h.html#a04ece507c5be3e71fd7d88ba6fd86cff", null ],
+    [ "operator<<", "waint_8h.html#a8b12c60526b628ea9346dc332b88c104", null ],
+    [ "operator<<", "waint_8h.html#a32616b86b7070301c979e6c1dff14099", null ],
     [ "setWinampHwnd", "waint_8h.html#a9a3703ffb8cdd4a16129fbff5d2cb546", null ],
     [ "WinampCommandDesc", "waint_8h.html#a13acd9e868c01ccf30ca4be571c93df4", null ],
     [ "WinampVersionString", "waint_8h.html#a13c6e4b244d47f4d7b006eaa43657e22", null ]

@@ -6,6 +6,7 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -17,7 +18,10 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ]
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ],
+        [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", null, [
@@ -38,12 +42,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"_r_p_c_funcs_u_8cpp.html#a6a09219d7d219ae19814a00443391eb7",
-"class_t_r_p_c_server_d_l_l_thread.html#ae9a54f65fa95fdefc9fa7412a492356d",
-"class_tfrm_main.html#ae352c96b44494fdff382c1ef6a275dcd",
-"class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a89ffad6613d900f7dd36ae338173522f",
-"gen__plugin_8h.html#ac92a673771db92e7156490091aef7135",
-"rfc1060u_8cpp.html",
+"_r_p_c_funcs_u_8cpp.html",
+"class_t_module_version_info.html#ad42deb98c81c15d9da6f1f23bf1f5b95",
+"class_tfrm_main.html#ae0aedb7766aefec050af8d9d4887bbf4",
+"class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a9bb4a3b2c0bf7f680d10557119fb0214",
+"gen__plugin_8cpp.html#a05848de25ac2dbec233935058a1d24b4",
+"remotestrs_8h.html#aa85250f130ecc7b597fe1a5db021cb66",
+"winampinterface__s_8c.html#a48c61169ec0085c93469aef4926302e6",
 ];
 
 var navTreeSubIndices = new Array();

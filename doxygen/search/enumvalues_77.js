@@ -57,5 +57,6 @@ var searchData=
   ['winamp_5fstopaftercurrent',['WINAMP_STOPAFTERCURRENT',['../waint_8h.html#a995702bd0c3c3757662cdcd3a03ae623a7064b23f115ff11172bdfeee7cdafc83',1,'waint.h']]],
   ['winamp_5fstopfade',['WINAMP_STOPFADE',['../waint_8h.html#a995702bd0c3c3757662cdcd3a03ae623aab0d76aeb4d723220240d2a6e5d697bf',1,'waint.h']]],
   ['winamp_5fvolumedown',['WINAMP_VOLUMEDOWN',['../waint_8h.html#a6817d27f4a84498c7218e3dd73a29930aeb09af912c9a2388389fd59e1f5f4e61',1,'waint.h']]],
-  ['winamp_5fvolumeup',['WINAMP_VOLUMEUP',['../waint_8h.html#a6817d27f4a84498c7218e3dd73a29930accac6df5bf8625427455465ae0d4710f',1,'waint.h']]]
+  ['winamp_5fvolumeup',['WINAMP_VOLUMEUP',['../waint_8h.html#a6817d27f4a84498c7218e3dd73a29930accac6df5bf8625427455465ae0d4710f',1,'waint.h']]],
+  ['withfade',['WithFade',['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a93786a64fe495eaaf1fcb55c5e2b0f33a7ecf6a9c23236d6d4805fe14b6e01451',1,'WinampRemote::Server::WinampTestServer']]]
 ];

@@ -25,7 +25,6 @@ var annotated =
     [ "TfrmPluginMain", "class_tfrm_plugin_main.html", "class_tfrm_plugin_main" ],
     [ "TfrmServers", "class_tfrm_servers.html", "class_tfrm_servers" ],
     [ "TfrmSettings", "class_tfrm_settings.html", "class_tfrm_settings" ],
-    [ "TfrmSplash", "class_tfrm_splash.html", "class_tfrm_splash" ],
     [ "TModuleVersionInfo", "class_t_module_version_info.html", "class_t_module_version_info" ],
     [ "TRPCServerDLLThread", "class_t_r_p_c_server_d_l_l_thread.html", "class_t_r_p_c_server_d_l_l_thread" ],
     [ "winamp", "interfacewinamp.html", "interfacewinamp" ],

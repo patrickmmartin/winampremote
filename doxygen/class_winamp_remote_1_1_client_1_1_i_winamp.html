@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('class_winamp_remote_1_1_client_1_1_i_w
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -138,6 +138,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4bf563786d891625f97a8234fb128311"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a4bf563786d891625f97a8234fb128311">getPlaylistLength</a> (void)=0</td></tr>
 <tr class="memitem:ac0af5509e9b29fd812ecd897aa46e0e9"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ac0af5509e9b29fd812ecd897aa46e0e9">getCurrentPlayListItem</a> (int &amp;index, bool title=true)=0</td></tr>
 <tr class="memitem:a6dec823b4f9e82e04387889fe17751ea"><td class="memItemLeft" align="right" valign="top">virtual vector&lt; string &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a6dec823b4f9e82e04387889fe17751ea">getPlayList</a> (bool title=true)=0</td></tr>
+<tr class="memitem:ae7f5529c4a80e3d0f4e3ec828effb998"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ae7f5529c4a80e3d0f4e3ec828effb998">setPlayList</a> (vector&lt; string &gt; &amp;playlist)=0</td></tr>
+<tr class="memitem:accff556a97f3df599cbb86d4ab5cfd0d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#accff556a97f3df599cbb86d4ab5cfd0d">insertPlayList</a> (vector&lt; string &gt; &amp;playlist, int position)=0</td></tr>
 <tr class="memitem:a00c2713dd026973b48d255e4736cdc96"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a00c2713dd026973b48d255e4736cdc96">playlistStart</a> ()=0</td></tr>
 <tr class="memitem:ac8582ecb4cdb71aeb1761387117905a4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ac8582ecb4cdb71aeb1761387117905a4">playlistEnd</a> ()=0</td></tr>
 <tr class="memitem:a9aedf3134bf70dc9c4aa254aa65dab13"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a9aedf3134bf70dc9c4aa254aa65dab13">setPlaylistIndex</a> (int index)=0</td></tr>
@@ -161,6 +163,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3ba6868c259e1e2ec96a2282b676912b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a3ba6868c259e1e2ec96a2282b676912b">toggleRepeat</a> (void)=0</td></tr>
 <tr class="memitem:a45d384e9ebaed17672f5c719fe83454d"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a45d384e9ebaed17672f5c719fe83454d">getRepeat</a> (void)=0</td></tr>
 <tr class="memitem:a493e40af478a43f7ec7cb8f2c3bdbfe2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a493e40af478a43f7ec7cb8f2c3bdbfe2">setRepeat</a> (bool repeat)=0</td></tr>
+<tr class="memitem:a6d19bbc1b14c0151eda42d671486ec8b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a6d19bbc1b14c0151eda42d671486ec8b">toggleEQOn</a> (void)=0</td></tr>
+<tr class="memitem:a2bd36c60429c40fef335353c0e0c8d9d"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a2bd36c60429c40fef335353c0e0c8d9d">getEQOn</a> (void)=0</td></tr>
+<tr class="memitem:a770dbe6792411aee19c31c730189d542"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a770dbe6792411aee19c31c730189d542">setEQOn</a> (bool value)=0</td></tr>
 <tr class="memitem:a6f3e86f224241ca4d1b97e4dfa461a13"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a6f3e86f224241ca4d1b97e4dfa461a13">toggleAutoload</a> (void)=0</td></tr>
 <tr class="memitem:a47160aba51a39cafe0d23329ac8effba"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#a47160aba51a39cafe0d23329ac8effba">getAutoload</a> (void)=0</td></tr>
 <tr class="memitem:ab58d38bfcd7b40b8e36df681cf6684e8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_winamp_remote_1_1_client_1_1_i_winamp.html#ab58d38bfcd7b40b8e36df681cf6684e8">setAutoload</a> (bool value)=0</td></tr>
@@ -405,6 +410,33 @@ Public Member Functions</h2></td></tr>
 <p>returns the eq data </p>
 
 <p>Implemented in <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a5493c458bc76649728abe6209d7c0691">WinampRemote::Client::WinampClientBase</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2bd36c60429c40fef335353c0e0c8d9d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int WinampRemote::Client::IWinamp::getEQOn </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>returns the EQ On option </p>
+
+<p>Implemented in <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a8d179ae3d97b49c7b66a2bcaa3d0684c">WinampRemote::Client::WinampClientBase</a>.</p>
 
 </div>
 </div>
@@ -740,6 +772,50 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="accff556a97f3df599cbb86d4ab5cfd0d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void WinampRemote::Client::IWinamp::insertPlayList </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>playlist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>inserts the passed playlist into the existing playlist, beginning from the passed position </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">playlist</td><td></td></tr>
+    <tr><td class="paramname">position</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a4adaa38bbe83456eccfc1b9fdd8c6735">WinampRemote::Client::WinampClientBase</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a4a3541f4a84b95334902a06417e1e8ba"></a>
 <div class="memitem">
 <div class="memproto">
@@ -996,6 +1072,39 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a770dbe6792411aee19c31c730189d542"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void WinampRemote::Client::IWinamp::setEQOn </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>sets the EQ On option </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#aa01dc87390c9ef5c1a838c4c16eccdd8">WinampRemote::Client::WinampClientBase</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ab6cb3a13fc5824429de5d40532332faf"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1026,6 +1135,39 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Implemented in <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#aaa0d835d8c97c837966de497c74bc4c2">WinampRemote::Client::WinampClientBase</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae7f5529c4a80e3d0f4e3ec828effb998"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void WinampRemote::Client::IWinamp::setPlayList </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>playlist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>sets the playlist on the server </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">playlist</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a267b198a0f97a838248e310ee2938ce9">WinampRemote::Client::WinampClientBase</a>.</p>
 
 </div>
 </div>
@@ -1364,6 +1506,33 @@ Public Member Functions</h2></td></tr>
 <p>toggles the autoload option </p>
 
 <p>Implemented in <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a24fea7552dd62b624053c12c99d2930f">WinampRemote::Client::WinampClientBase</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6d19bbc1b14c0151eda42d671486ec8b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void WinampRemote::Client::IWinamp::toggleEQOn </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>toggles the EQ On option </p>
+
+<p>Implemented in <a class="el" href="class_winamp_remote_1_1_client_1_1_winamp_client_base.html#af07dbf5154007a0de8fb390c8e780118">WinampRemote::Client::WinampClientBase</a>.</p>
 
 </div>
 </div>

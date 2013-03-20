@@ -14,6 +14,7 @@ var hierarchy =
       [ "WinampRemote::Remoting::ConsoleCallObserver", "class_winamp_remote_1_1_remoting_1_1_console_call_observer.html", null ],
       [ "WinampRemote::Remoting::StubCallObserver", "class_winamp_remote_1_1_remoting_1_1_stub_call_observer.html", null ]
     ] ],
+    [ "WinampRemote::Net::IPAddressResolver", "class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html", null ],
     [ "WinampRemote::Client::IWinamp", "class_winamp_remote_1_1_client_1_1_i_winamp.html", [
       [ "WinampRemote::Client::WinampClientBase", "class_winamp_remote_1_1_client_1_1_winamp_client_base.html", null ]
     ] ],
@@ -28,6 +29,7 @@ var hierarchy =
     [ "ServerEnumerator", "class_server_enumerator.html", null ],
     [ "ServerInfo", "struct_server_info.html", null ],
     [ "ServerTester", "class_server_tester.html", null ],
+    [ "WinampRemote::Utils::StringVectorPrinter", "struct_winamp_remote_1_1_utils_1_1_string_vector_printer.html", null ],
     [ "TConfigForm", "class_t_config_form.html", null ],
     [ "WinampRemote::UnitTest::TestContext", "struct_winamp_remote_1_1_unit_test_1_1_test_context.html", null ],
     [ "TfrmAbout", "class_tfrm_about.html", null ],
@@ -39,7 +41,6 @@ var hierarchy =
     [ "TfrmPluginMain", "class_tfrm_plugin_main.html", null ],
     [ "TfrmServers", "class_tfrm_servers.html", null ],
     [ "TfrmSettings", "class_tfrm_settings.html", null ],
-    [ "TfrmSplash", "class_tfrm_splash.html", null ],
     [ "TModuleVersionInfo", "class_t_module_version_info.html", null ],
     [ "TRPCServerDLLThread", "class_t_r_p_c_server_d_l_l_thread.html", null ],
     [ "winamp", "interfacewinamp.html", null ],

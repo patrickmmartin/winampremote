@@ -40,6 +40,10 @@ var files =
       [ "ICallObserver", "class_winamp_remote_1_1_remoting_1_1_i_call_observer.html", "class_winamp_remote_1_1_remoting_1_1_i_call_observer" ],
       [ "StubCallObserver", "class_winamp_remote_1_1_remoting_1_1_stub_call_observer.html", "class_winamp_remote_1_1_remoting_1_1_stub_call_observer" ]
     ] ],
+    [ "IPAddressResolver.cpp", "_i_p_address_resolver_8cpp.html", "_i_p_address_resolver_8cpp" ],
+    [ "IPAddressResolver.h", "_i_p_address_resolver_8h.html", [
+      [ "IPAddressResolver", "class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html", "class_winamp_remote_1_1_net_1_1_i_p_address_resolver" ]
+    ] ],
     [ "IPAddressU.cpp", "_i_p_address_u_8cpp.html", "_i_p_address_u_8cpp" ],
     [ "IPAddressU.h", "_i_p_address_u_8h.html", "_i_p_address_u_8h" ],
     [ "IWinamp.h", "_i_winamp_8h.html", [
@@ -51,7 +55,8 @@ var files =
     [ "messageF.cpp", "message_f_8cpp.html", "message_f_8cpp" ],
     [ "messageF.h", "message_f_8h.html", "message_f_8h" ],
     [ "NetworkSuite.cpp", "_network_suite_8cpp.html", "_network_suite_8cpp" ],
-    [ "NetworkSuite.h", "_network_suite_8h.html", [
+    [ "NetworkTest.cpp", "_network_test_8cpp.html", null ],
+    [ "NetworkTest.h", "_network_test_8h.html", [
       [ "NetworkTest", "class_network_test.html", "class_network_test" ]
     ] ],
     [ "PlaylistF.cpp", "_playlist_f_8cpp.html", "_playlist_f_8cpp" ],
@@ -61,7 +66,6 @@ var files =
     [ "remotestrs.h", "remotestrs_8h.html", "remotestrs_8h" ],
     [ "rfc1060u.cpp", "rfc1060u_8cpp.html", "rfc1060u_8cpp" ],
     [ "rfc1060u.h", "rfc1060u_8h.html", "rfc1060u_8h" ],
-    [ "RPCAlloc.cpp", "_r_p_c_alloc_8cpp.html", "_r_p_c_alloc_8cpp" ],
     [ "RPCBind.h", "_r_p_c_bind_8h.html", "_r_p_c_bind_8h" ],
     [ "RPCErrors.cpp", "_r_p_c_errors_8cpp.html", "_r_p_c_errors_8cpp" ],
     [ "RPCErrors.h", "_r_p_c_errors_8h.html", "_r_p_c_errors_8h" ],
@@ -85,8 +89,10 @@ var files =
     [ "ServerTester.h", "_server_tester_8h.html", "_server_tester_8h" ],
     [ "SettingsF.cpp", "_settings_f_8cpp.html", "_settings_f_8cpp" ],
     [ "SettingsF.h", "_settings_f_8h.html", "_settings_f_8h" ],
-    [ "SplashF.cpp", "_splash_f_8cpp.html", "_splash_f_8cpp" ],
-    [ "SplashF.h", "_splash_f_8h.html", "_splash_f_8h" ],
+    [ "StringVectorPrinter.cpp", "_string_vector_printer_8cpp.html", null ],
+    [ "StringVectorPrinter.h", "_string_vector_printer_8h.html", [
+      [ "StringVectorPrinter", "struct_winamp_remote_1_1_utils_1_1_string_vector_printer.html", "struct_winamp_remote_1_1_utils_1_1_string_vector_printer" ]
+    ] ],
     [ "testserver.cpp", "testserver_8cpp.html", "testserver_8cpp" ],
     [ "unittests.cpp", "unittests_8cpp.html", "unittests_8cpp" ],
     [ "UtilsSuite.cpp", "_utils_suite_8cpp.html", "_utils_suite_8cpp" ],

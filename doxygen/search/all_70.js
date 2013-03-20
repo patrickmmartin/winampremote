@@ -11,6 +11,7 @@ var searchData=
   ['pbsongposmousedown',['pbSongPosMouseDown',['../class_tfrm_playlist.html#a3be09984c92a6659e5048e935f39764e',1,'TfrmPlaylist']]],
   ['pbsongposmousemove',['pbSongPosMouseMove',['../class_tfrm_playlist.html#a7a7d248c3f821413971d90b0f3d7037f',1,'TfrmPlaylist']]],
   ['pbsongposmouseup',['pbSongPosMouseUp',['../class_tfrm_playlist.html#a43d1885979848509193a4a984f8c6430',1,'TfrmPlaylist']]],
+  ['performed',['Performed',['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a93786a64fe495eaaf1fcb55c5e2b0f33ad8c1d1090533edf27fdd2083a354df1a',1,'WinampRemote::Server::WinampTestServer']]],
   ['periodic',['periodic',['../_colour_u_8cpp.html#a3a941dffd7340293edf0d12d4a845ea9',1,'periodic(double percent):&#160;ColourU.cpp'],['../_colour_u_8h.html#a3a941dffd7340293edf0d12d4a845ea9',1,'periodic(double percent):&#160;ColourU.cpp']]],
   ['perspectiveproj',['perspectiveProj',['../_about_f_8cpp.html#a87483356c0151b0cb4ffbbbe6cbb91b5',1,'AboutF.cpp']]],
   ['pgcsettings',['pgcSettings',['../class_tfrm_settings.html#afea4c96cd6ec01bcd6d154986f4af7ee',1,'TfrmSettings']]],

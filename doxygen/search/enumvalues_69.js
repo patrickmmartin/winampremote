@@ -14,6 +14,7 @@ var searchData=
   ['idm_5feq_5fsavedefault',['IDM_EQ_SAVEDEFAULT',['../waint_8h.html#a47f9e8c046a53ec3d3af9a67cb60ce38ace37500993e3949977423a656ba183bb',1,'waint.h']]],
   ['idm_5feq_5fsavemp3',['IDM_EQ_SAVEMP3',['../waint_8h.html#a47f9e8c046a53ec3d3af9a67cb60ce38a6a2ccd57718ed8c7013552e89e0f55d0',1,'waint.h']]],
   ['idm_5feq_5fsavepre',['IDM_EQ_SAVEPRE',['../waint_8h.html#a47f9e8c046a53ec3d3af9a67cb60ce38a927c7bfc2199a1e4072bf6b727bffc36',1,'waint.h']]],
+  ['immediate',['Immediate',['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a93786a64fe495eaaf1fcb55c5e2b0f33a8b16dc80b0438540b73f09552fa7da51',1,'WinampRemote::Server::WinampTestServer']]],
   ['ipc_5fchdir',['IPC_CHDIR',['../waint_8h.html#a6817d27f4a84498c7218e3dd73a29930a0dd521ec1132696b058b189da5c60fe8',1,'waint.h']]],
   ['ipc_5fdelete',['IPC_DELETE',['../waint_8h.html#a6817d27f4a84498c7218e3dd73a29930a40985dac82adb177b4c9fae98f9ea656',1,'waint.h']]],
   ['ipc_5fgeteqdata',['IPC_GETEQDATA',['../waint_8h.html#a6817d27f4a84498c7218e3dd73a29930a2c71c961efa6d2ca4e2f30db56d9ea1a',1,'waint.h']]],

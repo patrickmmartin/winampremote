@@ -28,7 +28,5 @@ var class_tfrm_servers =
     [ "pbServers", "class_tfrm_servers.html#aaf6d8ae3b839439a12d5105a31582fa0", null ],
     [ "pnlButtons", "class_tfrm_servers.html#aa45932349ef6553a09accdb041773b40", null ],
     [ "pnlPages", "class_tfrm_servers.html#acd8370afaf645529a607f7e8bec23743", null ],
-    [ "pnlTop", "class_tfrm_servers.html#a6dc8ecab3c4302bf00e66b2afc2cdbec", null ],
-    [ "spltMessages", "class_tfrm_servers.html#a8f77087d6c43adfda81cb33f09291475", null ],
-    [ "StatusBar1", "class_tfrm_servers.html#a99f81fad98c06443b7f9d2a832b11bdb", null ]
+    [ "pnlTop", "class_tfrm_servers.html#a6dc8ecab3c4302bf00e66b2afc2cdbec", null ]
 ];
