@@ -45,6 +45,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include <math.h>
 #include "WinampClientBase.h"
+#include "CursorGuard.h"
 
 const int POLL_ERROR_FACTOR = 10; // seconds
 
@@ -1314,7 +1315,7 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
     try
     {
 
-      Screen->Cursor = crHourGlass;
+	  WinampRemote::Utils::CursorGuard ci;
       IconHandle();
       sbMain->Update();
       TrayMessage(NIM_MODIFY);
@@ -1352,7 +1353,6 @@ void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
   }
   __finally
   {
-    Screen->Cursor = crDefault;
 
     IconHandle();
     sbMain->Update();
@@ -1396,24 +1396,18 @@ void __fastcall TfrmMain::PlaylistRefreshStatsExecute(TObject *)
 
 void __fastcall TfrmMain::DoAddFiles(TStrings * Files)
 {
-  Screen->Cursor = crHourGlass;
-  try
-  {
-        string filelist = Files->Text.c_str();
-        vector <string> playlist;
-        for (int i = 0 ; i < Files->Count ; i++)
-                playlist.push_back(Files->Strings[i].c_str());
-        client->setPlayList(playlist);  }
-  __finally
-  {
-    Screen->Cursor = crDefault;
-  }
+    WinampRemote::Utils::CursorGuard ci;
+	string filelist = Files->Text.c_str();
+	vector <string> playlist;
+	for (int i = 0 ; i < Files->Count ; i++)
+			playlist.push_back(Files->Strings[i].c_str());
+	client->setPlayList(playlist);
 }
 
 void __fastcall TfrmMain::DoDeleteSelected(void)
 {
   int i;
-  Screen->Cursor = crAppStart;
+  WinampRemote::Utils::CursorGuard ci(crAppStart);
   TStringList * StringList = new TStringList;
   try
   {
@@ -1444,7 +1438,6 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
   __finally
   {
     delete StringList;
-    Screen->Cursor = crDefault;
   }
 
 }

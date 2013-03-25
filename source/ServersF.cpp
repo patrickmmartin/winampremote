@@ -36,6 +36,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "remotestrs.h"
 
 #include "ServerEnumerator.h" // class to enumerate servers
+#include "CursorGuard.h"
 
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -74,7 +75,7 @@ void __fastcall TfrmServers::FormClose(TObject *, TCloseAction &)
 void __fastcall TfrmServers::btnLocateClick(TObject *)
 {
 
-  Screen->Cursor = crHourGlass;
+  WinampRemote::Utils::CursorGuard ci;
 
   btnLocate->Enabled = false;
 
@@ -100,7 +101,6 @@ void __fastcall TfrmServers::btnLocateClick(TObject *)
   __finally
   {
     btnLocate->Enabled = true;
-    Screen->Cursor = crDefault;
     pbServers->Position = 0;
   }
 }
@@ -130,7 +130,7 @@ void __fastcall TfrmServers::StartTest(TObject *)
   btnTest->Caption = sStop;
   btnTest->OnClick = StopTest;
 
-  Screen->Cursor = crHourGlass;
+  WinampRemote::Utils::CursorGuard ci;
 
   try
   {
@@ -146,7 +146,6 @@ void __fastcall TfrmServers::StartTest(TObject *)
   }
   __finally
   {
-    Screen->Cursor = crDefault;
     pbServers->Position = 0;
     btnLocate->Enabled = true;
     btnOK->Enabled = false;
@@ -216,58 +215,57 @@ void __fastcall TfrmServers::btnOKClick(TObject *)
 void __fastcall TfrmServers::GetServerIp(TObject *)
 {
 
-  AnsiString HostName;
+    AnsiString HostName;
 
-  // TODO need a cursor guard class badly
-  Screen->Cursor = crHourGlass;
-    lvMessages->Items->Clear();
-    if (lvServers->Selected)
+    // TODO need a cursor guard class badly
+    WinampRemote::Utils::CursorGuard ci;
+	lvMessages->Items->Clear();
+	if (lvServers->Selected)
+	{
+	  try
+	  {
 
-      try
-      {
+		  string lRemoteName = lvServers->Selected->Caption.c_str();
+		  WinampRemote::Net::IPAddressResolver ipr(lRemoteName);
+		  //TODO - some stuff here with the results
 
-          string lRemoteName = lvServers->Selected->Caption.c_str();
-    	  WinampRemote::Net::IPAddressResolver ipr(lRemoteName);
-    	  //TODO - some stuff here with the results
+	//        GetIPAddress(lvServers->Selected->Caption.c_str(), HostName, Addresses, Aliases);
 
-//        GetIPAddress(lvServers->Selected->Caption.c_str(), HostName, Addresses, Aliases);
+		doNetworkMessage(sIPLookup + lvServers->Selected->Caption, 1);
+		doNetworkMessage(sAuthoritativeName + HostName, 1);
 
-        doNetworkMessage(sIPLookup + lvServers->Selected->Caption, 1);
-        doNetworkMessage(sAuthoritativeName + HostName, 1);
+	//        if (Addresses->Count > 0 )
+	//        {
+	//          doNetworkMessage(sAddressesRetrieved, 1);
+	//          for (int i = 0; i < Addresses->Count  ; i ++)
+	//          {
+	//            doNetworkMessage(sIPAddress + Addresses->Strings[i], 1);
+	//          }
+	//        }
+	//        else
+		{
+		  doNetworkMessage(sAddressesNotRetrieved, 2);
+		}
 
-//        if (Addresses->Count > 0 )
-//        {
-//          doNetworkMessage(sAddressesRetrieved, 1);
-//          for (int i = 0; i < Addresses->Count  ; i ++)
-//          {
-//            doNetworkMessage(sIPAddress + Addresses->Strings[i], 1);
-//          }
-//        }
-//        else
-        {
-          doNetworkMessage(sAddressesNotRetrieved, 2);
-        }
+	//        if (Aliases->Count > 0 )
+	//        {
+	//           doNetworkMessage(sAliasesRetrieved, 1);
+	//          for (int i = 0; i < Aliases->Count  ; i ++)
+	//          {
+	//            doNetworkMessage(AnsiString(sIPAlias) + Aliases->Strings[i], 1);
+	//          }
+	//        }
+	//        else
+		{
+		  doNetworkMessage(sAliasesNotRetrieved, 2);
+		}
 
-//        if (Aliases->Count > 0 )
-//        {
-//           doNetworkMessage(sAliasesRetrieved, 1);
-//          for (int i = 0; i < Aliases->Count  ; i ++)
-//          {
-//            doNetworkMessage(AnsiString(sIPAlias) + Aliases->Strings[i], 1);
-//          }
-//        }
-//        else
-        {
-          doNetworkMessage(sAliasesNotRetrieved, 2);
-        }
-
-      }
-      catch (...)
-      {
-        doNetworkMessage(sGetIPAddressFailed /* + E.Message */, 3);
-      }
-
-      Screen->Cursor = crDefault;
+	  }
+	  catch (...)
+	  {
+		doNetworkMessage(sGetIPAddressFailed /* + E.Message */, 3);
+	  }
+   }
 }
 
 
