@@ -29,7 +29,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "ServersF.h"    // servers
 #include "messageF.h"    // message form
 #include "RFC1060U.h"    // ports
-#include "IPAddressU.h"  // IP utility
+#include "IPAddressResolver.h"  // IP utility class
 
 // winamp IPC declarations
 #include "waint.h"
@@ -216,65 +216,58 @@ void __fastcall TfrmServers::btnOKClick(TObject *)
 void __fastcall TfrmServers::GetServerIp(TObject *)
 {
 
-  TStringList * Addresses = new TStringList;
-  TStringList * Aliases = new TStringList;
   AnsiString HostName;
 
+  // TODO need a cursor guard class badly
   Screen->Cursor = crHourGlass;
-  try
-  {
     lvMessages->Items->Clear();
     if (lvServers->Selected)
-    {
 
       try
       {
-        GetIPAddress(lvServers->Selected->Caption.c_str(), HostName, Addresses, Aliases);
+
+          string lRemoteName = lvServers->Selected->Caption.c_str();
+    	  WinampRemote::Net::IPAddressResolver ipr(lRemoteName);
+    	  //TODO - some stuff here with the results
+
+//        GetIPAddress(lvServers->Selected->Caption.c_str(), HostName, Addresses, Aliases);
 
         doNetworkMessage(sIPLookup + lvServers->Selected->Caption, 1);
         doNetworkMessage(sAuthoritativeName + HostName, 1);
 
-        if (Addresses->Count > 0 )
-        {
-          doNetworkMessage(sAddressesRetrieved, 1);
-          for (int i = 0; i < Addresses->Count  ; i ++)
-          {
-            doNetworkMessage(sIPAddress + Addresses->Strings[i], 1);
-          }
-        }
-        else
+//        if (Addresses->Count > 0 )
+//        {
+//          doNetworkMessage(sAddressesRetrieved, 1);
+//          for (int i = 0; i < Addresses->Count  ; i ++)
+//          {
+//            doNetworkMessage(sIPAddress + Addresses->Strings[i], 1);
+//          }
+//        }
+//        else
         {
           doNetworkMessage(sAddressesNotRetrieved, 2);
         }
 
-
-        if (Aliases->Count > 0 )
-        {
-           doNetworkMessage(sAliasesRetrieved, 1);
-          for (int i = 0; i < Aliases->Count  ; i ++)
-          {
-            doNetworkMessage(AnsiString(sIPAlias) + Aliases->Strings[i], 1);
-          }
-        }
-        else
+//        if (Aliases->Count > 0 )
+//        {
+//           doNetworkMessage(sAliasesRetrieved, 1);
+//          for (int i = 0; i < Aliases->Count  ; i ++)
+//          {
+//            doNetworkMessage(AnsiString(sIPAlias) + Aliases->Strings[i], 1);
+//          }
+//        }
+//        else
         {
           doNetworkMessage(sAliasesNotRetrieved, 2);
         }
 
       }
-      catch (EIPException &E)
+      catch (...)
       {
-        doNetworkMessage(sGetIPAddressFailed + E.Message, 3);
+        doNetworkMessage(sGetIPAddressFailed /* + E.Message */, 3);
       }
 
-    }
-  }
-  __finally
-  {
-     Screen->Cursor = crDefault;
-     delete Aliases;
-     delete Addresses;
-  }
+      Screen->Cursor = crDefault;
 }
 
 

@@ -1,10 +1,12 @@
 #include <string.h>
+#include <forms.hpp>
 #include "WinampClientBase.h"
 #include "ClientBinder.h"
 #include "ContextInfo.h"
 #include "RPCException.h"
 #include "StringVectorPrinter.h"
 #include "catch.hpp"
+#include "CursorGuard.h"
 
 namespace WinampRemote
 {
@@ -721,7 +723,24 @@ TEST_CASE("Client/EQSet", "test setEQ")
 /**
  * tests exception handling
  */
-TEST_CASE_NORETURN( "./exception/ERPCException", "ERPCException can handled" )
+TEST_CASE_NORETURN( "Exception/ERPCException", "ERPCException can be handled" )
 {
     throw ERPCException(RPC_S_UNKNOWN_PRINCIPAL);
+}
+
+
+TEST_CASE("UI/CursorGuard", "tests Cursor Guard class")
+{
+        Controls::TCursor startCursor = Screen->Cursor;
+        {
+                WinampRemote::Utils::CursorGuard ci;
+                CHECK(Screen->Cursor == crHourGlass);
+        }
+        CHECK(Screen->Cursor == startCursor);
+
+        {
+                WinampRemote::Utils::CursorGuard ci(crAppStart);
+                CHECK(Screen->Cursor == crAppStart);
+        }
+        CHECK(Screen->Cursor == startCursor);
 }

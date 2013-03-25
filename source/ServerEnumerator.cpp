@@ -13,7 +13,7 @@
 #include "ServerEnumerator.h"
 #include "remotestrs.h"
 
-#include "IPAddressU.h"
+#include "IPAddressResolver.h"
 
 using std::cout;
 using std::endl;
@@ -51,22 +51,13 @@ void ServerEnumerator::addServer(const AnsiString& remoteName, const AnsiString&
   debugOutput("Server", remoteName + " \"" + comment + " \"");
   if (FServerEvent != NULL)
   {
-      AnsiString resolvedName = "";
-      TStringList * Addresses = new TStringList();
-      TStringList * Aliases = new TStringList();
-      try
-      {
-    	  GetIPAddress(remoteName.c_str(), resolvedName, Addresses, Aliases);
-    	  FServerEvent(remoteName, comment, Addresses->Strings[0]);
-      }
-      catch (EIPException * eip)
-      {
-    	  addMessage(eip->Message, 2);
-      }
+      string lRemoteName = remoteName.c_str();
+	  WinampRemote::Net::IPAddressResolver ipr(lRemoteName);
+	  //TODO - some stuff here with the results
 
-
-      delete Aliases;
-      delete Addresses;
+//    	  GetIPAddress(remoteName.c_str(), resolvedName, Addresses, Aliases);
+//    	  FServerEvent(remoteName, comment, Addresses->Strings[0]);
+//	addMessage(eip->Message, 2);
 
   }
 }

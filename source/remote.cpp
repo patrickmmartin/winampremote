@@ -48,6 +48,7 @@ USEUNIT("GlassExtender.cpp");
 USERES("remote.RES");
 USEUNIT("WinampClientBase.cpp");
 USEUNIT("IPAddressResolver.cpp");
+USEUNIT("CursorGuard.cpp");
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 
