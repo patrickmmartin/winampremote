@@ -12,7 +12,7 @@
 #include "WinampClientBase.h"
 
 /*
- * TODO remove the VCL style callbacks and use come Observer pattern
+ * TODO remove the VCL style callbacks and use some Observer pattern
  */
 
 ServerTester::ServerTester() : _serverMessageEvent(NULL),

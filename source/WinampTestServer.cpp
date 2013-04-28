@@ -57,14 +57,13 @@ void WinampTestServer::updateStatus()
 		case Immediate:
 			break;
 		case WithFade:
-		case AfterCurrent: // TODO should really implement fake playback
+		case AfterCurrent:
 		{
 			DWORD currentCount = GetTickCount();
 			if (currentCount < (m_StartCount + 1000))
 				return;
 		}
 	}
-	// TODO: consider implementing a true timer, as opposed to flag
 	m_stopType = Performed;
 	m_playbackStatus = WA_NOT_PLAYING;
 }

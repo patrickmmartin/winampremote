@@ -217,7 +217,6 @@ void __fastcall TfrmServers::GetServerIp(TObject *)
 
     AnsiString HostName;
 
-    // TODO need a cursor guard class badly
     WinampRemote::Utils::CursorGuard ci;
 	lvMessages->Items->Clear();
 	if (lvServers->Selected)
