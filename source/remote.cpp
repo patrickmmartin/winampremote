@@ -35,7 +35,6 @@ USEUNIT("RPCFuncsU.cpp");
 USEUNIT("WAINT.CPP");
 USEUNIT("ColourU.cpp");
 USEUNIT("RFC1060U.CPP");
-USEUNIT("IPAddressU.cpp");
 USEUNIT("VersionInfoU.cpp");
 USELIB("..\lib\winampinterface.lib");
 USEUNIT("remotestrs.cpp");

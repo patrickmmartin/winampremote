@@ -11,7 +11,6 @@ USEUNIT("WinampClientBase.cpp");
 USEUNIT("ContextInfo.cpp");
 USERES("unittests.RES");
 USEUNIT("ClientSuite.cpp");
-USEUNIT("IPAddressU.cpp");
 USEUNIT("ColourU.cpp");
 USEUNIT("UtilsSuite.cpp");
 USEUNIT("NetworkTest.cpp");

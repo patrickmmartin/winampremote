@@ -9,9 +9,9 @@
       ..\obj\unittests\ServerTester.obj ..\obj\unittests\RPCFuncsU.obj 
       ..\obj\unittests\waint.obj ..\obj\unittests\ClientBinder.obj 
       ..\obj\unittests\WinampClientBase.obj ..\obj\unittests\ContextInfo.obj 
-      ..\obj\unittests\ClientSuite.obj ..\obj\unittests\IPAddressU.obj 
-      ..\obj\unittests\ColourU.obj ..\obj\unittests\UtilsSuite.obj 
-      ..\obj\unittests\NetworkTest.obj ..\obj\unittests\IPAddressResolver.obj 
+      ..\obj\unittests\ClientSuite.obj ..\obj\unittests\ColourU.obj 
+      ..\obj\unittests\UtilsSuite.obj ..\obj\unittests\NetworkTest.obj 
+      ..\obj\unittests\IPAddressResolver.obj 
       ..\obj\unittests\StringVectorPrinter.obj ..\obj\unittests\CursorGuard.obj"/>
     <RESFILES value="unittests.RES"/>
     <DEFFILE value=""/>
