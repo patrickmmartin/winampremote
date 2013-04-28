@@ -63,6 +63,8 @@ void WinampTestServer::updateStatus()
 			if (currentCount < (m_StartCount + 1000))
 				return;
 		}
+			break;
+
 	}
 	m_stopType = Performed;
 	m_playbackStatus = WA_NOT_PLAYING;
