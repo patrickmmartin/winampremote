@@ -725,7 +725,7 @@ TEST_CASE("Client/EQSet", "test setEQ")
  */
 TEST_CASE_NORETURN( "Exception/ERPCException", "ERPCException can be handled" )
 {
-    throw ERPCException(RPC_S_UNKNOWN_PRINCIPAL);
+	REQUIRE_THROWS_AS(throw ERPCException(RPC_S_UNKNOWN_PRINCIPAL), ERPCException);
 }
 
 
