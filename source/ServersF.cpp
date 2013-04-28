@@ -136,8 +136,6 @@ void __fastcall TfrmServers::StartTest(TObject *)
   {
 
       ServerTester st;
-      st.OnResult = doTestResult;
-      st.OnTest = doTestEvent;
       st.endPoint = ebEndPoint->Text;
       map<AnsiString, ServerInfo> servers;
       getServers(servers);

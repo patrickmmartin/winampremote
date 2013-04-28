@@ -8,7 +8,7 @@
 #ifndef SERVERTESTER_H_
 #define SERVERTESTER_H_
 
-#include <vcl.h>
+#include <system.hpp>
 #pragma hdrstop
 
 #include <map.h>
@@ -33,26 +33,6 @@ struct ServerInfo
  * class to wrap up the task of testing servers for a running Winamp server.
  */
 
-      /**
-       * Closure for the Server test event.
-       * @param remoteName
-       * @param data
-       * @param level
-       */
-      typedef void (__closure *TSTServerMessageEvent)(const AnsiString& remoteName,
-                                                                 const AnsiString& data,
-                                                                 const int level);
-
-      /**
-       * Closure for when the server result is determined.
-       * @param remoteName
-       * @param success
-       * @param abort
-       */
-      typedef void (__closure *TSTServerResultEvent)(const AnsiString& remoteName,
-                                                                const bool success,
-                                                                bool& abort);
-
 
 class ServerTester {
 public:
@@ -64,16 +44,6 @@ public:
          * destructor
          */
         virtual ~ServerTester();
-
-        /**
-         * notification closure for a server test result
-         */
-        __property TSTServerMessageEvent OnTest = {read = _serverMessageEvent, write = _serverMessageEvent};
-
-        /**
-         * notification closure for a server test result
-         */
-        __property TSTServerResultEvent OnResult = {read = _serverResultEvent, write = _serverResultEvent};
 
         /**
          * property for the endpoint to be tested
@@ -97,9 +67,6 @@ private:
 
         AnsiString _endPoint;
         bool _abort;
-        TSTServerMessageEvent _serverMessageEvent;
-        TSTServerResultEvent _serverResultEvent;
-
 
         void DoMessage(const AnsiString& remoteName, const AnsiString& data, const int level);
         void DoResult(const AnsiString& remoteName, const bool success);

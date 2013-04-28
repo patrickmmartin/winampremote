@@ -6,19 +6,17 @@
  */
 
 #include "catch.hpp"
-
-#include "NetworkTest.h"
 #include "IPAddressResolver.h"
-
+#include "ServerTester.h"
+#include "ServerEnumerator.h"
 
 /**
  * tests network enumeration
  */
 TEST_CASE("Network/Net/Enumeration", "local Network enumeration")
 {
-	NetworkTest nt;
-	// test network enumeration
-	CHECK(nt.testEnumeration());
+    ServerEnumerator se;
+    se.enumerateServers();
 }
 
 /**
@@ -26,30 +24,10 @@ TEST_CASE("Network/Net/Enumeration", "local Network enumeration")
  */
 TEST_CASE("Network/RPC/Local", "test interface")
 {
-	NetworkTest nt;
-	// test local server properties
-	CHECK(nt.testLocalServer());
-	// test abort
-}
-
-// disabling for now, as it burns time and such a test should only be run
-// for the right prerequisites
-//TEST_CASE("Network/RPC/Servers", "test local servers")
-//{
-//	NetworkTest nt;
-//	// test network enumeration
-//	CHECK(nt.testEnumeration());
-//	CHECK(nt.testServerTest());
-//}
-
-/**
- * tests that aborting network enumeration works
- */
-TEST_CASE("Network/Net/Abort", "test abort")
-{
-	NetworkTest nt;
-	// test abort
-	CHECK(nt.testServerTestAbort());
+    ServerTester st;
+    ServerInfo si;
+    st.testServer("127.0.0.1", si);
+    CHECK (si.status == SI_SUCCESS);
 }
 
 /**
@@ -57,9 +35,10 @@ TEST_CASE("Network/Net/Abort", "test abort")
  */
 TEST_CASE("Network/RPC/Invalid", "test communication with invalid server")
 {
-	NetworkTest nt;
-	// test invalid
-	CHECK(nt.testServerInvalid());
+    ServerTester st;
+    ServerInfo si;
+    st.testServer("__invalid__", si);
+    CHECK_FALSE(si.status == SI_SUCCESS);
 }
 
 /**
@@ -98,7 +77,6 @@ TEST_CASE("Network/IP/Invalid", "tests the IP resolution for localhost")
 	CHECK("" == ipr.resolvedName());
 
 	CHECK( (unsigned int) 0 == ipr.getAddresses().size());
-
 
 }
 

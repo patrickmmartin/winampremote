@@ -13,7 +13,6 @@ USERES("unittests.RES");
 USEUNIT("ClientSuite.cpp");
 USEUNIT("ColourU.cpp");
 USEUNIT("UtilsSuite.cpp");
-USEUNIT("NetworkTest.cpp");
 USEUNIT("IPAddressResolver.cpp");
 USEUNIT("StringVectorPrinter.cpp");
 USEUNIT("CursorGuard.cpp");

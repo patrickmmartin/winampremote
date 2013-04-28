@@ -19,16 +19,16 @@ namespace Net
 class IPAddressResolver
 {
 private:
-	vector<std::string> m_addresses;
-	vector<std::string> m_aliases;
+	std::vector<std::string> m_addresses;
+	std::vector<std::string> m_aliases;
 	std::string m_hostname;
 	std::string m_resolved;
 public:
 	IPAddressResolver(std::string& const hostname);
 	virtual ~IPAddressResolver();
 
-	vector<std::string> & getAddresses();
-	vector<std::string> & getAliases();
+	std::vector<std::string> & getAddresses();
+	std::vector<std::string> & getAliases();
 	std::string const & hostname() const;
 	std::string const & resolvedName() const;
 

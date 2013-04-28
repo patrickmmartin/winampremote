@@ -11,15 +11,8 @@
 #include "waint.h"
 #include "WinampClientBase.h"
 
-/*
- * TODO remove the VCL style callbacks and use some Observer pattern
- */
-
-ServerTester::ServerTester() : _serverMessageEvent(NULL),
-                               _serverResultEvent(NULL),
-                               _endPoint("\\pipe\\winampremote"),
-                               _abort(false),
-                               OnResult(NULL), OnTest(NULL)
+ServerTester::ServerTester() : _endPoint("\\pipe\\winampremote"),
+                               _abort(false)
 
 {
   // constructor
@@ -35,14 +28,12 @@ void ServerTester::DoMessage(const AnsiString& remoteName,
                              const AnsiString& data,
                             const int level)
 {
-  if (_serverMessageEvent)
-    _serverMessageEvent(remoteName, data, level);
+	// TODO: handle dispatching this
 }
 
 void ServerTester::DoResult(const AnsiString& remoteName, const bool success)
 {
-  if (_serverResultEvent)
-    _serverResultEvent(remoteName, success, _abort);
+	// TODO: handle dispatching this
 }
 
 void ServerTester::testServers(map<AnsiString, ServerInfo>& servers)

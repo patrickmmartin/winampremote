@@ -98,12 +98,12 @@ IPAddressResolver::~IPAddressResolver()
 	// TODO Auto-generated destructor stub
 }
 
-vector<std::string> & IPAddressResolver::getAddresses()
+std::vector<std::string> & IPAddressResolver::getAddresses()
 {
 	return m_addresses;
 }
 
-vector<std::string> & IPAddressResolver::getAliases() 
+std::vector<std::string> & IPAddressResolver::getAliases()
 {
 	return m_aliases;
 }
