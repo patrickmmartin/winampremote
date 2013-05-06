@@ -95,7 +95,6 @@ IPAddressResolver::IPAddressResolver(std::string& const hostname):
 
 IPAddressResolver::~IPAddressResolver()
 {
-	// TODO Auto-generated destructor stub
 }
 
 std::vector<std::string> & IPAddressResolver::getAddresses()

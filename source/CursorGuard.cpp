@@ -14,7 +14,6 @@ namespace Utils
 
 CursorGuard::CursorGuard(Controls::TCursor newCursor)
 {
-	// TODO Auto-generated constructor stub
 	m_cursor = Screen->Cursor;
 	Screen->Cursor = newCursor;
 
