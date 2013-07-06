@@ -10,6 +10,7 @@
 #include <Menus.hpp>
 #include <ComCtrls.hpp>
 
+#include "AboutGLDisplay.h"
 
 
 
@@ -69,6 +70,8 @@ private:	// User declarations
   void trackMotion(DWORD time, int x, int y);
   void setupPalette(HDC hDC);
   void setupPixelformat(HDC hDC);
+
+  AboutGLDisplay* m_aboutDisplay;
 
 protected:
   void __fastcall WMPaletteChanged(TMessage& Msg);

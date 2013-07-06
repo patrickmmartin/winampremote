@@ -678,7 +678,10 @@ void TfrmAbout::redraw(void)
 {
   lastdraw = nowdraw;
   nowdraw = GetTickCount();
-  doRedraw();
+  if (m_aboutDisplay)
+          m_aboutDisplay->redraw();
+  else
+    doRedraw();
 }
 
 
@@ -892,24 +895,30 @@ void __fastcall TfrmAbout::WMQueryNewPalette(TMessage& /* Msg */)
 
 void __fastcall TfrmAbout::FormCreate(TObject *)
 {
-    startup = GetTickCount();
+    m_aboutDisplay = NULL;
+//    m_aboutDisplay = (new AboutGLDisplay(hDC, TheControl->ClientWidth, TheControl->ClientHeight));
+
     OutText = new TStringList();
-    OutText->Add("PMMsoft");
-    OutText->Add("winamp");
-    OutText->Add("project");
-    OutText->Add("OpenGL");
-    OutText->Add("about");
+    if (!m_aboutDisplay)
+    {
+      startup = GetTickCount();
+      OutText->Add("PMMsoft");
+      OutText->Add("winamp");
+      OutText->Add("project");
+      OutText->Add("OpenGL");
+      OutText->Add("about");
 
-    hDC = GetDC(TheControl->Handle);
+      hDC = GetDC(TheControl->Handle);
 
-    setupPixelformat(hDC);
-    setupPalette(hDC);
-    hGLRC = wglCreateContext(hDC);
-    wglMakeCurrent(hDC, hGLRC);
-    init();
-    nowdraw = GetTickCount();
 
-//
+      setupPixelformat(hDC);
+      setupPalette(hDC);
+      hGLRC = wglCreateContext(hDC);
+      wglMakeCurrent(hDC, hGLRC);
+      init();
+      nowdraw = GetTickCount();
+    }
+
 }
 
 
@@ -920,6 +929,8 @@ void __fastcall TfrmAbout::FormDestroy(TObject *)
       wglDeleteContext(hGLRC);
   }
   ReleaseDC(TheControl->Handle, hDC);
+  if (m_aboutDisplay)
+        delete m_aboutDisplay;
   delete OutText;
 //
 }
@@ -1066,7 +1077,7 @@ void __fastcall TfrmAbout::FormKeyDown(TObject *, WORD &Key, TShiftState )
 
 void __fastcall TfrmAbout::IdleHandler(TObject *)
 {
-  redraw();
+   redraw();
 }
 
 

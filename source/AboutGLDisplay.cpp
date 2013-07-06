@@ -49,23 +49,23 @@ AboutGLDisplay::AboutGLDisplay(HDC hDC_, int clientWidth_, int clientHeight_):
                                 hDC(hDC_), outText(),
                                 clientWidth(clientWidth_), clientHeight(clientHeight_),
                                 mode(MoveNone),
-                		objectIndex(1), objectNumMajor(32), objectNumMinor(32)
+                		objectIndex(3), objectNumMajor(32), objectNumMinor(32)
 
 {
 
-    startup = GetTickCount();
-    nowdraw = startup;
-
-	outText.push_back("Winamp");
-	outText.push_back("Remote");
-	outText.push_back("Control");
-
-    hGLRC = wglCreateContext(hDC);
-    wglMakeCurrent(hDC, hGLRC);
+    outText.push_back("Winamp");
+    outText.push_back("Remote");
+    outText.push_back("Control");
 
     setupPixelformat();
     setupPalette();
+
+    hGLRC = wglCreateContext(hDC);
+    wglMakeCurrent(hDC, hGLRC);
     init();
+
+    startup = GetTickCount();
+    nowdraw = startup;
 
 
 }
