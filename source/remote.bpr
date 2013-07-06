@@ -14,7 +14,7 @@
       ..\obj\remote\remotestrs.obj ..\obj\remote\ServerEnumerator.obj 
       ..\obj\remote\ServerTester.obj ..\obj\remote\GlassExtender.obj 
       ..\obj\remote\WinampClientBase.obj ..\obj\remote\IPAddressResolver.obj 
-      ..\obj\remote\CursorGuard.obj"/>
+      ..\obj\remote\CursorGuard.obj ..\obj\remote\AboutGLDisplay.obj"/>
     <RESFILES value="..\obj\remote\winampremote.res ..\obj\remote\windowsthemes.res remote.RES"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
