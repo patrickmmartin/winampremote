@@ -472,7 +472,6 @@ void __fastcall TfrmMain::AboutExecute(TObject *)
     try
     {
       frmAbout->Caption = sAboutWinampRemoteControl;
-      OutText->Text= sWinampRemoteControl;
       frmAbout->ShowModal();
     }
     __finally

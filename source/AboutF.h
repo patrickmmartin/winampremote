@@ -12,9 +12,6 @@
 
 #include "AboutGLDisplay.h"
 
-
-
-
 class TfrmAbout : public TForm
 {
 __published:	// IDE-managed Components
@@ -38,7 +35,7 @@ __published:	// IDE-managed Components
         void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 
-  float angle, axis[3];
+  HDC hDC;
   HPALETTE hPalette;
 
   void resize();
@@ -61,7 +58,6 @@ END_MESSAGE_MAP(TForm)
 };
 
 extern PACKAGE TfrmAbout *frmAbout;
-extern TStringList *OutText;
 
 
 

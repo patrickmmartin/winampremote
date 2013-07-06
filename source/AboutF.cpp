@@ -35,14 +35,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #pragma resource "*.dfm"
 
 TfrmAbout *frmAbout;
-TStringList *OutText, *CharsText;
-
-
-HDC hDC;
-
-DWORD startup;
-DWORD lastdraw;
-DWORD nowdraw;
 
 #define GLF_START_LIST 20000
 #define TORUS 1
@@ -54,14 +46,14 @@ GLfloat textExtrusion = 0.2;
 GLYPHMETRICSFLOAT glyphMetrics[127];
 
 
-void TfrmAbout::resize(void)
+void TfrmAbout::resize()
 {
-     m_aboutDisplay->setClientArea(ClientWidth, ClientHeight);
-     m_aboutDisplay->setProjection();
+    m_aboutDisplay->setClientArea(ClientWidth, ClientHeight);
+    m_aboutDisplay->setProjection();
     glViewport(0, 0, TheControl->ClientWidth, TheControl->ClientHeight);
 }
 
-void TfrmAbout::redraw(void)
+void TfrmAbout::redraw()
 {
   m_aboutDisplay->redraw();
 }
@@ -107,8 +99,6 @@ void __fastcall TfrmAbout::FormCreate(TObject *)
     m_aboutDisplay = NULL;
     m_aboutDisplay = (new AboutGLDisplay(hDC, TheControl->ClientWidth, TheControl->ClientHeight));
 
-    OutText = new TStringList();
-
 }
 
 
@@ -116,7 +106,6 @@ void __fastcall TfrmAbout::FormDestroy(TObject *)
 {
   ReleaseDC(TheControl->Handle, hDC);
   delete m_aboutDisplay;
-  delete OutText;
 //
 }
 
@@ -152,7 +141,6 @@ void __fastcall TfrmAbout::FormPaint(TObject *)
 void __fastcall TfrmAbout::FormResize(TObject *)
 {
   resize();
-//
 }
 
 

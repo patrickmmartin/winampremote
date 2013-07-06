@@ -200,12 +200,6 @@ void __fastcall TfrmPluginMain::btnAboutClick(TObject *Sender)
   try
   {
     frmAbout->Caption = "About winamp remote control server plugin";
-    OutText->Clear();
-    OutText->Add("winamp");
-    OutText->Add("remote");
-    OutText->Add("control");
-    OutText->Add("RPC");
-    OutText->Add("server");
     frmAbout->ShowModal();
   }
   __finally

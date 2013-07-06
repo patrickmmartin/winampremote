@@ -48,7 +48,6 @@ void __fastcall TConfigForm::btnAboutClick(TObject *Sender)
   try
   {
     frmAbout->Caption = "About winamp remote control client";
-    OutText->Text = "winamp\n\rremote\n\rcontrol\n\rRPC\n\rserver";
     frmAbout->Icon->Handle = this->Icon->Handle;
     frmAbout->ShowModal();
   }
