@@ -41,6 +41,8 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #define CUBE 2
 #define SPHERE 3
 
+#include <sysutils.hpp>
+
 AboutGLDisplay::AboutGLDisplay(HDC hDC_, int clientWidth_, int clientHeight_):
                                 m_glOptions(),
                                 glyphMetrics(),
@@ -60,6 +62,11 @@ AboutGLDisplay::AboutGLDisplay(HDC hDC_, int clientWidth_, int clientHeight_):
 
     hGLRC = wglCreateContext(hDC);
     wglMakeCurrent(hDC, hGLRC);
+
+    setupPixelformat();
+    setupPalette();
+    init();
+
 
 }
 
@@ -128,8 +135,9 @@ glEnable(GL_CULL_FACE);
     // Create a set of display lists based on the glyphs of the TT font we selected
     if (!(wglUseFontOutlines(hDC, 0, 127, GLF_START_LIST, 0.0f, m_glOptions.textExtrusion,
        WGL_FONT_POLYGONS, glyphMetrics)))
-      throw "wglUseFontOutlines failed!";
-
+       {
+          throw (AnsiString("wglUseFontOutlines failed!") + SysErrorMessage(GetLastError()).c_str());
+        }
     DeleteObject(SelectObject(hDC,hOldFont));
 
   }
