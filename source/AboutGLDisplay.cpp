@@ -136,7 +136,9 @@ glEnable(GL_CULL_FACE);
     if (!(wglUseFontOutlines(hDC, 0, 127, GLF_START_LIST, 0.0f, m_glOptions.textExtrusion,
        WGL_FONT_POLYGONS, glyphMetrics)))
        {
-          throw (AnsiString("wglUseFontOutlines failed!") + SysErrorMessage(GetLastError()).c_str());
+          AnsiString error = AnsiString("wglUseFontOutlines failed!") + SysErrorMessage(GetLastError());
+          OutputDebugString(error.c_str());
+          throw error.c_str();
         }
     DeleteObject(SelectObject(hDC,hOldFont));
 
