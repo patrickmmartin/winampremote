@@ -8,8 +8,8 @@
 #ifndef ABOUTGLDISPLAY_H_
 #define ABOUTGLDISPLAY_H_
 
-#include <vector>
-#include <string>
+#include <vector.h>
+#include <string.h>
 
 #include <windows.h>
 #include <GL\gl.h>

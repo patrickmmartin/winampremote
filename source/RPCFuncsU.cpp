@@ -211,7 +211,7 @@ extern "C"
   }
 
 
-  void _stdcall GetStringDataList(char * pszString, void ** Buffer, int& Size,
+  void __stdcall GetStringDataList(char * pszString, void ** Buffer, int& Size,
                                   int stringcommand, int datacommand, int datadata)
   {
     RpcTryExcept
