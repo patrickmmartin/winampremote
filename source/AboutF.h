@@ -13,6 +13,7 @@
 
 
 
+
 class TfrmAbout : public TForm
 {
 __published:	// IDE-managed Components
@@ -36,19 +37,32 @@ __published:	// IDE-managed Components
         void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 
-  void CreateFontList(void);
-  void CreateDisplayLists(void);
-  void drawText(void);
-  void drawCube(void);
-  void drawTorus(void);
-  void drawSphere(void);
-  void setCheckTexture(void);
-  void setProjection(void);
+  float angle, axis[3];
+
+  int objectIndex;
+
+  int objectNumMajor, objectNumMinor;
+
+  // these functions implement a simple trackball-like motion control
+  BOOL trackingMotion;
+  float lastPos[3];
+  DWORD lastTime;
+  int startX, startY;
+
+
+  void CreateFontList();
+  void CreateDisplayLists();
+  void drawText();
+  void drawCube();
+  void drawTorus();
+  void drawSphere();
+  void setCheckTexture();
+  void setProjection();
   void setMaterial();
-  void init(void);
-  void resize(void);
-  void doRedraw(void);
-  void redraw(void);
+  void init();
+  void resize();
+  void doRedraw();
+  void redraw();
   void ptov(int x, int y, int width, int height, float v[3]);
   void startMotion(DWORD time, int button, int x, int y);
   void stopMotion(DWORD time, int button, int x, int y);

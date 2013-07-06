@@ -43,11 +43,6 @@ HGLRC hGLRC;
 HPALETTE hPalette;
 
 GLfloat objectXform[4][4];
-float angle = 2.0F, axis[3] = { 0.0F, 1.0F, 0.0F };
-
-int objectIndex = 3;
-
-int objectNumMajor = 32, objectNumMinor = 32;
 BOOL halfObject = FALSE;
 BOOL doubleBuffered = TRUE;
 BOOL depthBuffered = TRUE;
@@ -63,7 +58,7 @@ BOOL perspectiveProj = TRUE;
 BOOL useFog = TRUE;
 
 enum MoveModes { MoveNone, MoveObject };
-enum MoveModes mode = MoveObject;
+MoveModes mode = MoveObject;
 
 #define X_OFFSET_STEP 0.025F;
 #define Y_OFFSET_STEP 0.025F;
@@ -82,7 +77,7 @@ GLfloat textExtrusion = 0.2;
 
 GLYPHMETRICSFLOAT glyphMetrics[127];
 
-void TfrmAbout::CreateFontList(void){
+void TfrmAbout::CreateFontList(){
   // create text display list
 LOGFONT lf;
 HFONT hFont, hOldFont;
@@ -688,11 +683,6 @@ void TfrmAbout::redraw(void)
 
 
 
-// these functions implement a simple trackball-like motion control
-BOOL trackingMotion = FALSE;
-float lastPos[3];
-DWORD lastTime;
-int startX, startY;
 
 void TfrmAbout::ptov(int x, int y, int width, int height, float v[3])
 {
@@ -863,7 +853,13 @@ void TfrmAbout::setupPixelformat(HDC hDC)
 
 
 __fastcall TfrmAbout::TfrmAbout(TComponent* Owner)
-    : TForm(Owner)
+    : TForm(Owner), angle(2.0F), axis (  ),
+		objectIndex(3), objectNumMajor(32), objectNumMinor(32),
+		trackingMotion(false),
+		lastPos(),
+		lastTime(0),
+		startX(0), startY(0)
+
 {
 }
 
