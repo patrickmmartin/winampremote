@@ -68,7 +68,8 @@ private:
 // these functions implement a simple trackball-like motion control
 	bool trackingMotion;
 	float lastPos[3];
-	DWORD lastTime;
+
+
 	int startX, startY;
 
 // various options

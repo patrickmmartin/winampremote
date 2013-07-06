@@ -46,9 +46,14 @@ AboutGLDisplay::AboutGLDisplay(HDC hDC_, int clientWidth_, int clientHeight_):
                                 glyphMetrics(),
                                 hDC(hDC_), outText(),
                                 clientWidth(clientWidth_), clientHeight(clientHeight_),
-                                mode(MoveNone)
+                                mode(MoveNone),
+                		objectIndex(1), objectNumMajor(32), objectNumMinor(32)
 
 {
+
+    startup = GetTickCount();
+    nowdraw = startup;
+
 	outText.push_back("Winamp");
 	outText.push_back("Remote");
 	outText.push_back("Control");
@@ -541,6 +546,7 @@ void AboutGLDisplay::init(void)
 
     matrixIdentity(objectXform);
 
+    // TODO failure here
     CreateFontList();
     CreateDisplayLists();
 }
@@ -836,9 +842,7 @@ void AboutGLDisplay::setupPixelformat()
 
     SelectedPixelFormat = ChoosePixelFormat(hDC, &pfd);
     if (SelectedPixelFormat == 0) {
-	MessageBox(WindowFromDC(hDC), "ChoosePixelFormat failed\n", "Error",
-		MB_ICONERROR | MB_OK);
-	exit(1);
+	throw "ChoosePixelFormat failed";
     }
 
     retVal = SetPixelFormat(hDC, SelectedPixelFormat, &pfd);
