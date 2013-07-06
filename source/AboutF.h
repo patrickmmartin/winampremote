@@ -39,37 +39,10 @@ __published:	// IDE-managed Components
 private:	// User declarations
 
   float angle, axis[3];
+  HPALETTE hPalette;
 
-  int objectIndex;
-
-  int objectNumMajor, objectNumMinor;
-
-  // these functions implement a simple trackball-like motion control
-  BOOL trackingMotion;
-  float lastPos[3];
-  DWORD lastTime;
-  int startX, startY;
-
-
-  void CreateFontList();
-  void CreateDisplayLists();
-  void drawText();
-  void drawCube();
-  void drawTorus();
-  void drawSphere();
-  void setCheckTexture();
-  void setProjection();
-  void setMaterial();
-  void init();
   void resize();
-  void doRedraw();
   void redraw();
-  void ptov(int x, int y, int width, int height, float v[3]);
-  void startMotion(DWORD time, int button, int x, int y);
-  void stopMotion(DWORD time, int button, int x, int y);
-  void trackMotion(DWORD time, int x, int y);
-  void setupPalette(HDC hDC);
-  void setupPixelformat(HDC hDC);
 
   AboutGLDisplay* m_aboutDisplay;
 

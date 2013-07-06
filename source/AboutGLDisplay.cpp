@@ -43,6 +43,10 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 
 #include <sysutils.hpp>
 
+
+const GLfloat AboutGLDisplay::X_OFFSET_STEP = 5;
+const GLfloat AboutGLDisplay::Y_OFFSET_STEP = 5;
+
 AboutGLDisplay::AboutGLDisplay(HDC hDC_, int clientWidth_, int clientHeight_):
                                 m_glOptions(),
                                 glyphMetrics(),

@@ -83,8 +83,6 @@ private:
 
 	MoveModes mode;
 
-	GLfloat xOffset, yOffset;
-
 	DWORD startup;
 	DWORD lastdraw;
 	DWORD nowdraw;
@@ -112,7 +110,9 @@ public:
 	void setupPixelformat();
         void setClientArea(int clientWidth_, int clientHeight_);
 	GLOptions & gloptions();
-
+	GLfloat xOffset, yOffset;
+        static const GLfloat X_OFFSET_STEP;
+        static const GLfloat Y_OFFSET_STEP;
 
 public:
 	AboutGLDisplay(HDC hDC_, int clientWidth_, int clientHeight_);
