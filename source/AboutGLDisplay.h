@@ -110,7 +110,7 @@ public:
 	void trackMotion(DWORD time, int x, int y);
 	void setupPalette();
 	void setupPixelformat();
-
+        void setClientArea(int clientWidth_, int clientHeight_);
 	GLOptions & gloptions();
 
 

@@ -83,6 +83,12 @@ AboutGLDisplay::GLOptions & AboutGLDisplay::gloptions()
 	return m_glOptions;
 }
 
+void AboutGLDisplay::setClientArea(int clientWidth_, int clientHeight_)
+{
+    clientWidth = clientWidth_;
+    clientHeight = clientHeight_;
+}
+
 
 void AboutGLDisplay::CreateFontList(){
 

@@ -548,7 +548,15 @@ void TfrmAbout::init(void)
 
 void TfrmAbout::resize(void)
 {
-    setProjection();
+    if (m_aboutDisplay)
+    {
+       m_aboutDisplay->setClientArea(ClientWidth, ClientHeight);
+       m_aboutDisplay->setProjection();
+    }
+    else
+    {
+      setProjection();
+    }
     glViewport(0, 0, TheControl->ClientWidth, TheControl->ClientHeight);
 }
 
@@ -673,7 +681,6 @@ or GL_DONT_CARE to indicate no preference.
 }
 
 
-
 void TfrmAbout::redraw(void)
 {
   lastdraw = nowdraw;
@@ -683,8 +690,6 @@ void TfrmAbout::redraw(void)
   else
     doRedraw();
 }
-
-
 
 
 void TfrmAbout::ptov(int x, int y, int width, int height, float v[3])
@@ -895,8 +900,9 @@ void __fastcall TfrmAbout::WMQueryNewPalette(TMessage& /* Msg */)
 
 void __fastcall TfrmAbout::FormCreate(TObject *)
 {
+    hDC = GetDC(TheControl->Handle);
     m_aboutDisplay = NULL;
-//    m_aboutDisplay = (new AboutGLDisplay(hDC, TheControl->ClientWidth, TheControl->ClientHeight));
+    m_aboutDisplay = (new AboutGLDisplay(hDC, TheControl->ClientWidth, TheControl->ClientHeight));
 
     OutText = new TStringList();
     if (!m_aboutDisplay)
@@ -908,8 +914,6 @@ void __fastcall TfrmAbout::FormCreate(TObject *)
       OutText->Add("OpenGL");
       OutText->Add("about");
 
-      hDC = GetDC(TheControl->Handle);
-
 
       setupPixelformat(hDC);
       setupPalette(hDC);
@@ -917,6 +921,10 @@ void __fastcall TfrmAbout::FormCreate(TObject *)
       wglMakeCurrent(hDC, hGLRC);
       init();
       nowdraw = GetTickCount();
+    }
+    else
+    {
+        hDC = NULL;
     }
 
 }
@@ -942,6 +950,11 @@ void __fastcall TfrmAbout::FormMouseDown(TObject *, TMouseButton , TShiftState ,
 	    SetCapture(TheControl->Handle);
 	    startMotion(0, 1, X, Y);
         }
+        else
+        {
+	    SetCapture(TheControl->Handle);
+	    m_aboutDisplay->startMotion(0, 1, X, Y);
+        }
 //
 }
 
@@ -950,6 +963,10 @@ void __fastcall TfrmAbout::FormMouseMove(TObject *, TShiftState , int X, int Y)
 {
 	if (hGLRC) {
 	    trackMotion(0, X, Y);
+        }
+        else
+        {
+	    m_aboutDisplay->trackMotion(0, X, Y);
         }
 //
 }
@@ -961,6 +978,10 @@ void __fastcall TfrmAbout::FormMouseUp(TObject *, TMouseButton , TShiftState , i
 	    ReleaseCapture();
 	    stopMotion(0, 1, X, Y);
 	    }
+            else
+            {
+                m_aboutDisplay->stopMotion(0, 1, X, Y);
+            }
 //
 }
 
@@ -973,15 +994,14 @@ void __fastcall TfrmAbout::FormPaint(TObject *)
       redraw();
       EndPaint(TheControl->Handle, &ps);
   }
+  // already intercepted
 //
 }
 
 
 void __fastcall TfrmAbout::FormResize(TObject *)
 {
-  if (hGLRC) {
-      resize();
-  }
+  resize();
 //
 }
 
