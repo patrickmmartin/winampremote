@@ -49,13 +49,28 @@ AboutGLDisplay::AboutGLDisplay(HDC hDC_, int clientWidth_, int clientHeight_):
                                 mode(MoveNone)
 
 {
-   
+	outText.push_back("Winamp");
+	outText.push_back("Remote");
+	outText.push_back("Control");
+
+    hGLRC = wglCreateContext(hDC);
+    wglMakeCurrent(hDC, hGLRC);
+
 }
 
 AboutGLDisplay::~AboutGLDisplay()
 {
-	// TODO Auto-generated destructor stub
+	  if (hGLRC) {
+	      wglMakeCurrent(NULL, NULL);
+	      wglDeleteContext(hGLRC);
+	  }
 }
+
+AboutGLDisplay::GLOptions & AboutGLDisplay::gloptions()
+{
+	return m_glOptions;
+}
+
 
 void AboutGLDisplay::CreateFontList(){
 
@@ -735,7 +750,7 @@ void AboutGLDisplay::trackMotion(DWORD /* time */, int x, int y)
 
 
 
-void AboutGLDisplay::setupPalette(HDC hDC)
+void AboutGLDisplay::setupPalette()
 {
     PIXELFORMATDESCRIPTOR pfd;
     LOGPALETTE* pPal;
@@ -787,7 +802,7 @@ void AboutGLDisplay::setupPalette(HDC hDC)
     }
 }
 
-void AboutGLDisplay::setupPixelformat(HDC hDC)
+void AboutGLDisplay::setupPixelformat()
 {
     PIXELFORMATDESCRIPTOR pfd = {
 	sizeof(PIXELFORMATDESCRIPTOR),	// size of this pfd

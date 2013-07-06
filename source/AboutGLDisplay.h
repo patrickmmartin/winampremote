@@ -17,6 +17,7 @@
 class AboutGLDisplay
 {
 
+	public:
 	struct GLOptions
 	{
 
@@ -55,6 +56,7 @@ private:
 	std::vector<std::string> outText;
 
 	HDC hDC;
+	HGLRC hGLRC;
 	int clientWidth, clientHeight;
 
 	float angle, axis[3];
@@ -105,8 +107,11 @@ public:
 	void startMotion(DWORD time, int button, int x, int y);
 	void stopMotion(DWORD time, int button, int x, int y);
 	void trackMotion(DWORD time, int x, int y);
-	void setupPalette(HDC hDC);
-	void setupPixelformat(HDC hDC);
+	void setupPalette();
+	void setupPixelformat();
+
+	GLOptions & gloptions();
+
 
 public:
 	AboutGLDisplay(HDC hDC_, int clientWidth_, int clientHeight_);
