@@ -60,7 +60,7 @@ public:
 
 	virtual string getCurrentPlayListItem(int& index, bool title = true);
 
-	virtual vector<string>* getPlayList(bool title = true);
+	virtual vector<string> getPlayList(bool title = true);
 
 	virtual void setPlayList(vector<string>& playlist);
 

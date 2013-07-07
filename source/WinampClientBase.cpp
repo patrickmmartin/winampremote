@@ -102,9 +102,9 @@ string WinampClientBase::getCurrentPlayListItem(int& index, bool title)
 }
 
 
-vector<string>* WinampClientBase::getPlayList(bool title)
+vector<string> WinampClientBase::getPlayList(bool title)
 {
-    vector<string> * result = new vector<string>();
+    vector<string> result;
 
     std::string playlist;
     if (title)
@@ -118,7 +118,7 @@ vector<string>* WinampClientBase::getPlayList(bool title)
 
     while ( std::getline( input, line ) )
     {
-        result->push_back(line);
+        result.push_back(line);
     }
 
     return result;
@@ -144,15 +144,15 @@ void WinampClientBase::setPlayList(vector<string>& playlist)
 
 void WinampClientBase::insertPlayList(vector<string>& playlist, int position)
 {
-	std::auto_ptr <vector<string> > newPlaylist (getPlayList(false) );
+	vector<string> newPlaylist = getPlayList(false);
 
 	vector<string>::iterator it;
 
-	it = newPlaylist->begin();
+	it = newPlaylist.begin();
 
-	newPlaylist->insert (it + position , playlist.begin(),playlist.end());
+	newPlaylist.insert (it + position , playlist.begin(),playlist.end());
 
-	setPlayList(*newPlaylist);
+	setPlayList(newPlaylist);
 
 }
 

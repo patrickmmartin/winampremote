@@ -105,7 +105,7 @@ public:
 	 * returns the playlist
 	 * @return the playlist
 	 */
-	virtual vector<string>* getPlayList(bool title = true) = 0;
+	virtual vector<string> getPlayList(bool title = true) = 0;
 
 	/**
 	 * sets the playlist on the server

@@ -93,12 +93,12 @@ char * port;
 
         case 'l':
 			{
-				std::auto_ptr <vector<string> > playList (cwc->getPlayList() );
+				vector<string> playList (cwc->getPlayList() );
 
 				stringstream sstr;
-				for (int i = 0  ; i <  playList->size() ; i++ )
+				for (int i = 0  ; i <  playList.size() ; i++ )
 				{
-					cout << playList->at(i) << endl;
+					cout << playList.at(i) << endl;
 				}
 			}
           break;

@@ -156,8 +156,8 @@ TEST_CASE("Client/PlaylistSize", "test getPlaylistLength")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	std::auto_ptr <vector<string> > playList (client.getPlayList() );
-	CHECK( playList->size() ==  (unsigned int) client.getPlaylistLength() );
+	vector<string>  playList ( client.getPlayList() );
+	CHECK( playList.size() ==  (unsigned int) client.getPlaylistLength() );
 
 }
 
@@ -269,14 +269,14 @@ TEST_CASE("Client/SetPlaylist", "test setPlaylist")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList(false) );
+	vector<string> originalPlayList (client.getPlayList(false) );
 
-	WinampRemote::Utils::StringVectorPrinter original(*originalPlayList);
+	WinampRemote::Utils::StringVectorPrinter original(originalPlayList);
 	CAPTURE(original);
 
-	client.setPlayList(*originalPlayList);
+	client.setPlayList(originalPlayList);
 
-	WinampRemote::Utils::StringVectorPrinter current(*originalPlayList);
+	WinampRemote::Utils::StringVectorPrinter current(originalPlayList);
 	CAPTURE(current);
 
 	CHECK(original.sstr.str() == current.sstr.str());
@@ -290,23 +290,23 @@ TEST_CASE("Client/DeletePlaylist", "test deletePlaylist")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList(false) );
+	vector<string> originalPlayList ( client.getPlayList() );
 
 
-	CAPTURE(WinampRemote::Utils::StringVectorPrinter(*originalPlayList));
+	CAPTURE(WinampRemote::Utils::StringVectorPrinter(originalPlayList));
 
-	CHECK( originalPlayList->size() ==  (unsigned int) client.getPlaylistLength() );
+	CHECK( originalPlayList.size() ==  (unsigned int) client.getPlaylistLength() );
 	client.deletePlaylist();
 
 	CHECK( 0 == client.getPlaylistLength() );
 
-	client.setPlayList(*originalPlayList);
+	client.setPlayList(originalPlayList);
 
-	std::auto_ptr <vector<string> > playList (client.getPlayList(false) );
+	vector<string> playList ( client.getPlayList() );
 
-	CAPTURE(WinampRemote::Utils::StringVectorPrinter(*playList));
+//	CAPTURE(WinampRemote::Utils::StringVectorPrinter((playList));
 
-	CHECK( originalPlayList->size() ==  playList->size() );
+	CHECK( originalPlayList.size() ==  playList.size() );
 }
 
 /**
@@ -317,24 +317,24 @@ TEST_CASE("Client/InsertPlaylist", "test insertPlaylist")
 	WinampRemote::UnitTest::TestContext tc;
 	WinampRemote::Client::WinampClientBase client;
 
-	std::auto_ptr <vector<string> > originalPlayList (client.getPlayList(false) );
+	vector<string> originalPlayList ( client.getPlayList(false) );
 
-	WinampRemote::Utils::StringVectorPrinter original (*originalPlayList);
+	WinampRemote::Utils::StringVectorPrinter original (originalPlayList);
 	CAPTURE(original);
 
-	client.insertPlayList(*originalPlayList, 10);
+	client.insertPlayList(originalPlayList, 10);
 
-	std::auto_ptr <vector<string> > newPlayList (client.getPlayList(false) );
+	vector<string> newPlayList (client.getPlayList(false) );
 
-	WinampRemote::Utils::StringVectorPrinter current (*newPlayList);
+	WinampRemote::Utils::StringVectorPrinter current (newPlayList);
 	CAPTURE(current);
 
 	unsigned int newListLength = client.getPlaylistLength();
-	client.setPlayList(*originalPlayList);
+	client.setPlayList(originalPlayList);
 
-	CHECK( (newPlayList->size()) == newListLength );
+	CHECK( (newPlayList.size()) == newListLength );
 
-	CHECK( (2 * originalPlayList->size()) == newListLength );
+	CHECK( (2 * originalPlayList.size()) == newListLength );
 
 
 }
