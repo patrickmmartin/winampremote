@@ -125,7 +125,7 @@ vector<string> WinampClientBase::getPlayList(bool title)
 
 }
 
-void WinampClientBase::setPlayList(vector<string>& playlist)
+void WinampClientBase::setPlayList(const vector<string>& playlist)
 {
 
 	stringstream sstr;

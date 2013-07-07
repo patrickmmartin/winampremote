@@ -111,7 +111,7 @@ public:
 	 * sets the playlist on the server
 	 * @param playlist
 	 */
-	virtual void setPlayList(vector<string>& playlist) = 0;
+	virtual void setPlayList(const vector<string>& playlist) = 0;
 
 
 	/**

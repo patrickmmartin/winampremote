@@ -62,7 +62,7 @@ public:
 
 	virtual vector<string> getPlayList(bool title = true);
 
-	virtual void setPlayList(vector<string>& playlist);
+	virtual void setPlayList(const vector<string>& playlist);
 
 	virtual void insertPlayList(vector<string>& playlist, int position);
 
