@@ -242,7 +242,7 @@ void AboutGLDisplay::drawText(void)
 	textIndex = ((GetTickCount() - startup) / 2000) % (outText.size());
 
 	std::string text = outText[textIndex];
-	for (i = 0; i < strlen(text.c_str()); i++)
+	for (i = 0; i < text.size(); i++)
 	{
 		// index into the glyph metrics to get the position info
 		index = (int) outText[textIndex].c_str()[i];
@@ -253,7 +253,7 @@ void AboutGLDisplay::drawText(void)
 
 	glTranslatef(-xoffset / 2, -yoffset / 2, m_glOptions.textExtrusion / 2);
 	glListBase(GLF_START_LIST);
-	glCallLists(strlen(text.c_str()), GL_UNSIGNED_BYTE, text.c_str());
+	glCallLists( static_cast<int> ( text.size() ), GL_UNSIGNED_BYTE, reinterpret_cast<const void *> (text.c_str()) );
 	glListBase(0);
 	glTranslatef(xoffset / 2, yoffset / 2, -m_glOptions.textExtrusion / 2);
 
