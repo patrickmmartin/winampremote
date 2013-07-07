@@ -107,8 +107,9 @@ $(document).ready(function(){initNavTree('_network_suite_8cpp.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="catch_8hpp_source.html">catch.hpp</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="_network_test_8h_source.html">NetworkTest.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_i_p_address_resolver_8h_source.html">IPAddressResolver.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_server_tester_8h_source.html">ServerTester.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_server_enumerator_8h_source.html">ServerEnumerator.h</a>&quot;</code><br/>
 </div>
 <p><a href="_network_suite_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -116,7 +117,6 @@ $(document).ready(function(){initNavTree('_network_suite_8cpp.html','');});
 Functions</h2></td></tr>
 <tr class="memitem:a09e1f9a3dbd836ad25ad1f4b62616423"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_network_suite_8cpp.html#a09e1f9a3dbd836ad25ad1f4b62616423">TEST_CASE</a> (&quot;Network/Net/Enumeration&quot;,&quot;local Network enumeration&quot;)</td></tr>
 <tr class="memitem:a6ad5d71e3b8cb580bac53fa0d1cb7ac1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_network_suite_8cpp.html#a6ad5d71e3b8cb580bac53fa0d1cb7ac1">TEST_CASE</a> (&quot;Network/RPC/Local&quot;,&quot;test interface&quot;)</td></tr>
-<tr class="memitem:a4421a4f576a98ca3e9655b16991f93f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_network_suite_8cpp.html#a4421a4f576a98ca3e9655b16991f93f7">TEST_CASE</a> (&quot;Network/Net/Abort&quot;,&quot;test abort&quot;)</td></tr>
 <tr class="memitem:ab55d8b3500094a9c2ac83c9df89abf0e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_network_suite_8cpp.html#ab55d8b3500094a9c2ac83c9df89abf0e">TEST_CASE</a> (&quot;Network/RPC/Invalid&quot;,&quot;test communication with invalid server&quot;)</td></tr>
 <tr class="memitem:ada9644ae10378e28e80aeee62ae0eb96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_network_suite_8cpp.html#ada9644ae10378e28e80aeee62ae0eb96">TEST_CASE</a> (&quot;Network/IP/Localhost&quot;,&quot;tests the IP resolution for localhost&quot;)</td></tr>
 <tr class="memitem:a0bc4a42487a1b40e0252e8e129d719c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_network_suite_8cpp.html#a0bc4a42487a1b40e0252e8e129d719c6">TEST_CASE</a> (&quot;Network/IP/Invalid&quot;,&quot;tests the IP resolution for localhost&quot;)</td></tr>
@@ -147,7 +147,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>tests network enumeration </p>
 
-<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00017">17</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00016">16</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
 
 </div>
 </div>
@@ -176,36 +176,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>tests the network interface on the running local server </p>
 
-<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00027">27</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a4421a4f576a98ca3e9655b16991f93f7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TEST_CASE </td>
-          <td>(</td>
-          <td class="paramtype">&quot;Network/Net/Abort&quot;&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&quot;test abort&quot;&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>tests that aborting network enumeration works </p>
-
-<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00048">48</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00025">25</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
 
 </div>
 </div>
@@ -234,7 +205,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>tests attempting to connect with an invalid server is handled appropriately </p>
 
-<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00058">58</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00036">36</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
 
 </div>
 </div>
@@ -263,7 +234,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>tests IP resolution class </p>
 
-<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00069">69</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00048">48</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
 
 </div>
 </div>
@@ -291,7 +262,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00092">92</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_network_suite_8cpp_source.html#l00071">71</a> of file <a class="el" href="_network_suite_8cpp_source.html">NetworkSuite.cpp</a>.</p>
 
 </div>
 </div>

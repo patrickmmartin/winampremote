@@ -44,5 +44,6 @@ var _client_suite_8cpp =
     [ "TEST_CASE", "_client_suite_8cpp.html#a1a2056f48b22524b1b301932611998bc", null ],
     [ "TEST_CASE", "_client_suite_8cpp.html#afb4d206347a232a2b87596459de95172", null ],
     [ "TEST_CASE", "_client_suite_8cpp.html#a751bbe802aefeef6c473db4703e7dff8", null ],
-    [ "TEST_CASE_NORETURN", "_client_suite_8cpp.html#acded0bee0575c2250fd30aee9cf1c53c", null ]
+    [ "TEST_CASE", "_client_suite_8cpp.html#a385a356d8ca38c41e2cf2109fecec32d", null ],
+    [ "TEST_CASE_NORETURN", "_client_suite_8cpp.html#a2032715e365d812842d0c277376fbac9", null ]
 ];

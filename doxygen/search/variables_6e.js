@@ -13,6 +13,5 @@ var searchData=
   ['next',['Next',['../class_tfrm_main.html#a74ec75145b976cb2cc7e25b98f7eb1c3',1,'TfrmMain']]],
   ['next1',['Next1',['../class_tfrm_main.html#ad34b347b3455fb2f7d7a44e27771771a',1,'TfrmMain']]],
   ['nextfade',['NextFade',['../class_tfrm_main.html#a99e073be2b9774987d0e3e69bbb51342',1,'TfrmMain']]],
-  ['nextwithfade2',['NextwithFade2',['../class_tfrm_main.html#afaa7a3457aa4f51e805ba0c0599d34f2',1,'TfrmMain']]],
-  ['nowdraw',['nowdraw',['../_about_f_8cpp.html#a59d4f7af04e811db95e3c6e6175edc04',1,'AboutF.cpp']]]
+  ['nextwithfade2',['NextwithFade2',['../class_tfrm_main.html#afaa7a3457aa4f51e805ba0c0599d34f2',1,'TfrmMain']]]
 ];

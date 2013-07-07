@@ -4,7 +4,7 @@ var _r_p_c_funcs_u_8cpp =
     [ "ClientFree", "_r_p_c_funcs_u_8cpp.html#a7c6d119d7bffab93f86f99b7788021d4", null ],
     [ "ExecuteMessage", "_r_p_c_funcs_u_8cpp.html#aa222d65d3f4e39138221f341dd188b1a", null ],
     [ "ExecuteStringMessage", "_r_p_c_funcs_u_8cpp.html#a39ffc410f0647a8f79b79d3bbb9f9a0e", null ],
-    [ "GetStringDataList", "_r_p_c_funcs_u_8cpp.html#affdc29a845f6f538e77ee8a285452b54", null ],
+    [ "GetStringDataList", "_r_p_c_funcs_u_8cpp.html#a8da1b761a8fcd5e63bca67dd98cd16ae", null ],
     [ "GetStringList", "_r_p_c_funcs_u_8cpp.html#a3887bb10fc709e8795e23cf70e2f11e7", null ],
     [ "IntegerResult", "_r_p_c_funcs_u_8cpp.html#aa55acb0da0873f5bb599242543f6e46c", null ],
     [ "MIDL_user_allocate", "_r_p_c_funcs_u_8cpp.html#afcd316cf6637378290fd826613d34ac9", null ],

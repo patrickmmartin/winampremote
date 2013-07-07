@@ -16,9 +16,9 @@ var searchData=
   ['tbtnprevious',['tbtnPrevious',['../class_tfrm_commands.html#ae8ab4187ca5ea0a7eb9398ffc992b4cb',1,'TfrmCommands']]],
   ['tbtnstop',['tbtnStop',['../class_tfrm_commands.html#a600ba697ec34f05fd9c621e60af6a314',1,'TfrmCommands']]],
   ['tbvolume',['tbVolume',['../class_tfrm_settings.html#a11341f5e3dcb626bcdfe2192ec18952e',1,'TfrmSettings']]],
-  ['textextrusion',['textExtrusion',['../_about_f_8cpp.html#a1f16cc5ada8e94ec4377a69dec7f2b90',1,'AboutF.cpp']]],
-  ['textureenabled',['textureEnabled',['../_about_f_8cpp.html#a238d721f282d4ab3ede66d685ce496ea',1,'AboutF.cpp']]],
-  ['texturereplace',['textureReplace',['../_about_f_8cpp.html#a936f1d1a09731ce8b0734cb0e4659367',1,'AboutF.cpp']]],
+  ['textextrusion',['textExtrusion',['../struct_about_g_l_display_1_1_g_l_options.html#a9591d7708a343bb86c366f5ea26f78bc',1,'AboutGLDisplay::GLOptions::textExtrusion()'],['../_about_f_8cpp.html#a1f16cc5ada8e94ec4377a69dec7f2b90',1,'textExtrusion():&#160;AboutF.cpp']]],
+  ['textureenabled',['textureEnabled',['../struct_about_g_l_display_1_1_g_l_options.html#a551c904f95f8888f331238c6ce1e6b67',1,'AboutGLDisplay::GLOptions']]],
+  ['texturereplace',['textureReplace',['../struct_about_g_l_display_1_1_g_l_options.html#ab9ce5140c4599410c1948f2d913b878d',1,'AboutGLDisplay::GLOptions']]],
   ['thecontrol',['TheControl',['../class_tfrm_about.html#a1599049f233ea4b05b10addade8cce55',1,'TfrmAbout']]],
   ['timermain',['timerMain',['../class_tfrm_main.html#afeb38750654efc5cbea095b345ceeb22',1,'TfrmMain::timerMain()'],['../class_tfrm_plugin_main.html#a39e6114020b21d3addfc99fa3524c7d7',1,'TfrmPluginMain::timerMain()']]],
   ['title',['title',['../struct_winamp_remote_1_1_server_1_1_playlist_item.html#a9a1ba7f797ddec0a444703815cc2b183',1,'WinampRemote::Server::PlaylistItem']]],
@@ -36,7 +36,6 @@ var searchData=
   ['trackbar7',['TrackBar7',['../class_tfrm_settings.html#a020567e400c6e708cd3941a20459b088',1,'TfrmSettings']]],
   ['trackbar8',['TrackBar8',['../class_tfrm_settings.html#a342292da6946deec3dd40a4931adf524',1,'TfrmSettings']]],
   ['trackbar9',['TrackBar9',['../class_tfrm_settings.html#adf0ac2ade4aed88ddb22431309653975',1,'TfrmSettings']]],
-  ['trackingmotion',['trackingMotion',['../_about_f_8cpp.html#a04a77d0bf31afd8d0a567e34e961b9f9',1,'AboutF.cpp']]],
   ['trademarks',['TradeMarks',['../class_t_module_version_info.html#afc8005864e383e92b8b6367641202d61',1,'TModuleVersionInfo']]],
   ['tray_5fnotify',['TRAY_NOTIFY',['../_main_f_8h.html#a0d85fddb7a616346409f37c91be88617',1,'MainF.h']]]
 ];

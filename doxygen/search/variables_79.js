@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['yoffset',['yOffset',['../_about_f_8cpp.html#a32784c63b1ca7de03a51f03744b9d0bc',1,'AboutF.cpp']]]
+  ['y_5foffset_5fstep',['Y_OFFSET_STEP',['../class_about_g_l_display.html#a609a83a2d94b15c14c3e31a92cb7326a',1,'AboutGLDisplay']]],
+  ['yoffset',['yOffset',['../class_about_g_l_display.html#a55fbe8d1164ab9a9393297f78fad55d8',1,'AboutGLDisplay']]]
 ];

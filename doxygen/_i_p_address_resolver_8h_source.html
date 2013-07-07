@@ -125,16 +125,16 @@ $(document).ready(function(){initNavTree('_i_p_address_resolver_8h.html','');});
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html">IPAddressResolver</a></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        vector&lt;std::string&gt; m_addresses;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        vector&lt;std::string&gt; m_aliases;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        std::vector&lt;std::string&gt; m_addresses;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        std::vector&lt;std::string&gt; m_aliases;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        std::string m_hostname;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        std::string m_resolved;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#a71b4ce71296560e00255e0ab44ff75c6">IPAddressResolver</a>(std::string&amp; <span class="keyword">const</span> <a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#ae823c5f517c014d2161f9093821f62c5">hostname</a>);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#accd6e2c94e2cba2c7d084acb4946d1f6">~IPAddressResolver</a>();</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        vector&lt;std::string&gt; &amp; <a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#a285ed1988f296594a77892dd0639f755">getAddresses</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        vector&lt;std::string&gt; &amp; <a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#a7bd85b19a5ae64f6656d42d35f3f396f">getAliases</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        std::vector&lt;std::string&gt; &amp; <a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#a4aea7994ba409b11a862ba4a9d599cc5">getAddresses</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        std::vector&lt;std::string&gt; &amp; <a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#a3970bbc00fb9ae7ccb07ae963b5b595b">getAliases</a>();</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        std::string <span class="keyword">const</span> &amp; <a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#ae823c5f517c014d2161f9093821f62c5">hostname</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        std::string <span class="keyword">const</span> &amp; <a class="code" href="class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#a152cd64d7ffc63a6ca71a6d785af11eb">resolvedName</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>

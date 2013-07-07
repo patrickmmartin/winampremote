@@ -7,5 +7,6 @@ var searchData=
   ['computername',['computername',['../class_winamp_remote_1_1_context_1_1_context_info.html#a2f7bb4b618427abf77b34679baedbb81',1,'WinampRemote::Context::ContextInfo']]],
   ['config',['config',['../gen__plugin_8cpp.html#a0b8421d3e46951bb96714f1377ed7bd0',1,'config():&#160;gen_plugin.cpp'],['../gen__plugin_8h.html#a12d660f4c7080af4f14996e3d1751d8d',1,'config(void):&#160;gen_plugin.cpp']]],
   ['contextinfo',['ContextInfo',['../class_winamp_remote_1_1_context_1_1_context_info.html#a0509a04da481f0d4d9f6bb468a6aeb08',1,'WinampRemote::Context::ContextInfo']]],
-  ['createthread',['CreateThread',['../class_tfrm_plugin_main.html#a8e27c020bb10cf65a0bc55d80b2a7531',1,'TfrmPluginMain']]]
+  ['createthread',['CreateThread',['../class_tfrm_plugin_main.html#a8e27c020bb10cf65a0bc55d80b2a7531',1,'TfrmPluginMain']]],
+  ['cursorguard',['CursorGuard',['../class_winamp_remote_1_1_utils_1_1_cursor_guard.html#aa61b89983979e05a977c85b254fcb7ca',1,'WinampRemote::Utils::CursorGuard']]]
 ];

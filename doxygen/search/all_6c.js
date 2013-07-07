@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['lastdraw',['lastdraw',['../_about_f_8cpp.html#ad8cef288367083c28be13548ae63e6d3',1,'AboutF.cpp']]],
   ['lastindex',['LastIndex',['../class_tfrm_main.html#a82ea13bec4f7dbf3069288a17db231c6',1,'TfrmMain']]],
   ['lastlength',['LastLength',['../class_tfrm_main.html#a8c2f0d6591313d71750bc457be51e2fa',1,'TfrmMain']]],
-  ['lastpos',['lastPos',['../_about_f_8cpp.html#a324ef80871ad9ae3c063365b8b5fcda7',1,'AboutF.cpp']]],
-  ['lasttime',['lastTime',['../_about_f_8cpp.html#a07c1166542a7b1ee01ff58d203284dec',1,'AboutF.cpp']]],
   ['lbcp_5fitem',['LBCP_ITEM',['../_glass_extender_8cpp.html#a080e88f7d2dc160ebff2887ed00a9e21',1,'GlassExtender.cpp']]],
   ['lblbal',['lblBal',['../class_tfrm_settings.html#af115abed6642af91a2ea406a4e3a2ae3',1,'TfrmSettings']]],
   ['lblendpoint',['lblEndPoint',['../class_t_config_form.html#a77db9736b2cfdbbe19bcc6fa0727ecdf',1,'TConfigForm::lblEndPoint()'],['../class_tfrm_servers.html#a531e0207da09c0695bb85848f9e2dc28',1,'TfrmServers::lblEndPoint()']]],

@@ -2,6 +2,11 @@ var files =
 [
     [ "AboutF.cpp", "_about_f_8cpp.html", "_about_f_8cpp" ],
     [ "AboutF.h", "_about_f_8h.html", "_about_f_8h" ],
+    [ "AboutGLDisplay.cpp", "_about_g_l_display_8cpp.html", "_about_g_l_display_8cpp" ],
+    [ "AboutGLDisplay.h", "_about_g_l_display_8h.html", [
+      [ "AboutGLDisplay", "class_about_g_l_display.html", "class_about_g_l_display" ],
+      [ "GLOptions", "struct_about_g_l_display_1_1_g_l_options.html", "struct_about_g_l_display_1_1_g_l_options" ]
+    ] ],
     [ "catch.hpp", "catch_8hpp.html", "catch_8hpp" ],
     [ "ClientBinder.cpp", "_client_binder_8cpp.html", null ],
     [ "ClientBinder.h", "_client_binder_8h.html", [
@@ -25,6 +30,10 @@ var files =
     [ "ContextInfo.h", "_context_info_8h.html", [
       [ "ContextInfo", "class_winamp_remote_1_1_context_1_1_context_info.html", "class_winamp_remote_1_1_context_1_1_context_info" ]
     ] ],
+    [ "CursorGuard.cpp", "_cursor_guard_8cpp.html", null ],
+    [ "CursorGuard.h", "_cursor_guard_8h.html", [
+      [ "CursorGuard", "class_winamp_remote_1_1_utils_1_1_cursor_guard.html", "class_winamp_remote_1_1_utils_1_1_cursor_guard" ]
+    ] ],
     [ "DefaultCallObserver.h", "_default_call_observer_8h.html", [
       [ "DefaultCallObserver", "class_default_call_observer.html", "class_default_call_observer" ]
     ] ],
@@ -44,8 +53,6 @@ var files =
     [ "IPAddressResolver.h", "_i_p_address_resolver_8h.html", [
       [ "IPAddressResolver", "class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html", "class_winamp_remote_1_1_net_1_1_i_p_address_resolver" ]
     ] ],
-    [ "IPAddressU.cpp", "_i_p_address_u_8cpp.html", "_i_p_address_u_8cpp" ],
-    [ "IPAddressU.h", "_i_p_address_u_8h.html", "_i_p_address_u_8h" ],
     [ "IWinamp.h", "_i_winamp_8h.html", [
       [ "IWinamp", "class_winamp_remote_1_1_client_1_1_i_winamp.html", "class_winamp_remote_1_1_client_1_1_i_winamp" ],
       [ "IWinampServer", "class_winamp_remote_1_1_server_1_1_i_winamp_server.html", "class_winamp_remote_1_1_server_1_1_i_winamp_server" ]
@@ -55,10 +62,6 @@ var files =
     [ "messageF.cpp", "message_f_8cpp.html", "message_f_8cpp" ],
     [ "messageF.h", "message_f_8h.html", "message_f_8h" ],
     [ "NetworkSuite.cpp", "_network_suite_8cpp.html", "_network_suite_8cpp" ],
-    [ "NetworkTest.cpp", "_network_test_8cpp.html", null ],
-    [ "NetworkTest.h", "_network_test_8h.html", [
-      [ "NetworkTest", "class_network_test.html", "class_network_test" ]
-    ] ],
     [ "PlaylistF.cpp", "_playlist_f_8cpp.html", "_playlist_f_8cpp" ],
     [ "PlaylistF.h", "_playlist_f_8h.html", "_playlist_f_8h" ],
     [ "remote.cpp", "remote_8cpp.html", "remote_8cpp" ],

@@ -52,6 +52,5 @@ var searchData=
   ['mnuvolumedownmore',['mnuVolumeDownMore',['../class_tfrm_main.html#af1fab9816e9faa3cf821153cc2de5c8e',1,'TfrmMain']]],
   ['mnuvolumeup',['mnuVolumeUp',['../class_tfrm_main.html#a2018e66043548fe18181a99436821ed9',1,'TfrmMain']]],
   ['mnuvolumeupmore',['mnuVolumeUpMore',['../class_tfrm_main.html#a0163bafe7a4613037568967f62ab77ba',1,'TfrmMain']]],
-  ['mode',['mode',['../_about_f_8cpp.html#a588397103913865713e7de84a493760c',1,'AboutF.cpp']]],
   ['morestops1',['MoreStops1',['../class_tfrm_main.html#aa97984becd7968d71baf57e82ce001e2',1,'TfrmMain']]]
 ];

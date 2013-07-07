@@ -1,8 +1,10 @@
 var searchData=
 [
+  ['_7eaboutgldisplay',['~AboutGLDisplay',['../class_about_g_l_display.html#a783706ac0aaf4d7ae7a01549c6d8abcd',1,'AboutGLDisplay']]],
   ['_7eclientbinder',['~ClientBinder',['../class_winamp_remote_1_1_client_1_1_client_binder.html#ad4987696a817b3a1fa7f6dbae45c2933',1,'WinampRemote::Client::ClientBinder']]],
   ['_7econsolecallobserver',['~ConsoleCallObserver',['../class_winamp_remote_1_1_remoting_1_1_console_call_observer.html#aa4576fff6c6cbe857ad6fc686e492854',1,'WinampRemote::Remoting::ConsoleCallObserver']]],
   ['_7econtextinfo',['~ContextInfo',['../class_winamp_remote_1_1_context_1_1_context_info.html#a543af0e2687020d524789d3836468ca1',1,'WinampRemote::Context::ContextInfo']]],
+  ['_7ecursorguard',['~CursorGuard',['../class_winamp_remote_1_1_utils_1_1_cursor_guard.html#a3ef993fb7703f8468d297ffd3d5b1d60',1,'WinampRemote::Utils::CursorGuard']]],
   ['_7edefaultcallobserver',['~DefaultCallObserver',['../class_default_call_observer.html#a8872a44587c0b21d2e894edc8d8bbf52',1,'DefaultCallObserver']]],
   ['_7eerpcexception',['~ERPCException',['../class_e_r_p_c_exception.html#aaad8f35ad4780f84ff8c82b9eaa462d9',1,'ERPCException']]],
   ['_7eglassextender',['~GlassExtender',['../class_glass_extender.html#a00669472359461a08878d21cdb95ed3e',1,'GlassExtender']]],
@@ -10,7 +12,6 @@ var searchData=
   ['_7eipaddressresolver',['~IPAddressResolver',['../class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#accd6e2c94e2cba2c7d084acb4946d1f6',1,'WinampRemote::Net::IPAddressResolver']]],
   ['_7eiwinamp',['~IWinamp',['../class_winamp_remote_1_1_client_1_1_i_winamp.html#ace1b25539352c34d59e29c3139f29d94',1,'WinampRemote::Client::IWinamp']]],
   ['_7eiwinampserver',['~IWinampServer',['../class_winamp_remote_1_1_server_1_1_i_winamp_server.html#a6fa968bcaa4d795953a81cb714130528',1,'WinampRemote::Server::IWinampServer']]],
-  ['_7enetworktest',['~NetworkTest',['../class_network_test.html#a6d06a985ccf6d0715b7a9f93cdba41d2',1,'NetworkTest']]],
   ['_7erpcexecutor',['~RPCExecutor',['../class_winamp_remote_1_1_server_1_1_r_p_c_executor.html#a5dafef95ee244a4ba52d5d60632dae9c',1,'WinampRemote::Server::RPCExecutor']]],
   ['_7eserverenumerator',['~ServerEnumerator',['../class_server_enumerator.html#a2bc1e2c30de1aceafe0a10942445eb5c',1,'ServerEnumerator']]],
   ['_7eservertester',['~ServerTester',['../class_server_tester.html#ac75cef731ad4e67f163e5886dab1b596',1,'ServerTester']]],

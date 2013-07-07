@@ -4,6 +4,9 @@ var searchData=
   ['aboutexecute',['AboutExecute',['../class_tfrm_main.html#ab92c9fdaa20ec4cf75c21ef6c839810b',1,'TfrmMain']]],
   ['aboutf_2ecpp',['AboutF.cpp',['../_about_f_8cpp.html',1,'']]],
   ['aboutf_2eh',['AboutF.h',['../_about_f_8h.html',1,'']]],
+  ['aboutgldisplay',['AboutGLDisplay',['../class_about_g_l_display.html',1,'AboutGLDisplay'],['../class_about_g_l_display.html#ad457a206a63307e48094b7ead0bedaec',1,'AboutGLDisplay::AboutGLDisplay()']]],
+  ['aboutgldisplay_2ecpp',['AboutGLDisplay.cpp',['../_about_g_l_display_8cpp.html',1,'']]],
+  ['aboutgldisplay_2eh',['AboutGLDisplay.h',['../_about_g_l_display_8h.html',1,'']]],
   ['actions1',['Actions1',['../class_tfrm_main.html#aea1336db2caba3476a09d2ee830eaa98',1,'TfrmMain']]],
   ['actions2',['Actions2',['../class_tfrm_main.html#a400d5f5c9286b44936cd514eedddc4ab',1,'TfrmMain']]],
   ['adddirectory',['AddDirectory',['../class_tfrm_main.html#aa8879f56288e2454dd553bc1a20028a1',1,'TfrmMain']]],
@@ -18,9 +21,7 @@ var searchData=
   ['administer1',['Administer1',['../class_tfrm_main.html#a6ce2262a62b1a79902c4b2503849f854',1,'TfrmMain']]],
   ['aftercurrent',['AfterCurrent',['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a93786a64fe495eaaf1fcb55c5e2b0f33a051f373b3ece2a3b5bf65aabd6b7a9ed',1,'WinampRemote::Server::WinampTestServer']]],
   ['almain',['alMain',['../class_tfrm_main.html#a1aadcfed3ff07b0b4476b0e08e91565f',1,'TfrmMain']]],
-  ['angle',['angle',['../_about_f_8cpp.html#ab8ef1bf8a70cc07c6d55823c390a7e76',1,'AboutF.cpp']]],
   ['anon_5ftest_5fcase',['ANON_TEST_CASE',['../catch_8hpp.html#ab41cb63be394c30d48fa579bf8352f18',1,'catch.hpp']]],
   ['autoload',['Autoload',['../class_tfrm_main.html#a3e324ce1a5ca5bc42e7252b523b90304',1,'TfrmMain']]],
-  ['autoloadexecute',['AutoloadExecute',['../class_tfrm_main.html#a4617bd17db8c9162a20de309b9716422',1,'TfrmMain']]],
-  ['axis',['axis',['../_about_f_8cpp.html#a2d92a1813eaba82e5fb2cbd1aaee96fc',1,'AboutF.cpp']]]
+  ['autoloadexecute',['AutoloadExecute',['../class_tfrm_main.html#a4617bd17db8c9162a20de309b9716422',1,'TfrmMain']]]
 ];

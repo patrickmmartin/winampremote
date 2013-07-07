@@ -16,5 +16,5 @@ var searchData=
   ['checked_5felse',['CHECKED_ELSE',['../catch_8hpp.html#adabf2ab3d775d62ecc87ac74c235d303',1,'catch.hpp']]],
   ['checked_5fif',['CHECKED_IF',['../catch_8hpp.html#acf5256555bbf08fa5105f50242111dbb',1,'catch.hpp']]],
   ['cs_5factive',['CS_ACTIVE',['../_glass_extender_8cpp.html#a6a5014d22500c1cd171b2869157e0f7b',1,'GlassExtender.cpp']]],
-  ['cube',['CUBE',['../_about_f_8cpp.html#a7ad9025325305d34028560362c0ab212',1,'AboutF.cpp']]]
+  ['cube',['CUBE',['../_about_f_8cpp.html#a7ad9025325305d34028560362c0ab212',1,'CUBE():&#160;AboutF.cpp'],['../_about_g_l_display_8cpp.html#a7ad9025325305d34028560362c0ab212',1,'CUBE():&#160;AboutGLDisplay.cpp']]]
 ];

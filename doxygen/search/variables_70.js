@@ -7,7 +7,7 @@ var searchData=
   ['pblistpos',['pbListPos',['../class_tfrm_playlist.html#aea725de4642ff7a2b7113bb532b4c33a',1,'TfrmPlaylist']]],
   ['pbservers',['pbServers',['../class_tfrm_servers.html#aaf6d8ae3b839439a12d5105a31582fa0',1,'TfrmServers']]],
   ['pbsongpos',['pbSongPos',['../class_tfrm_playlist.html#a72f51a11d1b3bc7b51994970c7cbc5f3',1,'TfrmPlaylist']]],
-  ['perspectiveproj',['perspectiveProj',['../_about_f_8cpp.html#a87483356c0151b0cb4ffbbbe6cbb91b5',1,'AboutF.cpp']]],
+  ['perspectiveproj',['perspectiveProj',['../struct_about_g_l_display_1_1_g_l_options.html#a5c8738f4bd7becaee6b44d0b12a1a79c',1,'AboutGLDisplay::GLOptions']]],
   ['pgcsettings',['pgcSettings',['../class_tfrm_settings.html#afea4c96cd6ec01bcd6d154986f4af7ee',1,'TfrmSettings']]],
   ['pgmain',['pgMain',['../class_tfrm_plugin_main.html#a09185d14c39d32bb77fdf0bde248daec',1,'TfrmPluginMain']]],
   ['pgsettings',['pgSettings',['../class_tfrm_main.html#a17c04f000b02c1c050fa3b92064eaa07',1,'TfrmMain']]],

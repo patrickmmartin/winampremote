@@ -3,6 +3,7 @@ var searchData=
   ['rainbowcolour',['rainbowColour',['../_colour_u_8cpp.html#a59e662c0ba3d50b77d2378d1a14528aa',1,'rainbowColour(int value):&#160;ColourU.cpp'],['../_colour_u_8h.html#a59e662c0ba3d50b77d2378d1a14528aa',1,'rainbowColour(int value):&#160;ColourU.cpp']]],
   ['rbplaylistchange',['rbPlaylistChange',['../class_tfrm_main.html#ade531356571f32e250b9c5a703f81a84',1,'TfrmMain']]],
   ['rbsongchange',['rbSongChange',['../class_tfrm_main.html#ab31f3255366f0bf1214e41f27f141019',1,'TfrmMain']]],
+  ['redraw',['redraw',['../class_about_g_l_display.html#a44890dbe9e2cb23bc9805596455d6819',1,'AboutGLDisplay']]],
   ['register_5freporter',['REGISTER_REPORTER',['../catch_8hpp.html#acadc9d11edc5137e12476268d11cbb23',1,'catch.hpp']]],
   ['remote_2ecpp',['remote.cpp',['../remote_8cpp.html',1,'']]],
   ['remotestrs_2ecpp',['remotestrs.cpp',['../remotestrs_8cpp.html',1,'']]],

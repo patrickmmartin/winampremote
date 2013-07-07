@@ -16,5 +16,7 @@ var searchData=
   ['consolecallobserver_2ecpp',['ConsoleCallObserver.cpp',['../_console_call_observer_8cpp.html',1,'']]],
   ['consolecallobserver_2eh',['ConsoleCallObserver.h',['../_console_call_observer_8h.html',1,'']]],
   ['contextinfo_2ecpp',['ContextInfo.cpp',['../_context_info_8cpp.html',1,'']]],
-  ['contextinfo_2eh',['ContextInfo.h',['../_context_info_8h.html',1,'']]]
+  ['contextinfo_2eh',['ContextInfo.h',['../_context_info_8h.html',1,'']]],
+  ['cursorguard_2ecpp',['CursorGuard.cpp',['../_cursor_guard_8cpp.html',1,'']]],
+  ['cursorguard_2eh',['CursorGuard.h',['../_cursor_guard_8h.html',1,'']]]
 ];

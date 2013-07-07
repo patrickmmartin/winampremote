@@ -1,7 +1,6 @@
 var searchData=
 [
   ['callobserver',['CallObserver',['../class_t_r_p_c_server_d_l_l_thread.html#adb09d4efbcd99c8dcc29ccffbe183239',1,'TRPCServerDLLThread']]],
-  ['charstext',['CharsText',['../_about_f_8cpp.html#a0a48eb726c7e3d7b54db6017b041d70b',1,'AboutF.cpp']]],
   ['chkautohide',['chkAutoHide',['../class_tfrm_main.html#a2d0a026c0c3694c6fcb3864670f1ba97',1,'TfrmMain']]],
   ['chkautorestore',['chkAutoRestore',['../class_tfrm_main.html#a6387204cd8b21eefb0faa32c4babc658',1,'TfrmMain']]],
   ['chkfadeold',['chkFadeOld',['../class_tfrm_main.html#a3847504ab5a103fce7d2fcdcca1fcf5c',1,'TfrmMain']]],

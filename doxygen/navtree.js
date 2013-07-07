@@ -42,13 +42,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"_r_p_c_funcs_u_8cpp.html",
-"class_t_module_version_info.html#ad42deb98c81c15d9da6f1f23bf1f5b95",
-"class_tfrm_main.html#ae0aedb7766aefec050af8d9d4887bbf4",
-"class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a9bb4a3b2c0bf7f680d10557119fb0214",
-"gen__plugin_8cpp.html#a05848de25ac2dbec233935058a1d24b4",
-"remotestrs_8h.html#aa85250f130ecc7b597fe1a5db021cb66",
-"winampinterface__s_8c.html#a48c61169ec0085c93469aef4926302e6",
+"_server_d_l_l_f_8cpp.html#a44fe67aed7eae409d5dc8a0b6478d8d7",
+"class_tfrm_commands.html#ae8ab4187ca5ea0a7eb9398ffc992b4cb",
+"class_tfrm_playlist.html#a00551f4fdef065067dd1414fd461fcf2",
+"class_winamp_remote_1_1_remoting_1_1_i_call_observer.html",
+"globals_0x75.html",
+"struct_____m_i_d_l__winamp__0001.html#aadab447a854a9b118faed018339d410a",
 ];
 
 var navTreeSubIndices = new Array();
