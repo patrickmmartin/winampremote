@@ -142,7 +142,7 @@ void WinampClientBase::setPlayList(const vector<string>& playlist)
 }
 
 
-void WinampClientBase::insertPlayList(vector<string>& playlist, int position)
+void WinampClientBase::insertPlayList(const vector<string>& playlist, int position)
 {
 	vector<string> newPlaylist = getPlayList(false);
 
@@ -349,7 +349,7 @@ std::string WinampClientBase::getStringList(WinampCommand Command)
 
 }
 
-void WinampClientBase::setStringList(std::string list, WinampCommand Command)
+void WinampClientBase::setStringList(const std::string& list, WinampCommand Command)
 {
 
     WASetStringList( (unsigned char *) IdentBuf, (unsigned char *) list.c_str(), list.size() + 1, Command);

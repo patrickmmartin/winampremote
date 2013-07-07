@@ -64,7 +64,7 @@ public:
 
 	virtual void setPlayList(const vector<string>& playlist);
 
-	virtual void insertPlayList(vector<string>& playlist, int position);
+	virtual void insertPlayList(const vector<string>& playlist, int position);
 
 	virtual void playlistStart();
 
@@ -132,7 +132,7 @@ public:
 
 	virtual std::string getStringList(WinampCommand Command);
 
-	virtual void setStringList(std::string list, WinampCommand Command);
+	virtual void setStringList(const std::string& list, WinampCommand Command);
 
 
 

@@ -1,8 +1,8 @@
 #ifndef IWINAMP_H
 #define IWINAMP_H
 
-#include <vector>
-#include <string>
+#include <vector.h>
+#include <string.h>
 
 #include "waint.h" // for WAPlaybackStatus, etc.
 #include "winampinterface.h" // for byte
@@ -120,7 +120,7 @@ public:
 	 * @param playlist
 	 * @param position
 	 */
-	virtual void insertPlayList(vector<string>& playlist, int position) = 0;
+	virtual void insertPlayList(const vector<string>& playlist, int position) = 0;
 
 	/**
 	 * go to start of playList
@@ -309,7 +309,7 @@ public:
 	 * @param list
 	 * @param Command
 	 */
-	virtual void setStringList(std::string list, WinampCommand Command) = 0;
+	virtual void setStringList(const std::string& list, WinampCommand Command) = 0;
 
 
 
