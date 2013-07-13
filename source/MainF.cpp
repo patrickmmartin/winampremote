@@ -749,7 +749,7 @@ void TfrmMain::UpdateIcon(void)
     if ( connected && !previousConnected )
     {
       timerMain->Interval = UpdateTime;
-      lblVersion->Caption = client->winampVersion();
+      lblVersion->Caption = WinampVersionString(client->winampVersion());
     }
 
     length = client->getPlaylistLength();
