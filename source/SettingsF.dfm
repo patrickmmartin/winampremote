@@ -28,7 +28,7 @@ object frmSettings: TfrmSettings
     Top = 0
     Width = 290
     Height = 120
-    ActivePage = tbsEQ
+    ActivePage = tbsVol
     Align = alClient
     Images = frmMain.imlActions
     Style = tsFlatButtons
@@ -360,11 +360,13 @@ object frmSettings: TfrmSettings
         object btnEQOn: TToolButton
           Left = 0
           Top = 0
+          Action = dmRemote.EQOn
           Wrap = True
         end
         object btnAutoload: TToolButton
           Left = 0
           Top = 23
+          Action = dmRemote.Autoload
         end
       end
     end

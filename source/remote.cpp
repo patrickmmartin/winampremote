@@ -58,11 +58,11 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     Application->Title = sWinampRemoteClient;
     try{
         Application->Initialize();
+        Application->CreateForm(__classid(TdmRemote), &dmRemote);
         Application->CreateForm(__classid(TfrmMain), &frmMain);
                  Application->CreateForm(__classid(TfrmPlaylist), &frmPlaylist);
                  Application->CreateForm(__classid(TfrmCommands), &frmCommands);
                  Application->CreateForm(__classid(TfrmSettings), &frmSettings);
-                 Application->CreateForm(__classid(TdmRemote), &dmRemote);
                  Application->Run();
         }
     catch (Exception &exception)

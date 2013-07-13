@@ -38,19 +38,19 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 TfrmSettings *frmSettings;
 
 __fastcall TfrmSettings::TfrmSettings(TComponent* Owner)
-    : TForm(Owner), client(NULL)
+    : TForm(Owner)
 {
 }
 
 void __fastcall TfrmSettings::tbVolumeChange(TObject *)
 {
-  client->setVolume(tbVolume->Position);
+  dmRemote->client->setVolume(tbVolume->Position);
 }
 
 
 void __fastcall TfrmSettings::tbBalanceChange(TObject *)
 {
-  client->setPanning(tbBalance->Position);
+  dmRemote->client->setPanning(tbBalance->Position);
 }
 
 
@@ -93,12 +93,12 @@ void __fastcall TfrmSettings::UpdateBars(void)
 
   for (int i = 0; i < Bars->Count ; i++)
   {
-    ( (TTrackBar *) Bars->Items[i])->Position = client->getEQData(i);
+    ( (TTrackBar *) Bars->Items[i])->Position = dmRemote->client->getEQData(i);
   }
 
   // last one...
-  dmRemote->Autoload->Checked = client->getAutoload();
-  dmRemote->EQOn->Checked = client->getEQOn();
+  dmRemote->Autoload->Checked = dmRemote->client->getAutoload();
+  dmRemote->EQOn->Checked = dmRemote->client->getEQOn();
 
 }
 
@@ -109,7 +109,7 @@ void __fastcall TfrmSettings::BarsChange(TObject *Sender)
   int Index = Bars->IndexOf(Sender);
   if (Index > -1)
   {
-    client->setEQData(Index, (byte) ((TTrackBar *)Sender)->Position );
+    dmRemote->client->setEQData(Index, (byte) ((TTrackBar *)Sender)->Position );
   }
 
 }

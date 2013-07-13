@@ -22,13 +22,6 @@
 
 const int TRAY_NOTIFY = WM_APP + 100;
 
-static const Word ENGLISHUS = 0x409;
-static const Word ENGLISHUK = 0x809;
-static const Word GERMAN = 0x407;
-static const Word FRENCH = 0x40c;
-static const Word DUTCH = 0x413;
-
-
 
 class TfrmMain: public TForm
 {
@@ -150,21 +143,15 @@ __published:
 	TListBox *lstTimer;
 	TLabel *lblTimer;
 	void __fastcall HideMain(TObject *Sender);
-	void __fastcall PauseExecute(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall btnCloseClick(TObject *Sender);
-	void __fastcall PlayExecute(TObject *Sender);
 	void __fastcall FormHide(TObject *Sender);
-	void __fastcall StopFadeExecute(TObject *Sender);
-	void __fastcall StopAfterCurrentExecute(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
-	void __fastcall mnuSayHelloClick(TObject *Sender);
 	void __fastcall MainTimer(TObject *Sender);
 	void __fastcall SetVolume0Execute(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall lstTimerClick(TObject *Sender);
-	void __fastcall FormDestroy(TObject *Sender);
 	void __fastcall AddressChange(TObject *Sender);
 	void __fastcall LocateServersExecute(TObject *Sender);
 	void __fastcall DelayTimer(TObject *Sender);
@@ -180,7 +167,6 @@ __published:
           TStatusPanel *Panel, const TRect &Rect);
 
 private:        // private user declarations
-	WinampRemote::Client::IWinamp * client;
 	int Delay;
 	int fIconIndex;
 	WAPlaybackStatus WAStatus;

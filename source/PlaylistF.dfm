@@ -23,7 +23,7 @@ object frmPlaylist: TfrmPlaylist
     Left = 0
     Top = 0
     Width = 407
-    Height = 191
+    Height = 190
     Hint = 'Playlist view -drag files to the desired location'
     Align = alClient
     DragMode = dmAutomatic
@@ -50,7 +50,7 @@ object frmPlaylist: TfrmPlaylist
   end
   object pnlBottom: TPanel
     Left = 0
-    Top = 191
+    Top = 190
     Width = 407
     Height = 28
     Align = alBottom
@@ -91,7 +91,7 @@ object frmPlaylist: TfrmPlaylist
   end
   object sbPlaylist: TStatusBar
     Left = 0
-    Top = 219
+    Top = 218
     Width = 407
     Height = 19
     Panels = <

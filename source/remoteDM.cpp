@@ -26,11 +26,6 @@ __fastcall TdmRemote::TdmRemote(TComponent* Owner)
 }
 
 
-void TdmRemote::setClient(WinampRemote::Client::IWinamp * client_)
-{
-        client = client_;
-}
-
 void TdmRemote::hookStartDock(TForm * NewForm, TForm * PriorForm)
 {
 	NewForm->OnStartDock = FormStartDock;
@@ -498,7 +493,7 @@ void __fastcall TdmRemote::AddFilesExecute(TObject *)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TdmRemote::AddPlayIistExecute(TObject * Sender)
+void __fastcall TdmRemote::AddPlayIistExecute(TObject *)
 {
 AnsiString str;
 AnsiString commandstr;
@@ -690,6 +685,18 @@ void __fastcall TdmRemote::ZeroExecute(TObject *)
 {
   // TODO implement here        
         
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TdmRemote::DataModuleCreate(TObject *Sender)
+{
+  client = new WinampRemote::Client::WinampClientBase();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TdmRemote::DataModuleDestroy(TObject *Sender)
+{
+  delete client;        
 }
 //---------------------------------------------------------------------------
 

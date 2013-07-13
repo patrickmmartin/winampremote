@@ -40,22 +40,27 @@ object frmCommands: TfrmCommands
     object tbtnPrevious: TToolButton
       Left = 0
       Top = 0
+      Action = dmRemote.Previous
     end
     object tbtnPlay: TToolButton
       Left = 43
       Top = 0
+      Action = dmRemote.Play
     end
     object tbtnPause: TToolButton
       Left = 86
       Top = 0
+      Action = dmRemote.Pause
     end
     object tbtnStop: TToolButton
       Left = 129
       Top = 0
+      Action = dmRemote.Stop
     end
     object tbtnNext: TToolButton
       Left = 172
       Top = 0
+      Action = dmRemote.Next
     end
   end
 end

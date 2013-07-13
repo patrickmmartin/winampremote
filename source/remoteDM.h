@@ -121,6 +121,8 @@ void __fastcall PlaylistRefreshStatsExecute(TObject *Sender);
         void __fastcall UpExecute(TObject *Sender);
         void __fastcall UpMoreExecute(TObject *Sender);
         void __fastcall ZeroExecute(TObject *Sender);
+        void __fastcall DataModuleCreate(TObject *Sender);
+        void __fastcall DataModuleDestroy(TObject *Sender);
 
 
 private:	// User declarations
@@ -128,7 +130,6 @@ private:	// User declarations
         int LastIndex;
         int CurrentIndex;
 
-	WinampRemote::Client::IWinamp * client;
 	void hookStartDock(TForm * NewForm, TForm * PriorForm);
     void __fastcall FormStartDock(TObject *Sender, TDragDockObject *&DragObject);
 public:		// User declarations
@@ -137,37 +138,8 @@ public:		// User declarations
         void __fastcall DoAddFiles(TStrings * Files);
         void __fastcall DoBind(const AnsiString& address, const AnsiString& endpoint);
 
-
-
-
-
-
-// signature is generic - can be set upon attachment
-// TODO: form manager - upon start dragging commands // frmMain->StartDock(Sender, DragObject);
-
-// TODO: form manager - upon start drag of playlist // frmMain->StartDock(Sender, DragObject);
-
-// TODO: form manager - upon start drag of the volume form // frmMain->StartDock(Sender, DragObject);
-
-
-// signature of events are uniform, but need dispatch upon the instance  - good ? bad ?:P
-
-// TODO: form manager - upon close playlist // frmMain->ViewPlaylist->Execute();
-
-// TODO: form manager - upon close of the settings form // frmMain->ViewVolume->Execute();
-
-// TODO: form manager - upon closing Commands form //frmMain->ViewToolBar->Execute(); BTW are we still doing that?
-
-
-// TODO: form manager - action for display or hide Settings // hide show
-
-
-// TODO: form manager - action for refreshing playlist // frmMain->PlaylistRefresh->Execute();
-
-// TODO: form manager - need action for adding files to playlist
-
-
-
+        // TODO encapsulate this after refactoring
+	WinampRemote::Client::IWinamp * client;
 
 };
 //---------------------------------------------------------------------------

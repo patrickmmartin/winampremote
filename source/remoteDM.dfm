@@ -1,9 +1,11 @@
 object dmRemote: TdmRemote
   OldCreateOrder = False
-  Left = 684
-  Top = 447
-  Height = 479
-  Width = 741
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Left = 376
+  Top = 175
+  Height = 480
+  Width = 928
   object alMain: TActionList
     Images = frmMain.imlActions
     Left = 17
@@ -322,7 +324,7 @@ object dmRemote: TdmRemote
   object OpenDialog1: TOpenDialog
     Filter = 'Playlist Files|*.m3u, *.pls'
     Options = [ofHideReadOnly, ofAllowMultiSelect, ofPathMustExist, ofFileMustExist]
-    Left = 72
-    Top = 16
+    Left = 80
+    Top = 8
   end
 end

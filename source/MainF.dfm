@@ -19,7 +19,6 @@ object frmMain: TfrmMain
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnHide = FormHide
   OnShow = FormShow
   OnStartDock = StartDock
@@ -324,13 +323,11 @@ object frmMain: TfrmMain
         Caption = '&Pause'
         Hint = 'Pause'
         ImageIndex = 2
-        OnClick = PauseExecute
       end
       object mnuPlay: TMenuItem
         Caption = 'P&lay'
         Hint = 'Play'
         ImageIndex = 1
-        OnClick = PlayExecute
       end
       object mnuStop: TMenuItem
         Caption = '&Stop'
@@ -351,13 +348,11 @@ object frmMain: TfrmMain
         Caption = 'Stop With &Fade'
         Hint = 'Stop with Fade'
         ImageIndex = 3
-        OnClick = StopFadeExecute
       end
       object mnuStopCurrent: TMenuItem
         Caption = 'Stop After &Current'
         Hint = 'Stop after Current'
         ImageIndex = 3
-        OnClick = StopAfterCurrentExecute
       end
     end
     object mnuPlaylist: TMenuItem
@@ -496,18 +491,10 @@ object frmMain: TfrmMain
       Caption = 'A&pplication'
       Hint = 'File Menu'
       object mnuPlaceOnTray: TMenuItem
-        Caption = 'Place On &Tray'
-        Hint = 'Place on Tray'
-        ImageIndex = 6
-        ShortCut = 16456
-        OnClick = HideMain
+        Action = dmRemote.PlaceOnTray
       end
       object LocateServers1: TMenuItem
-        Caption = '&Locate Servers'
-        Hint = 'locate possible winamp servers'
-        ImageIndex = 26
-        ShortCut = 16460
-        OnClick = LocateServersExecute
+        Action = dmRemote.LocateServers
       end
       object N3: TMenuItem
         Caption = '-'
@@ -522,201 +509,131 @@ object frmMain: TfrmMain
       Caption = '&Actions'
       Hint = 'General Play Actions'
       object ViewToolbar1: TMenuItem
-        Caption = 'View &ToolBar'
-        Hint = 'Commands Toolbar'
-        ImageIndex = 8
+        Action = dmRemote.ViewToolBar
       end
       object N4: TMenuItem
         Caption = '-'
       end
       object Pause1: TMenuItem
-        Caption = '&Pause'
-        Hint = 'Pause'
-        ImageIndex = 2
-        OnClick = PauseExecute
+        Action = dmRemote.Pause
       end
       object Play1: TMenuItem
-        Caption = 'P&lay'
-        Hint = 'Play'
-        ImageIndex = 1
-        OnClick = PlayExecute
+        Action = dmRemote.Play
       end
       object Stop1: TMenuItem
-        Caption = '&Stop'
-        Hint = 'Stop'
-        ImageIndex = 3
+        Action = dmRemote.Stop
       end
       object MoreStops1: TMenuItem
         Caption = '&More Stops'
         Hint = 'more types of stop'
         object StopWithFade1: TMenuItem
-          Caption = 'Stop With &Fade'
-          Hint = 'Stop with Fade'
-          ImageIndex = 3
-          OnClick = StopFadeExecute
+          Action = dmRemote.StopFade
         end
         object StopafterCurrent1: TMenuItem
-          Caption = 'Stop After &Current'
-          Hint = 'Stop after Current'
-          ImageIndex = 3
-          OnClick = StopAfterCurrentExecute
+          Action = dmRemote.StopAfterCurrent
         end
       end
       object Forward51: TMenuItem
-        Caption = '&Forward 5 seconds'
-        Hint = 'Forward 5'
-        ImageIndex = 4
+        Action = dmRemote.Forward5
       end
       object Back51: TMenuItem
-        Caption = '&Back 5 seconds'
-        Hint = 'Back 5'
-        ImageIndex = 0
+        Action = dmRemote.Back5
       end
     end
     object Playlist1: TMenuItem
       Caption = '&Playlist'
       Hint = 'Playlist Functions'
       object Administer1: TMenuItem
-        Caption = 'View &Playlist'
-        Hint = 'Playlist Editor'
-        ImageIndex = 10
+        Action = dmRemote.ViewPlaylist
       end
       object N5: TMenuItem
         Caption = '-'
       end
       object Next1: TMenuItem
-        Caption = '&Next'
-        Hint = 'Next in Playlist'
-        ImageIndex = 4
+        Action = dmRemote.Next
       end
       object mnuNextwithFade: TMenuItem
-        Caption = 'Next with &Fade'
-        ImageIndex = 4
+        Action = dmRemote.NextFade
       end
       object Previous1: TMenuItem
-        Caption = '&Previous'
-        Hint = 'Previous in Playlist'
-        ImageIndex = 0
+        Action = dmRemote.Previous
       end
       object mnuPreviouswithFade: TMenuItem
-        Caption = 'Previous with F&ade'
-        ImageIndex = 0
+        Action = dmRemote.PreviousFade
       end
       object Actions2: TMenuItem
         Caption = '&Actions'
         object Start1: TMenuItem
-          Caption = 'St&art'
-          Hint = 'Start of Playlist'
-          ImageIndex = 0
+          Action = dmRemote.Start
         end
         object End1: TMenuItem
-          Caption = '&End'
-          Hint = 'End of Playlist'
-          ImageIndex = 4
+          Action = dmRemote.End
         end
         object Delete1: TMenuItem
-          Caption = '&Delete'
-          Hint = 'Delete Playlist'
-          ImageIndex = 15
+          Action = dmRemote.Delete
         end
         object PlayfromStart2: TMenuItem
-          Caption = 'Play &From Start'
-          Hint = 'Play from Start'
-          ImageIndex = 0
-          Visible = False
+          Action = dmRemote.Start
         end
         object AddFiles2: TMenuItem
-          Caption = 'Add Fi&les'
-          Hint = 'Add Files To Playlist'
-          ImageIndex = 16
+          Action = dmRemote.AddFiles
         end
         object AddPlayList1: TMenuItem
-          Caption = 'Add Pla&ylist'
-          Hint = 'Add Playlist'
-          ImageIndex = 17
-          Visible = False
+          Action = dmRemote.AddPlayIist
         end
         object AddDirectory1: TMenuItem
-          Caption = 'Add Direc&tory'
-          Hint = 'add Directory'
-          ImageIndex = 18
-          Visible = False
+          Action = dmRemote.AddDirectory
         end
       end
       object Shuffletoggle1: TMenuItem
-        Caption = '&Shuffle'
-        Hint = 'Playlist Shuffle'
-        ImageIndex = 11
+        Action = dmRemote.Shuffle
       end
       object Repeattoggle1: TMenuItem
-        Caption = '&Repeat'
-        Hint = 'Playlist Repeat'
-        ImageIndex = 12
+        Action = dmRemote.Repeat
       end
     end
     object Volume1: TMenuItem
       Caption = '&Volume'
       Hint = 'Volume Functions'
       object ViewEditSettings1: TMenuItem
-        Caption = 'View &Settings'
-        Hint = 'Audio Settings Editor'
-        ImageIndex = 9
+        Action = dmRemote.ViewVolume
       end
       object N6: TMenuItem
         Caption = '-'
       end
       object Up1: TMenuItem
-        Caption = '&Up'
-        Hint = 'Volume Up'
-        ImageIndex = 19
+        Action = dmRemote.Up
       end
       object Down1: TMenuItem
-        Caption = '&Down'
-        Hint = 'Voume Down'
-        ImageIndex = 20
+        Action = dmRemote.Down
       end
       object mnuMore: TMenuItem
         Caption = 'More Up/Down'
         object UpMore1: TMenuItem
-          Caption = 'Up &More'
-          Hint = 'Volume Up (More)'
-          ImageIndex = 21
+          Action = dmRemote.UpMore
         end
         object DownMore1: TMenuItem
-          Caption = 'Down M&ore'
-          Hint = 'Volume Down (more)'
-          ImageIndex = 22
+          Action = dmRemote.DownMore
         end
       end
       object Volumezero1: TMenuItem
-        Caption = '&Zero'
-        Hint = 'Volume off'
-        ImageIndex = 23
-        OnClick = SetVolume0Execute
+        Action = dmRemote.Zero
       end
       object N501: TMenuItem
-        Caption = '50 %'
-        Hint = 'Volume 50%'
-        ImageIndex = 25
+        Action = dmRemote.Half
       end
       object Volumefull1: TMenuItem
-        Caption = '&Full'
-        Hint = 'Volume FULL'
-        ImageIndex = 24
+        Action = dmRemote.Full
       end
     end
     object mnuHelp: TMenuItem
       Caption = '&Help'
       Hint = 'Help on this Application'
       object mnuDetails: TMenuItem
-        Caption = 'Details'
-        ImageIndex = 7
-        OnClick = DetailsExecute
+        Action = dmRemote.Details
       end
       object mnuHelpAbout: TMenuItem
-        Caption = '&About'
-        Hint = 'About this Application '
-        ImageIndex = 26
+        Action = dmRemote.About
       end
     end
   end

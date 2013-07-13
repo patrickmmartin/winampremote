@@ -247,15 +247,6 @@ void __fastcall TfrmMain::HideMain(TObject *)
 }
 
 
-
-void __fastcall TfrmMain::PauseExecute(TObject *)
-{
-  if (WAStatus == client->getPlaybackStatus() )
-    client->pause();
-    UpdateIcon();
-}
-
-
 const AnsiString sRegKey = "software\\PMMSoft\\Winamp controller\\client settings";
 const AnsiString sCommandsLeft = "Commands Left";
 const AnsiString sCommandsTop = "Commands Top";
@@ -279,8 +270,6 @@ const AnsiString sFalse = "false";
 void __fastcall TfrmMain::FormShow(TObject *)
 {
 
-  frmPlaylist->client = client;
-  frmSettings->client = client;
 
   // show hints on visible forms
   frmPlaylist->ShowHint = false;
@@ -363,26 +352,9 @@ void __fastcall TfrmMain::FormShow(TObject *)
 
 
 
-
-void __fastcall TfrmMain::mnuSayHelloClick(TObject *)
-{
-  client->sendString();
-}
-
-
-
-
 void __fastcall TfrmMain::btnCloseClick(TObject *)
 {
   Close();
-}
-
-
-
-
-void __fastcall TfrmMain::PlayExecute(TObject *)
-{
-  client->playSong();
 }
 
 
@@ -404,23 +376,6 @@ void MessageForm(AnsiString MessageStr)
 }
 
 
-
-
-void __fastcall TfrmMain::StopFadeExecute(TObject *)
-{
-  client->stopWithFade();
-}
-
-
-
-
-void __fastcall TfrmMain::StopAfterCurrentExecute(TObject *)
-{
-  client->stopAfterCurrent();
-}
-
-
-
 void __fastcall TfrmMain::DisplayHint(TObject *)
 {
   sbMain->Panels->Items[1]->Text = GetShortHint(Application->Hint);
@@ -433,9 +388,6 @@ void __fastcall TfrmMain::FormCreate(TObject *)
 {
 
   Application->OnException = AppException;
-
-  client = new WinampRemote::Client::WinampClientBase();
-  dmRemote->setClient(client);
 
   Application->OnHint = DisplayHint;
   WAStatus = WA_UNUSED;
@@ -510,16 +462,16 @@ void TfrmMain::UpdateIcon(void)
     IconHandle();
     sbMain->Refresh();
 
-    WAStatus = client->getPlaybackStatus();
+    WAStatus = dmRemote->client->getPlaybackStatus();
     connected = true;
     TrayMessage(NIM_MODIFY);
 
-    dmRemote->Shuffle->Checked = (client->winampVersion() >= 0x2604) && client->getShuffle();
-    dmRemote->Repeat->Checked = (client->winampVersion() >= 0x2604) && client->getRepeat();
+    dmRemote->Shuffle->Checked = (dmRemote->client->winampVersion() >= 0x2604) && dmRemote->client->getShuffle();
+    dmRemote->Repeat->Checked = (dmRemote->client->winampVersion() >= 0x2604) && dmRemote->client->getRepeat();
 
     // TODO: use a notification interface to refresh
-    frmSettings->tbVolume->Position = client->getVolume();
-    frmSettings->tbBalance->Position = client->getPanning();
+    frmSettings->tbVolume->Position = dmRemote->client->getVolume();
+    frmSettings->tbBalance->Position = dmRemote->client->getPanning();
 
     // TODO: use a notification interface
     if ( (frmSettings) )
@@ -529,14 +481,14 @@ void TfrmMain::UpdateIcon(void)
     if ( connected && !previousConnected )
     {
       timerMain->Interval = UpdateTime;
-      lblVersion->Caption = WinampVersionString(client->winampVersion());
+      lblVersion->Caption = WinampVersionString(dmRemote->client->winampVersion());
     }
 
-    length = client->getPlaylistLength();
+    length = dmRemote->client->getPlaylistLength();
     if (length > 0)
     {
-		index = client->getCurrentPlayPosition();
-		std::string title = client->getPlayListItem(index, true);
+		index = dmRemote->client->getCurrentPlayPosition();
+		std::string title = dmRemote->client->getPlayListItem(index, true);
 		SongTitle = title.c_str();
 		lblMessage->Caption = SongTitle;
 
@@ -713,15 +665,7 @@ void __fastcall TfrmMain::FormCloseQuery(TObject *, bool &)
 void __fastcall TfrmMain::lstTimerClick(TObject *)
 {
   timerMain->Interval = 1000 * (lstTimer->ItemIndex + 1);
-}
-void __fastcall TfrmMain::FormDestroy(TObject *)
-{
-  delete client;
-  UnBind();
-}
-
-
-void __fastcall TfrmMain::AddressChange(TObject *)
+}void __fastcall TfrmMain::AddressChange(TObject *)
 {
   UnBind();
   dmRemote->DoBind(ebAddress->Text, ebEndPoint->Text);
@@ -895,7 +839,7 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
   {
   /* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
 
-    std::string list = client->getStringList(IPC_GETPLAYLISTFILE);
+    std::string list = dmRemote->client->getStringList(IPC_GETPLAYLISTFILE);
 
 	StringList->Text = list.c_str();
 
@@ -913,7 +857,7 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
     dmRemote->DoAddFiles(StringList);
     // reset position
 
-    client->setPlaylistIndex(CurrentIndex);
+    dmRemote->client->setPlaylistIndex(CurrentIndex);
 
     dmRemote->PlaylistRefresh->Execute();
   }
@@ -932,7 +876,7 @@ int i;
 
   for (i = Start ; i < Stop; i++)
   {
-    Files->Add(client->getPlayListItem(i, false).c_str());
+    Files->Add(dmRemote->client->getPlayListItem(i, false).c_str());
   } // for
 
 }
@@ -962,11 +906,12 @@ void __fastcall TfrmMain::DropFiles(TStringList * Files, int DropIndex)
 
   // AAAACK - used to be a "magic object"
   int NewPos = Files->IndexOfObject((TObject *) true);
-  client->setPlaylistIndex(NewPos);
+  dmRemote->client->setPlaylistIndex(NewPos);
 
   dmRemote->PlaylistRefresh->Execute();
 
 }
+
 
 
 

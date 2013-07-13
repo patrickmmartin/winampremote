@@ -53,7 +53,6 @@ private:	// User declarations
 public:		// User declarations
     __fastcall TfrmSettings(TComponent* Owner);
    void __fastcall UpdateBars(void);
-   WinampRemote::Client::IWinamp * client;
 
 };
 

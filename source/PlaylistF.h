@@ -86,7 +86,6 @@ private:     // User declarations
 public:
     __fastcall TfrmPlaylist(TComponent* Owner);
     bool __property Dragging = {read = fDragging};
-    WinampRemote::Client::IWinamp * client;
 
 BEGIN_MESSAGE_MAP
 // handling file dropped into the playlist form 

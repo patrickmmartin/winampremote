@@ -177,7 +177,7 @@ void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
   {
     lstSongs->Items->BeginUpdate();
      // update the current title, at least
-     std::string current = client->getPlayListItem(_currentpos, true);
+     std::string current = dmRemote->client->getPlayListItem(_currentpos, true);
 
      if ((lstSongs->Items->Count - 1) > _currentpos)
      {
@@ -238,7 +238,7 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
 
     for (i = 0 ; i < lstSongs->Items->Count; i++)
     {
-        std::string filename = client->getPlayListItem(i, false);
+        std::string filename = dmRemote->client->getPlayListItem(i, false);
 
       CurrentSong = i == _currentpos;
 
@@ -265,7 +265,7 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
     dmRemote->DoAddFiles(TopList);
 
     NewPos = TopList->IndexOfObject((TObject *) true);
-    client->setPlaylistIndex(NewPos);
+    dmRemote->client->setPlaylistIndex(NewPos);
 
     // TODO: should be in forms management interface
     dmRemote->PlaylistRefresh->Execute();
@@ -405,8 +405,8 @@ void __fastcall TfrmPlaylist::pbSongPosMouseMove(TObject *, TShiftState , int X,
     {
       pbSongPos->Position = (pbSongPos->Max *  X) / pbSongPos->ClientWidth;
       int PosMS, SongS;
-      client->getTimes(SongS, PosMS);
-      client->setTime( (1000 *  SongS *  X) / pbSongPos->ClientWidth);
+      dmRemote->client->getTimes(SongS, PosMS);
+      dmRemote->client->setTime( (1000 *  SongS *  X) / pbSongPos->ClientWidth);
 
     }
   }
