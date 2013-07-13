@@ -40,27 +40,22 @@ object frmCommands: TfrmCommands
     object tbtnPrevious: TToolButton
       Left = 0
       Top = 0
-      Action = frmMain.Previous
     end
     object tbtnPlay: TToolButton
       Left = 43
       Top = 0
-      Action = frmMain.Play
     end
     object tbtnPause: TToolButton
       Left = 86
       Top = 0
-      Action = frmMain.Pause
     end
     object tbtnStop: TToolButton
       Left = 129
       Top = 0
-      Action = frmMain.Stop
     end
     object tbtnNext: TToolButton
       Left = 172
       Top = 0
-      Action = frmMain.Next
     end
   end
 end

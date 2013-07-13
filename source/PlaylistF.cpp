@@ -29,6 +29,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "MainF.h"
 #include "shellapi.h"
 #include "remotestrs.h"
+#include "remoteDM.h"
 
 
 #pragma package(smart_init)
@@ -50,7 +51,7 @@ void __fastcall TfrmPlaylist::lstSongsDblClick(TObject *)
 {
 
   // this action will use the playlist itemindex, and do the pre and post actions
-  frmMain->NewSong->Execute();
+  dmRemote->NewSong->Execute();
 
 }
 
@@ -58,7 +59,7 @@ void __fastcall TfrmPlaylist::FormCreate(TObject *)
 {
 
   lstSongs->ItemHeight = Canvas->TextHeight('W');
-  frmMain->PlaylistRefresh->Execute();
+  dmRemote->PlaylistRefresh->Execute();
 
 }
 
@@ -203,7 +204,7 @@ void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 void __fastcall TfrmPlaylist::FormClose(TObject *, TCloseAction &)
 {
 	// TODO: should be in forms management interface
-  frmMain->ViewPlaylist->Execute();
+  dmRemote->ViewPlaylist->Execute();
 }
 
 
@@ -261,13 +262,13 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
   // reset position
 
     // TODO: should be in forms management interface
-    frmMain->DoAddFiles(TopList);
+    dmRemote->DoAddFiles(TopList);
 
     NewPos = TopList->IndexOfObject((TObject *) true);
     client->setPlaylistIndex(NewPos);
 
     // TODO: should be in forms management interface
-    frmMain->PlaylistRefresh->Execute();
+    dmRemote->PlaylistRefresh->Execute();
   }
   __finally
   {
@@ -424,7 +425,7 @@ void __fastcall TfrmPlaylist::pbSongPosMouseDown(TObject *, TMouseButton , TShif
 
 void __fastcall TfrmPlaylist::mnuRefreshClick(TObject *)
 {
-  frmMain->PlaylistRefresh->Execute();
+  dmRemote->PlaylistRefresh->Execute();
 }
 
 

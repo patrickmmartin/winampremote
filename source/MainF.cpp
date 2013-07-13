@@ -46,6 +46,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include <math.h>
 #include "WinampClientBase.h"
 #include "CursorGuard.h"
+#include "remoteDM.h"
 
 const int POLL_ERROR_FACTOR = 10; // seconds
 
@@ -72,7 +73,7 @@ void __fastcall TfrmMain::TrayNotify(TMessage& Msg)
 
     case WM_RBUTTONUP:
       if (DoubleClickedR)
-        ShowMainForm->Execute();
+        dmRemote->ShowMainForm->Execute();
       else  
         if (GetCursorPos(&MousePos))
         {
@@ -93,18 +94,18 @@ void __fastcall TfrmMain::TrayNotify(TMessage& Msg)
 
     case WM_LBUTTONUP:
       if (!DoubleClickedL)
-        Pause->Execute();
+        dmRemote->Pause->Execute();
     break;
 
     case WM_LBUTTONDBLCLK:
     // as pause will have updated WAstatus for us
       if (WAStatus == WA_NOT_PLAYING)
       {
-        Play->Execute();
+        dmRemote->Play->Execute();
       }
       if (WAStatus == WA_PAUSED)
       {
-        Stop->Execute();
+        dmRemote->Stop->Execute();
       }
       DoubleClickedL = true;
     break;
@@ -160,13 +161,13 @@ HANDLE __fastcall TfrmMain::IconHandle(void)
         fIconIndex = 3;
         break;
       case WA_PLAYING:
-        Pause->Caption = sPause;
-        Pause->Checked = false;
+        dmRemote->Pause->Caption = sPause;
+        dmRemote->Pause->Checked = false;
         fIconIndex = 1;
         break;
       case WA_PAUSED:
-        Pause->Caption = sUnPause;
-        Pause->Checked = true;
+        dmRemote->Pause->Caption = sUnPause;
+        dmRemote->Pause->Checked = true;
         fIconIndex = 2;
         break;
       default:
@@ -247,38 +248,6 @@ void __fastcall TfrmMain::HideMain(TObject *)
 
 
 
-
-void __fastcall TfrmMain::ShowMainFormExecute(TObject *)
-{
-
-  ShowWindow(Application->Handle, SW_SHOW);
-
-  DWORD dwExStyle = GetWindowLong(Application->Handle, GWL_EXSTYLE);
-  dwExStyle ^= WS_EX_TOOLWINDOW;
-  SetWindowLong(Application->Handle, GWL_EXSTYLE, dwExStyle);
-
-  TRect FromRect, ToRect;
-  FromRect = TRect(Screen->Width - 16, Screen->Height, Screen->Width, Screen->Height - 16);
-
-  ToRect = BoundsRect;
-
-  HRGN HideRegion = CreateRectRgn(0,0,1,1);
-  SetWindowRgn(Handle, HideRegion, false);
-
-  Show();
-
-  DrawAnimatedRects(Handle, IDANI_CAPTION, &FromRect, &ToRect);
-
-  SetWindowRgn(Handle, NULL, true);
-
-  // dodge here
-  Application->Restore();
-  
-}
-
-
-
-
 void __fastcall TfrmMain::PauseExecute(TObject *)
 {
   if (WAStatus == client->getPlaybackStatus() )
@@ -286,12 +255,6 @@ void __fastcall TfrmMain::PauseExecute(TObject *)
     UpdateIcon();
 }
 
-
-
-void __fastcall TfrmMain::ExitExecute(TObject *)
-{
-  Close();
-}
 
 const AnsiString sRegKey = "software\\PMMSoft\\Winamp controller\\client settings";
 const AnsiString sCommandsLeft = "Commands Left";
@@ -347,7 +310,7 @@ void __fastcall TfrmMain::FormShow(TObject *)
          }
 
          if (reg->ReadString(sCommandsVisible).LowerCase() != sFalse)
-           ViewToolBarExecute(this);
+           dmRemote->ViewToolBarExecute(this);
 
          FormRect = TRect(0, 0, frmSettings->Width, frmSettings->Height);
          FormLeft = reg->ReadString(sVolumeLeft).ToIntDef(-1);
@@ -360,7 +323,7 @@ void __fastcall TfrmMain::FormShow(TObject *)
          }
 
          if (reg->ReadString(sVolumeVisible).LowerCase() != sFalse)
-           ViewVolumeExecute(this);
+           dmRemote->ViewVolumeExecute(this);
 
          FormLeft = reg->ReadString(sPlaylistLeft).ToIntDef(-1);
          FormTop = reg->ReadString(sPlaylistTop).ToIntDef(-1);
@@ -375,7 +338,7 @@ void __fastcall TfrmMain::FormShow(TObject *)
          }
 
          if (reg->ReadString(sPlaylistVisible).LowerCase() != sFalse)
-           ViewPlaylistExecute(this);
+           dmRemote->ViewPlaylistExecute(this);
 
 
        }
@@ -424,194 +387,10 @@ void __fastcall TfrmMain::PlayExecute(TObject *)
 
 
 
-
-void __fastcall TfrmMain::NextExecute(TObject *)
-{
-  SongChanging->Execute();
-  client->nextSong();
-  SongChanged->Execute();
-}
-
-
-
-
-void __fastcall TfrmMain::NextFadeExecute(TObject *)
-{
-  StopFade->Execute();
-  Next->Execute();
-  Play->Execute();
-
-}
-
-
-
-
-void __fastcall TfrmMain::PreviousExecute(TObject *)
-{
-  SongChanging->Execute();
-  client->previousSong();
-  SongChanged->Execute();
-}
-
-
-
-
 void __fastcall TfrmMain::FormHide(TObject *)
 {
   mnuShow->Visible = true;
 }
-
-
-
-
-void __fastcall TfrmMain::AboutExecute(TObject *)
-{
-  if (!frmAbout)
-  {
-    frmAbout = new TfrmAbout(this);
-    try
-    {
-      frmAbout->Caption = sAboutWinampRemoteControl;
-      frmAbout->ShowModal();
-    }
-    __finally
-    {
-      delete frmAbout;
-      frmAbout = NULL;
-    }
-  }
-  else
-  {
-    frmAbout->Show();
-    frmAbout->BringToFront();
-  }
-}
-
-
-
-
-void __fastcall TfrmMain::StopExecute(TObject *)
-{
-  client->stopSong();
-}
-
-
-
-
-void __fastcall TfrmMain::Forward5Execute(TObject *)
-{
-  client->forward5();
-}
-
-
-
-
-void __fastcall TfrmMain::Back5Execute(TObject *)
-{
-  client->forward5();
-}
-
-
-
-
-void __fastcall TfrmMain::VolumeUpExecute(TObject *)
-{
-    // TODO: use a notification interface
-  frmSettings->tbVolume->Position++;
-}
-
-void __fastcall TfrmMain::VolumeDownExecute(TObject *)
-{
-    // TODO: use a notification interface
-  frmSettings->tbVolume->Position--;
-}
-
-
-
-
-void __fastcall TfrmMain::VolumeUpMoreExecute(TObject *)
-{
-    // TODO: use a notification interface
-  frmSettings->tbVolume->Position+=10;
-}
-
-
-
-
-void __fastcall TfrmMain::VolumeDownMoreExecute(TObject *)
-{
-    // TODO: use a notification interface
-  frmSettings->tbVolume->Position-=10;
-}
-
-
-
-
-void __fastcall TfrmMain::PlaylistStartExecute(TObject *)
-{
-  SongChanging->Execute();
-  client->startPlaylist();
-  SongChanged->Execute();
-}
-
-
-
-
-void __fastcall TfrmMain::PlaylistEndExecute(TObject *)
-{
-  SongChanging->Execute();
-  client->playlistEnd();
-  SongChanged->Execute();
-}
-
-
-
-
-void __fastcall TfrmMain::DeletePlayListExecute(TObject *)
-{
-  client->deletePlaylist();
-  PlaylistRefresh->Execute();
-}
-
-
-
-
-void __fastcall TfrmMain::AddFileToPlayListExecute(TObject *Sender)
-{
-AnsiString str;
-AnsiString commandstr;
-
-  OpenDialog1->FileName = "";
-
-  if (Sender == mnuAddPlayList){
-    OpenDialog1->Filter = sPlayListFiles;
-    }
-  else{
-    OpenDialog1->Filter = sAllFiles;
-    }
-
-  if (OpenDialog1->Execute())
-  {
-
-    TStringList * Files = new TStringList;
-    try
-    {
-      // sort strings by name, for now
-      Files->Sorted = true;
-
-      Files->Assign(OpenDialog1->Files);
-
-      DoAddFiles(Files);
-      PlaylistRefresh->Execute();
-    }
-    __finally
-    {
-      delete Files;
-    }
-  } // if
-}
-
-
 
 
 void MessageForm(AnsiString MessageStr)
@@ -656,6 +435,7 @@ void __fastcall TfrmMain::FormCreate(TObject *)
   Application->OnException = AppException;
 
   client = new WinampRemote::Client::WinampClientBase();
+  dmRemote->setClient(client);
 
   Application->OnHint = DisplayHint;
   WAStatus = WA_UNUSED;
@@ -699,7 +479,7 @@ void __fastcall TfrmMain::FormCreate(TObject *)
 
   pgSettings->ActivePage = tbsMain;
 
-  DoBind();
+  dmRemote->DoBind(ebAddress->Text, ebEndPoint->Text);
 
 }
 
@@ -734,8 +514,8 @@ void TfrmMain::UpdateIcon(void)
     connected = true;
     TrayMessage(NIM_MODIFY);
 
-    Shuffle->Checked = (client->winampVersion() >= 0x2604) && client->getShuffle();
-    Repeat->Checked = (client->winampVersion() >= 0x2604) && client->getRepeat();
+    dmRemote->Shuffle->Checked = (client->winampVersion() >= 0x2604) && client->getShuffle();
+    dmRemote->Repeat->Checked = (client->winampVersion() >= 0x2604) && client->getRepeat();
 
     // TODO: use a notification interface to refresh
     frmSettings->tbVolume->Position = client->getVolume();
@@ -788,7 +568,7 @@ void TfrmMain::UpdateIcon(void)
           {
             if (length != LastLength)
             {
-              PlaylistRefresh->Execute();
+              dmRemote->PlaylistRefresh->Execute();
             }
           }
 
@@ -796,15 +576,15 @@ void TfrmMain::UpdateIcon(void)
           {
             if ((index != LastIndex) || (length != LastLength))
             {
-              PlaylistRefresh->Execute();
-              PlaylistRefreshCurrent->Execute();
+              dmRemote->PlaylistRefresh->Execute();
+              dmRemote->PlaylistRefreshCurrent->Execute();
             }
           }
           else
           if (LastIndex != index)
           {
             CurrentIndex = index;
-            PlaylistRefreshCurrent->Execute();
+            dmRemote->PlaylistRefreshCurrent->Execute();
           }
 
           // set last "OK" list index
@@ -813,7 +593,7 @@ void TfrmMain::UpdateIcon(void)
           if (timerMain->OnTimer != MainTimer)
             timerMain->OnTimer = MainTimer;
 
-          PlaylistRefreshStats->Execute();
+          dmRemote->PlaylistRefreshStats->Execute();
 
         }
 
@@ -865,51 +645,6 @@ void __fastcall TfrmMain::SetVolume0Execute(TObject *)
   frmSettings->tbVolume->Position = 0;
 
 }
-
-
-void __fastcall TfrmMain::SetVolume100Execute(TObject *)
-{
-    // TODO: use a notification interface
-  frmSettings->tbVolume->Position = 255;
-}
-
-
-
-
-void __fastcall TfrmMain::ShuffleExecute(TObject *)
-{
-  // shuffle / repeat status only works in very recent versions,
-  // so always do for older
-  if ( (client->winampVersion() < 0x2604) || (Shuffle->Checked == client->getShuffle() ) )
-    client->toggleShuffle();
-  UpdateIcon();
-}
-
-
-
-
-void __fastcall TfrmMain::RepeatExecute(TObject *)
-{
-  // shuffle / repeat status only works in very recent versions,
-  // so always do for older
-  if  ( (client->winampVersion() < 0x2604) || (Repeat->Checked ==  client->getRepeat() ) )
-    client->toggleRepeat();
-  UpdateIcon();
-}
-
-
-
-
-void __fastcall TfrmMain::PlayFromStartExecute(TObject *)
-{
-  SongChanging->Execute();
-  client->playlistStart();
-  SongChanged->Execute();
-}
-
-
-
-
 void __fastcall TfrmMain::FormClose(TObject *, TCloseAction &)
 {
   TrayMessage(NIM_DELETE);
@@ -979,52 +714,6 @@ void __fastcall TfrmMain::lstTimerClick(TObject *)
 {
   timerMain->Interval = 1000 * (lstTimer->ItemIndex + 1);
 }
-
-
-
-
-void __fastcall TfrmMain::HalfExecute(TObject *)
-{
-    // TODO: use a notification interface
-  frmSettings->tbVolume->Position = 128;
-}
-
-
-
-
-void __fastcall TfrmMain::ViewToolBarExecute(TObject *)
-{
-  // need to undock
-  frmCommands->Visible = !frmCommands->Visible;
-  AnimateForm(frmCommands, ViewToolBar->Checked);
-  ViewToolBar->Checked = frmCommands->Visible;
-}
-
-
-
-
-void __fastcall TfrmMain::ViewPlaylistExecute(TObject *)
-{
-  frmPlaylist->Visible = !frmPlaylist->Visible;
-  AnimateForm(frmPlaylist, ViewPlaylist->Checked);
-  ViewPlaylist->Checked = frmPlaylist->Visible;
-
-
-}
-
-
-
-
-void __fastcall TfrmMain::ViewVolumeExecute(TObject *)
-{
-	// TODO: should be in forms management interface
-  frmSettings->Visible = !frmSettings->Visible;
-  AnimateForm(frmSettings, ViewVolume->Checked);
-  ViewVolume->Checked = frmSettings->Visible;
-}
-
-
-
 void __fastcall TfrmMain::FormDestroy(TObject *)
 {
   delete client;
@@ -1032,12 +721,10 @@ void __fastcall TfrmMain::FormDestroy(TObject *)
 }
 
 
-
-
 void __fastcall TfrmMain::AddressChange(TObject *)
 {
   UnBind();
-  DoBind();
+  dmRemote->DoBind(ebAddress->Text, ebEndPoint->Text);
 
   if (Visible)
   {
@@ -1083,7 +770,7 @@ void __fastcall TfrmMain::LocateServersExecute(TObject *)
   __finally
   {
     delete ServersForm;
-    DoBind();
+    dmRemote->DoBind(ebAddress->Text, ebEndPoint->Text);
     MainTimer(this);
     timerMain->Enabled = true;
   }
@@ -1109,30 +796,6 @@ void __fastcall TfrmMain::DelayTimer(TObject *)
 }
 
 
-
-void _fastcall TfrmMain::DoBind(void)
-{
-  Bind(ebAddress->Text.c_str(), ebEndPoint->Text.c_str(), pszProtocolSequenceNP);
-}
-
-
-
-
-void __fastcall TfrmMain::AutoloadExecute(TObject *)
-{
-  client->toggleAutoload();
-  Autoload->Checked = client->getAutoload();
-}
-
-
-
-void __fastcall TfrmMain::EQOnExecute(TObject *)
-{
-
-  client->toggleEQOn();
-  EQOn->Checked = client->getEQOn();
-
-}
 
 
 void __fastcall TfrmMain::FormDockOver(TObject *, TDragDockObject *, int , int , TDragState , bool &Accept)
@@ -1221,153 +884,7 @@ void __fastcall TfrmMain::AnimateForm(TForm * Form, bool FormVisible)
   else
     DrawAnimatedRects(Form->Handle, IDANI_CAPTION, &MainRect, &FormRect);
 
-
-}
-
-
-
-void __fastcall TfrmMain::PreviousFadeExecute(TObject *)
-{
-  StopFade->Execute();
-  Previous->Execute();
-  Play->Execute();
-
-}
-
-
-
-
-void __fastcall TfrmMain::SongChangingExecute(TObject *)
-{
-  // if special actions required, this action can do them
-  // if the fade on stop is checked, the playing status needs to be cached
-  if (chkFadeOld->Checked)
-    StopFade->Execute();
-
-}
-
-
-
-
-void __fastcall TfrmMain::SongChangedExecute(TObject *)
-{
-  // if special actions required, this action can do them
-  if ( (chkFadeOld->Checked) && (WAStatus == WA_PLAYING) )
-	Play->Execute();
-}
-
-
-
-
-void __fastcall TfrmMain::NewSongExecute(TObject *)
-{
-  // gets the index from the playlist form
-  SongChanging->Execute();
-  client->setPlaylistIndex(frmPlaylist->lstSongs->ItemIndex);
-  Play->Execute();
-  SongChanged->Execute();
-
-}
-
-
-
-void __fastcall TfrmMain::PlaylistRefreshExecute(TObject *)
-{
-
-  frmPlaylist->lstSongs->Items->BeginUpdate();
-  try
-  {
-    try
-    {
-
-	  WinampRemote::Utils::CursorGuard ci;
-      IconHandle();
-      sbMain->Update();
-      TrayMessage(NIM_MODIFY);
-
-
-      LastLength = client->getPlaylistLength();
-      LastIndex = CurrentIndex;
-      CurrentIndex = client->getCurrentPlayPosition();
-
-      frmPlaylist->lstSongs->Items->Clear();
-
-      TStringList * SongList = new TStringList;
-      try
-      {
-
-        std::string list = client->getStringList(IPC_GETPLAYLISTTITLE);
-
-        SongList->Clear();
-        SongList->Text = list.c_str();
-
-        frmPlaylist->lstSongs->Items->Assign(SongList);
-
-      }
-      __finally
-      {
-        delete SongList;
-      }
-
-    }
-    catch( ERPCException &E)
-    {
-      frmPlaylist->lstSongs->Items->Text = AnsiString().sprintf(sListUnobtainable.c_str(), E.what());
-    }
-
-  }
-  __finally
-  {
-
-    IconHandle();
-    sbMain->Update();
-
-    TrayMessage(NIM_MODIFY);
-
-    frmPlaylist->lstSongs->Items->EndUpdate();
-  }
-}
-
-
-
-
-
-void __fastcall TfrmMain::PlaylistRefreshStatsExecute(TObject *)
-{
-
-
-  int SongS = 0;
-  int PosMS = 0;
-
-  client->getTimes(SongS, PosMS);
-
-  if ((SongS) && (!frmPlaylist->Dragging))
-    frmPlaylist->pbSongPos->Position = (frmPlaylist->pbSongPos->Max * PosMS) / (SongS * 1000);
-
-  if (frmPlaylist->lstSongs->Items->Count > 1)
-    frmPlaylist->pbListPos->Position = (frmPlaylist->pbListPos->Max * CurrentIndex) /
-                                       (frmPlaylist->lstSongs->Items->Count - 1);
-  else
-    frmPlaylist->pbListPos->Position = 0;
-
-  // time
-  frmPlaylist->sbPlaylist->Panels->Items[1]->Text = TimeToStr(Time());
-  // current song length
-  frmPlaylist->sbPlaylist->Panels->Items[3]->Text = TimeToStr((float) SongS / SecsPerDay);
-
-}
-
-
-
-void __fastcall TfrmMain::DoAddFiles(TStrings * Files)
-{
-    WinampRemote::Utils::CursorGuard ci;
-	string filelist = Files->Text.c_str();
-	vector <string> playlist;
-	for (int i = 0 ; i < Files->Count ; i++)
-			playlist.push_back(Files->Strings[i].c_str());
-	client->setPlayList(playlist);
-}
+}    
 
 void __fastcall TfrmMain::DoDeleteSelected(void)
 {
@@ -1393,12 +910,12 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
     } // for
 
     // add remaining
-    DoAddFiles(StringList);
+    dmRemote->DoAddFiles(StringList);
     // reset position
 
     client->setPlaylistIndex(CurrentIndex);
 
-    PlaylistRefresh->Execute();
+    dmRemote->PlaylistRefresh->Execute();
   }
   __finally
   {
@@ -1438,7 +955,7 @@ void __fastcall TfrmMain::DropFiles(TStringList * Files, int DropIndex)
   if (DropIndex > -1)
     GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count - 1, Playlist);
 
-  DoAddFiles(Playlist);
+  dmRemote->DoAddFiles(Playlist);
 
   delete Playlist;
   // reset position here
@@ -1447,7 +964,7 @@ void __fastcall TfrmMain::DropFiles(TStringList * Files, int DropIndex)
   int NewPos = Files->IndexOfObject((TObject *) true);
   client->setPlaylistIndex(NewPos);
 
-  PlaylistRefresh->Execute();
+  dmRemote->PlaylistRefresh->Execute();
 
 }
 

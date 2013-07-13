@@ -27,6 +27,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "MainF.h"
 #include "waint.h"
 #include "GlassExtender.h"
+#include "remoteDM.h"
 
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -56,7 +57,7 @@ void __fastcall TfrmSettings::tbBalanceChange(TObject *)
 void __fastcall TfrmSettings::FormClose(TObject *, TCloseAction &)
 {
 	// TODO: should be in forms management interface
-  frmMain->ViewVolume->Execute();
+  dmRemote->ViewVolume->Execute();
 }
 
 
@@ -96,8 +97,8 @@ void __fastcall TfrmSettings::UpdateBars(void)
   }
 
   // last one...
-  frmMain->Autoload->Checked = client->getAutoload();
-  frmMain->EQOn->Checked = client->getEQOn();
+  dmRemote->Autoload->Checked = client->getAutoload();
+  dmRemote->EQOn->Checked = client->getEQOn();
 
 }
 

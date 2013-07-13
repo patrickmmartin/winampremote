@@ -26,6 +26,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "CommandF.h"
 #include "MainF.h"
 #include "GlassExtender.h"
+#include "remoteDM.h"
 
 
 #pragma package(smart_init)
@@ -43,7 +44,7 @@ __fastcall TfrmCommands::TfrmCommands(TComponent* Owner)
 void __fastcall TfrmCommands::FormClose(TObject *, TCloseAction &)
 {
 	// TODO: should be in forms management interface
-	frmMain->ViewToolBar->Execute();
+	dmRemote->ViewToolBar->Execute();
 }
 
 

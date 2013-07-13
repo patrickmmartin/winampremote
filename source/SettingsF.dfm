@@ -360,13 +360,11 @@ object frmSettings: TfrmSettings
         object btnEQOn: TToolButton
           Left = 0
           Top = 0
-          Action = frmMain.EQOn
           Wrap = True
         end
         object btnAutoload: TToolButton
           Left = 0
           Top = 23
-          Action = frmMain.Autoload
         end
       end
     end

@@ -2,7 +2,6 @@ object frmMain: TfrmMain
   Left = 452
   Top = 279
   Hint = 'the winamp remote control client'
-  Action = Shuffle
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Winamp Remote Control'
@@ -17,7 +16,6 @@ object frmMain: TfrmMain
   Menu = mnuMain
   OldCreateOrder = True
   Position = poScreenCenter
-  OnClick = ShuffleExecute
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -173,9 +171,10 @@ object frmMain: TfrmMain
             Top = 84
             Width = 65
             Height = 21
-            Action = LocateServers
+            Hint = 'locate possible winamp servers'
             Caption = 'Find'
             TabOrder = 2
+            OnClick = LocateServersExecute
           end
         end
       end
@@ -298,17 +297,23 @@ object frmMain: TfrmMain
     Left = 312
     Top = 65520
     object mnuAbout: TMenuItem
-      Action = About
+      Caption = '&About'
+      Hint = 'About this Application '
+      ImageIndex = 26
     end
     object mnuShow: TMenuItem
-      Action = ShowMainForm
+      Caption = 'Show'
       Default = True
+      Hint = 'Show'
+      ImageIndex = 0
     end
     object N7: TMenuItem
       Caption = '-'
     end
     object mnuShutDown: TMenuItem
-      Action = Exit
+      Caption = 'E&xit'
+      Hint = 'File Exit'
+      ImageIndex = 27
     end
     object N2: TMenuItem
       Caption = '-'
@@ -316,25 +321,43 @@ object frmMain: TfrmMain
     object mnuCommands: TMenuItem
       Caption = 'Commands'
       object mnuPause: TMenuItem
-        Action = Pause
+        Caption = '&Pause'
+        Hint = 'Pause'
+        ImageIndex = 2
+        OnClick = PauseExecute
       end
       object mnuPlay: TMenuItem
-        Action = Play
+        Caption = 'P&lay'
+        Hint = 'Play'
+        ImageIndex = 1
+        OnClick = PlayExecute
       end
       object mnuStop: TMenuItem
-        Action = Stop
+        Caption = '&Stop'
+        Hint = 'Stop'
+        ImageIndex = 3
       end
       object mnuForward5: TMenuItem
-        Action = Forward5
+        Caption = '&Forward 5 seconds'
+        Hint = 'Forward 5'
+        ImageIndex = 4
       end
       object mnuBack5: TMenuItem
-        Action = Back5
+        Caption = '&Back 5 seconds'
+        Hint = 'Back 5'
+        ImageIndex = 0
       end
       object mnuStopFade: TMenuItem
-        Action = StopFade
+        Caption = 'Stop With &Fade'
+        Hint = 'Stop with Fade'
+        ImageIndex = 3
+        OnClick = StopFadeExecute
       end
       object mnuStopCurrent: TMenuItem
-        Action = StopAfterCurrent
+        Caption = 'Stop After &Current'
+        Hint = 'Stop after Current'
+        ImageIndex = 3
+        OnClick = StopAfterCurrentExecute
       end
     end
     object mnuPlaylist: TMenuItem
@@ -343,86 +366,127 @@ object frmMain: TfrmMain
       object Actions1: TMenuItem
         Caption = 'Actions'
         object mnuStart: TMenuItem
-          Action = Start
+          Caption = 'St&art'
+          Hint = 'Start of Playlist'
+          ImageIndex = 0
         end
         object mnuEnd: TMenuItem
-          Action = End
+          Caption = '&End'
+          Hint = 'End of Playlist'
+          ImageIndex = 4
         end
         object mnuDelete: TMenuItem
-          Action = Delete
+          Caption = '&Delete'
+          Hint = 'Delete Playlist'
+          ImageIndex = 15
         end
         object mnuAddFiles: TMenuItem
-          Action = AddFiles
+          Caption = 'Add Fi&les'
+          Hint = 'Add Files To Playlist'
+          ImageIndex = 16
         end
         object mnuAddPlayList: TMenuItem
-          Action = AddPlayIist
+          Caption = 'Add Pla&ylist'
+          Hint = 'Add Playlist'
+          ImageIndex = 17
+          Visible = False
         end
         object mnuPlayfromStart: TMenuItem
-          Action = PlayFromStart
+          Caption = 'Play &From Start'
+          Hint = 'Play from Start'
+          ImageIndex = 0
+          Visible = False
         end
         object mnuAddDirectory: TMenuItem
-          Action = AddDirectory
+          Caption = 'Add Direc&tory'
+          Hint = 'add Directory'
+          ImageIndex = 18
+          Visible = False
         end
       end
       object mnuShuffle: TMenuItem
-        Action = Shuffle
+        Caption = '&Shuffle'
+        Hint = 'Playlist Shuffle'
+        ImageIndex = 11
       end
       object mnuRepeat: TMenuItem
-        Action = Repeat
+        Caption = '&Repeat'
+        Hint = 'Playlist Repeat'
+        ImageIndex = 12
       end
     end
     object mnuVolume: TMenuItem
       Caption = 'Volume'
       Hint = 'volume functions'
       object mnuVolumeUp: TMenuItem
-        Action = Up
+        Caption = '&Up'
+        Hint = 'Volume Up'
+        ImageIndex = 19
       end
       object mnuVolumeDown: TMenuItem
-        Action = Down
+        Caption = '&Down'
+        Hint = 'Voume Down'
+        ImageIndex = 20
       end
       object mnuVolumeUpMore: TMenuItem
-        Action = UpMore
+        Caption = 'Up &More'
+        Hint = 'Volume Up (More)'
+        ImageIndex = 21
       end
       object mnuVolumeDownMore: TMenuItem
-        Action = DownMore
+        Caption = 'Down M&ore'
+        Hint = 'Volume Down (more)'
+        ImageIndex = 22
       end
       object mnuSetVolume0: TMenuItem
-        Action = Zero
+        Caption = '&Zero'
+        Hint = 'Volume off'
+        ImageIndex = 23
+        OnClick = SetVolume0Execute
       end
       object N502: TMenuItem
-        Action = Half
+        Caption = '50 %'
+        Hint = 'Volume 50%'
+        ImageIndex = 25
       end
       object mnuSetVolume100: TMenuItem
-        Action = Full
+        Caption = '&Full'
+        Hint = 'Volume FULL'
+        ImageIndex = 24
       end
     end
     object NextwithFade2: TMenuItem
-      Action = NextFade
+      Caption = 'Next with &Fade'
+      ImageIndex = 4
     end
     object mnuNext: TMenuItem
-      Action = Next
+      Caption = '&Next'
+      Hint = 'Next in Playlist'
+      ImageIndex = 4
     end
     object mnuPrevious: TMenuItem
-      Action = Previous
+      Caption = '&Previous'
+      Hint = 'Previous in Playlist'
+      ImageIndex = 0
     end
     object N1: TMenuItem
       Caption = '-'
     end
     object mnuViewCommands: TMenuItem
-      Action = ViewToolBar
+      Caption = 'View &ToolBar'
+      Hint = 'Commands Toolbar'
+      ImageIndex = 8
     end
     object mnuAdministerPlayList: TMenuItem
-      Action = ViewPlaylist
+      Caption = 'View &Playlist'
+      Hint = 'Playlist Editor'
+      ImageIndex = 10
     end
     object mnuShowSettings: TMenuItem
-      Action = ViewVolume
+      Caption = 'View &Settings'
+      Hint = 'Audio Settings Editor'
+      ImageIndex = 9
     end
-  end
-  object OpenDialog1: TOpenDialog
-    Filter = 'Playlist Files|*.m3u, *.pls'
-    Options = [ofHideReadOnly, ofAllowMultiSelect, ofPathMustExist, ofFileMustExist]
-    Left = 400
-    Top = 65520
   end
   object mnuMain: TMainMenu
     Images = imlActions
@@ -432,147 +496,227 @@ object frmMain: TfrmMain
       Caption = 'A&pplication'
       Hint = 'File Menu'
       object mnuPlaceOnTray: TMenuItem
-        Action = PlaceOnTray
+        Caption = 'Place On &Tray'
+        Hint = 'Place on Tray'
+        ImageIndex = 6
+        ShortCut = 16456
+        OnClick = HideMain
       end
       object LocateServers1: TMenuItem
-        Action = LocateServers
+        Caption = '&Locate Servers'
+        Hint = 'locate possible winamp servers'
+        ImageIndex = 26
+        ShortCut = 16460
+        OnClick = LocateServersExecute
       end
       object N3: TMenuItem
         Caption = '-'
       end
       object mnuFileExit: TMenuItem
-        Action = Exit
+        Caption = 'E&xit'
+        Hint = 'File Exit'
+        ImageIndex = 27
       end
     end
     object mnuActions: TMenuItem
       Caption = '&Actions'
       Hint = 'General Play Actions'
       object ViewToolbar1: TMenuItem
-        Action = ViewToolBar
+        Caption = 'View &ToolBar'
+        Hint = 'Commands Toolbar'
+        ImageIndex = 8
       end
       object N4: TMenuItem
         Caption = '-'
       end
       object Pause1: TMenuItem
-        Action = Pause
+        Caption = '&Pause'
+        Hint = 'Pause'
+        ImageIndex = 2
+        OnClick = PauseExecute
       end
       object Play1: TMenuItem
-        Action = Play
+        Caption = 'P&lay'
+        Hint = 'Play'
+        ImageIndex = 1
+        OnClick = PlayExecute
       end
       object Stop1: TMenuItem
-        Action = Stop
+        Caption = '&Stop'
+        Hint = 'Stop'
+        ImageIndex = 3
       end
       object MoreStops1: TMenuItem
         Caption = '&More Stops'
         Hint = 'more types of stop'
         object StopWithFade1: TMenuItem
-          Action = StopFade
+          Caption = 'Stop With &Fade'
+          Hint = 'Stop with Fade'
+          ImageIndex = 3
+          OnClick = StopFadeExecute
         end
         object StopafterCurrent1: TMenuItem
-          Action = StopAfterCurrent
+          Caption = 'Stop After &Current'
+          Hint = 'Stop after Current'
+          ImageIndex = 3
+          OnClick = StopAfterCurrentExecute
         end
       end
       object Forward51: TMenuItem
-        Action = Forward5
+        Caption = '&Forward 5 seconds'
+        Hint = 'Forward 5'
+        ImageIndex = 4
       end
       object Back51: TMenuItem
-        Action = Back5
+        Caption = '&Back 5 seconds'
+        Hint = 'Back 5'
+        ImageIndex = 0
       end
     end
     object Playlist1: TMenuItem
       Caption = '&Playlist'
       Hint = 'Playlist Functions'
       object Administer1: TMenuItem
-        Action = ViewPlaylist
+        Caption = 'View &Playlist'
+        Hint = 'Playlist Editor'
+        ImageIndex = 10
       end
       object N5: TMenuItem
         Caption = '-'
       end
       object Next1: TMenuItem
-        Action = Next
+        Caption = '&Next'
+        Hint = 'Next in Playlist'
+        ImageIndex = 4
       end
       object mnuNextwithFade: TMenuItem
-        Action = NextFade
+        Caption = 'Next with &Fade'
+        ImageIndex = 4
       end
       object Previous1: TMenuItem
-        Action = Previous
+        Caption = '&Previous'
+        Hint = 'Previous in Playlist'
+        ImageIndex = 0
       end
       object mnuPreviouswithFade: TMenuItem
-        Action = PreviousFade
+        Caption = 'Previous with F&ade'
+        ImageIndex = 0
       end
       object Actions2: TMenuItem
         Caption = '&Actions'
         object Start1: TMenuItem
-          Action = Start
+          Caption = 'St&art'
+          Hint = 'Start of Playlist'
+          ImageIndex = 0
         end
         object End1: TMenuItem
-          Action = End
+          Caption = '&End'
+          Hint = 'End of Playlist'
+          ImageIndex = 4
         end
         object Delete1: TMenuItem
-          Action = Delete
+          Caption = '&Delete'
+          Hint = 'Delete Playlist'
+          ImageIndex = 15
         end
         object PlayfromStart2: TMenuItem
-          Action = PlayFromStart
+          Caption = 'Play &From Start'
+          Hint = 'Play from Start'
+          ImageIndex = 0
+          Visible = False
         end
         object AddFiles2: TMenuItem
-          Action = AddFiles
+          Caption = 'Add Fi&les'
+          Hint = 'Add Files To Playlist'
+          ImageIndex = 16
         end
         object AddPlayList1: TMenuItem
-          Action = AddPlayIist
+          Caption = 'Add Pla&ylist'
+          Hint = 'Add Playlist'
+          ImageIndex = 17
+          Visible = False
         end
         object AddDirectory1: TMenuItem
-          Action = AddDirectory
+          Caption = 'Add Direc&tory'
+          Hint = 'add Directory'
+          ImageIndex = 18
+          Visible = False
         end
       end
       object Shuffletoggle1: TMenuItem
-        Action = Shuffle
+        Caption = '&Shuffle'
+        Hint = 'Playlist Shuffle'
+        ImageIndex = 11
       end
       object Repeattoggle1: TMenuItem
-        Action = Repeat
+        Caption = '&Repeat'
+        Hint = 'Playlist Repeat'
+        ImageIndex = 12
       end
     end
     object Volume1: TMenuItem
       Caption = '&Volume'
       Hint = 'Volume Functions'
       object ViewEditSettings1: TMenuItem
-        Action = ViewVolume
+        Caption = 'View &Settings'
+        Hint = 'Audio Settings Editor'
+        ImageIndex = 9
       end
       object N6: TMenuItem
         Caption = '-'
       end
       object Up1: TMenuItem
-        Action = Up
+        Caption = '&Up'
+        Hint = 'Volume Up'
+        ImageIndex = 19
       end
       object Down1: TMenuItem
-        Action = Down
+        Caption = '&Down'
+        Hint = 'Voume Down'
+        ImageIndex = 20
       end
       object mnuMore: TMenuItem
         Caption = 'More Up/Down'
         object UpMore1: TMenuItem
-          Action = UpMore
+          Caption = 'Up &More'
+          Hint = 'Volume Up (More)'
+          ImageIndex = 21
         end
         object DownMore1: TMenuItem
-          Action = DownMore
+          Caption = 'Down M&ore'
+          Hint = 'Volume Down (more)'
+          ImageIndex = 22
         end
       end
       object Volumezero1: TMenuItem
-        Action = Zero
+        Caption = '&Zero'
+        Hint = 'Volume off'
+        ImageIndex = 23
+        OnClick = SetVolume0Execute
       end
       object N501: TMenuItem
-        Action = Half
+        Caption = '50 %'
+        Hint = 'Volume 50%'
+        ImageIndex = 25
       end
       object Volumefull1: TMenuItem
-        Action = Full
+        Caption = '&Full'
+        Hint = 'Volume FULL'
+        ImageIndex = 24
       end
     end
     object mnuHelp: TMenuItem
       Caption = '&Help'
       Hint = 'Help on this Application'
       object mnuDetails: TMenuItem
-        Action = Details
+        Caption = 'Details'
+        ImageIndex = 7
+        OnClick = DetailsExecute
       end
       object mnuHelpAbout: TMenuItem
-        Action = About
+        Caption = '&About'
+        Hint = 'About this Application '
+        ImageIndex = 26
       end
     end
   end
@@ -582,318 +726,6 @@ object frmMain: TfrmMain
     OnTimer = MainTimer
     Left = 24
     Top = 65520
-  end
-  object alMain: TActionList
-    Images = imlActions
-    Left = 185
-    Top = 65520
-    object Configuration: TAction
-      Category = 'File'
-      Caption = '&Configuration'
-      Hint = 'Configuration'
-      ImageIndex = 7
-    end
-    object PlaceOnTray: TAction
-      Category = 'File'
-      Caption = 'Place On &Tray'
-      Hint = 'Place on Tray'
-      ImageIndex = 6
-      ShortCut = 16456
-      OnExecute = HideMain
-    end
-    object Exit: TAction
-      Category = 'File'
-      Caption = 'E&xit'
-      Hint = 'File Exit'
-      ImageIndex = 27
-      OnExecute = ExitExecute
-    end
-    object ViewToolBar: TAction
-      Category = 'Action'
-      Caption = 'View &ToolBar'
-      Hint = 'Commands Toolbar'
-      ImageIndex = 8
-      OnExecute = ViewToolBarExecute
-    end
-    object Pause: TAction
-      Category = 'Action'
-      Caption = '&Pause'
-      Hint = 'Pause'
-      ImageIndex = 2
-      OnExecute = PauseExecute
-    end
-    object Play: TAction
-      Category = 'Action'
-      Caption = 'P&lay'
-      Hint = 'Play'
-      ImageIndex = 1
-      OnExecute = PlayExecute
-    end
-    object Stop: TAction
-      Category = 'Action'
-      Caption = '&Stop'
-      Hint = 'Stop'
-      ImageIndex = 3
-      OnExecute = StopExecute
-    end
-    object StopFade: TAction
-      Category = 'Action'
-      Caption = 'Stop With &Fade'
-      Hint = 'Stop with Fade'
-      ImageIndex = 3
-      OnExecute = StopFadeExecute
-    end
-    object StopAfterCurrent: TAction
-      Category = 'Action'
-      Caption = 'Stop After &Current'
-      Hint = 'Stop after Current'
-      ImageIndex = 3
-      OnExecute = StopAfterCurrentExecute
-    end
-    object Forward5: TAction
-      Category = 'Action'
-      Caption = '&Forward 5 seconds'
-      Hint = 'Forward 5'
-      ImageIndex = 4
-      OnExecute = Forward5Execute
-    end
-    object Back5: TAction
-      Category = 'Action'
-      Caption = '&Back 5 seconds'
-      Hint = 'Back 5'
-      ImageIndex = 0
-      OnExecute = Back5Execute
-    end
-    object ViewPlaylist: TAction
-      Category = 'Playlist'
-      Caption = 'View &Playlist'
-      Hint = 'Playlist Editor'
-      ImageIndex = 10
-      OnExecute = ViewPlaylistExecute
-    end
-    object Shuffle: TAction
-      Category = 'Playlist'
-      Caption = '&Shuffle'
-      Hint = 'Playlist Shuffle'
-      ImageIndex = 11
-      OnExecute = ShuffleExecute
-    end
-    object Repeat: TAction
-      Category = 'Playlist'
-      Caption = '&Repeat'
-      Hint = 'Playlist Repeat'
-      ImageIndex = 12
-      OnExecute = RepeatExecute
-    end
-    object Next: TAction
-      Category = 'Playlist'
-      Caption = '&Next'
-      Hint = 'Next in Playlist'
-      ImageIndex = 4
-      OnExecute = NextExecute
-    end
-    object Previous: TAction
-      Category = 'Playlist'
-      Caption = '&Previous'
-      Hint = 'Previous in Playlist'
-      ImageIndex = 0
-      OnExecute = PreviousExecute
-    end
-    object Start: TAction
-      Category = 'Playlist'
-      Caption = 'St&art'
-      Hint = 'Start of Playlist'
-      ImageIndex = 0
-      OnExecute = PlaylistStartExecute
-    end
-    object End: TAction
-      Category = 'Playlist'
-      Caption = '&End'
-      Hint = 'End of Playlist'
-      ImageIndex = 4
-      OnExecute = PlaylistEndExecute
-    end
-    object Delete: TAction
-      Category = 'Playlist'
-      Caption = '&Delete'
-      Hint = 'Delete Playlist'
-      ImageIndex = 15
-      OnExecute = DeletePlayListExecute
-    end
-    object PlaylistRefresh: TAction
-      Category = 'Playlist'
-      Caption = 'PlaylistRefresh'
-      ImageIndex = 13
-      OnExecute = PlaylistRefreshExecute
-    end
-    object PlayFromStart: TAction
-      Category = 'Playlist'
-      Caption = 'Play &From Start'
-      Hint = 'Play from Start'
-      ImageIndex = 0
-      Visible = False
-      OnExecute = PlayFromStartExecute
-    end
-    object AddFiles: TAction
-      Category = 'Playlist'
-      Caption = 'Add Fi&les'
-      Hint = 'Add Files To Playlist'
-      ImageIndex = 16
-      OnExecute = AddFileToPlayListExecute
-    end
-    object AddPlayIist: TAction
-      Category = 'Playlist'
-      Caption = 'Add Pla&ylist'
-      Hint = 'Add Playlist'
-      ImageIndex = 17
-      Visible = False
-      OnExecute = AddFileToPlayListExecute
-    end
-    object AddDirectory: TAction
-      Category = 'Playlist'
-      Caption = 'Add Direc&tory'
-      Hint = 'add Directory'
-      ImageIndex = 18
-      Visible = False
-    end
-    object ViewVolume: TAction
-      Category = 'Volume'
-      Caption = 'View &Settings'
-      Hint = 'Audio Settings Editor'
-      ImageIndex = 9
-      OnExecute = ViewVolumeExecute
-    end
-    object Up: TAction
-      Category = 'Volume'
-      Caption = '&Up'
-      Hint = 'Volume Up'
-      ImageIndex = 19
-      OnExecute = VolumeUpExecute
-    end
-    object Down: TAction
-      Category = 'Volume'
-      Caption = '&Down'
-      Hint = 'Voume Down'
-      ImageIndex = 20
-      OnExecute = VolumeDownExecute
-    end
-    object UpMore: TAction
-      Category = 'Volume'
-      Caption = 'Up &More'
-      Hint = 'Volume Up (More)'
-      ImageIndex = 21
-      OnExecute = VolumeUpMoreExecute
-    end
-    object DownMore: TAction
-      Category = 'Volume'
-      Caption = 'Down M&ore'
-      Hint = 'Volume Down (more)'
-      ImageIndex = 22
-      OnExecute = VolumeDownMoreExecute
-    end
-    object Zero: TAction
-      Category = 'Volume'
-      Caption = '&Zero'
-      Hint = 'Volume off'
-      ImageIndex = 23
-      OnExecute = SetVolume0Execute
-    end
-    object Half: TAction
-      Category = 'Volume'
-      Caption = '50 %'
-      Hint = 'Volume 50%'
-      ImageIndex = 25
-      OnExecute = HalfExecute
-    end
-    object Full: TAction
-      Category = 'Volume'
-      Caption = '&Full'
-      Hint = 'Volume FULL'
-      ImageIndex = 24
-      OnExecute = SetVolume100Execute
-    end
-    object About: TAction
-      Category = 'Help'
-      Caption = '&About'
-      Hint = 'About this Application '
-      ImageIndex = 26
-      OnExecute = AboutExecute
-    end
-    object ShowMainForm: TAction
-      Category = 'File'
-      Caption = 'Show'
-      Hint = 'Show'
-      ImageIndex = 0
-      OnExecute = ShowMainFormExecute
-    end
-    object LocateServers: TAction
-      Category = 'File'
-      Caption = '&Locate Servers'
-      Hint = 'locate possible winamp servers'
-      ImageIndex = 26
-      ShortCut = 16460
-      OnExecute = LocateServersExecute
-    end
-    object Autoload: TAction
-      Category = 'Volume'
-      Caption = 'EQ Autoload'
-      Hint = 'Autoload EQ settings'
-      ImageIndex = 13
-      OnExecute = AutoloadExecute
-    end
-    object Details: TAction
-      Category = 'Help'
-      Caption = 'Details'
-      ImageIndex = 7
-      OnExecute = DetailsExecute
-    end
-    object NextFade: TAction
-      Category = 'Playlist'
-      Caption = 'Next with &Fade'
-      ImageIndex = 4
-      OnExecute = NextFadeExecute
-    end
-    object PreviousFade: TAction
-      Category = 'Playlist'
-      Caption = 'Previous with F&ade'
-      ImageIndex = 0
-      OnExecute = PreviousFadeExecute
-    end
-    object SongChanging: TAction
-      Category = 'Playlist'
-      Caption = 'SongChanging'
-      ImageIndex = 26
-      OnExecute = SongChangingExecute
-    end
-    object SongChanged: TAction
-      Category = 'Playlist'
-      Caption = 'SongChanging'
-      ImageIndex = 26
-      OnExecute = SongChangedExecute
-    end
-    object NewSong: TAction
-      Category = 'Playlist'
-      Caption = 'NewSong'
-      ImageIndex = 26
-      OnExecute = NewSongExecute
-    end
-    object PlaylistRefreshCurrent: TAction
-      Category = 'Playlist'
-      Caption = 'PlaylistRefresh'
-      ImageIndex = 13
-    end
-    object PlaylistRefreshStats: TAction
-      Category = 'Playlist'
-      Caption = 'PlaylistRefreshStats'
-      ImageIndex = 26
-      OnExecute = PlaylistRefreshStatsExecute
-    end
-    object EQOn: TAction
-      Category = 'Volume'
-      Caption = 'EQOn'
-      ImageIndex = 12
-      OnExecute = EQOnExecute
-    end
   end
   object imlActions: TImageList
     Left = 272
