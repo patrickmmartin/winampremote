@@ -719,7 +719,6 @@ void __fastcall TfrmMain::AppException(TObject *, Exception *E)
 
 void TfrmMain::UpdateIcon(void)
 {
-  char title[sizeof(IdentChars)] = ""; // MAX_PATH == maximum user name ?
   int index, length;
   AnsiString saveStr;
 
@@ -736,8 +735,8 @@ void TfrmMain::UpdateIcon(void)
     connected = true;
     TrayMessage(NIM_MODIFY);
 
-    Shuffle->Checked = (WinampVerNo >= 0x2604) && client->getShuffle();
-    Repeat->Checked = (WinampVerNo >= 0x2604) && client->getRepeat();
+    Shuffle->Checked = (client->winampVersion() >= 0x2604) && client->getShuffle();
+    Repeat->Checked = (client->winampVersion() >= 0x2604) && client->getRepeat();
 
     // TODO: use a notification interface to refresh
     frmSettings->tbVolume->Position = client->getVolume();
@@ -751,11 +750,8 @@ void TfrmMain::UpdateIcon(void)
     if ( connected && !previousConnected )
     {
       timerMain->Interval = UpdateTime;
-      WinampVerNo = client->winampVersion();
-      lblVersion->Caption = WinampVersionString(WinampVerNo);
+      lblVersion->Caption = client->winampVersion();
     }
-
-    strcpy(title, IdentChars);
 
     length = client->getPlaylistLength();
     if (length > 0)
@@ -885,7 +881,7 @@ void __fastcall TfrmMain::ShuffleExecute(TObject *)
 {
   // shuffle / repeat status only works in very recent versions,
   // so always do for older
-  if ( (WinampVerNo < 0x2604) || (Shuffle->Checked == client->getShuffle() ) )
+  if ( (client->winampVersion() < 0x2604) || (Shuffle->Checked == client->getShuffle() ) )
     client->toggleShuffle();
   UpdateIcon();
 }
@@ -897,7 +893,7 @@ void __fastcall TfrmMain::RepeatExecute(TObject *)
 {
   // shuffle / repeat status only works in very recent versions,
   // so always do for older
-  if  ( (WinampVerNo < 0x2604) || (Repeat->Checked ==  client->getRepeat() ) )
+  if  ( (client->winampVersion() < 0x2604) || (Repeat->Checked ==  client->getRepeat() ) )
     client->toggleRepeat();
   UpdateIcon();
 }
@@ -1053,7 +1049,6 @@ AnsiString str;
   else
     str += sUnknown;
 
-  strncpy(IdentChars, str.c_str(), sizeof(IdentChars));
 }
 
 
