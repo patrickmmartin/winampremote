@@ -14,12 +14,13 @@
       ..\obj\remote\remotestrs.obj ..\obj\remote\ServerEnumerator.obj 
       ..\obj\remote\ServerTester.obj ..\obj\remote\GlassExtender.obj 
       ..\obj\remote\WinampClientBase.obj ..\obj\remote\IPAddressResolver.obj 
-      ..\obj\remote\CursorGuard.obj ..\obj\remote\AboutGLDisplay.obj"/>
+      ..\obj\remote\CursorGuard.obj ..\obj\remote\AboutGLDisplay.obj 
+      ..\obj\remote\remoteDM.obj"/>
     <RESFILES value="..\obj\remote\winampremote.res ..\obj\remote\windowsthemes.res remote.RES"/>
     <IDLFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) AboutF.dfm SettingsF.dfm CommandF.dfm ServersF.dfm 
-      DetailsF.dfm PlaylistF.dfm MainF.dfm messageF.dfm"/>
+      DetailsF.dfm PlaylistF.dfm MainF.dfm messageF.dfm remoteDM.dfm"/>
     <LIBFILES value="..\lib\winampinterface.lib"/>
     <LIBRARIES value="vclx50.lib vcl50.lib"/>
     <SPARELIBS value="vcl50.lib vclx50.lib"/>

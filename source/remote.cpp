@@ -49,6 +49,7 @@ USEUNIT("WinampClientBase.cpp");
 USEUNIT("IPAddressResolver.cpp");
 USEUNIT("CursorGuard.cpp");
 USEUNIT("AboutGLDisplay.cpp");
+USEFORM("remoteDM.cpp", dmRemote); /* TDataModule: File Type */
 //---------------------------------------------------------------------------
 #include "remotestrs.h"
 
@@ -61,6 +62,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->CreateForm(__classid(TfrmPlaylist), &frmPlaylist);
                  Application->CreateForm(__classid(TfrmCommands), &frmCommands);
                  Application->CreateForm(__classid(TfrmSettings), &frmSettings);
+                 Application->CreateForm(__classid(TdmRemote), &dmRemote);
                  Application->Run();
         }
     catch (Exception &exception)
