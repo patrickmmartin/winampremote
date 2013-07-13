@@ -698,7 +698,6 @@ void __fastcall TfrmMain::FormCreate(TObject *)
   }
 
   pgSettings->ActivePage = tbsMain;
-  SetIdent();
 
   DoBind();
 
@@ -1023,34 +1022,6 @@ void __fastcall TfrmMain::ViewVolumeExecute(TObject *)
   AnimateForm(frmSettings, ViewVolume->Checked);
   ViewVolume->Checked = frmSettings->Visible;
 }
-
-
-
-
-void __fastcall TfrmMain::SetIdent(void)
-{
-
-// no declaration for username max - appears to be same as machine ?
-// see access .ldb file format
-char buf[32];
-unsigned long maxlen = 31;
-AnsiString str;
-
-  if (GetUserName(buf, &maxlen))
-    str = buf;
-  else
-    str = sUnknown;
-
-  maxlen = 31;
-  str += '@';
-
-  if (GetComputerName(buf, &maxlen))
-    str += buf;
-  else
-    str += sUnknown;
-
-}
-
 
 
 

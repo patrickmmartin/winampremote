@@ -270,7 +270,6 @@ private:        // private user declarations
 	bool DoubleClickedL;
 	bool DoubleClickedR;
 	bool connected;
-	void __fastcall SetIdent(void);
 	void __fastcall TrayNotify(TMessage& Msg);
 	void __fastcall ToggleState(void);
 	PSTR __fastcall TipText(void);
