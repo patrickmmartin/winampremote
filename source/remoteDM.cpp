@@ -4,6 +4,9 @@
 #pragma hdrstop
 
 #include "remoteDM.h"
+
+#include "WinampClientBase.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -16,50 +19,103 @@ __fastcall TdmRemote::TdmRemote(TComponent* Owner)
 //---------------------------------------------------------------------------
 
 
+void TdmRemote::setClient(WinampRemote::Client::IWinamp * client_)
+{
+        client = client_;
+}
 
-// TODO: form manager - need references to the commands, playlist and volume forms
+void TdmRemote::setMainForm(TfrmMain * Form_)
+{
+        FMainForm = Form_;
+}
 
-// TODO: form manager - need reference to the winamp client
-
-// signature is generic - can be set upon attachment
-
-// TODO: form manager - upon start dragging commands // frmMain->StartDock(Sender, DragObject);
-
-// TODO: form manager - upon start drag of playlist // frmMain->StartDock(Sender, DragObject);
-
-// TODO: form manager - upon start drag of the volume form // frmMain->StartDock(Sender, DragObject);
-
-
-// signature of events are uniform, but need dispatch upon the instance  - good ? bad ?:P
-
-// TODO: form manager - upon close playlist // frmMain->ViewPlaylist->Execute();
-
-// TODO: form manager - upon close of the settings form // frmMain->ViewVolume->Execute();
-
-// TODO: form manager - upon closing Commands form //frmMain->ViewToolBar->Execute(); BTW are we still doing that?
-
-// TODO: form manager - action for display or hide Settings // hide show
+void TdmRemote::hookStartDock(TForm * NewForm, TForm * PriorForm)
+{
+	NewForm->OnStartDock = FormStartDock;
+	if (PriorForm)
+		PriorForm->OnStartDock = NULL;
+}
 
 
-// TODO: form manager - action for refreshing playlist // frmMain->PlaylistRefresh->Execute();
+void TdmRemote::setCommandForm(TForm * Form_)
+{
+	if (!Form_)
+		return;
+	hookStartDock(Form_, FCommandForm);
+	FCommandForm = Form_;
+}
 
-// TODO: form manager - need action for adding files to playlist
+void TdmRemote::setPlaylistForm(TForm * Form_)
+{
+	if (!Form_)
+		return;
+	hookStartDock(Form_, FPlaylistForm);
+	FPlaylistForm = Form_;
+}
+
+void TdmRemote::setSettingsForm(TForm * Form_)
+{
+	if (!Form_)
+		return;
+	hookStartDock(Form_, FSettingsForm);
+	FSettingsForm = Form_;
+}
 
 
+void __fastcall TdmRemote::FormStartDock(TObject *Sender, TDragDockObject *&DragObject)
+{
+  if (FMainForm)
+   FMainForm->StartDock(Sender, DragObject);
+}
 
-// TODO: form manager - need volume up
+//---------------------------------------------------------------------------
 
-// TODO: form manager - need volume down
+void __fastcall TdmRemote::Volume0Execute(TObject *Sender)
+{
+  if (client)
+          client->setVolume(0);
+}
+//---------------------------------------------------------------------------
 
-// TODO: form manager - need volume up more
+void __fastcall TdmRemote::Volume100Execute(TObject *Sender)
+{
+  if (client)
+          client->setVolume(255);
+}
+//---------------------------------------------------------------------------
 
-// TODO: form manager - need volume down more
+void __fastcall TdmRemote::Volume50Execute(TObject *Sender)
+{
+  if (client)
+          client->setVolume(128);
+}
+//---------------------------------------------------------------------------
 
-// TODO: form manager - need refresh volume etc.
+void __fastcall TdmRemote::VolumeDownExecute(TObject *Sender)
+{
+  if (client)
+          client->volumeDown();
+}
+//---------------------------------------------------------------------------
 
-// TODO: form manager - need set volume 0
+void __fastcall TdmRemote::VolumeDownMoreExecute(TObject *Sender)
+{
+  if (client)
+          client->setVolume(client->getVolume() - 10);
+}
+//---------------------------------------------------------------------------
 
-// TODO: form manager - need set volume 50%
+void __fastcall TdmRemote::VolumeUpExecute(TObject *Sender)
+{
+  if (client)
+          client->volumeUp();
+}
+//---------------------------------------------------------------------------
 
-// TODO: form manager - need set volume 100%
+void __fastcall TdmRemote::VolumeupMoreExecute(TObject *Sender)
+{
+  if (client)
+      client->setVolume(client->getVolume() + 10);
+}
+//---------------------------------------------------------------------------
 
