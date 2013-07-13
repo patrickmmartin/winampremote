@@ -31,8 +31,6 @@
 
 #include <GL\gl.h>
 #include <GL\glu.h>
-#include <math.h>  // TODO - really?
-#include <malloc.h>  // TODO - really?
 
 #define GLF_START_LIST 20000
 #define TORUS 1
@@ -641,7 +639,6 @@ void AboutGLDisplay::init(void)
 
 	matrixIdentity(objectXform);
 
-	// TODO failure here
 	CreateFontList();
 	CreateDisplayLists();
 }
