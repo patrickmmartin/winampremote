@@ -260,7 +260,7 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
     TopList->AddStrings(BottomList);
   // reset position
 
-    // TODO: use a proper interface
+    // TODO: should be in forms management interface
     frmMain->DoAddFiles(TopList);
 
     NewPos = TopList->IndexOfObject((TObject *) true);
