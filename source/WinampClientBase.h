@@ -36,7 +36,7 @@ public:
 	}
 
 
-	virtual int winampVersion(void);
+	virtual int winampVersion(void) const;
 
 	virtual void sendString();
 
@@ -50,17 +50,17 @@ public:
 
 	virtual void pause(void);
 
-	virtual WAPlaybackStatus getPlaybackStatus(void);
+	virtual WAPlaybackStatus getPlaybackStatus(void) const;
 
-	virtual string getPlayListItem(int index, bool title = true);
+	virtual string getPlayListItem(int index, bool title = true) const;
 
-	virtual int getCurrentPlayPosition(void);
+	virtual int getCurrentPlayPosition(void) const;
 
-	virtual int getPlaylistLength(void);
+	virtual int getPlaylistLength(void) const;
 
-	virtual string getCurrentPlayListItem(int& index, bool title = true);
+	virtual string getCurrentPlayListItem(int& index, bool title = true) const;
 
-	virtual vector<string> getPlayList(bool title = true);
+	virtual vector<string> getPlayList(bool title = true) const;
 
 	virtual void setPlayList(const vector<string>& playlist);
 
@@ -82,7 +82,7 @@ public:
 
 	virtual void setTime(int time);
 
-	virtual int getTime();
+	virtual int getTime() const;
 
 	virtual void forward5(void);
 
@@ -94,43 +94,43 @@ public:
 
 	virtual void setVolume(int volume);
 
-	virtual int getVolume();
+	virtual int getVolume() const;
 
 	virtual void setPanning(int panning);
 
-	virtual int getPanning();
+	virtual int getPanning() const;
 
 	virtual void toggleShuffle(void);
 
-	virtual int getShuffle(void);
+	virtual int getShuffle(void) const;
 
 	virtual void setShuffle(bool shuffle);
 
 	virtual void toggleRepeat(void);
 
-	virtual int getRepeat(void);
+	virtual int getRepeat(void) const;
 
 	virtual void setRepeat(bool repeat);
 
 	virtual void toggleEQOn(void);
 
-	virtual int getEQOn(void);
+	virtual int getEQOn(void) const;
 
 	virtual void setEQOn(bool value);
 
 	virtual void toggleAutoload(void);
 
-	virtual int getAutoload(void);
+	virtual int getAutoload(void) const;
 
 	virtual void setAutoload(bool value);
 
-	virtual int getEQData(int eqindex);
+	virtual int getEQData(int eqindex) const;
 
 	void setEQData(int eqindex, byte eqvalue);
 
-	virtual void getTimes(int& songLength, int& songPos);
+	virtual void getTimes(int& songLength, int& songPos) const;
 
-	virtual std::string getStringList(WinampCommand Command);
+	virtual std::string getStringList(WinampCommand Command) const;
 
 	virtual void setStringList(const std::string& list, WinampCommand Command);
 

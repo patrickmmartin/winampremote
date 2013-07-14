@@ -35,7 +35,7 @@ WinampClientBase::WinampClientBase()
 	GetIdent();
 }
 
-int WinampClientBase::winampVersion(void)
+int WinampClientBase::winampVersion(void) const
 {
 	return IntegerResult(IdentBuf, IPC_GETVERSION, 0);
 }
@@ -70,13 +70,13 @@ void WinampClientBase::pause(void)
 	ExecuteMessage(IdentBuf, WINAMP_PAUSE);
 }
 
-WAPlaybackStatus WinampClientBase::getPlaybackStatus(void)
+WAPlaybackStatus WinampClientBase::getPlaybackStatus(void) const
 {
 	return (WAPlaybackStatus) IntegerResult(IdentBuf, IPC_ISPLAYING, 0);
 }
 
 
-string WinampClientBase::getPlayListItem(int index, bool title)
+string WinampClientBase::getPlayListItem(int index, bool title) const
 {
 	char buffer[MAX_PATH] = "";
 	strcpy(buffer, IdentBuf);
@@ -85,24 +85,24 @@ string WinampClientBase::getPlayListItem(int index, bool title)
 	return result;
 }
 
-int WinampClientBase::getCurrentPlayPosition(void)
+int WinampClientBase::getCurrentPlayPosition(void) const
 {
     return IntegerResult(IdentBuf, IPC_GETLISTPOS, 0);
 }
 
-int WinampClientBase::getPlaylistLength(void)
+int WinampClientBase::getPlaylistLength(void) const
 {
 	return IntegerResult(IdentBuf, IPC_GETLISTLENGTH, 0);
 }
 
-string WinampClientBase::getCurrentPlayListItem(int& index, bool title)
+string WinampClientBase::getCurrentPlayListItem(int& index, bool title) const
 {
     index = IntegerResult(IdentBuf, IPC_GETLISTPOS, 0);
 	return getPlayListItem(index, title);
 }
 
 
-vector<string> WinampClientBase::getPlayList(bool title)
+vector<string> WinampClientBase::getPlayList(bool title) const
 {
     vector<string> result;
 
@@ -197,7 +197,7 @@ void WinampClientBase::setTime(int time)
 	IntegerResult(IdentBuf, IPC_JUMPTOTIME, time);
 }
 
-int WinampClientBase::getTime()
+int WinampClientBase::getTime() const
 {
 	return IntegerResult(IdentBuf, IPC_GETOUTPUTTIME, 0);
 }
@@ -227,7 +227,7 @@ void WinampClientBase::setVolume(int volume)
 	IntegerResult(IdentBuf, IPC_SETVOLUME, volume);
 }
 
-int WinampClientBase::getVolume()
+int WinampClientBase::getVolume() const
 {
 	return IntegerResult(IdentBuf, IPC_SETVOLUME, -666);
 }
@@ -237,7 +237,7 @@ void WinampClientBase::setPanning(int panning)
 	IntegerResult(IdentBuf, IPC_SETPANNING, panning);
 }
 
-int WinampClientBase::getPanning()
+int WinampClientBase::getPanning() const
 {
 	return IntegerResult(IdentBuf, IPC_SETPANNING, -666);
 }
@@ -248,7 +248,7 @@ void WinampClientBase::toggleShuffle(void)
 	ExecuteMessage(IdentBuf, WINAMP_FILE_SHUFFLE);
 }
 
-int WinampClientBase::getShuffle()
+int WinampClientBase::getShuffle() const
 {
 	return IntegerResult(IdentBuf, IPC_GETSHUFFLEOPTION, 0);
 }
@@ -265,7 +265,7 @@ void WinampClientBase::toggleRepeat(void)
 
 }
 
-int WinampClientBase::getRepeat()
+int WinampClientBase::getRepeat() const
 {
 	return IntegerResult(IdentBuf, IPC_GETREPEATOPTION, 0);
 }
@@ -284,7 +284,7 @@ void WinampClientBase::toggleEQOn(void)
 	setEQOn(!getEQOn());
 }
 
-int WinampClientBase::getEQOn()
+int WinampClientBase::getEQOn() const
 {
 	return getEQData(11);
 }
@@ -299,7 +299,7 @@ void WinampClientBase::toggleAutoload(void)
 	setAutoload(!getAutoload());
 }
 
-int WinampClientBase::getAutoload()
+int WinampClientBase::getAutoload() const
 {
 	return getEQData(12);
 }
@@ -309,7 +309,7 @@ void WinampClientBase::setAutoload(bool value)
 	return setEQData(12, value);
 }
 
-int WinampClientBase::getEQData(int eqindex)
+int WinampClientBase::getEQData(int eqindex) const
 {
 	return IntegerResult(IdentBuf, IPC_GETEQDATA, eqindex);
 }
@@ -320,7 +320,7 @@ void WinampClientBase::setEQData(int eqindex, byte eqvalue)
 	IntegerResult(IdentBuf, IPC_SETEQDATA, eqvalue );
 }
 
-void WinampClientBase::getTimes(int& songLength, int& songPos)
+void WinampClientBase::getTimes(int& songLength, int& songPos) const
 {
 
 	int songS = IntegerResult(IdentBuf, IPC_GETOUTPUTTIME, 1);
@@ -331,7 +331,7 @@ void WinampClientBase::getTimes(int& songLength, int& songPos)
 
 }
 
-std::string WinampClientBase::getStringList(WinampCommand Command)
+std::string WinampClientBase::getStringList(WinampCommand Command) const
 {
 
 	std::string result = "";

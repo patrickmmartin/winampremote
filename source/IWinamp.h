@@ -35,7 +35,7 @@ public:
 	 * return the hosting winamp version
 	 * @return the winamp version number
 	 */
-	virtual int winampVersion(void) =0;
+	virtual int winampVersion(void) const = 0;
 
 	/**
 	 * send a string to the server
@@ -71,27 +71,27 @@ public:
 	 * query playback status
 	 * @return the playback status
 	 */
-	virtual WAPlaybackStatus getPlaybackStatus(void) = 0;
+	virtual WAPlaybackStatus getPlaybackStatus(void) const = 0;
 
 
 	/**
 	 * returns the playlist item, either title or filename
 	 * @return the playlist item property
 	 */
-	virtual string getPlayListItem(int index, bool title = true) = 0;
+	virtual string getPlayListItem(int index, bool title = true) const = 0;
 
 
 	/**
 	 * returns the current playlist position
 	 * @return the index
 	 */
-	virtual int getCurrentPlayPosition(void) = 0;
+	virtual int getCurrentPlayPosition(void) const = 0;
 
 	/**
 	 * returns the current playlist length
 	 * @return the length
 	 */
-	virtual int getPlaylistLength(void) = 0;
+	virtual int getPlaylistLength(void) const = 0;
 
 	/**
 	 * returns the current playlist item and current index, either title or filename
@@ -99,13 +99,13 @@ public:
 	 * @param title
 	 * @return
 	 */
-	virtual string getCurrentPlayListItem(int& index, bool title = true) = 0;
+	virtual string getCurrentPlayListItem(int& index, bool title = true) const = 0;
 
 	/**
 	 * returns the playlist
 	 * @return the playlist
 	 */
-	virtual vector<string> getPlayList(bool title = true) = 0;
+	virtual vector<string> getPlayList(bool title = true) const = 0;
 
 	/**
 	 * sets the playlist on the server
@@ -169,7 +169,7 @@ public:
 	/**
 	 * gets the current song time position
 	 */
-	virtual int getTime() = 0;
+	virtual int getTime() const = 0;
 
 
 	/**
@@ -201,7 +201,7 @@ public:
 	/**
 	 * returns the volume
 	 */
-	virtual int getVolume() = 0;
+	virtual int getVolume() const = 0;
 
 	/**
 	 * sets the panning
@@ -212,7 +212,7 @@ public:
 	/**
 	 * returns the panning
 	 */
-	virtual int getPanning() = 0;
+	virtual int getPanning() const = 0;
 
 	/**
 	 * toggles the shuffle option
@@ -222,7 +222,7 @@ public:
 	/**
 	 * returns the shuffle option
 	 */
-	virtual int getShuffle(void) = 0;
+	virtual int getShuffle(void) const = 0;
 
 	/**
 	 * set the shuffle option
@@ -238,7 +238,7 @@ public:
 	/**
 	 * returns the repeat option
 	 */
-	virtual int getRepeat(void) = 0;
+	virtual int getRepeat(void) const = 0;
 
 	/**
 	 * sets the repeat option
@@ -253,7 +253,7 @@ public:
 	/**
 	 * returns the EQ On option
 	 */
-	virtual int getEQOn(void) = 0;
+	virtual int getEQOn(void) const = 0;
 
 	/**
 	 * sets the EQ On option
@@ -269,7 +269,7 @@ public:
 	/**
 	 * returns the autoload option
 	 */
-	virtual int getAutoload(void) = 0;
+	virtual int getAutoload(void) const = 0;
 
 	/**
 	 * sets the autoload options
@@ -280,7 +280,7 @@ public:
 	/**
 	 * returns the eq data
 	 */
-	virtual int getEQData(int eqindex) = 0;
+	virtual int getEQData(int eqindex) const = 0;
 
 	/**
 	 * sets the eq data
@@ -293,7 +293,7 @@ public:
 	 * @param songLength
 	 * @param songPos
 	 */
-	virtual void getTimes(int& songLength, int& songPos) = 0;
+	virtual void getTimes(int& songLength, int& songPos) const = 0;
 
 
 	/**
@@ -301,7 +301,7 @@ public:
 	 * @param Command
 	 * @return the returns in TStrings format
 	 */
-	virtual std::string getStringList(WinampCommand Command) = 0;
+	virtual std::string getStringList(WinampCommand Command) const = 0;
 
 
 	/**
