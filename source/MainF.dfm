@@ -170,8 +170,7 @@ object frmMain: TfrmMain
             Top = 84
             Width = 65
             Height = 21
-            Hint = 'locate possible winamp servers'
-            Caption = 'Find'
+            Action = dmRemote.LocateServers
             TabOrder = 2
           end
         end

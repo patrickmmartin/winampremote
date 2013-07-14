@@ -253,7 +253,7 @@ object dmRemote: TdmRemote
     end
     object LocateServers: TAction
       Category = 'File'
-      Caption = '&Locate Servers'
+      Caption = '&Find'
       Hint = 'locate possible winamp servers'
       ImageIndex = 26
       ShortCut = 16460
