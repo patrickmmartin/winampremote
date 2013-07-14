@@ -43,7 +43,7 @@ __fastcall TfrmCommands::TfrmCommands(TComponent* Owner)
 
 void __fastcall TfrmCommands::FormClose(TObject *, TCloseAction &)
 {
-	// TODO: should be in forms management interface
+	// TODO: form manager - should be hooked
 	dmRemote->ViewToolBar->Execute();
 }
 
@@ -51,7 +51,7 @@ void __fastcall TfrmCommands::FormClose(TObject *, TCloseAction &)
 void __fastcall TfrmCommands::FormStartDock(TObject *Sender,
       TDragDockObject *&DragObject)
 {
-	// TODO: should be in forms management interface
+	// TODO: form manager - should be hooked
   frmMain->StartDock(Sender, DragObject);
         
 }

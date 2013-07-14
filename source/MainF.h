@@ -148,12 +148,10 @@ __published:
 	void __fastcall FormHide(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall MainTimer(TObject *Sender);
-	void __fastcall SetVolume0Execute(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall lstTimerClick(TObject *Sender);
 	void __fastcall AddressChange(TObject *Sender);
-	void __fastcall LocateServersExecute(TObject *Sender);
 	void __fastcall DelayTimer(TObject *Sender);
         void __fastcall FormDockOver(TObject *Sender,
           TDragDockObject *Source, int X, int Y, TDragState State,
@@ -192,8 +190,6 @@ public:         // public user declarations
 	HANDLE __fastcall IconHandle(void);
 	bool __fastcall TrayMessage(DWORD dwMessage);
 	void __fastcall DoDeleteSelected(void);
-	void __fastcall GetFilenames(int Start, int Stop, TStringList * Files);
-	void __fastcall DropFiles(TStringList * DropFiles, int DropIndex);
 
 BEGIN_MESSAGE_MAP
 MESSAGE_HANDLER(TRAY_NOTIFY, TMessage, TrayNotify)

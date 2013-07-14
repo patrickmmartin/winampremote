@@ -130,11 +130,13 @@ private:	// User declarations
         int LastIndex;
         int CurrentIndex;
 
+        void __fastcall GetFilenames(int Start, int Stop, TStringList * Files);
 	void hookStartDock(TForm * NewForm, TForm * PriorForm);
-    void __fastcall FormStartDock(TObject *Sender, TDragDockObject *&DragObject);
+        void __fastcall FormStartDock(TObject *Sender, TDragDockObject *&DragObject);
 public:		// User declarations
         __fastcall TdmRemote(TComponent* Owner);
         void setClient(WinampRemote::Client::IWinamp * client_);
+	void __fastcall DropFiles(TStringList * DropFiles, int DropIndex);
         void __fastcall DoAddFiles(TStrings * Files);
         void __fastcall DoBind(const AnsiString& address, const AnsiString& endpoint);
 

@@ -173,7 +173,6 @@ object frmMain: TfrmMain
             Hint = 'locate possible winamp servers'
             Caption = 'Find'
             TabOrder = 2
-            OnClick = LocateServersExecute
           end
         end
       end
@@ -437,7 +436,6 @@ object frmMain: TfrmMain
         Caption = '&Zero'
         Hint = 'Volume off'
         ImageIndex = 23
-        OnClick = SetVolume0Execute
       end
       object N502: TMenuItem
         Caption = '50 %'

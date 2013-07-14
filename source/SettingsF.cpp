@@ -56,7 +56,7 @@ void __fastcall TfrmSettings::tbBalanceChange(TObject *)
 
 void __fastcall TfrmSettings::FormClose(TObject *, TCloseAction &)
 {
-	// TODO: should be in forms management interface
+	// TODO: form manager - should be hooked
   dmRemote->ViewVolume->Execute();
 }
 
@@ -118,7 +118,7 @@ void __fastcall TfrmSettings::BarsChange(TObject *Sender)
 void __fastcall TfrmSettings::FormStartDock(TObject *Sender,
       TDragDockObject *&DragObject)
 {
-	// TODO: should be in forms management interface
+	// TODO: form manager - should be hooked
   frmMain->StartDock(Sender, DragObject);
 }
 

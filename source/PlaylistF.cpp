@@ -160,7 +160,7 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
         Files->Add(CFileName);
         }
       }
-     frmMain->DropFiles(Files, DropIndex);
+     dmRemote->DropFiles(Files, DropIndex);
     }
   __finally
   {
@@ -203,7 +203,7 @@ void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 
 void __fastcall TfrmPlaylist::FormClose(TObject *, TCloseAction &)
 {
-	// TODO: should be in forms management interface
+	// TODO: form manager - should be hooked
   dmRemote->ViewPlaylist->Execute();
 }
 
@@ -261,13 +261,13 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
     TopList->AddStrings(BottomList);
   // reset position
 
-    // TODO: should be in forms management interface
+    // TODO: form manager - should be in forms management interface
     dmRemote->DoAddFiles(TopList);
 
     NewPos = TopList->IndexOfObject((TObject *) true);
     dmRemote->client->setPlaylistIndex(NewPos);
 
-    // TODO: should be in forms management interface
+    // TODO: form manager - need refresh playlist event
     dmRemote->PlaylistRefresh->Execute();
   }
   __finally
@@ -283,7 +283,7 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
 void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
       TDragDockObject *&DragObject)
 {
-	// TODO: should be in forms management interface
+	// TODO: form manager - should be hooked
   frmMain->StartDock(Sender, DragObject);
 
 }

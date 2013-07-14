@@ -473,7 +473,7 @@ void TfrmMain::UpdateIcon(void)
     frmSettings->tbVolume->Position = dmRemote->client->getVolume();
     frmSettings->tbBalance->Position = dmRemote->client->getPanning();
 
-    // TODO: use a notification interface
+    // TODO: form manager - needs update volume settings
     if ( (frmSettings) )
       frmSettings->UpdateBars();
 
@@ -590,13 +590,6 @@ void __fastcall TfrmMain::MainTimer(TObject *)
 
 
 
-
-void __fastcall TfrmMain::SetVolume0Execute(TObject *)
-{
-    // TODO: use a notification interface
-  frmSettings->tbVolume->Position = 0;
-
-}
 void __fastcall TfrmMain::FormClose(TObject *, TCloseAction &)
 {
   TrayMessage(NIM_DELETE);
@@ -682,44 +675,6 @@ void __fastcall TfrmMain::lstTimerClick(TObject *)
    sbMain->Panels->Items[1]->Text = sDelaying;
    }
 }
-
-
-
-
-void __fastcall TfrmMain::LocateServersExecute(TObject *)
-{
-  AnsiString EndPoint = ebEndPoint->Text;
-  AnsiString Address = ebAddress->Text;
-
-  timerMain->Enabled = false;
-  UnBind();
-  TfrmServers * ServersForm = new TfrmServers(this);
-  try
-  {
-    ServersForm->ebEndPoint->Text = EndPoint;
-    ServersForm->ShowModal();
-    if (ServersForm->ModalResult != mrOk)
-    {
-      //restore
-      ebEndPoint->Text = EndPoint;
-      ebAddress->Text = Address;
-    }
-    else
-    {
-      ebEndPoint->Text = ServersForm->EndPoint;
-      ebAddress->Text = ServersForm->Address;
-
-    }
-  }
-  __finally
-  {
-    delete ServersForm;
-    dmRemote->DoBind(ebAddress->Text, ebEndPoint->Text);
-    MainTimer(this);
-    timerMain->Enabled = true;
-  }
-}
-
 
 
 
@@ -868,49 +823,6 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
 
 }
 
-
-void __fastcall TfrmMain::GetFilenames(int Start, int Stop, TStringList * Files)
-{
-
-int i;
-
-  for (i = Start ; i < Stop; i++)
-  {
-    Files->Add(dmRemote->client->getPlayListItem(i, false).c_str());
-  } // for
-
-}
-
-
-void __fastcall TfrmMain::DropFiles(TStringList * Files, int DropIndex)
-{
-
-  TStringList * Playlist = new TStringList();
-
-  // get the top of the list
-  if (DropIndex > -1)
-    GetFilenames(0, DropIndex, Playlist);
-  else
-    GetFilenames(0, frmPlaylist->lstSongs->Items->Count, Playlist);
-
-  Playlist->AddStrings(Files);    
-
-  // get the rest of the list;
-  if (DropIndex > -1)
-    GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count - 1, Playlist);
-
-  dmRemote->DoAddFiles(Playlist);
-
-  delete Playlist;
-  // reset position here
-
-  // AAAACK - used to be a "magic object"
-  int NewPos = Files->IndexOfObject((TObject *) true);
-  dmRemote->client->setPlaylistIndex(NewPos);
-
-  dmRemote->PlaylistRefresh->Execute();
-
-}
 
 
 

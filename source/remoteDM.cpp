@@ -39,6 +39,20 @@ void __fastcall TdmRemote::FormStartDock(TObject *Sender, TDragDockObject *&Drag
    frmMain->StartDock(Sender, DragObject);
 }
 
+void __fastcall TdmRemote::GetFilenames(int Start, int Stop, TStringList * Files)
+{
+
+int i;
+
+  for (i = Start ; i < Stop; i++)
+  {
+    Files->Add(dmRemote->client->getPlayListItem(i, false).c_str());
+  } // for
+
+}
+
+
+
 void __fastcall TdmRemote::DoAddFiles(TStrings * Files)
 {
     WinampRemote::Utils::CursorGuard ci;
@@ -47,6 +61,34 @@ void __fastcall TdmRemote::DoAddFiles(TStrings * Files)
 	for (int i = 0 ; i < Files->Count ; i++)
 			playlist.push_back(Files->Strings[i].c_str());
 	client->setPlayList(playlist);
+}
+
+void __fastcall TdmRemote::DropFiles(TStringList * DropFiles, int DropIndex)
+{
+  TStringList * Playlist = new TStringList();
+
+  // get the top of the list
+  if (DropIndex > -1)
+    GetFilenames(0, DropIndex, Playlist);
+  else
+    GetFilenames(0, frmPlaylist->lstSongs->Items->Count, Playlist);
+
+  Playlist->AddStrings(DropFiles);
+
+  // get the rest of the list;
+  if (DropIndex > -1)
+    GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count - 1, Playlist);
+
+  dmRemote->DoAddFiles(Playlist);
+
+  delete Playlist;
+  // reset position here
+
+  // AAAACK - used to be a "magic object"
+  int NewPos = DropFiles->IndexOfObject((TObject *) true);
+  dmRemote->client->setPlaylistIndex(NewPos);
+
+  dmRemote->PlaylistRefresh->Execute();
 }
 
 
@@ -128,13 +170,13 @@ void __fastcall TdmRemote::Back5Execute(TObject *)
 void __fastcall TdmRemote::VolumeUpExecute(TObject *)
 {
   client->volumeUp();
-  // TODO refresh volume status
+  // TODO form manager - refresh volune status
 }
 
 void __fastcall TdmRemote::VolumeDownExecute(TObject *)
 {
   client->volumeDown();
-  // TODO refresh volume status
+  // TODO form manager - refresh volune status
 }
 
 
@@ -143,7 +185,7 @@ void __fastcall TdmRemote::VolumeDownExecute(TObject *)
 void __fastcall TdmRemote::VolumeUpMoreExecute(TObject *)
 {
   client->setVolume(client->getVolume() + 10);
-  // TODO refresh volume status
+  // TODO form manager - refresh volune status
 }
 
 
@@ -152,7 +194,7 @@ void __fastcall TdmRemote::VolumeUpMoreExecute(TObject *)
 void __fastcall TdmRemote::VolumeDownMoreExecute(TObject *)
 {
   client->setVolume(client->getVolume() - 10);
-  // TODO refresh volume status
+  // TODO form manager - refresh volune status
 }
 
 
@@ -207,7 +249,7 @@ void __fastcall TdmRemote::StopAfterCurrentExecute(TObject *)
 void __fastcall TdmRemote::SetVolume0Execute(TObject *)
 {
   client->setVolume(0);
-  // TODO refresh volume status
+  // TODO form manager - refresh volune status
 
 }
 
@@ -215,7 +257,7 @@ void __fastcall TdmRemote::SetVolume0Execute(TObject *)
 void __fastcall TdmRemote::SetVolume100Execute(TObject *)
 {
   client->setVolume(255);
-  // TODO refresh volume status
+  // TODO form manager - refresh volune status
 }
 
 
@@ -227,7 +269,7 @@ void __fastcall TdmRemote::ShuffleExecute(TObject *)
   // so always do for older
   if ( (client->winampVersion() < 0x2604) || (Shuffle->Checked == client->getShuffle() ) )
     client->toggleShuffle();
-  // TODO refresh playback status 
+  // TODO form manager - refresh playback status
 }
 
 
@@ -239,7 +281,7 @@ void __fastcall TdmRemote::RepeatExecute(TObject *)
   // so always do for older
   if  ( (client->winampVersion() < 0x2604) || (Repeat->Checked ==  client->getRepeat() ) )
     client->toggleRepeat();
-  // TODO refresh playback status 
+  // TODO form manager - refresh playback status
 }
 
 
@@ -253,16 +295,26 @@ void __fastcall TdmRemote::PlayFromStartExecute(TObject *)
 }
 
 
+void __fastcall TdmRemote::ZeroExecute(TObject *)
+{
+  client->setVolume(0);
+  // TODO form manager - update volume
 
-
+}
 
 
 void __fastcall TdmRemote::HalfExecute(TObject *)
 {
   client->setVolume(128);
-  // TODO refresh playback status
+  // TODO form manager - update volume
 }
 
+void __fastcall TdmRemote::FullExecute(TObject *)
+{
+  client->setVolume(255);
+  // TODO form manager - update volume
+
+}
 
 
 
@@ -288,7 +340,7 @@ void __fastcall TdmRemote::ViewPlaylistExecute(TObject *)
 
 void __fastcall TdmRemote::ViewVolumeExecute(TObject *)
 {
-	// TODO: should be in forms management interface
+	// TODO: form manager - show / hide settings form
   frmSettings->Visible = !frmSettings->Visible;
   ViewVolume->Checked = frmSettings->Visible;
 }
@@ -342,7 +394,7 @@ void __fastcall TdmRemote::SongChangingExecute(TObject *)
 {
   // if special actions required, this action can do them
   // if the fade on stop is checked, the playing status needs to be cached
-  // TODO implement this property
+  // TODO form manager - implement this property
 //  if (chkFadeOld->Checked)
 //    StopFade->Execute();
 
@@ -355,7 +407,7 @@ void __fastcall TdmRemote::SongChangedExecute(TObject *)
 {
   // if special actions required, this action can do them
 
-  // TODO implement this property
+  // TODO form manager - implement this property
 //  if ( (chkFadeOld->Checked) && (WAStatus == WA_PLAYING) )
 //	Play->Execute();
 }
@@ -386,7 +438,7 @@ void __fastcall TdmRemote::PlaylistRefreshExecute(TObject *)
     {
 
       WinampRemote::Utils::CursorGuard ci;
-      // TODO update UI status
+      // TODO form manager - update UI status
 
       LastLength = client->getPlaylistLength();
       LastIndex = CurrentIndex;
@@ -566,11 +618,6 @@ void __fastcall TdmRemote::ExitExecute(TObject *)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TdmRemote::FullExecute(TObject *)
-{
-  // TODO implement here        
-        
-}
 //---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::LocateServersExecute(TObject *)
@@ -681,22 +728,16 @@ void __fastcall TdmRemote::UpMoreExecute(TObject *)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TdmRemote::ZeroExecute(TObject *)
-{
-  // TODO implement here        
-        
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TdmRemote::DataModuleCreate(TObject *Sender)
+void __fastcall TdmRemote::DataModuleCreate(TObject *)
 {
   client = new WinampRemote::Client::WinampClientBase();
 }
-//---------------------------------------------------------------------------
 
-void __fastcall TdmRemote::DataModuleDestroy(TObject *Sender)
+
+void __fastcall TdmRemote::DataModuleDestroy(TObject *)
 {
-  delete client;        
+  delete client;
 }
-//---------------------------------------------------------------------------
+
+
 
