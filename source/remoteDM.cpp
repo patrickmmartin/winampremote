@@ -25,18 +25,46 @@ __fastcall TdmRemote::TdmRemote(TComponent* Owner)
 {
 }
 
-
-void TdmRemote::hookStartDock(TForm * NewForm, TForm * PriorForm)
+void TdmRemote::hookEvents(TForm * NewForm, TForm * PriorForm)
 {
-	NewForm->OnStartDock = FormStartDock;
-	if (PriorForm)
-		PriorForm->OnStartDock = NULL;
+	// hook the generic form events so the state can be managed
+	// drag and dock is currently disabled
+	NewForm->OnStartDock = ChildFormStartDock;
+	// close event
+	NewForm->OnClose = ChildFormClose;
+	{
+		if (PriorForm)
+			PriorForm->OnStartDock = NULL;
+		if (PriorForm)
+			PriorForm->OnClose = NULL;
+	}
 }
 
-
-void __fastcall TdmRemote::FormStartDock(TObject *Sender, TDragDockObject *&DragObject)
+void __fastcall TdmRemote::ChildFormStartDock(TObject *Sender, TDragDockObject *&DragObject)
 {
    frmMain->StartDock(Sender, DragObject);
+}
+
+void __fastcall TdmRemote::ChildFormClose(TObject * aForm, TCloseAction & aAction)
+{
+	// handle the update
+	if (aForm == FPlaylistForm)
+	{
+		this->ViewPlaylist->Checked = false;
+	}
+	if (aForm == FMainForm)
+	{
+		this->ShowMainForm->Checked = false;
+	}
+	if (aForm == FSettingsForm)
+	{
+		this->ViewVolume->Checked = false;
+	}
+	if (aForm == FCommandsForm)
+	{
+		this->ViewToolBar->Checked = false;
+	}
+
 }
 
 void __fastcall TdmRemote::GetFilenames(int Start, int Stop, TStringList * Files)
@@ -50,8 +78,6 @@ int i;
   } // for
 
 }
-
-
 
 void __fastcall TdmRemote::DoAddFiles(TStrings * Files)
 {
@@ -91,12 +117,10 @@ void __fastcall TdmRemote::DropFiles(TStringList * DropFiles, int DropIndex)
   dmRemote->PlaylistRefresh->Execute();
 }
 
-
 void __fastcall TdmRemote::DoBind(const AnsiString& address, const AnsiString& endpoint)
 {
   Bind(address.c_str(), endpoint.c_str(), pszProtocolSequenceNP);
 }
-
 
 void __fastcall TdmRemote::PauseExecute(TObject *)
 {
@@ -104,14 +128,10 @@ void __fastcall TdmRemote::PauseExecute(TObject *)
     client->pause();
 }
 
-
 void __fastcall TdmRemote::PlayExecute(TObject *)
 {
   client->playSong();
 }
-
-
-
 
 void __fastcall TdmRemote::NextExecute(TObject *)
 {
@@ -119,9 +139,6 @@ void __fastcall TdmRemote::NextExecute(TObject *)
   client->nextSong();
   SongChanged->Execute();
 }
-
-
-
 
 void __fastcall TdmRemote::NextFadeExecute(TObject *)
 {
@@ -131,9 +148,6 @@ void __fastcall TdmRemote::NextFadeExecute(TObject *)
 
 }
 
-
-
-
 void __fastcall TdmRemote::PreviousExecute(TObject *)
 {
   SongChanging->Execute();
@@ -141,64 +155,44 @@ void __fastcall TdmRemote::PreviousExecute(TObject *)
   SongChanged->Execute();
 }
 
-
-
 void __fastcall TdmRemote::StopExecute(TObject *)
 {
   client->stopSong();
 }
-
-
-
 
 void __fastcall TdmRemote::Forward5Execute(TObject *)
 {
   client->forward5();
 }
 
-
-
-
 void __fastcall TdmRemote::Back5Execute(TObject *)
 {
   client->back5();
 }
 
-
-
-
 void __fastcall TdmRemote::VolumeUpExecute(TObject *)
 {
   client->volumeUp();
-  // TODO form manager - refresh volune status
+  // TODO form manager - refresh volume status
 }
 
 void __fastcall TdmRemote::VolumeDownExecute(TObject *)
 {
   client->volumeDown();
-  // TODO form manager - refresh volune status
+  // TODO form manager - refresh volume status
 }
-
-
-
 
 void __fastcall TdmRemote::VolumeUpMoreExecute(TObject *)
 {
   client->setVolume(client->getVolume() + 10);
-  // TODO form manager - refresh volune status
+  // TODO form manager - refresh volume status
 }
-
-
-
 
 void __fastcall TdmRemote::VolumeDownMoreExecute(TObject *)
 {
   client->setVolume(client->getVolume() - 10);
-  // TODO form manager - refresh volune status
+  // TODO form manager - refresh volume status
 }
-
-
-
 
 void __fastcall TdmRemote::PlaylistStartExecute(TObject *)
 {
@@ -207,9 +201,6 @@ void __fastcall TdmRemote::PlaylistStartExecute(TObject *)
   SongChanged->Execute();
 }
 
-
-
-
 void __fastcall TdmRemote::PlaylistEndExecute(TObject *)
 {
   SongChanging->Execute();
@@ -217,51 +208,34 @@ void __fastcall TdmRemote::PlaylistEndExecute(TObject *)
   SongChanged->Execute();
 }
 
-
-
-
 void __fastcall TdmRemote::DeletePlayListExecute(TObject *)
 {
   client->deletePlaylist();
   PlaylistRefresh->Execute();
 }
 
-
-
-
-
 void __fastcall TdmRemote::StopFadeExecute(TObject *)
 {
   client->stopWithFade();
 }
-
-
-
 
 void __fastcall TdmRemote::StopAfterCurrentExecute(TObject *)
 {
   client->stopAfterCurrent();
 }
 
-
-
-
 void __fastcall TdmRemote::SetVolume0Execute(TObject *)
 {
   client->setVolume(0);
-  // TODO form manager - refresh volune status
+  // TODO form manager - refresh volume status
 
 }
-
 
 void __fastcall TdmRemote::SetVolume100Execute(TObject *)
 {
   client->setVolume(255);
-  // TODO form manager - refresh volune status
+  // TODO form manager - refresh volume status
 }
-
-
-
 
 void __fastcall TdmRemote::ShuffleExecute(TObject *)
 {
@@ -272,9 +246,6 @@ void __fastcall TdmRemote::ShuffleExecute(TObject *)
   // TODO form manager - refresh playback status
 }
 
-
-
-
 void __fastcall TdmRemote::RepeatExecute(TObject *)
 {
   // shuffle / repeat status only works in very recent versions,
@@ -284,9 +255,6 @@ void __fastcall TdmRemote::RepeatExecute(TObject *)
   // TODO form manager - refresh playback status
 }
 
-
-
-
 void __fastcall TdmRemote::PlayFromStartExecute(TObject *)
 {
   SongChanging->Execute();
@@ -294,14 +262,12 @@ void __fastcall TdmRemote::PlayFromStartExecute(TObject *)
   SongChanged->Execute();
 }
 
-
 void __fastcall TdmRemote::ZeroExecute(TObject *)
 {
   client->setVolume(0);
   // TODO form manager - update volume
 
 }
-
 
 void __fastcall TdmRemote::HalfExecute(TObject *)
 {
@@ -316,8 +282,6 @@ void __fastcall TdmRemote::FullExecute(TObject *)
 
 }
 
-
-
 void __fastcall TdmRemote::ViewToolBarExecute(TObject *)
 {
   // need to undock
@@ -325,35 +289,23 @@ void __fastcall TdmRemote::ViewToolBarExecute(TObject *)
   ViewToolBar->Checked = frmCommands->Visible;
 }
 
-
-
-
 void __fastcall TdmRemote::ViewPlaylistExecute(TObject *)
 {
   frmPlaylist->Visible = !frmPlaylist->Visible;
   ViewPlaylist->Checked = frmPlaylist->Visible;
-
-
 }
-
-
 
 void __fastcall TdmRemote::ViewVolumeExecute(TObject *)
 {
-	// TODO: form manager - show / hide settings form
   frmSettings->Visible = !frmSettings->Visible;
   ViewVolume->Checked = frmSettings->Visible;
 }
-
-
 
 void __fastcall TdmRemote::AutoloadExecute(TObject *)
 {
   client->toggleAutoload();
   Autoload->Checked = client->getAutoload();
 }
-
-
 
 void __fastcall TdmRemote::EQOnExecute(TObject *)
 {
@@ -362,8 +314,6 @@ void __fastcall TdmRemote::EQOnExecute(TObject *)
   EQOn->Checked = client->getEQOn();
 
 }
-
-
 
 void __fastcall TdmRemote::DetailsExecute(TObject *)
 {
@@ -378,7 +328,6 @@ void __fastcall TdmRemote::DetailsExecute(TObject *)
   }
 }
 
-
 void __fastcall TdmRemote::PreviousFadeExecute(TObject *)
 {
   StopFade->Execute();
@@ -386,9 +335,6 @@ void __fastcall TdmRemote::PreviousFadeExecute(TObject *)
   Play->Execute();
 
 }
-
-
-
 
 void __fastcall TdmRemote::SongChangingExecute(TObject *)
 {
@@ -400,9 +346,6 @@ void __fastcall TdmRemote::SongChangingExecute(TObject *)
 
 }
 
-
-
-
 void __fastcall TdmRemote::SongChangedExecute(TObject *)
 {
   // if special actions required, this action can do them
@@ -411,9 +354,6 @@ void __fastcall TdmRemote::SongChangedExecute(TObject *)
 //  if ( (chkFadeOld->Checked) && (WAStatus == WA_PLAYING) )
 //	Play->Execute();
 }
-
-
-
 
 void __fastcall TdmRemote::NewSongExecute(TObject *)
 {
@@ -425,8 +365,6 @@ void __fastcall TdmRemote::NewSongExecute(TObject *)
   SongChanged->Execute();
 
 }
-
-
 
 void __fastcall TdmRemote::PlaylistRefreshExecute(TObject *)
 {
@@ -477,10 +415,6 @@ void __fastcall TdmRemote::PlaylistRefreshExecute(TObject *)
   }
 }
 
-
-
-
-
 void __fastcall TdmRemote::PlaylistRefreshStatsExecute(TObject *)
 {
 
@@ -506,9 +440,6 @@ void __fastcall TdmRemote::PlaylistRefreshStatsExecute(TObject *)
 
 }
 
-
-
-
 void __fastcall TdmRemote::AboutExecute(TObject *)
 {
   if (!frmAbout)
@@ -531,19 +462,16 @@ void __fastcall TdmRemote::AboutExecute(TObject *)
     frmAbout->BringToFront();
   }
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::AddDirectoryExecute(TObject *)
 {
  // TODO implement here        
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::AddFilesExecute(TObject *)
 {
  // TODO implement here        
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::AddPlayIistExecute(TObject *)
 {
@@ -580,53 +508,45 @@ AnsiString commandstr;
     }
   } // if
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::ConfigurationExecute(TObject *)
 {
  // TODO implement here        
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::DeleteExecute(TObject *)
 {
  // TODO implemente here        
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::DownExecute(TObject *)
 {
  // TODO implement here        
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::DownMoreExecute(TObject *)
 {
  // TODO implement here        
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::EndExecute(TObject *)
 {
  // TODO implemente here        
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::ExitExecute(TObject *)
 {
   Application->Terminate();        
 }
-//---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::LocateServersExecute(TObject *)
 {
   AnsiString EndPoint = frmMain->ebEndPoint->Text;
   AnsiString Address = frmMain->ebAddress->Text;
 
-  // TODO - block UI timer
-//  timerMain->Enabled = false;
+  // TODO - should be done via an interface
+  // block UI timer
+  frmMain->timerMain->Enabled = false;
   UnBind();
   TfrmServers * ServersForm = new TfrmServers(this);
   try
@@ -655,21 +575,18 @@ void __fastcall TdmRemote::LocateServersExecute(TObject *)
 //    timerMain->Enabled = true;
   }
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::PlaceOnTrayExecute(TObject *)
 {
   // TODO implement here        
         
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::PlaylistRefreshCurrentExecute(TObject *)
 {
   // TODO implement here
 
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::ShowMainFormExecute(TObject *)
 {
@@ -705,39 +622,78 @@ void __fastcall TdmRemote::ShowMainFormExecute(TObject *)
   Application->Restore();
 
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::StartExecute(TObject *)
 {
   // TODO implement here        
         
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::UpExecute(TObject *)
 {
   // TODO implement here        
         
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::UpMoreExecute(TObject *)
 {
   // TODO implement here        
         
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TdmRemote::DataModuleCreate(TObject *)
 {
   client = new WinampRemote::Client::WinampClientBase();
 }
 
-
 void __fastcall TdmRemote::DataModuleDestroy(TObject *)
 {
   delete client;
 }
 
+void __fastcall TdmRemote::registerForm(TForm * aForm)
+{
+	// TODO PMM - this could be made generic in a couple of ways
+	{
+		TfrmPlaylist * form = dynamic_cast<TfrmPlaylist *>(aForm);
+		if (form)
+		{
+			hookEvents(aForm, FPlaylistForm);
+			FPlaylistForm = form;
+		}
+	}
+	{
+		TfrmMain * form = dynamic_cast<TfrmMain *>(aForm);
+		if (form)
+		{
+			hookEvents(aForm, FMainForm);
+			FMainForm = form;
+		}
+	}
+	{
+		TfrmSettings * form = dynamic_cast<TfrmSettings *>(aForm);
+		if (form)
+		{
+			hookEvents(aForm, FSettingsForm);
+			FSettingsForm = form;
+		}
+	}
+	{
+		TfrmCommands * form = dynamic_cast<TfrmCommands *>(aForm);
+		if (form)
+		{
+			hookEvents(aForm, FCommandsForm);
+			FCommandsForm = form;
+		}
+	}
+}
 
-
+void __fastcall TdmRemote::unRegisterForm(TForm * aForm)
+{
+	if (aForm == FPlaylistForm)
+		FPlaylistForm = NULL;
+	if (aForm == FMainForm)
+		FMainForm = NULL;
+	if (aForm == FSettingsForm)
+		FSettingsForm = NULL;
+}

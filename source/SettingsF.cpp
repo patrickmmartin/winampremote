@@ -53,14 +53,6 @@ void __fastcall TfrmSettings::tbBalanceChange(TObject *)
   dmRemote->client->setPanning(tbBalance->Position);
 }
 
-
-void __fastcall TfrmSettings::FormClose(TObject *, TCloseAction &)
-{
-	// TODO: form manager - should be hooked
-  dmRemote->ViewVolume->Execute();
-}
-
-
 void __fastcall TfrmSettings::FormCreate(TObject *)
 {
 
@@ -79,11 +71,14 @@ void __fastcall TfrmSettings::FormCreate(TObject *)
 
   pgcSettings->ActivePage = tbsVol;
 
+  dmRemote->registerForm(this);
+
 }
 
 
 void __fastcall TfrmSettings::FormDestroy(TObject *)
 {
+  dmRemote->unRegisterForm(this);
   delete Bars;
 }
 
@@ -114,29 +109,5 @@ void __fastcall TfrmSettings::BarsChange(TObject *Sender)
 
 }
 
-
-void __fastcall TfrmSettings::FormStartDock(TObject *Sender,
-      TDragDockObject *&DragObject)
-{
-	// TODO: form manager - should be hooked
-  frmMain->StartDock(Sender, DragObject);
-}
-
-
-
-void __fastcall TfrmSettings::FormShow(TObject *)
-{
-
-  // extend glass on Aero
-  // this would need a bit of a UI overhaul
-  /*
-  GlassExtender * ge = new GlassExtender(this);
-  if (ge->isCompositionActive())
-  {
-        Color = clNone;
-  }
-  */
-
-}
 
 

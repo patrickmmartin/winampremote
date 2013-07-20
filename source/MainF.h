@@ -145,10 +145,8 @@ __published:
 	void __fastcall HideMain(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall btnCloseClick(TObject *Sender);
-	void __fastcall FormHide(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall MainTimer(TObject *Sender);
-	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall lstTimerClick(TObject *Sender);
 	void __fastcall AddressChange(TObject *Sender);
@@ -163,6 +161,8 @@ __published:
         void __fastcall DetailsExecute(TObject *Sender);
         void __fastcall sbMainDrawPanel(TStatusBar *StatusBar,
           TStatusPanel *Panel, const TRect &Rect);
+        void __fastcall FormDestroy(TObject *Sender);
+        void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 
 private:        // private user declarations
 	int Delay;

@@ -19,7 +19,7 @@ object frmMain: TfrmMain
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
-  OnHide = FormHide
+  OnDestroy = FormDestroy
   OnShow = FormShow
   OnStartDock = StartDock
   PixelsPerInch = 96

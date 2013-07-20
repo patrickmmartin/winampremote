@@ -42,7 +42,6 @@ __published:	// IDE-managed Components
           const TRect &Rect, TOwnerDrawState State);
     void __fastcall lstSongsDrawItemGlass(TWinControl *Control, int Index,
           const TRect &Rect, TOwnerDrawState State);
-        void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall lstSongsDragOver(TObject *Sender, TObject *Source,
           int X, int Y, TDragState State, bool &Accept);
         void __fastcall lstSongsDragDrop(TObject *Sender, TObject *Source,
@@ -65,6 +64,7 @@ __published:	// IDE-managed Components
         void __fastcall mnuRefreshClick(TObject *Sender);
         void __fastcall lstSongsMeasureItem(TWinControl *Control,
           int Index, int &Height);
+        void __fastcall FormDestroy(TObject *Sender);
 
 private:	// User declarations
 

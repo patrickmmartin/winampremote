@@ -15,9 +15,9 @@ object frmCommands: TfrmCommands
   Font.Style = []
   OldCreateOrder = True
   Position = poDefault
-  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
-  OnStartDock = FormStartDock
   PixelsPerInch = 96
   TextHeight = 12
   object tbCommands: TToolBar

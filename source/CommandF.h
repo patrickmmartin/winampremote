@@ -18,10 +18,9 @@ __published:	// IDE-managed Components
     TToolButton *tbtnPause;
     TToolButton *tbtnStop;
     TToolButton *tbtnNext;
-        void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-        void __fastcall FormStartDock(TObject *Sender,
-          TDragDockObject *&DragObject);
         void __fastcall FormShow(TObject *Sender);
+        void __fastcall FormCreate(TObject *Sender);
+        void __fastcall FormDestroy(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TfrmCommands(TComponent* Owner);

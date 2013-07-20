@@ -41,13 +41,9 @@ __published:	// IDE-managed Components
         TToolButton *btnEQOn;
     void __fastcall tbVolumeChange(TObject *Sender);
     void __fastcall tbBalanceChange(TObject *Sender);
-        void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall FormDestroy(TObject *Sender);
         void __fastcall BarsChange(TObject *Sender);
-        void __fastcall FormStartDock(TObject *Sender,
-          TDragDockObject *&DragObject);
-        void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
     TList * Bars;
 public:		// User declarations

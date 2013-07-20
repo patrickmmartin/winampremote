@@ -16,11 +16,8 @@ object frmSettings: TfrmSettings
   OldCreateOrder = True
   Position = poDefault
   ShowHint = True
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  OnShow = FormShow
-  OnStartDock = FormStartDock
   PixelsPerInch = 96
   TextHeight = 14
   object pgcSettings: TPageControl

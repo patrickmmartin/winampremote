@@ -59,6 +59,8 @@ void __fastcall TfrmPlaylist::FormCreate(TObject *)
 {
 
   lstSongs->ItemHeight = Canvas->TextHeight('W');
+  // TODO register with main datamodule
+  dmRemote->registerForm(this);
   dmRemote->PlaylistRefresh->Execute();
 
 }
@@ -200,16 +202,6 @@ void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
 
 
 
-
-void __fastcall TfrmPlaylist::FormClose(TObject *, TCloseAction &)
-{
-	// TODO: form manager - should be hooked
-  dmRemote->ViewPlaylist->Execute();
-}
-
-
-
-
 void __fastcall TfrmPlaylist::lstSongsDragOver(TObject *, TObject *, int , int , TDragState , bool &Accept)
 {
   Accept = true;
@@ -293,6 +285,7 @@ void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
 
 void __fastcall TfrmPlaylist::FormShow(TObject *)
 {
+  // TODO custom OnShow prevents having a generic hook in the datamodule 
   // extend glass on Aero
   ge = new GlassExtender(this);
   if (ge->isCompositionActive())
@@ -434,4 +427,10 @@ void __fastcall TfrmPlaylist::lstSongsMeasureItem(TWinControl *, int , int &Heig
    Height = 17;        
 }
 
+
+void __fastcall TfrmPlaylist::FormDestroy(TObject *Sender)
+{
+  dmRemote->unRegisterForm(this);
+}
+//---------------------------------------------------------------------------
 

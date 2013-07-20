@@ -24,7 +24,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #pragma hdrstop
 
 #include "CommandF.h"
-#include "MainF.h"
 #include "GlassExtender.h"
 #include "remoteDM.h"
 
@@ -41,25 +40,10 @@ __fastcall TfrmCommands::TfrmCommands(TComponent* Owner)
 {
 }
 
-void __fastcall TfrmCommands::FormClose(TObject *, TCloseAction &)
-{
-	// TODO: form manager - should be hooked
-	dmRemote->ViewToolBar->Execute();
-}
-
-
-void __fastcall TfrmCommands::FormStartDock(TObject *Sender,
-      TDragDockObject *&DragObject)
-{
-	// TODO: form manager - should be hooked
-  frmMain->StartDock(Sender, DragObject);
-        
-}
-
-
-
 void __fastcall TfrmCommands::FormShow(TObject *)
 {
+ // TODO custom FormShow prevents generic handling in data module
+
   GlassExtender * ge = new GlassExtender(this);
   if (ge->isCompositionActive())
   {
@@ -68,6 +52,18 @@ void __fastcall TfrmCommands::FormShow(TObject *)
       tbCommands->EdgeOuter = esNone;
       tbCommands->Transparent = true;
   }
+}
+
+
+void __fastcall TfrmCommands::FormCreate(TObject *Sender)
+{
+  dmRemote->registerForm(this);        
+}
+
+
+void __fastcall TfrmCommands::FormDestroy(TObject *Sender)
+{
+  dmRemote->unRegisterForm(this);        
 }
 
 

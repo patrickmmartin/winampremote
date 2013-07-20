@@ -13,8 +13,8 @@ object frmPlaylist: TfrmPlaylist
   Font.Style = []
   OldCreateOrder = True
   Position = poDefault
-  OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   OnStartDock = FormStartDock
   PixelsPerInch = 96

@@ -270,6 +270,7 @@ const AnsiString sFalse = "false";
 void __fastcall TfrmMain::FormShow(TObject *)
 {
 
+  // TODO custom OnShow prevents having a generic hook in the datamodule 
 
   // show hints on visible forms
   frmPlaylist->ShowHint = false;
@@ -358,13 +359,6 @@ void __fastcall TfrmMain::btnCloseClick(TObject *)
 }
 
 
-
-void __fastcall TfrmMain::FormHide(TObject *)
-{
-  mnuShow->Visible = true;
-}
-
-
 void MessageForm(AnsiString MessageStr)
 {
   if (!frmMessage)
@@ -430,6 +424,8 @@ void __fastcall TfrmMain::FormCreate(TObject *)
   }
 
   pgSettings->ActivePage = tbsMain;
+
+  dmRemote->registerForm(this);
 
   dmRemote->DoBind(ebAddress->Text, ebEndPoint->Text);
 
@@ -828,3 +824,7 @@ void __fastcall TfrmMain::DoDeleteSelected(void)
 
 
 
+void __fastcall TfrmMain::FormDestroy(TObject *Sender)
+{
+        dmRemote->unRegisterForm(this);
+}
