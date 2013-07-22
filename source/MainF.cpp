@@ -270,7 +270,8 @@ const AnsiString sFalse = "false";
 void __fastcall TfrmMain::FormShow(TObject *)
 {
 
-  // TODO custom OnShow prevents having a generic hook in the datamodule 
+  // TODO custom OnShow prevents having a generic hook in the datamodule
+  // TODO handle setting up the GlassExtender
 
   // show hints on visible forms
   frmPlaylist->ShowHint = false;
@@ -446,7 +447,7 @@ void __fastcall TfrmMain::AppException(TObject *, Exception *E)
 
 void TfrmMain::UpdateIcon(void)
 {
-  int index, length;
+  int index, length = 0;
   AnsiString saveStr;
 
   Cardinal UpdateTime = 1000 * lstTimer->Items->Strings[lstTimer->ItemIndex].ToIntDef(1);
@@ -458,35 +459,25 @@ void TfrmMain::UpdateIcon(void)
     IconHandle();
     sbMain->Refresh();
 
-    WAStatus = dmRemote->client->getPlaybackStatus();
+    WAStatus = dmRemote->PlaybackStatus();
     connected = true;
     TrayMessage(NIM_MODIFY);
-
-    dmRemote->Shuffle->Checked = (dmRemote->client->winampVersion() >= 0x2604) && dmRemote->client->getShuffle();
-    dmRemote->Repeat->Checked = (dmRemote->client->winampVersion() >= 0x2604) && dmRemote->client->getRepeat();
-
-    // TODO: use a notification interface to refresh
-    frmSettings->tbVolume->Position = dmRemote->client->getVolume();
-    frmSettings->tbBalance->Position = dmRemote->client->getPanning();
-
-    // TODO: form manager - needs update volume settings
-    if ( (frmSettings) )
-      frmSettings->UpdateBars();
 
     // TODO re-enable the client actions as this is the criterion for the re-connection
     if ( connected && !previousConnected )
     {
       timerMain->Interval = UpdateTime;
-      lblVersion->Caption = WinampVersionString(dmRemote->client->winampVersion());
+      // TODO : need getter for version string
+      lblVersion->Caption = dmRemote->WinampVersionString().c_str();
     }
 
-    length = dmRemote->client->getPlaylistLength();
-    if (length > 0)
-    {
-		index = dmRemote->client->getCurrentPlayPosition();
-		std::string title = dmRemote->client->getPlayListItem(index, true);
-		SongTitle = title.c_str();
-		lblMessage->Caption = SongTitle;
+  dmRemote->GetPlaylistState(length, index);
+
+  if (length > 0)
+  {
+        // TODO : need getter for current song string
+
+		lblMessage->Caption = dmRemote->CurrentSong().c_str();
 
 		if (lblMessage->Canvas->TextWidth(lblMessage->Caption) > lblMessage->Width)
 		{
@@ -545,8 +536,8 @@ void TfrmMain::UpdateIcon(void)
 
         }
 
-      } // if list length non-zero
-    }
+      }
+    } // try
 
   catch( ERPCException& E)
   {
@@ -780,49 +771,6 @@ void __fastcall TfrmMain::AnimateForm(TForm * Form, bool FormVisible)
     DrawAnimatedRects(Form->Handle, IDANI_CAPTION, &MainRect, &FormRect);
 
 }    
-
-void __fastcall TfrmMain::DoDeleteSelected(void)
-{
-  int i;
-  WinampRemote::Utils::CursorGuard ci(crAppStart);
-  TStringList * StringList = new TStringList;
-  try
-  {
-  /* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
-
-    std::string list = dmRemote->client->getStringList(IPC_GETPLAYLISTFILE);
-
-	StringList->Text = list.c_str();
-
-    for (i = frmPlaylist->lstSongs->Items->Count - 1 ; i >= 0 ; i--)
-    {
-      if (frmPlaylist->lstSongs->Selected[i])
-      {
-        StringList->Delete(i);
-         if (i < CurrentIndex)
-            CurrentIndex--;
-      }
-    } // for
-
-    // add remaining
-    dmRemote->DoAddFiles(StringList);
-    // reset position
-
-    dmRemote->client->setPlaylistIndex(CurrentIndex);
-
-    dmRemote->PlaylistRefresh->Execute();
-  }
-  __finally
-  {
-    delete StringList;
-  }
-
-}
-
-
-
-
-
 
 void __fastcall TfrmMain::FormDestroy(TObject *Sender)
 {

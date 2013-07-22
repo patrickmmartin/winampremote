@@ -48,7 +48,7 @@ private:	// User declarations
     TList * Bars;
 public:		// User declarations
     __fastcall TfrmSettings(TComponent* Owner);
-   void __fastcall UpdateBars(void);
+   void __fastcall UpdateBars(bool autoLoad, bool EqOn, const vector<int>& bands);
 
 };
 

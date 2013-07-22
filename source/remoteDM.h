@@ -133,6 +133,9 @@ private:	// User declarations
         int LastIndex;
         int CurrentIndex;
 
+        // TODO encapsulate this after refactoring
+		WinampRemote::Client::IWinamp * client;
+
 		TfrmPlaylist * FPlaylistForm;
 		TfrmMain * FMainForm;
 		TfrmSettings * FSettingsForm;
@@ -146,14 +149,25 @@ private:	// User declarations
 public:		// User declarations
         __fastcall TdmRemote(TComponent* Owner);
         void setClient(WinampRemote::Client::IWinamp * client_);
-	void __fastcall DropFiles(TStringList * DropFiles, int DropIndex);
-        void __fastcall DoAddFiles(TStrings * Files);
+        void __fastcall DropFiles(TStringList * DropFiles, int DropIndex);
+        void __fastcall DoAddFiles(TStrings * Files, int selectedIndex = -1);
+        void __fastcall PlaylistDragDrop(int dropIndex, int currentPos);
+        void __fastcall SetSongPosition(int pos, int width);
+
+        void __fastcall SetVolume(int volume);
+        void __fastcall SetBalance(int balance);
+        void __fastcall BarChange(int index, byte position);
+        void __fastcall UpdateBars();
+        void __fastcall UpdateValues();
+        WAPlaybackStatus __fastcall PlaybackStatus();
+        std::string __fastcall WinampVersionString();
+        std::string __fastcall TdmRemote::CurrentSong();
+        void __fastcall GetPlaylistState(int& length, int & index);
+        void __fastcall DoDeleteSelected(void);
         void __fastcall DoBind(const AnsiString& address, const AnsiString& endpoint);
         void __fastcall registerForm(TForm * aForm);
         void __fastcall unRegisterForm(TForm * aForm);
 
-        // TODO encapsulate this after refactoring
-	WinampRemote::Client::IWinamp * client;
 
 };
 //---------------------------------------------------------------------------

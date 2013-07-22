@@ -82,7 +82,6 @@ private:     // User declarations
     int _lastindex;
     int _lastlength;
 
-    void __fastcall SongIndexUpdate(TObject *Sender);
 public:
     __fastcall TfrmPlaylist(TComponent* Owner);
     bool __property Dragging = {read = fDragging};

@@ -189,7 +189,6 @@ public:         // public user declarations
 	virtual __fastcall TfrmMain(TComponent* Owner);
 	HANDLE __fastcall IconHandle(void);
 	bool __fastcall TrayMessage(DWORD dwMessage);
-	void __fastcall DoDeleteSelected(void);
 
 BEGIN_MESSAGE_MAP
 MESSAGE_HANDLER(TRAY_NOTIFY, TMessage, TrayNotify)
