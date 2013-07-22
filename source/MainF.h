@@ -168,7 +168,6 @@ __published:
 private:        // private user declarations
 	int Delay;
 	int fIconIndex;
-	WAPlaybackStatus WAStatus;
 	AnsiString SongTitle;
 	char TipChars[64];
 	bool doHide;

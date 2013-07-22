@@ -174,25 +174,25 @@ void __fastcall TdmRemote::Back5Execute(TObject *)
 void __fastcall TdmRemote::VolumeUpExecute(TObject *)
 {
   client->volumeUp();
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::VolumeDownExecute(TObject *)
 {
   client->volumeDown();
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::VolumeUpMoreExecute(TObject *)
 {
   client->setVolume(client->getVolume() + 10);
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::VolumeDownMoreExecute(TObject *)
 {
   client->setVolume(client->getVolume() - 10);
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::PlaylistStartExecute(TObject *)
@@ -228,14 +228,14 @@ void __fastcall TdmRemote::StopAfterCurrentExecute(TObject *)
 void __fastcall TdmRemote::SetVolume0Execute(TObject *)
 {
   client->setVolume(0);
-  // TODO form manager - refresh volume status
+  UpdateBars();
 
 }
 
 void __fastcall TdmRemote::SetVolume100Execute(TObject *)
 {
   client->setVolume(255);
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::ShuffleExecute(TObject *)
@@ -244,7 +244,6 @@ void __fastcall TdmRemote::ShuffleExecute(TObject *)
   // so always do for older
   if ( (client->winampVersion() < 0x2604) || (Shuffle->Checked == client->getShuffle() ) )
     client->toggleShuffle();
-  // TODO form manager - refresh playback status
 }
 
 void __fastcall TdmRemote::RepeatExecute(TObject *)
@@ -253,7 +252,6 @@ void __fastcall TdmRemote::RepeatExecute(TObject *)
   // so always do for older
   if  ( (client->winampVersion() < 0x2604) || (Repeat->Checked ==  client->getRepeat() ) )
     client->toggleRepeat();
-  // TODO form manager - refresh playback status
 }
 
 void __fastcall TdmRemote::PlayFromStartExecute(TObject *)
@@ -266,20 +264,20 @@ void __fastcall TdmRemote::PlayFromStartExecute(TObject *)
 void __fastcall TdmRemote::ZeroExecute(TObject *)
 {
   client->setVolume(0);
-  // TODO form manager - update volume
+  UpdateBars();
 
 }
 
 void __fastcall TdmRemote::HalfExecute(TObject *)
 {
   client->setVolume(128);
-  // TODO form manager - update volume
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::FullExecute(TObject *)
 {
   client->setVolume(255);
-  // TODO form manager - update volume
+  UpdateBars();
 
 }
 
@@ -377,7 +375,6 @@ void __fastcall TdmRemote::PlaylistRefreshExecute(TObject *)
     {
 
       WinampRemote::Utils::CursorGuard ci;
-      // TODO form manager - update UI status
 
       LastLength = client->getPlaylistLength();
       LastIndex = CurrentIndex;
@@ -684,7 +681,6 @@ void __fastcall TdmRemote::PlaylistDragDrop(int dropIndex, int currentPos)
     TopList->AddStrings(BottomList);
   // reset position
 
-    // TODO: form manager - should be in forms management interface
     DoAddFiles(TopList);
 
     NewPos = TopList->IndexOfObject((TObject *) true);

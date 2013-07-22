@@ -59,7 +59,7 @@ void __fastcall TfrmPlaylist::FormCreate(TObject *)
 {
 
   lstSongs->ItemHeight = Canvas->TextHeight('W');
-  // TODO register with main datamodule
+
   dmRemote->registerForm(this);
   dmRemote->PlaylistRefresh->Execute();
 
@@ -186,17 +186,6 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
 
 
 }
-
-
-
-void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
-      TDragDockObject *&DragObject)
-{
-	// TODO: form manager - should be hooked
-  frmMain->StartDock(Sender, DragObject);
-
-}
-
 
 
 

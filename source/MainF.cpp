@@ -63,6 +63,7 @@ __fastcall TfrmMain::TfrmMain(TComponent* Owner)
 void __fastcall TfrmMain::TrayNotify(TMessage& Msg)
 {
   POINT MousePos;
+  WAPlaybackStatus Status = dmRemote->PlaybackStatus();
 
   switch(Msg.LParam)
   {
@@ -99,11 +100,11 @@ void __fastcall TfrmMain::TrayNotify(TMessage& Msg)
 
     case WM_LBUTTONDBLCLK:
     // as pause will have updated WAstatus for us
-      if (WAStatus == WA_NOT_PLAYING)
+      if (Status == WA_NOT_PLAYING)
       {
         dmRemote->Play->Execute();
       }
-      if (WAStatus == WA_PAUSED)
+      if (Status == WA_PAUSED)
       {
         dmRemote->Stop->Execute();
       }
@@ -152,7 +153,9 @@ bool __fastcall TfrmMain::TrayMessage(DWORD dwMessage)
 HANDLE __fastcall TfrmMain::IconHandle(void)
 {
 
-    switch (WAStatus)
+	WAPlaybackStatus Status = dmRemote->PlaybackStatus();
+
+    switch (Status)
     {
       case WA_NOT_PLAYING:
 
@@ -185,8 +188,9 @@ PSTR __fastcall TfrmMain::TipText(void)
 {
   AnsiString str = SongTitle;
   AnsiString state;
+  WAPlaybackStatus Status = dmRemote->PlaybackStatus();
 
-  switch (WAStatus){
+  switch (Status){
   case WA_PLAYING:
     state = sPlaying;
     break;
@@ -382,7 +386,6 @@ void __fastcall TfrmMain::FormCreate(TObject *)
   Application->OnException = AppException;
 
   Application->OnHint = DisplayHint;
-  WAStatus = WA_UNUSED;
 
   TRegistry * reg;
   try
@@ -461,7 +464,6 @@ void TfrmMain::UpdateIcon(void)
     IconHandle();
     sbMain->Refresh();
 
-    WAStatus = dmRemote->PlaybackStatus();
     connected = true;
     TrayMessage(NIM_MODIFY);
 
@@ -469,7 +471,6 @@ void TfrmMain::UpdateIcon(void)
     if ( connected && !previousConnected )
     {
       timerMain->Interval = UpdateTime;
-      // TODO : need getter for version string
       lblVersion->Caption = dmRemote->WinampVersionString().c_str();
     }
 
@@ -477,9 +478,9 @@ void TfrmMain::UpdateIcon(void)
 
   if (length > 0)
   {
-        // TODO : need getter for current song string
 
-		lblMessage->Caption = dmRemote->CurrentSong().c_str();
+		SongTitle = dmRemote->CurrentSong().c_str();
+	  	lblMessage->Caption = SongTitle;
 
 		if (lblMessage->Canvas->TextWidth(lblMessage->Caption) > lblMessage->Width)
 		{
@@ -551,7 +552,6 @@ void TfrmMain::UpdateIcon(void)
       LastLength = -1;
     }
 
-    WAStatus = WA_UNUSED;
     lblMessage->Caption = E.what();
     lblVersion->Caption = WinampVersionString(0);
     timerMain->Interval = 1000 * POLL_ERROR_FACTOR;

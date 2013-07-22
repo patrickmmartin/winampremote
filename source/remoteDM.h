@@ -10,6 +10,7 @@
 #include <ActnList.hpp>
 
 #include "IWinamp.h"
+#include "waint.h"
 
 #include "MainF.h"
 #include "PlaylistF.h"
@@ -133,7 +134,6 @@ private:	// User declarations
         int LastIndex;
         int CurrentIndex;
 
-        // TODO encapsulate this after refactoring
 		WinampRemote::Client::IWinamp * client;
 
 		TfrmPlaylist * FPlaylistForm;
@@ -163,6 +163,7 @@ public:		// User declarations
         std::string __fastcall WinampVersionString();
         std::string __fastcall TdmRemote::CurrentSong();
         void __fastcall GetPlaylistState(int& length, int & index);
+
         void __fastcall DoDeleteSelected(void);
         void __fastcall DoBind(const AnsiString& address, const AnsiString& endpoint);
         void __fastcall registerForm(TForm * aForm);

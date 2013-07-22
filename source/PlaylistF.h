@@ -46,8 +46,6 @@ __published:	// IDE-managed Components
           int X, int Y, TDragState State, bool &Accept);
         void __fastcall lstSongsDragDrop(TObject *Sender, TObject *Source,
           int X, int Y);
-        void __fastcall FormStartDock(TObject *Sender,
-          TDragDockObject *&DragObject);
         void __fastcall FormShow(TObject *Sender);
         void __fastcall lstSongsMouseMove(TObject *Sender,
           TShiftState Shift, int X, int Y);
