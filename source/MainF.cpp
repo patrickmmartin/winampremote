@@ -376,9 +376,6 @@ void __fastcall TfrmMain::DisplayHint(TObject *)
   sbMain->Panels->Items[1]->Text = GetShortHint(Application->Hint);
 }
 
-
-
-
 void __fastcall TfrmMain::FormCreate(TObject *)
 {
 
@@ -392,8 +389,13 @@ void __fastcall TfrmMain::FormCreate(TObject *)
   {
     reg = new TRegistry();
     reg->OpenKey("software\\PMMSoft\\Winamp controller\\client settings", true);
+
     this->ebEndPoint->Text = reg->ReadString("Endpoint");
     this->ebAddress->Text = reg->ReadString("Address");
+
+    // activate 
+    this->ebEndPoint->OnChange = AddressChange;
+    this->ebAddress->OnChange = AddressChange;
 
     if (this->ebEndPoint->Text == "")
       this->ebEndPoint->Text = AnsiString("\\pipe\\winampremote");
@@ -776,3 +778,9 @@ void __fastcall TfrmMain::FormDestroy(TObject *Sender)
 {
         dmRemote->unRegisterForm(this);
 }
+void __fastcall TfrmMain::NullAddressChange(TObject *Sender)
+{
+ // nothing here        
+}
+//---------------------------------------------------------------------------
+

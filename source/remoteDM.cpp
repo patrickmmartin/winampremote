@@ -569,11 +569,11 @@ void __fastcall TdmRemote::LocateServersExecute(TObject *)
   }
   __finally
   {
+    DoBind(ServersForm->Address, ServersForm->EndPoint);
     delete ServersForm;
-    DoBind(ServersForm->EndPoint, ServersForm->Address);
     // perform UI update
-//    MainTimer(this);
-//    timerMain->Enabled = true;
+    frmMain->MainTimer(this);
+    frmMain->timerMain->Enabled = true;
   }
 }
 

@@ -163,6 +163,7 @@ __published:
           TStatusPanel *Panel, const TRect &Rect);
         void __fastcall FormDestroy(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+        void __fastcall NullAddressChange(TObject *Sender);
 
 private:        // private user declarations
 	int Delay;
