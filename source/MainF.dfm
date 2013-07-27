@@ -567,13 +567,17 @@ object frmMain: TfrmMain
           Action = dmRemote.End
         end
         object Delete1: TMenuItem
-          Action = dmRemote.Delete
+          Caption = '&Delete'
+          Hint = 'Delete Playlist'
+          ImageIndex = 15
         end
         object PlayfromStart2: TMenuItem
           Action = dmRemote.Start
         end
         object AddFiles2: TMenuItem
-          Action = dmRemote.AddFiles
+          Caption = 'Add Fi&les'
+          Hint = 'Add Files To Playlist'
+          ImageIndex = 16
         end
         object AddPlayList1: TMenuItem
           Action = dmRemote.AddPlayIist

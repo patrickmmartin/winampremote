@@ -2,21 +2,14 @@ object dmRemote: TdmRemote
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 376
-  Top = 175
-  Height = 480
-  Width = 928
+  Left = 771
+  Top = 333
+  Height = 631
+  Width = 744
   object alMain: TActionList
     Images = frmMain.imlActions
     Left = 17
     Top = 8
-    object Configuration: TAction
-      Category = 'File'
-      Caption = '&Configuration'
-      Hint = 'Configuration'
-      ImageIndex = 7
-      OnExecute = ConfigurationExecute
-    end
     object PlaceOnTray: TAction
       Category = 'File'
       Caption = 'Place On &Tray'
@@ -137,13 +130,6 @@ object dmRemote: TdmRemote
       ImageIndex = 4
       OnExecute = EndExecute
     end
-    object Delete: TAction
-      Category = 'Playlist'
-      Caption = '&Delete'
-      Hint = 'Delete Playlist'
-      ImageIndex = 15
-      OnExecute = DeleteExecute
-    end
     object PlaylistRefresh: TAction
       Category = 'Playlist'
       Caption = 'PlaylistRefresh'
@@ -157,13 +143,6 @@ object dmRemote: TdmRemote
       ImageIndex = 0
       Visible = False
       OnExecute = PlayFromStartExecute
-    end
-    object AddFiles: TAction
-      Category = 'Playlist'
-      Caption = 'Add Fi&les'
-      Hint = 'Add Files To Playlist'
-      ImageIndex = 16
-      OnExecute = AddFilesExecute
     end
     object AddPlayIist: TAction
       Category = 'Playlist'

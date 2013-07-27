@@ -463,14 +463,8 @@ void __fastcall TdmRemote::AboutExecute(TObject *)
 
 void __fastcall TdmRemote::AddDirectoryExecute(TObject *)
 {
- // TODO implement here        
+ // attached to menu entry        
 }
-
-void __fastcall TdmRemote::AddFilesExecute(TObject *)
-{
- // TODO implement here        
-}
-
 void __fastcall TdmRemote::AddPlayIistExecute(TObject *)
 {
 AnsiString str;
@@ -505,31 +499,19 @@ AnsiString commandstr;
       delete Files;
     }
   } // if
-}
-
-void __fastcall TdmRemote::ConfigurationExecute(TObject *)
+}void __fastcall TdmRemote::DownExecute(TObject *)
 {
- // TODO implement here        
-}
-
-void __fastcall TdmRemote::DeleteExecute(TObject *)
-{
- // TODO implemente here        
-}
-
-void __fastcall TdmRemote::DownExecute(TObject *)
-{
- // TODO implement here        
+ // TODO referenced from menu
 }
 
 void __fastcall TdmRemote::DownMoreExecute(TObject *)
 {
- // TODO implement here        
+ // TODO referenced from menu
 }
 
 void __fastcall TdmRemote::EndExecute(TObject *)
 {
- // TODO implemente here        
+ // TODO referenced from menu        
 }
 
 void __fastcall TdmRemote::ExitExecute(TObject *)
@@ -576,14 +558,13 @@ void __fastcall TdmRemote::LocateServersExecute(TObject *)
 
 void __fastcall TdmRemote::PlaceOnTrayExecute(TObject *)
 {
-  // TODO implement here        
-        
+  // TODO referenced from menu
+
 }
 
 void __fastcall TdmRemote::PlaylistRefreshCurrentExecute(TObject *)
 {
-  // TODO implement here
-
+  // TODO referenced from menu
 }
 
 void __fastcall TdmRemote::ShowMainFormExecute(TObject *)
@@ -623,20 +604,18 @@ void __fastcall TdmRemote::ShowMainFormExecute(TObject *)
 
 void __fastcall TdmRemote::StartExecute(TObject *)
 {
-  // TODO implement here        
+  // TODO referenced from menu
         
 }
 
 void __fastcall TdmRemote::UpExecute(TObject *)
 {
-  // TODO implement here        
-        
+  // TODO referenced from menu
 }
 
 void __fastcall TdmRemote::UpMoreExecute(TObject *)
 {
-  // TODO implement here        
-        
+  // TODO referenced from menu
 }
 
 
@@ -883,3 +862,6 @@ void __fastcall TdmRemote::unRegisterForm(TForm * aForm)
 	if (aForm == FSettingsForm)
 		FSettingsForm = NULL;
 }
+
+//---------------------------------------------------------------------------
+

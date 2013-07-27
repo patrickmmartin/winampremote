@@ -24,7 +24,6 @@ class TdmRemote : public TDataModule
 {
 __published:	// IDE-managed Components
         TActionList *alMain;
-        TAction *Configuration;
         TAction *PlaceOnTray;
         TAction *Exit;
         TAction *ViewToolBar;
@@ -42,10 +41,8 @@ __published:	// IDE-managed Components
         TAction *Previous;
         TAction *Start;
         TAction *End;
-        TAction *Delete;
         TAction *PlaylistRefresh;
         TAction *PlayFromStart;
-        TAction *AddFiles;
         TAction *AddPlayIist;
         TAction *AddDirectory;
         TAction *ViewVolume;
@@ -108,14 +105,10 @@ void __fastcall PlaylistRefreshExecute(TObject *Sender);
 void __fastcall PlaylistRefreshStatsExecute(TObject *Sender);
         void __fastcall AboutExecute(TObject *Sender);
         void __fastcall AddDirectoryExecute(TObject *Sender);
-        void __fastcall AddFilesExecute(TObject *Sender);
         void __fastcall AddPlayIistExecute(TObject *Sender);
-        void __fastcall ConfigurationExecute(TObject *Sender);
-        void __fastcall DeleteExecute(TObject *Sender);
         void __fastcall DownExecute(TObject *Sender);
         void __fastcall DownMoreExecute(TObject *Sender);
         void __fastcall EndExecute(TObject *Sender);
-        void __fastcall ExitExecute(TObject *Sender);
         void __fastcall FullExecute(TObject *Sender);
         void __fastcall LocateServersExecute(TObject *Sender);
         void __fastcall PlaceOnTrayExecute(TObject *Sender);
@@ -127,6 +120,7 @@ void __fastcall PlaylistRefreshStatsExecute(TObject *Sender);
         void __fastcall ZeroExecute(TObject *Sender);
         void __fastcall DataModuleCreate(TObject *Sender);
         void __fastcall DataModuleDestroy(TObject *Sender);
+        void __fastcall ExitExecute(TObject *Sender);
 
 
 private:	// User declarations
