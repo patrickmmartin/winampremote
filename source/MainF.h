@@ -163,11 +163,11 @@ __published:
           TStatusPanel *Panel, const TRect &Rect);
         void __fastcall FormDestroy(TObject *Sender);
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+        void __fastcall NullAddressChange(TObject *Sender);
 
 private:        // private user declarations
 	int Delay;
 	int fIconIndex;
-	WAPlaybackStatus WAStatus;
 	AnsiString SongTitle;
 	char TipChars[64];
 	bool doHide;
@@ -189,7 +189,6 @@ public:         // public user declarations
 	virtual __fastcall TfrmMain(TComponent* Owner);
 	HANDLE __fastcall IconHandle(void);
 	bool __fastcall TrayMessage(DWORD dwMessage);
-	void __fastcall DoDeleteSelected(void);
 
 BEGIN_MESSAGE_MAP
 MESSAGE_HANDLER(TRAY_NOTIFY, TMessage, TrayNotify)

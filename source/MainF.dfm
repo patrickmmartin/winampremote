@@ -153,7 +153,7 @@ object frmMain: TfrmMain
             AutoSize = False
             TabOrder = 1
             Text = '\\pipe\winampremote'
-            OnChange = AddressChange
+            OnChange = NullAddressChange
           end
           object ebAddress: TEdit
             Left = 8
@@ -163,7 +163,7 @@ object frmMain: TfrmMain
             Hint = 'the server'#39's address (ip or network neighbourhood name)'
             TabOrder = 0
             Text = 'localhost'
-            OnChange = AddressChange
+            OnChange = NullAddressChange
           end
           object btnLocate: TButton
             Left = 312

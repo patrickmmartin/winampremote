@@ -42,17 +42,6 @@ __fastcall TfrmSettings::TfrmSettings(TComponent* Owner)
 {
 }
 
-void __fastcall TfrmSettings::tbVolumeChange(TObject *)
-{
-  dmRemote->client->setVolume(tbVolume->Position);
-}
-
-
-void __fastcall TfrmSettings::tbBalanceChange(TObject *)
-{
-  dmRemote->client->setPanning(tbBalance->Position);
-}
-
 void __fastcall TfrmSettings::FormCreate(TObject *)
 {
 
@@ -82,18 +71,28 @@ void __fastcall TfrmSettings::FormDestroy(TObject *)
   delete Bars;
 }
 
+void __fastcall TfrmSettings::tbVolumeChange(TObject *)
+{
+  dmRemote->SetVolume(tbVolume->Position);
+}
 
-void __fastcall TfrmSettings::UpdateBars(void)
+
+void __fastcall TfrmSettings::tbBalanceChange(TObject *)
+{
+  dmRemote->SetBalance(tbBalance->Position);
+}
+
+void __fastcall TfrmSettings::UpdateBars(bool autoLoad, bool EqOn, const vector<int>& bands)
 {
 
-  for (int i = 0; i < Bars->Count ; i++)
+  for (unsigned int i = 0; i < bands.size() ; i++)
   {
-    ( (TTrackBar *) Bars->Items[i])->Position = dmRemote->client->getEQData(i);
+	( (TTrackBar *) Bars->Items[i])->Position = bands[i];
   }
 
   // last one...
-  dmRemote->Autoload->Checked = dmRemote->client->getAutoload();
-  dmRemote->EQOn->Checked = dmRemote->client->getEQOn();
+  dmRemote->Autoload->Checked = autoLoad;
+  dmRemote->EQOn->Checked = EqOn;
 
 }
 
@@ -104,7 +103,7 @@ void __fastcall TfrmSettings::BarsChange(TObject *Sender)
   int Index = Bars->IndexOf(Sender);
   if (Index > -1)
   {
-    dmRemote->client->setEQData(Index, (byte) ((TTrackBar *)Sender)->Position );
+    dmRemote->BarChange(Index, (byte) ((TTrackBar *)Sender)->Position );
   }
 
 }

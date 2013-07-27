@@ -1,5 +1,3 @@
-//---------------------------------------------------------------------------
-
 #include <vcl.h>
 #pragma hdrstop
 
@@ -79,7 +77,7 @@ int i;
 
 }
 
-void __fastcall TdmRemote::DoAddFiles(TStrings * Files)
+void __fastcall TdmRemote::DoAddFiles(TStrings * Files, int selectedIndex)
 {
     WinampRemote::Utils::CursorGuard ci;
 	string filelist = Files->Text.c_str();
@@ -87,6 +85,9 @@ void __fastcall TdmRemote::DoAddFiles(TStrings * Files)
 	for (int i = 0 ; i < Files->Count ; i++)
 			playlist.push_back(Files->Strings[i].c_str());
 	client->setPlayList(playlist);
+    if (selectedIndex >= 0)
+    	client->setPlaylistIndex(selectedIndex);
+
 }
 
 void __fastcall TdmRemote::DropFiles(TStringList * DropFiles, int DropIndex)
@@ -173,25 +174,25 @@ void __fastcall TdmRemote::Back5Execute(TObject *)
 void __fastcall TdmRemote::VolumeUpExecute(TObject *)
 {
   client->volumeUp();
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::VolumeDownExecute(TObject *)
 {
   client->volumeDown();
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::VolumeUpMoreExecute(TObject *)
 {
   client->setVolume(client->getVolume() + 10);
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::VolumeDownMoreExecute(TObject *)
 {
   client->setVolume(client->getVolume() - 10);
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::PlaylistStartExecute(TObject *)
@@ -227,14 +228,14 @@ void __fastcall TdmRemote::StopAfterCurrentExecute(TObject *)
 void __fastcall TdmRemote::SetVolume0Execute(TObject *)
 {
   client->setVolume(0);
-  // TODO form manager - refresh volume status
+  UpdateBars();
 
 }
 
 void __fastcall TdmRemote::SetVolume100Execute(TObject *)
 {
   client->setVolume(255);
-  // TODO form manager - refresh volume status
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::ShuffleExecute(TObject *)
@@ -243,7 +244,6 @@ void __fastcall TdmRemote::ShuffleExecute(TObject *)
   // so always do for older
   if ( (client->winampVersion() < 0x2604) || (Shuffle->Checked == client->getShuffle() ) )
     client->toggleShuffle();
-  // TODO form manager - refresh playback status
 }
 
 void __fastcall TdmRemote::RepeatExecute(TObject *)
@@ -252,7 +252,6 @@ void __fastcall TdmRemote::RepeatExecute(TObject *)
   // so always do for older
   if  ( (client->winampVersion() < 0x2604) || (Repeat->Checked ==  client->getRepeat() ) )
     client->toggleRepeat();
-  // TODO form manager - refresh playback status
 }
 
 void __fastcall TdmRemote::PlayFromStartExecute(TObject *)
@@ -265,20 +264,20 @@ void __fastcall TdmRemote::PlayFromStartExecute(TObject *)
 void __fastcall TdmRemote::ZeroExecute(TObject *)
 {
   client->setVolume(0);
-  // TODO form manager - update volume
+  UpdateBars();
 
 }
 
 void __fastcall TdmRemote::HalfExecute(TObject *)
 {
   client->setVolume(128);
-  // TODO form manager - update volume
+  UpdateBars();
 }
 
 void __fastcall TdmRemote::FullExecute(TObject *)
 {
   client->setVolume(255);
-  // TODO form manager - update volume
+  UpdateBars();
 
 }
 
@@ -376,7 +375,6 @@ void __fastcall TdmRemote::PlaylistRefreshExecute(TObject *)
     {
 
       WinampRemote::Utils::CursorGuard ci;
-      // TODO form manager - update UI status
 
       LastLength = client->getPlaylistLength();
       LastIndex = CurrentIndex;
@@ -568,11 +566,11 @@ void __fastcall TdmRemote::LocateServersExecute(TObject *)
   }
   __finally
   {
+    DoBind(ServersForm->Address, ServersForm->EndPoint);
     delete ServersForm;
-    DoBind(ServersForm->EndPoint, ServersForm->Address);
     // perform UI update
-//    MainTimer(this);
-//    timerMain->Enabled = true;
+    frmMain->MainTimer(this);
+    frmMain->timerMain->Enabled = true;
   }
 }
 
@@ -639,6 +637,194 @@ void __fastcall TdmRemote::UpMoreExecute(TObject *)
 {
   // TODO implement here        
         
+}
+
+
+void __fastcall TdmRemote::PlaylistDragDrop(int dropIndex, int currentPos)
+{
+  int i;
+
+  bool CurrentSong;
+  int NewPos;
+
+  TStringList * TopList = new TStringList;
+  TStringList * MiddleList = new TStringList;
+  TStringList * BottomList = new TStringList;
+
+  try
+  {
+  /* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
+
+
+    for (i = 0 ; i < FPlaylistForm->lstSongs->Items->Count; i++)
+    {
+        std::string filename = client->getPlayListItem(i, false);
+
+      CurrentSong = i == currentPos;
+
+      if (FPlaylistForm->lstSongs->Selected[i])
+      {
+        MiddleList->AddObject(filename.c_str(), (TObject *) CurrentSong);
+      }
+      else if (i < dropIndex)
+      {
+        TopList->AddObject(filename.c_str(), (TObject *) CurrentSong);
+      }
+      else
+      {
+        BottomList->AddObject(filename.c_str(), (TObject *) CurrentSong);
+      }
+    } // for
+
+    // rebuild list
+    TopList->AddStrings(MiddleList);
+    TopList->AddStrings(BottomList);
+  // reset position
+
+    DoAddFiles(TopList);
+
+    NewPos = TopList->IndexOfObject((TObject *) true);
+
+    PlaylistRefresh->Execute();
+
+    if (NewPos >= 0)
+    	client->setPlaylistIndex(NewPos);
+
+  }
+  __finally
+  {
+    delete BottomList;
+    delete MiddleList;
+    delete TopList;
+  }
+}
+
+
+void __fastcall TdmRemote::SetSongPosition(int pos, int width)
+{
+
+	int SongS = 0, PosMS;
+	client->getTimes(SongS, PosMS);
+	client->setTime((1000 * SongS * pos) / width);
+
+}
+
+
+
+void __fastcall TdmRemote::SetVolume(int volume)
+{
+  client->setVolume(volume);
+}
+
+
+void __fastcall TdmRemote::SetBalance(int balance)
+{
+  client->setPanning(balance);
+}
+
+
+void __fastcall TdmRemote::BarChange(int index, byte position)
+{
+
+	client->setEQData(index, position );
+}
+
+
+void __fastcall TdmRemote::UpdateBars()
+{
+
+	if (FPlaylistForm)
+	{
+		vector<int> bands;
+		for (int i = 0; i < 11; i++)
+		{
+			bands.push_back(dmRemote->client->getEQData(i));
+		}
+
+		FSettingsForm->UpdateBars(dmRemote->client->getAutoload(),
+								  dmRemote->client->getEQOn(),
+								  bands);
+	}
+}
+
+void __fastcall TdmRemote::UpdateValues()
+{
+
+	Shuffle->Checked = (client->winampVersion() >= 0x2604) && client->getShuffle();
+    Repeat->Checked = (client->winampVersion() >= 0x2604) && client->getRepeat();
+
+    frmSettings->tbVolume->Position = client->getVolume();
+    frmSettings->tbBalance->Position = client->getPanning();
+
+    UpdateBars();
+
+	dmRemote->PlaylistRefreshStats->Execute();
+
+
+}
+
+WAPlaybackStatus __fastcall TdmRemote::PlaybackStatus()
+{
+    return client->getPlaybackStatus();
+}
+
+std::string __fastcall TdmRemote::WinampVersionString()
+{
+    return ::WinampVersionString(client->winampVersion());
+}
+
+std::string __fastcall TdmRemote::CurrentSong()
+{
+	int index = client->getCurrentPlayPosition();
+	std::string title = "";
+	if (index > 0)
+		title = client->getPlayListItem(index, true);
+
+	return title;
+}
+
+void __fastcall TdmRemote::GetPlaylistState(int& length, int & index)
+{
+	index = client->getCurrentPlayPosition();
+	length = client->getPlaylistLength();
+}
+
+void __fastcall TdmRemote::DoDeleteSelected(void)
+{
+  int i;
+  WinampRemote::Utils::CursorGuard ci(crAppStart);
+  TStringList * StringList = new TStringList;
+  try
+  {
+
+	/* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
+    std::string list = client->getStringList(IPC_GETPLAYLISTFILE);
+
+	StringList->Text = list.c_str();
+
+    for (i = FPlaylistForm->lstSongs->Items->Count - 1 ; i >= 0 ; i--)
+    {
+      if (FPlaylistForm->lstSongs->Selected[i])
+      {
+        StringList->Delete(i);
+         if (i < CurrentIndex)
+            CurrentIndex--;
+      }
+    } // for
+
+    // add remaining
+    dmRemote->DoAddFiles(StringList);
+    // reset position
+
+    dmRemote->client->setPlaylistIndex(CurrentIndex);
+
+    dmRemote->PlaylistRefresh->Execute();
+  }
+  __finally
+  {
+    delete StringList;
+  }
+
 }
 
 void __fastcall TdmRemote::DataModuleCreate(TObject *)

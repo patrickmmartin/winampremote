@@ -59,7 +59,7 @@ void __fastcall TfrmPlaylist::FormCreate(TObject *)
 {
 
   lstSongs->ItemHeight = Canvas->TextHeight('W');
-  // TODO register with main datamodule
+
   dmRemote->registerForm(this);
   dmRemote->PlaylistRefresh->Execute();
 
@@ -69,7 +69,7 @@ void __fastcall TfrmPlaylist::FormCreate(TObject *)
 
 void __fastcall TfrmPlaylist::DeleteSelected(void)
 {
-  frmMain->DoDeleteSelected();
+  dmRemote->DoDeleteSelected();
 
 }
 
@@ -172,36 +172,6 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
 
 }
 
-void __fastcall TfrmPlaylist::SongIndexUpdate(TObject *)
-{
-
-  try
-  {
-    lstSongs->Items->BeginUpdate();
-     // update the current title, at least
-     std::string current = dmRemote->client->getPlayListItem(_currentpos, true);
-
-     if ((lstSongs->Items->Count - 1) > _currentpos)
-     {
-       bool Selected = lstSongs->Selected[_currentpos];
-       lstSongs->Items->Strings[_currentpos] = current.c_str();
-       lstSongs->Selected[_currentpos] =  Selected;
-     }
-
-
-    /*much neater...*/
-    lstSongs->TopIndex = _currentpos - 2;
-    lstSongs->Update();
-
-  }
-  __finally
-  {
-    lstSongs->Items->EndUpdate();
-  }
-}
-
-
-
 void __fastcall TfrmPlaylist::lstSongsDragOver(TObject *, TObject *, int , int , TDragState , bool &Accept)
 {
   Accept = true;
@@ -210,83 +180,20 @@ void __fastcall TfrmPlaylist::lstSongsDragOver(TObject *, TObject *, int , int ,
 
 void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int Y)
 {
-  int i;
-
-  bool CurrentSong;
-  int NewPos;
-
-  // want to know if exceed the list length
   int DropIndex = lstSongs->ItemAtPos(TPoint(X, Y), false);
 
+  dmRemote->PlaylistDragDrop(DropIndex, _currentpos);
 
-  TStringList * TopList = new TStringList;
-  TStringList * MiddleList = new TStringList;
-  TStringList * BottomList = new TStringList;
-
-  try
-  {
-  /* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
-
-
-    for (i = 0 ; i < lstSongs->Items->Count; i++)
-    {
-        std::string filename = dmRemote->client->getPlayListItem(i, false);
-
-      CurrentSong = i == _currentpos;
-
-      if (lstSongs->Selected[i])
-      {
-        MiddleList->AddObject(filename.c_str(), (TObject *) CurrentSong);
-      }
-      else if (i < DropIndex)
-      {
-        TopList->AddObject(filename.c_str(), (TObject *) CurrentSong);
-      }
-      else
-      {
-        BottomList->AddObject(filename.c_str(), (TObject *) CurrentSong);
-      }
-    } // for
-
-    // rebuild list
-    TopList->AddStrings(MiddleList);
-    TopList->AddStrings(BottomList);
-  // reset position
-
-    // TODO: form manager - should be in forms management interface
-    dmRemote->DoAddFiles(TopList);
-
-    NewPos = TopList->IndexOfObject((TObject *) true);
-    dmRemote->client->setPlaylistIndex(NewPos);
-
-    // TODO: form manager - need refresh playlist event
-    dmRemote->PlaylistRefresh->Execute();
-  }
-  __finally
-  {
-    delete BottomList;
-    delete MiddleList;
-    delete TopList;
-  }
-}
-
-
-
-void __fastcall TfrmPlaylist::FormStartDock(TObject *Sender,
-      TDragDockObject *&DragObject)
-{
-	// TODO: form manager - should be hooked
-  frmMain->StartDock(Sender, DragObject);
 
 }
-
 
 
 
 void __fastcall TfrmPlaylist::FormShow(TObject *)
 {
-  // TODO custom OnShow prevents having a generic hook in the datamodule 
-  // extend glass on Aero
+  // TODO custom OnShow prevents having a generic hook in the datamodule
+  // TODO handle setting up the GlassExtender
+
   ge = new GlassExtender(this);
   if (ge->isCompositionActive())
   {
@@ -397,9 +304,7 @@ void __fastcall TfrmPlaylist::pbSongPosMouseMove(TObject *, TShiftState , int X,
     if (PtInRect(&(pbSongPos->ClientRect), TPoint(X,Y)))
     {
       pbSongPos->Position = (pbSongPos->Max *  X) / pbSongPos->ClientWidth;
-      int PosMS, SongS;
-      dmRemote->client->getTimes(SongS, PosMS);
-      dmRemote->client->setTime( (1000 *  SongS *  X) / pbSongPos->ClientWidth);
+      dmRemote->SetSongPosition(X, pbSongPos->ClientWidth);
 
     }
   }
