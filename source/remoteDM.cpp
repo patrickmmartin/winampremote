@@ -92,23 +92,22 @@ void __fastcall TdmRemote::DoAddFiles(TStrings * Files, int selectedIndex)
 
 void __fastcall TdmRemote::DropFiles(TStringList * DropFiles, int DropIndex)
 {
-  TStringList * Playlist = new TStringList();
+  std::auto_ptr<TStringList> Playlist(new TStringList());
 
   // get the top of the list
   if (DropIndex > -1)
-    GetFilenames(0, DropIndex, Playlist);
+    GetFilenames(0, DropIndex, Playlist.get());
   else
-    GetFilenames(0, frmPlaylist->lstSongs->Items->Count, Playlist);
+    GetFilenames(0, frmPlaylist->lstSongs->Items->Count, Playlist.get());
 
   Playlist->AddStrings(DropFiles);
 
   // get the rest of the list;
   if (DropIndex > -1)
-    GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count - 1, Playlist);
+    GetFilenames(DropIndex, frmPlaylist->lstSongs->Items->Count - 1, Playlist.get());
 
-  dmRemote->DoAddFiles(Playlist);
+  dmRemote->DoAddFiles(Playlist.get());
 
-  delete Playlist;
   // reset position here
 
   // AAAACK - used to be a "magic object"
@@ -382,22 +381,15 @@ void __fastcall TdmRemote::PlaylistRefreshExecute(TObject *)
 
       frmPlaylist->lstSongs->Items->Clear();
 
-      TStringList * SongList = new TStringList;
-      try
-      {
+      std::auto_ptr<TStringList> SongList(new TStringList());
 
-        std::string list = client->getStringList(IPC_GETPLAYLISTTITLE);
+	  std::string list = client->getStringList(IPC_GETPLAYLISTTITLE);
 
-        SongList->Clear();
-        SongList->Text = list.c_str();
+	  SongList->Clear();
+	  SongList->Text = list.c_str();
 
-        frmPlaylist->lstSongs->Items->Assign(SongList);
+	  frmPlaylist->lstSongs->Items->Assign(SongList.get());
 
-      }
-      __finally
-      {
-        delete SongList;
-      }
 
     }
     catch( ERPCException &E)
@@ -476,34 +468,27 @@ void __fastcall TdmRemote::AddPlayIistExecute(TObject *)
 AnsiString str;
 AnsiString commandstr;
 
-  OpenDialog1->FileName = "";
+  odlgMain->FileName = "";
 
   // TODO this is poor style
   if (false /* looking for playlist */){
-    OpenDialog1->Filter = sPlayListFiles;
+    odlgMain->Filter = sPlayListFiles;
     }
   else{
-    OpenDialog1->Filter = sAllFiles;
+    odlgMain->Filter = sAllFiles;
     }
 
-  if (OpenDialog1->Execute())
+  if (odlgMain->Execute())
   {
 
-    TStringList * Files = new TStringList;
-    try
-    {
-      // sort strings by name, for now
-      Files->Sorted = true;
+    std::auto_ptr<TStringList> Files(new TStringList);
+    // sort strings by name, for now
+    Files->Sorted = true;
 
-      Files->Assign(OpenDialog1->Files);
+    Files->Assign(odlgMain->Files);
 
-      DoAddFiles(Files);
-      PlaylistRefresh->Execute();
-    }
-    __finally
-    {
-      delete Files;
-    }
+    DoAddFiles(Files.get());
+    PlaylistRefresh->Execute();
   } // if
 }
 
@@ -647,12 +632,10 @@ void __fastcall TdmRemote::PlaylistDragDrop(int dropIndex, int currentPos)
   bool CurrentSong;
   int NewPos;
 
-  TStringList * TopList = new TStringList;
-  TStringList * MiddleList = new TStringList;
-  TStringList * BottomList = new TStringList;
+  std::auto_ptr<TStringList> TopList(new TStringList());
+  std::auto_ptr<TStringList> MiddleList(new TStringList());
+  std::auto_ptr<TStringList> BottomList(new TStringList());
 
-  try
-  {
   /* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
 
 
@@ -677,11 +660,11 @@ void __fastcall TdmRemote::PlaylistDragDrop(int dropIndex, int currentPos)
     } // for
 
     // rebuild list
-    TopList->AddStrings(MiddleList);
-    TopList->AddStrings(BottomList);
+    TopList->AddStrings(MiddleList.get());
+    TopList->AddStrings(BottomList.get());
   // reset position
 
-    DoAddFiles(TopList);
+    DoAddFiles(TopList.get());
 
     NewPos = TopList->IndexOfObject((TObject *) true);
 
@@ -690,13 +673,6 @@ void __fastcall TdmRemote::PlaylistDragDrop(int dropIndex, int currentPos)
     if (NewPos >= 0)
     	client->setPlaylistIndex(NewPos);
 
-  }
-  __finally
-  {
-    delete BottomList;
-    delete MiddleList;
-    delete TopList;
-  }
 }
 
 
@@ -791,39 +767,33 @@ void __fastcall TdmRemote::GetPlaylistState(int& length, int & index)
 
 void __fastcall TdmRemote::DoDeleteSelected(void)
 {
-  int i;
-  WinampRemote::Utils::CursorGuard ci(crAppStart);
-  TStringList * StringList = new TStringList;
-  try
-  {
+    int i;
+	WinampRemote::Utils::CursorGuard ci(crAppStart);
+	std::auto_ptr < TStringList > StringList(new TStringList);
 
 	/* rather wasteful, as we have to get all the undeleted items and resend them to winamp*/
-    std::string list = client->getStringList(IPC_GETPLAYLISTFILE);
+	std::string list = client->getStringList(IPC_GETPLAYLISTFILE);
 
 	StringList->Text = list.c_str();
 
-    for (i = FPlaylistForm->lstSongs->Items->Count - 1 ; i >= 0 ; i--)
-    {
-      if (FPlaylistForm->lstSongs->Selected[i])
-      {
-        StringList->Delete(i);
-         if (i < CurrentIndex)
-            CurrentIndex--;
-      }
-    } // for
+	for (i = FPlaylistForm->lstSongs->Items->Count - 1; i >= 0; i--)
+	{
+		if (FPlaylistForm->lstSongs->Selected[i])
+		{
 
-    // add remaining
-    dmRemote->DoAddFiles(StringList);
-    // reset position
+			StringList->Delete(i);
+			if (i < CurrentIndex)
+				CurrentIndex--;
+		}
+	} // for
 
-    dmRemote->client->setPlaylistIndex(CurrentIndex);
+	// add remaining
+	dmRemote->DoAddFiles(StringList.get());
+	// reset position
 
-    dmRemote->PlaylistRefresh->Execute();
-  }
-  __finally
-  {
-    delete StringList;
-  }
+	dmRemote->client->setPlaylistIndex(CurrentIndex);
+
+	dmRemote->PlaylistRefresh->Execute();
 
 }
 

@@ -321,7 +321,7 @@ object dmRemote: TdmRemote
       OnExecute = EQOnExecute
     end
   end
-  object OpenDialog1: TOpenDialog
+  object odlgMain: TOpenDialog
     Filter = 'Playlist Files|*.m3u, *.pls'
     Options = [ofHideReadOnly, ofAllowMultiSelect, ofPathMustExist, ofFileMustExist]
     Left = 80

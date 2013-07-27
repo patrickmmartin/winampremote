@@ -69,7 +69,7 @@ __published:	// IDE-managed Components
         TAction *PlaylistRefreshCurrent;
         TAction *PlaylistRefreshStats;
         TAction *EQOn;
-        TOpenDialog *OpenDialog1;
+        TOpenDialog *odlgMain;
 
 void __fastcall PauseExecute(TObject * Sender);
 void __fastcall PlayExecute(TObject *Sender);
