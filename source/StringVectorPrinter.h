@@ -9,7 +9,7 @@
 #define STRINGVECTORPRINTER_H_
 
 #include <sstream.h>
-#include <vector.h>
+#include <vector>
 
 namespace WinampRemote
 {

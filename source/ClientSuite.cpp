@@ -1,12 +1,10 @@
 #include <string.h>
-#include <forms.hpp>
 #include "WinampClientBase.h"
 #include "ClientBinder.h"
 #include "ContextInfo.h"
 #include "RPCException.h"
 #include "StringVectorPrinter.h"
 #include "catch.hpp"
-#include "CursorGuard.h"
 
 namespace WinampRemote
 {
@@ -729,18 +727,3 @@ TEST_CASE_NORETURN( "Exception/ERPCException", "ERPCException can be handled" )
 }
 
 
-TEST_CASE("UI/CursorGuard", "tests Cursor Guard class")
-{
-        Controls::TCursor startCursor = Screen->Cursor;
-        {
-                WinampRemote::Utils::CursorGuard ci;
-                CHECK(Screen->Cursor == crHourGlass);
-        }
-        CHECK(Screen->Cursor == startCursor);
-
-        {
-                WinampRemote::Utils::CursorGuard ci(crAppStart);
-                CHECK(Screen->Cursor == crAppStart);
-        }
-        CHECK(Screen->Cursor == startCursor);
-}
