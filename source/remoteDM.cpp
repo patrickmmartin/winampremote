@@ -339,18 +339,16 @@ void __fastcall TdmRemote::SongChangingExecute(TObject *)
   // if special actions required, this action can do them
   // if the fade on stop is checked, the playing status needs to be cached
   // TODO form manager - implement this property
-//  if (chkFadeOld->Checked)
-//    StopFade->Execute();
+  if (ChangeFade->Checked)
+    StopFade->Execute();
 
 }
 
 void __fastcall TdmRemote::SongChangedExecute(TObject *)
 {
   // if special actions required, this action can do them
-
-  // TODO form manager - implement this property
-//  if ( (chkFadeOld->Checked) && (WAStatus == WA_PLAYING) )
-//	Play->Execute();
+  if ( (ChangeFade->Checked) && (PlaybackStatus() == WA_PLAYING) )
+    Play->Execute();
 }
 
 void __fastcall TdmRemote::NewSongExecute(TObject *)
@@ -833,5 +831,21 @@ void __fastcall TdmRemote::unRegisterForm(TForm * aForm)
 		FSettingsForm = NULL;
 }
 
-//---------------------------------------------------------------------------
+void __fastcall TdmRemote::HideOnStartExecute(TObject *Sender)
+{
+ // TODO attach to UI and implement   
+}
+
+
+void __fastcall TdmRemote::RestoreOnStartExecute(TObject *Sender)
+{
+ // TODO attach to UI and implement
+}
+
+
+void __fastcall TdmRemote::ChangeFadeExecute(TObject *Sender)
+{
+  // TODO attach to UI and implement
+}
+
 

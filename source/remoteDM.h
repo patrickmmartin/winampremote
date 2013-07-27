@@ -67,6 +67,9 @@ __published:	// IDE-managed Components
         TAction *PlaylistRefreshStats;
         TAction *EQOn;
         TOpenDialog *odlgMain;
+	TAction *HideOnStart;
+	TAction *RestoreOnStart;
+	TAction *ChangeFade;
 
 void __fastcall PauseExecute(TObject * Sender);
 void __fastcall PlayExecute(TObject *Sender);
@@ -121,6 +124,9 @@ void __fastcall PlaylistRefreshStatsExecute(TObject *Sender);
         void __fastcall DataModuleCreate(TObject *Sender);
         void __fastcall DataModuleDestroy(TObject *Sender);
         void __fastcall ExitExecute(TObject *Sender);
+	void __fastcall HideOnStartExecute(TObject *Sender);
+	void __fastcall RestoreOnStartExecute(TObject *Sender);
+	void __fastcall ChangeFadeExecute(TObject *Sender);
 
 
 private:	// User declarations

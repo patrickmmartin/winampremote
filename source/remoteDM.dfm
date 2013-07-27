@@ -299,6 +299,24 @@ object dmRemote: TdmRemote
       ImageIndex = 12
       OnExecute = EQOnExecute
     end
+    object HideOnStart: TAction
+      Category = 'Action'
+      Caption = 'Hide on Startup'
+      ImageIndex = 6
+      OnExecute = HideOnStartExecute
+    end
+    object RestoreOnStart: TAction
+      Category = 'Action'
+      Caption = 'Restore child windows'
+      ImageIndex = 5
+      OnExecute = RestoreOnStartExecute
+    end
+    object ChangeFade: TAction
+      Category = 'Action'
+      Caption = 'Fade on change'
+      ImageIndex = 13
+      OnExecute = ChangeFadeExecute
+    end
   end
   object odlgMain: TOpenDialog
     Filter = 'Playlist Files|*.m3u, *.pls'
