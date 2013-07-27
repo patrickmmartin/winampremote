@@ -143,7 +143,7 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
 {
   int len, i;
   char CFileName[MAX_PATH];
-  TStringList * Files = new TStringList;
+  std::auto_ptr<TStringList> Files(new TStringList);
   void * hDrop = (void *) Msg.WParam;
   TPoint DropPoint;
 
@@ -153,22 +153,15 @@ void __fastcall TfrmPlaylist::DropFiles(TMessage& Msg)
   // this returns -1 if there was no hit item
   DropIndex = lstSongs->ItemAtPos(DropPoint, true);
 
-  try
-  {
-    // this gets the dragged files list and passes them onto the form
-    len = DragQueryFile((void *) hDrop, 0xFFFFFFFF, NULL, 0);
-    for (i = 0 ; i < len ; i++){
-      if (DragQueryFile((void *) hDrop, i, CFileName, MAX_PATH) > 0){
-        Files->Add(CFileName);
-        }
+  // this gets the dragged files list and passes them onto the form
+  len = DragQueryFile((void *) hDrop, 0xFFFFFFFF, NULL, 0);
+  for (i = 0 ; i < len ; i++){
+    if (DragQueryFile((void *) hDrop, i, CFileName, MAX_PATH) > 0){
+      Files->Add(CFileName);
       }
-     dmRemote->DropFiles(Files, DropIndex);
     }
-  __finally
-  {
-    DragFinish((void *) Msg.WParam);
-    delete Files;
-  }
+   dmRemote->DropFiles(Files.get(), DropIndex);
+  DragFinish((void *) Msg.WParam);
 
 }
 
