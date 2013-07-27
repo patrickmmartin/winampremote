@@ -274,9 +274,6 @@ const AnsiString sFalse = "false";
 void __fastcall TfrmMain::FormShow(TObject *)
 {
 
-  // TODO custom OnShow prevents having a generic hook in the datamodule
-  // TODO handle setting up the GlassExtender
-
   // show hints on visible forms
   frmPlaylist->ShowHint = false;
   frmSettings->ShowHint = false;

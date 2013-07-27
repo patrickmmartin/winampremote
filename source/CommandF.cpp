@@ -42,8 +42,6 @@ __fastcall TfrmCommands::TfrmCommands(TComponent* Owner)
 
 void __fastcall TfrmCommands::FormShow(TObject *)
 {
-  // TODO custom OnShow prevents having a generic hook in the datamodule
-  // TODO handle setting up the GlassExtender
   GlassExtender * ge = new GlassExtender(this);
   if (ge->isCompositionActive())
   {

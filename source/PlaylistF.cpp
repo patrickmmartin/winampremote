@@ -184,9 +184,6 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
 
 void __fastcall TfrmPlaylist::FormShow(TObject *)
 {
-  // TODO custom OnShow prevents having a generic hook in the datamodule
-  // TODO handle setting up the GlassExtender
-
   ge = new GlassExtender(this);
   if (ge->isCompositionActive())
   {

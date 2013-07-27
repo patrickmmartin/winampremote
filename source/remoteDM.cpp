@@ -338,7 +338,6 @@ void __fastcall TdmRemote::SongChangingExecute(TObject *)
 {
   // if special actions required, this action can do them
   // if the fade on stop is checked, the playing status needs to be cached
-  // TODO form manager - implement this property
   if (ChangeFade->Checked)
     StopFade->Execute();
 
