@@ -2,10 +2,10 @@ object dmRemote: TdmRemote
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 376
-  Top = 175
-  Height = 480
-  Width = 928
+  Left = 248
+  Top = 134
+  Height = 479
+  Width = 741
   object alMain: TActionList
     Images = frmMain.imlActions
     Left = 17
@@ -319,6 +319,24 @@ object dmRemote: TdmRemote
       Caption = 'EQOn'
       ImageIndex = 12
       OnExecute = EQOnExecute
+    end
+    object HideOnStart: TAction
+      Category = 'Action'
+      Caption = 'Hide on Startup'
+      ImageIndex = 6
+      OnExecute = HideOnStartExecute
+    end
+    object RestoreOnStart: TAction
+      Category = 'Action'
+      Caption = 'Restore child windows'
+      ImageIndex = 5
+      OnExecute = RestoreOnStartExecute
+    end
+    object ChangeFade: TAction
+      Category = 'Action'
+      Caption = 'Fade on change'
+      ImageIndex = 13
+      OnExecute = ChangeFadeExecute
     end
   end
   object odlgMain: TOpenDialog
