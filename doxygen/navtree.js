@@ -20,8 +20,7 @@ var NAVTREE =
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Enumerations", "functions_enum.html", null ],
-        [ "Enumerator", "functions_eval.html", null ],
-        [ "Related Functions", "functions_rela.html", null ]
+        [ "Enumerator", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "Files", null, [
@@ -43,11 +42,12 @@ var NAVTREEINDEX =
 [
 ".html",
 "_server_d_l_l_f_8cpp.html#a44fe67aed7eae409d5dc8a0b6478d8d7",
-"class_tfrm_commands.html#ae8ab4187ca5ea0a7eb9398ffc992b4cb",
-"class_tfrm_playlist.html#a00551f4fdef065067dd1414fd461fcf2",
-"class_winamp_remote_1_1_remoting_1_1_i_call_observer.html",
-"globals_0x75.html",
-"struct_____m_i_d_l__winamp__0001.html#aadab447a854a9b118faed018339d410a",
+"class_tdm_remote.html#a3ea3b317d0f02271204d5d1a6cfd1bdc",
+"class_tfrm_main.html#ae62247df0b3da9cd1a78f6e5b65e5b13",
+"class_winamp_remote_1_1_client_1_1_winamp_client_base.html#af197199671dcd752716065ef03729648",
+"gen__plugin_8cpp.html#a05848de25ac2dbec233935058a1d24b4",
+"remotestrs_8h.html#aa85250f130ecc7b597fe1a5db021cb66",
+"winampinterface__c_8c.html#aa15a3f98ff31dd8e2bcf4a9972aba952",
 ];
 
 var navTreeSubIndices = new Array();

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['idani_5fcaption',['IDANI_CAPTION',['../_main_f_8cpp.html#a8812e101d8afec730c3403a4c3cab300',1,'MainF.cpp']]],
-  ['idani_5fclose',['IDANI_CLOSE',['../_main_f_8cpp.html#a1021d60a7c11a0e48288db137efcd35b',1,'MainF.cpp']]],
+  ['idani_5fcaption',['IDANI_CAPTION',['../_main_f_8cpp.html#a8812e101d8afec730c3403a4c3cab300',1,'IDANI_CAPTION():&#160;MainF.cpp'],['../remote_d_m_8cpp.html#a8812e101d8afec730c3403a4c3cab300',1,'IDANI_CAPTION():&#160;remoteDM.cpp']]],
+  ['idani_5fclose',['IDANI_CLOSE',['../_main_f_8cpp.html#a1021d60a7c11a0e48288db137efcd35b',1,'IDANI_CLOSE():&#160;MainF.cpp'],['../remote_d_m_8cpp.html#a1021d60a7c11a0e48288db137efcd35b',1,'IDANI_CLOSE():&#160;remoteDM.cpp']]],
   ['info',['INFO',['../catch_8hpp.html#a3ae64706314066fdc8b6c8029a915aa7',1,'catch.hpp']]],
   ['internal_5fcatch_5faccept_5fexpr',['INTERNAL_CATCH_ACCEPT_EXPR',['../catch_8hpp.html#add937e7c7e3e9b0141a2710780b58826',1,'catch.hpp']]],
   ['internal_5fcatch_5felse',['INTERNAL_CATCH_ELSE',['../catch_8hpp.html#ac9bce542ed07b8be51ffd02ff1811d07',1,'catch.hpp']]],

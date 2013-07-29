@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('class_server_tester.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('class_server_tester.html','');});
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9c07a3999a66c9ecd72e636349581563"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#a9c07a3999a66c9ecd72e636349581563">ServerTester</a> ()</td></tr>
 <tr class="memitem:ac75cef731ad4e67f163e5886dab1b596"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#ac75cef731ad4e67f163e5886dab1b596">~ServerTester</a> ()</td></tr>
-<tr class="memitem:ae698440e65eb292ab80eba57212418bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#ae698440e65eb292ab80eba57212418bb">testServers</a> (map&lt; AnsiString, <a class="el" href="struct_server_info.html">ServerInfo</a> &gt; &amp;servers)</td></tr>
+<tr class="memitem:ae89301a02baedfd27d6c6aa20143d46b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#ae89301a02baedfd27d6c6aa20143d46b">testServers</a> (std::map&lt; AnsiString, <a class="el" href="struct_server_info.html">ServerInfo</a> &gt; &amp;servers)</td></tr>
 <tr class="memitem:a3e545ff27082631b46892e87ebeeb363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_tester.html#a3e545ff27082631b46892e87ebeeb363">testServer</a> (const AnsiString &amp;remote, <a class="el" href="struct_server_info.html">ServerInfo</a> &amp;serverInfo)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-attribs"></a>
@@ -209,16 +209,18 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_server_tester_8cpp_source.html#l00052">52</a> of file <a class="el" href="_server_tester_8cpp_source.html">ServerTester.cpp</a>.</p>
 
+<p>Referenced by <a class="el" href="_network_suite_8cpp_source.html#l00025">TEST_CASE()</a>, and <a class="el" href="_server_tester_8cpp_source.html#l00039">testServers()</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="ae698440e65eb292ab80eba57212418bb"></a>
+<a class="anchor" id="ae89301a02baedfd27d6c6aa20143d46b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void ServerTester::testServers </td>
           <td>(</td>
-          <td class="paramtype">map&lt; AnsiString, <a class="el" href="struct_server_info.html">ServerInfo</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::map&lt; AnsiString, <a class="el" href="struct_server_info.html">ServerInfo</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>servers</em></td><td>)</td>
           <td></td>
         </tr>
@@ -233,6 +235,8 @@ Public Attributes</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_server_tester_8cpp_source.html#l00039">39</a> of file <a class="el" href="_server_tester_8cpp_source.html">ServerTester.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="_servers_f_8cpp_source.html#l00116">TfrmServers::StartTest()</a>.</p>
 
 </div>
 </div>
@@ -249,6 +253,8 @@ Public Attributes</h2></td></tr>
 <p>property for the endpoint to be tested </p>
 
 <p>Definition at line <a class="el" href="_server_tester_8h_source.html#l00051">51</a> of file <a class="el" href="_server_tester_8h_source.html">ServerTester.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_servers_f_8cpp_source.html#l00116">TfrmServers::StartTest()</a>.</p>
 
 </div>
 </div>

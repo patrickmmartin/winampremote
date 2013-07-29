@@ -10,6 +10,5 @@ var searchData=
   ['midl_5fuser_5fallocate',['MIDL_user_allocate',['../_r_p_c_executor_8cpp.html#afcd316cf6637378290fd826613d34ac9',1,'MIDL_user_allocate(size_t size):&#160;RPCExecutor.cpp'],['../_r_p_c_funcs_u_8cpp.html#afcd316cf6637378290fd826613d34ac9',1,'MIDL_user_allocate(size_t size):&#160;RPCFuncsU.cpp'],['../winampinterface_8h.html#a83d4e0cfe6329e4d08003261b4dafcfc',1,'MIDL_user_allocate(size_t):&#160;RPCExecutor.cpp']]],
   ['midl_5fuser_5ffree',['MIDL_user_free',['../_r_p_c_executor_8cpp.html#a5761eb07e3aedbe83df1bf5d3291901a',1,'MIDL_user_free(void *mem):&#160;RPCExecutor.cpp'],['../_r_p_c_funcs_u_8cpp.html#a5761eb07e3aedbe83df1bf5d3291901a',1,'MIDL_user_free(void *mem):&#160;RPCFuncsU.cpp'],['../winampinterface_8h.html#a76fe0bd6191b9d753f03ce7a849618da',1,'MIDL_user_free(void __RPC_FAR *):&#160;winampinterface.h']]],
   ['mnuplayclick',['mnuPlayClick',['../class_tfrm_playlist.html#a2abe5c3e464de4718336c0fcf22aafeb',1,'TfrmPlaylist']]],
-  ['mnurefreshclick',['mnuRefreshClick',['../class_tfrm_playlist.html#a6129657a61b2bbdfe3d7ead408627a60',1,'TfrmPlaylist']]],
-  ['mnusayhelloclick',['mnuSayHelloClick',['../class_tfrm_main.html#aa3829a6b6c305b24c64680a79412d5d8',1,'TfrmMain']]]
+  ['mnurefreshclick',['mnuRefreshClick',['../class_tfrm_playlist.html#a6129657a61b2bbdfe3d7ead408627a60',1,'TfrmPlaylist']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
   ['client',['Client',['../namespace_winamp_remote_1_1_client.html',1,'WinampRemote']]],
+  ['config',['Config',['../namespace_winamp_remote_1_1_config.html',1,'WinampRemote']]],
   ['context',['Context',['../namespace_winamp_remote_1_1_context.html',1,'WinampRemote']]],
   ['net',['Net',['../namespace_winamp_remote_1_1_net.html',1,'WinampRemote']]],
   ['remoting',['Remoting',['../namespace_winamp_remote_1_1_remoting.html',1,'WinampRemote']]],
@@ -124,13 +125,13 @@ var searchData=
   ['winampserver',['WinampServer',['../class_winamp_remote_1_1_server_1_1_winamp_server.html',1,'WinampRemote::Server']]],
   ['winampserverimpl_2ecpp',['WinampServerImpl.cpp',['../_winamp_server_impl_8cpp.html',1,'']]],
   ['winampserverimpl_2eh',['WinampServerImpl.h',['../_winamp_server_impl_8h.html',1,'']]],
-  ['winamptestserver',['WinampTestServer',['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html',1,'WinampRemote::Server']]],
   ['winamptestserver',['WinampTestServer',['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html#ac053c1d11fc5c1c98ca9a9d5699b81b8',1,'WinampRemote::Server::WinampTestServer']]],
+  ['winamptestserver',['WinampTestServer',['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html',1,'WinampRemote::Server']]],
   ['winamptestserver_2ecpp',['WinampTestServer.cpp',['../_winamp_test_server_8cpp.html',1,'']]],
   ['winamptestserver_2eh',['WinampTestServer.h',['../_winamp_test_server_8h.html',1,'']]],
   ['winampver',['winampver',['../waint_8cpp.html#a2d97a4b10b686a62d9c0a33ea32d0295',1,'waint.cpp']]],
-  ['winampversion',['WinampVersion',['../class_winamp_remote_1_1_server_1_1_i_winamp_server.html#aaa13666b7bb0e974b3ef01aff1e30221',1,'WinampRemote::Server::IWinampServer::WinampVersion()'],['../class_winamp_remote_1_1_server_1_1_winamp_server.html#aa9c492ff92e06f63ff5dcfcbdab51e88',1,'WinampRemote::Server::WinampServer::WinampVersion()'],['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a1b4358b2e65302e99fdc8e0df849cc32',1,'WinampRemote::Server::WinampTestServer::WinampVersion()'],['../class_winamp_remote_1_1_client_1_1_i_winamp.html#a34ec5e3f15034ae4156f4d49c10fd78c',1,'WinampRemote::Client::IWinamp::winampVersion()'],['../class_winamp_remote_1_1_client_1_1_winamp_client_base.html#a514d0284f82835675c80cd110c95d216',1,'WinampRemote::Client::WinampClientBase::winampVersion()']]],
-  ['winampversionstring',['WinampVersionString',['../waint_8cpp.html#a13c6e4b244d47f4d7b006eaa43657e22',1,'WinampVersionString(int version):&#160;waint.cpp'],['../waint_8h.html#a13c6e4b244d47f4d7b006eaa43657e22',1,'WinampVersionString(int version):&#160;waint.cpp']]],
+  ['winampversion',['winampVersion',['../class_winamp_remote_1_1_client_1_1_i_winamp.html#aecb4a3e7964c3b4f499bd62939b0401c',1,'WinampRemote::Client::IWinamp::winampVersion()'],['../class_winamp_remote_1_1_client_1_1_winamp_client_base.html#ad17aff710a9405603e280d1e27ae510f',1,'WinampRemote::Client::WinampClientBase::winampVersion()'],['../class_winamp_remote_1_1_server_1_1_i_winamp_server.html#aaa13666b7bb0e974b3ef01aff1e30221',1,'WinampRemote::Server::IWinampServer::WinampVersion()'],['../class_winamp_remote_1_1_server_1_1_winamp_server.html#aa9c492ff92e06f63ff5dcfcbdab51e88',1,'WinampRemote::Server::WinampServer::WinampVersion()'],['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a1b4358b2e65302e99fdc8e0df849cc32',1,'WinampRemote::Server::WinampTestServer::WinampVersion()']]],
+  ['winampversionstring',['WinampVersionString',['../class_tdm_remote.html#a3031223aaa86740a443e0a1e9a50afa1',1,'TdmRemote::WinampVersionString()'],['../waint_8cpp.html#a13c6e4b244d47f4d7b006eaa43657e22',1,'WinampVersionString(int version):&#160;waint.cpp'],['../waint_8h.html#a13c6e4b244d47f4d7b006eaa43657e22',1,'WinampVersionString(int version):&#160;waint.cpp']]],
   ['winmain',['WinMain',['../remote_8cpp.html#ab7f0bcd1595734d089476bf8c463de0e',1,'remote.cpp']]],
   ['withfade',['WithFade',['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a93786a64fe495eaaf1fcb55c5e2b0f33a7ecf6a9c23236d6d4805fe14b6e01451',1,'WinampRemote::Server::WinampTestServer']]],
   ['wm_5fdwmcompositionchanged',['WM_DWMCOMPOSITIONCHANGED',['../_glass_extender_8h.html#a2e1586771ffd510d6f2728a9233862de',1,'GlassExtender.h']]],
@@ -141,5 +142,6 @@ var searchData=
   ['wmpalettechanged',['WMPaletteChanged',['../class_tfrm_about.html#a801760447af28f75901e9699ef3f68c8',1,'TfrmAbout']]],
   ['wmquerynewpalette',['WMQueryNewPalette',['../class_tfrm_about.html#acaa1efe2d8bb1108a632eb1640a8b814',1,'TfrmAbout']]],
   ['wp_5fcaption',['WP_CAPTION',['../_glass_extender_8cpp.html#ab9e204a295d16f2a26853c06a82f6653',1,'GlassExtender.cpp']]],
+  ['write',['write',['../class_winamp_remote_1_1_config_1_1_client_config.html#af6ec4d7cbd08ea13b74bdaea04e56b8d',1,'WinampRemote::Config::ClientConfig']]],
   ['writetodebugconsole',['writeToDebugConsole',['../catch_8hpp.html#ac41fb4da1c704cc94881d47f47c91caf',1,'catch.hpp']]]
 ];

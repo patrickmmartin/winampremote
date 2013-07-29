@@ -6,7 +6,6 @@ var searchData=
   ['_7econtextinfo',['~ContextInfo',['../class_winamp_remote_1_1_context_1_1_context_info.html#a543af0e2687020d524789d3836468ca1',1,'WinampRemote::Context::ContextInfo']]],
   ['_7ecursorguard',['~CursorGuard',['../class_winamp_remote_1_1_utils_1_1_cursor_guard.html#a3ef993fb7703f8468d297ffd3d5b1d60',1,'WinampRemote::Utils::CursorGuard']]],
   ['_7edefaultcallobserver',['~DefaultCallObserver',['../class_default_call_observer.html#a8872a44587c0b21d2e894edc8d8bbf52',1,'DefaultCallObserver']]],
-  ['_7eerpcexception',['~ERPCException',['../class_e_r_p_c_exception.html#aaad8f35ad4780f84ff8c82b9eaa462d9',1,'ERPCException']]],
   ['_7eglassextender',['~GlassExtender',['../class_glass_extender.html#a00669472359461a08878d21cdb95ed3e',1,'GlassExtender']]],
   ['_7eicallobserver',['~ICallObserver',['../class_winamp_remote_1_1_remoting_1_1_i_call_observer.html#aaf0e282281b86f9382c7f0da7ffd9a1f',1,'WinampRemote::Remoting::ICallObserver']]],
   ['_7eipaddressresolver',['~IPAddressResolver',['../class_winamp_remote_1_1_net_1_1_i_p_address_resolver.html#accd6e2c94e2cba2c7d084acb4946d1f6',1,'WinampRemote::Net::IPAddressResolver']]],

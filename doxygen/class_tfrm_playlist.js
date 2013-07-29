@@ -1,10 +1,9 @@
 var class_tfrm_playlist =
 [
     [ "TfrmPlaylist", "class_tfrm_playlist.html#a8f3df1b1e4a8720fe58c6cb67dbf9fd4", null ],
-    [ "FormClose", "class_tfrm_playlist.html#accda1b1a89968d1966a1af6222ce0288", null ],
     [ "FormCreate", "class_tfrm_playlist.html#a03d55d939f38afff8555552e00f103a3", null ],
+    [ "FormDestroy", "class_tfrm_playlist.html#a0986afcbf5a9b46bf7e2e5a75ad3c4d2", null ],
     [ "FormShow", "class_tfrm_playlist.html#a1a6a824e53c9dfe1714b941a62904c16", null ],
-    [ "FormStartDock", "class_tfrm_playlist.html#a45448c8e5d8cb09ea2cda6782ab8d1bd", null ],
     [ "lstSongsDblClick", "class_tfrm_playlist.html#ab315d0357bfbd178152836a2cc5b15ef", null ],
     [ "lstSongsDragDrop", "class_tfrm_playlist.html#aa68dee1a53641b09518fff14a9400f1b", null ],
     [ "lstSongsDragOver", "class_tfrm_playlist.html#a00d24d290c9212f7af57c377ca11f4b2", null ],
@@ -19,7 +18,6 @@ var class_tfrm_playlist =
     [ "pbSongPosMouseMove", "class_tfrm_playlist.html#a7a7d248c3f821413971d90b0f3d7037f", null ],
     [ "pbSongPosMouseUp", "class_tfrm_playlist.html#a43d1885979848509193a4a984f8c6430", null ],
     [ "pmnuSongsPopup", "class_tfrm_playlist.html#aea6afad565171a080a6a2dc25613b265", null ],
-    [ "client", "class_tfrm_playlist.html#a6240afb720a537c8cdfb92d2d6c57da9", null ],
     [ "Dragging", "class_tfrm_playlist.html#a79fda4e110076d2f0d39a9e819fe2a33", null ],
     [ "lstSongs", "class_tfrm_playlist.html#a8385f6df48f1f94da2f4a383a46c93bf", null ],
     [ "mnuAddFiles", "class_tfrm_playlist.html#a00551f4fdef065067dd1414fd461fcf2", null ],

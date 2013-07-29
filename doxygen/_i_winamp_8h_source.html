@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('_i_winamp_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('_i_winamp_8h.html','');});
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> winampVersion(<span class="keywordtype">void</span>) =0;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> winampVersion(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> sendString() = 0;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
@@ -145,24 +145,24 @@ $(document).ready(function(){initNavTree('_i_winamp_8h.html','');});
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> pause(<span class="keywordtype">void</span>) = 0;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="waint_8h.html#a6968b374e3dcdf359c0d8661754ee54e">WAPlaybackStatus</a> getPlaybackStatus(<span class="keywordtype">void</span>) = 0;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="waint_8h.html#a6968b374e3dcdf359c0d8661754ee54e">WAPlaybackStatus</a> getPlaybackStatus(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">string</span> getPlayListItem(<span class="keywordtype">int</span> index, <span class="keywordtype">bool</span> title = <span class="keyword">true</span>) = 0;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">string</span> getPlayListItem(<span class="keywordtype">int</span> index, <span class="keywordtype">bool</span> title = <span class="keyword">true</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getCurrentPlayPosition(<span class="keywordtype">void</span>) = 0;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getCurrentPlayPosition(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getPlaylistLength(<span class="keywordtype">void</span>) = 0;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getPlaylistLength(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">string</span> getCurrentPlayListItem(<span class="keywordtype">int</span>&amp; index, <span class="keywordtype">bool</span> title = <span class="keyword">true</span>) = 0;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">string</span> getCurrentPlayListItem(<span class="keywordtype">int</span>&amp; index, <span class="keywordtype">bool</span> title = <span class="keyword">true</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">virtual</span> vector&lt;string&gt;* getPlayList(<span class="keywordtype">bool</span> title = <span class="keyword">true</span>) = 0;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">virtual</span> vector&lt;string&gt; getPlayList(<span class="keywordtype">bool</span> title = <span class="keyword">true</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setPlayList(vector&lt;string&gt;&amp; playlist) = 0;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setPlayList(<span class="keyword">const</span> vector&lt;string&gt;&amp; playlist) = 0;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> insertPlayList(vector&lt;string&gt;&amp; playlist, <span class="keywordtype">int</span> position) = 0;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> insertPlayList(<span class="keyword">const</span> vector&lt;string&gt;&amp; playlist, <span class="keywordtype">int</span> position) = 0;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> playlistStart() = 0;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('_i_winamp_8h.html','');});
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setTime(<span class="keywordtype">int</span> time) = 0;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getTime() = 0;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getTime() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> forward5(<span class="keywordtype">void</span>) = 0;</div>
@@ -195,47 +195,47 @@ $(document).ready(function(){initNavTree('_i_winamp_8h.html','');});
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setVolume(<span class="keywordtype">int</span> volume) = 0;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getVolume() = 0;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getVolume() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setPanning(<span class="keywordtype">int</span> panning) = 0;</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getPanning() = 0;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getPanning() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> toggleShuffle(<span class="keywordtype">void</span>) = 0;</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getShuffle(<span class="keywordtype">void</span>) = 0;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getShuffle(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setShuffle(<span class="keywordtype">bool</span> shuffle) = 0;</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> toggleRepeat(<span class="keywordtype">void</span>) = 0;</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getRepeat(<span class="keywordtype">void</span>) = 0;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getRepeat(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setRepeat(<span class="keywordtype">bool</span> repeat) = 0;</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> toggleEQOn(<span class="keywordtype">void</span>) = 0;</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getEQOn(<span class="keywordtype">void</span>) = 0;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getEQOn(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setEQOn(<span class="keywordtype">bool</span> value) = 0;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> toggleAutoload(<span class="keywordtype">void</span>) = 0;</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getAutoload(<span class="keywordtype">void</span>) = 0;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getAutoload(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setAutoload(<span class="keywordtype">bool</span> value) = 0;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getEQData(<span class="keywordtype">int</span> eqindex) = 0;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> getEQData(<span class="keywordtype">int</span> eqindex) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setEQData(<span class="keywordtype">int</span> eqindex, byte eqvalue) = 0;</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> getTimes(<span class="keywordtype">int</span>&amp; songLength, <span class="keywordtype">int</span>&amp; songPos) = 0;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> getTimes(<span class="keywordtype">int</span>&amp; songLength, <span class="keywordtype">int</span>&amp; songPos) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keyword">virtual</span> std::string getStringList(<a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> <a class="code" href="rpcimport_8h.html#ade4ad069c9ea1dbe8c67290b4ea46cdf">Command</a>) = 0;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keyword">virtual</span> std::string getStringList(<a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> <a class="code" href="rpcimport_8h.html#ade4ad069c9ea1dbe8c67290b4ea46cdf">Command</a>) <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setStringList(std::string list, <a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> <a class="code" href="rpcimport_8h.html#ade4ad069c9ea1dbe8c67290b4ea46cdf">Command</a>) = 0;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setStringList(<span class="keyword">const</span> std::string&amp; list, <a class="code" href="waint_8h.html#a6817d27f4a84498c7218e3dd73a29930">WinampCommand</a> <a class="code" href="rpcimport_8h.html#ade4ad069c9ea1dbe8c67290b4ea46cdf">Command</a>) = 0;</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['back5',['Back5',['../class_tfrm_main.html#ac3b7cb1e83ebae3dc1f87c711fdfc5d8',1,'TfrmMain']]],
+  ['back5',['Back5',['../class_tdm_remote.html#a209b2666bd1634c52ad4da8b42f712ef',1,'TdmRemote']]],
   ['back51',['Back51',['../class_tfrm_main.html#ab67f841e2d52672550c73fab7765bff0',1,'TfrmMain']]],
   ['base_5frange',['BASE_RANGE',['../_colour_u_8cpp.html#a87f790632dc8a6ddafe2668cfae4b19c',1,'ColourU.cpp']]],
   ['bevel1',['Bevel1',['../class_tfrm_plugin_main.html#a1f6fb3645e473aba71fc7250689c5fa3',1,'TfrmPluginMain']]],
@@ -8,7 +8,6 @@ var searchData=
   ['btnabout',['btnAbout',['../class_t_config_form.html#a1f5ddff4c9938bde541e01997507aa32',1,'TConfigForm::btnAbout()'],['../class_tfrm_plugin_main.html#a12ebc8e2c1ff47573c0f938de0f60c13',1,'TfrmPluginMain::btnAbout()']]],
   ['btnautoload',['btnAutoload',['../class_tfrm_settings.html#ade0ba7b11acf2ec6aa854c9de230a51f',1,'TfrmSettings']]],
   ['btncancel',['btnCancel',['../class_tfrm_servers.html#a71c25b3cfe5fc26ea22127bb028534ad',1,'TfrmServers']]],
-  ['btnclose',['btnClose',['../class_t_config_form.html#a2c4d998db8ee5fd57b34c3ba168edd59',1,'TConfigForm']]],
   ['btnconfig',['btnConfig',['../class_tfrm_plugin_main.html#ae1239b61bd75b5d3842d88cba73897b4',1,'TfrmPluginMain']]],
   ['btneqon',['btnEQOn',['../class_tfrm_settings.html#a97748418fcc2ac37e50ee08c05d87454',1,'TfrmSettings']]],
   ['btnlocate',['btnLocate',['../class_tfrm_main.html#ae06c5ba30f36d961b828f3c778961e37',1,'TfrmMain::btnLocate()'],['../class_tfrm_servers.html#af06b4d01add1f0a77aae3da37254d9bc',1,'TfrmServers::btnLocate()']]],

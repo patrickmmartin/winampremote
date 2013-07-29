@@ -5,7 +5,7 @@ var searchData=
   ['localgetwinampversion',['LocalGetWinampVersion',['../waint_8cpp.html#a72ceae4fe8f84aa0a39de1ce81ea0015',1,'LocalGetWinampVersion(HWND HWinamp):&#160;waint.cpp'],['../waint_8h.html#a72ceae4fe8f84aa0a39de1ce81ea0015',1,'LocalGetWinampVersion(HWND HWinamp):&#160;waint.cpp']]],
   ['localqueryint',['LocalQueryInt',['../waint_8cpp.html#a1dac4a30cd6ef2253bda3b19746463f0',1,'LocalQueryInt(HWND HWinamp, WinampCommand Command, int Data):&#160;waint.cpp'],['../waint_8h.html#a1dac4a30cd6ef2253bda3b19746463f0',1,'LocalQueryInt(HWND HWinamp, WinampCommand Command, int Data):&#160;waint.cpp']]],
   ['localquerystring',['LocalQueryString',['../waint_8cpp.html#a04ece507c5be3e71fd7d88ba6fd86cff',1,'LocalQueryString(HWND HWinamp, WinampCommand Command, int Data):&#160;waint.cpp'],['../waint_8h.html#a04ece507c5be3e71fd7d88ba6fd86cff',1,'LocalQueryString(HWND HWinamp, WinampCommand Command, int Data):&#160;waint.cpp']]],
-  ['locateserversexecute',['LocateServersExecute',['../class_tfrm_main.html#a6e824decf1358bb3725dc56525d9fa75',1,'TfrmMain']]],
+  ['locateserversexecute',['LocateServersExecute',['../class_tdm_remote.html#a7b506964ab006b23b358f205f7f89703',1,'TdmRemote']]],
   ['lstsongsdblclick',['lstSongsDblClick',['../class_tfrm_playlist.html#ab315d0357bfbd178152836a2cc5b15ef',1,'TfrmPlaylist']]],
   ['lstsongsdragdrop',['lstSongsDragDrop',['../class_tfrm_playlist.html#aa68dee1a53641b09518fff14a9400f1b',1,'TfrmPlaylist']]],
   ['lstsongsdragover',['lstSongsDragOver',['../class_tfrm_playlist.html#a00d24d290c9212f7af57c377ca11f4b2',1,'TfrmPlaylist']]],

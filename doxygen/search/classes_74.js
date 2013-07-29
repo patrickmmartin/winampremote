@@ -1,6 +1,7 @@
 var searchData=
 [
   ['tconfigform',['TConfigForm',['../class_t_config_form.html',1,'']]],
+  ['tdmremote',['TdmRemote',['../class_tdm_remote.html',1,'']]],
   ['testcontext',['TestContext',['../struct_winamp_remote_1_1_unit_test_1_1_test_context.html',1,'WinampRemote::UnitTest']]],
   ['tfrmabout',['TfrmAbout',['../class_tfrm_about.html',1,'']]],
   ['tfrmcommands',['TfrmCommands',['../class_tfrm_commands.html',1,'']]],

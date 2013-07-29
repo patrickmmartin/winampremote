@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['back5',['Back5',['../class_tfrm_main.html#ac3b7cb1e83ebae3dc1f87c711fdfc5d8',1,'TfrmMain::Back5()'],['../class_winamp_remote_1_1_client_1_1_i_winamp.html#a3962c2ca5d0056269de68cd8b91e102a',1,'WinampRemote::Client::IWinamp::back5()'],['../class_winamp_remote_1_1_client_1_1_winamp_client_base.html#adf3bac20b582c0f0bec414f46cdda018',1,'WinampRemote::Client::WinampClientBase::back5()']]],
+  ['back5',['Back5',['../class_tdm_remote.html#a209b2666bd1634c52ad4da8b42f712ef',1,'TdmRemote::Back5()'],['../class_winamp_remote_1_1_client_1_1_i_winamp.html#a3962c2ca5d0056269de68cd8b91e102a',1,'WinampRemote::Client::IWinamp::back5()'],['../class_winamp_remote_1_1_client_1_1_winamp_client_base.html#adf3bac20b582c0f0bec414f46cdda018',1,'WinampRemote::Client::WinampClientBase::back5()']]],
   ['back51',['Back51',['../class_tfrm_main.html#ab67f841e2d52672550c73fab7765bff0',1,'TfrmMain']]],
-  ['back5execute',['Back5Execute',['../class_tfrm_main.html#a420e3b383b51531ad04b9750c4ba49f4',1,'TfrmMain']]],
+  ['back5execute',['Back5Execute',['../class_tdm_remote.html#a563655cf41660a4b6b0f4ff7ba623490',1,'TdmRemote']]],
+  ['barchange',['BarChange',['../class_tdm_remote.html#ae25d06aa219a036f632bb0146cfb5983',1,'TdmRemote']]],
   ['barschange',['BarsChange',['../class_tfrm_settings.html#aa60de2f01ff3c8c15cf2943585fdea6e',1,'TfrmSettings']]],
   ['base_5frange',['BASE_RANGE',['../_colour_u_8cpp.html#a87f790632dc8a6ddafe2668cfae4b19c',1,'ColourU.cpp']]],
   ['bevel1',['Bevel1',['../class_tfrm_plugin_main.html#a1f6fb3645e473aba71fc7250689c5fa3',1,'TfrmPluginMain']]],
@@ -10,10 +11,9 @@ var searchData=
   ['binder',['binder',['../struct_winamp_remote_1_1_unit_test_1_1_test_context.html#a970479d631bdf2e85ecd79d4acdc29cd',1,'WinampRemote::UnitTest::TestContext']]],
   ['breakintodebugger',['BreakIntoDebugger',['../catch_8hpp.html#ab31f74d3ae9bd50f7c4f47b5f8b10807',1,'catch.hpp']]],
   ['btnabout',['btnAbout',['../class_t_config_form.html#a1f5ddff4c9938bde541e01997507aa32',1,'TConfigForm::btnAbout()'],['../class_tfrm_plugin_main.html#a12ebc8e2c1ff47573c0f938de0f60c13',1,'TfrmPluginMain::btnAbout()']]],
-  ['btnaboutclick',['btnAboutClick',['../class_t_config_form.html#a962dbb12cae5f6c67e66e1e7469b2a70',1,'TConfigForm::btnAboutClick(TObject *Sender)'],['../class_t_config_form.html#a962dbb12cae5f6c67e66e1e7469b2a70',1,'TConfigForm::btnAboutClick(TObject *Sender)'],['../class_tfrm_plugin_main.html#aebd160b275c68ba18060ca60b4c96660',1,'TfrmPluginMain::btnAboutClick()']]],
+  ['btnaboutclick',['btnAboutClick',['../class_t_config_form.html#a962dbb12cae5f6c67e66e1e7469b2a70',1,'TConfigForm::btnAboutClick()'],['../class_tfrm_plugin_main.html#aebd160b275c68ba18060ca60b4c96660',1,'TfrmPluginMain::btnAboutClick()']]],
   ['btnautoload',['btnAutoload',['../class_tfrm_settings.html#ade0ba7b11acf2ec6aa854c9de230a51f',1,'TfrmSettings']]],
   ['btncancel',['btnCancel',['../class_tfrm_servers.html#a71c25b3cfe5fc26ea22127bb028534ad',1,'TfrmServers']]],
-  ['btnclose',['btnClose',['../class_t_config_form.html#a2c4d998db8ee5fd57b34c3ba168edd59',1,'TConfigForm']]],
   ['btncloseclick',['btnCloseClick',['../class_tfrm_main.html#a8ab4bd9329f3e08d5941aed6a9f4a4b4',1,'TfrmMain']]],
   ['btnconfig',['btnConfig',['../class_tfrm_plugin_main.html#ae1239b61bd75b5d3842d88cba73897b4',1,'TfrmPluginMain']]],
   ['btnconfigclick',['btnConfigClick',['../class_tfrm_plugin_main.html#af305519414b578d1c588b779925f0dbf',1,'TfrmPluginMain']]],

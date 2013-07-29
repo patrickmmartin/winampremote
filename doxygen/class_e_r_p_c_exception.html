@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('class_e_r_p_c_exception.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -119,11 +119,11 @@ $(document).ready(function(){initNavTree('class_e_r_p_c_exception.html','');});
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a57fbc4a11d081e8afeead0fc43ddac9f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_r_p_c_exception.html#a57fbc4a11d081e8afeead0fc43ddac9f">ERPCException</a> (int rpc_error_code)</td></tr>
 <tr class="memitem:a65a02df13cadf66687a0706d57c95963"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_r_p_c_exception.html#a65a02df13cadf66687a0706d57c95963">what</a> () const   throw ()</td></tr>
-<tr class="memitem:aaad8f35ad4780f84ff8c82b9eaa462d9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_r_p_c_exception.html#aaad8f35ad4780f84ff8c82b9eaa462d9">~ERPCException</a> ()  throw ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="_r_p_c_exception_8h_source.html#l00009">9</a> of file <a class="el" href="_r_p_c_exception_8h_source.html">RPCException.h</a>.</p>
+<div class="textblock"><p>class to wrap up RPC error code conversion </p>
+
+<p>Definition at line <a class="el" href="_r_p_c_exception_8h_source.html#l00012">12</a> of file <a class="el" href="_r_p_c_exception_8h_source.html">RPCException.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a57fbc4a11d081e8afeead0fc43ddac9f"></a>
 <div class="memitem">
@@ -146,33 +146,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>constructor accepting the RPC runtime error code </p>
+<dl class="params"><dt>Parameters:</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rpc_error_code</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_r_p_c_exception_8h_source.html#l00013">13</a> of file <a class="el" href="_r_p_c_exception_8h_source.html">RPCException.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aaad8f35ad4780f84ff8c82b9eaa462d9"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual ERPCException::~ERPCException </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td>  throw ()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_r_p_c_exception_8h_source.html#l00034">34</a> of file <a class="el" href="_r_p_c_exception_8h_source.html">RPCException.h</a>.</p>
+<p>Definition at line <a class="el" href="_r_p_c_exception_8h_source.html#l00020">20</a> of file <a class="el" href="_r_p_c_exception_8h_source.html">RPCException.h</a>.</p>
 
 </div>
 </div>
@@ -197,8 +179,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>overload of <a class="el" href="class_e_r_p_c_exception.html#a65a02df13cadf66687a0706d57c95963">what()</a> to return the value obtained for the RPC code </p>
+<dl class="section return"><dt>Returns:</dt><dd></dd></dl>
 
-<p>Definition at line <a class="el" href="_r_p_c_exception_8h_source.html#l00031">31</a> of file <a class="el" href="_r_p_c_exception_8h_source.html">RPCException.h</a>.</p>
+<p>Definition at line <a class="el" href="_r_p_c_exception_8h_source.html#l00042">42</a> of file <a class="el" href="_r_p_c_exception_8h_source.html">RPCException.h</a>.</p>
+
+<p>Referenced by <a class="el" href="conremote_8cpp_source.html#l00036">main()</a>, <a class="el" href="remote_d_m_8cpp_source.html#l00364">TdmRemote::PlaylistRefreshExecute()</a>, and <a class="el" href="_server_tester_8cpp_source.html#l00052">ServerTester::testServer()</a>.</p>
 
 </div>
 </div>

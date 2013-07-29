@@ -2,8 +2,6 @@ var searchData=
 [
   ['icotrayicon',['icoTrayIcon',['../class_tfrm_main.html#ab0f6ae056611ac1c167e8b73ccc64afc',1,'TfrmMain']]],
   ['identbuf',['IdentBuf',['../_winamp_client_base_8cpp.html#a138584b7ecb3a39c0ea00259b23dd262',1,'WinampClientBase.cpp']]],
-  ['identchars',['IdentChars',['../class_tfrm_main.html#a0aec2221dd521563a2b5de49170f9261',1,'TfrmMain']]],
-  ['image1',['Image1',['../class_t_config_form.html#a22efed39155484b4242c2ecb47edfe77',1,'TConfigForm']]],
   ['imgerror',['imgError',['../class_tfrm_servers.html#ab01b23c4f7499d4db31d43138be2bfdc',1,'TfrmServers']]],
   ['imgicon',['imgIcon',['../class_t_config_form.html#a8c8b480432829dc1c14648279651dcf3',1,'TConfigForm::imgIcon()'],['../class_tfrm_message.html#a9580f45f246245f695afd9f7ab0171f4',1,'TfrmMessage::imgIcon()']]],
   ['imginformation',['imgInformation',['../class_tfrm_servers.html#a1ea9bd77ba995c8346a9de9b7ebfcc61',1,'TfrmServers']]],

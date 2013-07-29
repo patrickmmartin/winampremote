@@ -12,6 +12,8 @@ var files =
     [ "ClientBinder.h", "_client_binder_8h.html", [
       [ "ClientBinder", "class_winamp_remote_1_1_client_1_1_client_binder.html", "class_winamp_remote_1_1_client_1_1_client_binder" ]
     ] ],
+    [ "ClientConfig.cpp", "_client_config_8cpp.html", "_client_config_8cpp" ],
+    [ "ClientConfig.h", "_client_config_8h.html", "_client_config_8h" ],
     [ "ClientSuite.cpp", "_client_suite_8cpp.html", "_client_suite_8cpp" ],
     [ "ColourU.cpp", "_colour_u_8cpp.html", "_colour_u_8cpp" ],
     [ "ColourU.h", "_colour_u_8h.html", "_colour_u_8h" ],
@@ -19,8 +21,6 @@ var files =
     [ "CommandF.h", "_command_f_8h.html", "_command_f_8h" ],
     [ "ConfigDLLF.cpp", "_config_d_l_l_f_8cpp.html", "_config_d_l_l_f_8cpp" ],
     [ "ConfigDLLF.h", "_config_d_l_l_f_8h.html", "_config_d_l_l_f_8h" ],
-    [ "ConfigF.cpp", "_config_f_8cpp.html", "_config_f_8cpp" ],
-    [ "ConfigF.h", "_config_f_8h.html", "_config_f_8h" ],
     [ "conremote.cpp", "conremote_8cpp.html", "conremote_8cpp" ],
     [ "ConsoleCallObserver.cpp", "_console_call_observer_8cpp.html", null ],
     [ "ConsoleCallObserver.h", "_console_call_observer_8h.html", [
@@ -65,6 +65,8 @@ var files =
     [ "PlaylistF.cpp", "_playlist_f_8cpp.html", "_playlist_f_8cpp" ],
     [ "PlaylistF.h", "_playlist_f_8h.html", "_playlist_f_8h" ],
     [ "remote.cpp", "remote_8cpp.html", "remote_8cpp" ],
+    [ "remoteDM.cpp", "remote_d_m_8cpp.html", "remote_d_m_8cpp" ],
+    [ "remoteDM.h", "remote_d_m_8h.html", "remote_d_m_8h" ],
     [ "remotestrs.cpp", "remotestrs_8cpp.html", "remotestrs_8cpp" ],
     [ "remotestrs.h", "remotestrs_8h.html", "remotestrs_8h" ],
     [ "rfc1060u.cpp", "rfc1060u_8cpp.html", "rfc1060u_8cpp" ],
@@ -93,12 +95,11 @@ var files =
     [ "SettingsF.cpp", "_settings_f_8cpp.html", "_settings_f_8cpp" ],
     [ "SettingsF.h", "_settings_f_8h.html", "_settings_f_8h" ],
     [ "StringVectorPrinter.cpp", "_string_vector_printer_8cpp.html", null ],
-    [ "StringVectorPrinter.h", "_string_vector_printer_8h.html", [
-      [ "StringVectorPrinter", "struct_winamp_remote_1_1_utils_1_1_string_vector_printer.html", "struct_winamp_remote_1_1_utils_1_1_string_vector_printer" ]
-    ] ],
+    [ "StringVectorPrinter.h", "_string_vector_printer_8h.html", "_string_vector_printer_8h" ],
     [ "testserver.cpp", "testserver_8cpp.html", "testserver_8cpp" ],
     [ "unittests.cpp", "unittests_8cpp.html", "unittests_8cpp" ],
     [ "UtilsSuite.cpp", "_utils_suite_8cpp.html", "_utils_suite_8cpp" ],
+    [ "VCLTests.cpp", "_v_c_l_tests_8cpp.html", "_v_c_l_tests_8cpp" ],
     [ "VersionInfoU.cpp", "_version_info_u_8cpp.html", "_version_info_u_8cpp" ],
     [ "VersionInfoU.h", "_version_info_u_8h.html", "_version_info_u_8h" ],
     [ "waint.cpp", "waint_8cpp.html", "waint_8cpp" ],

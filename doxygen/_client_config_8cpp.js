@@ -1,0 +1,26 @@
+var _client_config_8cpp =
+[
+    [ "sAddress", "_client_config_8cpp.html#a27538b7bbc73f429277cfbd88f9e4d76", null ],
+    [ "sAddressDefault", "_client_config_8cpp.html#ade3ef16a68bdf18cfefa19a9b299c24b", null ],
+    [ "sAutoHide", "_client_config_8cpp.html#a50baf1337c3c66f70b3d62e5a2f3786f", null ],
+    [ "sAutoRestore", "_client_config_8cpp.html#a680f6b217165aa565de3d15021633989", null ],
+    [ "sCommandsLeft", "_client_config_8cpp.html#ab4f1ffda3bbf2e895bf3f41211cf1562", null ],
+    [ "sCommandsTop", "_client_config_8cpp.html#a72fb9a65b5a3fd6560193a0726f2e96c", null ],
+    [ "sCommandsVisible", "_client_config_8cpp.html#ac4c360939719ee4cca2d733594cfadf8", null ],
+    [ "sEndpoint", "_client_config_8cpp.html#a5dfe7417994cc438c972227d127e75f6", null ],
+    [ "sEndPointDefault", "_client_config_8cpp.html#abaf2fef5e77dbc76abfbd9249057d13a", null ],
+    [ "sFalse", "_client_config_8cpp.html#ae89c411d77ea1db678c6394170999ffd", null ],
+    [ "sPlaylistHeight", "_client_config_8cpp.html#a2c7bc3c0176b3e4673ec7f696cd06d9e", null ],
+    [ "sPlaylistLeft", "_client_config_8cpp.html#a3a121edda81641c339c24251c5d3ecd3", null ],
+    [ "sPlaylistTop", "_client_config_8cpp.html#a9fc972e06fd7a812530dec17793674d5", null ],
+    [ "sPlaylistUpdate", "_client_config_8cpp.html#a23c58c82b46d24889ce1d66e1fcec335", null ],
+    [ "sPlaylistVisible", "_client_config_8cpp.html#ac0af898ec1c186adba343c36c60b26d1", null ],
+    [ "sPlaylistWidth", "_client_config_8cpp.html#ac59287d3498e1c73980ecf7eb30dea75", null ],
+    [ "sPollInterval", "_client_config_8cpp.html#ab77dcc22875054c28523fb300f8aa93c", null ],
+    [ "sRegKey", "_client_config_8cpp.html#aeed0948315c508daad2ba09b9f1bdbaf", null ],
+    [ "sTrue", "_client_config_8cpp.html#acf6ec7525d59224d9812383b869417db", null ],
+    [ "sVisible", "_client_config_8cpp.html#ac00595116ebdf076e606c1d9cdfb1d1c", null ],
+    [ "sVolumeLeft", "_client_config_8cpp.html#a369305ecdd45258e2ebe008e346387c8", null ],
+    [ "sVolumeTop", "_client_config_8cpp.html#a8391258e93461a1072baedf9ecd38fec", null ],
+    [ "sVolumeVisible", "_client_config_8cpp.html#a44233bfb414735adf301406b58c5de2b", null ]
+];

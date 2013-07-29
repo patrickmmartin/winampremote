@@ -15,6 +15,7 @@ var annotated =
     [ "ServerInfo", "struct_server_info.html", "struct_server_info" ],
     [ "ServerTester", "class_server_tester.html", "class_server_tester" ],
     [ "TConfigForm", "class_t_config_form.html", "class_t_config_form" ],
+    [ "TdmRemote", "class_tdm_remote.html", "class_tdm_remote" ],
     [ "TfrmAbout", "class_tfrm_about.html", "class_tfrm_about" ],
     [ "TfrmCommands", "class_tfrm_commands.html", "class_tfrm_commands" ],
     [ "TfrmDetails", "class_tfrm_details.html", "class_tfrm_details" ],

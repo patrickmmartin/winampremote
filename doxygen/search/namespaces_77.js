@@ -1,6 +1,7 @@
 var searchData=
 [
   ['client',['Client',['../namespace_winamp_remote_1_1_client.html',1,'WinampRemote']]],
+  ['config',['Config',['../namespace_winamp_remote_1_1_config.html',1,'WinampRemote']]],
   ['context',['Context',['../namespace_winamp_remote_1_1_context.html',1,'WinampRemote']]],
   ['net',['Net',['../namespace_winamp_remote_1_1_net.html',1,'WinampRemote']]],
   ['remoting',['Remoting',['../namespace_winamp_remote_1_1_remoting.html',1,'WinampRemote']]],

@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('_main_f_8cpp.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -109,7 +109,6 @@ $(document).ready(function(){initNavTree('_main_f_8cpp.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;vcl.h&gt;</code><br/>
-<code>#include &lt;registry.hpp&gt;</code><br/>
 <code>#include &lt;shellapi.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="_main_f_8h_source.html">MainF.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="message_f_8h_source.html">messageF.h</a>&quot;</code><br/>
@@ -125,6 +124,8 @@ $(document).ready(function(){initNavTree('_main_f_8cpp.html','');});
 <code>#include &lt;math.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="_winamp_client_base_8h_source.html">WinampClientBase.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_cursor_guard_8h_source.html">CursorGuard.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="remote_d_m_8h_source.html">remoteDM.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_client_config_8h_source.html">ClientConfig.h</a>&quot;</code><br/>
 </div>
 <p><a href="_main_f_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -141,22 +142,6 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a7a0a88d6cad0fdd4be122d3cafa36cef"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a7a0a88d6cad0fdd4be122d3cafa36cef">POLL_ERROR_FACTOR</a> = 10</td></tr>
 <tr class="memitem:a05f9d195e1efff9004a745a5bcb4ba13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tfrm_main.html">TfrmMain</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a05f9d195e1efff9004a745a5bcb4ba13">frmMain</a></td></tr>
-<tr class="memitem:ab6457374b43234d981950a283791bf16"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#ab6457374b43234d981950a283791bf16">sRegKey</a> = &quot;software\\PMMSoft\\Winamp controller\\client settings&quot;</td></tr>
-<tr class="memitem:ab27859c1fc4069b979c2b2e21e4452de"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#ab27859c1fc4069b979c2b2e21e4452de">sCommandsLeft</a> = &quot;Commands Left&quot;</td></tr>
-<tr class="memitem:a2d5cdd97ddb80af7f36cbf2c58519a65"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a2d5cdd97ddb80af7f36cbf2c58519a65">sCommandsTop</a> = &quot;Commands Top&quot;</td></tr>
-<tr class="memitem:a7d7eed39a67646fe3aca410a4a3a57ed"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a7d7eed39a67646fe3aca410a4a3a57ed">sCommandsVisible</a> = &quot;Commands Visible&quot;</td></tr>
-<tr class="memitem:aaadac197854c62d10e6f95928949fe49"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#aaadac197854c62d10e6f95928949fe49">sVolumeLeft</a> = &quot;Volume Left&quot;</td></tr>
-<tr class="memitem:aefa8a86c22e99eb6d9ff3af69039e3ed"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#aefa8a86c22e99eb6d9ff3af69039e3ed">sVolumeTop</a> = &quot;Volume Top&quot;</td></tr>
-<tr class="memitem:a78a57ae9def60fbc03016c38af3eac7e"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a78a57ae9def60fbc03016c38af3eac7e">sVolumeVisible</a> = &quot;Volume Visible&quot;</td></tr>
-<tr class="memitem:a6387315dbefa8d472de8664eb5b82b80"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a6387315dbefa8d472de8664eb5b82b80">sPlaylistLeft</a> = &quot;Playlist Left&quot;</td></tr>
-<tr class="memitem:a8d7ebbc1f2bb143048b48370ca107437"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a8d7ebbc1f2bb143048b48370ca107437">sPlaylistTop</a> = &quot;Playlist Top&quot;</td></tr>
-<tr class="memitem:ac3d34ee021a8e093a083178b534d7261"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#ac3d34ee021a8e093a083178b534d7261">sPlaylistWidth</a> = &quot;Playlist Width&quot;</td></tr>
-<tr class="memitem:a0ff8661c11465e79ebcb87cbe09fa1a6"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a0ff8661c11465e79ebcb87cbe09fa1a6">sPlaylistHeight</a> = &quot;Playlist Height&quot;</td></tr>
-<tr class="memitem:aa3fdb7c79d82ec728f5ef440b5d9ff1a"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#aa3fdb7c79d82ec728f5ef440b5d9ff1a">sPlaylistVisible</a> = &quot;Playlist Visible&quot;</td></tr>
-<tr class="memitem:a22100c8352a53ef93b53b1c2122cfee7"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a22100c8352a53ef93b53b1c2122cfee7">sTesting</a> = &quot;Testing&quot;</td></tr>
-<tr class="memitem:a94d2f862c4936533c3c9278e7451679c"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a94d2f862c4936533c3c9278e7451679c">sLanguage</a> = &quot;Language&quot;</td></tr>
-<tr class="memitem:a6209be0d293264f439f7455ddb7d25f0"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a6209be0d293264f439f7455ddb7d25f0">sTrue</a> = &quot;true&quot;</td></tr>
-<tr class="memitem:a0e19029fb780df5589ca01bd7361da9a"><td class="memItemLeft" align="right" valign="top">const AnsiString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_main_f_8cpp.html#a0e19029fb780df5589ca01bd7361da9a">sFalse</a> = &quot;false&quot;</td></tr>
 </table>
 <hr/><h2>Macro Definition Documentation</h2>
 <a class="anchor" id="a8812e101d8afec730c3403a4c3cab300"></a>
@@ -168,6 +153,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="_main_f_8cpp_source.html#l00218">TfrmMain::HideMain()</a>, and <a class="el" href="remote_d_m_8cpp_source.html#l00552">TdmRemote::ShowMainFormExecute()</a>.</p>
 
 </div>
 </div>
@@ -198,7 +185,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00617">617</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00283">283</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
 
 </div>
 </div>
@@ -213,7 +200,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00054">54</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00056">56</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="remote_d_m_8cpp_source.html#l00504">TdmRemote::LocateServersExecute()</a>, <a class="el" href="_playlist_f_8cpp_source.html#l00100">TfrmPlaylist::lstSongsDrawItem()</a>, <a class="el" href="_playlist_f_8cpp_source.html#l00123">TfrmPlaylist::lstSongsDrawItemGlass()</a>, <a class="el" href="remote_d_m_8cpp_source.html#l00552">TdmRemote::ShowMainFormExecute()</a>, and <a class="el" href="remote_8cpp_source.html#l00056">WinMain()</a>.</p>
 
 </div>
 </div>
@@ -227,231 +216,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00050">50</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab27859c1fc4069b979c2b2e21e4452de"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sCommandsLeft = &quot;Commands Left&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00297">297</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2d5cdd97ddb80af7f36cbf2c58519a65"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sCommandsTop = &quot;Commands Top&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00298">298</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7d7eed39a67646fe3aca410a4a3a57ed"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sCommandsVisible = &quot;Commands Visible&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00299">299</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0e19029fb780df5589ca01bd7361da9a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sFalse = &quot;false&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00311">311</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a94d2f862c4936533c3c9278e7451679c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sLanguage = &quot;Language&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00309">309</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0ff8661c11465e79ebcb87cbe09fa1a6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sPlaylistHeight = &quot;Playlist Height&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00306">306</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6387315dbefa8d472de8664eb5b82b80"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sPlaylistLeft = &quot;Playlist Left&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00303">303</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8d7ebbc1f2bb143048b48370ca107437"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sPlaylistTop = &quot;Playlist Top&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00304">304</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa3fdb7c79d82ec728f5ef440b5d9ff1a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sPlaylistVisible = &quot;Playlist Visible&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00307">307</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac3d34ee021a8e093a083178b534d7261"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sPlaylistWidth = &quot;Playlist Width&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00305">305</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab6457374b43234d981950a283791bf16"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sRegKey = &quot;software\\PMMSoft\\Winamp controller\\client settings&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00296">296</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a22100c8352a53ef93b53b1c2122cfee7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sTesting = &quot;Testing&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00308">308</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6209be0d293264f439f7455ddb7d25f0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sTrue = &quot;true&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00310">310</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aaadac197854c62d10e6f95928949fe49"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sVolumeLeft = &quot;Volume Left&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00300">300</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aefa8a86c22e99eb6d9ff3af69039e3ed"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sVolumeTop = &quot;Volume Top&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00301">301</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a78a57ae9def60fbc03016c38af3eac7e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const AnsiString sVolumeVisible = &quot;Volume Visible&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00302">302</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_main_f_8cpp_source.html#l00052">52</a> of file <a class="el" href="_main_f_8cpp_source.html">MainF.cpp</a>.</p>
 
 </div>
 </div>

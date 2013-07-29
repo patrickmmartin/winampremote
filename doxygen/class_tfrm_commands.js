@@ -1,9 +1,9 @@
 var class_tfrm_commands =
 [
     [ "TfrmCommands", "class_tfrm_commands.html#a0ee294f33620daa131274086d83330f9", null ],
-    [ "FormClose", "class_tfrm_commands.html#a05e4b474dc791b7a88cdfe3f2be58d1e", null ],
+    [ "FormCreate", "class_tfrm_commands.html#a317969f919bb1b7060628f59f81f37d5", null ],
+    [ "FormDestroy", "class_tfrm_commands.html#ab1a3bb567ee2812eacb5410d4e2d3b1d", null ],
     [ "FormShow", "class_tfrm_commands.html#a7c3c0df716bdbe2c85e4b1f53e4f327e", null ],
-    [ "FormStartDock", "class_tfrm_commands.html#a7d59e12895f9e2e13e0ba5b7186f98e6", null ],
     [ "tbCommands", "class_tfrm_commands.html#add278f6282a28e0a9c2c7da272f841cb", null ],
     [ "tbtnNext", "class_tfrm_commands.html#a3d4798fb5eae65164f48d075bde4cad9", null ],
     [ "tbtnPause", "class_tfrm_commands.html#ade8c63657429c0c3ac4ef739c8a40b82", null ],

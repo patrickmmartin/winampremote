@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['about',['About',['../class_tfrm_main.html#a0b3454068f110610c803924015e7cc57',1,'TfrmMain']]],
-  ['aboutexecute',['AboutExecute',['../class_tfrm_main.html#ab92c9fdaa20ec4cf75c21ef6c839810b',1,'TfrmMain']]],
+  ['about',['About',['../class_tdm_remote.html#a690a6dde7e67d3ec246da3b2d49bae64',1,'TdmRemote']]],
+  ['aboutexecute',['AboutExecute',['../class_tdm_remote.html#acd22683406e0a890d08c5ef61e28ac67',1,'TdmRemote']]],
   ['aboutf_2ecpp',['AboutF.cpp',['../_about_f_8cpp.html',1,'']]],
   ['aboutf_2eh',['AboutF.h',['../_about_f_8h.html',1,'']]],
   ['aboutgldisplay',['AboutGLDisplay',['../class_about_g_l_display.html',1,'AboutGLDisplay'],['../class_about_g_l_display.html#ad457a206a63307e48094b7ead0bedaec',1,'AboutGLDisplay::AboutGLDisplay()']]],
@@ -9,19 +9,20 @@ var searchData=
   ['aboutgldisplay_2eh',['AboutGLDisplay.h',['../_about_g_l_display_8h.html',1,'']]],
   ['actions1',['Actions1',['../class_tfrm_main.html#aea1336db2caba3476a09d2ee830eaa98',1,'TfrmMain']]],
   ['actions2',['Actions2',['../class_tfrm_main.html#a400d5f5c9286b44936cd514eedddc4ab',1,'TfrmMain']]],
-  ['adddirectory',['AddDirectory',['../class_tfrm_main.html#aa8879f56288e2454dd553bc1a20028a1',1,'TfrmMain']]],
+  ['adddirectory',['AddDirectory',['../class_tdm_remote.html#a7c523768014a68678e7e87f2191bd772',1,'TdmRemote']]],
   ['adddirectory1',['AddDirectory1',['../class_tfrm_main.html#a5497be426a3710050b64023941cace7c',1,'TfrmMain']]],
-  ['addfiles',['AddFiles',['../class_tfrm_main.html#a4ca2625fbf43c5cadc89fd9eb2b4865d',1,'TfrmMain']]],
+  ['adddirectoryexecute',['AddDirectoryExecute',['../class_tdm_remote.html#a3de9ad06f7df84187947b267a557e5a7',1,'TdmRemote']]],
   ['addfiles2',['AddFiles2',['../class_tfrm_main.html#a9acd956537eacb5abc73f506a153293d',1,'TfrmMain']]],
-  ['addfiletoplaylistexecute',['AddFileToPlayListExecute',['../class_tfrm_main.html#a56be5c69702dd51f8c6b33eb49948cde',1,'TfrmMain']]],
-  ['addplayiist',['AddPlayIist',['../class_tfrm_main.html#aab2015cb878303db4aaa48e9c4db9505',1,'TfrmMain']]],
+  ['addplayiist',['AddPlayIist',['../class_tdm_remote.html#a0b56fabbf6aa74819953b0c9a0bbfd68',1,'TdmRemote']]],
+  ['addplayiistexecute',['AddPlayIistExecute',['../class_tdm_remote.html#aa9c479facebffb04c220651bb35b765a',1,'TdmRemote']]],
   ['addplaylist1',['AddPlayList1',['../class_tfrm_main.html#a917de8fbd381c060902292a2e7825758',1,'TfrmMain']]],
   ['address',['Address',['../class_tfrm_servers.html#a405ca0e37600bbeefe2e8e79fa78e30f',1,'TfrmServers']]],
   ['addresschange',['AddressChange',['../class_tfrm_main.html#a0b93a6536e7b360c2b4c49481095d16c',1,'TfrmMain']]],
   ['administer1',['Administer1',['../class_tfrm_main.html#a6ce2262a62b1a79902c4b2503849f854',1,'TfrmMain']]],
   ['aftercurrent',['AfterCurrent',['../class_winamp_remote_1_1_server_1_1_winamp_test_server.html#a93786a64fe495eaaf1fcb55c5e2b0f33a051f373b3ece2a3b5bf65aabd6b7a9ed',1,'WinampRemote::Server::WinampTestServer']]],
-  ['almain',['alMain',['../class_tfrm_main.html#a1aadcfed3ff07b0b4476b0e08e91565f',1,'TfrmMain']]],
+  ['almain',['alMain',['../class_tdm_remote.html#abc289146bedb023531a9cd3ebb1c6930',1,'TdmRemote']]],
   ['anon_5ftest_5fcase',['ANON_TEST_CASE',['../catch_8hpp.html#ab41cb63be394c30d48fa579bf8352f18',1,'catch.hpp']]],
-  ['autoload',['Autoload',['../class_tfrm_main.html#a3e324ce1a5ca5bc42e7252b523b90304',1,'TfrmMain']]],
-  ['autoloadexecute',['AutoloadExecute',['../class_tfrm_main.html#a4617bd17db8c9162a20de309b9716422',1,'TfrmMain']]]
+  ['autoload',['Autoload',['../class_tdm_remote.html#a59b1a00dd054979f208be90522312296',1,'TdmRemote']]],
+  ['autoloadexecute',['AutoloadExecute',['../class_tdm_remote.html#ade5fa2662dbdcacc3edc876b9efa5987',1,'TdmRemote']]],
+  ['autorestore',['AutoRestore',['../class_winamp_remote_1_1_config_1_1_client_config.html#af27faba807ed150a0c2a7e1b69de9936',1,'WinampRemote::Config::ClientConfig']]]
 ];

@@ -52,7 +52,6 @@ var searchData=
   ['mnurefresh',['mnuRefresh',['../class_tfrm_playlist.html#a2aff6064f148e44224f268f768050491',1,'TfrmPlaylist']]],
   ['mnurefreshclick',['mnuRefreshClick',['../class_tfrm_playlist.html#a6129657a61b2bbdfe3d7ead408627a60',1,'TfrmPlaylist']]],
   ['mnurepeat',['mnuRepeat',['../class_tfrm_main.html#a55a578390b13128be3088f475f7e7692',1,'TfrmMain']]],
-  ['mnusayhelloclick',['mnuSayHelloClick',['../class_tfrm_main.html#aa3829a6b6c305b24c64680a79412d5d8',1,'TfrmMain']]],
   ['mnusetvolume0',['mnuSetVolume0',['../class_tfrm_main.html#a54a64f28a4506917cc4d4429de54204d',1,'TfrmMain']]],
   ['mnusetvolume100',['mnuSetVolume100',['../class_tfrm_main.html#afeaf6c3f5bbfbccbce2fa4f55e4f4503',1,'TfrmMain']]],
   ['mnushow',['mnuShow',['../class_tfrm_main.html#af502d8349d8e4cee488d58f35e23e6f0',1,'TfrmMain']]],
