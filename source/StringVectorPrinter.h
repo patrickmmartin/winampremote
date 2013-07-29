@@ -24,6 +24,10 @@ struct StringVectorPrinter
 
 	stringstream sstr;
 
+	/**
+	 * constructor accepting vector<string>
+	 * @param playlist - string vector
+	 */
 	StringVectorPrinter(vector<string> & playlist)
 	{
 		for (unsigned int i = 0; i < playlist.size(); i++)
@@ -32,13 +36,21 @@ struct StringVectorPrinter
 		}
 	}
 
-	friend std::ostream& operator <<(std::ostream& os, const StringVectorPrinter& svp)
-	{
-		os << svp.sstr.str();
-		return os;
-	}
 
 };
+
+
+/**
+ * stream operator to pretty print the vector passed when constructed
+ * @param os
+ * @param svp
+ * @return
+ */
+std::ostream& operator <<(std::ostream& os, const StringVectorPrinter& svp)
+{
+	os << svp.sstr.str();
+	return os;
+}
 
 } /* namespace Utils */
 } /* namespace WinampRemote */
