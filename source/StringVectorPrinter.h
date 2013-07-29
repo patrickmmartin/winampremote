@@ -28,7 +28,7 @@ struct StringVectorPrinter
 	 * constructor accepting vector<string>
 	 * @param playlist - string vector
 	 */
-	StringVectorPrinter(vector<string> & playlist)
+	StringVectorPrinter(const vector<string> & playlist)
 	{
 		for (unsigned int i = 0; i < playlist.size(); i++)
 		{

@@ -226,7 +226,7 @@ void AboutGLDisplay::CreateDisplayLists(void)
 
 }
 
-void AboutGLDisplay::drawText(void)
+void AboutGLDisplay::drawText(void) const
 {
 
 	unsigned int index, i;
@@ -258,7 +258,7 @@ void AboutGLDisplay::drawText(void)
 }
 ;
 
-void AboutGLDisplay::drawCube(void)
+void AboutGLDisplay::drawCube(void) const
 {
 	glPushMatrix(); //push nice view
 	glScalef(1, 1, 1);
@@ -267,7 +267,7 @@ void AboutGLDisplay::drawCube(void)
 	glPopMatrix(); //pop nice view
 }
 
-void AboutGLDisplay::drawTorus(void)
+void AboutGLDisplay::drawTorus(void) const
 {
 	struct vertex
 	{
@@ -376,7 +376,7 @@ void AboutGLDisplay::drawTorus(void)
 	}
 }
 
-void AboutGLDisplay::drawSphere(void)
+void AboutGLDisplay::drawSphere(void) const
 {
 	struct vertex
 	{
@@ -484,7 +484,7 @@ void AboutGLDisplay::drawSphere(void)
 	}
 }
 
-void AboutGLDisplay::setCheckTexture(void)
+void AboutGLDisplay::setCheckTexture(void) const
 {
 	int texWidth = 256;
 	int texHeight = 256;
@@ -563,7 +563,7 @@ void matrixIdentity(GLfloat m[4][4])
 }
 
 
-void AboutGLDisplay::setProjection(void)
+void AboutGLDisplay::setProjection(void) const
 {
 	GLfloat aspect = (GLfloat) clientWidth / (GLfloat) clientHeight;
 
@@ -578,7 +578,7 @@ void AboutGLDisplay::setProjection(void)
 	glMatrixMode(GL_MODELVIEW);
 }
 
-void AboutGLDisplay::setMaterial(void)
+void AboutGLDisplay::setMaterial(void) const
 {
 	GLfloat matAmb[4] =
 	{ 0.01F, 0.01F, 0.01F, 1.00F };
@@ -643,13 +643,13 @@ void AboutGLDisplay::init(void)
 	CreateDisplayLists();
 }
 
-void AboutGLDisplay::resize(void)
+void AboutGLDisplay::resize(void) const
 {
 	setProjection();
 	glViewport(0, 0, clientWidth, clientHeight);
 }
 
-void AboutGLDisplay::redraw(void)
+void AboutGLDisplay::redraw(void) const
 {
 	try {
 
@@ -848,7 +848,7 @@ void AboutGLDisplay::trackMotion(DWORD /* time */, int x, int y)
 	}
 }
 
-void AboutGLDisplay::setupPalette()
+void AboutGLDisplay::setupPalette()  const
 {
 	PIXELFORMATDESCRIPTOR pfd;
 	LOGPALETTE* pPal;
@@ -901,7 +901,7 @@ void AboutGLDisplay::setupPalette()
 	}
 }
 
-void AboutGLDisplay::setupPixelformat()
+void AboutGLDisplay::setupPixelformat()  const
 {
 	PIXELFORMATDESCRIPTOR pfd =
 	{ sizeof(PIXELFORMATDESCRIPTOR), // size of this pfd

@@ -195,17 +195,17 @@ private:
 
 	void CreateFontList();
 	void CreateDisplayLists();
-	void drawText();
-	void drawCube();
-	void drawTorus();
-	void drawSphere();
-	void setCheckTexture();
-	void setMaterial();
+	void drawText() const;
+	void drawCube() const;
+	void drawTorus() const;
+	void drawSphere() const;
+	void setCheckTexture() const;
+	void setMaterial() const;
 	void init();
-	void resize();
+	void resize() const;
 	void ptov(int x, int y, int width, int height, float v[3]);
-	void setupPalette();
-	void setupPixelformat();
+	void setupPalette() const;
+	void setupPixelformat() const;
 
 
 public:
@@ -235,7 +235,7 @@ public:
 	/**
 	 * re-asserts the projection - use when the size or projection desired is updated
 	 */
-	void setProjection();
+	void setProjection() const;
 	/**
 	 * sets the client area - clients use when this has changed
 	 * @param clientWidth_
@@ -246,7 +246,7 @@ public:
 	/**
 	 * draws the current scene
 	 */
-	void redraw();
+	void redraw() const;
 
 	/**
 	 * starts a mouse move
