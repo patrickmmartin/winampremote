@@ -8,6 +8,9 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ActnList.hpp>
+#include <Dialogs.hpp>
+
+#pragma hdrstop
 
 #include "IWinamp.h"
 #include "waint.h"
@@ -17,7 +20,7 @@
 #include "SettingsF.h"
 #include "CommandF.h"
 
-#include <Dialogs.hpp>
+#include "ClientConfig.h"
 
 //---------------------------------------------------------------------------
 class TdmRemote : public TDataModule
@@ -146,6 +149,8 @@ private:	// User declarations
         void hookEvents(TForm * NewForm, TForm * PriorForm);
         void __fastcall ChildFormStartDock(TObject *Sender, TDragDockObject *&DragObject);
         void __fastcall ChildFormClose(TObject * aForm, TCloseAction & aAction);
+        void __fastcall restoreForms(WinampRemote::Config::ClientConfig & config);
+
 public:		// User declarations
         __fastcall TdmRemote(TComponent* Owner);
         void setClient(WinampRemote::Client::IWinamp * client_);

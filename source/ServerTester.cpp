@@ -36,7 +36,7 @@ void ServerTester::DoResult(const AnsiString& remoteName, const bool success)
 	// TODO: handle dispatching this
 }
 
-void ServerTester::testServers(map<AnsiString, ServerInfo>& servers)
+void ServerTester::testServers(std::map<AnsiString, ServerInfo>& servers)
 {
 
       for (map<AnsiString, ServerInfo>::iterator i = servers.begin();

@@ -16,6 +16,7 @@ USEUNIT("UtilsSuite.cpp");
 USEUNIT("IPAddressResolver.cpp");
 USEUNIT("StringVectorPrinter.cpp");
 USEUNIT("CursorGuard.cpp");
+USEUNIT("VCLTests.cpp");
 //---------------------------------------------------------------------------
 This file is used by the project manager only and should be treated like the project file
 

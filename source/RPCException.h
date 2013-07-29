@@ -6,11 +6,18 @@
 
 using namespace std;
 
+/**
+ * class to wrap up RPC error code conversion
+ */
 class ERPCException : public runtime_error
 {
 
 public:
-        explicit ERPCException(int rpc_error_code)  :
+        /**
+         * constructor accepting the RPC runtime error code
+         * @param rpc_error_code
+         */
+		explicit ERPCException(int rpc_error_code)  :
         std::runtime_error("rpc runtime error"), what_("error message could not be formatted")
         {
 
@@ -28,10 +35,14 @@ public:
                 what_ = buffer;
         }
 
+        /**
+         * overload of what() to return the value obtained for the RPC code
+         * @return
+         */
         virtual const char* what() const throw ()
         { return what_.c_str(); }
 
-        virtual ~ERPCException() throw () {}
+
 private:
         std::string what_;
 };

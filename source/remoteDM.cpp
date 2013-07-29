@@ -848,3 +848,42 @@ void __fastcall TdmRemote::ChangeFadeExecute(TObject *Sender)
 }
 
 
+void __fastcall TdmRemote::restoreForms(WinampRemote::Config::ClientConfig & config)
+{
+
+	// set up the commands form
+	{
+		const TPoint CommandsTL = config.CommandsPos();
+
+		frmCommands->Top = CommandsTL.y;
+		frmCommands->Left = CommandsTL.x;
+
+		if (config.CommandsVisible())
+			ViewToolBarExecute(this);
+	}
+
+
+
+	// set up the commads form
+	{
+		const TPoint VolumeTL = config.VolumePos();
+
+		frmSettings->Top = VolumeTL.y;
+		frmSettings->Left = VolumeTL.x;
+
+		if (config.VolumeVisible())
+			ViewToolBarExecute(this);
+	}
+
+
+	{
+		const TRect PlaylistBounds = config.PlaylistPos();
+
+		frmPlaylist->BoundsRect = PlaylistBounds;
+		if (config.PlaylistVisible())
+			ViewPlaylistExecute(this);
+
+	}
+
+
+}

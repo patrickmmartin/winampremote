@@ -54,7 +54,7 @@ public:
          * Function to accept list of servers to be tested.
          * @param servers map of names -> server info
          */
-        void testServers(map<AnsiString, ServerInfo>& servers);
+        void testServers(std::map<AnsiString, ServerInfo>& servers);
 
         /**
          * Function to accept a server to be tested for a response
