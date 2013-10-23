@@ -23,6 +23,7 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include <vcl.h>
 #pragma hdrstop
 
+#include <registry.hpp>
 #include <shellapi.h>
 
 // forms...
@@ -46,8 +47,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "WinampClientBase.h"
 #include "CursorGuard.h"
 #include "remoteDM.h"
-
-#include "ClientConfig.h"
 
 const int POLL_ERROR_FACTOR = 10; // seconds
 
@@ -252,6 +251,26 @@ void __fastcall TfrmMain::HideMain(TObject *)
 }
 
 
+const AnsiString sRegKey = "software\\PMMSoft\\Winamp controller\\client settings";
+const AnsiString sCommandsLeft = "Commands Left";
+const AnsiString sCommandsTop = "Commands Top";
+const AnsiString sCommandsVisible = "Commands Visible";
+const AnsiString sVolumeLeft = "Volume Left";
+const AnsiString sVolumeTop = "Volume Top";
+const AnsiString sVolumeVisible = "Volume Visible";
+const AnsiString sPlaylistLeft = "Playlist Left";
+const AnsiString sPlaylistTop = "Playlist Top";
+const AnsiString sPlaylistWidth = "Playlist Width";
+const AnsiString sPlaylistHeight = "Playlist Height";
+const AnsiString sPlaylistVisible = "Playlist Visible";
+const AnsiString sTesting = "Testing";
+const AnsiString sLanguage = "Language";
+const AnsiString sTrue = "true";
+const AnsiString sFalse = "false";
+
+
+
+
 void __fastcall TfrmMain::FormShow(TObject *)
 {
 
@@ -260,7 +279,69 @@ void __fastcall TfrmMain::FormShow(TObject *)
   frmSettings->ShowHint = false;
   frmCommands->ShowHint = false;
 
+  if (!timerMain->Enabled)
+  {
+    TRegistry * reg = new TRegistry();
+    TRect FormRect;
+    int FormLeft, FormTop, FormWidth, FormHeight;
+    try
+    {
+      reg->OpenKey(sRegKey, true);
 
+      if (chkAutoRestore->Checked)
+      {
+
+         FormRect = TRect(0, 0, frmCommands->Width, frmCommands->Height);
+         FormLeft = reg->ReadString(sCommandsLeft).ToIntDef(-1);
+         FormTop = reg->ReadString(sCommandsTop).ToIntDef(-1);
+
+         if ((FormLeft > 0) && (FormTop > 0))
+         {
+           OffsetRect(&FormRect, FormLeft, FormTop);
+           frmCommands->BoundsRect = FormRect;
+         }
+
+         if (reg->ReadString(sCommandsVisible).LowerCase() != sFalse)
+           dmRemote->ViewToolBarExecute(this);
+
+         FormRect = TRect(0, 0, frmSettings->Width, frmSettings->Height);
+         FormLeft = reg->ReadString(sVolumeLeft).ToIntDef(-1);
+         FormTop = reg->ReadString(sVolumeTop).ToIntDef(-1);
+
+         if ((FormLeft > 0) && (FormTop > 0))
+         {
+           OffsetRect(&FormRect, FormLeft, FormTop);
+           frmSettings->BoundsRect = FormRect;
+         }
+
+         if (reg->ReadString(sVolumeVisible).LowerCase() != sFalse)
+           dmRemote->ViewVolumeExecute(this);
+
+         FormLeft = reg->ReadString(sPlaylistLeft).ToIntDef(-1);
+         FormTop = reg->ReadString(sPlaylistTop).ToIntDef(-1);
+         FormWidth = reg->ReadString(sPlaylistWidth).ToIntDef(180);
+         FormHeight = reg->ReadString(sPlaylistHeight).ToIntDef(240);
+         FormRect = TRect(0, 0, FormWidth, FormHeight);
+
+         if ((FormLeft > 0) && (FormTop > 0))
+         {
+           OffsetRect(&FormRect, FormLeft, FormTop);
+           frmPlaylist->BoundsRect = FormRect;
+         }
+
+         if (reg->ReadString(sPlaylistVisible).LowerCase() != sFalse)
+           dmRemote->ViewPlaylistExecute(this);
+
+
+       }
+
+    }
+
+    __finally
+    {
+      delete reg;
+    }
+  }
 
   mnuShow->Visible = false;
   TrayMessage(NIM_DELETE);
@@ -303,6 +384,47 @@ void __fastcall TfrmMain::FormCreate(TObject *)
 
   Application->OnHint = DisplayHint;
 
+  TRegistry * reg;
+  try
+  {
+    reg = new TRegistry();
+    reg->OpenKey("software\\PMMSoft\\Winamp controller\\client settings", true);
+
+    this->ebEndPoint->Text = reg->ReadString("Endpoint");
+    this->ebAddress->Text = reg->ReadString("Address");
+
+    // activate 
+    this->ebEndPoint->OnChange = AddressChange;
+    this->ebAddress->OnChange = AddressChange;
+
+    if (this->ebEndPoint->Text == "")
+      this->ebEndPoint->Text = AnsiString("\\pipe\\winampremote");
+    if (this->ebAddress->Text == "")
+      this->ebAddress->Text = "localhost";
+
+     chkAutoHide->Checked =  !(reg->ReadString("AutoHide").LowerCase() == sFalse);
+
+     chkAutoRestore->Checked = !(reg->ReadString("AutoRestore").LowerCase() == sFalse);
+
+     if (reg->ReadString("Playlist Update").LowerCase() == "every song")
+       rbSongChange->Checked = true;
+     else
+       rbPlaylistChange->Checked = true;
+
+     if ((reg->ReadString("Visible").LowerCase() == sFalse) && (chkAutoHide->Checked)){
+       doHide = true;
+       }
+
+    lstTimer->ItemIndex = reg->ReadString("Poll Interval").ToIntDef(1);
+    if (lstTimer->ItemIndex < 0)
+      lstTimer->ItemIndex = 1;
+
+
+  }
+  __finally
+  {
+    delete reg;
+  }
 
   pgSettings->ActivePage = tbsMain;
 
@@ -464,6 +586,56 @@ void __fastcall TfrmMain::FormClose(TObject *, TCloseAction &)
 
 void __fastcall TfrmMain::FormCloseQuery(TObject *, bool &)
 {
+  TRegistry * reg;
+
+  try
+  {
+    reg = new TRegistry();
+    reg->OpenKey("software\\PMMSoft\\Winamp controller\\client settings", true);
+
+    if (this->ebEndPoint->Text != "")
+      reg->WriteString("EndPoint", ebEndPoint->Text);
+    if (this->ebAddress->Text != "")
+      reg->WriteString("Address", ebAddress->Text);
+
+    reg->WriteString("Visible", Visible?sTrue:sFalse);
+
+    reg->WriteString("Poll Interval", AnsiString(lstTimer->ItemIndex));
+
+    reg->WriteString("AutoHide", chkAutoHide->Checked?sTrue:sFalse);
+    reg->WriteString("AutoRestore", chkAutoRestore->Checked?sTrue:sFalse);
+
+     if  (rbSongChange->Checked)
+     {
+        reg->WriteString("Playlist Update", "every song");
+      }
+      else
+      {
+        reg->WriteString("Playlist Update", "playlist change");
+      }
+
+    // only save settings if check box checked, to prevent overwriting with defaults
+    if (chkAutoRestore->Checked){
+      reg->WriteString("Commands Left", AnsiString(frmCommands->Left));
+      reg->WriteString("Commands Top", AnsiString(frmCommands->Top));
+      reg->WriteString("Commands Visible", frmCommands->Visible?sTrue:sFalse);
+      reg->WriteString("Commands Docked", frmCommands->HostDockSite?sTrue:sFalse);
+
+      reg->WriteString("Playlist Left", AnsiString(frmPlaylist->Left));
+      reg->WriteString("Playlist Top", AnsiString(frmPlaylist->Top));
+      reg->WriteString("Playlist Width", AnsiString(frmPlaylist->Width));
+      reg->WriteString("Playlist Height", AnsiString(frmPlaylist->Height));
+      reg->WriteString("Playlist Visible", frmPlaylist->Visible?sTrue:sFalse);
+
+      reg->WriteString("Volume Left", AnsiString(frmSettings->Left));
+      reg->WriteString("Volume Top", AnsiString(frmSettings->Top));
+      reg->WriteString("Volume Visible", frmSettings->Visible?sTrue:sFalse);
+      }
+    }
+  __finally
+  {
+    delete reg;
+  }
 }
 
 
