@@ -1,5 +1,5 @@
+
 VS_VERSION_INFO VERSIONINFO
-#include "vs_ffi.rcinc"
 #include "build_ffi.rcinc"
  FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
  FILEFLAGS 0x0L
