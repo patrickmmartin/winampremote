@@ -71,7 +71,7 @@ __fastcall TModuleVersionInfo::~TModuleVersionInfo(void)
 }
 
 
-AnsiString __fastcall TModuleVersionInfo::GetKey (AnsiString ThisKeyName)
+AnsiString __fastcall TModuleVersionInfo::GetKey (AnsiString ThisKeyName) const
 {
   UINT InfoLength;
   char * buf;
@@ -105,7 +105,7 @@ AnsiString __fastcall TModuleVersionInfo::GetKey (AnsiString ThisKeyName)
 
 }
 
-AnsiString __fastcall TModuleVersionInfo::GetVersionInfo (int Index)
+AnsiString __fastcall TModuleVersionInfo::GetVersionInfo (int Index) const
 {
 
   return StandardKeys[Index];

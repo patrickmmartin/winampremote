@@ -11,13 +11,13 @@
  * @param percent
  * @return the result
  */
-double periodic(double percent);
+double periodic(const double percent);
 
 /**
  * Yields a 32 bit RGB colour value from the input value
  * @param value
  * @return the colour
  */
-TColor rainbowColour(int value);
+TColor rainbowColour(const int value);
 
 #endif

@@ -9,21 +9,21 @@ namespace WinampRemote
 namespace Remoting
 {
 
-void ConsoleCallObserver::notifyStatus(const char * status){
+void ConsoleCallObserver::notifyStatus(const char * status) const{
 
   // output to console
   std::cout << "status: " << ((status)?status:"(null)") << std::endl;
 
 }
 
-void ConsoleCallObserver::notifyMessage(const char * msg ){
+void ConsoleCallObserver::notifyMessage(const char * msg ) const{
 
   // output to console
   std::cout << "msg  : " << ((msg)?msg:"(null)") << std::endl;
 
 }
 
-void ConsoleCallObserver::notifyException(const char * msg )
+void ConsoleCallObserver::notifyException(const char * msg ) const
 {
 	  // output to console
 	  std::cerr << "error: " << ((msg)?msg:"(null)") << std::endl;

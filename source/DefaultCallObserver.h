@@ -14,13 +14,13 @@ class DefaultCallObserver : public ICallObserver  {
 
     virtual ~DefaultCallObserver() {};
 
-    virtual void notifyStatus(const char * status){
+    virtual void notifyStatus(const char * status) const{
         std::stringstream ss;
         ss << "status # " << status;
         OutputDebugString(ss.str().c_str());
     }
 
-    virtual void notifyMessage(const char * msg){
+    virtual void notifyMessage(const char * msg) const{
         std::stringstream ss;
         ss << "message # " << msg;
         OutputDebugString(ss.str().c_str());

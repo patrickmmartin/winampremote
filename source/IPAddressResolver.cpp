@@ -97,21 +97,21 @@ IPAddressResolver::~IPAddressResolver()
 {
 }
 
-std::vector<std::string> & IPAddressResolver::getAddresses()
+const std::vector<std::string> & IPAddressResolver::getAddresses() const
 {
 	return m_addresses;
 }
 
-std::vector<std::string> & IPAddressResolver::getAliases()
+const std::vector<std::string> & IPAddressResolver::getAliases() const
 {
 	return m_aliases;
 }
-std::string const & IPAddressResolver::hostname() const
+const std::string & IPAddressResolver::hostname() const
 {
 	return m_hostname;
 }
 
-std::string const & IPAddressResolver::resolvedName() const
+const std::string & IPAddressResolver::resolvedName() const
 {
 	return m_resolved;
 }

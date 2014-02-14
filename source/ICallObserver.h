@@ -29,19 +29,19 @@ class ICallObserver {
      * outputs status
      * @param status
      */
-	virtual void notifyStatus(const char * status) = 0;
+	virtual void notifyStatus(const char * status) const = 0;
 
     /**
      * outputs a message
      * @param msg
      */
-	virtual void notifyMessage(const char * msg ) = 0;
+	virtual void notifyMessage(const char * msg ) const = 0;
 
     /**
      * notification for an error
      * @param msg
      */
-	virtual void notifyException(const char * msg ) = 0;
+	virtual void notifyException(const char * msg ) const = 0;
 
 };
 
@@ -54,13 +54,13 @@ class StubCallObserver : public ICallObserver  {
 
     virtual ~StubCallObserver() {};
 
-    virtual void notifyStatus(const char * status){
+    virtual void notifyStatus(const char * status) const {
     }
 
-    virtual void notifyMessage(const char * msg){
+    virtual void notifyMessage(const char * msg) const {
     }
 
-    virtual void notifyException(const char * msg){
+    virtual void notifyException(const char * msg) const {
     }
 
 };

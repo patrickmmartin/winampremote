@@ -15,8 +15,8 @@ private:
 	AnsiString LangCharset;
 	bool InfoAvailable;
 	AnsiString StandardKeys[10];
-	AnsiString __fastcall GetVersionInfo(int Index);
-	AnsiString __fastcall GetKey(AnsiString ThisKeyName);
+	AnsiString __fastcall GetVersionInfo(int Index) const;
+	AnsiString __fastcall GetKey(AnsiString ThisKeyName) const;
 
 public:
 	__fastcall TModuleVersionInfo(AnsiString ThisSourceFile);

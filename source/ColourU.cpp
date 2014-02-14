@@ -27,14 +27,14 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 const int BASE_RANGE = 500;
 const double offset = 0.15;
 
-double periodic(double percent)
+double periodic(const double percent)
 {
 	return (0.5 *( cos(2.0 * M_PI * percent) + 1) );
 }
 
 
 
-TColor rainbowColour(int value)
+TColor rainbowColour(const int value)
 {
   double percent = (double) ( value % BASE_RANGE) /BASE_RANGE;
 

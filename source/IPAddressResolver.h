@@ -27,10 +27,10 @@ public:
 	IPAddressResolver(std::string& const hostname);
 	virtual ~IPAddressResolver();
 
-	std::vector<std::string> & getAddresses();
-	std::vector<std::string> & getAliases();
-	std::string const & hostname() const;
-	std::string const & resolvedName() const;
+	const std::vector<std::string> & getAddresses() const;
+	const std::vector<std::string> & getAliases() const;
+	const std::string & hostname() const;
+	const std::string & resolvedName() const;
 
 };
 
