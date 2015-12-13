@@ -291,7 +291,7 @@ int WinampClientBase::getEQOn() const
 
 void WinampClientBase::setEQOn(bool value)
 {
-	return setEQData(11, value);
+	setEQData(11, value);
 }
 
 void WinampClientBase::toggleAutoload(void)
