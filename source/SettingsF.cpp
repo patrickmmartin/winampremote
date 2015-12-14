@@ -26,7 +26,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #include "SettingsF.h"
 #include "MainF.h"
 #include "waint.h"
-#include "GlassExtender.h"
 #include "remoteDM.h"
 
 #pragma package(smart_init)

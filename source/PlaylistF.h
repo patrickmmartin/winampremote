@@ -12,7 +12,6 @@
 
 
 #include "IWinamp.h"
-#include "GlassExtender.h"
 
 /**
   UI class to display the winamp playlist and respond similarly to UI actions. 
@@ -69,7 +68,6 @@ private:	// User declarations
     int BelowIndex;
     bool fDragging;
     TStringList *SongList;
-    GlassExtender * ge;
 
     void __fastcall DeleteSelected(void);
     void __fastcall DropFiles(TMessage& Msg);

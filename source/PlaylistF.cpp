@@ -126,16 +126,12 @@ void itemState(TOwnerDrawState State)
 {
   TListBox * ListBox = (TListBox *) Control;
   AnsiString ItemText = ListBox->Items->Strings[Index];
-  TCanvas * Canvas = ListBox->Canvas;
 
   if (State.Contains(odFocused))
         return;
 
   itemState(State);
 
-  // paints now accumulate, so this is needed
-  Canvas->FillRect(Rect);
-  ge->drawGlowText(Canvas->Handle, ItemText, Rect, (Index == frmMain->CurrentIndex) );
 }
 
 
@@ -184,18 +180,6 @@ void __fastcall TfrmPlaylist::lstSongsDragDrop(TObject *, TObject *, int X, int 
 
 void __fastcall TfrmPlaylist::FormShow(TObject *)
 {
-  ge = new GlassExtender(this);
-  if (ge->isCompositionActive())
-  {
-      lstSongs->Color = clNone;
-      lstSongs->BorderStyle = bsNone;
-
-      pnlBottom->Color = clNone;
-      pnlBottom->BorderStyle = bsNone;
-
-      sbPlaylist->Color = clNone;
-      lstSongs->OnDrawItem = lstSongsDrawItemGlass;
-  }
   // need to re-assert this
   DragAcceptFiles(lstSongs->Handle, true);
 }

@@ -24,7 +24,6 @@ Patrick M. Martin may be reached by email at patrickmmartin@gmail.com.
 #pragma hdrstop
 
 #include "CommandF.h"
-#include "GlassExtender.h"
 #include "remoteDM.h"
 
 
@@ -42,14 +41,6 @@ __fastcall TfrmCommands::TfrmCommands(TComponent* Owner)
 
 void __fastcall TfrmCommands::FormShow(TObject *)
 {
-  GlassExtender * ge = new GlassExtender(this);
-  if (ge->isCompositionActive())
-  {
-      this->Color = clNone;
-      tbCommands->EdgeInner = esNone;
-      tbCommands->EdgeOuter = esNone;
-      tbCommands->Transparent = true;
-  }
 }
 
 
